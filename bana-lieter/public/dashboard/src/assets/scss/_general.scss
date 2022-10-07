@@ -1,0 +1,14 @@
+body {
+    background-color: $light;
+    color: $black;
+    .form-control {
+        height: 50px;
+        border-radius: 25px;
+        padding: 0 30px;
+    }
+}
+
+ul.no-style {
+    list-style: none;
+    padding-left: 0;
+}

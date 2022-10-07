@@ -20,11 +20,8 @@ echo -e "-- Installing Apache web server\n"
 apt-get install -y apache2
 rm -rf /var/www/html/index.html
 
-echo -e "-- Installing Memcached\n"
-sudo apt-get -y install php7.4-memcached memcached
-
 echo -e "-- Installing php 7.4"
-sudo apt-get install -y php7.4 php7.4-cli php7.4-gd php7.4-curl php7.4-xml php7.4-mbstring libapache2-mod-php7.4
+sudo apt-get install -y php7.4 php7.4-cli php7.4-gd php7.4-curl php7.4-xml php7.4-mbstring php7.4-memcached memcached libapache2-mod-php7.4
 
 echo -e "-- Adding ServerName to Apache config\n"
 grep -q "ServerName ${VIRTUAL_HOST}" "${APACHE_CONFIG}" || echo "ServerName ${VIRTUAL_HOST}" >> "${APACHE_CONFIG}"
@@ -66,10 +63,10 @@ php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
 
 echo -e "-- Installing node and npm\n"
-sudo apt-get install npm
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-nvm install 16.9.1
-export NODE_OPTIONS="--max-old-space-size=5120"
+# sudo apt-get install npm
+# wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+# nvm install 16.9.1
+# export NODE_OPTIONS="--max-old-space-size=5120"
 
 # END ##########################################################################
 echo -e "-- ---------------- --"

@@ -1,0 +1,30 @@
+.header {
+    height: 100px;
+}
+
+.side-menu {
+    background-color: white;
+    width: 400px;
+    .menu-logo {
+        height: 100px;
+        padding: 15px;
+    }
+    .inner {
+        padding: 0 20px;
+    }
+    // border-right: 1px solid $black-2;
+    .nav-link {
+        color: $black-2;
+        font-size: 18px;
+        padding: 15px 0;
+        &.active {
+            color: $main;
+        }
+    }
+}
+
+.content {
+    border-radius: 25px;
+    padding: 25px;
+    background-color: white;
+}
