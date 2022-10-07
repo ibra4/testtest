@@ -20,6 +20,9 @@ echo -e "-- Installing Apache web server\n"
 apt-get install -y apache2
 rm -rf /var/www/html/index.html
 
+echo -e "-- Installing Memcached\n"
+sudo apt-get -y install php7.4-memcached memcached
+
 echo -e "-- Installing php 7.4"
 sudo apt-get install -y php7.4 php7.4-cli php7.4-gd php7.4-curl php7.4-xml php7.4-mbstring libapache2-mod-php7.4
 
@@ -51,8 +54,9 @@ EOF
 echo -e "-- Enable rewrite mod\n"
 sudo a2enmod rewrite
 
-echo -e "-- Restarting Apache web server\n"
+echo -e "-- Restarting Apache web server and Memcached\n"
 service apache2 restart
+service memcached restart
 
 echo -e "-- Installing composer\n"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
