@@ -61,6 +61,12 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
 
+echo -e "-- Installing node and npm\n"
+sudo apt-get install npm
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+nvm install 16.9.1
+export NODE_OPTIONS="--max-old-space-size=5120"
+
 # END ##########################################################################
 echo -e "-- ---------------- --"
 echo -e "-- END BOOTSTRAPING --"
