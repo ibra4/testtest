@@ -26419,7 +26419,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".header {\n  height: 100px;\n}\n\n.side-menu {\n  background-color: white;\n  width: 400px;\n}\n.side-menu .menu-logo {\n  height: 100px;\n  padding: 15px;\n}\n.side-menu .inner {\n  padding: 0 20px;\n}\n.side-menu .nav-link {\n  color: #3D4A62;\n  font-size: 18px;\n  padding: 15px 0;\n}\n.side-menu .nav-link.active {\n  color: #6451FF;\n}\n\n.content {\n  border-radius: 25px;\n  padding: 25px;\n  background-color: white;\n}\n\nbody {\n  background-color: #f4f8fe;\n  color: #2D3749;\n}\nbody .form-control {\n  height: 50px;\n  border-radius: 25px;\n  padding: 0 30px;\n}\n\nul.no-style {\n  list-style: none;\n  padding-left: 0;\n}", ""]);
+exports.push([module.i, ".header {\n  height: 100px;\n}\n.header .breadcrumb {\n  margin-bottom: 0;\n}\n\n.side-menu {\n  background-color: white;\n  width: 400px;\n}\n.side-menu .menu-logo {\n  height: 100px;\n  padding: 15px;\n}\n.side-menu .inner {\n  padding: 0 20px;\n}\n.side-menu .nav-link {\n  color: #3D4A62;\n  font-size: 18px;\n  padding: 15px;\n  border-radius: 15px;\n}\n.side-menu .nav-link.active {\n  background: #6451FF;\n  color: white;\n}\n\n#profile-button img {\n  width: 50px;\n  height: 50px;\n  object-fit: cover;\n  border-radius: 50%;\n}\n\n.white-box {\n  border-radius: 25px;\n  padding: 25px;\n  background-color: white;\n  margin-bottom: 30px;\n}\n.white-box .title {\n  font-size: 24px;\n  font-weight: bold;\n  margin-bottom: 30px;\n}\n\n.statistic-item {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.statistic-item svg {\n  font-size: 50px;\n  margin-bottom: 15px;\n}\n.statistic-item .number {\n  font-size: 30px;\n  font-weight: bold;\n  color: #6451FF;\n  margin-bottom: 15px;\n}\n.statistic-item .label {\n  font-size: 24px;\n}\n\nbody {\n  background-color: #f4f8fe;\n  color: #2D3749;\n}\nbody .form-control {\n  height: 50px;\n  border-radius: 25px;\n  padding: 0 30px;\n}\n\nul.no-style {\n  list-style: none;\n  padding-left: 0;\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -79412,9 +79412,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _fontawesomeFreeSolid = __webpack_require__(/*! @fortawesome/fontawesome-free-solid */ "./node_modules/@fortawesome/fontawesome-free-solid/index.es.js");
+
+var _reactFontawesome = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+
 var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+
+var _HeaderBreadcrumb = _interopRequireDefault(__webpack_require__(/*! ./HeaderBreadcrumb */ "./src/components/Layout/HeaderBreadcrumb.jsx"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -79427,19 +79433,73 @@ function Header(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Row, {
     className: "align-items-center"
   }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Col, {
-    xs: 8,
-    className: "title display-4"
-  }, title), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Col, {
+    xs: 8
+  }, /*#__PURE__*/_react["default"].createElement(_HeaderBreadcrumb["default"], null), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "title display-5 fw-bold"
+  }, title)), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Col, {
     xs: 4
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "d-flex align-items-center justify-content-between"
   }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Control, {
     type: "text",
     name: "search",
     placeholder: "Search..."
-  }))))));
+  })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Dropdown, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Dropdown.Toggle, {
+    id: "profile-button",
+    as: "div"
+  }, /*#__PURE__*/_react["default"].createElement("img", {
+    src: "/images/girl.jpg"
+  })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Dropdown.Menu, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Dropdown.Item, {
+    href: "#/action-1"
+  }, "My Profile"), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Dropdown.Item, {
+    href: "#/action-2"
+  }, "Link 2"), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Dropdown.Divider, null), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Dropdown.Item, {
+    href: "#/action-3",
+    className: "text-danger"
+  }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+    icon: _fontawesomeFreeSolid.faSignOutAlt
+  }), /*#__PURE__*/_react["default"].createElement("span", {
+    className: "ms-2"
+  }, "Logout")))))))));
 }
 
 Header.displayName = "Header";
 var _default = Header;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ "./src/components/Layout/HeaderBreadcrumb.jsx":
+/*!****************************************************!*\
+  !*** ./src/components/Layout/HeaderBreadcrumb.jsx ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function HeaderBreadcrumb() {
+  return /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Breadcrumb, {
+    style: {
+      marginBottom: 0
+    }
+  }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Breadcrumb.Item, null, "Home"), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Breadcrumb.Item, null, "content"));
+}
+
+HeaderBreadcrumb.displayName = "HeaderBreadcrumb";
+var _default = HeaderBreadcrumb;
 exports["default"] = _default;
 
 /***/ }),
@@ -79542,14 +79602,140 @@ function index(_ref) {
     className: "col p-3"
   }, /*#__PURE__*/_react["default"].createElement(_Header["default"], {
     title: title
-  }), /*#__PURE__*/_react["default"].createElement("hr", {
-    className: "mt-0"
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "content"
   }, children))));
 }
 
 var _default = index;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ "./src/components/Statistics.jsx":
+/*!***************************************!*\
+  !*** ./src/components/Statistics.jsx ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _fontawesomeFreeSolid = __webpack_require__(/*! @fortawesome/fontawesome-free-solid */ "./node_modules/@fortawesome/fontawesome-free-solid/index.es.js");
+
+var _reactFontawesome = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+
+var _WhiteBox = _interopRequireDefault(__webpack_require__(/*! ./WhiteBox */ "./src/components/WhiteBox.jsx"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function Statistics(_ref) {
+  var counts = _ref.counts;
+  return (
+    /*#__PURE__*/
+    // <WhiteBox title="Statistics">
+    _react["default"].createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Col, {
+      md: 3
+    }, /*#__PURE__*/_react["default"].createElement(_WhiteBox["default"], {
+      className: "white-box statistic-item"
+    }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      icon: _fontawesomeFreeSolid.faHome
+    }), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "number"
+    }, counts.examinees), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "label"
+    }, "Examinees"))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Col, {
+      md: 3
+    }, /*#__PURE__*/_react["default"].createElement(_WhiteBox["default"], {
+      className: "white-box statistic-item"
+    }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      icon: _fontawesomeFreeSolid.faHome
+    }), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "number"
+    }, counts.total_reports), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "label"
+    }, "Total Reports"))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Col, {
+      md: 3
+    }, /*#__PURE__*/_react["default"].createElement(_WhiteBox["default"], {
+      className: "white-box statistic-item"
+    }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      icon: _fontawesomeFreeSolid.faHome
+    }), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "number"
+    }, counts.admin), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "label"
+    }, "Admin"))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Col, {
+      md: 3
+    }, /*#__PURE__*/_react["default"].createElement(_WhiteBox["default"], {
+      className: "white-box statistic-item"
+    }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      icon: _fontawesomeFreeSolid.faHome
+    }), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "number"
+    }, counts.remaining_reports), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "label"
+    }, "Remaining Reports")))) // </WhiteBox>
+
+  );
+}
+
+Statistics.displayName = "Statistics";
+var _default = Statistics;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ "./src/components/WhiteBox.jsx":
+/*!*************************************!*\
+  !*** ./src/components/WhiteBox.jsx ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _excluded = ["children", "title"];
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function WhiteBox(_ref) {
+  var children = _ref.children,
+      title = _ref.title,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/_react["default"].createElement("div", _extends({
+    className: "white-box"
+  }, rest), title && /*#__PURE__*/_react["default"].createElement("div", {
+    className: "title"
+  }, title), children);
+}
+
+WhiteBox.displayName = "WhiteBox";
+var _default = WhiteBox;
 exports["default"] = _default;
 
 /***/ }),
@@ -79609,12 +79795,25 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_mod
 
 var _Layout = _interopRequireDefault(__webpack_require__(/*! components/Layout */ "./src/components/Layout/index.jsx"));
 
+var _WhiteBox = _interopRequireDefault(__webpack_require__(/*! components/WhiteBox */ "./src/components/WhiteBox.jsx"));
+
+var _Statistics = _interopRequireDefault(__webpack_require__(/*! components/Statistics */ "./src/components/Statistics.jsx"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function Dashboard() {
   return /*#__PURE__*/_react["default"].createElement(_Layout["default"], {
     title: "Dashboard"
-  }, /*#__PURE__*/_react["default"].createElement("div", null, "dashboard"));
+  }, /*#__PURE__*/_react["default"].createElement(_Statistics["default"], {
+    counts: {
+      examinees: "620",
+      total_reports: "20,000",
+      admin: "20",
+      remaining_reports: "1546"
+    }
+  }), /*#__PURE__*/_react["default"].createElement(_WhiteBox["default"], {
+    title: "Top 5 Admins"
+  }, /*#__PURE__*/_react["default"].createElement("div", null, "dashboard")));
 }
 
 Dashboard.displayName = "Dashboard";

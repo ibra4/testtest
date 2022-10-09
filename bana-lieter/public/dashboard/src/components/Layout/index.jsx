@@ -9,7 +9,6 @@ function index({ children, title = "" }) {
         <SideMenu />
         <div className="col p-3">
           <Header title={title} />
-          <hr className='mt-0' />
           <div className="content">
             {children}
           </div>
