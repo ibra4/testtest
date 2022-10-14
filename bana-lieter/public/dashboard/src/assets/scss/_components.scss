@@ -82,15 +82,15 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
-    span {
+    .showing-label {
         color: $main;
     }
 }
 
-.btn {
-    &:hover {
-        span {
-            color: inherit;
-        }
-    }
-}
+// .btn {
+//     &:hover {
+//         span {
+//             color: inherit;
+//         }
+//     }
+// }

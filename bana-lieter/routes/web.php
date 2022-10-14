@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AdminsController;
+use App\Http\Controllers\Api\SubAdminsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
     })->where('any', '.*');;
 
     Route::get('/admins/export', [AdminsController::class, 'export'])->name('home');
+    Route::get('/sub-admins/export', [SubAdminsController::class, 'export'])->name('home');
 });
 
 Auth::routes();

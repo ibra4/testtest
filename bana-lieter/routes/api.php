@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\BootstrapController;
+use App\Http\Controllers\Api\SubAdminsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/bootstrap', [BootstrapController::class, 'getConfig']);
     Route::middleware('can:root')->group(function () {
         Route::get('admins', [AdminsController::class, 'index']);
+        Route::get('sub-admins', [SubAdminsController::class, 'index']);
     });
 });

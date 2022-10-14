@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Exports\UsersExport;
+use App\Exports\AdminsExport;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,6 +25,6 @@ class AdminsController extends Controller
 
     public function export(Request $request)
     {
-        return Excel::download(new UsersExport($request), 'users.xlsx');
+        return Excel::download(new AdminsExport($request), 'admins.xlsx');
     }
 }

@@ -4,5 +4,8 @@ export const ROUTES = {
     },
     ADMINS: {
         GET: 'admins'
+    },
+    SUB_ADMINS: {
+        GET: 'sub-admins'
     }
 }

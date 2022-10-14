@@ -26,11 +26,11 @@ const View = ({ data, queryParams, onSearch }) => {
     return (
         <>
             <div className="datatable-header">
-                <span>
+                <span className="showing-label">
                     Showing {data.from} to {data.to} items of {data.total} entries
                 </span>
                 <a
-                    className="btn btn-outline-primary"
+                    className="btn btn-success"
                     target="_blank"
                     href={`/admins/export?${QueryString.stringify(queryParams)}`}
                 >
