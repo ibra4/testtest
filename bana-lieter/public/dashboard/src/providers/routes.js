@@ -1,5 +1,5 @@
 export const ROUTES = {
     SETTINGS: {
-        GET: "api/test"
+        GET: "api/bootstrap"
     }
 }

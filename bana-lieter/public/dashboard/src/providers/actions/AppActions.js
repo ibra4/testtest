@@ -1,6 +1,6 @@
-export const setTest = (value) => {
+export const setConfig = (payload) => {
     return {
-        type: "test",
-        payload: value
+        type: "SET_CONFIG",
+        payload
     }
 }
