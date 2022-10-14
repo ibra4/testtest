@@ -21,7 +21,7 @@ apt-get install -y apache2
 rm -rf /var/www/html/index.html
 
 echo -e "-- Installing php 7.4"
-sudo apt-get install -y php7.4 php7.4-cli php7.4-gd php7.4-curl php7.4-xml php7.4-mbstring php7.4-memcached memcached libapache2-mod-php7.4
+sudo apt-get install -y php7.4 php7.4-cli php7.4-gd php7.4-curl php7.4-xml php7.4-mbstring php7.4-mysql php7.4-memcached memcached libapache2-mod-php7.4
 
 echo -e "-- Adding ServerName to Apache config\n"
 grep -q "ServerName ${VIRTUAL_HOST}" "${APACHE_CONFIG}" || echo "ServerName ${VIRTUAL_HOST}" >> "${APACHE_CONFIG}"
