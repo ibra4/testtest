@@ -52,4 +52,14 @@ class User extends Authenticatable
     {
         return $this->id === 1 ? 'root' : $value;
     }
+
+    public function getParentAdminAttribute()
+    {
+        return $this->admin->name;
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

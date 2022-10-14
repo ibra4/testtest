@@ -51,6 +51,7 @@ const View = ({ data, queryParams, onSearch }) => {
                 </thead>
                 <tbody>{data.data.map(renderRow)}</tbody>
             </Table>
+            {data.total == 0 && <div className="text-danger text-center mb-4">No Data</div>}
             <ReactPaginate
                 className="pagination justify-content-center"
                 pageClassName="page-item"

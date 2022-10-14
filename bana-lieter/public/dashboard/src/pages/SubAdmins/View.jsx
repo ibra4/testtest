@@ -12,6 +12,7 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.email}</td>
+            <td>{item.adminname}</td>
             <td>{item.created_at}</td>
             <td>{item.updated_at}</td>
             <td>
@@ -44,6 +45,7 @@ const View = ({ data, queryParams, onSearch }) => {
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Admin</th>
                         <th>Created At</th>
                         <th>Latest Update</th>
                         <th>Actions</th>
@@ -51,6 +53,7 @@ const View = ({ data, queryParams, onSearch }) => {
                 </thead>
                 <tbody>{data.data.map(renderRow)}</tbody>
             </Table>
+            {data.total == 0 && <div className="text-danger text-center mb-4">No Data</div>}
             <ReactPaginate
                 className="pagination justify-content-center"
                 pageClassName="page-item"
