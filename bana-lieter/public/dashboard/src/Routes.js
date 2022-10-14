@@ -5,6 +5,8 @@ import { setTest } from 'providers/actions/AppActions';
 import { useDispatch } from 'react-redux';
 import FullLoader from 'components/FullLoader';
 import Dashboard from 'pages/Dashboard';
+import AdminsIndex from 'pages/Admins/AdminsIndex';
+import SubAdminsIndex from 'pages/SubAdmins/SubAdminsIndex';
 
 const Routes = () => {
   const [status, setStatus] = React.useState("loading");
@@ -30,6 +32,8 @@ const Routes = () => {
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
         <Route path="/dashboard" component={Dashboard} exact />
+        <Route path="/admins" component={AdminsIndex} exact />
+        <Route path="/sub-admins" component={SubAdminsIndex} exact />
       </Switch>
     </BrowserRouter>
   ) : (
