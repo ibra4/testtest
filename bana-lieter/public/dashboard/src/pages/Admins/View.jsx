@@ -1,4 +1,4 @@
-import { faChevronLeft, faChevronRight, faEdit, faTrash } from '@fortawesome/fontawesome-free-solid';
+import { faChevronLeft, faChevronRight, faEdit, faFileExcel, faTrash } from '@fortawesome/fontawesome-free-solid';
 import ActionButton from 'components/Fields/ActionButton';
 import React from 'react';
 import { Table, Button } from 'react-bootstrap';
@@ -10,8 +10,8 @@ const View = ({ data, queryParams, onSearch }) => {
     const renderRow = (item) => (
         <tr key={item.id}>
             <td>{item.id}</td>
-            <td>{item.email}</td>
             <td>{item.name}</td>
+            <td>{item.email}</td>
             <td>{item.created_at}</td>
             <td>{item.updated_at}</td>
             <td>
@@ -25,9 +25,19 @@ const View = ({ data, queryParams, onSearch }) => {
 
     return (
         <>
-            <a target="_blank" href={`/admins/export?${QueryString.stringify(queryParams)}`}>
-                Export
-            </a>
+            <div className="datatable-header">
+                <span>
+                    Showing {data.from} to {data.to} items of {data.total} entries
+                </span>
+                <a
+                    className="btn btn-outline-primary"
+                    target="_blank"
+                    href={`/admins/export?${QueryString.stringify(queryParams)}`}
+                >
+                    <FontAwesomeIcon icon={faFileExcel} />
+                    <span className="ms-2">Export to Excel</span>
+                </a>
+            </div>
             <Table striped>
                 <thead>
                     <tr>
@@ -42,7 +52,7 @@ const View = ({ data, queryParams, onSearch }) => {
                 <tbody>{data.data.map(renderRow)}</tbody>
             </Table>
             <ReactPaginate
-                className="pagination"
+                className="pagination justify-content-center"
                 pageClassName="page-item"
                 pageLinkClassName="page-link"
                 nextClassName="page-item"
@@ -56,6 +66,7 @@ const View = ({ data, queryParams, onSearch }) => {
                 onPageChange={({ selected }) => onSearch({ ...queryParams, page: selected + 1 })}
                 pageRangeDisplayed={5}
                 pageCount={data.last_page}
+                initialPage={data.current_page - 1}
             />
         </>
     );

@@ -77,9 +77,20 @@
     cursor: pointer;
 }
 
-.pagination {
-    li {
-        // padding: 10px;
-        // border: 1px solid $main;
+.datatable-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    span {
+        color: $main;
+    }
+}
+
+.btn {
+    &:hover {
+        span {
+            color: inherit;
+        }
     }
 }
