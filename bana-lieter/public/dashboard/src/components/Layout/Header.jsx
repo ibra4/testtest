@@ -16,7 +16,7 @@ function Header({ title }) {
                     <Col xs={4}>
                         <div className="d-flex align-items-center justify-content-between">
                             <Form>
-                                <Form.Control type="text" name="search" placeholder="Search..." />
+                                <Form.Control type="text" className="search-input" name="search" placeholder="Search..." />
                             </Form>
                             <Dropdown>
                                 <Dropdown.Toggle id="profile-button" as={'div'}>

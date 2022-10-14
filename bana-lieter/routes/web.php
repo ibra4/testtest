@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AdminsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->get('/admin/{any?}', function () {
-    return view('welcome');
-})->where('any', '.*');;
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/admin/{any?}', function () {
+        return view('welcome');
+    })->where('any', '.*');;
+
+    Route::get('/admins/export', [AdminsController::class, 'export'])->name('home');
+});
 
 Auth::routes();
 

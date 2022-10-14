@@ -23,9 +23,9 @@
         font-size: 18px;
         padding: 15px;
         border-radius: 15px;
-        
+
         &.active {
-            background: #6451FF;
+            background: #6451ff;
             color: white;
         }
     }
@@ -69,5 +69,17 @@
     }
     .label {
         font-size: 24px;
+    }
+}
+
+.action-button {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.pagination {
+    li {
+        // padding: 10px;
+        // border: 1px solid $main;
     }
 }

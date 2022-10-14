@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 
 class BootstrapController extends Controller
 {
-    public function getConfig() {
+    public function getConfig(Request $request) {
         return [
             'statistics' => [
                 'examinees' => number_format(1350),
@@ -15,6 +16,7 @@ class BootstrapController extends Controller
                 'admin' => number_format(200),
                 'remaining_reports' => number_format(9400),
             ],
+            'user' => new UserResource($request->user()),
             'top_admins' => [
                 
             ]
