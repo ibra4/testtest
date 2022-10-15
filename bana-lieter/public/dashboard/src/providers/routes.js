@@ -3,9 +3,11 @@ export const ROUTES = {
         GET: 'bootstrap'
     },
     ADMINS: {
-        GET: 'admins'
+        LIST: 'admins',
+        UPLOAD: '/admins/upload',
+        CREATE: 'admins/create'
     },
     SUB_ADMINS: {
-        GET: 'sub-admins'
-    }
+        LIST: 'sub-admins'
+    },
 }

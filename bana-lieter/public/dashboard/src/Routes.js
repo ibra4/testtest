@@ -8,6 +8,7 @@ import Dashboard from 'pages/Dashboard';
 import AdminsIndex from 'pages/Admins/AdminsIndex';
 import SubAdminsIndex from 'pages/SubAdmins/SubAdminsIndex';
 import { httpClient } from 'providers/helpers';
+import AdminFormIndex from 'pages/AdminForm/AdminFormIndex';
 
 const Routes = () => {
   const [status, setStatus] = React.useState("loading");
@@ -34,6 +35,8 @@ const Routes = () => {
         <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
         <Route path="/dashboard" component={Dashboard} exact />
         <Route path="/admins" component={AdminsIndex} exact />
+        <Route path="/admins/create" component={AdminFormIndex} exact />
+        <Route path="/admins/:id/update" component={AdminFormIndex} exact />
         <Route path="/sub-admins" component={SubAdminsIndex} exact />
       </Switch>
     </BrowserRouter>

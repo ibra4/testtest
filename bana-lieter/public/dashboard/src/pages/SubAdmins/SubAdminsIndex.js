@@ -17,7 +17,7 @@ function SubAdminsIndex() {
         admin_id: config.user.role === 'root' ? '' : config.user.id
     })
 
-    const { data, onSearch } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.SUB_ADMINS.GET)
+    const { data, onSearch } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.SUB_ADMINS.LIST)
 
     return (
         <Layout title='Sub Admins'>

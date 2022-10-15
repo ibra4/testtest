@@ -12,7 +12,7 @@ import 'assets/scss/main.scss';
 
 ReactDOM.render(
     <Provider store={store}>
-        <ToastProvider>
+        <ToastProvider autoDismiss autoDismissTimeout={3000}>
             <Routes />
         </ToastProvider>
     </Provider>,

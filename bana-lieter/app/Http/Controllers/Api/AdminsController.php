@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Exports\AdminsExport;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateAdminRequest;
+use App\Http\Requests\UpdateAdminRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminsController extends Controller
@@ -21,6 +25,30 @@ class AdminsController extends Controller
             ->orderBy('updated_at', 'DESC')
             ->paginate();
         return response()->json($admins);
+    }
+
+    public function get($id)
+    {
+        return response()->json(new UserResource(User::findOrFail($id)));
+    }
+
+    public function create(CreateAdminRequest $request)
+    {
+        $data = $request->all();
+        $data['role'] = 'admin';
+        if (!$request->user()->can('root')) {
+            $data['admin_id'] = $request->user()->id;
+        }
+        $data['password'] = Hash::make("12345678");
+        $user = User::create($data);
+        return response()->json($user);
+    }
+
+    public function update(UpdateAdminRequest $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->except('role', 'admin'));
+        return response()->json($user);
     }
 
     public function export(Request $request)

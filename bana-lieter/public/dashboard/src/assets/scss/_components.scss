@@ -94,3 +94,68 @@
 //         }
 //     }
 // }
+
+.small-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.upload-field {
+    // width: 300px;
+    // height: 300px;
+    position: relative;
+    background-color: $main;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: 300px;
+    // &::before {
+    //     position: absolute;
+    //     z-index: 1;
+    //     content: "";
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     background-color: rgba($color: $main, $alpha: 0.3);
+    // }
+    input {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+    img {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    h3 {
+        word-break: break-all;
+    }
+    .upload-text {
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // z-index: 3;
+        // transform: translate(-50%, -50%);
+        align-items: center;
+        height: 100%;
+        display: flex;
+        pointer-events: none;
+        color: white;
+        svg {
+            width: 50px;
+            height: 50px;
+        }
+    }
+}

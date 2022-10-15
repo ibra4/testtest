@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\Traits\HasRoles;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'avatar',
+        'phone_number',
+        'number_of_reports',
         'admin_id',
         'role',
         'password',
@@ -51,11 +52,6 @@ class User extends Authenticatable
     public function getRoleAttribute($value)
     {
         return $this->id === 1 ? 'root' : $value;
-    }
-
-    public function getParentAdminAttribute()
-    {
-        return $this->admin->name;
     }
 
     public function admin()

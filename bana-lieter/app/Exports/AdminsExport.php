@@ -20,7 +20,7 @@ class AdminsExport implements FromQuery, WithHeadings
 
     public function query()
     {
-        return User::select('id', 'name', 'email', 'created_at', 'updated_at')->where([
+        return User::select('id', 'name', 'email', 'number_of_reports', 'created_at', 'updated_at')->where([
             'role' => 'admin',
             ['name', 'LIKE', "%$this->name%"],
             ['email', 'LIKE', "%$this->email%"],
@@ -35,6 +35,7 @@ class AdminsExport implements FromQuery, WithHeadings
             'ID',
             'Name',
             'Email',
+            'Number of records',
             'Created At',
             'Updated At',
         ];

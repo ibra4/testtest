@@ -9,11 +9,11 @@ function Header({ title }) {
         <div className="header">
             <Container fluid>
                 <Row className="align-items-center">
-                    <Col xs={8}>
+                    <Col lg={8}>
                         <HeaderBreadcrumb />
                         <div className="title display-5 fw-bold">{title}</div>
                     </Col>
-                    <Col xs={4}>
+                    <Col lg={4}>
                         <div className="d-flex align-items-center justify-content-between">
                             <Form>
                                 <Form.Control type="text" className="search-input" name="search" placeholder="Search..." />

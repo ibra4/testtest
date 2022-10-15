@@ -13,7 +13,7 @@ function AdminsIndex() {
         email: ''
     })
 
-    const { data, onSearch } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.ADMINS.GET)
+    const { data, onSearch } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.ADMINS.LIST)
 
     return (
         <Layout title='Admins'>
