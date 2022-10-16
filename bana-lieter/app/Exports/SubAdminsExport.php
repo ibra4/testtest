@@ -35,6 +35,7 @@ class SubAdminsExport implements FromQuery, WithHeadings
         return [
             'ID',
             'Name',
+            'Avatar',
             'Email',
             'Parent Admin ID',
             'Created At',

@@ -1,8 +1,8 @@
 import { faHome, faUser, faUsers } from '@fortawesome/fontawesome-free-solid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { hasRole } from 'providers/helpers';
 import React from 'react';
 import { Nav } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
 const routes = [
@@ -10,31 +10,32 @@ const routes = [
         routeName: 'dashboard',
         label: 'Dashboard',
         icon: faHome,
-        permission: 'root'
+        role: 'admin'
     },
     {
         routeName: 'admins',
         label: 'Admins',
-        icon: faUser
+        icon: faUser,
+        role: 'root'
     },
     {
         routeName: 'sub-admins',
         label: 'Sub Admins',
-        icon: faUsers
+        icon: faUsers,
+        role: 'admin'
     }
 ];
 
 function SideMenu() {
     const { pathname } = useLocation();
-    const userRole = useSelector((state) => state.app.config.user.role);
 
     const baseRoute = pathname.split('/')[1];
 
-    const renderRouteLink = ({ routeName, label, icon, permission = null }) => {
-        if (permission && permission !== userRole) {
-            return;
-        }
-        return (
+    const renderRouteLink = ({ routeName, label, icon, role = null }) => {
+        
+        const show = role ? hasRole(role) : true;
+        
+        return show && (
             <Nav.Item key={routeName}>
                 <Nav.Link as={Link} to={`/${routeName}`} active={baseRoute == routeName}>
                     <FontAwesomeIcon icon={icon} />

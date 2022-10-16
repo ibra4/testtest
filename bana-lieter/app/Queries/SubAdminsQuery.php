@@ -17,7 +17,7 @@ class SubAdminsQuery
      */
     public function get(Request $request)
     {
-        $query = User::select('users.id', 'users.name', 'users.email', 'admin.name as adminname', 'users.created_at', 'users.updated_at')->where([
+        $query = User::select('users.id', 'users.name', 'users.avatar', 'users.email', 'admin.name as adminname', 'users.created_at', 'users.updated_at')->where([
             'users.role' => 'sub_admin',
             ['users.name', 'LIKE', "%$request->name%"],
             ['users.email', 'LIKE', "%$request->email%"],

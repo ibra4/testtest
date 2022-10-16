@@ -28,7 +28,13 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('admins/{id}', [AdminsController::class, 'get']);
         Route::post('admins/create', [AdminsController::class, 'create']);
         Route::put('admins/{id}/update', [AdminsController::class, 'update']);
+    });
+
+    Route::middleware('can:admin')->group(function () {
         Route::get('sub-admins', [SubAdminsController::class, 'index']);
+        Route::get('sub-admins/{id}', [SubAdminsController::class, 'get']);
+        Route::post('sub-admins/create', [SubAdminsController::class, 'create']);
+        Route::put('sub-admins/{id}/update', [SubAdminsController::class, 'update']);
 
         Route::post('/admins/upload', [AdminMediaController::class, 'adminsUpload']);
     });

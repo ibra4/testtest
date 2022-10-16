@@ -19,7 +19,7 @@ function Form({ initialValues, config, onSubmit }) {
     return (
         <Formik
             enableReinitialize
-            initialValues={initialValues}
+            initialValues={{ ...initialValues, password: '', password_confirmation: '' }}
             onSubmit={async (values, { setErrors, setSubmitting }) => {
                 try {
                     await onSubmit(values);
@@ -34,7 +34,7 @@ function Form({ initialValues, config, onSubmit }) {
                 <WhiteBox>
                     <form onSubmit={handleSubmit}>
                         <Row>
-                            <Col md={6}>
+                            <Col className="col-auto">
                                 <UploadField
                                     name="avatar"
                                     label="Avatar"
@@ -46,34 +46,69 @@ function Form({ initialValues, config, onSubmit }) {
                                     className="mb-3"
                                 />
                             </Col>
-                            <Col md={6}>
-                                <TextField
-                                    name="name"
-                                    label="Name"
-                                    onChange={handleChange}
-                                    value={values.name}
-                                    onBlur={handleBlur}
-                                    error={errors.name}
-                                    className="mb-3"
-                                />
-                                <TextField
-                                    name="email"
-                                    label="Email"
-                                    onChange={handleChange}
-                                    value={values.email}
-                                    onBlur={handleBlur}
-                                    error={errors.email}
-                                    className="mb-3"
-                                />
-                                <TextField
-                                    name="phone_number"
-                                    label="Phone Number"
-                                    onChange={handleChange}
-                                    value={values.phone_number}
-                                    onBlur={handleBlur}
-                                    error={errors.phone_number}
-                                    className="mb-3"
-                                />
+                            <Col>
+                                <Row>
+                                    <Col md={6}>
+                                        <TextField
+                                            name="name"
+                                            label="Name"
+                                            onChange={handleChange}
+                                            value={values.name}
+                                            onBlur={handleBlur}
+                                            error={errors.name}
+                                            className="mb-3"
+                                        />
+                                    </Col>
+                                    <Col md={6}>
+                                        <TextField
+                                            name="email"
+                                            label="Email"
+                                            onChange={handleChange}
+                                            value={values.email}
+                                            onBlur={handleBlur}
+                                            error={errors.email}
+                                            type="email"
+                                            className="mb-3"
+                                        />
+                                    </Col>
+                                    <Col md={6}>
+                                        <TextField
+                                            name="phone_number"
+                                            label="Phone Number"
+                                            onChange={handleChange}
+                                            value={values.phone_number}
+                                            onBlur={handleBlur}
+                                            error={errors.phone_number}
+                                            className="mb-3"
+                                        />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={6}>
+                                        <TextField
+                                            name="password"
+                                            label="Password"
+                                            onChange={handleChange}
+                                            value={values.password}
+                                            onBlur={handleBlur}
+                                            error={errors.password}
+                                            type="password"
+                                            className="mb-3"
+                                        />
+                                    </Col>
+                                    <Col md={6}>
+                                        <TextField
+                                            name="password_confirmation"
+                                            label="Confirm Password"
+                                            onChange={handleChange}
+                                            value={values.password_confirmation}
+                                            onBlur={handleBlur}
+                                            error={errors.password_confirmation}
+                                            type="password"
+                                            className="mb-3"
+                                        />
+                                    </Col>
+                                </Row>
                             </Col>
                         </Row>
                         <Row>
@@ -85,6 +120,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     value={values.number_of_reports}
                                     onBlur={handleBlur}
                                     error={errors.number_of_reports}
+                                    type="number"
                                     className="mb-3"
                                 />
                             </Col>

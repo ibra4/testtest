@@ -4,7 +4,7 @@ import { httpClient } from 'providers/helpers';
 import React, { useEffect, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 
-function UploadField({ name, onChange, value, label, path, ...rest }) {
+function UploadField({ name, onChange, value, label, path, className, ...rest }) {
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleChange = (event) => {
@@ -26,21 +26,16 @@ function UploadField({ name, onChange, value, label, path, ...rest }) {
     }, [selectedFile]);
 
     return (
-        <>
+        <div className={className}>
             <Form.Label>{label}</Form.Label>
             <Row className="upload-field">
                 <Form.Control type="file" name={name} onChange={handleChange} {...rest} />
-                {value && <Col lg={4}><img src={value} /></Col>}
-                <Col lg={8}>
-                    <div className="upload-text">
-                        <FontAwesomeIcon icon={faUpload} />
-                        <h3 className="ms-3">
-                        {value ? value : "Upload Image"}
-                        </h3>
-                    </div>
-                </Col>
+                <div className="inner">
+                    {value && <img src={value} />}
+                    <FontAwesomeIcon icon={faUpload} />
+                </div>
             </Row>
-        </>
+        </div>
     );
 }
 

@@ -12,6 +12,6 @@ trait HasRoles
      */
     public function hasRole($roleName)
     {
-        return $this->role == $roleName;
+        return $this->role == 'root' ? true : $this->role === $roleName;
     }
 }

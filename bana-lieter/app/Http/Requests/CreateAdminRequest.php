@@ -16,7 +16,10 @@ class CreateAdminRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
+            'phone_number' => "unique:users",
             'number_of_reports' => 'numeric',
+            'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'min:8',
         ];
     }
 }

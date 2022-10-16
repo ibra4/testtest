@@ -1,23 +1,41 @@
-import { faChevronLeft, faChevronRight, faEdit, faFileExcel, faTrash } from '@fortawesome/fontawesome-free-solid';
+import {
+    faChevronLeft,
+    faChevronRight,
+    faEdit,
+    faFileExcel,
+    faPlus,
+    faTrash
+} from '@fortawesome/fontawesome-free-solid';
 import ActionButton from 'components/Fields/ActionButton';
 import React from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import QueryString from 'qs';
+import { Link, useHistory } from 'react-router-dom';
+import { hasRole } from 'providers/helpers';
 
 const View = ({ data, queryParams, onSearch }) => {
+    const { push } = useHistory();
+
     const renderRow = (item) => (
         <tr key={item.id}>
             <td>{item.id}</td>
-            <td>{item.name}</td>
+            <td>
+                <img src={item.avatar} alt="" className="small-avatar" />
+                <span className="ms-3">{item.name}</span>
+            </td>
             <td>{item.email}</td>
-            <td>{item.adminname}</td>
+            {hasRole('root') && <td> {item.adminname}</td>}
             <td>{item.created_at}</td>
             <td>{item.updated_at}</td>
             <td>
                 <div className="d-flex">
-                    <ActionButton icon={faEdit} onClick={() => {}} variant="success" />
+                    <ActionButton
+                        icon={faEdit}
+                        onClick={() => push(`/sub-admins/${item.id}/update`)}
+                        variant="success"
+                    />
                     <ActionButton icon={faTrash} onClick={() => {}} variant="danger" classes="ms-3" />
                 </div>
             </td>
@@ -30,14 +48,20 @@ const View = ({ data, queryParams, onSearch }) => {
                 <span className="showing-label">
                     Showing {data.from} to {data.to} items of {data.total} entries
                 </span>
-                <a
-                    className="btn btn-success"
-                    target="_blank"
-                    href={`/sub-admins/export?${QueryString.stringify(queryParams)}`}
-                >
-                    <FontAwesomeIcon icon={faFileExcel} />
-                    <span className="ms-2">Export to Excel</span>
-                </a>
+                <div className="d-flex">
+                    <Link to="/sub-admins/create" className="btn btn-primary">
+                        <FontAwesomeIcon icon={faPlus} />
+                        <span className="ms-2">Add new Admin</span>
+                    </Link>
+                    <a
+                        className={`btn btn-success ms-2${!!!data.total ? ' disabled' : ''}`}
+                        target="_blank"
+                        href={`/sub-admins/export?${QueryString.stringify(queryParams)}`}
+                    >
+                        <FontAwesomeIcon icon={faFileExcel} />
+                        <span className="ms-2">Export to Excel</span>
+                    </a>
+                </div>
             </div>
             <Table striped>
                 <thead>
@@ -45,7 +69,7 @@ const View = ({ data, queryParams, onSearch }) => {
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Admin</th>
+                        {hasRole('root') && <th>Admin</th>}
                         <th>Created At</th>
                         <th>Latest Update</th>
                         <th>Actions</th>

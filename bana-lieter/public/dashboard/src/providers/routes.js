@@ -8,6 +8,7 @@ export const ROUTES = {
         CREATE: 'admins/create'
     },
     SUB_ADMINS: {
-        LIST: 'sub-admins'
+        LIST: 'sub-admins',
+        CREATE: 'sub-admins/create'
     },
 }

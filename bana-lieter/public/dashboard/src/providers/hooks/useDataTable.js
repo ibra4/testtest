@@ -13,7 +13,9 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
     useEffect(() => {
         const finalObj = { ...queryParams, ...qs.parse(search, { ignoreQueryPrefix: true }) }
         push(pathname + '?' + qs.stringify(finalObj))
-        getData()
+        if (status === "ready") {
+            getData()
+        }
     }, [queryParams])
 
     useEffect(() => {
@@ -30,11 +32,9 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
     }
 
     const getData = async () => {
-        if (status === "ready") {
-            const res = await httpClient.get(`${route}?${qs.stringify(queryParams)}`)
-            setData(res.data)
-            setStatus("success")
-        }
+        const res = await httpClient.get(`${route}?${qs.stringify(queryParams)}`)
+        setData(res.data)
+        setStatus("success")
     }
 
     return { onSearch, data }

@@ -46,8 +46,16 @@ class AdminsController extends Controller
 
     public function update(UpdateAdminRequest $request, $id)
     {
+        $data = $request->all();
         $user = User::findOrFail($id);
-        $user->update($request->except('role', 'admin'));
+        if ($request->password && $request->password != '') {
+            $data['password'] = Hash::make($request->password);
+        } else {
+            unset($data['password']);
+        }
+        unset($data['role']);
+        unset($data['admin_id']);
+        $user->update($data);
         return response()->json($user);
     }
 
