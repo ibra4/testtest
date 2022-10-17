@@ -1,12 +1,14 @@
-import React from 'react'
+import React from 'react';
+// import classNames from 'classnames';
+import classNames from 'classnames'
 
-function WhiteBox({ children, title, ...rest }) {
+function WhiteBox({ children, title, classes, ...rest }) {
     return (
-        <div className='white-box' {...rest}>
+        <div className={classNames('white-box shadow', classes)} {...rest}>
             {title && <div className="title">{title}</div>}
             {children}
         </div>
-    )
+    );
 }
 
-export default WhiteBox
+export default WhiteBox;

@@ -8,9 +8,15 @@
     }
 }
 
+.side-menu-wrapper {
+    padding: 15px
+}
+
 .side-menu {
     background-color: white;
     width: 400px;
+    border-radius: 15px;
+    height: 100%;
 
     .menu-logo {
         height: 100px;
@@ -44,7 +50,7 @@
 }
 
 .white-box {
-    border-radius: 25px;
+    border-radius: 15px;
     padding: 25px;
     background-color: white;
     margin-bottom: 30px;
@@ -52,6 +58,7 @@
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 30px;
+        color: $orange;
     }
 }
 
@@ -63,6 +70,7 @@
     svg {
         font-size: 50px;
         margin-bottom: 15px;
+        color: $main
     }
     .number {
         font-size: 30px;
@@ -141,10 +149,19 @@
 }
 
 .map-view {
-    height: 800px;
+    max-height: 600px;
     display: block;
     margin: auto;
     path {
         stroke: white
     }
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.label-value {
+    font-size: 20px;
+    color: #000000b8;
 }

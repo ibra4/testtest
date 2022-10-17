@@ -6,36 +6,28 @@ import { Col, Row } from 'react-bootstrap';
 import WhiteBox from './WhiteBox';
 
 function Statistics({ statistics }) {
+    const renderStatisticItem = (icon, key, label) => (
+        <Col md={4}>
+            <WhiteBox classes="statistic-item">
+                <Row className="d-flex align-items-center w-100">
+                    <Col sm={3}>
+                        <FontAwesomeIcon icon={icon} />
+                    </Col>
+                    <Col sm={9}>
+                        <div className="number">{statistics[key]}</div>
+                        <div className="label">{label}</div>
+                    </Col>
+                </Row>
+            </WhiteBox>
+        </Col>
+    );
+
     return (
         <Row>
-            <Col md={3}>
-                <WhiteBox className="white-box statistic-item">
-                    <FontAwesomeIcon icon={faUsers} />
-                    <div className="number">{statistics.examinees}</div>
-                    <div className="label">Examinees</div>
-                </WhiteBox>
-            </Col>
-            <Col md={3}>
-                <WhiteBox className="white-box statistic-item">
-                    <FontAwesomeIcon icon={faFileAlt} />
-                    <div className="number">{statistics.total_reports}</div>
-                    <div className="label">Total Reports</div>
-                </WhiteBox>
-            </Col>
-            <Col md={3}>
-                <WhiteBox className="white-box statistic-item">
-                    <FontAwesomeIcon icon={faFile} />
-                    <div className="number">{statistics.remaining_reports}</div>
-                    <div className="label">Remaining Reports</div>
-                </WhiteBox>
-            </Col>
-            <Col md={3}>
-                <WhiteBox className="white-box statistic-item">
-                    <FontAwesomeIcon icon={faUser} />
-                    <div className="number">{statistics.admin}</div>
-                    <div className="label">Admin</div>
-                </WhiteBox>
-            </Col>
+            {renderStatisticItem(faUsers, 'examinees', 'Examinees')}
+            {renderStatisticItem(faFileAlt, 'total_reports', 'Total Reports')}
+            {renderStatisticItem(faFile, 'remaining_reports', 'Remaining Reports')}
+            {/* {renderStatisticItem(faUser, 'admin', 'Admins')} */}
         </Row>
     );
 }

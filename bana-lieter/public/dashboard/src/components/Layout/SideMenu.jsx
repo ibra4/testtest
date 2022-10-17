@@ -32,26 +32,29 @@ function SideMenu() {
     const baseRoute = pathname.split('/')[1];
 
     const renderRouteLink = ({ routeName, label, icon, role = null }) => {
-        
         const show = role ? hasRole(role) : true;
-        
-        return show && (
-            <Nav.Item key={routeName}>
-                <Nav.Link as={Link} to={`/${routeName}`} active={baseRoute == routeName}>
-                    <FontAwesomeIcon icon={icon} />
-                    <span className="ms-2">{label}</span>
-                </Nav.Link>
-            </Nav.Item>
+
+        return (
+            show && (
+                <Nav.Item key={routeName}>
+                    <Nav.Link as={Link} to={`/${routeName}`} active={baseRoute == routeName}>
+                        <FontAwesomeIcon icon={icon} />
+                        <span className="ms-2">{label}</span>
+                    </Nav.Link>
+                </Nav.Item>
+            )
         );
     };
 
     return (
-        <div className="side-menu">
-            <div className="menu-logo">
-                <img src="/images/logo.png" className="h-100 m-auto" />
+        <div className="side-menu-wrapper">
+            <div className="side-menu shadow">
+                <div className="menu-logo">
+                    <img src="/images/logo.png" className="h-100 m-auto" />
+                </div>
+                <hr className="" />
+                <Nav className="inner flex-column">{routes.map(renderRouteLink)}</Nav>
             </div>
-            <hr className="" />
-            <Nav className="inner flex-column">{routes.map(renderRouteLink)}</Nav>
         </div>
     );
 }
