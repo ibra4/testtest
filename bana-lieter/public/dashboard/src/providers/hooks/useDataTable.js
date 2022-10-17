@@ -24,6 +24,9 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
             setQueryParams(queryParams)
             setStatus("ready")
         }
+        return () => {
+            setStatus("not-ready")
+        }
     }, [search])
 
     const onSearch = (values) => {
