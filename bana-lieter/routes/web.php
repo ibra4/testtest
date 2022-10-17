@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\SubAdminsController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/admin/logout', [LoginController::class, 'logout']);
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/{any?}', function () {
         return view('welcome');
@@ -27,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

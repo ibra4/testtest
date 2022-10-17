@@ -26,7 +26,7 @@ function Header({ title }) {
                                     <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">Link 2</Dropdown.Item>
                                     <Dropdown.Divider />
-                                    <Dropdown.Item href="#/action-3" className="text-danger">
+                                    <Dropdown.Item href="/admin/logout" className="text-danger">
                                         <FontAwesomeIcon icon={faSignOutAlt} />
                                         <span className="ms-2">Logout</span>
                                     </Dropdown.Item>
