@@ -1,0 +1,20 @@
+{
+	"name": "@svg-maps/palestine",
+	"version": "1.0.1",
+	"description": "Map of Israel",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/VictorCazanave/svg-maps/tree/master/packages/palestine"
+	},
+	"keywords": [
+		"svg",
+		"map",
+		"palestine"
+	],
+	"author": "eli <eli.takala@datamix.co.il>",
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "CC-BY-4.0"
+}

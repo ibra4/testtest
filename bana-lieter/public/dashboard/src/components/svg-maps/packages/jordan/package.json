@@ -1,0 +1,20 @@
+{
+	"name": "@svg-maps/jordan",
+	"version": "1.0.0",
+	"description": "Map of Jordan",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/VictorCazanave/svg-maps/tree/master/packages/jordan"
+	},
+	"keywords": [
+		"svg",
+		"map",
+		"jordan"
+	],
+	"author": "ibra4 <ibra16@itc.hu.edu.jo>",
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "CC BY-NC 4.0"
+}

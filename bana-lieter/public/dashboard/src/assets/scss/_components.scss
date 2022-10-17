@@ -139,3 +139,12 @@
         color: white;
     }
 }
+
+.map-view {
+    height: 800px;
+    display: block;
+    margin: auto;
+    path {
+        stroke: white
+    }
+}
