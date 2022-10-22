@@ -1,17 +1,17 @@
 export const ROUTES = {
     SETTINGS: {
-        GET: 'bootstrap'
+        GET: '/bootstrap'
     },
     ADMINS: {
-        LIST: 'admins',
+        LIST: '/admins',
         UPLOAD: '/admins/upload',
-        CREATE: 'admins/create'
+        CREATE: '/admins/create'
     },
     SUB_ADMINS: {
-        LIST: 'sub-admins',
-        CREATE: 'sub-admins/create'
+        LIST: '/sub-admins',
+        CREATE: '/sub-admins/create'
     },
     COUNTRY_STATISTICS: {
-        GET: 'country-statistics'
+        GET: '/country-statistics'
     }
 }
