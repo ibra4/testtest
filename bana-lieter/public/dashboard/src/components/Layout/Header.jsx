@@ -58,7 +58,7 @@ function Header({ title }) {
                                         <span className="ms-2">Text of notification number 5</span>
                                     </Dropdown.Item>
                                     <Dropdown.Divider />
-                                    <Dropdown.Item href="/admin/logout" className="text-primary">
+                                    <Dropdown.Item href="#" className="text-primary">
                                         <CgMoreO />
                                         <span className="ms-2">more</span>
                                     </Dropdown.Item>

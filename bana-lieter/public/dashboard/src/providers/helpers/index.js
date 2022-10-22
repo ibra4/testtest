@@ -2,7 +2,7 @@ import axios from "axios";
 import store from "providers/store";
 
 export const httpClient = axios.create({
-    baseURL: 'http://l.ibra.info/api',
+    baseURL: window.location.host.search('local') ? 'http://bl.local/api' : 'http://l.ibra.info/api',
     headers: {
         'X-Requested-With': 'XMLHttpRequest'
     },

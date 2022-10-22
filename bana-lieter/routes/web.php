@@ -22,18 +22,15 @@ Route::get('/admin/logout', [LoginController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/{any?}', function () {
-        return view('welcome');
-    })->where('any', '.*');;
+        return view('dashboard');
+    })->where('any', '.*')->name('dashboard');
 
-    Route::get('/admins/export', [AdminsController::class, 'export'])->name('home');
-    Route::get('/sub-admins/export', [SubAdminsController::class, 'export'])->name('home');
+    Route::get('/admins/export', [AdminsController::class, 'export']);
+    Route::get('/sub-admins/export', [SubAdminsController::class, 'export']);
 });
 
 Auth::routes();
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+});
