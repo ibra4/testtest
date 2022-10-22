@@ -24,7 +24,13 @@ const routes = [
         label: 'Sub Admins',
         icon: faUsers,
         role: 'admin'
-    }
+    },
+    // {
+    //     routeName: 'users',
+    //     label: 'Users',
+    //     icon: faUsers,
+    //     role: 'admin'
+    // }
 ];
 
 function SideMenu() {
