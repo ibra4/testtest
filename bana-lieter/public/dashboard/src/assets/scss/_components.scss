@@ -6,10 +6,23 @@
     .dropdown {
         cursor: pointer;
     }
+    .dropdown-toggle {
+        img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        svg {
+            width: 40px;
+            height: 40px;
+        }
+        color: $main;
+    }
 }
 
 .side-menu-wrapper {
-    padding: 15px
+    padding: 15px;
 }
 
 .side-menu {
@@ -38,14 +51,14 @@
             color: white;
         }
     }
-}
 
-#profile-button {
-    img {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-        border-radius: 50%;
+    .bottom {
+        .nav-link {
+            color: $orange;
+            &.active {
+                color: white;
+            }
+        }
     }
 }
 
@@ -63,20 +76,25 @@
 }
 
 .statistic-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    svg {
-        font-size: 50px;
-        margin-bottom: 15px;
-        color: $main
+    padding: 0;
+    overflow: hidden;
+    .row > div {
+        padding: 15px;
+    }
+    .svg-wrapper {
+        background-color: $main;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+            color: white;
+            font-size: 50px;
+        }
     }
     .number {
         font-size: 30px;
         font-weight: bold;
         color: $main;
-        margin-bottom: 15px;
     }
     .label {
         font-size: 24px;
@@ -153,7 +171,7 @@
     display: block;
     margin: auto;
     path {
-        stroke: white
+        stroke: white;
     }
 }
 
@@ -164,4 +182,31 @@
 .label-value {
     font-size: 20px;
     color: #000000b8;
+}
+
+.color-main {
+    color: $main;
+}
+
+.notifications-dropdown {
+    position: relative;
+    .notification-number {
+        position: absolute;
+        top: -10px;
+        right: 15px;
+        background-color: $orange;
+        color: white;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .dropdown-item {
+        &.unread {
+            font-weight: bold;
+            color: $main;
+        }
+    }
 }

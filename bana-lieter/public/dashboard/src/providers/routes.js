@@ -11,4 +11,7 @@ export const ROUTES = {
         LIST: 'sub-admins',
         CREATE: 'sub-admins/create'
     },
+    COUNTRY_STATISTICS: {
+        GET: 'country-statistics'
+    }
 }

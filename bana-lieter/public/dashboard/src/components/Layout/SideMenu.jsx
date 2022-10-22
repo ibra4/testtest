@@ -1,4 +1,5 @@
 import { faHome, faUser, faUsers } from '@fortawesome/fontawesome-free-solid';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { hasRole } from 'providers/helpers';
 import React from 'react';
@@ -54,6 +55,15 @@ function SideMenu() {
                 </div>
                 <hr className="" />
                 <Nav className="inner flex-column">{routes.map(renderRouteLink)}</Nav>
+                <hr />
+                <div className="inner bottom">
+                    {renderRouteLink({
+                        routeName: 'settings',
+                        label: 'Settings',
+                        icon: faCog,
+                        role: 'root'
+                    })}
+                </div>
             </div>
         </div>
     );

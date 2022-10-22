@@ -1,20 +1,20 @@
-import { faFileAlt, faHome, faUser, faUsers } from '@fortawesome/fontawesome-free-solid';
-import { faFile } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import WhiteBox from './WhiteBox';
+import { FcDatabase, FcAcceptDatabase, FcAddDatabase } from 'react-icons/fc';
+import {TbReportAnalytics, TbReport, TbReportMoney} from 'react-icons/tb'
+import classNames from 'classnames';
 
 function Statistics({ statistics }) {
-    const renderStatisticItem = (icon, key, label) => (
+    const renderStatisticItem = (icon, value, label, svgWrapperClass) => (
         <Col md={4}>
             <WhiteBox classes="statistic-item">
-                <Row className="d-flex align-items-center w-100">
-                    <Col sm={3}>
-                        <FontAwesomeIcon icon={icon} />
+                <Row>
+                    <Col sm={3} className={classNames('svg-wrapper', svgWrapperClass)}>
+                        {icon}
                     </Col>
                     <Col sm={9}>
-                        <div className="number">{statistics[key]}</div>
+                        <div className="number">{value}</div>
                         <div className="label">{label}</div>
                     </Col>
                 </Row>
@@ -24,10 +24,14 @@ function Statistics({ statistics }) {
 
     return (
         <Row>
-            {renderStatisticItem(faUsers, 'examinees', 'Examinees')}
-            {renderStatisticItem(faFileAlt, 'total_reports', 'Total Reports')}
-            {renderStatisticItem(faFile, 'remaining_reports', 'Remaining Reports')}
-            {/* {renderStatisticItem(faUser, 'admin', 'Admins')} */}
+            {renderStatisticItem(<TbReportAnalytics />, statistics.total_reports, 'Total Reports', 'bg-primary')}
+            {renderStatisticItem(<TbReport />, statistics.used_reports, 'Used Reports', 'bg-warning')}
+            {renderStatisticItem(
+                <TbReportMoney />,
+                statistics.total_reports - statistics.used_reports,
+                'Remaining Reports',
+                'bg-danger'
+            )}
         </Row>
     );
 }

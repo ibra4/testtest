@@ -13,10 +13,8 @@ class BootstrapController extends Controller
     {
         $data = [
             'statistics' => [
-                'examinees' => number_format(1350),
-                'total_reports' => number_format(20000),
-                'admin' => number_format(200),
-                'remaining_reports' => number_format(9400),
+                'total_reports' => User::where('role', 'admin')->sum('number_of_reports'),
+                'used_reports' => 0,
             ],
             'user' => new UserResource($request->user()),
             'top_admins' => []

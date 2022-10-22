@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
 import HeaderBreadcrumb from './HeaderBreadcrumb';
+import { AiOutlineNotification, AiOutlineMessage } from 'react-icons/ai';
+import { BiMessageSquareDetail } from 'react-icons/bi';
+import { CgMoreO } from 'react-icons/cg';
 
 function Header({ title }) {
     return (
@@ -16,10 +19,53 @@ function Header({ title }) {
                     <Col lg={4}>
                         <div className="d-flex align-items-center justify-content-between">
                             <Form>
-                                <Form.Control type="text" className="search-input" name="search" placeholder="Search..." />
+                                <Form.Control
+                                    type="text"
+                                    className="search-input"
+                                    name="search"
+                                    placeholder="Search..."
+                                />
                             </Form>
+                            <Dropdown className="notifications-dropdown">
+                                <Dropdown.Toggle className="dropdown-toggle" as={'div'}>
+                                    <AiOutlineNotification />
+                                    <div className="notification-number">5</div>
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#">
+                                        <AiOutlineNotification />
+                                        <span className="ms-2">Notifications</span>
+                                    </Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Item href="#" className="unread">
+                                        <BiMessageSquareDetail />
+                                        <span className="ms-2">Text of notification number 1</span>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#" className="unread">
+                                        <BiMessageSquareDetail />
+                                        <span className="ms-2">Text of notification number 2</span>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#" className="unread">
+                                        <BiMessageSquareDetail />
+                                        <span className="ms-2">Text of notification number 3</span>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#">
+                                        <BiMessageSquareDetail />
+                                        <span className="ms-2">Text of notification number 4</span>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#">
+                                        <BiMessageSquareDetail />
+                                        <span className="ms-2">Text of notification number 5</span>
+                                    </Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Item href="/admin/logout" className="text-primary">
+                                        <CgMoreO />
+                                        <span className="ms-2">more</span>
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                             <Dropdown>
-                                <Dropdown.Toggle id="profile-button" as={'div'}>
+                                <Dropdown.Toggle className="dropdown-toggle" as={'div'}>
                                     <img src="/images/girl.jpg" />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
