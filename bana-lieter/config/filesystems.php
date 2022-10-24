@@ -42,6 +42,11 @@ return [
             'visibility' => 'public',
         ],
 
+        'dashboard' => [
+            'driver' => 'local',
+            'root' => public_path('dashboard/src/components/svg-maps/packages')
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
