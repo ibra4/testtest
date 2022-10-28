@@ -39,7 +39,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/sub-admins/{id}', [SubAdminsController::class, 'get']);
         Route::post('/sub-admins/create', [SubAdminsController::class, 'create']);
         Route::put('/sub-admins/{id}/update', [SubAdminsController::class, 'update']);
-        Route::put('/admins/{id}/activate', [AdminsController::class, 'activate']);
 
         Route::post('/admins/upload', [AdminMediaController::class, 'adminsUpload']);
     });

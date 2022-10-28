@@ -10,7 +10,6 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Queries\SubAdminsQuery;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
@@ -35,10 +34,7 @@ class SubAdminsController extends Controller
 
     public function get($id)
     {
-        $admin = User::where([
-            'id' => $id,
-            'role' => 'sub_admin'
-        ])->firstOrFail();
+        $admin = User::findOrFail($id);
 
         $this->checkAccessToAdmin($admin, $id);
 
@@ -47,32 +43,15 @@ class SubAdminsController extends Controller
 
     public function create(CreateSubAdminRequest $request)
     {
-        $data = $request->all();
-        $data['role'] = 'sub_admin';
-        if (!$request->user()->can('root')) {
-            $data['admin_id'] = $request->user()->id;
-        }
-        $data['password'] = Hash::make($request->password);
-        $user = User::create($data);
+        $user = User::create($request->all());
         return response()->json($user);
     }
 
     public function update(UpdateSubAdminRequest $request, $id)
     {
-        $data = $request->all();
-        $user = User::where([
-            'id' => $id,
-            'role' => 'sub_admin'
-        ])->firstOrFail();
-        $this->checkAccessToAdmin($user, $id);
-        if ($request->password && $request->password != '') {
-            $data['password'] = Hash::make($request->password);
-        } else {
-            unset($data['password']);
-        }
-        unset($data['role']);
-        unset($data['admin_id']);
-        $user->update($data);
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
         return response()->json($user);
     }
 

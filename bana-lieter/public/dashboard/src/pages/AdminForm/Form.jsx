@@ -146,18 +146,6 @@ function Form({ initialValues, config, onSubmit }) {
                                     className="mb-3"
                                 />
                             </Col>
-                            <Col md={4}>
-                                <SelectField
-                                    name="admin_id"
-                                    label="Admin"
-                                    onChange={handleChange}
-                                    value={values.admin_id}
-                                    onBlur={handleBlur}
-                                    error={errors.admin_id}
-                                    options={config.admins}
-                                    className="mb-3"
-                                />
-                            </Col>
                         </Row>
                         <Row>
                             <Col md={4}>

@@ -1,5 +1,5 @@
 import { FaHome, FaUser, FaUsers, FaCog } from 'react-icons/fa';
-import { hasRole } from 'providers/helpers';
+import { hasAnyRole, hasRole } from 'providers/helpers';
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
@@ -22,13 +22,13 @@ const routes = [
         label: 'Sub Admins',
         icon: <FaUsers />,
         role: 'admin'
+    },
+    {
+        routeName: 'examinees',
+        label: 'Examinees',
+        icon: <FaUsers />,
+        role: ['admin', 'sub_admin']
     }
-    // {
-    //     routeName: 'users',
-    //     label: 'Users',
-    //     icon: faUsers,
-    //     role: 'admin'
-    // }
 ];
 
 function SideMenu() {
@@ -37,7 +37,16 @@ function SideMenu() {
     const baseRoute = pathname.split('/')[1];
 
     const renderRouteLink = ({ routeName, label, icon, role = null }) => {
-        const show = role ? hasRole(role) : true;
+        var show;
+        if (role) {
+            if (Array.isArray(role)) {
+                show = hasAnyRole(role);
+            } else {
+                show = hasRole(role);
+            }
+        } else {
+            show = true;
+        }
 
         return (
             show && (

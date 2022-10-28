@@ -2,10 +2,20 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Users\HasUserRequest;
+use App\Http\Requests\Users\UserRequestInterface;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
-class UpdateAdminRequest extends FormRequest
+class UpdateAdminRequest extends FormRequest implements UserRequestInterface
 {
+    use HasUserRequest;
+
+    public function getRole(): string
+    {
+        return 'admin';
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

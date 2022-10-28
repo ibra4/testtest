@@ -14,8 +14,7 @@ function SubAdminsIndex() {
     const [queryParams, setQueryParams] = useState({
         page: 1,
         name: '',
-        email: '',
-        admin_id: config.user.role === 'root' ? '' : config.user.id
+        email: ''
     })
 
     const { data, onSearch, isLoading } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.SUB_ADMINS.LIST)

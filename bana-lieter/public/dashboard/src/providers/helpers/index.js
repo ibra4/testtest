@@ -13,3 +13,8 @@ export const hasRole = (role) => {
     const user = store.getState().app.config.user
     return user.role == 'root' ? true : role === user.role
 }
+
+export const hasAnyRole = (roles) => {
+    const user = store.getState().app.config.user
+    return user.role == 'root' ? true : roles.includes(user.role)
+}
