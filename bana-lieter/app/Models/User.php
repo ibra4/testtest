@@ -24,6 +24,9 @@ class User extends Authenticatable
         'phone_number',
         'number_of_reports',
         'admin_id',
+        'country_id',
+        'city_id',
+        'is_active',
         'role',
         'password',
     ];

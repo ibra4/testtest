@@ -71,7 +71,6 @@ function Dashboard() {
     const getCountryStatistics = async () => {
         const res = await httpClient.get(`${ROUTES.COUNTRY_STATISTICS.GET}/${currentCountryCode}`);
         setCountryStatistics(res.data);
-        console.log('res.data : ', res.data);
     };
 
     useEffect(() => {

@@ -26,11 +26,11 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>
                 <div className="d-flex">
                     <ActionButton
-                        icon={FaEdit}
+                        icon={<FaEdit />}
                         onClick={() => push(`/sub-admins/${item.id}/update`)}
                         variant="success"
                     />
-                    <ActionButton icon={FaTrash} onClick={() => {}} variant="danger" classes="ms-3" />
+                    <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" classes="ms-3" />
                 </div>
             </td>
         </tr>

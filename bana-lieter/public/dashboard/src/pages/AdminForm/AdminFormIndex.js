@@ -14,7 +14,10 @@ const defaultUser = {
     phone_number: '',
     avatar: '',
     admin_id: '',
-    number_of_reports: 0
+    number_of_reports: 0,
+    country_id: '',
+    city_id: '',
+    is_active: 1
 }
 
 function AdminFormIndex() {

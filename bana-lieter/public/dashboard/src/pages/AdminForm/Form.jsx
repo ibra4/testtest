@@ -1,10 +1,12 @@
+import CheckboxField from 'components/Fields/CheckboxField';
 import SelectField from 'components/Fields/SelectField';
+import SelectField2 from 'components/Fields/SelectField2';
 import TextField from 'components/Fields/TextField';
 import UploadField from 'components/Fields/UploadField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
 import { ROUTES } from 'providers/routes';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row, Button } from 'react-bootstrap';
 
 import * as Yup from 'yup';
@@ -16,6 +18,13 @@ const validationSchema = Yup.object().shape({
 });
 
 function Form({ initialValues, config, onSubmit }) {
+    const [cities, setCities] = useState([]);
+    useEffect(() => {
+        if (initialValues && initialValues.country_id) {
+            setCities(config.countries.find((item) => item.id == initialValues.country_id).cities);
+        }
+    }, [initialValues]);
+
     return (
         <Formik
             enableReinitialize
@@ -134,6 +143,48 @@ function Form({ initialValues, config, onSubmit }) {
                                     error={errors.admin_id}
                                     options={config.admins}
                                     className="mb-3"
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={4}>
+                                <SelectField2
+                                    onChange={(value) => {
+                                        setFieldValue('country_id', value.id);
+                                        setFieldValue('city_id', '');
+                                        setCities(config.countries.find((item) => item.id == value.id).cities);
+                                    }}
+                                    label="Country"
+                                    value={values.country_id}
+                                    onBlur={handleBlur}
+                                    error={errors.country_id}
+                                    options={config.countries}
+                                    className="mb-3"
+                                />
+                            </Col>
+                            <Col md={4}>
+                                <SelectField2
+                                    onChange={(value) => setFieldValue('city_id', value.id)}
+                                    label="City"
+                                    value={values.city_id}
+                                    onBlur={handleBlur}
+                                    error={errors.city_id}
+                                    options={cities}
+                                    className="mb-3"
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={4}>
+                                <CheckboxField
+                                    onChange={(evt) => setFieldValue('is_active', evt.target.checked)}
+                                    name="is_active"
+                                    label="Is Active?"
+                                    value={values.is_active}
+                                    onBlur={handleBlur}
+                                    error={errors.is_active}
+                                    className="mb-3"
+                                    id="is_active"
                                 />
                             </Col>
                         </Row>
