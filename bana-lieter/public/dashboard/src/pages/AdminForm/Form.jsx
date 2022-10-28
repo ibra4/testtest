@@ -5,6 +5,7 @@ import TextField from 'components/Fields/TextField';
 import UploadField from 'components/Fields/UploadField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
+import { CONSTANTS } from 'providers/helpers/constants';
 import { ROUTES } from 'providers/routes';
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Button } from 'react-bootstrap';
@@ -88,6 +89,18 @@ function Form({ initialValues, config, onSubmit }) {
                                             value={values.phone_number}
                                             onBlur={handleBlur}
                                             error={errors.phone_number}
+                                            className="mb-3"
+                                        />
+                                    </Col>
+                                    <Col md={4}>
+                                        <SelectField
+                                            name="gender"
+                                            label="Gender"
+                                            onChange={handleChange}
+                                            value={values.gender}
+                                            onBlur={handleBlur}
+                                            error={errors.gender}
+                                            options={CONSTANTS.GENDER}
                                             className="mb-3"
                                         />
                                     </Col>

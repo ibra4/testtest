@@ -26,6 +26,7 @@ class UserResource extends JsonResource
             'number_of_reports' => $this->number_of_reports,
             'role' => $this->role,
             'is_active' => $this->is_active,
+            'gender' => $this->gender,
         ];
     }
 }

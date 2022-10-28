@@ -17,6 +17,7 @@ class AddColumnsToUsersTable extends Migration
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->boolean('is_active')->default(false);
+            $table->boolean('gender')->default(true);
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null');
         });
@@ -34,6 +35,8 @@ class AddColumnsToUsersTable extends Migration
             $table->dropForeign('users_city_id_foreign');
             $table->dropColumn('country_id');
             $table->dropColumn('city_id');
+            $table->dropColumn('is_active');
+            $table->dropColumn('gender');
         });
     }
 }

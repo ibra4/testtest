@@ -14,7 +14,6 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
     useEffect(() => {
         if (status == 'not-ready') {
             const finalObj = { ...queryParams, ...qs.parse(search, { ignoreQueryPrefix: true }) }
-            console.log("finalObj : ", finalObj)
             push(pathname + '?' + qs.stringify(finalObj))
         }
     }, [queryParams])
