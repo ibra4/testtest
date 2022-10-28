@@ -1,5 +1,4 @@
-import { faSearch } from '@fortawesome/fontawesome-free-solid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaSearch } from 'react-icons/fa';
 import TextField from 'components/Fields/TextField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
@@ -44,7 +43,7 @@ function Filters({ queryParams, onSearch }) {
                             </Col>
                         </Row>
                         <Button disabled={isSubmitting} type="submit">
-                            <FontAwesomeIcon icon={faSearch} />
+                            <FaSearch />
                             <span className="ms-2">Search</span>
                         </Button>
                     </form>

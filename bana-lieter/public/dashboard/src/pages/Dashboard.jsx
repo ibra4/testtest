@@ -13,8 +13,7 @@ import jo from 'components/svg-maps/packages/jordan';
 import { RadioSVGMap, SVGMap } from 'react-svg-map';
 import 'react-svg-map/lib/index.css';
 import { Button, Col, Row } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/fontawesome-free-solid';
+import { FaChevronLeft } from 'react-icons/fa';
 import LabelValueRow from 'components/LabelValueRow';
 import { ROUTES } from 'providers/routes';
 import { httpClient } from 'providers/helpers';
@@ -89,7 +88,7 @@ function Dashboard() {
                     <WhiteBox title="Statistics By Area" hr>
                         <div className="d-flex justify-content-between align-items-center">
                             <Button variant="success" onClick={handleBack} disabled={currentMap == world}>
-                                <FontAwesomeIcon icon={faChevronLeft} />
+                                <FaChevronLeft />
                                 <span className="ms-2">Back</span>
                             </Button>
                             <h3 className="text-center">{onDiv ? areaName : lastSelectedAreaName}</h3>

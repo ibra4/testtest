@@ -4,6 +4,7 @@ import { ROUTES } from 'providers/routes'
 import Filters from './Filters'
 import { useDataTable } from 'providers/hooks/useDataTable'
 import View from './View'
+import FullLoader from 'components/FullLoader'
 
 function AdminsIndex() {
     const [status, setStatus] = useState("not-ready")
@@ -13,12 +14,13 @@ function AdminsIndex() {
         email: ''
     })
 
-    const { data, onSearch } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.ADMINS.LIST)
+    const { data, onSearch, isLoading } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.ADMINS.LIST)
 
     return (
         <Layout title='Admins'>
             <Filters onSearch={onSearch} queryParams={queryParams} />
-            {data && data.data && <View data={data} onSearch={onSearch} queryParams={queryParams} />}
+            {isLoading && <FullLoader />}
+            <View data={data} onSearch={onSearch} queryParams={queryParams} />
         </Layout>
     )
 }

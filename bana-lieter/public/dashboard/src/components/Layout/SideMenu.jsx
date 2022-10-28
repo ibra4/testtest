@@ -1,6 +1,4 @@
-import { faHome, faUser, faUsers } from '@fortawesome/fontawesome-free-solid';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaHome, FaUser, FaUsers, FaCog } from 'react-icons/fa';
 import { hasRole } from 'providers/helpers';
 import React from 'react';
 import { Nav } from 'react-bootstrap';
@@ -10,21 +8,21 @@ const routes = [
     {
         routeName: 'dashboard',
         label: 'Dashboard',
-        icon: faHome,
+        icon: <FaHome />,
         role: 'admin'
     },
     {
         routeName: 'admins',
         label: 'Admins',
-        icon: faUser,
+        icon: <FaUser />,
         role: 'root'
     },
     {
         routeName: 'sub-admins',
         label: 'Sub Admins',
-        icon: faUsers,
+        icon: <FaUsers />,
         role: 'admin'
-    },
+    }
     // {
     //     routeName: 'users',
     //     label: 'Users',
@@ -45,7 +43,7 @@ function SideMenu() {
             show && (
                 <Nav.Item key={routeName}>
                     <Nav.Link as={Link} to={`/${routeName}`} active={baseRoute == routeName}>
-                        <FontAwesomeIcon icon={icon} />
+                        {icon}
                         <span className="ms-2">{label}</span>
                     </Nav.Link>
                 </Nav.Item>
@@ -66,7 +64,7 @@ function SideMenu() {
                     {renderRouteLink({
                         routeName: 'settings',
                         label: 'Settings',
-                        icon: faCog,
+                        icon: <FaCog />,
                         role: 'root'
                     })}
                 </div>

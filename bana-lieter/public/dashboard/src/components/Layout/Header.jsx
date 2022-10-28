@@ -1,5 +1,4 @@
-import { faSignOutAlt } from '@fortawesome/fontawesome-free-solid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaSignOutAlt } from 'react-icons/fa';
 import React from 'react';
 import { Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
 import HeaderBreadcrumb from './HeaderBreadcrumb';
@@ -73,7 +72,7 @@ function Header({ title }) {
                                     <Dropdown.Item href="#/action-2">Link 2</Dropdown.Item>
                                     <Dropdown.Divider />
                                     <Dropdown.Item href="/admin/logout" className="text-danger">
-                                        <FontAwesomeIcon icon={faSignOutAlt} />
+                                        <FaSignOutAlt />
                                         <span className="ms-2">Logout</span>
                                     </Dropdown.Item>
                                 </Dropdown.Menu>

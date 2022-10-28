@@ -9,23 +9,21 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
     let { push } = useHistory();
 
     const [data, setData] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        const finalObj = { ...queryParams, ...qs.parse(search, { ignoreQueryPrefix: true }) }
-        push(pathname + '?' + qs.stringify(finalObj))
-        if (status === "ready") {
-            getData()
+        if (status == 'not-ready') {
+            const finalObj = { ...queryParams, ...qs.parse(search, { ignoreQueryPrefix: true }) }
+            console.log("finalObj : ", finalObj)
+            push(pathname + '?' + qs.stringify(finalObj))
         }
     }, [queryParams])
 
     useEffect(() => {
-        if (search && search != "") {
+        if (search && search != '') {
             const queryParams = qs.parse(search, { ignoreQueryPrefix: true });
             setQueryParams(queryParams)
-            setStatus("ready")
-        }
-        return () => {
-            setStatus("not-ready")
+            setStatus('ready')
         }
     }, [search])
 
@@ -34,11 +32,19 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
         push(pathname + '?' + qs.stringify(values));
     }
 
+    useEffect(() => {
+        if (status == 'ready') {
+            getData()
+        }
+    }, [status])
+
     const getData = async () => {
+        setIsLoading(true)
         const res = await httpClient.get(`${route}?${qs.stringify(queryParams)}`)
         setData(res.data)
-        setStatus("success")
+        setStatus('not-ready')
+        setIsLoading(false)
     }
 
-    return { onSearch, data }
+    return { onSearch, data, isLoading }
 }

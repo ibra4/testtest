@@ -11,7 +11,7 @@ function FullLoader() {
 
   return (
     <div className="full-loader">
-      <Loader type="Bars" width="200" height="200" color="#bb9c44" />
+      <Loader type="Rings" width="200" height="200" color="#fd7d37" />
     </div>
   );
 }

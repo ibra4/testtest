@@ -1,8 +1,7 @@
-import { faUpload } from '@fortawesome/fontawesome-free-solid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaUpload } from 'react-icons/fa';
 import { httpClient } from 'providers/helpers';
 import React, { useEffect, useState } from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Form, Row } from 'react-bootstrap';
 
 function UploadField({ name, onChange, value, label, path, className, ...rest }) {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -32,7 +31,7 @@ function UploadField({ name, onChange, value, label, path, className, ...rest })
                 <Form.Control type="file" name={name} onChange={handleChange} {...rest} />
                 <div className="inner">
                     {value && <img src={value} />}
-                    <FontAwesomeIcon icon={faUpload} />
+                    <FaUpload />
                 </div>
             </Row>
         </div>

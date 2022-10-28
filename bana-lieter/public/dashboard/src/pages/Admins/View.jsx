@@ -1,18 +1,12 @@
-import {
-    faChevronLeft,
-    faChevronRight,
-    faEdit,
-    faFileExcel,
-    faPlus,
-    faTrash
-} from '@fortawesome/fontawesome-free-solid';
+import { FaEdit, FaFileExcel, FaPlus, FaTrash } from 'react-icons/fa';
 import ActionButton from 'components/Fields/ActionButton';
 import React from 'react';
-import { Table, Button } from 'react-bootstrap';
-import ReactPaginate from 'react-paginate';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Table } from 'react-bootstrap';
 import QueryString from 'qs';
 import { Link, useHistory } from 'react-router-dom';
+import Showing from 'components/Datatable/Showing';
+import NoData from 'components/Datatable/NoData';
+import Pagination from 'components/Datatable/Pagination';
 
 const View = ({ data, queryParams, onSearch }) => {
     const { push } = useHistory();
@@ -26,14 +20,17 @@ const View = ({ data, queryParams, onSearch }) => {
             </td>
             <td>{item.email}</td>
             <td>
-                <span className="text-success">{parseInt(Math.random() * item.number_of_reports ? item.number_of_reports : 0)}</span> / <b>{item.number_of_reports}</b>
+                <span className="text-success">
+                    {parseInt(Math.random() * item.number_of_reports ? item.number_of_reports : 0)}
+                </span>{' '}
+                / <b>{item.number_of_reports}</b>
             </td>
             <td>{item.created_at}</td>
             <td>{item.updated_at}</td>
             <td>
                 <div className="d-flex">
-                    <ActionButton icon={faEdit} onClick={() => push(`admins/${item.id}/update`)} variant="success" />
-                    <ActionButton icon={faTrash} onClick={() => {}} variant="danger" classes="ms-3" />
+                    <ActionButton icon={FaEdit} onClick={() => push(`admins/${item.id}/update`)} variant="success" />
+                    <ActionButton icon={FaTrash} onClick={() => {}} variant="danger" classes="ms-3" />
                 </div>
             </td>
         </tr>
@@ -42,12 +39,10 @@ const View = ({ data, queryParams, onSearch }) => {
     return (
         <>
             <div className="datatable-header">
-                <span className="showing-label">
-                    Showing {data.from} to {data.to} items of {data.total} entries
-                </span>
+                <Showing data={data} />
                 <div className="d-flex">
                     <Link to="/admins/create" className="btn btn-primary">
-                        <FontAwesomeIcon icon={faPlus} />
+                        <FaPlus />
                         <span className="ms-2">Add new Admin</span>
                     </Link>
                     <a
@@ -55,7 +50,7 @@ const View = ({ data, queryParams, onSearch }) => {
                         target="_blank"
                         href={`/admins/export?${QueryString.stringify(queryParams)}`}
                     >
-                        <FontAwesomeIcon icon={faFileExcel} />
+                        <FaFileExcel />
                         <span className="ms-2">Export to Excel</span>
                     </a>
                 </div>
@@ -72,26 +67,10 @@ const View = ({ data, queryParams, onSearch }) => {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>{data.data.map(renderRow)}</tbody>
+                <tbody>{data && data.data && data.data.map(renderRow)}</tbody>
             </Table>
-            {data.total == 0 && <div className="text-danger text-center mb-4">No Data</div>}
-            <ReactPaginate
-                className="pagination justify-content-center"
-                pageClassName="page-item"
-                pageLinkClassName="page-link"
-                nextClassName="page-item"
-                nextLinkClassName="page-link"
-                previousClassName="page-item"
-                previousLinkClassName="page-link"
-                activeClassName="active"
-                breakLabel="..."
-                nextLabel={<FontAwesomeIcon icon={faChevronRight} />}
-                previousLabel={<FontAwesomeIcon icon={faChevronLeft} />}
-                onPageChange={({ selected }) => onSearch({ ...queryParams, page: selected + 1 })}
-                pageRangeDisplayed={5}
-                pageCount={data.last_page}
-                initialPage={data.current_page - 1}
-            />
+            <NoData data={data} />
+            <Pagination data={data} onSearch={onSearch} queryParams={queryParams} />
         </>
     );
 };
