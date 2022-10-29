@@ -27,7 +27,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('root', function (User $user) {
-            return $user->id === 1;
+            if ($user->id === 1) return true;
+            return $user->hasRole('root');
         });
 
         Gate::define('admin', function (User $user) {
@@ -38,6 +39,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('sub_admin', function (User $user) {
             if ($user->id === 1) return true;
             return $user->hasRole('sub_admin');
+        });
+
+        Gate::define('show_examinees', function (User $user) {
+            if ($user->id === 1) return true;
+            return $user->hasAnyRole(['admin', 'sub_admin']);
         });
     }
 }

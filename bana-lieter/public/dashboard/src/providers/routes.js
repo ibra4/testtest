@@ -11,6 +11,10 @@ export const ROUTES = {
         LIST: '/sub-admins',
         CREATE: '/sub-admins/create'
     },
+    EXAMINEES: {
+        LIST: '/examinees',
+        CREATE: '/examinees/create'
+    },
     COUNTRY_STATISTICS: {
         GET: '/country-statistics'
     }

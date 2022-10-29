@@ -15,8 +15,8 @@ function Pagination({ data, onSearch, queryParams }) {
                 previousLinkClassName="page-link"
                 activeClassName="active"
                 breakLabel="..."
-                nextLabel={<FaChevronLeft />}
-                previousLabel={<FaChevronRight />}
+                nextLabel={<FaChevronRight />}
+                previousLabel={<FaChevronLeft />}
                 onPageChange={({ selected }) => onSearch({ ...queryParams, page: selected + 1 })}
                 pageRangeDisplayed={5}
                 pageCount={data.last_page}

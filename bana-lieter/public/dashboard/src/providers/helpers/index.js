@@ -18,3 +18,5 @@ export const hasAnyRole = (roles) => {
     const user = store.getState().app.config.user
     return user.role == 'root' ? true : roles.includes(user.role)
 }
+
+export const getGender = gender => gender ? "Male" : "Female"

@@ -1,4 +1,5 @@
 import CheckboxField from 'components/Fields/CheckboxField';
+import FormButtons from 'components/Fields/FormButtons';
 import SelectField from 'components/Fields/SelectField';
 import SelectField2 from 'components/Fields/SelectField2';
 import TextField from 'components/Fields/TextField';
@@ -8,7 +9,7 @@ import { Formik } from 'formik';
 import { CONSTANTS } from 'providers/helpers/constants';
 import { ROUTES } from 'providers/routes';
 import React, { useEffect, useState } from 'react';
-import { Col, Row, Button } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 import * as Yup from 'yup';
 
@@ -190,7 +191,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 />
                             </Col>
                         </Row>
-                        <Button type="submit">Save</Button>
+                        <FormButtons />
                     </form>
                 </WhiteBox>
             )}

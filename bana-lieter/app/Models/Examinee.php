@@ -22,4 +22,14 @@ class Examinee extends Model
         'city_id',
         'admin_id'
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'updated_at' => 'datetime:d/m/Y - H:i:s',
+        'created_at' => 'datetime:d/m/Y - H:i:s',
+    ];
 }

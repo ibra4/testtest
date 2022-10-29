@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\BootstrapController;
 use App\Http\Controllers\Api\AdminMediaController;
 use App\Http\Controllers\Api\CountryStatisticController;
 use App\Http\Controllers\Api\SubAdminsController;
+use App\Http\Controllers\Api\ExamineesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/sub-admins/{id}/update', [SubAdminsController::class, 'update']);
 
         Route::post('/admins/upload', [AdminMediaController::class, 'adminsUpload']);
+    });
+
+    Route::middleware('can:show_examinees')->group(function () {
+        Route::get('/examinees', [ExamineesController::class, 'index']);
+        Route::get('/examinees/{id}', [ExamineesController::class, 'get']);
+        Route::post('/examinees/create', [ExamineesController::class, 'create']);
+        Route::put('/examinees/{id}/update', [ExamineesController::class, 'update']);
     });
 });

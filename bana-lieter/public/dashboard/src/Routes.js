@@ -10,6 +10,8 @@ import SubAdminsIndex from 'pages/SubAdmins/SubAdminsIndex';
 import { httpClient } from 'providers/helpers';
 import AdminFormIndex from 'pages/AdminForm/AdminFormIndex';
 import SubAdminFormIndex from 'pages/SubAdminForm/SubAdminFormIndex';
+import ExamineesIndex from 'pages/Examinees/ExamineesIndex';
+import ExamineeFormIndex from 'pages/ExamineeForm/ExamineeFormIndex';
 
 const Routes = () => {
   const [status, setStatus] = React.useState("loading");
@@ -36,16 +38,21 @@ const Routes = () => {
         {/* Dashboard */}
         <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
         <Route path="/dashboard" component={Dashboard} exact />
-        
+
         {/* Admins */}
         <Route path="/admins" component={AdminsIndex} exact />
         <Route path="/admins/create" component={AdminFormIndex} exact />
         <Route path="/admins/:id/update" component={AdminFormIndex} exact />
-        
+
         {/* Sub Admins */}
         <Route path="/sub-admins" component={SubAdminsIndex} exact />
         <Route path="/sub-admins/create" component={SubAdminFormIndex} exact />
         <Route path="/sub-admins/:id/update" component={SubAdminFormIndex} exact />
+
+        {/* Sub Admins */}
+        <Route path="/examinees" component={ExamineesIndex} exact />
+        <Route path="/examinees/create" component={ExamineeFormIndex} exact />
+        <Route path="/examinees/:id/update" component={ExamineeFormIndex} exact />
 
         {/* Rest */}
       </Switch>
