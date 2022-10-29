@@ -21,13 +21,19 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('role');
             $table->string('avatar')->nullable();
-            $table->unsignedBigInteger('admin_id')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('number_of_reports')->nullable();
+            $table->unsignedBigInteger('admin_id')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->boolean('is_active')->default(false);
+            $table->boolean('gender')->default(true);
             $table->rememberToken();
             $table->timestamps();
-
+            
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null');
         });
     }
 

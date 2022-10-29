@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $faker = app(Generator::class);
 
         DB::table('users')->truncate();
-        
+
         // Create  root user
         User::create([
             'name' => 'root',
