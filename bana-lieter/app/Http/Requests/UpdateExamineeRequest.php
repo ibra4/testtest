@@ -6,13 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateExamineeRequest extends FormRequest
 {
-    public function passedValidation()
-    {
-        if (!$this->user()->hasRole('root')) {
-            $this->merge(['admin_id' => $this->user()->id]);
-        }
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
