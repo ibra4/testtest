@@ -1,15 +1,81 @@
-import { FaHome, FaUser, FaUsers, FaCog } from 'react-icons/fa';
+import { FaHome, FaUser, FaUsers, FaCog, FaChevronRight, FaBars } from 'react-icons/fa';
 import { hasAnyRole, hasRole } from 'providers/helpers';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
+import { Transition } from 'react-transition-group';
+import { useRef } from 'react';
+import useWindowDimensions from 'providers/hooks/useWindowDimensions';
+
+const duration = 300;
+
+const defaultStyle = {
+    transition: `${duration}ms ease-in-out`,
+    width: '400px'
+};
+
+const textDefaultStyle = {
+    transition: `${duration}ms ease-in-out`
+};
+
+const linkDefaultStyle = {
+    transition: `${duration}ms ease-in-out`
+};
+
+const logoDefaultStyle = {
+    transition: `${duration}ms ease-in-out`
+};
+
+const transitionStyles = {
+    entering: { width: '130px' },
+    entered: { width: '130px' },
+    exiting: { width: '400px' },
+    exited: { width: '400px' }
+};
+
+const navLinkTextStyles = {
+    entering: { display: 'none' },
+    entered: { display: 'none' },
+    exiting: { display: 'none' },
+    exited: { display: 'inline-block' }
+};
+
+const logoStyles = {
+    entering: { textAlign: 'center' },
+    entered: { textAlign: 'center' },
+    exiting: { textAlign: 'initial' },
+    exited: { textAlign: 'initial' }
+};
+
+const linkStyles = {
+    entering: {
+        fontSize: '30px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '80px',
+        height: '80px',
+        margin: 'auto'
+    },
+    entered: {
+        fontSize: '30px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '80px',
+        height: '80px',
+        margin: 'auto'
+    },
+    exiting: { fontSize: '18px' },
+    exited: { fontSize: '18px' }
+};
 
 const routes = [
     {
         routeName: 'dashboard',
         label: 'Dashboard',
         icon: <FaHome />,
-        role: 'admin'
+        // role: 'admin'
     },
     {
         routeName: 'admins',
@@ -36,7 +102,9 @@ function SideMenu() {
 
     const baseRoute = pathname.split('/')[1];
 
-    const renderRouteLink = ({ routeName, label, icon, role = null }) => {
+    const nodeRef = useRef(null);
+
+    const renderRouteLink = ({ routeName, label, icon, role = null, state }) => {
         var show;
         if (role) {
             if (Array.isArray(role)) {
@@ -51,34 +119,71 @@ function SideMenu() {
         return (
             show && (
                 <Nav.Item key={routeName}>
-                    <Nav.Link as={Link} to={`/${routeName}`} active={baseRoute == routeName}>
+                    <Nav.Link
+                        as={Link}
+                        to={`/${routeName}`}
+                        active={baseRoute == routeName}
+                        style={{ ...linkDefaultStyle, ...linkStyles[state] }}
+                    >
                         {icon}
-                        <span className="ms-2">{label}</span>
+                        <span className="ms-2" style={{ ...textDefaultStyle, ...navLinkTextStyles[state] }}>
+                            {label}
+                        </span>
                     </Nav.Link>
                 </Nav.Item>
             )
         );
     };
 
+    const [inProp, setInProp] = useState(false);
+
+    const { width } = useWindowDimensions();
+
+    useEffect(() => {
+        if (width < 992) {
+            setInProp(true);
+        }
+    }, [width]);
+
     return (
-        <div className="side-menu-wrapper">
-            <div className="side-menu shadow">
-                <div className="menu-logo">
-                    <img src="/images/logo.png" className="h-100 m-auto" />
+        <Transition nodeRef={nodeRef} in={inProp} timeout={duration}>
+            {(state) => (
+                <div className="side-menu-wrapper">
+                    <div
+                        className="side-menu shadow"
+                        ref={nodeRef}
+                        style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state]
+                        }}
+                    >
+                        <a href="#" className="menu-toggle" onClick={() => setInProp(!inProp)}>
+                            <FaBars />
+                        </a>
+                        <div className="menu-logo" style={{ ...logoDefaultStyle, ...logoStyles[state] }}>
+                            <img
+                                src={inProp ? '/images/logo_teaser.png' : '/images/logo.png'}
+                                className="h-100 m-auto"
+                            />
+                        </div>
+                        <hr className="" />
+                        <Nav className="inner flex-column">
+                            {routes.map((item) => renderRouteLink({ ...item, state }))}
+                        </Nav>
+                        <hr />
+                        <div className="inner bottom">
+                            {renderRouteLink({
+                                routeName: 'settings',
+                                label: 'Settings',
+                                icon: <FaCog />,
+                                role: 'root',
+                                state
+                            })}
+                        </div>
+                    </div>
                 </div>
-                <hr className="" />
-                <Nav className="inner flex-column">{routes.map(renderRouteLink)}</Nav>
-                <hr />
-                <div className="inner bottom">
-                    {renderRouteLink({
-                        routeName: 'settings',
-                        label: 'Settings',
-                        icon: <FaCog />,
-                        role: 'root'
-                    })}
-                </div>
-            </div>
-        </div>
+            )}
+        </Transition>
     );
 }
 

@@ -7,6 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Showing from 'components/Datatable/Showing';
 import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
+import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 
 const View = ({ data, queryParams, onSearch }) => {
     const { push } = useHistory();
@@ -14,10 +15,7 @@ const View = ({ data, queryParams, onSearch }) => {
     const renderRow = (item) => (
         <tr key={item.id}>
             <td>{item.id}</td>
-            <td>
-                <img src={item.avatar} alt="" className="small-avatar" />
-                <span className="ms-3">{item.name}</span>
-            </td>
+            <AvatarNameTD item={item} />
             <td>{item.email}</td>
             <td>
                 <span className="text-success">
@@ -29,7 +27,11 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>{item.updated_at}</td>
             <td>
                 <div className="d-flex">
-                    <ActionButton icon={<FaEdit />} onClick={() => push(`admins/${item.id}/update`)} variant="success" />
+                    <ActionButton
+                        icon={<FaEdit />}
+                        onClick={() => push(`admins/${item.id}/update`)}
+                        variant="success"
+                    />
                     <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" classes="ms-3" />
                 </div>
             </td>

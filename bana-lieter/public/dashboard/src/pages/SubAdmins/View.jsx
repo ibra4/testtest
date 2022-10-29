@@ -8,6 +8,7 @@ import { hasRole } from 'providers/helpers';
 import Showing from 'components/Datatable/Showing';
 import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
+import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 
 const View = ({ data, queryParams, onSearch }) => {
     const { push } = useHistory();
@@ -15,10 +16,7 @@ const View = ({ data, queryParams, onSearch }) => {
     const renderRow = (item) => (
         <tr key={item.id}>
             <td>{item.id}</td>
-            <td>
-                <img src={item.avatar} alt="" className="small-avatar" />
-                <span className="ms-3">{item.name}</span>
-            </td>
+            <AvatarNameTD item={item} />
             <td>{item.email}</td>
             {hasRole('root') && <td> {item.adminname}</td>}
             <td>{item.created_at}</td>

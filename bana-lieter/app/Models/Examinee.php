@@ -20,7 +20,8 @@ class Examinee extends Model
         'gender',
         'country_id',
         'city_id',
-        'admin_id'
+        'admin_id',
+        'created_by'
     ];
 
     /**

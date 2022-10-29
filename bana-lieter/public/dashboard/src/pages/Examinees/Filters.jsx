@@ -7,7 +7,7 @@ import { Col, Row, Button } from 'react-bootstrap';
 import SelectField from 'components/Fields/SelectField';
 import { CONSTANTS } from 'providers/helpers/constants';
 
-function Filters({ queryParams, onSearch }) {
+function Filters({ queryParams, onSearch, config }) {
     return (
         <Formik
             enableReinitialize
@@ -55,6 +55,20 @@ function Filters({ queryParams, onSearch }) {
                                     className="mb-3"
                                 />
                             </Col>
+                            {config.user.role == 'root' && (
+                                <Col md={4}>
+                                    <SelectField
+                                        name="admin_id"
+                                        label="Admin"
+                                        onChange={handleChange}
+                                        value={values.admin_id}
+                                        onBlur={handleBlur}
+                                        error={errors.admin_id}
+                                        className="mb-3"
+                                        options={config.admins}
+                                    />
+                                </Col>
+                            )}
                         </Row>
                         <Button disabled={isSubmitting} type="submit">
                             <FaSearch />

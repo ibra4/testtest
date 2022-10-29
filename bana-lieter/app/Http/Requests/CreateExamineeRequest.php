@@ -6,11 +6,14 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateExamineeRequest extends FormRequest
 {
-    public function passedValidation()
+    public function prepareForValidation()
     {
         if (!$this->user()->hasRole('root')) {
-            $this->merge(['admin_id' => $this->user()->id]);
+            /** @var \App\Models\User $user */
+            $user = $this->user();
+            $this->merge(['admin_id' => $user->hasRole('admin') ? $user->id : $user->admin_id]);
         }
+        $this->merge(['created_by' => $user->id]);
     }
 
     /**

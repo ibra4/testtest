@@ -20,3 +20,23 @@ export const hasAnyRole = (roles) => {
 }
 
 export const getGender = gender => gender ? "Male" : "Female"
+
+export const generateRandomColor = () => {
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += Math.floor(Math.random() * 10);
+    }
+    return color
+}
+
+export const renderUserNameShortcut = name => {
+    const parts = name.split(' ')
+    var shortcutName = ""
+    if (parts.length > 1) {
+        shortcutName = parts[0].slice(0, 1) + parts[1].slice(0, 1)
+    } else {
+        shortcutName = name.slice(0, 2)
+    }
+
+    return shortcutName
+}

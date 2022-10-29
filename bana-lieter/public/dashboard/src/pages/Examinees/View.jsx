@@ -8,6 +8,7 @@ import Showing from 'components/Datatable/Showing';
 import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
 import { getGender } from 'providers/helpers';
+import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 
 const View = ({ data, queryParams, onSearch }) => {
     const { push } = useHistory();
@@ -15,10 +16,11 @@ const View = ({ data, queryParams, onSearch }) => {
     const renderRow = (item) => (
         <tr key={item.id}>
             <td>{item.id}</td>
-            <td>{item.name}</td>
+            <AvatarNameTD item={item} />
             <td>{item.age}</td>
             <td>{getGender(item.gender)}</td>
             <td>{item.adminname}</td>
+            <td>{item.createdbyadminname}</td>
             <td>{item.created_at}</td>
             <td>{item.updated_at}</td>
             <td>
@@ -49,7 +51,7 @@ const View = ({ data, queryParams, onSearch }) => {
                     </a>
                 </div>
             </div>
-            <Table striped>
+            <Table striped responsive>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -57,6 +59,7 @@ const View = ({ data, queryParams, onSearch }) => {
                         <th>Age</th>
                         <th>Gender</th>
                         <th>Admin Name</th>
+                        <th>Created By</th>
                         <th>Created At</th>
                         <th>Latest Update</th>
                         <th>Actions</th>
