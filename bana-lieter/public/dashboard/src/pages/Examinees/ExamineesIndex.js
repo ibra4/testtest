@@ -15,7 +15,7 @@ function ExamineesIndex() {
         page: 1,
         name: '',
         gender: '',
-        age: '',
+        birthday: '',
     })
 
     const { data, onSearch, isLoading } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.EXAMINEES.LIST)

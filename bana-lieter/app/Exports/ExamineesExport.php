@@ -35,7 +35,9 @@ class ExamineesExport implements FromQuery, WithHeadings
         return [
             'ID',
             'Name',
-            'Parent Admin ID',
+            'Age',
+            'Parent Admin',
+            'Created By',
             'Created At',
             'Updated At',
         ];

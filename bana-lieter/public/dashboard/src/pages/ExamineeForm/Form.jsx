@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().min(4, 'Too Short!').max(50, 'Too Long!').required('Name field is required!'),
-    age: Yup.number().required().min(1),
+    birthday: Yup.date().required(),
     gender: Yup.number().required(),
     country_id: Yup.number().required()
 });
@@ -57,13 +57,13 @@ function Form({ initialValues, config, onSubmit }) {
                                 </Col>
                                 <Col md={4}>
                                     <TextField
-                                        name="age"
-                                        label="Age"
+                                        name="birthday"
+                                        label="Birthday"
                                         onChange={handleChange}
-                                        value={values.age}
+                                        value={values.birthday}
                                         onBlur={handleBlur}
-                                        error={touched.age && errors.age}
-                                        type="number"
+                                        error={touched.birthday && errors.birthday}
+                                        type="date"
                                         className="mb-3"
                                     />
                                 </Col>

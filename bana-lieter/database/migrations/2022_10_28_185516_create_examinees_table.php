@@ -16,7 +16,7 @@ class CreateExamineesTable extends Migration
         Schema::create('examinees', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('age');
+            $table->date('birthday');
             $table->boolean('gender')->default(true);
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();

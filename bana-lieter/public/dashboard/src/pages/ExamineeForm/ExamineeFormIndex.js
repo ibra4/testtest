@@ -10,7 +10,7 @@ import { useToasts } from 'react-toast-notifications'
 
 const defaultUser = {
     name: '',
-    age: '',
+    birthday: '',
     gender: '',
     country_id: '',
     city_id: '',

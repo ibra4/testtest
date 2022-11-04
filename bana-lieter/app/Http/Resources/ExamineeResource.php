@@ -18,6 +18,7 @@ class ExamineeResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'age' => $this->age,
+            'birthday' => $this->birthday,
             'admin_id' => $this->admin_id,
             'country_id' => $this->country_id,
             'city_id' => $this->city_id,

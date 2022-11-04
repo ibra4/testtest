@@ -25,7 +25,7 @@ class CreateExamineeRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'age' => 'required|numeric',
+            'birthday' => 'required|date',
             'gender' => 'required|boolean',
             'city_id' => 'required|exists:cities,id',
             'country_id' => 'required|exists:countries,id',

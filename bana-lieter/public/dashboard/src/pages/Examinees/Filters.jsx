@@ -33,17 +33,6 @@ function Filters({ queryParams, onSearch, config }) {
                                 />
                             </Col>
                             <Col md={4}>
-                                <TextField
-                                    name="age"
-                                    label="Age"
-                                    onChange={handleChange}
-                                    value={values.age}
-                                    onBlur={handleBlur}
-                                    error={errors.age}
-                                    className="mb-3"
-                                />
-                            </Col>
-                            <Col md={4}>
                                 <SelectField
                                     name="gender"
                                     label="Gender"
