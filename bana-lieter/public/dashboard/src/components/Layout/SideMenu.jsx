@@ -137,7 +137,7 @@ function SideMenu() {
 
         if (sublinks) {
             return (
-                <SubMenu open={baseRoute == routeName} active={baseRoute == routeName} key={label} label={renderMenuLabel(icon, label)}>
+                <SubMenu active={baseRoute == routeName} key={label} label={renderMenuLabel(icon, label)}>
                     {sublinks.map((item) => renderRouteLink({ ...item, sub: true }))}
                 </SubMenu>
             );

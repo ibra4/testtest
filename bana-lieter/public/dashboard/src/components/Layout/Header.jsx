@@ -13,7 +13,7 @@ function Header({ title }) {
                 <Row className="align-items-center">
                     <Col lg={8}>
                         <HeaderBreadcrumb />
-                        <div className="title display-5 fw-bold">{title}</div>
+                        <div className="title display-6 fw-bold">{title}</div>
                     </Col>
                     <Col lg={4}>
                         <div className="d-flex align-items-center justify-content-between">
