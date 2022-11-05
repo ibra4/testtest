@@ -17,5 +17,8 @@ export const ROUTES = {
     },
     COUNTRY_STATISTICS: {
         GET: '/country-statistics'
+    },
+    LEITER_RECORDS: {
+        GET_BY_TYPE: '/leiter-records'
     }
 }

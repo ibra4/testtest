@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AdminMediaController;
 use App\Http\Controllers\Api\CountryStatisticController;
 use App\Http\Controllers\Api\SubAdminsController;
 use App\Http\Controllers\Api\ExamineesController;
+use App\Http\Controllers\Api\LeiterRecordsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/admins/{id}/update', [AdminsController::class, 'update']);
 
         Route::get('/country-statistics/{id}', [CountryStatisticController::class, 'index']);
+        Route::get('/leiter-records/{type}', [LeiterRecordsController::class, 'get']);
     });
 
     Route::middleware('can:admin')->group(function () {

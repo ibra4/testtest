@@ -16,7 +16,7 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
             const finalObj = { ...queryParams, ...qs.parse(search, { ignoreQueryPrefix: true }) }
             push(pathname + '?' + qs.stringify(finalObj))
         }
-    }, [queryParams])
+    }, [queryParams, route])
 
     useEffect(() => {
         if (search && search != '') {

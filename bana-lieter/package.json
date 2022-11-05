@@ -23,6 +23,7 @@
     "dependencies": {
         "@svg-maps/cli": "^1.0.0-beta.5",
         "jquery": "^3.6.1",
+        "react-pro-sidebar": "^1.0.0-alpha.7",
         "react-svg-map": "^2.2.0",
         "slick-carousel": "^1.8.1"
     }

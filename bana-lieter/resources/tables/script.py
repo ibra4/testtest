@@ -16,11 +16,10 @@ def buildTable(f):
     allData = []
     for item in jsonFile:
         obj = {
-            "scaled_score": item[0],
-            "value": item[1],
-            "min_age": item[2],
-            "max_age": item[3],
-            "max_age": item[3],
+            "scaled_score": int(item[0]),
+            "value": int(item[1]),
+            "min_age": int(item[2]),
+            "max_age": int(item[3]),
             "type": f,
         }
         allData.append(obj)

@@ -40,41 +40,37 @@
     }
 }
 
-.side-menu {
-    background-color: white;
-    overflow: hidden;
+.menu-logo {
+    img {
+        height: 90px;
+        padding: 15px;
+    }
+}
+
+.menu-toggle {
+    position: absolute;
+    z-index: 4;
+    right: -25px;
+    top: 25px;
+    background-color: $main;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        color: white;
+    }
+}
+
+.sidebar {
     border-radius: 15px;
+    overflow: hidden;
     height: 100%;
-
-    .menu-logo {
-        height: 100px;
-        padding: 15px;
-    }
-
-    .inner {
-        padding: 0 20px;
-    }
-
-    .nav-link {
-        color: $black-2;
-        font-size: 18px;
-        padding: 15px;
-        border-radius: 15px;
-
-        &.active {
-            background: #6451ff;
-            color: white;
-        }
-    }
-
-    .bottom {
-        .nav-link {
-            color: $orange;
-            &.active {
-                color: white;
-            }
-        }
-    }
+    background-color: white;
 }
 
 .white-box {
