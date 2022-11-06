@@ -31,7 +31,7 @@ class LieterRecordIndex extends Migration
     public function down()
     {
         Schema::connection('mongodb')->table('tables', function (Blueprint $collection) {
-            $collection->dropIndex(['default-ndx']);
+            $collection->dropIndex('default-ndx');
         });
     }
 }

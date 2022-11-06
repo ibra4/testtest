@@ -17,6 +17,7 @@ class CreateExamineesTable extends Migration
             $table->id();
             $table->string('name');
             $table->date('birthday');
+            $table->date('application_date');
             $table->boolean('gender')->default(true);
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
