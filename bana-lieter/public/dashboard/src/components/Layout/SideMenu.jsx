@@ -30,7 +30,7 @@ const routes = [
         role: ['admin', 'sub_admin']
     },
     {
-        label: 'Memory Subtests',
+        label: 'Leiter Tables',
         routeName: 'leiter-records',
         icon: <FaTable />,
         role: 'root',
