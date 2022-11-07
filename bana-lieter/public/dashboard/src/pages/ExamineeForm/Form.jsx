@@ -68,6 +68,18 @@ function Form({ initialValues, config, onSubmit }) {
                                     />
                                 </Col>
                                 <Col md={4}>
+                                    <TextField
+                                        name="application_date"
+                                        label="Application Date"
+                                        onChange={handleChange}
+                                        value={values.application_date}
+                                        onBlur={handleBlur}
+                                        error={touched.application_date && errors.application_date}
+                                        type="date"
+                                        className="mb-3"
+                                    />
+                                </Col>
+                                <Col md={4}>
                                     <SelectField
                                         name="gender"
                                         label="Gender"
