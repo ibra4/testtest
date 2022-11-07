@@ -5,8 +5,9 @@ import Form from './Form'
 import { httpClient } from 'providers/helpers'
 import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
+import { addAdmin, updateAdmin } from 'providers/actions/AppActions'
 
 const defaultUser = {
     name: '',
@@ -26,6 +27,8 @@ function AdminFormIndex() {
     const title = id ? `Update admin #${id}` : 'Create new admin'
 
     const { push } = useHistory()
+
+    const dispatch = useDispatch()
 
     const [data, setData] = useState()
     const [status, setStatus] = useState("loading")
@@ -52,8 +55,10 @@ function AdminFormIndex() {
         let res;
         if (id) {
             res = await httpClient.put(`${ROUTES.ADMINS.LIST}/${id}/update`, data)
+            dispatch(updateAdmin(res.data.id, res.data.name))
         } else {
             res = await httpClient.post(ROUTES.ADMINS.CREATE, data)
+            dispatch(addAdmin({id: res.data.id, label: res.data.name}))
         }
         if (res.status == 200) {
             addToast('Admin Saved Successfully', { appearance: 'success' });
