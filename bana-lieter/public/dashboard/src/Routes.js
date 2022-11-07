@@ -13,6 +13,7 @@ import SubAdminFormIndex from 'pages/SubAdminForm/SubAdminFormIndex';
 import ExamineesIndex from 'pages/Examinees/ExamineesIndex';
 import ExamineeFormIndex from 'pages/ExamineeForm/ExamineeFormIndex';
 import LeiterRecordsIndex from 'pages/LeiterRecords/LeiterRecordsIndex';
+import LeiterRecordFormIndex from 'pages/LeiterRecordForm/LeiterRecordFormIndex';
 
 const Routes = () => {
   const [status, setStatus] = React.useState("loading");
@@ -55,7 +56,10 @@ const Routes = () => {
         <Route path="/examinees/create" component={ExamineeFormIndex} exact />
         <Route path="/examinees/:id/update" component={ExamineeFormIndex} exact />
 
+        {/* Leiter Records */}
         <Route path="/leiter-records/:type" component={LeiterRecordsIndex} exact />
+        <Route path="/leiter-records/create" component={LeiterRecordFormIndex} exact />
+        <Route path="/leiter-records/:id/update" component={LeiterRecordFormIndex} exact />
 
         {/* Rest */}
       </Switch>

@@ -13,6 +13,7 @@ import * as Yup from 'yup';
 const validationSchema = Yup.object().shape({
     name: Yup.string().min(4, 'Too Short!').max(50, 'Too Long!').required('Name field is required!'),
     birthday: Yup.date().required(),
+    application_date: Yup.date().required(),
     gender: Yup.number().required(),
     country_id: Yup.number().required()
 });
@@ -28,7 +29,7 @@ function Form({ initialValues, config, onSubmit }) {
     return (
         <Formik
             enableReinitialize
-            initialValues={{ ...initialValues, password: '', password_confirmation: '' }}
+            initialValues={initialValues}
             onSubmit={async (values, { setErrors, setSubmitting }) => {
                 try {
                     await onSubmit(values);

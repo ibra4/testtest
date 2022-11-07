@@ -23,9 +23,10 @@ class ExamineesQuery
             'examinees.name',
             'examinees.birthday as age',
             'admin.name as adminname',
+            'examinees.gender',
             'creator.name as createdbyadminname',
             'examinees.created_at',
-            'examinees.updated_at',
+            'examinees.updated_at'
         )->where([
             ['examinees.name', 'LIKE', "%$request->name%"],
         ])

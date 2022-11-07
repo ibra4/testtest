@@ -44,4 +44,9 @@ class Examinee extends Model
         $months = $diff->format("%m");
         return $years * 12 + $months;
     }
+
+    public function getGenderAttribute($value)
+    {
+        return $value ? "Male" : "Female";
+    }
 }

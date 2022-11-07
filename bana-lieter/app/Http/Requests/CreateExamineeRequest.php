@@ -28,7 +28,6 @@ class CreateExamineeRequest extends FormRequest
             'birthday' => 'required|date',
             'application_date' => 'required|date',
             'gender' => 'required|boolean',
-            'city_id' => 'required|exists:cities,id',
             'country_id' => 'required|exists:countries,id',
             'admin_id' => 'required|exists:users,id',
         ];

@@ -21,7 +21,7 @@ function LeiterRecordsIndex() {
         value: '',
     })
 
-    const { data, onSearch, isLoading } = useDataTable(queryParams, setQueryParams, status, setStatus, `${ROUTES.LEITER_RECORDS.GET_BY_TYPE}/${type}`)
+    const { data, onSearch, isLoading } = useDataTable(queryParams, setQueryParams, status, setStatus, `${ROUTES.LEITER_RECORDS.GET_BY_TYPE}/type/${type}`)
 
     useEffect(() => {
         push(pathname)

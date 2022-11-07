@@ -20,6 +20,16 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>{item.value}</td>
             <td>{item.min_age}</td>
             <td>{item.max_age}</td>
+            <td>
+                <div className="d-flex">
+                    <ActionButton
+                        icon={<FaEdit />}
+                        onClick={() => push(`/leiter-records/${item._id}/update`)}
+                        variant="success"
+                    />
+                    <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" classes="ms-3" />
+                </div>
+            </td>
         </tr>
     );
 
@@ -27,7 +37,7 @@ const View = ({ data, queryParams, onSearch }) => {
         <>
             <div className="datatable-header">
                 <Showing data={data} />
-                {/* <div className="d-flex">
+                <div className="d-flex">
                     <a
                         className="btn btn-success ms-2"
                         target="_blank"
@@ -36,7 +46,7 @@ const View = ({ data, queryParams, onSearch }) => {
                         <FaFileExcel />
                         <span className="ms-2">Export to Excel</span>
                     </a>
-                </div> */}
+                </div>
             </div>
             <Table striped>
                 <thead>
@@ -46,6 +56,7 @@ const View = ({ data, queryParams, onSearch }) => {
                         <th>{type}</th>
                         <th>Min Age</th>
                         <th>Max Age</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>{data && data.data && data.data.map(renderRow)}</tbody>

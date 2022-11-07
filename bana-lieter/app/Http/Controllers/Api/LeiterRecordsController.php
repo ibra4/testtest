@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateLeiterRecordRequest;
+use App\Http\Requests\UpdateLeiterRecordRequest;
 use App\Models\LeiterRecord;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class LeiterRecordsController extends Controller
 {
-    public function get(Request $request, $type)
+    public function getByType(Request $request, $type)
     {
         $records = LeiterRecord::where(['type' => $type])
             ->orderBy('scaled_score', 'ASC')
@@ -34,6 +36,11 @@ class LeiterRecordsController extends Controller
         return response()->json($records->paginate());
     }
 
+    public function get($id)
+    {
+        return LeiterRecord::findOrFail($id);
+    }
+
     public function test()
     {
         $record = LeiterRecord::select(
@@ -46,5 +53,20 @@ class LeiterRecordsController extends Controller
             ->where('max_age', '>=', 70)
             ->limit(1)
             ->get();
+    }
+
+    public function update(UpdateLeiterRecordRequest $request, $id)
+    {
+        $record = LeiterRecord::findOrFail($id);
+        $record->update($request->all());
+
+        return response()->json($record);
+    }
+
+    public function create(CreateLeiterRecordRequest $request)
+    {
+        $record = LeiterRecord::create($request->all());
+
+        return response()->json($record);
     }
 }

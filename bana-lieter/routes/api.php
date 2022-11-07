@@ -33,8 +33,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/admins/create', [AdminsController::class, 'create']);
         Route::put('/admins/{id}/update', [AdminsController::class, 'update']);
 
+        Route::get('/leiter-records/{id}', [LeiterRecordsController::class, 'get']);
+        Route::get('/leiter-records/type/{type}', [LeiterRecordsController::class, 'getByType']);
+        Route::post('/leiter-records/create', [LeiterRecordsController::class, 'create']);
+        Route::put('/leiter-records/{id}/update', [LeiterRecordsController::class, 'update']);
+
         Route::get('/country-statistics/{id}', [CountryStatisticController::class, 'index']);
-        Route::get('/leiter-records/{type}', [LeiterRecordsController::class, 'get']);
     });
 
     Route::middleware('can:admin')->group(function () {

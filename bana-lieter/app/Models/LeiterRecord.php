@@ -12,4 +12,12 @@ class LeiterRecord extends Model
     protected $connection = 'mongodb';
 
     protected $collection = "tables";
+
+    protected $fillable = [
+        'min_age',
+        'max_age',
+        'value',
+        'scaled_score',
+        'type',
+    ];
 }

@@ -18,7 +18,7 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>{item.id}</td>
             <AvatarNameTD item={item} />
             <td>{item.age}</td>
-            <td>{getGender(item.gender)}</td>
+            <td>{item.gender}</td>
             <td>{item.adminname}</td>
             <td>{item.createdbyadminname}</td>
             <td>{item.created_at}</td>
