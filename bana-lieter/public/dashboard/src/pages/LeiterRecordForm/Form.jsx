@@ -80,7 +80,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={3}>
                                     <TextField
                                         name="scaled_score"
-                                        label="Value"
+                                        label="Scaled Score"
                                         onChange={handleChange}
                                         value={values.scaled_score}
                                         onBlur={handleBlur}
