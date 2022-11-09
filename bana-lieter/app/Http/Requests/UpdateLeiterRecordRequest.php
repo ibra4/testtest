@@ -18,8 +18,8 @@ class UpdateLeiterRecordRequest extends FormRequest
         return [
             'min_age' => 'required|numeric|integer|min:0',
             'max_age' => 'required|numeric|integer|min:0|gt:min_age',
-            'value' => 'required|numeric|integer|min:0',
-            'scaled_score' => 'required|numeric|integer|min:0'
+            'value' => 'required|numeric|integer',
+            'scaled_score' => 'required|numeric|integer'
         ];
     }
 }
