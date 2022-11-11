@@ -14,6 +14,7 @@ const defaultUser = {
     email: '',
     phone_number: '',
     avatar: '',
+    cv: '',
 }
 
 function SubAdminFormIndex() {

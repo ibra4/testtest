@@ -56,6 +56,19 @@ function Form({ initialValues, config, onSubmit }) {
                                     className="mb-3"
                                 />
                             </Col>
+                            <Col className="col-auto">
+                                <UploadField
+                                    name="cv"
+                                    label="CV"
+                                    onChange={(value) => setFieldValue('cv', value)}
+                                    value={values.cv}
+                                    onBlur={handleBlur}
+                                    error={errors.cv}
+                                    path={ROUTES.ADMINS.UPLOAD}
+                                    className="mb-3"
+                                    type="doc"
+                                />
+                            </Col>
                             <Col>
                                 <Row>
                                     <Col md={6}>

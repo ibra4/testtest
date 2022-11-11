@@ -1,9 +1,9 @@
-import { FaUpload } from 'react-icons/fa';
+import { FaCheck, FaUpload } from 'react-icons/fa';
 import { httpClient } from 'providers/helpers';
 import React, { useEffect, useState } from 'react';
-import { Form, Row } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
-function UploadField({ name, onChange, value, label, path, className, ...rest }) {
+function UploadField({ name, onChange, value, type = 'image', label, path, className, ...rest }) {
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleChange = (event) => {
@@ -12,7 +12,7 @@ function UploadField({ name, onChange, value, label, path, className, ...rest })
 
     const handleSubmit = async () => {
         const formData = new FormData();
-        formData.append('image', selectedFile);
+        formData.append(name, selectedFile);
 
         const res = await httpClient.post(path, formData);
         onChange(res.data.path);
@@ -24,16 +24,24 @@ function UploadField({ name, onChange, value, label, path, className, ...rest })
         }
     }, [selectedFile]);
 
+    const additionalPros = {};
+    if (type == 'image') {
+        additionalPros.accept = 'image/png, image/jpeg';
+    } else if (type == 'doc') {
+        additionalPros.accept =
+            'application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf';
+    }
+
     return (
         <div className={className}>
             <Form.Label>{label}</Form.Label>
-            <Row className="upload-field">
-                <Form.Control type="file" name={name} onChange={handleChange} {...rest} />
+            <div className="upload-field">
+                <Form.Control {...additionalPros} type="file" name={name} onChange={handleChange} {...rest} />
                 <div className="inner">
-                    {value && <img src={value} />}
-                    <FaUpload />
+                    {value && type == 'image' && <img src={value} />}
+                    {value ? <FaCheck /> : <FaUpload />}
                 </div>
-            </Row>
+            </div>
         </div>
     );
 }

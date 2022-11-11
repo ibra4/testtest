@@ -15,6 +15,7 @@ const defaultUser = {
     phone_number: '',
     expiration_date: '',
     avatar: '',
+    cv: '',
     number_of_reports: 0,
     country_id: '',
     city_id: '',
