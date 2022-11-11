@@ -26,7 +26,7 @@ class UpdateAdminRequest extends FormRequest implements UserRequestInterface
         $rules = [
             'name' => 'required|string|max:255',
             'email' => "required|email|unique:users,email,$this->id",
-            'phone_number' => "unique:users,phone_number,$this->id",
+            'phone_number' => "unique:users,phone_number,$this->id|nullable",
             'number_of_reports' => 'numeric',
         ];
 

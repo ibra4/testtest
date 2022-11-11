@@ -13,6 +13,7 @@ const defaultUser = {
     name: '',
     email: '',
     phone_number: '',
+    expiration_date: '',
     avatar: '',
     number_of_reports: 0,
     country_id: '',

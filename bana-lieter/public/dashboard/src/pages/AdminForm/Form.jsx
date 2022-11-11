@@ -147,6 +147,18 @@ function Form({ initialValues, config, onSubmit }) {
                                     className="mb-3"
                                 />
                             </Col>
+                            <Col md={4}>
+                                <TextField
+                                    name="expiration_date"
+                                    label="Expiration Date"
+                                    onChange={handleChange}
+                                    value={values.expiration_date}
+                                    onBlur={handleBlur}
+                                    error={touched.expiration_date && errors.expiration_date}
+                                    type="date"
+                                    className="mb-3"
+                                />
+                            </Col>
                         </Row>
                         <Row>
                             <Col md={4}>

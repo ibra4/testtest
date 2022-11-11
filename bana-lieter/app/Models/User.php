@@ -30,6 +30,7 @@ class User extends Authenticatable
         'gender',
         'role',
         'password',
+        'expiration_date',
     ];
 
     /**
