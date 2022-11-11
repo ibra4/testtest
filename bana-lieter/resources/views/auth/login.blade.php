@@ -31,33 +31,16 @@
             </div>
             <div class="col-md-8">
                 <div class="login-carousel">
-                    <div class="carousel-item"
-                        style="background-image:url('https://www.testim.io/wp-content/uploads/2019/11/What-Is-Test-Automation.jpg')">
-                        <div class="inner">
-                            <div class="container">
-                                <div class="carousel-title">title here</div>
-                                <p class="carousel-description">carousel description here</p>
+                    @foreach ($sliders as $slider)
+                        <div class="carousel-item" style="background-image:url('{{ $slider->image }}')">
+                            <div class="inner">
+                                <div class="container">
+                                    <div class="carousel-title">{{ $slider->title }}</div>
+                                    <p class="carousel-description">{{ $slider->description }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="carousel-item"
-                        style="background-image:url('https://www.testim.io/wp-content/uploads/2019/11/What-Is-Test-Automation.jpg')">
-                        <div class="inner">
-                            <div class="container">
-                                <div class="carousel-title">title here</div>
-                                <p class="carousel-description">carousel description here</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item"
-                        style="background-image:url('https://www.testim.io/wp-content/uploads/2019/11/What-Is-Test-Automation.jpg')">
-                        <div class="inner">
-                            <div class="container">
-                                <div class="carousel-title">title here</div>
-                                <p class="carousel-description">carousel description here</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

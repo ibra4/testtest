@@ -238,3 +238,10 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.6);
 }
+
+.slider-table-item {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+}

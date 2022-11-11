@@ -42,6 +42,7 @@ function UploadField({ name, onChange, value, type = 'image', label, path, class
                     {value ? <FaCheck /> : <FaUpload />}
                 </div>
             </div>
+            {value && <a target="_blank" href={value}>Preview</a>}
         </div>
     );
 }

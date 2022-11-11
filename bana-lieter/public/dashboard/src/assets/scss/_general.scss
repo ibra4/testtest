@@ -1,6 +1,7 @@
 body {
     background-color: $light;
     color: $black;
+    font-family: 'Tajawal', sans-serif;
     .search-input {
         height: 50px;
         border-radius: 25px;
@@ -11,4 +12,11 @@ body {
 ul.no-style {
     list-style: none;
     padding-left: 0;
+}
+
+.btn {
+    span {
+        margin-top: 5px;
+        display: inline-block;
+    }
 }

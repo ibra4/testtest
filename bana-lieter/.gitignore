@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/admins
+/public/sliders
 /storage/*.key
 /vendor
 .env

@@ -21,5 +21,9 @@ export const ROUTES = {
     LEITER_RECORDS: {
         GET_BY_TYPE: '/leiter-records',
         CREATE: '/leiter-records'
+    },
+    SLIDERS: {
+        GET: '/sliders',
+        UPLOAD: '/sliders/upload'
     }
 }

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FaHome, FaUser, FaUsers, FaCog, FaChevronRight, FaBars, FaTable } from 'react-icons/fa';
+import { FaHome, FaUser, FaUsers, FaCog, FaChevronRight, FaBars, FaTable, FaImage, FaImages } from 'react-icons/fa';
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar';
 import { Link, useLocation } from 'react-router-dom';
 import { hasAnyRole, hasRole } from 'providers/helpers';
@@ -105,6 +105,23 @@ const routes = [
     }
 ];
 
+const routes2 = [
+    {
+        label: 'Settings',
+        routeName: 'settings',
+        icon: <FaCog />,
+        role: 'root',
+        sublinks: [
+            {
+                routeName: 'settings/slider',
+                label: 'Login Slider',
+                icon: <FaImage />,
+                role: 'root'
+            }
+        ]
+    }
+];
+
 const renderMenuLabel = (icon, label) => (
     <>
         {icon}
@@ -168,12 +185,7 @@ function SideMenu() {
                     </div>
                     {routes.map(renderRouteLink)}
                     <hr />
-                    {renderRouteLink({
-                        routeName: 'settings',
-                        label: 'Settings',
-                        icon: <FaCog />,
-                        role: 'root'
-                    })}
+                    {routes2.map(renderRouteLink)}
                 </Menu>
             </Sidebar>
         </div>

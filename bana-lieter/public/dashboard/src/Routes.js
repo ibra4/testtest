@@ -14,6 +14,8 @@ import ExamineesIndex from 'pages/Examinees/ExamineesIndex';
 import ExamineeFormIndex from 'pages/ExamineeForm/ExamineeFormIndex';
 import LeiterRecordsIndex from 'pages/LeiterRecords/LeiterRecordsIndex';
 import LeiterRecordFormIndex from 'pages/LeiterRecordForm/LeiterRecordFormIndex';
+import SlidersIndex from 'pages/Settings/Sliders/SlidersIndex';
+import SliderFormIndex from 'pages/Settings/SliderForm/SliderFormIndex';
 
 const Routes = () => {
   const [status, setStatus] = React.useState("loading");
@@ -51,7 +53,7 @@ const Routes = () => {
         <Route path="/sub-admins/create" component={SubAdminFormIndex} exact />
         <Route path="/sub-admins/:id/update" component={SubAdminFormIndex} exact />
 
-        {/* Sub Admins */}
+        {/* Examinees */}
         <Route path="/examinees" component={ExamineesIndex} exact />
         <Route path="/examinees/create" component={ExamineeFormIndex} exact />
         <Route path="/examinees/:id/update" component={ExamineeFormIndex} exact />
@@ -61,7 +63,10 @@ const Routes = () => {
         <Route path="/leiter-records/create" component={LeiterRecordFormIndex} exact />
         <Route path="/leiter-records/:id/update" component={LeiterRecordFormIndex} exact />
 
-        {/* Rest */}
+        {/* Sliders */}
+        <Route path="/settings/slider" component={SlidersIndex} exact />
+        <Route path="/settings/slider/create" component={SliderFormIndex} exact />
+        <Route path="/settings/slider/:id/update" component={SliderFormIndex} exact />
       </Switch>
     </BrowserRouter>
   ) : (
