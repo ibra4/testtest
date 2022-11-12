@@ -16,6 +16,7 @@ import LeiterRecordsIndex from 'pages/LeiterRecords/LeiterRecordsIndex';
 import LeiterRecordFormIndex from 'pages/LeiterRecordForm/LeiterRecordFormIndex';
 import SlidersIndex from 'pages/Settings/Sliders/SlidersIndex';
 import SliderFormIndex from 'pages/Settings/SliderForm/SliderFormIndex';
+import ExamineeExamIndex from 'pages/ExamineeExam/ExamineeExamIndex';
 
 const Routes = () => {
   const [status, setStatus] = React.useState("loading");
@@ -57,6 +58,7 @@ const Routes = () => {
         <Route path="/examinees" component={ExamineesIndex} exact />
         <Route path="/examinees/create" component={ExamineeFormIndex} exact />
         <Route path="/examinees/:id/update" component={ExamineeFormIndex} exact />
+        <Route path="/examinees/:id/exam" component={ExamineeExamIndex} exact />
 
         {/* Leiter Records */}
         <Route path="/leiter-records/:type" component={LeiterRecordsIndex} exact />

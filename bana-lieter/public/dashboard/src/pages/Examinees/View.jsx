@@ -1,4 +1,5 @@
 import { FaEdit, FaFileExcel, FaPlus, FaTrash } from 'react-icons/fa';
+import { TbReportAnalytics } from 'react-icons/tb';
 import ActionButton from 'components/Fields/ActionButton';
 import React from 'react';
 import { Table } from 'react-bootstrap';
@@ -7,7 +8,6 @@ import { Link, useHistory } from 'react-router-dom';
 import Showing from 'components/Datatable/Showing';
 import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
-import { getGender } from 'providers/helpers';
 import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 import WhiteBox from 'components/WhiteBox';
 
@@ -31,7 +31,12 @@ const View = ({ data, queryParams, onSearch }) => {
                         onClick={() => push(`examinees/${item.id}/update`)}
                         variant="success"
                     />
-                    <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" classes="ms-3" />
+                    <ActionButton
+                        icon={<TbReportAnalytics />}
+                        onClick={() => push(`examinees/${item.id}/exam`)}
+                        variant="primary"
+                    />
+                    <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" />
                 </div>
             </td>
         </tr>
