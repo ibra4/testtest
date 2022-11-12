@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\ExamineesController;
+use App\Http\Controllers\Api\LeiterRecordsController;
 use App\Http\Controllers\Api\SubAdminsController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admins/export', [AdminsController::class, 'export']);
     Route::get('/sub-admins/export', [SubAdminsController::class, 'export']);
     Route::get('/examinees/export', [ExamineesController::class, 'export']);
+    Route::get('/leiter-records/{type}/export', [LeiterRecordsController::class, 'export']);
 });
 
 Auth::routes();

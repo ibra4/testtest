@@ -12,12 +12,12 @@ const defaultUser = {
     min_age: '',
     max_age: '',
     value: '',
-    scaled_score: ''
+    scaled_score: '',
 }
 
 function LeiterRecordFormIndex() {
 
-    const { id } = useParams()
+    const { id, type } = useParams()
 
     const title = id ? `Update leiter record #${id}` : 'Create new leiter record'
 
@@ -39,7 +39,7 @@ function LeiterRecordFormIndex() {
         if (id) {
             getData()
         } else {
-            setData(defaultUser)
+            setData({ ...defaultUser, type })
             setStatus("success")
         }
     }, [])
@@ -49,7 +49,7 @@ function LeiterRecordFormIndex() {
         if (id) {
             res = await httpClient.put(`${ROUTES.LEITER_RECORDS.CREATE}/${id}/update`, values)
         } else {
-            res = await httpClient.post(ROUTES.LEITER_RECORDS.CREATE, values)
+            res = await httpClient.post(`${ROUTES.LEITER_RECORDS.CREATE}/create`, values)
         }
         if (res.status == 200) {
             addToast('Leiter record Saved Successfully', { appearance: 'success' });

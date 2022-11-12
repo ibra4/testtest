@@ -60,7 +60,7 @@ const Routes = () => {
 
         {/* Leiter Records */}
         <Route path="/leiter-records/:type" component={LeiterRecordsIndex} exact />
-        <Route path="/leiter-records/create" component={LeiterRecordFormIndex} exact />
+        <Route path="/leiter-records/:type/create" component={LeiterRecordFormIndex} exact />
         <Route path="/leiter-records/:id/update" component={LeiterRecordFormIndex} exact />
 
         {/* Sliders */}

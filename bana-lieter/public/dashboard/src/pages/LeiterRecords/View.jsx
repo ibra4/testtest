@@ -38,14 +38,18 @@ const View = ({ data, queryParams, onSearch }) => {
             <div className="datatable-header">
                 <Showing data={data} />
                 <div className="d-flex">
-                    {/* <a
+                    <Link to={`/leiter-records/${type}/create`} className="btn btn-primary">
+                        <FaPlus />
+                        <span className="ms-2">Add new Record</span>
+                    </Link>
+                    <a
                         className="btn btn-success ms-2"
                         target="_blank"
-                        href={`/leiter-records/export?${QueryString.stringify(queryParams)}`}
+                        href={`/leiter-records/${type}/export?${QueryString.stringify(queryParams)}`}
                     >
                         <FaFileExcel />
                         <span className="ms-2">Export to Excel</span>
-                    </a> */}
+                    </a>
                 </div>
             </div>
             <Table striped>

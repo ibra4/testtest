@@ -2,38 +2,33 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exports\LeiterRecordsExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateLeiterRecordRequest;
 use App\Http\Requests\UpdateLeiterRecordRequest;
 use App\Models\LeiterRecord;
+use App\Queries\LeiterRecordsQuery;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LeiterRecordsController extends Controller
 {
+    /**
+     * leiterRecordsQuery
+     *
+     * @var LeiterRecordsQuery
+     */
+    protected $leiterRecordsQuery;
+
+    public function __construct(LeiterRecordsQuery $lrbq)
+    {
+        $this->leiterRecordsQuery = $lrbq;
+    }
+
     public function getByType(Request $request, $type)
     {
-        $records = LeiterRecord::where(['type' => $type])
-            ->orderBy('scaled_score', 'ASC')
-            ->orderBy('value', 'ASC');
-
-        if ($request->min_age && $request->min_age != '') {
-            $records->where('min_age', (int)$request->min_age);
-        }
-
-        if ($request->max_age && $request->max_age != '') {
-            $records->where('max_age', (int)$request->max_age);
-        }
-
-        if ($request->scaled_score && $request->scaled_score != '') {
-            $records->where('scaled_score', (int)$request->scaled_score);
-        }
-
-        if ($request->value && $request->value != '') {
-            $records->where('value', (int)$request->value);
-        }
-
-        return response()->json($records->paginate());
+        return response()->json($this->leiterRecordsQuery->get($request, $type)->paginate());
     }
 
     public function get($id)
@@ -68,5 +63,10 @@ class LeiterRecordsController extends Controller
         $record = LeiterRecord::create($request->all());
 
         return response()->json($record);
+    }
+
+    public function export(Request $request, $type)
+    {
+        return Excel::download(new LeiterRecordsExport($request, $this->leiterRecordsQuery, $type), "leiter-records-$request->type.xlsx");
     }
 }
