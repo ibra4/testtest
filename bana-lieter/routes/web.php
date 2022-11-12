@@ -36,3 +36,5 @@ Auth::routes();
 Route::get('/', function () {
     return redirect()->route('dashboard');
 });
+
+Route::get('debug/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('can:root');
