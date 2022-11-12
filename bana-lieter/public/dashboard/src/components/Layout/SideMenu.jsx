@@ -154,9 +154,11 @@ function SideMenu() {
 
         if (sublinks) {
             return (
-                <SubMenu active={baseRoute == routeName} key={label} label={renderMenuLabel(icon, label)}>
-                    {sublinks.map((item) => renderRouteLink({ ...item, sub: true }))}
-                </SubMenu>
+                show && (
+                    <SubMenu active={baseRoute == routeName} key={label} label={renderMenuLabel(icon, label)}>
+                        {sublinks.map((item) => renderRouteLink({ ...item, sub: true }))}
+                    </SubMenu>
+                )
             );
         } else {
             return (

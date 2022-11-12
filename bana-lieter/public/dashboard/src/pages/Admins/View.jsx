@@ -8,6 +8,7 @@ import Showing from 'components/Datatable/Showing';
 import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
 import AvatarNameTD from 'components/Datatable/AvatarNameTD';
+import WhiteBox from 'components/WhiteBox';
 
 const View = ({ data, queryParams, onSearch }) => {
     const { push } = useHistory();
@@ -57,21 +58,23 @@ const View = ({ data, queryParams, onSearch }) => {
                     </a>
                 </div>
             </div>
-            <Table striped>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Number of records</th>
-                        <th>Created At</th>
-                        <th>Latest Update</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>{data && data.data && data.data.map(renderRow)}</tbody>
-            </Table>
-            <NoData data={data} />
+            <WhiteBox>
+                <Table striped>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Number of records</th>
+                            <th>Created At</th>
+                            <th>Latest Update</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>{data && data.data && data.data.map(renderRow)}</tbody>
+                </Table>
+                <NoData data={data} />
+            </WhiteBox>
             <Pagination data={data} onSearch={onSearch} queryParams={queryParams} />
         </>
     );

@@ -9,6 +9,7 @@ import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
 import { getGender } from 'providers/helpers';
 import AvatarNameTD from 'components/Datatable/AvatarNameTD';
+import WhiteBox from 'components/WhiteBox';
 
 const View = ({ data, queryParams, onSearch }) => {
     const { push } = useHistory();
@@ -25,7 +26,11 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>{item.updated_at}</td>
             <td>
                 <div className="d-flex">
-                    <ActionButton icon={<FaEdit />} onClick={() => push(`examinees/${item.id}/update`)} variant="success" />
+                    <ActionButton
+                        icon={<FaEdit />}
+                        onClick={() => push(`examinees/${item.id}/update`)}
+                        variant="success"
+                    />
                     <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" classes="ms-3" />
                 </div>
             </td>
@@ -51,23 +56,25 @@ const View = ({ data, queryParams, onSearch }) => {
                     </a>
                 </div>
             </div>
-            <Table striped responsive>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Admin Name</th>
-                        <th>Created By</th>
-                        <th>Created At</th>
-                        <th>Latest Update</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>{data && data.data && data.data.map(renderRow)}</tbody>
-            </Table>
-            <NoData data={data} />
+            <WhiteBox>
+                <Table striped responsive>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Admin Name</th>
+                            <th>Created By</th>
+                            <th>Created At</th>
+                            <th>Latest Update</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>{data && data.data && data.data.map(renderRow)}</tbody>
+                </Table>
+                <NoData data={data} />
+            </WhiteBox>
             <Pagination data={data} onSearch={onSearch} queryParams={queryParams} />
         </>
     );
