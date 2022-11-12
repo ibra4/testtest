@@ -89,8 +89,11 @@
 .statistic-item {
     padding: 0;
     overflow: hidden;
-    .row > div {
-        padding: 15px;
+    .row {
+        height: 100%;
+        > div {
+            padding: 15px;
+        }
     }
     .svg-wrapper {
         background-color: $main;

@@ -1,14 +1,13 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import WhiteBox from './WhiteBox';
-import { FcDatabase, FcAcceptDatabase, FcAddDatabase } from 'react-icons/fc';
 import {TbReportAnalytics, TbReport, TbReportMoney} from 'react-icons/tb'
 import classNames from 'classnames';
 
 function Statistics({ statistics }) {
     const renderStatisticItem = (icon, value, label, svgWrapperClass) => (
-        <Col md={4}>
-            <WhiteBox classes="statistic-item">
+        <Col md={4} className="d-flex">
+            <WhiteBox classes="statistic-item flex-1">
                 <Row>
                     <Col sm={3} className={classNames('svg-wrapper', svgWrapperClass)}>
                         {icon}

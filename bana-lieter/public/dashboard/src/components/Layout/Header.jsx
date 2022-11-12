@@ -11,13 +11,13 @@ function Header({ title }) {
         <div className="header">
             <Container fluid>
                 <Row className="align-items-center">
-                    <Col lg={8}>
+                    <Col lg={6}>
                         <HeaderBreadcrumb />
                         <div className="title display-6 fw-bold">{title}</div>
                     </Col>
-                    <Col lg={4}>
+                    <Col lg={6}>
                         <div className="d-flex align-items-center justify-content-between">
-                            <Form>
+                            <Form className="flex-1">
                                 <Form.Control
                                     type="text"
                                     className="search-input"
@@ -25,7 +25,7 @@ function Header({ title }) {
                                     placeholder="Search..."
                                 />
                             </Form>
-                            <Dropdown className="notifications-dropdown">
+                            <Dropdown className="notifications-dropdown mx-2">
                                 <Dropdown.Toggle className="dropdown-toggle" as={'div'}>
                                     <AiOutlineNotification />
                                     <div className="notification-number">5</div>

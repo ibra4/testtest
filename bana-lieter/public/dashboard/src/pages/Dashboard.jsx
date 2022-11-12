@@ -83,8 +83,8 @@ function Dashboard() {
         <Layout title="Dashboard">
             <Statistics statistics={statistics} />
             <Row id="map-area" ref={ref}>
-                <Col md={8}>
-                    <WhiteBox title="Statistics By Area" hr>
+                <Col md={8} className="d-flex">
+                    <WhiteBox title="Statistics By Area" classes="flex-1" hr>
                         <div className="d-flex justify-content-between align-items-center">
                             <Button variant="success" onClick={handleBack} disabled={currentMap == world}>
                                 <FaChevronLeft />
