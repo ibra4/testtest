@@ -5,13 +5,15 @@ namespace App\Models\Reports;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AttentionReport extends Model
+class ReportCognitiveSubtest extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'attention_sustained',
-        'nonverbal_stroop_congruent_correct',
-        'nonverbal_stroop_incongruent_correct'
+        'figure_ground',
+        'form_completion',
+        'classification_analogies',
+        'sequential_order',
+        'visual_patterns'
     ];
 }

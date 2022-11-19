@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNarrativeReportReportsTable extends Migration
+class CreateReportMemoryBatteriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateNarrativeReportReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('narrative_report_reports', function (Blueprint $table) {
+        Schema::create('report_memory_batteries', function (Blueprint $table) {
             $table->id();
+            $table->integer('forward_memory');
+            $table->integer('reverse_memory');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateNarrativeReportReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('narrative_report_reports');
+        Schema::dropIfExists('report_memory_batteries');
     }
 }

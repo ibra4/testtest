@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExaminerRatingScaleSectionReportsTable extends Migration
+class CreateReportExaminerRatingScaleSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateExaminerRatingScaleSectionReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('examiner_rating_scale_section_reports', function (Blueprint $table) {
+        Schema::create('report_examiner_rating_scale_sections', function (Blueprint $table) {
             $table->id();
             $table->integer('attention');
             $table->integer('organization_impulse_control');
@@ -34,6 +34,6 @@ class CreateExaminerRatingScaleSectionReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('examiner_rating_scale_section_reports');
+        Schema::dropIfExists('report_examiner_rating_scale_sections');
     }
 }

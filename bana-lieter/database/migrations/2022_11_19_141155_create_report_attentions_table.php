@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttentionReportsTable extends Migration
+class CreateReportAttentionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAttentionReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('attention_reports', function (Blueprint $table) {
+        Schema::create('report_attentions', function (Blueprint $table) {
             $table->id();
             $table->integer('attention_sustained');
             $table->integer('nonverbal_stroop_congruent_correct');
@@ -29,6 +29,6 @@ class CreateAttentionReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attention_reports');
+        Schema::dropIfExists('report_attentions');
     }
 }

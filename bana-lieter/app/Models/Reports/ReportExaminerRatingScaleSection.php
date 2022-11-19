@@ -5,7 +5,7 @@ namespace App\Models\Reports;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ExaminerRatingScaleSectionReport extends Model
+class ReportExaminerRatingScaleSection extends Model
 {
     use HasFactory;
 

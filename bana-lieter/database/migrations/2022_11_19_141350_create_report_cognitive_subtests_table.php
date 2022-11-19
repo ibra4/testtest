@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCognitiveSubtestsReportsTable extends Migration
+class CreateReportCognitiveSubtestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCognitiveSubtestsReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cognitive_subtests_reports', function (Blueprint $table) {
+        Schema::create('report_cognitive_subtests', function (Blueprint $table) {
             $table->id();
             $table->integer('figure_ground');
             $table->integer('form_completion');
@@ -31,6 +31,6 @@ class CreateCognitiveSubtestsReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cognitive_subtests_reports');
+        Schema::dropIfExists('report_cognitive_subtests');
     }
 }
