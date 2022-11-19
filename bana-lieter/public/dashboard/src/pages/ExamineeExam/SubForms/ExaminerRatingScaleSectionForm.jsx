@@ -77,7 +77,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                                 />
                             </Col>
                         </Row>
-                        <div className="title">Examiner rating scale Section A-D</div>
+                        <div className="title">Examiner rating scale Section E-H</div>
                         <Row>
                             <Col md={3}>
                                 <TextField
