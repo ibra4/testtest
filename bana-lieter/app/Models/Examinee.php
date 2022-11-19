@@ -23,6 +23,7 @@ class Examinee extends Model
         'country_id',
         'city_id',
         'admin_id',
+        'examiner_notes',
         'created_by'
     ];
 

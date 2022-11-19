@@ -1,6 +1,7 @@
 import FormButtons from 'components/Fields/FormButtons';
 import SelectField from 'components/Fields/SelectField';
 import SelectField2 from 'components/Fields/SelectField2';
+import TextAreaField from 'components/Fields/TextAreaField';
 import TextField from 'components/Fields/TextField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
@@ -134,6 +135,20 @@ function Form({ initialValues, config, onSubmit }) {
                                     </Col>
                                 )}
                             </Row>
+                            <Row>
+                                <Col md={6}>
+                                    <TextAreaField
+                                        name="examiner_notes"
+                                        label="Examiner Notes"
+                                        onChange={handleChange}
+                                        value={values.examiner_notes}
+                                        onBlur={handleBlur}
+                                        error={touched.examiner_notes && errors.examiner_notes}
+                                        className="mb-3"
+                                    />
+                                </Col>
+                            </Row>
+
                             <FormButtons />
                         </form>
                     </WhiteBox>

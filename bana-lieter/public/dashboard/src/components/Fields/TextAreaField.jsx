@@ -8,7 +8,7 @@ function TextAreaField({ name, onChange, value, label, error, className, ...rest
             <div className="input-group has-validation">
                 <textarea
                     className="form-control"
-                    isInvalid={!!error}
+                    isinvalid={!!error}
                     type="textarea"
                     name={name}
                     onChange={onChange}
