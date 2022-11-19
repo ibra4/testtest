@@ -2,7 +2,7 @@
 
 namespace App\Queries;
 
-use App\Models\LeiterRecord;
+use App\Models\LeiterRecordExportable;
 use Illuminate\Http\Request;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -17,7 +17,7 @@ class LeiterRecordsQuery
      */
     public function get(Request $request, $type)
     {
-        $query = LeiterRecord::select('id', 'min_age', 'max_age', 'scaled_score', 'value')
+        $query = LeiterRecordExportable::select('min_age', 'max_age', 'scaled_score', 'value')
             ->where(['type' => $type])
             ->orderBy('scaled_score', 'ASC')
             ->orderBy('value', 'ASC');
@@ -36,6 +36,10 @@ class LeiterRecordsQuery
 
         if ($request->value && $request->value != '') {
             $query->where('value', (int)$request->value);
+        }
+
+        if ($request->has('sort')) {
+            $query->orderBy($request->sort[0], $request->sort[1]);
         }
 
         return $query;

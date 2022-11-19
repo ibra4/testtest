@@ -19,6 +19,7 @@ function LeiterRecordsIndex() {
         max_age: '',
         scaled_score: '',
         value: '',
+        sort: []
     })
 
     const { data, onSearch, isLoading } = useDataTable(queryParams, setQueryParams, status, setStatus, `${ROUTES.LEITER_RECORDS.GET_BY_TYPE}/type/${type}`)

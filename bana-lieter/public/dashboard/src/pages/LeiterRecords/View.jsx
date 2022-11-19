@@ -9,10 +9,58 @@ import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
 import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 import WhiteBox from 'components/WhiteBox';
+import DataTable from 'react-data-table-component';
+
 
 const View = ({ data, queryParams, onSearch }) => {
     const { push } = useHistory();
     const { type } = useParams();
+    const columns = [
+        {
+            id: 'scaled_score',
+            name: 'Scaled Score',
+            selector: (row) => row.scaled_score,
+            sortable: true
+        },
+        {
+            id: 'value',
+            name: 'Value',
+            selector: (row) => row.value,
+            sortable: true
+        },
+        {
+            id: 'min_age',
+            name: 'Min age',
+            selector: (row) => row.min_age,
+            sortable: true
+        },
+        {
+            id: 'max_age',
+            name: 'Max Age',
+            selector: (row) => row.max_age,
+            sortable: true
+        },
+        {
+            id: 'actions',
+            name: 'actions',
+            selector: (row) => (
+                <>
+                    <div className="d-flex">
+                        <ActionButton
+                            icon={<FaEdit />}
+                            onClick={() => push(`/leiter-records/${row._id}/update`)}
+                            variant="success"
+                        />
+                        <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" classes="ms-3" />
+                    </div>
+                </>
+            )
+        }
+    ];
+    
+    const handleSort = ({ id }, order) => {
+        onSearch({ ...queryParams, sort: [id, order] });
+    };
 
     const renderRow = (item) => (
         <tr key={item._id}>
@@ -53,22 +101,7 @@ const View = ({ data, queryParams, onSearch }) => {
                     </a>
                 </div>
             </div>
-            <WhiteBox>
-                <Table striped>
-                    <thead>
-                        <tr>
-                            {/* <th>ID</th> */}
-                            <th>Scaled Score</th>
-                            <th>{type}</th>
-                            <th>Min Age</th>
-                            <th>Max Age</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>{data && data.data && data.data.map(renderRow)}</tbody>
-                </Table>
-                <NoData data={data} />
-            </WhiteBox>
+            <WhiteBox>{data?.data && <DataTable columns={columns} data={data?.data} onSort={handleSort} />}</WhiteBox>
             <Pagination data={data} onSearch={onSearch} queryParams={queryParams} />
         </>
     );

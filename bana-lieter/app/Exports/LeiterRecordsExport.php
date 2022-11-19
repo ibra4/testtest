@@ -5,10 +5,11 @@ namespace App\Exports;
 use App\Queries\LeiterRecordsQuery;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class LeiterRecordsExport implements FromQuery, WithHeadings
+class LeiterRecordsExport implements FromCollection, WithHeadings
 {
     use Exportable;
 
@@ -31,15 +32,18 @@ class LeiterRecordsExport implements FromQuery, WithHeadings
         $this->type = $type;
     }
 
-    public function query()
+    public function collection()
     {
-        return $this->leiterRecordQuery->get($this->request, $this->type);
+        return $this->leiterRecordQuery->get($this->request, $this->type)
+        ->get(['scaled_score', 'value', 'min_age', 'max_age'])->transform(function($i) {
+            unset($i->_id);
+            return $i;
+        });
     }
 
     public function headings(): array
     {
         return [
-            'ID',
             'Scaled Score',
             'Value',
             'Min Age',
