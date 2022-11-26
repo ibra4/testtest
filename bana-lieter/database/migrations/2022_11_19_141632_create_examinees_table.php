@@ -19,16 +19,19 @@ class CreateExamineesTable extends Migration
             $table->date('birthday');
             $table->date('application_date');
             $table->boolean('gender')->default(true);
+            $table->text('examiner_notes')->nullable();
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('report_id')->nullable();
             $table->timestamps();
-
+            
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null');
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('report_id')->references('id')->on('reports')->onDelete('set null');
         });
     }
 

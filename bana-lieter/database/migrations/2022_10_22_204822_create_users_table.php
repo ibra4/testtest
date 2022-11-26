@@ -28,6 +28,8 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('city_id')->nullable();
             $table->boolean('is_active')->default(false);
             $table->boolean('gender')->default(true);
+            $table->date('expiration_date')->nullable();
+            $table->string('cv')->nullable();
             $table->rememberToken();
             $table->timestamps();
             
