@@ -15,7 +15,7 @@
 <body>
     <div id="root"></div>
 
-    <script src="{{ asset('dashboard/dist/main.js') }}?v=2"></script>
+    <script src="{{ asset('dashboard/dist/main.js') }}?v=3"></script>
 </body>
 
 </html>
