@@ -28,7 +28,8 @@ class UserSeeder extends Seeder
             'email' => 'admin@bana.local',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
-            'role' => 'root'
+            'role' => 'root',
+            'is_active' => true,
         ]);
 
         for ($i = 1; $i <= 20; $i++) {
@@ -38,7 +39,8 @@ class UserSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'password' => Hash::make('12345678'),
-                'role' => 'admin'
+                'role' => 'admin',
+                'is_active' => true,
             ]);
             for ($j = 1; $j <= 5; $j++) {
                 User::create([
@@ -48,7 +50,8 @@ class UserSeeder extends Seeder
                     'email_verified_at' => now(),
                     'password' => Hash::make('12345678'),
                     'role' => 'sub_admin',
-                    'admin_id' => $admin->id
+                    'admin_id' => $admin->id,
+                    'is_active' => true
                 ]);
             }
         }
