@@ -14,18 +14,26 @@ function ExamineeExamIndex() {
     const [status, setStatus] = useState("loading")
 
     const getData = async () => {
-        const res = await httpClient.get(`${ROUTES.EXAMINEES.LIST}/${id}`)
+        const res = await httpClient.get(`${ROUTES.EXAMINEES.EXAM}/${id}`)
         setData(res.data)
+        setStatus("success")
     }
 
     useEffect(() => {
         getData()
-        setStatus("success")
     }, [])
+
+    const onSectionSubmit = async (type, values) => {
+        try {
+            return await httpClient.put(`${ROUTES.EXAMINEES.EXAM}/${id}/${type}`, values)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <Layout title="Exam">
-            {status == "success" ? <View data={data} /> : <FullLoader />}
+            {status == "success" ? <View data={data} onSectionSubmit={onSectionSubmit} /> : <FullLoader />}
         </Layout>
     )
 }

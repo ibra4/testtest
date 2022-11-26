@@ -1,7 +1,10 @@
 import FormButtons from 'components/Fields/FormButtons';
 import TextField from 'components/Fields/TextField';
+import ReportsButtons from 'components/Reports/ReportsButtons';
+import ReportTitle from 'components/Reports/ReportTitle';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
+import { useReport } from 'providers/hooks/useReport';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import * as yup from 'yup';
@@ -9,23 +12,19 @@ import * as yup from 'yup';
 const validationSchema = yup.object().shape({});
 
 function MemoryBatteryForm({ initialValues, onSubmit }) {
+    const { submitHandler, data, isLoading } = useReport(initialValues, onSubmit, 'memory');
+
     return (
-        <WhiteBox title="Memory Battery">
+        <WhiteBox classes="p-0">
+            <ReportTitle title="Memory Battery" />
             <Formik
                 enableReinitialize
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={async (values, { setErrors, setSubmitting }) => {
-                    try {
-                        await onSubmit(values);
-                    } catch (error) {
-                        setErrors(error.response.data.errors);
-                    }
-                    setSubmitting(false);
-                }}
+                onSubmit={submitHandler}
             >
                 {({ values, errors, touched, handleChange, setFieldValue, handleBlur, handleSubmit, isSubmitting }) => (
-                    <form onSubmit={handleSubmit}>
+                    <form className="p-25" onSubmit={handleSubmit}>
                         <Row>
                             <Col md={4}>
                                 <TextField
@@ -56,6 +55,7 @@ function MemoryBatteryForm({ initialValues, onSubmit }) {
                     </form>
                 )}
             </Formik>
+            <ReportsButtons data={data} isLoading={isLoading} />
         </WhiteBox>
     );
 }

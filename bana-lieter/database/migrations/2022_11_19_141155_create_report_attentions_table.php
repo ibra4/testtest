@@ -18,6 +18,8 @@ class CreateReportAttentionsTable extends Migration
             $table->integer('attention_sustained');
             $table->integer('nonverbal_stroop_congruent_correct');
             $table->integer('nonverbal_stroop_incongruent_correct');
+            $table->string('file_en')->nullable();
+            $table->string('file_ar')->nullable();
             $table->timestamps();
         });
     }

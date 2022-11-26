@@ -15,8 +15,29 @@ ul.no-style {
 }
 
 .btn {
-    span {
-        margin-top: 5px;
-        display: inline-block;
+    padding-top: 10px;
+    height: 40px;
+}
+
+.p-25 {
+    padding: 25px
+}
+
+.section-reports {
+    overflow: hidden;
+    &.loading {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: #000000, $alpha: 0.3);
+        }
+    }
+    .loader-wrapper {
+        z-index: 1;
     }
 }

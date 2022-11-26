@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Reports\Report;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,7 +25,8 @@ class Examinee extends Model
         'city_id',
         'admin_id',
         'examiner_notes',
-        'created_by'
+        'created_by',
+        'report_id'
     ];
 
     /**
@@ -49,5 +51,10 @@ class Examinee extends Model
     public function getGenderAttribute($value)
     {
         return $value ? "Male" : "Female";
+    }
+
+    public function report()
+    {
+        return $this->hasOne(Report::class, 'id', 'report_id');
     }
 }

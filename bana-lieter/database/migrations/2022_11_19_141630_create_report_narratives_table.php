@@ -15,6 +15,8 @@ class CreateReportNarrativesTable extends Migration
     {
         Schema::create('report_narratives', function (Blueprint $table) {
             $table->id();
+            $table->string('file_en')->nullable();
+            $table->string('file_ar')->nullable();
             $table->timestamps();
         });
     }

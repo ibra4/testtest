@@ -17,6 +17,8 @@ class CreateReportMemoryBatteriesTable extends Migration
             $table->id();
             $table->integer('forward_memory');
             $table->integer('reverse_memory');
+            $table->string('file_en')->nullable();
+            $table->string('file_ar')->nullable();
             $table->timestamps();
         });
     }

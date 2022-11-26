@@ -20,6 +20,8 @@ class CreateReportCognitiveSubtestsTable extends Migration
             $table->integer('classification_analogies');
             $table->integer('sequential_order');
             $table->integer('visual_patterns');
+            $table->string('file_en')->nullable();
+            $table->string('file_ar')->nullable();
             $table->timestamps();
         });
     }

@@ -1,7 +1,9 @@
 import FormButtons from 'components/Fields/FormButtons';
 import TextField from 'components/Fields/TextField';
+import ReportsButtons from 'components/Reports/ReportsButtons';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
+import { useReport } from 'providers/hooks/useReport';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import * as yup from 'yup';
@@ -9,24 +11,18 @@ import * as yup from 'yup';
 const validationSchema = yup.object().shape({});
 
 function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
+    const { submitHandler, data, isLoading } = useReport(initialValues, onSubmit, 'examiner');
     return (
-        <WhiteBox>
+        <WhiteBox classes="p-0">
             <Formik
                 enableReinitialize
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={async (values, { setErrors, setSubmitting }) => {
-                    try {
-                        await onSubmit(values);
-                    } catch (error) {
-                        setErrors(error.response.data.errors);
-                    }
-                    setSubmitting(false);
-                }}
+                onSubmit={submitHandler}
             >
                 {({ values, errors, touched, handleChange, setFieldValue, handleBlur, handleSubmit, isSubmitting }) => (
-                    <form onSubmit={handleSubmit}>
-                        <div className="title">Examiner rating scale Section A-D</div>
+                    <form onSubmit={handleSubmit} className="p-25">
+                        <div class="title p-25 mb-0 ps-0 pt-0">Examiner rating scale Section A-D</div>
                         <Row>
                             <Col md={3}>
                                 <TextField
@@ -77,7 +73,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                                 />
                             </Col>
                         </Row>
-                        <div className="title">Examiner rating scale Section E-H</div>
+                        <div class="title p-25 mb-0 ps-0">Examiner rating scale Section E-H</div>
                         <Row>
                             <Col md={3}>
                                 <TextField
@@ -132,6 +128,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                     </form>
                 )}
             </Formik>
+            <ReportsButtons data={data} isLoading={isLoading} />
         </WhiteBox>
     );
 }

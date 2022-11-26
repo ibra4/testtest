@@ -15,11 +15,11 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('report_cognitive_subtest_id')->nullable();
-            $table->unsignedBigInteger('report_memory_battery_id')->nullable();
-            $table->unsignedBigInteger('report_attention_id')->nullable();
-            $table->unsignedBigInteger('report_examiner_rating_scale_section_id')->nullable();
-            $table->unsignedBigInteger('report_narrative_id')->nullable();
+            $table->unsignedBigInteger('report_cognitive_subtest_id');
+            $table->unsignedBigInteger('report_memory_battery_id');
+            $table->unsignedBigInteger('report_attention_id');
+            $table->unsignedBigInteger('report_examiner_rating_scale_section_id');
+            $table->unsignedBigInteger('report_narrative_id');
 
             $table->foreign('report_cognitive_subtest_id')
                 ->references('id')

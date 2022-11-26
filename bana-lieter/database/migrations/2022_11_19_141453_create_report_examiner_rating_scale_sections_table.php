@@ -23,6 +23,8 @@ class CreateReportExaminerRatingScaleSectionsTable extends Migration
             $table->integer('regulation');
             $table->integer('anxiety');
             $table->integer('sensory_reaction');
+            $table->string('file_en')->nullable();
+            $table->string('file_ar')->nullable();
             $table->timestamps();
         });
     }

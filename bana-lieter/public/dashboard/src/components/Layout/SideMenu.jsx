@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FaHome, FaUser, FaUsers, FaCog, FaChevronRight, FaBars, FaTable, FaImage, FaImages } from 'react-icons/fa';
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar';
 import { Link, useLocation } from 'react-router-dom';
@@ -135,10 +135,6 @@ function SideMenu() {
     const { pathname } = useLocation();
     const baseRoute = pathname.split('/')[1];
     const fullRoute = pathname;
-
-    useEffect(() => {
-        console.log('fullRoute : ', fullRoute);
-    }, [fullRoute]);
 
     const renderRouteLink = ({ routeName, label, icon, role = null, sublinks, sub = false }) => {
         var show;
