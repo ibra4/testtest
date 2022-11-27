@@ -15,7 +15,7 @@ function NarrativeReportForm({ initialValues, onSubmit }) {
     const { submitHandler, data, isLoading } = useReport(initialValues, onSubmit, 'narrative');
     return (
         <WhiteBox classes="p-0">
-            <ReportTitle title={t('Narrative Report (En)')} />
+            <ReportTitle title={t('Narrative Report')} />
             <Formik
                 enableReinitialize
                 initialValues={initialValues}

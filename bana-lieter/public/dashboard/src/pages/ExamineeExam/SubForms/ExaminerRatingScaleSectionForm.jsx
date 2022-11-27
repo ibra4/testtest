@@ -24,7 +24,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
             >
                 {({ values, errors, touched, handleChange, setFieldValue, handleBlur, handleSubmit, isSubmitting }) => (
                     <form onSubmit={handleSubmit} className="p-25">
-                        <div class="title p-25 mb-0 ps-0 pt-0">{t('Examiner rating scale Section')} A-D</div>
+                        <div class="title p-25 mb-0 ps-0 pt-0">{t('Examiner rating scale Section A-D')}</div>
                         <Row>
                             <Col md={3}>
                                 <TextField
@@ -75,7 +75,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                                 />
                             </Col>
                         </Row>
-                        <div class="title p-25 mb-0 ps-0">{t('Examiner rating scale Section')} E-H</div>
+                        <div class="title p-25 mb-0 ps-0">{t('Examiner rating scale Section E-H')}</div>
                         <Row>
                             <Col md={3}>
                                 <TextField

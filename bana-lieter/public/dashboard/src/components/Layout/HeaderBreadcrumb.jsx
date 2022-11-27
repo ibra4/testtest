@@ -6,8 +6,8 @@ function HeaderBreadcrumb() {
     const { t } = useTranslation();
     return (
         <Breadcrumb style={{ marginBottom: 0 }}>
-            <Breadcrumb.Item>{t('Home')}</Breadcrumb.Item>
-            <Breadcrumb.Item>{t('content')}</Breadcrumb.Item>
+            <Breadcrumb.Item>{t('Dashboard')}</Breadcrumb.Item>
+            <Breadcrumb.Item>{t('Content')}</Breadcrumb.Item>
         </Breadcrumb>
     );
 }

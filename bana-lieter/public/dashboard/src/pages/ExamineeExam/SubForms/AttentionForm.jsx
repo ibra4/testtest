@@ -16,7 +16,7 @@ function AttentionForm({ initialValues, onSubmit }) {
 
     return (
         <WhiteBox classes="p-0">
-            <ReportTitle title='Attention' />
+            <ReportTitle title={'Attention'} />
             <Formik
                 enableReinitialize
                 initialValues={initialValues}
@@ -29,7 +29,7 @@ function AttentionForm({ initialValues, onSubmit }) {
                             <Col md={4}>
                                 <TextField
                                     name="attention_sustained"
-                                    label='Attention Sustained'
+                                    label="Attention Sustained"
                                     onChange={handleChange}
                                     value={values.attention_sustained}
                                     onBlur={handleBlur}
@@ -41,7 +41,7 @@ function AttentionForm({ initialValues, onSubmit }) {
                             <Col md={4}>
                                 <TextField
                                     name="nonverbal_stroop_congruent_correct"
-                                    label='Nonverbal Stroop Congruent Correct'
+                                    label="Nonverbal Stroop Congruent Correct"
                                     onChange={handleChange}
                                     value={values.nonverbal_stroop_congruent_correct}
                                     onBlur={handleBlur}
@@ -53,7 +53,7 @@ function AttentionForm({ initialValues, onSubmit }) {
                             <Col md={4}>
                                 <TextField
                                     name="nonverbal_stroop_incongruent_correct"
-                                    label='Nonverbal Stroop Incongruent Correct'
+                                    label="Nonverbal Stroop Incongruent Correct"
                                     onChange={handleChange}
                                     value={values.nonverbal_stroop_incongruent_correct}
                                     onBlur={handleBlur}

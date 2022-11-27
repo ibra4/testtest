@@ -105,7 +105,7 @@ function Dashboard() {
                     </WhiteBox>
                 </Col>
                 <Col md={4} className="d-flex">
-                    <WhiteBox title="Details" classes="flex-1" hr>
+                    <WhiteBox title={t("Details")} classes="flex-1" hr>
                         <LabelValueRow
                             label={'Area'}
                             value={<div className="fw-bold color-main">{lastSelectedAreaName}</div>}

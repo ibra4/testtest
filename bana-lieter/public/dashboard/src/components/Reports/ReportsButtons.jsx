@@ -9,12 +9,12 @@ function ReportsButtons({ data, isLoading }) {
         <>
             <hr className="mb-0" />
             <div className={`p-25 section-reports${isLoading ? ' loading' : ''}`}>
-                <span className="title text-success">Reports: </span>
+                <span className="title text-success">{t('Reports')} :</span>
                 <div className="d-flex justify-content-between">
                     {data.file_en && data.file_ar ? (
                         <div>
                             <div className="text-secondary mb-3">
-                                {t('Last Update')}: {data.updated_at}
+                                {t('Latest Update')}: {data.updated_at}
                             </div>
                             <Row className="align-items-center">
                                 <Col className="col-auto">

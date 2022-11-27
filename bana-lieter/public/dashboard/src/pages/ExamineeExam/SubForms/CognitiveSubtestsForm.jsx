@@ -16,7 +16,7 @@ function CognitiveSubtestsForm({ initialValues, onSubmit }) {
 
     return (
         <WhiteBox classes="p-0">
-            <ReportTitle title="Cognitive Subtests" />
+            <ReportTitle title={'Cognitive Subtests'} />
             <Formik
                 enableReinitialize
                 initialValues={initialValues}
