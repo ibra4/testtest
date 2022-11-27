@@ -52,3 +52,20 @@ export const getAdminById = admin_id => {
     const admin = admins.find(item => item.id == admin_id)
     return admin && admin.label
 }
+
+export const getLangcode = () => {
+    return window.location.pathname.split('/')[1]
+}
+
+export const getDirection = () => {
+    return getLangcode() == 'ar' ? 'rtl' : 'ltr'
+}
+
+export const isRtl = () => {
+    return getDirection() == 'rtl'
+}
+
+export const getLeiterRecordLabelByType = (type) => {
+    const types = store.getState().app.config.leiter_tables_types
+    return types[type]
+}

@@ -6,10 +6,13 @@ import { useDataTable } from 'providers/hooks/useDataTable'
 import View from './View'
 import FullLoader from 'components/FullLoader'
 import { useHistory, useLocation, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { getLeiterRecordLabelByType } from 'providers/helpers'
 
 function LeiterRecordsIndex() {
+    const { t } = useTranslation()
     const { type } = useParams()
-    let { search, pathname } = useLocation();
+    let { pathname } = useLocation();
     let { push } = useHistory();
 
     const [status, setStatus] = useState("not-ready")
@@ -36,7 +39,7 @@ function LeiterRecordsIndex() {
     }, [type])
 
     return (
-        <Layout title={type}>
+        <Layout title={t(getLeiterRecordLabelByType(type))}>
             <Filters onSearch={onSearch} queryParams={queryParams} />
             {isLoading && <FullLoader />}
             <View data={data} onSearch={onSearch} queryParams={queryParams} />

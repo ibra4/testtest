@@ -8,6 +8,7 @@ import FullLoader from 'components/FullLoader'
 import { useDispatch, useSelector } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
 import { addAdmin, updateAdmin } from 'providers/actions/AppActions'
+import { useTranslation } from 'react-i18next'
 
 const defaultUser = {
     name: '',
@@ -24,9 +25,10 @@ const defaultUser = {
 
 function AdminFormIndex() {
 
+    const { t } = useTranslation()
     const { id } = useParams()
 
-    const title = id ? `Update admin #${id}` : 'Create new admin'
+    const title = id ? `${t('update', { name: t("admin") })} #${id}` : t('create_new', { name: t('Admin') })
 
     const { push } = useHistory()
 
@@ -60,10 +62,10 @@ function AdminFormIndex() {
             dispatch(updateAdmin(res.data.id, res.data.name))
         } else {
             res = await httpClient.post(ROUTES.ADMINS.CREATE, data)
-            dispatch(addAdmin({id: res.data.id, label: res.data.name}))
+            dispatch(addAdmin({ id: res.data.id, label: res.data.name }))
         }
         if (res.status == 200) {
-            addToast('Admin Saved Successfully', { appearance: 'success' });
+            addToast(t('Admin Saved Successfully'), { appearance: 'success' });
             push('/admins')
         } else {
             return res

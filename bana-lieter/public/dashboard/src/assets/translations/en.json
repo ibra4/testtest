@@ -1,1 +1,5 @@
-{}
+{
+    "showing_datatable": "Showing {{from}} to {{to}} items of {{total}} entries",
+    "create_new": "Create {{name}}",
+    "update": "Update {{name}}"
+}

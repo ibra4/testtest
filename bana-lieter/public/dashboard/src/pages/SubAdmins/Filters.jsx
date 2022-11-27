@@ -5,8 +5,10 @@ import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
 import React from 'react';
 import { Col, Row, Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 function Filters({ queryParams, onSearch, config }) {
+    const { t } = useTranslation();
     return (
         <Formik
             enableReinitialize
@@ -59,7 +61,7 @@ function Filters({ queryParams, onSearch, config }) {
                         </Row>
                         <Button disabled={isSubmitting} type="submit">
                             <FaSearch />
-                            <span className="ms-2">Search</span>
+                            <span className="ms-2">{t('Search')}</span>
                         </Button>
                     </form>
                 </WhiteBox>

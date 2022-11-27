@@ -2,8 +2,10 @@ import { FaCheck, FaUpload } from 'react-icons/fa';
 import { httpClient } from 'providers/helpers';
 import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 function UploadField({ name, onChange, value, type = 'image', label, path, className, ...rest }) {
+    const { t } = useTranslation();
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleChange = (event) => {
@@ -34,7 +36,7 @@ function UploadField({ name, onChange, value, type = 'image', label, path, class
 
     return (
         <div className={className}>
-            <Form.Label>{label}</Form.Label>
+            <Form.Label>{t(label)}</Form.Label>
             <div className="upload-field">
                 <Form.Control {...additionalPros} type="file" name={name} onChange={handleChange} {...rest} />
                 <div className="inner">
@@ -42,7 +44,11 @@ function UploadField({ name, onChange, value, type = 'image', label, path, class
                     {value ? <FaCheck /> : <FaUpload />}
                 </div>
             </div>
-            {value && <a target="_blank" href={value}>Preview</a>}
+            {value && (
+                <a target="_blank" href={value}>
+                    {t('Preview')}
+                </a>
+            )}
         </div>
     );
 }

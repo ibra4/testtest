@@ -4,8 +4,10 @@ import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
 import React from 'react';
 import { Col, Row, Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 function Filters({ queryParams, onSearch }) {
+    const { t } = useTranslation();
     return (
         <Formik
             enableReinitialize
@@ -22,7 +24,7 @@ function Filters({ queryParams, onSearch }) {
                             <Col md={4}>
                                 <TextField
                                     name="name"
-                                    label="Name"
+                                    label='Name'
                                     onChange={handleChange}
                                     value={values.name}
                                     onBlur={handleBlur}
@@ -33,7 +35,7 @@ function Filters({ queryParams, onSearch }) {
                             <Col md={4}>
                                 <TextField
                                     name="email"
-                                    label="Email"
+                                    label='Email'
                                     onChange={handleChange}
                                     value={values.email}
                                     onBlur={handleBlur}
@@ -44,7 +46,7 @@ function Filters({ queryParams, onSearch }) {
                         </Row>
                         <Button disabled={isSubmitting} type="submit">
                             <FaSearch />
-                            <span className="ms-2">Search</span>
+                            <span className="ms-2">{t('Search')}</span>
                         </Button>
                     </form>
                 </WhiteBox>

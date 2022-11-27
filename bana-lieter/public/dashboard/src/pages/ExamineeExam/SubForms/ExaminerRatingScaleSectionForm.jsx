@@ -6,11 +6,13 @@ import { Formik } from 'formik';
 import { useReport } from 'providers/hooks/useReport';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 
 const validationSchema = yup.object().shape({});
 
 function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
+    const { t } = useTranslation();
     const { submitHandler, data, isLoading } = useReport(initialValues, onSubmit, 'examiner');
     return (
         <WhiteBox classes="p-0">
@@ -22,12 +24,12 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
             >
                 {({ values, errors, touched, handleChange, setFieldValue, handleBlur, handleSubmit, isSubmitting }) => (
                     <form onSubmit={handleSubmit} className="p-25">
-                        <div class="title p-25 mb-0 ps-0 pt-0">Examiner rating scale Section A-D</div>
+                        <div class="title p-25 mb-0 ps-0 pt-0">{t('Examiner rating scale Section')} A-D</div>
                         <Row>
                             <Col md={3}>
                                 <TextField
                                     name="attention"
-                                    label="Attention"
+                                    label='Attention'
                                     onChange={handleChange}
                                     value={values.attention}
                                     onBlur={handleBlur}
@@ -39,7 +41,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                             <Col md={3}>
                                 <TextField
                                     name="organization_impulse_control"
-                                    label="Organization/Impulse Control"
+                                    label='Organization/Impulse Control'
                                     onChange={handleChange}
                                     value={values.organization_impulse_control}
                                     onBlur={handleBlur}
@@ -51,7 +53,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                             <Col md={3}>
                                 <TextField
                                     name="activity_level"
-                                    label="Activity Level"
+                                    label='Activity Level'
                                     onChange={handleChange}
                                     value={values.activity_level}
                                     onBlur={handleBlur}
@@ -63,7 +65,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                             <Col md={3}>
                                 <TextField
                                     name="sociability"
-                                    label="Sociability"
+                                    label='Sociability'
                                     onChange={handleChange}
                                     value={values.sociability}
                                     onBlur={handleBlur}
@@ -73,12 +75,12 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                                 />
                             </Col>
                         </Row>
-                        <div class="title p-25 mb-0 ps-0">Examiner rating scale Section E-H</div>
+                        <div class="title p-25 mb-0 ps-0">{t('Examiner rating scale Section')} E-H</div>
                         <Row>
                             <Col md={3}>
                                 <TextField
                                     name="energy_and_feelings"
-                                    label="Energy and Feelings"
+                                    label='Energy and Feelings'
                                     onChange={handleChange}
                                     value={values.energy_and_feelings}
                                     onBlur={handleBlur}
@@ -90,7 +92,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                             <Col md={3}>
                                 <TextField
                                     name="regulation"
-                                    label="Regulation"
+                                    label='Regulation'
                                     onChange={handleChange}
                                     value={values.regulation}
                                     onBlur={handleBlur}
@@ -102,7 +104,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                             <Col md={3}>
                                 <TextField
                                     name="anxiety"
-                                    label="Anxiety"
+                                    label='Anxiety'
                                     onChange={handleChange}
                                     value={values.anxiety}
                                     onBlur={handleBlur}
@@ -114,7 +116,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit }) {
                             <Col md={3}>
                                 <TextField
                                     name="sensory_reaction"
-                                    label="Sensory Reaction"
+                                    label='Sensory Reaction'
                                     onChange={handleChange}
                                     value={values.sensory_reaction}
                                     onBlur={handleBlur}

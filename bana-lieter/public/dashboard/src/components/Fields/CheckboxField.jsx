@@ -1,13 +1,15 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 function CheckboxField({ name, onChange, value, label, error, className, ...rest }) {
+    const { t } = useTranslation();
     return (
         <div className={className}>
             <div className="input-group has-validation">
                 <Form.Check
                     name={name}
-                    label={label}
+                    label={t(label)}
                     isInvalid={!!error}
                     onChange={onChange}
                     checked={value}

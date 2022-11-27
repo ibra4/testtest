@@ -7,16 +7,17 @@ import { Formik } from 'formik';
 import { ROUTES } from 'providers/routes';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import * as Yup from 'yup';
 
-const validationSchema = Yup.object().shape({
-    title: Yup.string().min(4, 'Too Short!').max(50, 'Too Long!').required('Name field is required!'),
-    description: Yup.string().required('Description field is required!'),
-    image: Yup.string().required('Image field is required!')
-});
-
 function Form({ initialValues, config, onSubmit }) {
+    const { t } = useTranslation();
+    const validationSchema = Yup.object().shape({
+        title: Yup.string().required('Name field is required!'),
+        description: Yup.string().required(t('Description field is required!')),
+        image: Yup.string().required(t('Image field is required!'))
+    });
     const [cities, setCities] = useState([]);
     useEffect(() => {
         if (initialValues && initialValues.country_id) {
@@ -45,7 +46,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col className="col-auto">
                                 <UploadField
                                     name="image"
-                                    label="Image"
+                                    label='Image'
                                     onChange={(value) => setFieldValue('image', value)}
                                     value={values.image}
                                     onBlur={handleBlur}
@@ -59,7 +60,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="title"
-                                            label="Title"
+                                            label='Title'
                                             onChange={handleChange}
                                             value={values.title}
                                             onBlur={handleBlur}
@@ -72,7 +73,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={8}>
                                         <TextAreaField
                                             name="description"
-                                            label="Description"
+                                            label='Description'
                                             onChange={handleChange}
                                             value={values.description}
                                             onBlur={handleBlur}

@@ -6,8 +6,10 @@ import { useDataTable } from 'providers/hooks/useDataTable'
 import View from './View'
 import FullLoader from 'components/FullLoader'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 function ExamineesIndex() {
+    const { t } = useTranslation()
     const config = useSelector(state => state.app.config)
 
     const [status, setStatus] = useState("not-ready")
@@ -21,7 +23,7 @@ function ExamineesIndex() {
     const { data, onSearch, isLoading } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.EXAMINEES.LIST)
 
     return (
-        <Layout title='Examinees'>
+        <Layout title={t('Examinees')}>
             <Filters onSearch={onSearch} queryParams={queryParams} config={config} />
             {isLoading && <FullLoader />}
             <View data={data} onSearch={onSearch} queryParams={queryParams} />

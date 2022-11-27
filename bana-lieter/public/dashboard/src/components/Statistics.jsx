@@ -1,10 +1,12 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import WhiteBox from './WhiteBox';
-import {TbReportAnalytics, TbReport, TbReportMoney} from 'react-icons/tb'
+import { TbReportAnalytics, TbReport, TbReportMoney } from 'react-icons/tb';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 function Statistics({ statistics }) {
+    const { t } = useTranslation();
     const renderStatisticItem = (icon, value, label, svgWrapperClass) => (
         <Col md={4} className="d-flex">
             <WhiteBox classes="statistic-item flex-1">
@@ -14,7 +16,7 @@ function Statistics({ statistics }) {
                     </Col>
                     <Col sm={9}>
                         <div className="number">{value}</div>
-                        <div className="label">{label}</div>
+                        <div className="label">{t(label)}</div>
                     </Col>
                 </Row>
             </WhiteBox>

@@ -7,6 +7,7 @@ import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
 import { useSelector } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
+import { useTranslation } from 'react-i18next'
 
 const defaultUser = {
     min_age: '',
@@ -17,9 +18,10 @@ const defaultUser = {
 
 function LeiterRecordFormIndex() {
 
+    const { t } = useTranslation()
     const { id, type } = useParams()
 
-    const title = id ? `Update leiter record #${id}` : 'Create new leiter record'
+    const title = id ? `${t('update', { name: t('Leiter record') })}` : t('create_new', { name: t('Leiter record') })
 
     const { push } = useHistory()
 
@@ -52,7 +54,7 @@ function LeiterRecordFormIndex() {
             res = await httpClient.post(`${ROUTES.LEITER_RECORDS.CREATE}/create`, values)
         }
         if (res.status == 200) {
-            addToast('Leiter record Saved Successfully', { appearance: 'success' });
+            addToast(t('Leiter record Saved Successfully'), { appearance: 'success' });
             push(`/leiter-records/${data.type}`)
         } else {
             return res

@@ -5,8 +5,10 @@ import HeaderBreadcrumb from './HeaderBreadcrumb';
 import { AiOutlineNotification, AiOutlineMessage } from 'react-icons/ai';
 import { BiMessageSquareDetail } from 'react-icons/bi';
 import { CgMoreO } from 'react-icons/cg';
+import { useTranslation } from 'react-i18next';
 
 function Header({ title }) {
+    const { t } = useTranslation();
     return (
         <div className="header">
             <Container fluid>
@@ -22,7 +24,7 @@ function Header({ title }) {
                                     type="text"
                                     className="search-input"
                                     name="search"
-                                    placeholder="Search..."
+                                    placeholder={t("Search") + "..."}
                                 />
                             </Form>
                             <Dropdown className="notifications-dropdown mx-2">
@@ -33,7 +35,7 @@ function Header({ title }) {
                                 <Dropdown.Menu>
                                     <Dropdown.Item href="#">
                                         <AiOutlineNotification />
-                                        <span className="ms-2">Notifications</span>
+                                        <span className="ms-2">{t('Notifications')}</span>
                                     </Dropdown.Item>
                                     <Dropdown.Divider />
                                     <Dropdown.Item href="#" className="unread">
@@ -59,7 +61,7 @@ function Header({ title }) {
                                     <Dropdown.Divider />
                                     <Dropdown.Item href="#" className="text-primary">
                                         <CgMoreO />
-                                        <span className="ms-2">more</span>
+                                        <span className="ms-2">{t('more')}</span>
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
@@ -68,12 +70,11 @@ function Header({ title }) {
                                     <img src="/images/girl.jpg" />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Link 2</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">{t('My Profile')}</Dropdown.Item>
                                     <Dropdown.Divider />
                                     <Dropdown.Item href="/admin/logout" className="text-danger">
                                         <FaSignOutAlt />
-                                        <span className="ms-2">Logout</span>
+                                        <span className="ms-2">{t('Logout')}</span>
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

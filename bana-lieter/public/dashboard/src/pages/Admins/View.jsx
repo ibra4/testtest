@@ -9,8 +9,10 @@ import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
 import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 import WhiteBox from 'components/WhiteBox';
+import { useTranslation } from 'react-i18next';
 
 const View = ({ data, queryParams, onSearch }) => {
+    const { t } = useTranslation();
     const { push } = useHistory();
 
     const renderRow = (item) => (
@@ -46,7 +48,7 @@ const View = ({ data, queryParams, onSearch }) => {
                 <div className="d-flex">
                     <Link to="/admins/create" className="btn btn-primary">
                         <FaPlus />
-                        <span className="ms-2">Add new Admin</span>
+                        <span className="ms-2">{t('create_new', {name: t('Admin')})}</span>
                     </Link>
                     <a
                         className="btn btn-success ms-2"
@@ -54,7 +56,7 @@ const View = ({ data, queryParams, onSearch }) => {
                         href={`/admins/export?${QueryString.stringify(queryParams)}`}
                     >
                         <FaFileExcel />
-                        <span className="ms-2">Export to Excel</span>
+                        <span className="ms-2">{t('Export to Excel')}</span>
                     </a>
                 </div>
             </div>
@@ -62,13 +64,13 @@ const View = ({ data, queryParams, onSearch }) => {
                 <Table striped>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Number of records</th>
-                            <th>Created At</th>
-                            <th>Latest Update</th>
-                            <th>Actions</th>
+                            <th>{t('ID')}</th>
+                            <th>{t('Name')}</th>
+                            <th>{t('Email')}</th>
+                            <th>{t('Number of records')}</th>
+                            <th>{t('Created At')}</th>
+                            <th>{t('Latest Update')}</th>
+                            <th>{t('Actions')}</th>
                         </tr>
                     </thead>
                     <tbody>{data && data.data && data.data.map(renderRow)}</tbody>

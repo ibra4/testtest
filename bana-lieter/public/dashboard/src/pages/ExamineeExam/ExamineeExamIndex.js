@@ -5,9 +5,11 @@ import View from './View'
 import { httpClient } from 'providers/helpers'
 import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
+import { useTranslation } from 'react-i18next'
 
 function ExamineeExamIndex() {
 
+    const { t } = useTranslation()
     const { id } = useParams()
 
     const [data, setData] = useState({})
@@ -32,7 +34,7 @@ function ExamineeExamIndex() {
     }
 
     return (
-        <Layout title="Exam">
+        <Layout title={t("Exam")}>
             {status == "success" ? <View data={data} onSectionSubmit={onSectionSubmit} /> : <FullLoader />}
         </Layout>
     )

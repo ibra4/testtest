@@ -10,16 +10,18 @@ import { CONSTANTS } from 'providers/helpers/constants';
 import { ROUTES } from 'providers/routes';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import * as Yup from 'yup';
 
-const validationSchema = Yup.object().shape({
-    name: Yup.string().min(4, 'Too Short!').max(50, 'Too Long!').required('Name field is required!'),
-    email: Yup.string().email('Invalid email').required('Email field is required!'),
-    number_of_reports: Yup.number().integer().typeError('Numebr of reports must be an integer number').min(0)
-});
-
 function Form({ initialValues, config, onSubmit }) {
+    const { t } = useTranslation();
+    const validationSchema = Yup.object().shape({
+        name: Yup.string().required(t('Name field is required!')),
+        email: Yup.string().email(t('Invalid email')).required(t('Email field is required!')),
+        number_of_reports: Yup.number().integer().typeError(t('Numebr of reports must be an integer number')).min(0)
+    });
+
     const [cities, setCities] = useState([]);
     useEffect(() => {
         if (initialValues && initialValues.country_id) {
@@ -48,7 +50,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col className="col-auto">
                                 <UploadField
                                     name="avatar"
-                                    label="Avatar"
+                                    label='Avatar'
                                     onChange={(value) => setFieldValue('avatar', value)}
                                     value={values.avatar}
                                     onBlur={handleBlur}
@@ -60,7 +62,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col className="col-auto">
                                 <UploadField
                                     name="cv"
-                                    label="CV"
+                                    label='CV'
                                     onChange={(value) => setFieldValue('cv', value)}
                                     value={values.cv}
                                     onBlur={handleBlur}
@@ -75,7 +77,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="name"
-                                            label="Name"
+                                            label='Name'
                                             onChange={handleChange}
                                             value={values.name}
                                             onBlur={handleBlur}
@@ -86,7 +88,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="email"
-                                            label="Email"
+                                            label='Email'
                                             onChange={handleChange}
                                             value={values.email}
                                             onBlur={handleBlur}
@@ -98,7 +100,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="phone_number"
-                                            label="Phone Number"
+                                            label='Phone Number'
                                             onChange={handleChange}
                                             value={values.phone_number}
                                             onBlur={handleBlur}
@@ -109,7 +111,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={4}>
                                         <SelectField
                                             name="gender"
-                                            label="Gender"
+                                            label='Gender'
                                             onChange={handleChange}
                                             value={values.gender}
                                             onBlur={handleBlur}
@@ -123,7 +125,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="password"
-                                            label="Password"
+                                            label='Password'
                                             onChange={handleChange}
                                             value={values.password}
                                             onBlur={handleBlur}
@@ -135,7 +137,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="password_confirmation"
-                                            label="Confirm Password"
+                                            label={'Confirm Password'}
                                             onChange={handleChange}
                                             value={values.password_confirmation}
                                             onBlur={handleBlur}
@@ -151,7 +153,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col md={4}>
                                 <TextField
                                     name="number_of_reports"
-                                    label="Number of reports"
+                                    label={'Number of reports'}
                                     onChange={handleChange}
                                     value={values.number_of_reports}
                                     onBlur={handleBlur}
@@ -163,7 +165,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col md={4}>
                                 <TextField
                                     name="expiration_date"
-                                    label="Expiration Date"
+                                    label='Expiration Date'
                                     onChange={handleChange}
                                     value={values.expiration_date}
                                     onBlur={handleBlur}
@@ -181,7 +183,7 @@ function Form({ initialValues, config, onSubmit }) {
                                         setFieldValue('city_id', '');
                                         setCities(config.countries.find((item) => item.id == value.id).cities);
                                     }}
-                                    label="Country"
+                                    label={'Country'}
                                     value={values.country_id}
                                     onBlur={handleBlur}
                                     error={errors.country_id}
@@ -192,7 +194,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col md={4}>
                                 <SelectField2
                                     onChange={(value) => setFieldValue('city_id', value.id)}
-                                    label="City"
+                                    label={'City'}
                                     value={values.city_id}
                                     onBlur={handleBlur}
                                     error={errors.city_id}
@@ -206,7 +208,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <CheckboxField
                                     onChange={(evt) => setFieldValue('is_active', evt.target.checked)}
                                     name="is_active"
-                                    label="Is Active?"
+                                    label='Is Active?'
                                     value={values.is_active}
                                     onBlur={handleBlur}
                                     error={errors.is_active}

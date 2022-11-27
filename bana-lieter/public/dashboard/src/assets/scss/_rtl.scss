@@ -1,0 +1,10 @@
+html[dir="rtl"] {
+    .menu-toggle {
+        right: unset;
+        left: -10px
+    }
+    svg {
+        // transform: rotate(180deg);
+        transform: scaleX(-1);
+    }
+}

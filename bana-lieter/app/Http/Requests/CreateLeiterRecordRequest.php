@@ -13,7 +13,7 @@ class CreateLeiterRecordRequest extends FormRequest
      */
     public function rules()
     {
-        $table_types = implode(',', config('enums.leiter_tables_types'));
+        $table_types = implode(',', array_keys(config('enums.leiter_tables_types')));
 
         return [
             'min_age' => 'required|numeric|integer|min:0',

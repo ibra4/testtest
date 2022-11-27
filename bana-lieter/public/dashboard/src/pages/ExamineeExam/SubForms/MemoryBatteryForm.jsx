@@ -16,7 +16,7 @@ function MemoryBatteryForm({ initialValues, onSubmit }) {
 
     return (
         <WhiteBox classes="p-0">
-            <ReportTitle title="Memory Battery" />
+            <ReportTitle title='Memory Battery' />
             <Formik
                 enableReinitialize
                 initialValues={initialValues}

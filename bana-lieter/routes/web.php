@@ -23,8 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/admin/logout', [LoginController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/admin/{any?}', function () {
-        return view('dashboard');
+    Route::get('{langcode}/admin/{any?}', function ($langcode) {
+        return view('dashboard', ['langcode' => $langcode]);
     })->where('any', '.*')->name('dashboard');
 
     Route::get('/admins/export', [AdminsController::class, 'export']);
@@ -36,7 +36,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Auth::routes();
 
 Route::get('/', function () {
-    return redirect()->route('dashboard');
+    $stop = "";
+    return redirect()->route('dashboard', ['langcode' => 'ar']);
 });
 
 Route::get('debug/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('can:root');

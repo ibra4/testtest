@@ -5,15 +5,17 @@ import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
 import { useReport } from 'providers/hooks/useReport';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 
 const validationSchema = yup.object().shape({});
 
 function NarrativeReportForm({ initialValues, onSubmit }) {
+    const { t } = useTranslation();
     const { submitHandler, data, isLoading } = useReport(initialValues, onSubmit, 'narrative');
     return (
         <WhiteBox classes="p-0">
-            <ReportTitle title="Narrative Report (En)" />
+            <ReportTitle title={t('Narrative Report (En)')} />
             <Formik
                 enableReinitialize
                 initialValues={initialValues}

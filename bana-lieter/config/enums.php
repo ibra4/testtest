@@ -2,15 +2,15 @@
 
 return [
     'leiter_tables_types' => [
-        'attention',
-        'classification_analogies',
-        'figure_ground',
-        'form_completion',
-        'forward_memory',
-        'nonverbal_stroop_congruent_correct',
-        'nonverbal_stroop_incongruent_correct',
-        'reverse_memory',
-        'sequential_order',
-        'visual_patterns'
+        'attention' => 'Attention',
+        'classification_analogies' => 'Classification Analogies',
+        'figure_ground' => 'Figure Ground',
+        'form_completion' => 'Form Completion',
+        'forward_memory' => 'Forward Memory',
+        'nonverbal_stroop_congruent_correct' => 'Nonverbal Stroop Congruent Correct',
+        'nonverbal_stroop_incongruent_correct' => 'Nonverbal Stroop Incongruent Correct',
+        'reverse_memory' => 'Reverse Memory',
+        'sequential_order' => 'Sequential Order',
+        'visual_patterns' => 'Visual Patterns'
     ]
 ];

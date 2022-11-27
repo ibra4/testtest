@@ -15,6 +15,7 @@ const validationSchema = Yup.object().shape({
 });
 
 function Form({ initialValues, config, onSubmit }) {
+    // @TODO: Check if used
     const [cities, setCities] = useState([]);
     useEffect(() => {
         if (initialValues && initialValues.country_id) {
@@ -44,7 +45,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={3}>
                                     <TextField
                                         name="min_age"
-                                        label="Min age"
+                                        label='Min age'
                                         onChange={handleChange}
                                         value={values.min_age}
                                         onBlur={handleBlur}
@@ -56,7 +57,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={3}>
                                     <TextField
                                         name="max_age"
-                                        label="Max age"
+                                        label='Max age'
                                         onChange={handleChange}
                                         value={values.max_age}
                                         onBlur={handleBlur}
@@ -68,7 +69,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={3}>
                                     <TextField
                                         name="value"
-                                        label="Value"
+                                        label='Value'
                                         onChange={handleChange}
                                         value={values.value}
                                         onBlur={handleBlur}
@@ -80,7 +81,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={3}>
                                     <TextField
                                         name="scaled_score"
-                                        label="Scaled Score"
+                                        label='Scaled Score'
                                         onChange={handleChange}
                                         value={values.scaled_score}
                                         onBlur={handleBlur}

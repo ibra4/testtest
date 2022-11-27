@@ -7,6 +7,7 @@ import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
 import { useSelector } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
+import { useTranslation } from 'react-i18next'
 
 const defaultSlider = {
     title: '',
@@ -16,9 +17,10 @@ const defaultSlider = {
 
 function SliderFormIndex() {
 
+    const { t } = useTranslation()
     const { id } = useParams()
 
-    const title = id ? `Update slider #${id}` : 'Create new slider'
+    const title = id ? `${t('update', { name: t('Slider') })} #${id}` : t('create_new', { name: t('Slider') })
 
     const { push } = useHistory()
 
@@ -51,7 +53,7 @@ function SliderFormIndex() {
             res = await httpClient.post(`${ROUTES.SLIDERS.GET}/create`, data)
         }
         if (res.status == 200) {
-            addToast('Slider Saved Successfully', { appearance: 'success' });
+            addToast(t('Slider Saved Successfully'), { appearance: 'success' });
             push('/settings/slider')
         } else {
             return res

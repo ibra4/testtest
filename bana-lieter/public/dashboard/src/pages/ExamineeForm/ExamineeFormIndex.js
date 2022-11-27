@@ -7,6 +7,7 @@ import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
 import { useSelector } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
+import { useTranslation } from 'react-i18next'
 
 const defaultUser = {
     name: '',
@@ -21,9 +22,10 @@ const defaultUser = {
 
 function ExamineeFormIndex() {
 
+    const { t } = useTranslation()
     const { id } = useParams()
 
-    const title = id ? `Update examinee #${id}` : 'Create new examinee'
+    const title = id ? `${t('update', { name: t('Examinee') })} #${id}` : t('create_new', { name: t('Examinee') })
 
     const { push } = useHistory()
 
@@ -57,13 +59,13 @@ function ExamineeFormIndex() {
                 res = await httpClient.post(ROUTES.EXAMINEES.CREATE, data)
             }
             if (res.status == 200) {
-                addToast('Examinee Saved Successfully', { appearance: 'success' });
+                addToast(t('Examinee Saved Successfully'), { appearance: 'success' });
                 push('/examinees')
             } else {
                 return res
             }
         } catch (error) {
-            addToast("Something went wrong");
+            addToast(t('Something went wrong'));
         }
     }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { ROUTES } from 'providers/routes';
 import { setConfig } from 'providers/actions/AppActions';
@@ -7,7 +7,7 @@ import FullLoader from 'components/FullLoader';
 import Dashboard from 'pages/Dashboard';
 import AdminsIndex from 'pages/Admins/AdminsIndex';
 import SubAdminsIndex from 'pages/SubAdmins/SubAdminsIndex';
-import { httpClient } from 'providers/helpers';
+import { getLangcode, httpClient } from 'providers/helpers';
 import AdminFormIndex from 'pages/AdminForm/AdminFormIndex';
 import SubAdminFormIndex from 'pages/SubAdminForm/SubAdminFormIndex';
 import ExamineesIndex from 'pages/Examinees/ExamineesIndex';
@@ -17,10 +17,10 @@ import LeiterRecordFormIndex from 'pages/LeiterRecordForm/LeiterRecordFormIndex'
 import SlidersIndex from 'pages/Settings/Sliders/SlidersIndex';
 import SliderFormIndex from 'pages/Settings/SliderForm/SliderFormIndex';
 import ExamineeExamIndex from 'pages/ExamineeExam/ExamineeExamIndex';
-import AdminsNewIndex from 'pages/AdminsNew/AdminsNewIndex';
 
 const Routes = () => {
-  const [status, setStatus] = React.useState("loading");
+  const [status, setStatus] = useState("loading");
+  const [baseName, setBaseName] = useState()
 
   const dispatch = useDispatch();
 
@@ -34,12 +34,25 @@ const Routes = () => {
     }
   };
 
+  const getLang = () => {
+    if (getLangcode() == null) {
+      localStorage.setItem('lang', 'en');
+    }
+    const langcode = getLangcode();
+    setBaseName(`${langcode}/admin`)
+  }
+
   React.useEffect(() => {
+    getLang()
     getSettings();
   }, []);
 
+  React.useEffect(() => {
+    console.log("baseName : ", baseName)
+  }, [baseName])
+
   return status === "success" ? (
-    <BrowserRouter basename="/admin">
+    <BrowserRouter basename={baseName}>
       <Switch>
         {/* Dashboard */}
         <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
@@ -47,7 +60,6 @@ const Routes = () => {
 
         {/* Admins */}
         <Route path="/admins" component={AdminsIndex} exact />
-        <Route path="/admins-new" component={AdminsNewIndex} exact />
         <Route path="/admins/create" component={AdminFormIndex} exact />
         <Route path="/admins/:id/update" component={AdminFormIndex} exact />
 

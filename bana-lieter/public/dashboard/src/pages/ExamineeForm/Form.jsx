@@ -8,18 +8,19 @@ import { Formik } from 'formik';
 import { CONSTANTS } from 'providers/helpers/constants';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import * as Yup from 'yup';
 
-const validationSchema = Yup.object().shape({
-    name: Yup.string().min(4, 'Too Short!').max(50, 'Too Long!').required('Name field is required!'),
-    birthday: Yup.date().required(),
-    application_date: Yup.date().required(),
-    gender: Yup.number().required(),
-    country_id: Yup.number().required()
-});
-
 function Form({ initialValues, config, onSubmit }) {
+    const { t } = useTranslation();
+    const validationSchema = Yup.object().shape({
+        name: Yup.string().required(t('Name field is required!')),
+        birthday: Yup.date().required(),
+        application_date: Yup.date().required(),
+        gender: Yup.number().required(),
+        country_id: Yup.number().required()
+    });
     const [cities, setCities] = useState([]);
     useEffect(() => {
         if (initialValues && initialValues.country_id) {
@@ -49,7 +50,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={4}>
                                     <TextField
                                         name="name"
-                                        label="Name"
+                                        label='Name'
                                         onChange={handleChange}
                                         value={values.name}
                                         onBlur={handleBlur}
@@ -60,7 +61,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={4}>
                                     <TextField
                                         name="birthday"
-                                        label="Birthday"
+                                        label='Birthday'
                                         onChange={handleChange}
                                         value={values.birthday}
                                         onBlur={handleBlur}
@@ -72,7 +73,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={4}>
                                     <TextField
                                         name="application_date"
-                                        label="Application Date"
+                                        label='Application Date'
                                         onChange={handleChange}
                                         value={values.application_date}
                                         onBlur={handleBlur}
@@ -84,7 +85,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={4}>
                                     <SelectField
                                         name="gender"
-                                        label="Gender"
+                                        label='Gender'
                                         onChange={handleChange}
                                         value={values.gender}
                                         onBlur={handleBlur}
@@ -100,7 +101,7 @@ function Form({ initialValues, config, onSubmit }) {
                                             setFieldValue('city_id', '');
                                             setCities(config.countries.find((item) => item.id == value.id).cities);
                                         }}
-                                        label="Country"
+                                        label='Country'
                                         name="country_id"
                                         value={values.country_id}
                                         onBlur={handleBlur}
@@ -112,7 +113,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={4}>
                                     <SelectField2
                                         onChange={(value) => setFieldValue('city_id', value.id)}
-                                        label="City"
+                                        label='City'
                                         value={values.city_id}
                                         onBlur={handleBlur}
                                         error={touched.city_id && errors.city_id}
@@ -124,7 +125,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={4}>
                                         <SelectField
                                             name="admin_id"
-                                            label="Admin"
+                                            label='Admin'
                                             onChange={handleChange}
                                             value={values.admin_id}
                                             onBlur={handleBlur}
@@ -139,7 +140,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={6}>
                                     <TextAreaField
                                         name="examiner_notes"
-                                        label="Examiner Notes"
+                                        label='Examiner Notes'
                                         onChange={handleChange}
                                         value={values.examiner_notes}
                                         onBlur={handleBlur}

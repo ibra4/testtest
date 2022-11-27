@@ -1,8 +1,9 @@
 import React from 'react';
-import { FaHome, FaUser, FaUsers, FaCog, FaChevronRight, FaBars, FaTable, FaImage, FaImages } from 'react-icons/fa';
+import { FaHome, FaUser, FaUsers, FaCog, FaBars, FaTable, FaImage } from 'react-icons/fa';
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar';
 import { Link, useLocation } from 'react-router-dom';
-import { hasAnyRole, hasRole } from 'providers/helpers';
+import { hasAnyRole, hasRole, isRtl } from 'providers/helpers';
+import { useTranslation } from 'react-i18next';
 
 const routes = [
     {
@@ -122,19 +123,20 @@ const routes2 = [
     }
 ];
 
-const renderMenuLabel = (icon, label) => (
-    <>
-        {icon}
-        <span className="ms-2">{label}</span>
-    </>
-);
-
 function SideMenu() {
     const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } = useProSidebar();
+    const { t } = useTranslation();
 
     const { pathname } = useLocation();
     const baseRoute = pathname.split('/')[1];
     const fullRoute = pathname;
+
+    const renderMenuLabel = (icon, label) => (
+        <>
+            {icon}
+            <span className="ms-2">{t(label)}</span>
+        </>
+    );
 
     const renderRouteLink = ({ routeName, label, icon, role = null, sublinks, sub = false }) => {
         var show;
@@ -176,7 +178,7 @@ function SideMenu() {
             <a href="#" className="menu-toggle" onClick={() => collapseSidebar(!collapsed)}>
                 <FaBars />
             </a>
-            <Sidebar collapsedWidth={'100px'} breakPoint="sm">
+            <Sidebar collapsedWidth={'100px'} breakPoint="sm" rtl={isRtl()}>
                 <Menu>
                     <div className="menu-logo">
                         <img src={collapsed ? '/images/logo_teaser.png' : '/images/logo.png'} />

@@ -8,6 +8,7 @@ import FullLoader from 'components/FullLoader'
 import { useSelector } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
 import NotFoundErrorMessage from 'components/NotFoundErrorMessage'
+import { useTranslation } from 'react-i18next'
 
 const defaultUser = {
     name: '',
@@ -19,9 +20,10 @@ const defaultUser = {
 
 function SubAdminFormIndex() {
 
+    const { t } = useTranslation()
     const { id } = useParams()
 
-    const title = id ? `Update Sub admin #${id}` : 'Create new Sub admin'
+    const title = id ? `${t('Update Sub admin')} #${id}` : t('create_new', {name: t('Admin')})
 
     const { push } = useHistory()
 
@@ -38,7 +40,7 @@ function SubAdminFormIndex() {
         } catch (error) {
             if (error.response.status == 404) {
                 setStatus("error")
-                setMessage("SubAdmin not found")
+                setMessage(t("SubAdmin not found"))
             }
         }
     }
@@ -62,7 +64,7 @@ function SubAdminFormIndex() {
             res = await httpClient.post(ROUTES.SUB_ADMINS.CREATE, data)
         }
         if (res.status == 200) {
-            addToast('Sub Admin Saved Successfully', { appearance: 'success' });
+            addToast(t('Sub Admin Saved Successfully'), { appearance: 'success' });
             push('/sub-admins')
         } else {
             return res

@@ -6,8 +6,10 @@ import { useDataTable } from 'providers/hooks/useDataTable'
 import View from './View'
 import { useSelector } from 'react-redux'
 import FullLoader from 'components/FullLoader'
+import { useTranslation } from 'react-i18next'
 
 function SubAdminsIndex() {
+    const { t } = useTranslation()
     const [status, setStatus] = useState("not-ready")
     const config = useSelector(state => state.app.config)
 
@@ -20,7 +22,7 @@ function SubAdminsIndex() {
     const { data, onSearch, isLoading } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.SUB_ADMINS.LIST)
 
     return (
-        <Layout title='Sub Admins'>
+        <Layout title={t('Sub Admins')}>
             <Filters onSearch={onSearch} queryParams={queryParams} config={config} />
             {isLoading && <FullLoader />}
             <View data={data} onSearch={onSearch} queryParams={queryParams} />

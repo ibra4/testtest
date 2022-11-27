@@ -1,48 +1,47 @@
 import { FaEdit, FaFileExcel, FaPlus, FaTrash } from 'react-icons/fa';
 import ActionButton from 'components/Fields/ActionButton';
 import React from 'react';
-import { Table } from 'react-bootstrap';
 import QueryString from 'qs';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import Showing from 'components/Datatable/Showing';
-import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
-import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 import WhiteBox from 'components/WhiteBox';
 import DataTable from 'react-data-table-component';
-
+import { useTranslation } from 'react-i18next';
+import { getLeiterRecordLabelByType } from 'providers/helpers';
 
 const View = ({ data, queryParams, onSearch }) => {
+    const { t } = useTranslation();
     const { push } = useHistory();
     const { type } = useParams();
     const columns = [
         {
             id: 'scaled_score',
-            name: 'Scaled Score',
+            name: t('Scaled Score'),
             selector: (row) => row.scaled_score,
             sortable: true
         },
         {
             id: 'value',
-            name: 'Value',
+            name: t('Value'),
             selector: (row) => row.value,
             sortable: true
         },
         {
             id: 'min_age',
-            name: 'Min age',
+            name: t('Min age'),
             selector: (row) => row.min_age,
             sortable: true
         },
         {
             id: 'max_age',
-            name: 'Max Age',
+            name: t('Max age'),
             selector: (row) => row.max_age,
             sortable: true
         },
         {
             id: 'actions',
-            name: 'actions',
+            name: t('Actions'),
             selector: (row) => (
                 <>
                     <div className="d-flex">
@@ -57,7 +56,7 @@ const View = ({ data, queryParams, onSearch }) => {
             )
         }
     ];
-    
+
     const handleSort = ({ id }, order) => {
         onSearch({ ...queryParams, sort: [id, order] });
     };
@@ -89,7 +88,7 @@ const View = ({ data, queryParams, onSearch }) => {
                 <div className="d-flex">
                     <Link to={`/leiter-records/${type}/create`} className="btn btn-primary">
                         <FaPlus />
-                        <span className="ms-2">Add new Record</span>
+                        <span className="ms-2">{t('create_new', { name: t(getLeiterRecordLabelByType(type)) })}</span>
                     </Link>
                     <a
                         className="btn btn-success ms-2"
@@ -97,7 +96,7 @@ const View = ({ data, queryParams, onSearch }) => {
                         href={`/leiter-records/${type}/export?${QueryString.stringify(queryParams)}`}
                     >
                         <FaFileExcel />
-                        <span className="ms-2">Export to Excel</span>
+                        <span className="ms-2">{t('Export to Excel')}</span>
                     </a>
                 </div>
             </div>
