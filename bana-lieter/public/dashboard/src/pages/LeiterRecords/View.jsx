@@ -10,10 +10,11 @@ import DataTable from 'react-data-table-component';
 import { useTranslation } from 'react-i18next';
 import { getLeiterRecordLabelByType } from 'providers/helpers';
 
-const View = ({ data, queryParams, onSearch }) => {
+const View = ({ data, queryParams, onSearch, handleDelete }) => {
     const { t } = useTranslation();
     const { push } = useHistory();
     const { type } = useParams();
+
     const columns = [
         {
             id: 'scaled_score',
@@ -50,7 +51,7 @@ const View = ({ data, queryParams, onSearch }) => {
                             onClick={() => push(`/leiter-records/${row._id}/update`)}
                             variant="success"
                         />
-                        <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" classes="ms-3" />
+                        <ActionButton icon={<FaTrash />} onClick={() => handleDelete(row._id)} variant="danger" classes="ms-3" />
                     </div>
                 </>
             )

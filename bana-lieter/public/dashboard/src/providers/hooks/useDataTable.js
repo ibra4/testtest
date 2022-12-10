@@ -45,5 +45,5 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
         setIsLoading(false)
     }
 
-    return { onSearch, data, isLoading }
+    return { onSearch, data, isLoading, getData }
 }

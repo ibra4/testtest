@@ -40,6 +40,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/leiter-records/type/{type}', [LeiterRecordsController::class, 'getByType']);
         Route::post('/leiter-records/create', [LeiterRecordsController::class, 'create']);
         Route::put('/leiter-records/{id}/update', [LeiterRecordsController::class, 'update']);
+        Route::post('/leiter-records/{id}/delete', [LeiterRecordsController::class, 'delete']);
 
         // Sliders
         Route::get('/sliders', [SlidersController::class, 'index']);

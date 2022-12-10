@@ -18,9 +18,7 @@ class LeiterRecordsQuery
     public function get(Request $request, $type)
     {
         $query = LeiterRecordExportable::select('min_age', 'max_age', 'scaled_score', 'value')
-            ->where(['type' => $type])
-            ->orderBy('scaled_score', 'ASC')
-            ->orderBy('value', 'ASC');
+            ->where(['type' => $type]);
 
         if ($request->min_age && $request->min_age != '') {
             $query->where('min_age', (int)$request->min_age);
