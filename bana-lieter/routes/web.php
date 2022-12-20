@@ -41,3 +41,7 @@ Route::get('/', function () {
 });
 
 Route::get('debug/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('can:root');
+
+Route::get('pdf', function () {
+    return view('pdf');
+});
