@@ -19,6 +19,7 @@ class LeiterRecordsService
 {
     public function getScaledScore($type, $rowScore, $age)
     {
+        $age = 70; //@TODO: Remove
         $record = LeiterRecord::select(
             'scaled_score'
         )
@@ -34,6 +35,7 @@ class LeiterRecordsService
 
     public function getExaminerScaledScore(string $model, $rowScore, $age)
     {
+        $age = 70; //@TODO: Remove
         return $model::where('min_age', '<=', $age)
             ->where('max_age', '>=', $age)
             ->where('row_score', $rowScore)
@@ -43,6 +45,7 @@ class LeiterRecordsService
 
     public function getAttentionScaledScore($field, $report, $age)
     {
+        $age = 70; //@TODO: Remove
         switch ($field) {
             case 'attention_sustained_error':
                 $model = AttentionSustainedError::class;
