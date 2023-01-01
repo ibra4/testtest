@@ -116,6 +116,10 @@ class LeiterRecordsService
     {
         $nonverbalIq = ConfidenceInterval::where('nonverbal_iq', $nonverbal_iq)->first();
 
+        if (!$nonverbalIq) {
+            return "Not found";
+        }
+
         if (!$nonverbalIq->low) {
             return $nonverbalIq->high;
         }
