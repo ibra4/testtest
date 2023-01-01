@@ -26,11 +26,11 @@ function View({ data: { examinee, reports }, onSectionSubmit }) {
                     <LabelValueCol label={'Notes'} value={examinee.examiner_notes} md={12} />
                 </Row>
             </WhiteBox>
-            <CognitiveSubtestsForm initialValues={reports.cognitive} onSubmit={onSectionSubmit} />
-            <MemoryBatteryForm initialValues={reports.memory} onSubmit={onSectionSubmit} />
-            <AttentionForm initialValues={reports.attention} onSubmit={onSectionSubmit} />
-            <ExaminerRatingScaleSectionForm initialValues={reports.examiner} onSubmit={onSectionSubmit} />
-            <NarrativeReportForm initialValues={reports.narrative} onSubmit={onSectionSubmit} />
+            <CognitiveSubtestsForm examinee={examinee} initialValues={reports.cognitive} onSubmit={onSectionSubmit} />
+            <MemoryBatteryForm examinee={examinee} initialValues={reports.memory} onSubmit={onSectionSubmit} />
+            <AttentionForm examinee={examinee} initialValues={reports.attention} onSubmit={onSectionSubmit} />
+            <ExaminerRatingScaleSectionForm examinee={examinee} initialValues={reports.examiner} onSubmit={onSectionSubmit} />
+            <NarrativeReportForm examinee={examinee} initialValues={reports.narrative} onSubmit={onSectionSubmit} />
         </>
     );
 }

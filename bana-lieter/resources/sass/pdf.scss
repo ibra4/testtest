@@ -12,7 +12,10 @@ $orange: #ff7e29;
 .section .title::before,
 .bar,
 .point,
-.point > .inner {
+.point > .inner,
+tr,
+th,
+.table-header {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
 }
@@ -160,5 +163,21 @@ footer {
         &.fa-linkedin {
             color: #0072b1;
         }
+    }
+}
+
+.table-header {
+    border-top: 2px solid #dee2e6;
+    text-align: center;
+    font-weight: bold;
+    padding: 8px 0;
+    color: white;
+    background: #578bbe;
+    font-size: 22px;
+}
+
+.table {
+    tr.bg, thead tr {
+        background-color: rgba(0, 0, 0, 0.05);
     }
 }

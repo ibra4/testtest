@@ -1,0 +1,1314 @@
+[
+    {
+        "diff": 17,
+        "nvm": 21.4,
+        "nviqvsps": 24.6,
+        "nvmvsps": 33.3,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 16,
+        "nvm": 24.6,
+        "nviqvsps": 31.7,
+        "nvmvsps": 38.6,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 15,
+        "nvm": 28.6,
+        "nviqvsps": 35.2,
+        "nvmvsps": 43.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 14,
+        "nvm": 31.7,
+        "nviqvsps": 41.5,
+        "nvmvsps": 43.9,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 13,
+        "nvm": 33.3,
+        "nviqvsps": 45.8,
+        "nvmvsps": 47.4,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 12,
+        "nvm": 35.7,
+        "nviqvsps": 50.0,
+        "nvmvsps": 49.1,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 11,
+        "nvm": 41.3,
+        "nviqvsps": 53.5,
+        "nvmvsps": 53.5,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 10,
+        "nvm": 46.0,
+        "nviqvsps": 59.9,
+        "nvmvsps": 58.8,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 9,
+        "nvm": 53.2,
+        "nviqvsps": 61.3,
+        "nvmvsps": 61.4,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 8,
+        "nvm": 58.7,
+        "nviqvsps": 64.8,
+        "nvmvsps": 64.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 7,
+        "nvm": 64.3,
+        "nviqvsps": 67.6,
+        "nvmvsps": 66.7,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 6,
+        "nvm": 73.0,
+        "nviqvsps": 70.4,
+        "nvmvsps": 71.1,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 5,
+        "nvm": 77.8,
+        "nviqvsps": 75.4,
+        "nvmvsps": 78.9,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 4,
+        "nvm": 82.5,
+        "nviqvsps": 77.5,
+        "nvmvsps": 83.3,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 3,
+        "nvm": 86.5,
+        "nviqvsps": 82.4,
+        "nvmvsps": 87.7,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 2,
+        "nvm": 91.3,
+        "nviqvsps": 87.3,
+        "nvmvsps": 93.9,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 1,
+        "nvm": 96.8,
+        "nviqvsps": 96.5,
+        "nvmvsps": 96.5,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 0,
+        "nvm": 100.0,
+        "nviqvsps": 100.0,
+        "nvmvsps": 100.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 55,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 54,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 53,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 52,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 51,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 50,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 49,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 48,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 47,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 46,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 45,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 44,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 43,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 42,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 41,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.5,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 40,
+        "nvm": 0.0,
+        "nviqvsps": 0.7,
+        "nvmvsps": 0.9,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 39,
+        "nvm": 0.0,
+        "nviqvsps": 1.1,
+        "nvmvsps": 1.8,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 38,
+        "nvm": 0.0,
+        "nviqvsps": 1.4,
+        "nvmvsps": 2.6,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 37,
+        "nvm": 0.0,
+        "nviqvsps": 2.1,
+        "nvmvsps": 3.5,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 36,
+        "nvm": 0.0,
+        "nviqvsps": 2.3,
+        "nvmvsps": 4.8,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 35,
+        "nvm": 0.0,
+        "nviqvsps": 2.5,
+        "nvmvsps": 6.1,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 34,
+        "nvm": 0.0,
+        "nviqvsps": 2.8,
+        "nvmvsps": 6.6,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 33,
+        "nvm": 0.0,
+        "nviqvsps": 3.5,
+        "nvmvsps": 7.0,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 32,
+        "nvm": 0.0,
+        "nviqvsps": 4.4,
+        "nvmvsps": 7.5,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 31,
+        "nvm": 0.0,
+        "nviqvsps": 5.3,
+        "nvmvsps": 7.9,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 30,
+        "nvm": 0.0,
+        "nviqvsps": 6.3,
+        "nvmvsps": 8.4,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 29,
+        "nvm": 0.8,
+        "nviqvsps": 6.7,
+        "nvmvsps": 8.8,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 28,
+        "nvm": 1.6,
+        "nviqvsps": 7.0,
+        "nvmvsps": 10.5,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 27,
+        "nvm": 4.0,
+        "nviqvsps": 7.8,
+        "nvmvsps": 11.4,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 26,
+        "nvm": 4.8,
+        "nviqvsps": 8.5,
+        "nvmvsps": 12.3,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 25,
+        "nvm": 7.1,
+        "nviqvsps": 9.2,
+        "nvmvsps": 13.2,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 24,
+        "nvm": 7.9,
+        "nviqvsps": 9.6,
+        "nvmvsps": 15.8,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 23,
+        "nvm": 9.5,
+        "nviqvsps": 9.9,
+        "nvmvsps": 17.5,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 22,
+        "nvm": 12.7,
+        "nviqvsps": 10.6,
+        "nvmvsps": 19.7,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 21,
+        "nvm": 14.3,
+        "nviqvsps": 11.3,
+        "nvmvsps": 21.9,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 20,
+        "nvm": 15.1,
+        "nviqvsps": 14.8,
+        "nvmvsps": 24.6,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 19,
+        "nvm": 15.9,
+        "nviqvsps": 17.6,
+        "nvmvsps": 28.1,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 18,
+        "nvm": 19.0,
+        "nviqvsps": 22.5,
+        "nvmvsps": 32.5,
+        "min_age": 24,
+        "max_age": 71
+    },
+    {
+        "diff": 55,
+        "nvm": 0.1,
+        "nviqvsps": 0.1,
+        "nvmvsps": 0.0,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 54,
+        "nvm": 0.1,
+        "nviqvsps": 0.1,
+        "nvmvsps": 0.0,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 53,
+        "nvm": 0.1,
+        "nviqvsps": 0.1,
+        "nvmvsps": 0.0,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 52,
+        "nvm": 0.2,
+        "nviqvsps": 0.2,
+        "nvmvsps": 0.0,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 51,
+        "nvm": 0.2,
+        "nviqvsps": 0.2,
+        "nvmvsps": 0.0,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 50,
+        "nvm": 0.2,
+        "nviqvsps": 0.2,
+        "nvmvsps": 0.1,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 49,
+        "nvm": 0.3,
+        "nviqvsps": 0.3,
+        "nvmvsps": 0.1,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 48,
+        "nvm": 0.3,
+        "nviqvsps": 0.4,
+        "nvmvsps": 0.2,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 47,
+        "nvm": 0.3,
+        "nviqvsps": 0.5,
+        "nvmvsps": 0.3,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 46,
+        "nvm": 0.3,
+        "nviqvsps": 0.7,
+        "nvmvsps": 0.4,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 45,
+        "nvm": 0.4,
+        "nviqvsps": 0.7,
+        "nvmvsps": 0.5,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 44,
+        "nvm": 0.4,
+        "nviqvsps": 0.8,
+        "nvmvsps": 0.6,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 43,
+        "nvm": 0.4,
+        "nviqvsps": 0.8,
+        "nvmvsps": 0.7,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 42,
+        "nvm": 0.5,
+        "nviqvsps": 0.8,
+        "nvmvsps": 0.8,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 41,
+        "nvm": 0.5,
+        "nviqvsps": 1.1,
+        "nvmvsps": 0.9,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 40,
+        "nvm": 0.8,
+        "nviqvsps": 1.2,
+        "nvmvsps": 1.0,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 39,
+        "nvm": 1.1,
+        "nviqvsps": 1.3,
+        "nvmvsps": 1.1,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 38,
+        "nvm": 1.4,
+        "nviqvsps": 1.4,
+        "nvmvsps": 1.2,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 37,
+        "nvm": 1.5,
+        "nviqvsps": 1.7,
+        "nvmvsps": 1.3,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 36,
+        "nvm": 1.9,
+        "nviqvsps": 2.1,
+        "nvmvsps": 2.1,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 35,
+        "nvm": 2.1,
+        "nviqvsps": 2.5,
+        "nvmvsps": 2.2,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 34,
+        "nvm": 2.3,
+        "nviqvsps": 2.9,
+        "nvmvsps": 2.4,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 33,
+        "nvm": 2.4,
+        "nviqvsps": 3.5,
+        "nvmvsps": 2.8,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 32,
+        "nvm": 3.1,
+        "nviqvsps": 4.0,
+        "nvmvsps": 3.4,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 31,
+        "nvm": 3.9,
+        "nviqvsps": 4.4,
+        "nvmvsps": 4.6,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 30,
+        "nvm": 4.4,
+        "nviqvsps": 5.1,
+        "nvmvsps": 4.7,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 29,
+        "nvm": 5.1,
+        "nviqvsps": 6.6,
+        "nvmvsps": 5.8,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 28,
+        "nvm": 6.0,
+        "nviqvsps": 7.6,
+        "nvmvsps": 6.9,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 27,
+        "nvm": 6.6,
+        "nviqvsps": 8.8,
+        "nvmvsps": 7.6,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 26,
+        "nvm": 7.4,
+        "nviqvsps": 10.3,
+        "nvmvsps": 9.5,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 25,
+        "nvm": 8.9,
+        "nviqvsps": 12.0,
+        "nvmvsps": 9.9,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 24,
+        "nvm": 10.1,
+        "nviqvsps": 13.6,
+        "nvmvsps": 12.1,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 23,
+        "nvm": 11.5,
+        "nviqvsps": 15.7,
+        "nvmvsps": 14.2,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 22,
+        "nvm": 13.1,
+        "nviqvsps": 18.5,
+        "nvmvsps": 14.5,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 21,
+        "nvm": 15.0,
+        "nviqvsps": 20.8,
+        "nvmvsps": 16.6,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 20,
+        "nvm": 16.3,
+        "nviqvsps": 22.7,
+        "nvmvsps": 17.8,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 19,
+        "nvm": 18.1,
+        "nviqvsps": 23.9,
+        "nvmvsps": 20.7,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 18,
+        "nvm": 20.1,
+        "nviqvsps": 26.5,
+        "nvmvsps": 23.3,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 17,
+        "nvm": 22.4,
+        "nviqvsps": 29.2,
+        "nvmvsps": 24.6,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 16,
+        "nvm": 26.0,
+        "nviqvsps": 32.0,
+        "nvmvsps": 28.5,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 15,
+        "nvm": 29.4,
+        "nviqvsps": 36.3,
+        "nvmvsps": 32.7,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 14,
+        "nvm": 33.8,
+        "nviqvsps": 39.1,
+        "nvmvsps": 34.4,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 13,
+        "nvm": 37.6,
+        "nviqvsps": 42.8,
+        "nvmvsps": 40.0,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 12,
+        "nvm": 41.3,
+        "nviqvsps": 47.9,
+        "nvmvsps": 42.5,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 11,
+        "nvm": 45.8,
+        "nviqvsps": 50.9,
+        "nvmvsps": 47.7,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 10,
+        "nvm": 49.7,
+        "nviqvsps": 55.8,
+        "nvmvsps": 52.8,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 9,
+        "nvm": 55.4,
+        "nviqvsps": 60.7,
+        "nvmvsps": 54.0,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 8,
+        "nvm": 59.1,
+        "nviqvsps": 64.3,
+        "nvmvsps": 60.5,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 7,
+        "nvm": 64.7,
+        "nviqvsps": 68.6,
+        "nvmvsps": 65.6,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 6,
+        "nvm": 69.7,
+        "nviqvsps": 72.9,
+        "nvmvsps": 71.8,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 5,
+        "nvm": 74.4,
+        "nviqvsps": 78.8,
+        "nvmvsps": 76.6,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 4,
+        "nvm": 80.6,
+        "nviqvsps": 82.9,
+        "nvmvsps": 78.5,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 3,
+        "nvm": 87.0,
+        "nviqvsps": 88.1,
+        "nvmvsps": 84.4,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 2,
+        "nvm": 91.8,
+        "nviqvsps": 93.8,
+        "nvmvsps": 91.2,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 1,
+        "nvm": 97.5,
+        "nviqvsps": 98.3,
+        "nvmvsps": 96.1,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 0,
+        "nvm": 100.0,
+        "nviqvsps": 100.0,
+        "nvmvsps": 100.0,
+        "min_age": 72,
+        "max_age": 329
+    },
+    {
+        "diff": 51,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 50,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 49,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 48,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 47,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 46,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 45,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 44,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 43,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 42,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 41,
+        "nvm": 0.0,
+        "nviqvsps": 0.0,
+        "nvmvsps": 0.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 40,
+        "nvm": 1.5,
+        "nviqvsps": 0.1,
+        "nvmvsps": 0.2,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 39,
+        "nvm": 1.7,
+        "nviqvsps": 0.2,
+        "nvmvsps": 0.5,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 38,
+        "nvm": 1.8,
+        "nviqvsps": 0.3,
+        "nvmvsps": 0.9,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 37,
+        "nvm": 2.2,
+        "nviqvsps": 0.4,
+        "nvmvsps": 1.9,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 36,
+        "nvm": 2.6,
+        "nviqvsps": 0.5,
+        "nvmvsps": 2.8,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 35,
+        "nvm": 3.0,
+        "nviqvsps": 0.6,
+        "nvmvsps": 3.8,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 34,
+        "nvm": 3.4,
+        "nviqvsps": 0.7,
+        "nvmvsps": 4.7,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 33,
+        "nvm": 3.6,
+        "nviqvsps": 0.9,
+        "nvmvsps": 5.6,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 32,
+        "nvm": 4.1,
+        "nviqvsps": 1.3,
+        "nvmvsps": 6.1,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 31,
+        "nvm": 4.5,
+        "nviqvsps": 1.7,
+        "nvmvsps": 6.5,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 30,
+        "nvm": 5.4,
+        "nviqvsps": 2.1,
+        "nvmvsps": 7.2,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 29,
+        "nvm": 6.3,
+        "nviqvsps": 2.5,
+        "nvmvsps": 7.8,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 28,
+        "nvm": 7.2,
+        "nviqvsps": 2.8,
+        "nvmvsps": 8.4,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 27,
+        "nvm": 8.1,
+        "nviqvsps": 3.3,
+        "nvmvsps": 9.4,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 26,
+        "nvm": 11.7,
+        "nviqvsps": 3.7,
+        "nvmvsps": 10.3,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 25,
+        "nvm": 13.5,
+        "nviqvsps": 4.6,
+        "nvmvsps": 12.1,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 24,
+        "nvm": 14.7,
+        "nviqvsps": 5.6,
+        "nvmvsps": 14.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 23,
+        "nvm": 15.9,
+        "nviqvsps": 6.5,
+        "nvmvsps": 15.9,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 22,
+        "nvm": 17.1,
+        "nviqvsps": 7.9,
+        "nvmvsps": 16.4,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 21,
+        "nvm": 19.8,
+        "nviqvsps": 9.3,
+        "nvmvsps": 16.8,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 20,
+        "nvm": 20.7,
+        "nviqvsps": 10.2,
+        "nvmvsps": 19.6,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 19,
+        "nvm": 23.4,
+        "nviqvsps": 12.0,
+        "nvmvsps": 21.5,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 18,
+        "nvm": 27.0,
+        "nviqvsps": 14.8,
+        "nvmvsps": 23.4,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 17,
+        "nvm": 32.4,
+        "nviqvsps": 17.6,
+        "nvmvsps": 25.2,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 16,
+        "nvm": 35.1,
+        "nviqvsps": 20.4,
+        "nvmvsps": 27.1,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 15,
+        "nvm": 37.8,
+        "nviqvsps": 25.9,
+        "nvmvsps": 34.6,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 14,
+        "nvm": 40.5,
+        "nviqvsps": 27.8,
+        "nvmvsps": 37.0,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 13,
+        "nvm": 46.8,
+        "nviqvsps": 31.5,
+        "nvmvsps": 39.3,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 12,
+        "nvm": 51.4,
+        "nviqvsps": 35.2,
+        "nvmvsps": 45.8,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 11,
+        "nvm": 55.0,
+        "nviqvsps": 39.8,
+        "nvmvsps": 47.7,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 10,
+        "nvm": 59.5,
+        "nviqvsps": 44.4,
+        "nvmvsps": 56.1,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 9,
+        "nvm": 65.8,
+        "nviqvsps": 51.9,
+        "nvmvsps": 57.9,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 8,
+        "nvm": 68.5,
+        "nviqvsps": 52.8,
+        "nvmvsps": 64.5,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 7,
+        "nvm": 75.7,
+        "nviqvsps": 59.3,
+        "nvmvsps": 67.3,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 6,
+        "nvm": 80.2,
+        "nviqvsps": 63.9,
+        "nvmvsps": 70.1,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 5,
+        "nvm": 82.0,
+        "nviqvsps": 70.4,
+        "nvmvsps": 81.3,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 4,
+        "nvm": 84.7,
+        "nviqvsps": 78.7,
+        "nvmvsps": 82.2,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 3,
+        "nvm": 89.2,
+        "nviqvsps": 84.3,
+        "nvmvsps": 87.9,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 2,
+        "nvm": 91.0,
+        "nviqvsps": 92.6,
+        "nvmvsps": 93.5,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 1,
+        "nvm": 99.1,
+        "nviqvsps": 98.1,
+        "nvmvsps": 98.1,
+        "min_age": 330,
+        "max_age": 1200
+    },
+    {
+        "diff": 0,
+        "nvm": 100.0,
+        "nviqvsps": 100.0,
+        "nvmvsps": 100.0,
+        "min_age": 330,
+        "max_age": 1200
+    }
+]

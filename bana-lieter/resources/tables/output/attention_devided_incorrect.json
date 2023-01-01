@@ -1,0 +1,1122 @@
+[
+    {
+        "row_score": 16,
+        "percentile": 0.9,
+        "scaled_score": 3,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 15,
+        "percentile": 2.0,
+        "scaled_score": 4,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 14,
+        "percentile": 3.2,
+        "scaled_score": 4,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 13,
+        "percentile": 4.0,
+        "scaled_score": 5,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 12,
+        "percentile": 4.8,
+        "scaled_score": 5,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 11,
+        "percentile": 5.6,
+        "scaled_score": 5,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 10,
+        "percentile": 6.4,
+        "scaled_score": 5,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 9,
+        "percentile": 7.2,
+        "scaled_score": 6,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 8,
+        "percentile": 8.4,
+        "scaled_score": 6,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 7,
+        "percentile": 9.6,
+        "scaled_score": 6,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 6,
+        "percentile": 10.8,
+        "scaled_score": 6,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 5,
+        "percentile": 15.5,
+        "scaled_score": 7,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 4,
+        "percentile": 21.7,
+        "scaled_score": 8,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 3,
+        "percentile": 27.7,
+        "scaled_score": 8,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 2,
+        "percentile": 36.1,
+        "scaled_score": 9,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 1,
+        "percentile": 45.7,
+        "scaled_score": 10,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 0,
+        "percentile": 75.0,
+        "scaled_score": 12,
+        "min_age": 36,
+        "max_age": 47
+    },
+    {
+        "row_score": 16,
+        "percentile": 0.3,
+        "scaled_score": 2,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 15,
+        "percentile": 0.5,
+        "scaled_score": 2,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 14,
+        "percentile": 0.7,
+        "scaled_score": 3,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 13,
+        "percentile": 0.9,
+        "scaled_score": 3,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 12,
+        "percentile": 1.1,
+        "scaled_score": 3,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 11,
+        "percentile": 1.3,
+        "scaled_score": 3,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 10,
+        "percentile": 1.5,
+        "scaled_score": 4,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 9,
+        "percentile": 2.0,
+        "scaled_score": 4,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 8,
+        "percentile": 2.3,
+        "scaled_score": 4,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 7,
+        "percentile": 2.6,
+        "scaled_score": 4,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 6,
+        "percentile": 3.6,
+        "scaled_score": 5,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 5,
+        "percentile": 6.5,
+        "scaled_score": 5,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 4,
+        "percentile": 12.3,
+        "scaled_score": 7,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 3,
+        "percentile": 18.3,
+        "scaled_score": 7,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 2,
+        "percentile": 33.3,
+        "scaled_score": 9,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 1,
+        "percentile": 46.5,
+        "scaled_score": 10,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 0,
+        "percentile": 75.0,
+        "scaled_score": 12,
+        "min_age": 48,
+        "max_age": 71
+    },
+    {
+        "row_score": 20,
+        "percentile": 0.9,
+        "scaled_score": 3,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 19,
+        "percentile": 1.2,
+        "scaled_score": 3,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 18,
+        "percentile": 1.8,
+        "scaled_score": 4,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 17,
+        "percentile": 2.5,
+        "scaled_score": 4,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 16,
+        "percentile": 3.1,
+        "scaled_score": 4,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 15,
+        "percentile": 4.2,
+        "scaled_score": 5,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 14,
+        "percentile": 4.6,
+        "scaled_score": 5,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 13,
+        "percentile": 5.3,
+        "scaled_score": 5,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 12,
+        "percentile": 6.2,
+        "scaled_score": 5,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 11,
+        "percentile": 6.8,
+        "scaled_score": 6,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 10,
+        "percentile": 7.2,
+        "scaled_score": 6,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 9,
+        "percentile": 8.2,
+        "scaled_score": 6,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 8,
+        "percentile": 9.2,
+        "scaled_score": 6,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 7,
+        "percentile": 10.5,
+        "scaled_score": 6,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 6,
+        "percentile": 14.3,
+        "scaled_score": 7,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 5,
+        "percentile": 16.9,
+        "scaled_score": 7,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 4,
+        "percentile": 21.8,
+        "scaled_score": 8,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 3,
+        "percentile": 26.6,
+        "scaled_score": 8,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 2,
+        "percentile": 37.0,
+        "scaled_score": 9,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 1,
+        "percentile": 53.6,
+        "scaled_score": 10,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 0,
+        "percentile": 75.0,
+        "scaled_score": 12,
+        "min_age": 72,
+        "max_age": 107
+    },
+    {
+        "row_score": 20,
+        "percentile": 1.6,
+        "scaled_score": 4,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 19,
+        "percentile": 2.5,
+        "scaled_score": 4,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 18,
+        "percentile": 3.0,
+        "scaled_score": 4,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 17,
+        "percentile": 3.7,
+        "scaled_score": 5,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 16,
+        "percentile": 4.1,
+        "scaled_score": 5,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 15,
+        "percentile": 4.9,
+        "scaled_score": 5,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 14,
+        "percentile": 5.4,
+        "scaled_score": 5,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 13,
+        "percentile": 5.9,
+        "scaled_score": 5,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 12,
+        "percentile": 6.7,
+        "scaled_score": 5,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 11,
+        "percentile": 7.0,
+        "scaled_score": 6,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 10,
+        "percentile": 8.1,
+        "scaled_score": 6,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 9,
+        "percentile": 9.3,
+        "scaled_score": 6,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 8,
+        "percentile": 10.7,
+        "scaled_score": 6,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 7,
+        "percentile": 13.1,
+        "scaled_score": 7,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 6,
+        "percentile": 15.6,
+        "scaled_score": 7,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 5,
+        "percentile": 18.8,
+        "scaled_score": 7,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 4,
+        "percentile": 23.3,
+        "scaled_score": 8,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 3,
+        "percentile": 27.9,
+        "scaled_score": 8,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 2,
+        "percentile": 38.0,
+        "scaled_score": 9,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 1,
+        "percentile": 55.5,
+        "scaled_score": 10,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 0,
+        "percentile": 75.0,
+        "scaled_score": 12,
+        "min_age": 108,
+        "max_age": 131
+    },
+    {
+        "row_score": 20,
+        "percentile": 2.3,
+        "scaled_score": 4,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 19,
+        "percentile": 3.0,
+        "scaled_score": 4,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 18,
+        "percentile": 3.5,
+        "scaled_score": 5,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 17,
+        "percentile": 3.9,
+        "scaled_score": 5,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 16,
+        "percentile": 5.3,
+        "scaled_score": 5,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 15,
+        "percentile": 5.6,
+        "scaled_score": 5,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 14,
+        "percentile": 5.8,
+        "scaled_score": 5,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 13,
+        "percentile": 6.3,
+        "scaled_score": 5,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 12,
+        "percentile": 6.8,
+        "scaled_score": 6,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 11,
+        "percentile": 7.3,
+        "scaled_score": 6,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 10,
+        "percentile": 8.7,
+        "scaled_score": 6,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 9,
+        "percentile": 10.7,
+        "scaled_score": 6,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 8,
+        "percentile": 11.2,
+        "scaled_score": 6,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 7,
+        "percentile": 13.6,
+        "scaled_score": 7,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 6,
+        "percentile": 16.0,
+        "scaled_score": 7,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 5,
+        "percentile": 19.4,
+        "scaled_score": 7,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 4,
+        "percentile": 23.8,
+        "scaled_score": 8,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 3,
+        "percentile": 28.2,
+        "scaled_score": 8,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 2,
+        "percentile": 38.2,
+        "scaled_score": 9,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 1,
+        "percentile": 56.8,
+        "scaled_score": 11,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 0,
+        "percentile": 75.0,
+        "scaled_score": 12,
+        "min_age": 132,
+        "max_age": 179
+    },
+    {
+        "row_score": 20,
+        "percentile": 0.2,
+        "scaled_score": 2,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 19,
+        "percentile": 0.4,
+        "scaled_score": 2,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 18,
+        "percentile": 0.6,
+        "scaled_score": 3,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 17,
+        "percentile": 0.8,
+        "scaled_score": 3,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 16,
+        "percentile": 1.0,
+        "scaled_score": 3,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 15,
+        "percentile": 1.2,
+        "scaled_score": 3,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 14,
+        "percentile": 1.4,
+        "scaled_score": 3,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 13,
+        "percentile": 1.6,
+        "scaled_score": 4,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 12,
+        "percentile": 1.8,
+        "scaled_score": 4,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 11,
+        "percentile": 2.3,
+        "scaled_score": 4,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 10,
+        "percentile": 2.6,
+        "scaled_score": 4,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 9,
+        "percentile": 2.9,
+        "scaled_score": 4,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 8,
+        "percentile": 3.3,
+        "scaled_score": 4,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 7,
+        "percentile": 3.8,
+        "scaled_score": 5,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 6,
+        "percentile": 4.5,
+        "scaled_score": 5,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 5,
+        "percentile": 5.5,
+        "scaled_score": 5,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 4,
+        "percentile": 7.5,
+        "scaled_score": 6,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 3,
+        "percentile": 15.0,
+        "scaled_score": 7,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 2,
+        "percentile": 22.5,
+        "scaled_score": 8,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 1,
+        "percentile": 41.0,
+        "scaled_score": 9,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 0,
+        "percentile": 75.0,
+        "scaled_score": 12,
+        "min_age": 180,
+        "max_age": 227
+    },
+    {
+        "row_score": 20,
+        "percentile": 0.4,
+        "scaled_score": 2,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 19,
+        "percentile": 0.6,
+        "scaled_score": 3,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 18,
+        "percentile": 0.8,
+        "scaled_score": 3,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 17,
+        "percentile": 1.0,
+        "scaled_score": 3,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 16,
+        "percentile": 1.3,
+        "scaled_score": 3,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 15,
+        "percentile": 1.5,
+        "scaled_score": 4,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 14,
+        "percentile": 1.8,
+        "scaled_score": 4,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 13,
+        "percentile": 2.0,
+        "scaled_score": 4,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 12,
+        "percentile": 2.3,
+        "scaled_score": 4,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 11,
+        "percentile": 2.6,
+        "scaled_score": 4,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 10,
+        "percentile": 2.8,
+        "scaled_score": 4,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 9,
+        "percentile": 3.0,
+        "scaled_score": 4,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 8,
+        "percentile": 3.5,
+        "scaled_score": 5,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 7,
+        "percentile": 4.5,
+        "scaled_score": 5,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 6,
+        "percentile": 5.2,
+        "scaled_score": 5,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 5,
+        "percentile": 5.7,
+        "scaled_score": 5,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 4,
+        "percentile": 10.9,
+        "scaled_score": 6,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 3,
+        "percentile": 17.4,
+        "scaled_score": 7,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 2,
+        "percentile": 24.6,
+        "scaled_score": 8,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 1,
+        "percentile": 44.5,
+        "scaled_score": 10,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 0,
+        "percentile": 75.0,
+        "scaled_score": 12,
+        "min_age": 228,
+        "max_age": 719
+    },
+    {
+        "row_score": 20,
+        "percentile": 0.8,
+        "scaled_score": 3,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 19,
+        "percentile": 1.0,
+        "scaled_score": 3,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 18,
+        "percentile": 1.2,
+        "scaled_score": 3,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 17,
+        "percentile": 2.5,
+        "scaled_score": 4,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 16,
+        "percentile": 3.7,
+        "scaled_score": 5,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 15,
+        "percentile": 4.9,
+        "scaled_score": 5,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 14,
+        "percentile": 6.1,
+        "scaled_score": 5,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 13,
+        "percentile": 7.3,
+        "scaled_score": 6,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 12,
+        "percentile": 8.6,
+        "scaled_score": 6,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 11,
+        "percentile": 9.0,
+        "scaled_score": 6,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 10,
+        "percentile": 9.4,
+        "scaled_score": 6,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 9,
+        "percentile": 9.9,
+        "scaled_score": 6,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 8,
+        "percentile": 11.1,
+        "scaled_score": 6,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 7,
+        "percentile": 12.3,
+        "scaled_score": 7,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 6,
+        "percentile": 14.8,
+        "scaled_score": 7,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 5,
+        "percentile": 19.5,
+        "scaled_score": 7,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 4,
+        "percentile": 25.7,
+        "scaled_score": 8,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 3,
+        "percentile": 39.7,
+        "scaled_score": 9,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 2,
+        "percentile": 56.8,
+        "scaled_score": 11,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 1,
+        "percentile": 68.9,
+        "scaled_score": 11,
+        "min_age": 720,
+        "max_age": 1200
+    },
+    {
+        "row_score": 0,
+        "percentile": 75.0,
+        "scaled_score": 12,
+        "min_age": 720,
+        "max_age": 1200
+    }
+]

@@ -10,7 +10,7 @@ import * as yup from 'yup';
 
 const validationSchema = yup.object().shape({});
 
-function NarrativeReportForm({ initialValues, onSubmit }) {
+function NarrativeReportForm({ initialValues, onSubmit, examinee }) {
     const { t } = useTranslation();
     const { submitHandler, data, isLoading } = useReport(initialValues, onSubmit, 'narrative');
     return (

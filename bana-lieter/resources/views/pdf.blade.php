@@ -28,19 +28,19 @@
             {{-- <div class="col-8"> --}}
             <div class="label-value-item col-6">
                 <div class="label">Name:</div>
-                <div class="value">Sample BANA Student</div>
+                <div class="value">{{ $examinee->name }}</div>
             </div>
             <div class="label-value-item col-6">
                 <div class="label">Gender:</div>
-                <div class="value">Male</div>
+                <div class="value">{{ $examinee->gender }}</div>
             </div>
             <div class="label-value-item col-6">
                 <div class="label">Age:</div>
-                <div class="value">146 Months</div>
+                <div class="value">{{ $examinee->age }} Months</div>
             </div>
             <div class="label-value-item col-6">
                 <div class="label">Examiner:</div>
-                <div class="value">Ahmad Hamdan</div>
+                <div class="value">{{ $examinee->examiner->name }}</div>
             </div>
             <div class="label-value-item col-6">
                 <div class="label">Ethnicity:</div>
@@ -48,29 +48,30 @@
             </div>
             <div class="label-value-item col-6">
                 <div class="label">Location of Testing:</div>
-                <div class="value">Amman - Jordan</div>
+                <div class="value">{{ $examinee->location }}</div>
             </div>
             <div class="label-value-item col-6">
                 <div class="label">Date of Birth:</div>
-                <div class="value">09/22/2018</div>
+                <div class="value">{{ $examinee->birthday }}</div>
             </div>
             <div class="label-value-item col-6">
-                <div class="label">IDEA/Disability:</div>
+                <div class="label text-danger">IDEA/Disability:</div>
                 <div class="value"></div>
             </div>
             <div class="label-value-item col-6">
                 <div class="label">Date of Report:</div>
-                <div class="value">09/10/2022</div>
+                <div class="value">{{ $examinee->application_date }}</div>
             </div>
             {{-- </div> --}}
         </div>
         <hr>
         <div class="section">
-            <h1 class="title">Cognitive Subtests</h1>
-            <table class="table table-striped">
+            <h1 class="title">Cognitive</h1>
+            <div class="table-header">Cognitive Subtests</div>
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>Subtest</th>
+                        <th class="text-center">Subtest</th>
                         <th>Raw Score</th>
                         <th>Scaled Score</th>
                         <th>Percentile</th>
@@ -79,73 +80,418 @@
                 <tbody>
                     <tr>
                         <td><b>Figure Ground (FG)</b></td>
-                        <td>11</td>
-                        <td>10</td>
-                        <td>50</td>
+                        <td>{{ $reportCognitive->figure_ground }}</td>
+                        <td>{{ $cognitive_values['fg'] }}</td>
+                        <td class="text-danger">50</td>
                     </tr>
                     <tr>
                         <td><b>Form Completion (FC)</b></td>
-                        <td>14</td>
-                        <td>9</td>
-                        <td>37</td>
+                        <td>{{ $reportCognitive->form_completion }}</td>
+                        <td>{{ $cognitive_values['fc'] }}</td>
+                        <td class="text-danger">37</td>
                     </tr>
                     <tr>
                         <td><b>Classification/Analogies (CA)</b></td>
-                        <td>7</td>
-                        <td>7</td>
-                        <td>16</td>
+                        <td>{{ $reportCognitive->classification_analogies }}</td>
+                        <td>{{ $cognitive_values['ca'] }}</td>
+                        <td class="text-danger">16</td>
                     </tr>
                     <tr>
                         <td><b>Sequential Order (SO)</b></td>
-                        <td>7</td>
-                        <td>7</td>
-                        <td>16</td>
+                        <td>{{ $reportCognitive->sequential_order }}</td>
+                        <td>{{ $cognitive_values['so'] }}</td>
+                        <td class="text-danger">16</td>
                     </tr>
                     <tr>
                         <td><b>Visual Patterns (VP)</b></td>
-                        <td>21</td>
-                        <td>8</td>
-                        <td>25</td>
+                        <td>{{ $reportCognitive->visual_patterns }}</td>
+                        <td>{{ $cognitive_values['vp'] }}</td>
+                        <td class="text-danger">25</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-header">Cognitive Composite</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sum of 4 Scaled Scores</th>
+                        <th>Nonverbal IQ</th>
+                        <th>Percentile</th>
+                        <th>Confidence Interval (95%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ $sum_of_cognitive }}</td>
+                        <td>{{ $nonverbal_iq }}</td>
+                        <td class="text-danger">{{ 80 }}</td>
+                        <td>{{ $confidence_interval_cognitive }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <hr>
-        <footer class="row">
-            <div class="col-3">
-                <img src="{{ asset('images/logo.png') }}" class="w-100" alt="">
-            </div>
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-6 mb-3">
-                        <i class="fa fa-phone"></i> +962 (0)79 9621166
-                    </div>
-                    <div class="col-6 mb-3">
-                        <i class="fa fa-mobile"></i> +962 (0)6 553 4748
-                    </div>
-                    <div class="col-6 mb-3">
-                        <i class="fas fa-envelope"></i> mail@banacenter.com
-                    </div>
-                    <div class="col-6 mb-3">
-                        <i class="fa fa-home"></i> Amman, Jordan
-                    </div>
-                    <div class="col-6 mb-3">
-                        <i class="fa-brands fa-internet-explorer"></i> https://banacenter.com
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="mb-3">
-                    <i class="fa-brands fa-facebook"></i> banacenterRCT
-                </div>
-                <div class="mb-3">
-                    <i class="fa-brands fa-twitter"></i> bana_center
-                </div>
-                <div class="mb-3">
-                    <i class="fa-brands fa-linkedin"></i> bana_center
-                </div>
-            </div>
-        </footer>
+
+
+        <div class="section">
+            <h1 class="title">Attention / Memory</h1>
+            <div class="table-header">Attention / Memory Subtests</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Subtest</th>
+                        <th>Raw Score</th>
+                        <th>Scaled Score</th>
+                        <th>Percentile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Attention Sustained (AS)</td>
+                        <td>{{ $reportAttention->attention_sustained }}</td>
+                        <td>{{ $memory_attention_values['as'] }}</td>
+                        <td class="text-danger">50</td>
+                    </tr>
+                    <tr>
+                        <td>Forward Memory (FM)</td>
+                        <td>{{ $reportMemory->forward_memory }}</td>
+                        <td>{{ $memory_attention_values['fm'] }}</td>
+                        <td class="text-danger">37</td>
+                    </tr>
+                    <tr>
+                        <td>Reverse Memory (RM)</td>
+                        <td>{{ $reportMemory->reverse_memory }}</td>
+                        <td>{{ $memory_attention_values['rm'] }}</td>
+                        <td class="text-danger">16</td>
+                    </tr>
+                    <tr>
+                        <td>Nonverbal Stroop Incongruent Correct (NSic)</td>
+                        <td>{{ $reportAttention->nonverbal_stroop_incongruent_correct }}</td>
+                        <td>{{ $memory_attention_values['nsic'] }}</td>
+                        <td class="text-danger">16</td>
+                    </tr>
+                    <tr>
+                        <td>Nonverbal Stroop Congruent Correct (NScc)</td>
+                        <td>{{ $reportAttention->nonverbal_stroop_congruent_correct }}</td>
+                        <td>{{ $memory_attention_values['nscc'] }}</td>
+                        <td class="text-danger">25</td>
+                    </tr>
+                    <tr class="text-danger">
+                        <td class="">Nonverbal Stroop Effect (NSeff)</td>
+                        <td>{{ $reportCognitive->visual_patterns }}</td>
+                        <td>{{ $cognitive_values['vp'] }}</td>
+                        <td>25</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-header">Attention Memory Composites</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Composite Domains</th>
+                        <th>Sum of Scaled Scores</th>
+                        <th>Composite Score</th>
+                        <th>Percentile</th>
+                        <th>Confidence Interval (95%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nonverbal Memory</td>
+                        <td>{{ $sum_of_nonverbal_memory }}</td>
+                        <td>{{ $composite_nonverbal_memory }}</td>
+                        <td class="text-danger">{{ 80 }}</td>
+                        <td>{{ $confidence_interval_noverbal_memory }}</td>
+                    </tr>
+                    <tr>
+                        <td>Processing Speed</td>
+                        <td>{{ $sum_of_processing_speed }}</td>
+                        <td>{{ $composite_processing_speed }}</td>
+                        <td class="text-danger">{{ 80 }}</td>
+                        <td>{{ $confidence_interval_processing_speed }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-header">Supplemental Attention/Memory Scores</div>
+            <table class="table text-danger">
+                <thead>
+                    <th class="text-center">Attention Scores</th>
+                    <th>Raw Score</th>
+                    <th>Scaled Score</th>
+                    <th>Percentile</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Attention Sustained Errors (ASe)</td>
+                        <td>{{ $attentionAnonymous->attention_sustained_error }}</td>
+                        <td>{{ $attention_anonymous_values['ase']['scaled_score'] }}</td>
+                        <td>{{ $attention_anonymous_values['ase']['percentile'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Attention Divided Correct (ADc)</td>
+                        <td>{{ $attentionAnonymous->attention_devided_correct }}</td>
+                        <td>{{ $attention_anonymous_values['adc']['scaled_score'] }}</td>
+                        <td>{{ $attention_anonymous_values['adc']['percentile'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Attention Divided Incorrect (ADi)</td>
+                        <td>{{ $attentionAnonymous->attention_devided_incorrect }}</td>
+                        <td>{{ $attention_anonymous_values['adi']['scaled_score'] }}</td>
+                        <td>{{ $attention_anonymous_values['adi']['percentile'] }}</td>
+                    </tr>
+                    <tr class="bg font-weight-bold">
+                        <td class="text-center">Nonverbal Stroop Scores</td>
+                        <td>Raw Score</td>
+                        <td>Scaled Score</td>
+                        <td>Percentile</td>
+                    </tr>
+                    <tr>
+                        <td>Nonverbal Stroop Congruent Incorrect (NSCi)</td>
+                        <td>{{ $attentionAnonymous->nonverbal_stroop_congruent_incorrect }}</td>
+                        <td>{{ $attention_anonymous_values['nsci']['scaled_score'] }}</td>
+                        <td>{{ $attention_anonymous_values['nsci']['percentile'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nonverbal Stroop Incongruent Incorrect (NSii)</td>
+                        <td>{{ $attentionAnonymous->nonverbal_stroop_incongruent_incorrect }}</td>
+                        <td>{{ $attention_anonymous_values['nsii']['scaled_score'] }}</td>
+                        <td>{{ $attention_anonymous_values['nsii']['percentile'] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="section">
+            <h1 class="title">Examiner Rating</h1>
+            <div class="table-header">Examiner Rating Scale Scores</div>
+            <table class="table">
+                <tbody>
+                    <tr class="bg font-weight-bold">
+                        <td class="text-center">Section A-D</td>
+                        <td>Raw Score</td>
+                        <td>Scaled Score</td>
+                        <td>Percentile</td>
+                    </tr>
+                    <tr>
+                        <td>Attention</td>
+                        <td>{{ $reportExaminer->attention }}</td>
+                        <td>{{ $examiner_scores['attention']->scaled_score }}</td>
+                        <td>{{ $examiner_scores['attention']->percentile }}</td>
+                    </tr>
+                    <tr>
+                        <td>Organization / Impulse Control</td>
+                        <td>{{ $reportExaminer->organization_impulse_control }}</td>
+                        <td>{{ $examiner_scores['organization']->scaled_score }}</td>
+                        <td>{{ $examiner_scores['organization']->percentile }}</td>
+                    </tr>
+                    <tr>
+                        <td>Activity Level</td>
+                        <td>{{ $reportExaminer->activity_level }}</td>
+                        <td class="bg-secondary"></td>
+                        <td class="bg-secondary"></td>
+                    </tr>
+                    <tr>
+                        <td>Sociablility</td>
+                        <td>{{ $reportExaminer->sociability }}</td>
+                        <td class="bg-secondary"></td>
+                        <td class="bg-secondary"></td>
+                    </tr>
+                    <tr class="bg font-weight-bold">
+                        <td class="text-center">Section A-D Composite</td>
+                        <td>Raw Score</td>
+                        <td>Composite Score</td>
+                        <td>Percentile</td>
+                    </tr>
+                    <tr>
+                        <td>Cognitive / Social Composite Score</td>
+                        <td>{{ $examiner_section_ad_sum }}</td>
+                        <td>{{ $examiner_scores['social']->scaled_score }}</td>
+                        <td class="text-danger">23</td>
+                    </tr>
+                    <tr class="bg font-weight-bold">
+                        <td class="text-center">Section E-H</td>
+                        <td>Raw Score</td>
+                        <td>Scaled Score</td>
+                        <td>Percentile</td>
+                    </tr>
+                    <tr>
+                        <td>Energy and Feelings</td>
+                        <td>{{ $reportExaminer->energy_and_feelings }}</td>
+                        <td>{{ $examiner_scores['energy']->scaled_score }}</td>
+                        <td>{{ $examiner_scores['energy']->percentile }}</td>
+                    </tr>
+                    <tr>
+                        <td>Regulation</td>
+                        <td>{{ $reportExaminer->regulation }}</td>
+                        <td class="bg-secondary"></td>
+                        <td class="bg-secondary"></td>
+                    </tr>
+                    <tr>
+                        <td>Anxiety</td>
+                        <td>{{ $reportExaminer->anxiety }}</td>
+                        <td class="text-danger">7</td>
+                        <td class="text-danger">15.5</td>
+                    </tr>
+                    <tr>
+                        <td>Sensory Reaction</td>
+                        <td>{{ $reportExaminer->sensory_reaction }}</td>
+                        <td class="bg-secondary"></td>
+                        <td class="bg-secondary"></td>
+                    </tr>
+                    <tr class="bg font-weight-bold">
+                        <td class="text-center">Section E-H Composite</td>
+                        <td>Raw Score</td>
+                        <td>Composite Score</td>
+                        <td>Percentile</td>
+                    </tr>
+                    <tr>
+                        <td>Emotions/Regulations Composite Score</td>
+                        <td>{{ $examiner_section_eh_sum }}</td>
+                        <td>{{ $examiner_scores['emotions']->scaled_score }}</td>
+                        <td class="text-danger">32</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="section">
+            <h1 class="title">Growth Profile Scores</h1>
+            <div class="table-header">Examiner Rating Scale Scores</div>
+            <table class="table">
+                <thead>
+                    <th class="text-center">Cognitive Subtests</th>
+                    <th>Standard Error of Measurement (SEM)</th>
+                    <th>Growth Score</th>
+                </thead>
+                <tbody>
+                    <tr class="text-danger">
+                        <td>Nonverbal IQ (NVIQ)</td>
+                        <td>3</td>
+                        <td>452</td>
+                    </tr>
+                    <tr>
+                        <td>Figure Ground (FG)</td>
+                        <td>{{ $sem_growth['figure_ground']['sem'] }}</td>
+                        <td>{{ $sem_growth['figure_ground']['growth'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Form Completion (FC)</td>
+                        <td>{{ $sem_growth['form_completion']['sem'] }}</td>
+                        <td>{{ $sem_growth['form_completion']['growth'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Classification / Analogies (CA)</td>
+                        <td>{{ $sem_growth['classification_analogies']['sem'] }}</td>
+                        <td>{{ $sem_growth['classification_analogies']['growth'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Sequential Order (SO)</td>
+                        <td>{{ $sem_growth['sequential_order']['sem'] }}</td>
+                        <td>{{ $sem_growth['sequential_order']['growth'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Visual Patterns (VP)</td>
+                        <td>{{ $sem_growth['visual_patterns']['sem'] }}</td>
+                        <td>{{ $sem_growth['visual_patterns']['growth'] }}</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <th class="text-center">Memory Subtests</th>
+                    <th>Standard Error of Measurement (SEM)</th>
+                    <th>Growth Score</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nonverbal Memory (NVm)</td>
+                        <td>{{ $sem_growth['nonverbal_memory']['sem'] }}</td>
+                        <td>{{ $sem_growth['nonverbal_memory']['growth'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Forward Memory (FM)</td>
+                        <td>{{ $sem_growth['forward_memory']['sem'] }}</td>
+                        <td>{{ $sem_growth['forward_memory']['growth'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Reverse Memory (RM)</td>
+                        <td>{{ $sem_growth['reverse_memory']['sem'] }}</td>
+                        <td>{{ $sem_growth['reverse_memory']['growth'] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-header">Examiner Rating Scale Scores</div>
+            <table class="table text-danger">
+                <thead>
+                    <th class="text-center">Growth Scale</th>
+                    <th>Age Equivalent</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cognitive Growth Scale</td>
+                        <td>3-1</td>
+                    </tr>
+                    <tr>
+                        <td>Memory Growth Scale</td>
+                        <td>3-0</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-header">Cognitive and Attention/Memory Score Differences</div>
+            <table class="table">
+                <thead>
+                    <th class="text-center">Subtest Group</th>
+                    <th>Difference</th>
+                    <th>Critical Value</th>
+                    <th>Percentile</th>
+                    <th>Significance</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nonverbal IQ vs Nonverbal Memory</td>
+                        <td>{{ $diffs['nonverbal_iq_vs_nonverbal_memory'] }}</td>
+                        <td>{{ $vs['nonverbal_iq_vs_nonverbal_memory'] }}</td>
+                        <td class="text-danger">100</td>
+                        <td class="text-danger">Not Significant</td>
+                    </tr>
+                    <tr>
+                        <td>Nonverbal IQ vs Nonverbal Memory</td>
+                        <td>{{ $diffs['nonverbal_iq_vs_processing_speed'] }}</td>
+                        <td>{{ $vs['nonverbal_iq_vs_processing_speed'] }}</td>
+                        <td class="text-danger">87.3</td>
+                        <td class="text-danger">Not Significant</td>
+                    </tr>
+                    <tr>
+                        <td>Nonverbal Memory vs Processing Speed</td>
+                        <td>{{ $diffs['nonverbal_memory_vs_processing_speed'] }}</td>
+                        <td>{{ $vs['nonverbal_memory_vs_processing_speed'] }}</td>
+                        <td class="text-danger">9.39</td>
+                        <td class="text-danger">Not Significant</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-header">Scatter Indices</div>
+            <table class="table text-danger">
+                <thead>
+                    <th class="text-center">Battery</th>
+                    <th>Scatter Value</th>
+                    <th>Frequency of Occurrence</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cognitive Battery</td>
+                        <td>3</td>
+                        <td>77.5</td>
+                    </tr>
+                    <tr>
+                        <td>Attention / Memory Battery</td>
+                        <td>5</td>
+                        <td>39.6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        {{-- @include('components.pdf_footer') --}}
     </main>
 @endsection

@@ -11,7 +11,7 @@ import * as yup from 'yup';
 
 const validationSchema = yup.object().shape({});
 
-function AttentionForm({ initialValues, onSubmit }) {
+function AttentionForm({ initialValues, onSubmit, examinee }) {
     const { submitHandler, data, isLoading } = useReport(initialValues, onSubmit, 'attention');
 
     return (

@@ -11,7 +11,7 @@ import * as yup from 'yup';
 
 const validationSchema = yup.object().shape({});
 
-function CognitiveSubtestsForm({ initialValues, onSubmit }) {
+function CognitiveSubtestsForm({ initialValues, onSubmit, examinee }) {
     const { submitHandler, data, isLoading } = useReport(initialValues, onSubmit, 'cognitive');
 
     return (
