@@ -128,7 +128,7 @@ class LeiterRecordsService
         }
 
         if (!$nonverbalIq->high) {
-            return $nonverbalIq->high;
+            return $nonverbalIq->low;
         }
 
         return "$nonverbalIq->low - $nonverbalIq->high";
@@ -138,6 +138,10 @@ class LeiterRecordsService
     {
         $condifenceNonverbalMemory = ConfidenceIntervalNonverbalMemory::where('composite_score', $composite_score)->first();
 
+        if (!$condifenceNonverbalMemory) {
+            return "Not found";
+        }
+        
         if (!$condifenceNonverbalMemory->low) {
             return $condifenceNonverbalMemory->high;
         }
