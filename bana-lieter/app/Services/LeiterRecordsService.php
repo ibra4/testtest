@@ -128,7 +128,7 @@ class LeiterRecordsService
         }
 
         if (!$nonverbalIq->high) {
-            return $nonverbalIq->low;
+            return $nonverbalIq->high;
         }
 
         return "$nonverbalIq->low - $nonverbalIq->high";
