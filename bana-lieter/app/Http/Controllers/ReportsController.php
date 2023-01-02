@@ -24,7 +24,7 @@ class ReportsController extends Controller
 {
     public function index(Request $request, LeiterRecordsService $lrs, $id)
     {
-        $examinee = Examinee::findOrFail(1);
+        $examinee = Examinee::findOrFail($id);
 
         $age = $examinee->age;
 
