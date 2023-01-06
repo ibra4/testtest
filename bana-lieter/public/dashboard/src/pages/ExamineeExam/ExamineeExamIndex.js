@@ -26,11 +26,7 @@ function ExamineeExamIndex() {
     }, [])
 
     const onSectionSubmit = async (type, values) => {
-        try {
-            return await httpClient.put(`${ROUTES.EXAMINEES.EXAM}/${id}/${type}`, values)
-        } catch (error) {
-            console.log(error)
-        }
+        return await httpClient.put(`${ROUTES.EXAMINEES.EXAM}/${id}/${type}`, values)
     }
 
     return (

@@ -14,12 +14,13 @@ use App\Models\LeiterRecord;
 use App\Models\Helpers\NonverbalIq;
 use App\Models\Helpers\ProcessingSpeedComposite;
 use App\Models\Helpers\SemGrowthFigureGround;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class LeiterRecordsService
 {
     public function getScaledScore($type, $rowScore, $age)
     {
-        $age = 70; //@TODO: Remove
         $record = LeiterRecord::select(
             'scaled_score'
         )
@@ -30,22 +31,32 @@ class LeiterRecordsService
             ->get()
             ->first();
 
+        if (!$record) {
+            [$min, $max] = $this->getMinMaxScaledScore($age, $type);
+            throw new NotFoundHttpException(__("Score not allowed, $min to $max"));
+        }
+
         return $record->scaled_score;
     }
 
     public function getExaminerScaledScore(string $model, $rowScore, $age)
     {
-        $age = 70; //@TODO: Remove
-        return $model::where('min_age', '<=', $age)
+        $record = $model::where('min_age', '<=', $age)
             ->where('max_age', '>=', $age)
             ->where('row_score', $rowScore)
             ->get()
             ->first();
+
+        if (!$record) {
+            [$min, $max] = $this->getMinMaxExaminerScaledScore($age, $model);
+            throw new NotFoundHttpException(__("Score not allowed, $min to $max"));
+        }
+
+        return $record;
     }
 
     public function getAttentionScaledScore($field, $report, $age)
     {
-        $age = 70; //@TODO: Remove
         switch ($field) {
             case 'attention_sustained_error':
                 $model = AttentionSustainedError::class;
@@ -141,7 +152,7 @@ class LeiterRecordsService
         if (!$condifenceNonverbalMemory) {
             return "Not found";
         }
-        
+
         if (!$condifenceNonverbalMemory->low) {
             return $condifenceNonverbalMemory->high;
         }
@@ -191,6 +202,32 @@ class LeiterRecordsService
         return [
             'sem' => $record->sem,
             'growth' => $record->growth
+        ];
+    }
+
+    private function getMinMaxScaledScore(int $age, string $type)
+    {
+        $records = LeiterRecord::where('type', $type)
+            ->where('min_age', '<=', $age)
+            ->where('max_age', '>=', $age)
+            ->orderBy('value', 'ASC')
+            ->get();
+
+        return [
+            $records->first()->value,
+            $records->last()->value
+        ];
+    }
+
+    private function getMinMaxExaminerScaledScore(int $age, string $model)
+    {
+        $records = $model::where('min_age', '<=', $age)
+            ->where('max_age', '>=', $age)
+            ->get();
+
+        return [
+            $records->first()->row_score,
+            $records->last()->row_score
         ];
     }
 }

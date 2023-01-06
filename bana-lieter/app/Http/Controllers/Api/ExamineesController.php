@@ -6,6 +6,7 @@ use App\Exports\ExamineesExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateExamineeRequest;
 use App\Http\Requests\UpdateExamineeRequest;
+use App\Http\Requests\UpdateExamRequest;
 use App\Http\Resources\ExamineeResource;
 use App\Http\Resources\ReportResource;
 use App\Models\Examinee;
@@ -85,7 +86,7 @@ class ExamineesController extends Controller
         return response()->json(new ReportResource($examinee->report));
     }
 
-    public function saveExam($id, $type, Request $request)
+    public function saveExam($id, $type, UpdateExamRequest $request)
     {
         $examinee = Examinee::findOrFail($id);
         $report = $this->reportService->updateReport($examinee, $type, $request);
