@@ -127,8 +127,6 @@ class ReportsService
         $report = $this->getSubReportModel($examinee, $type);
 
         $data = $request->only($report->getFillable());
-        $data['file_en'] = 'https://www.orimi.com/pdf-test.pdf';
-        $data['file_ar'] = 'https://www.orimi.com/pdf-test.pdf';
 
         $report->fill($data)->save();
 
