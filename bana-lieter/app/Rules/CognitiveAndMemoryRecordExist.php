@@ -35,6 +35,7 @@ class CognitiveAndMemoryRecordExist implements Rule
      */
     public function passes($attribute, $value)
     {
+        $stop = '';
         try {
             if ($attribute == 'attention_sustained') {
                 $attribute = 'attention';

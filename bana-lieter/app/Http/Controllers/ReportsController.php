@@ -12,6 +12,7 @@ use App\Models\Helpers\SemGrowthClassificationAnalogies;
 use App\Models\Helpers\SemGrowthFigureGround;
 use App\Models\Helpers\SemGrowthFormCompletion;
 use App\Models\Helpers\SemGrowthForwardMemory;
+use App\Models\Helpers\SemGrowthNonverbalIQ;
 use App\Models\Helpers\SemGrowthNonverbalMemory;
 use App\Models\Helpers\SemGrowthReverseMemory;
 use App\Models\Helpers\SemGrowthSequentialOrder;
@@ -32,6 +33,9 @@ class ReportsController extends Controller
         $reportCognitive = $examinee->report->reportCognitive;
         $reportMemory = $examinee->report->reportMemory;
         $reportAttention = $examinee->report->reportAttention;
+        $reportAttention->nonverbal_stroop_effect =
+            abs($reportAttention->nonverbal_stroop_incongruent_correct -
+                $reportAttention->nonverbal_stroop_congruent_correct);
         $reportExaminer = $examinee->report->reportExaminer;
 
         // @TODO: missing Nonverbal Stroop Effect
@@ -67,6 +71,7 @@ class ReportsController extends Controller
             'as' => $lrs->getScaledScore('attention', $reportAttention->attention_sustained, $age),
             'nsic' => $lrs->getScaledScore('nonverbal_stroop_incongruent_correct', $reportAttention->nonverbal_stroop_incongruent_correct, $age),
             'nscc' => $lrs->getScaledScore('nonverbal_stroop_congruent_correct', $reportAttention->nonverbal_stroop_congruent_correct, $age),
+            'nseff' => "Missing table"
         ];
 
         $sum_of_nonverbal_memory = $lrs->getSumOfNonverbalMemory($memory_attention_values);
@@ -124,6 +129,10 @@ class ReportsController extends Controller
         ];
 
         $sem_growth = [
+            'nonverbal_iq' => $lrs->getSemGrowth(
+                SemGrowthNonverbalIQ::class,
+                $nonverbal_iq
+            ),
             'figure_ground' => $lrs->getSemGrowth(
                 SemGrowthFigureGround::class,
                 $reportCognitive->figure_ground
@@ -161,13 +170,13 @@ class ReportsController extends Controller
         $vs = config('leiter')['vs'];
 
         // dd($nonverbal_iq, $sum_of_nonverbal_memory);
-        
+
         $diffs = [
             'nonverbal_iq_vs_nonverbal_memory' => $nonverbal_iq - $composite_nonverbal_memory,
             'nonverbal_iq_vs_processing_speed' => $nonverbal_iq - $composite_processing_speed,
             'nonverbal_memory_vs_processing_speed' => $composite_nonverbal_memory - $composite_processing_speed,
         ];
-        
+
         return view('pdf')->with(compact(
             // Examinee Data
             'examinee',

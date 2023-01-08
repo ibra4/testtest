@@ -26,5 +26,9 @@ export const ROUTES = {
     SLIDERS: {
         GET: '/sliders',
         UPLOAD: '/sliders/upload'
-    }
+    },
+    MY_PROFILE: {
+        GET: 'my-profile/data',
+        POST: 'my-profile/update'
+    } 
 }

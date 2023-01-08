@@ -44,7 +44,6 @@ class ExamineesQuery
 
         /** @var \App\Models\User $user */
         $user = $request->user();
-        $stop = $user->id;
         if (!$user->hasRole('root')) {
             if ($user->hasRole('admin')) {
                 $all_admins = User::where('admin_id', $user->id)->get()->pluck('id')->toArray();

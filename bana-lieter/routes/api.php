@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CountryStatisticController;
 use App\Http\Controllers\Api\SubAdminsController;
 use App\Http\Controllers\Api\ExamineesController;
 use App\Http\Controllers\Api\LeiterRecordsController;
+use App\Http\Controllers\Api\MyProfileController;
 use App\Http\Controllers\Api\SlidersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +74,9 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/examinees/create', [ExamineesController::class, 'create']);
         Route::put('/examinees/{id}/update', [ExamineesController::class, 'update']);
     });
+
+    Route::get('/my-profile/data', [MyProfileController::class, 'index']);
+    Route::post('/my-profile/update', [MyProfileController::class, 'update']);
 });
 
 // Sliders

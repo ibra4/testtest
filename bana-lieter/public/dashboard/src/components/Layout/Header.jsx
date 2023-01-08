@@ -6,9 +6,14 @@ import { AiOutlineNotification, AiOutlineMessage } from 'react-icons/ai';
 import { BiMessageSquareDetail } from 'react-icons/bi';
 import { CgMoreO } from 'react-icons/cg';
 import { useTranslation } from 'react-i18next';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Header({ title }) {
     const { t } = useTranslation();
+
+    const user = useSelector(state => state.app.config.user)
+    
     return (
         <div className="header">
             <Container fluid>
@@ -24,7 +29,7 @@ function Header({ title }) {
                                     type="text"
                                     className="search-input"
                                     name="search"
-                                    placeholder={t("Search") + "..."}
+                                    placeholder={t('Search') + '...'}
                                 />
                             </Form>
                             <Dropdown className="notifications-dropdown mx-2">
@@ -67,10 +72,12 @@ function Header({ title }) {
                             </Dropdown>
                             <Dropdown>
                                 <Dropdown.Toggle className="dropdown-toggle" as={'div'}>
-                                    <img src="/images/girl.jpg" />
+                                    <img src={user.avatar} />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">{t('My Profile')}</Dropdown.Item>
+                                    <Dropdown.Item>
+                                        <Link to={'/my-profile'}>{t('My Profile')}</Link>
+                                    </Dropdown.Item>
                                     <Dropdown.Divider />
                                     <Dropdown.Item href="/admin/logout" className="text-danger">
                                         <FaSignOutAlt />

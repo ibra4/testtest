@@ -8,15 +8,16 @@ function TextAreaField({ name, onChange, value, label, error, className, ...rest
         <div className={className}>
             <Form.Label>{t(label)}</Form.Label>
             <div className="input-group has-validation">
-                <textarea
-                    className="form-control"
-                    isinvalid={!!error}
-                    type="textarea"
+                <Form.Control
+                    isInvalid={!!error}
+                    as="textarea"
                     name={name}
                     onChange={onChange}
-                    {...rest}
                     defaultValue={value}
+                    rows={3}
+                    {...rest}
                 />
+
                 <div className="invalid-feedback">{error && error}</div>
             </div>
         </div>

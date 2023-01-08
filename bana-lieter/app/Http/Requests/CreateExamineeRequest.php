@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\MaxWordsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateExamineeRequest extends FormRequest
@@ -30,6 +31,7 @@ class CreateExamineeRequest extends FormRequest
             'gender' => 'required|boolean',
             'country_id' => 'required|exists:countries,id',
             'admin_id' => 'required|exists:users,id',
+            'examiner_notes' => new MaxWordsRule()
         ];
     }
 }

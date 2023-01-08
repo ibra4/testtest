@@ -51,21 +51,18 @@ function ExamineeFormIndex() {
     }, [])
 
     const onSubmit = async (data) => {
-        try {
-            let res;
-            if (id) {
-                res = await httpClient.put(`${ROUTES.EXAMINEES.LIST}/${id}/update`, data)
-            } else {
-                res = await httpClient.post(ROUTES.EXAMINEES.CREATE, data)
-            }
-            if (res.status == 200) {
-                addToast(t('Examinee Saved Successfully'), { appearance: 'success' });
-                push('/examinees')
-            } else {
-                return res
-            }
-        } catch (error) {
+        let res;
+        if (id) {
+            res = await httpClient.put(`${ROUTES.EXAMINEES.LIST}/${id}/update`, data)
+        } else {
+            res = await httpClient.post(ROUTES.EXAMINEES.CREATE, data)
+        }
+        if (res.status == 200) {
+            addToast(t('Examinee Saved Successfully'), { appearance: 'success' });
+            push('/examinees')
+        } else {
             addToast(t('Something went wrong'));
+            return res
         }
     }
 

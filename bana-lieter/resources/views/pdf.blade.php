@@ -55,13 +55,15 @@
                 <div class="value">{{ $examinee->birthday }}</div>
             </div>
             <div class="label-value-item col-6">
-                <div class="label text-danger">IDEA/Disability:</div>
-                <div class="value"></div>
-            </div>
-            <div class="label-value-item col-6">
                 <div class="label">Date of Report:</div>
                 <div class="value">{{ $examinee->application_date }}</div>
             </div>
+            @if ($examinee->examiner_notes)
+                <div class="label-value-item col-6">
+                    <div class="label">Notes:</div>
+                    <div class="value">{{ $examinee->examiner_notes }}</div>
+                </div>
+            @endif
             {{-- </div> --}}
         </div>
         <hr>
@@ -176,11 +178,11 @@
                         <td>{{ $memory_attention_values['nscc'] }}</td>
                         <td class="text-danger">25</td>
                     </tr>
-                    <tr class="text-danger">
+                    <tr>
                         <td class="">Nonverbal Stroop Effect (NSeff)</td>
-                        <td>{{ $reportCognitive->visual_patterns }}</td>
-                        <td>{{ $cognitive_values['vp'] }}</td>
-                        <td>25</td>
+                        <td>{{ $reportAttention->nonverbal_stroop_effect }}</td>
+                        <td class="text-danger">{{ $memory_attention_values['nseff'] }}</td>
+                        <td class="text-danger">25</td>
                     </tr>
                 </tbody>
             </table>
@@ -358,7 +360,7 @@
 
         <div class="section">
             <h1 class="title">Growth Profile Scores</h1>
-            <div class="table-header">Examiner Rating Scale Scores</div>
+            <div class="table-header">Growth Profile Scores</div>
             <table class="table">
                 <thead>
                     <th class="text-center">Cognitive Subtests</th>
@@ -366,10 +368,10 @@
                     <th>Growth Score</th>
                 </thead>
                 <tbody>
-                    <tr class="text-danger">
+                    <tr>
                         <td>Nonverbal IQ (NVIQ)</td>
-                        <td>3</td>
-                        <td>452</td>
+                        <td>{{$sem_growth['nonverbal_iq']['sem']}}</td>
+                        <td>{{$sem_growth['nonverbal_iq']['growth']}}</td>
                     </tr>
                     <tr>
                         <td>Figure Ground (FG)</td>

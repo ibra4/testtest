@@ -17,6 +17,7 @@ import LeiterRecordFormIndex from 'pages/LeiterRecordForm/LeiterRecordFormIndex'
 import SlidersIndex from 'pages/Settings/Sliders/SlidersIndex';
 import SliderFormIndex from 'pages/Settings/SliderForm/SliderFormIndex';
 import ExamineeExamIndex from 'pages/ExamineeExam/ExamineeExamIndex';
+import ProfileIndex from 'pages/Profile/ProfileIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -83,6 +84,9 @@ const Routes = () => {
         <Route path="/settings/slider" component={SlidersIndex} exact />
         <Route path="/settings/slider/create" component={SliderFormIndex} exact />
         <Route path="/settings/slider/:id/update" component={SliderFormIndex} exact />
+
+        {/* Profile */}
+        <Route path="/my-profile" component={ProfileIndex} exact />
       </Switch>
     </BrowserRouter>
   ) : (

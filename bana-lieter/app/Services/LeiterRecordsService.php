@@ -100,8 +100,8 @@ class LeiterRecordsService
             ->first();
 
         return [
-            'scaled_score' => $record->scaled_score,
-            'percentile' => $record->percentile
+            'scaled_score' => $record ? $record->scaled_score : "Not Found",
+            'percentile' => $record ? $record->percentile : "Not Found"
         ];
     }
 
