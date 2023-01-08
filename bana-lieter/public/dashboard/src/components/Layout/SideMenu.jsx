@@ -20,7 +20,7 @@ const routes = [
     },
     {
         routeName: 'sub-admins',
-        label: 'Sub Admins',
+        label: 'Examiners',
         icon: <FaUsers />,
         role: 'admin'
     },

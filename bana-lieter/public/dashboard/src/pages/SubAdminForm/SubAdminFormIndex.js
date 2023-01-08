@@ -23,7 +23,7 @@ function SubAdminFormIndex() {
     const { t } = useTranslation()
     const { id } = useParams()
 
-    const title = id ? `${t('Update Sub admin')} #${id}` : t('create_new', {name: t('Admin')})
+    const title = id ? `${t('Update Sub admin')} #${id}` : t('create_new', {name: t('Examiner')})
 
     const { push } = useHistory()
 

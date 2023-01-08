@@ -41,6 +41,7 @@ class ExamineesExport implements FromQuery, WithHeadings
             'Created By',
             'Created At',
             'Updated At',
+            'Application Date'
         ];
     }
 }

@@ -44,7 +44,7 @@ const View = ({ data, queryParams, onSearch }) => {
                 <div className="d-flex">
                     <Link to="/sub-admins/create" className="btn btn-primary">
                         <FaPlus />
-                        <span className="ms-2">{t('create_new', { name: t('Admin') })}</span>
+                        <span className="ms-2">{t('create_new', { name: t('Examiner') })}</span>
                     </Link>
                     <a
                         className={`btn btn-success ms-2${!!!data.total ? ' disabled' : ''}`}

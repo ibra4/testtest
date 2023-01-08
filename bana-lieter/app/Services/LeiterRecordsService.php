@@ -15,11 +15,12 @@ use App\Models\Helpers\NonverbalIq;
 use App\Models\Helpers\ProcessingSpeedComposite;
 use App\Models\Helpers\SemGrowthFigureGround;
 use Illuminate\Support\Facades\DB;
+use stdClass;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class LeiterRecordsService
 {
-    public function getScaledScore($type, $rowScore, $age)
+    public function getScaledScore($type, $rowScore, $age, $throwException = false)
     {
         $record = LeiterRecord::select(
             'scaled_score'
@@ -32,14 +33,18 @@ class LeiterRecordsService
             ->first();
 
         if (!$record) {
-            [$min, $max] = $this->getMinMaxScaledScore($age, $type);
-            throw new NotFoundHttpException(__("Score not allowed, $min to $max"));
+            if ($throwException) {
+                [$min, $max] = $this->getMinMaxScaledScore($age, $type);
+                throw new NotFoundHttpException(__("Score not allowed, $min to $max"));
+            } else {
+                return false;
+            }
         }
 
         return $record->scaled_score;
     }
 
-    public function getExaminerScaledScore(string $model, $rowScore, $age)
+    public function getExaminerScaledScore(string $model, $rowScore, $age, $throwException = false)
     {
         $record = $model::where('min_age', '<=', $age)
             ->where('max_age', '>=', $age)
@@ -48,8 +53,15 @@ class LeiterRecordsService
             ->first();
 
         if (!$record) {
-            [$min, $max] = $this->getMinMaxExaminerScaledScore($age, $model);
-            throw new NotFoundHttpException(__("Score not allowed, $min to $max"));
+            if ($throwException) {
+                [$min, $max] = $this->getMinMaxExaminerScaledScore($age, $model);
+                throw new NotFoundHttpException(__("Score not allowed, $min to $max"));
+            } else {
+                $result = new stdClass();
+                $result->scaled_score = "Not found";
+                $result->percentile = "Not found";
+                return $result;
+            }
         }
 
         return $record;
@@ -200,8 +212,8 @@ class LeiterRecordsService
         $record = $model::where('row_score', $row_score)->first();
 
         return [
-            'sem' => $record->sem,
-            'growth' => $record->growth
+            'sem' => $record ?  $record->sem : "Not found",
+            'growth' => $record ? $record->growth : "Not found"
         ];
     }
 

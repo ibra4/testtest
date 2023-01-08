@@ -42,6 +42,7 @@ function Dashboard() {
     };
 
     const handleLocationChange = (location) => {
+        console.log(location);
         const countryCode = location.getAttribute('id');
         setLastSelectedAreaName(location.getAttribute('name'));
         setCurrentCountryCode(countryCode);
@@ -105,33 +106,27 @@ function Dashboard() {
                     </WhiteBox>
                 </Col>
                 <Col md={4} className="d-flex">
-                    <WhiteBox title={t("Details")} classes="flex-1" hr>
+                    <WhiteBox title={t('Details')} classes="flex-1" hr>
                         <LabelValueRow
                             label={'Area'}
                             value={<div className="fw-bold color-main">{lastSelectedAreaName}</div>}
                         />
-                        {/* <LabelValueRow label="Num of Admins" value={countryStatistics.admins} /> */}
+                        <LabelValueRow label="Num of Admins" value={countryStatistics.admins} />
+                        <LabelValueRow label="Num of Examiners" value={countryStatistics.sub_admins} />
                         <LabelValueRow label={'Num of Total Reports'} value={countryStatistics.total_reports} />
-                        <LabelValueRow
-                            label={'Num of Remaining Reports'}
-                            value={
-                                <div className="text-danger fw-bold">
-                                    {countryStatistics.total_reports - countryStatistics.used_reports}
-                                </div>
-                            }
-                        />
+                        <LabelValueRow label={'Num of Used Reports'} value={countryStatistics.used_reports} />
                         <LabelValueRow label={'Examinees'} value={countryStatistics.examinees} />
                     </WhiteBox>
                 </Col>
             </Row>
             <Row>
                 <Col md={6}>
-                    <WhiteBox title={t('Top 5 admins')} hr>
+                    <WhiteBox title={t('Examiners')} hr>
                         {t('Continue')}
                     </WhiteBox>
                 </Col>
                 <Col md={6}>
-                    <WhiteBox title={t("History")} hr>
+                    <WhiteBox title={t('History')} hr>
                         {t('Continue')}
                     </WhiteBox>
                 </Col>

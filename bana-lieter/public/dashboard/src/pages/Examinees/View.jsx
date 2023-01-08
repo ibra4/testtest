@@ -26,6 +26,7 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>{item.createdbyadminname}</td>
             <td>{item.created_at}</td>
             <td>{item.updated_at}</td>
+            <td>{item.application_date}</td>
             <td>
                 <div className="d-flex">
                     <ActionButton
@@ -75,6 +76,7 @@ const View = ({ data, queryParams, onSearch }) => {
                             <th>{t('Created By')}</th>
                             <th>{t('Created At')}</th>
                             <th>{t('Latest Update')}</th>
+                            <th>{t('Application Date')}</th>
                             <th>{t('Actions')}</th>
                         </tr>
                     </thead>

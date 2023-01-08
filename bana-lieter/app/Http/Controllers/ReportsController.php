@@ -26,6 +26,7 @@ class ReportsController extends Controller
     {
         $examinee = Examinee::findOrFail($id);
 
+        $stop = "";
         $age = $examinee->age;
 
         $reportCognitive = $examinee->report->reportCognitive;

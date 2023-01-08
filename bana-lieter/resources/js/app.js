@@ -5,5 +5,6 @@ require("slick-carousel/slick/slick");
 
 $('.login-carousel').slick({
     arrows: false,
-    dots: true
+    dots: true,
+    autoplay: true
 })

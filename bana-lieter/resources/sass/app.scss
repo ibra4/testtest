@@ -82,6 +82,11 @@
             }
         }
     }
+
+    a,
+    a:hover {
+        text-decoration: none;
+    }
 }
 
 .login-title {
@@ -101,7 +106,6 @@
         background-color: orange;
     }
 }
-
 
 .social-media-links {
     list-style-type: none;

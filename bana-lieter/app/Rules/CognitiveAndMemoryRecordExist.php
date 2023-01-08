@@ -39,7 +39,7 @@ class CognitiveAndMemoryRecordExist implements Rule
             if ($attribute == 'attention_sustained') {
                 $attribute = 'attention';
             }
-            $this->lrs->getScaledScore($attribute, $value, $this->age);
+            $this->lrs->getScaledScore($attribute, $value, $this->age, true);
         } catch (\Throwable $th) {
             $this->message = $th->getMessage();
             return false;

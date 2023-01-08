@@ -14,8 +14,6 @@ import * as Yup from 'yup';
 function Form({ initialValues, config, onSubmit }) {
     const { t } = useTranslation();
     const validationSchema = Yup.object().shape({
-        title: Yup.string().required('Name field is required!'),
-        description: Yup.string().required(t('Description field is required!')),
         image: Yup.string().required(t('Image field is required!'))
     });
     const [cities, setCities] = useState([]);
@@ -65,6 +63,17 @@ function Form({ initialValues, config, onSubmit }) {
                                             value={values.title}
                                             onBlur={handleBlur}
                                             error={errors.title}
+                                            className="mb-3"
+                                        />
+                                    </Col>
+                                    <Col md={6}>
+                                        <TextField
+                                            name="link"
+                                            label='Link'
+                                            onChange={handleChange}
+                                            value={values.link}
+                                            onBlur={handleBlur}
+                                            error={errors.link}
                                             className="mb-3"
                                         />
                                     </Col>

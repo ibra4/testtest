@@ -11127,6 +11127,10 @@ textarea.form-control-lg {
   height: 5px;
   background-color: white;
 }
+.login-carousel a,
+.login-carousel a:hover {
+  text-decoration: none;
+}
 
 .login-title {
   font-size: 50px;

@@ -41,7 +41,8 @@ class Examinee extends Model
 
     public function getAgeAttribute($value)
     {
-        $birthday = new Carbon($this->birthday);
+        $value = $this->birthday ?? $value;
+        $birthday = new Carbon($value);
         $diff = $birthday->diff(Carbon::now());
         $years = $diff->format("%y");
         $months = $diff->format("%m");
@@ -51,6 +52,15 @@ class Examinee extends Model
     public function getGenderAttribute($value)
     {
         return $value ? "Male" : "Female";
+    }
+
+    public function getNameAttribute($value)
+    {
+        $admin_id = $this->admin_id;
+        $id = request()->user()->id;
+        $stop = "";
+        // Fix
+        return request()->user()->id == $this->admin_id ? $value : "********";
     }
 
     public function report()
@@ -72,11 +82,9 @@ class Examinee extends Model
     {
         return $this->belongsTo(City::class);
     }
-    
+
     public function getLocationAttribute()
     {
-        $city = $this->city ? $this->city->name : "";
-        
         $location = $this->country->name;
 
         if ($this->city) {

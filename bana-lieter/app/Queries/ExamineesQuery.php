@@ -3,6 +3,7 @@
 namespace App\Queries;
 
 use App\Models\Examinee;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -26,7 +27,8 @@ class ExamineesQuery
             'examinees.gender',
             'creator.name as createdbyadminname',
             'examinees.created_at',
-            'examinees.updated_at'
+            'examinees.updated_at',
+            'examinees.application_date'
         )->where([
             ['examinees.name', 'LIKE', "%$request->name%"],
         ])
@@ -39,13 +41,16 @@ class ExamineesQuery
             $query->where('examinees.gender', $request->gender);
         }
 
+
         /** @var \App\Models\User $user */
         $user = $request->user();
+        $stop = $user->id;
         if (!$user->hasRole('root')) {
             if ($user->hasRole('admin')) {
-                $query->where('examinees.admin_id', $user->id);
+                $all_admins = User::where('admin_id', $user->id)->get()->pluck('id')->toArray();
+                $query->whereIn('examinees.admin_id', [$user->id] + $all_admins);
             } elseif ($user->hasRole('sub_admin')) {
-                $query->where('examinees.admin_id', $user->admin_id);
+                $query->where('examinees.admin_id', $user->id);
             }
         } elseif ($request->admin_id) {
             $query->where('examinees.admin_id', $request->admin_id);

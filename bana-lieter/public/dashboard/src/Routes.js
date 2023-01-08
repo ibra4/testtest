@@ -63,7 +63,7 @@ const Routes = () => {
         <Route path="/admins/create" component={AdminFormIndex} exact />
         <Route path="/admins/:id/update" component={AdminFormIndex} exact />
 
-        {/* Sub Admins */}
+        {/* Examiners */}
         <Route path="/sub-admins" component={SubAdminsIndex} exact />
         <Route path="/sub-admins/create" component={SubAdminFormIndex} exact />
         <Route path="/sub-admins/:id/update" component={SubAdminFormIndex} exact />

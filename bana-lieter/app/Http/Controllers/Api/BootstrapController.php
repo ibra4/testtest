@@ -23,10 +23,11 @@ class BootstrapController extends Controller
             'countries' => CountryResource::collection(Country::all())
         ];
 
+        // Fix
         if ($request->user()->can('root')) {
-            $data['admins'] = User::select('id', 'name AS label')->where('role', 'admin')->get();
-            $data['leiter_tables_types'] = config('enums.leiter_tables_types');
         }
+        $data['admins'] = User::select('id', 'name AS label')->where('role', 'admin')->get();
+        $data['leiter_tables_types'] = config('enums.leiter_tables_types');
 
         return $data;
     }

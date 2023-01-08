@@ -1,7 +1,6 @@
 {
     "Dashboard": "الرئيسية",
     "Admins": "مدير مركز",
-    "Sub Admins": "عضو مركز",
     "Examinees": "المفحوصين",
     "Leiter Tables": "جداول لايتر",
     "Settings": "الإعدادات",
@@ -27,8 +26,11 @@
     "Details": "التفاصيل",
     "Area": "المنطقة",
     "Num of Total Reports": "عدد التقارير",
-    "Num of Remaining Reports": "عدد التقارير المتبقية",
-    "Top 5 admins": "5 مدراء مراكز",
+    "Num of Used Reports": "عدد التقارير المستخدمة",
+    "Num of Admins": "عدد المدراء",
+    "Num of Examiners": "عدد الفاحصين",
+    "Examiners": "الفاحصين",
+    "Examiner": "فاحص",
     "History": "السجل",
     "Name": "الإسم",
     "Email": "البريد الإلكتروني",
@@ -101,7 +103,7 @@
     "Click save to generate reports": "إضغط على حفظ لإنشاء تقرير",
     "Report (AR)": "التقرير (عربي)",
     "Report (EN)": "التقرير (إنجليزي)",
-    "test": "",
+    "Link": "عنوان URL",
     "test": "",
     "test": ""
 }

@@ -54,7 +54,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::middleware('can:admin')->group(function () {
-        // Sub Admins
+        // Examiners
         Route::get('/sub-admins', [SubAdminsController::class, 'index']);
         Route::get('/sub-admins/{id}', [SubAdminsController::class, 'get']);
         Route::post('/sub-admins/create', [SubAdminsController::class, 'create']);

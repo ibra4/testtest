@@ -11,7 +11,7 @@ class CreateExamineeRequest extends FormRequest
         $user = $this->user();
         if (!$this->user()->hasRole('root')) {
             /** @var \App\Models\User $user */
-            $this->merge(['admin_id' => $user->hasRole('admin') ? $user->id : $user->admin_id]);
+            $this->merge(['admin_id' => $user->id]);
         }
         $this->merge(['created_by' => $user->id]);
     }

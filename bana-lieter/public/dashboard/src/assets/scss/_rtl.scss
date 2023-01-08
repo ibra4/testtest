@@ -3,7 +3,7 @@ html[dir="rtl"] {
         right: unset;
         left: -10px
     }
-    svg {
+    svg:not(.map-view) {
         // transform: rotate(180deg);
         transform: scaleX(-1);
     }

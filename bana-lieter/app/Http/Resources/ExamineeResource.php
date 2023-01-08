@@ -25,7 +25,9 @@ class ExamineeResource extends JsonResource
             'city_id' => $this->city_id,
             'gender' => $this->getRawOriginal('gender'),
             'examiner_notes' => $this->examiner_notes,
-            'report_id' => $this->report_id
+            'report_id' => $this->report_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
         ];
     }
 }

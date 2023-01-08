@@ -13,6 +13,7 @@ use App\Models\Examinee;
 use App\Queries\ExamineesQuery;
 use App\Services\ReportsService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExamineesController extends Controller
@@ -41,7 +42,9 @@ class ExamineesController extends Controller
             'examinees.name',
             'examinees.birthday as age',
             'admin.name as adminname',
+            'admin.admin_id as admin_id',
             'examinees.gender',
+            'examinees.application_date',
             'creator.name as createdbyadminname',
             'examinees.created_at',
             'examinees.updated_at',

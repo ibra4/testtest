@@ -36,7 +36,7 @@ class ExaminerRecordExist implements Rule
     public function passes($attribute, $value)
     {
         try {
-            $this->lrs->getExaminerScaledScore($this->model, $value, $this->age);
+            $this->lrs->getExaminerScaledScore($this->model, $value, $this->age, true);
         } catch (\Throwable $th) {
             $this->message = $th->getMessage();
             return false;
