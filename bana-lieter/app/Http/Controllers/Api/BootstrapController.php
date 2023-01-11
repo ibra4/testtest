@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\UserResource;
 use App\Models\Country;
+use App\Models\Examinee;
+use App\Models\Reports\Report;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,11 +18,14 @@ class BootstrapController extends Controller
         $data = [
             'statistics' => [
                 'total_reports' => User::where('role', 'admin')->sum('number_of_reports'),
-                'used_reports' => 0,
+                'used_reports' => Report::count(),
+                'admins' => User::where('role', 'admin')->count(),
+                'sub_admins' => User::where('role', 'sub_admin')->count(),
+                'examinees' => Examinee::count()
             ],
             'user' => new UserResource($request->user()),
             'top_admins' => [],
-            'countries' => CountryResource::collection(Country::all())
+            'countries' => CountryResource::collection(Country::all()),
         ];
 
         // Fix
