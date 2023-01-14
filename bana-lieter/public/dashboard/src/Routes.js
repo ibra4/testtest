@@ -18,6 +18,7 @@ import SlidersIndex from 'pages/Settings/Sliders/SlidersIndex';
 import SliderFormIndex from 'pages/Settings/SliderForm/SliderFormIndex';
 import ExamineeExamIndex from 'pages/ExamineeExam/ExamineeExamIndex';
 import ProfileIndex from 'pages/Profile/ProfileIndex';
+import HistoryIndex from 'pages/History/HistoryIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -87,6 +88,7 @@ const Routes = () => {
 
         {/* Profile */}
         <Route path="/my-profile" component={ProfileIndex} exact />
+        <Route path="/history" component={HistoryIndex} exact />
       </Switch>
     </BrowserRouter>
   ) : (

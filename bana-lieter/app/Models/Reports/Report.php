@@ -18,6 +18,16 @@ class Report extends Model
         'report_narrative_id'
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'updated_at' => 'datetime:d/m/Y - H:i:s',
+        'created_at' => 'datetime:d/m/Y - H:i:s',
+    ];
+
     public function examinee()
     {
         return $this->hasOne(Examinee::class, 'report_id', 'id');

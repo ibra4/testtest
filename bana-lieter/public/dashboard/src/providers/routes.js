@@ -30,5 +30,9 @@ export const ROUTES = {
     MY_PROFILE: {
         GET: 'my-profile/data',
         POST: 'my-profile/update'
-    } 
+    },
+    HISTORY: {
+        TEASER: 'history/teaser',
+        GET: 'history'
+    }
 }

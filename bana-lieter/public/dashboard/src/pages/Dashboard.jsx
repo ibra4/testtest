@@ -18,6 +18,7 @@ import LabelValueRow from 'components/LabelValueRow';
 import { ROUTES } from 'providers/routes';
 import { httpClient } from 'providers/helpers';
 import { useTranslation } from 'react-i18next';
+import HistoryView from 'components/HistoryView';
 
 const countriesMapper = { sa, ae, tn, ps, jo };
 
@@ -25,6 +26,8 @@ function Dashboard() {
     const { t } = useTranslation();
 
     const { statistics } = useSelector((state) => state.app.config);
+
+    const [historyData, setHistoryData] = useState();
 
     const [currentMap, setCurrentMap] = useState(world);
     const [areaName, setAreaName] = useState('');
@@ -34,6 +37,11 @@ function Dashboard() {
     const [currentCountryCode, setCurrentCountryCode] = useState(null);
 
     const ref = useRef(null);
+
+    const getHistory = async () => {
+        const res = await httpClient.get(ROUTES.HISTORY.TEASER);
+        setHistoryData(res.data);
+    };
 
     const handleBack = () => {
         setCurrentMap(world);
@@ -83,6 +91,10 @@ function Dashboard() {
         }
     }, [currentCountryCode]);
 
+    useEffect(() => {
+        getHistory();
+    }, []);
+
     return (
         <Layout title={t('Dashboard')}>
             <Statistics statistics={statistics} />
@@ -125,12 +137,12 @@ function Dashboard() {
                         {t('Continue')}
                     </WhiteBox>
                 </Col>
-                <Col md={6}>
-                    <WhiteBox title={t('History')} hr>
-                        {t('Continue')}
-                    </WhiteBox>
-                </Col>
+                <Col md={6}></Col>
             </Row>
+            <WhiteBox title={t('History')} hr>
+                {/* {t('Continue')} */}
+                <HistoryView data={historyData} />
+            </WhiteBox>
         </Layout>
     );
 }

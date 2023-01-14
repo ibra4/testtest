@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AdminMediaController;
 use App\Http\Controllers\Api\CountryStatisticController;
 use App\Http\Controllers\Api\SubAdminsController;
 use App\Http\Controllers\Api\ExamineesController;
+use App\Http\Controllers\Api\LatestReportsController;
 use App\Http\Controllers\Api\LeiterRecordsController;
 use App\Http\Controllers\Api\MyProfileController;
 use App\Http\Controllers\Api\SlidersController;
@@ -52,6 +53,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // Statistics
         Route::get('/country-statistics/{id}', [CountryStatisticController::class, 'index']);
+        // History
+        Route::get('/history', [LatestReportsController::class, 'index']);
+        Route::get('/history/teaser', [LatestReportsController::class, 'teaser']);
     });
 
     Route::middleware('can:admin')->group(function () {
