@@ -17,7 +17,8 @@ class ReportCognitiveSubtest extends Model
         'sequential_order',
         'visual_patterns',
         'file_en',
-        'file_ar'
+        'file_ar',
+        'saved'
     ];
 
     /**

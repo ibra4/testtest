@@ -14,7 +14,8 @@ class ReportMemoryBattery extends Model
         'forward_memory',
         'reverse_memory',
         'file_en',
-        'file_ar'
+        'file_ar',
+        'saved'
     ];
 
     /**

@@ -20,7 +20,8 @@ class ReportExaminerRatingScaleSection extends Model
         'anxiety',
         'sensory_reaction',
         'file_en',
-        'file_ar'
+        'file_ar',
+        'saved'
     ];
 
     /**

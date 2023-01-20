@@ -8,7 +8,8 @@ export const useReport = (initialValues, onSubmit, type) => {
         setData({
             file_en: initialValues.file_en,
             file_ar: initialValues.file_ar,
-            updated_at: initialValues.updated_at
+            updated_at: initialValues.updated_at,
+            saved: initialValues.saved,
         });
     }, []);
 

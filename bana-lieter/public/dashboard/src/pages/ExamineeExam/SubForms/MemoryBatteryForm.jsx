@@ -36,6 +36,7 @@ function MemoryBatteryForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.forward_memory}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={4}>
@@ -48,6 +49,7 @@ function MemoryBatteryForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.reverse_memory}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                         </Row>

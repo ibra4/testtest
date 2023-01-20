@@ -36,6 +36,7 @@ function CognitiveSubtestsForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.figure_ground}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={4}>
@@ -48,6 +49,7 @@ function CognitiveSubtestsForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.form_completion}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={4}>
@@ -60,6 +62,7 @@ function CognitiveSubtestsForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.classification_analogies}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={4}>
@@ -72,6 +75,7 @@ function CognitiveSubtestsForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.sequential_order}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={4}>
@@ -84,6 +88,7 @@ function CognitiveSubtestsForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.visual_patterns}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                         </Row>

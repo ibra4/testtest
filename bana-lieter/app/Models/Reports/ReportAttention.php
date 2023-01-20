@@ -15,7 +15,8 @@ class ReportAttention extends Model
         'nonverbal_stroop_congruent_correct',
         'nonverbal_stroop_incongruent_correct',
         'file_en',
-        'file_ar'
+        'file_ar',
+        'saved'
     ];
 
     /**

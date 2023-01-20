@@ -36,6 +36,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.attention}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={3}>
@@ -48,6 +49,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.organization_impulse_control}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={3}>
@@ -60,6 +62,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.activity_level}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={3}>
@@ -72,6 +75,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.sociability}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                         </Row>
@@ -87,6 +91,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.energy_and_feelings}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={3}>
@@ -99,6 +104,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.regulation}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={3}>
@@ -111,6 +117,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.anxiety}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={3}>
@@ -123,6 +130,7 @@ function ExaminerRatingScaleSectionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.sensory_reaction}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                         </Row>

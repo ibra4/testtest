@@ -36,6 +36,7 @@ function AttentionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.attention_sustained}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={4}>
@@ -48,6 +49,7 @@ function AttentionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.nonverbal_stroop_congruent_correct}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                             <Col md={4}>
@@ -60,6 +62,7 @@ function AttentionForm({ initialValues, onSubmit, examinee }) {
                                     error={errors.nonverbal_stroop_incongruent_correct}
                                     className="mb-3"
                                     type="number"
+                                    disabled={data.saved}
                                 />
                             </Col>
                         </Row>

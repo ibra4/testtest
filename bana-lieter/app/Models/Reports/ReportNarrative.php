@@ -12,7 +12,8 @@ class ReportNarrative extends Model
 
     protected $fillable = [
         'file_en',
-        'file_ar'
+        'file_ar',
+        'saved'
     ];
 
     /**
