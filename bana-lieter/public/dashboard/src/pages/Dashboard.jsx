@@ -140,10 +140,9 @@ function Dashboard() {
                 </Col>
             </Row>
             <WhiteBox title={t('Top 5 Examiners')} hr>
-                <Top5Examiners />
+                <Top5Examiners data={top5} />
             </WhiteBox>
             <WhiteBox title={t('History')} hr>
-                {/* {t('Continue')} */}
                 <HistoryView data={historyData} />
             </WhiteBox>
         </Layout>

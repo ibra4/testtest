@@ -24,6 +24,7 @@ class User extends Authenticatable
         'cv',
         'phone_number',
         'number_of_reports',
+        'used_reports',
         'admin_id',
         'country_id',
         'city_id',
@@ -63,5 +64,10 @@ class User extends Authenticatable
     public function admin()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function subAdmins()
+    {
+        return $this->hasMany(User::class, 'admin_id', 'id');
     }
 }

@@ -15,17 +15,9 @@ const Top5Examiners = ({ data }) => {
     const renderRow = (item) => (
         <tr key={item.id}>
             <td>{item.id}</td>
-            <AvatarNameTD item={item.examiner} />
-            <td>{item.examinee_name}</td>
-            <td>{item.created_at}</td>
-            <td>{item.updated_at}</td>
-            <td>
-                <ActionButton
-                    label={t('View Report')}
-                    icon={<TbReportAnalytics />}
-                    onClick={() => push(`examinees/${item.id}/exam`)}
-                />
-            </td>
+            <AvatarNameTD item={item} />
+            <td>{item.used_reports}</td>
+            <td>{item.number_of_reports}</td>
         </tr>
     );
 
@@ -35,18 +27,13 @@ const Top5Examiners = ({ data }) => {
                 <thead>
                     <tr>
                         <th>{t('ID')}</th>
-                        <th>{t('Examiner')}</th>
-                        <th>{t('Examinee')}</th>
-                        <th>{t('Created At')}</th>
-                        <th>{t('Latest Update')}</th>
-                        <th>{t('Report')}</th>
+                        <th>{t('Admin')}</th>
+                        <th>{t('Used Reports')}</th>
+                        <th>{t('Number of reports')}</th>
                     </tr>
                 </thead>
                 <tbody>{data && data && data.map(renderRow)}</tbody>
             </Table>
-            <div className="text-center">
-                <ActionButton label={t('View More')} icon={<FaPlus />} onClick={() => push(`history`)} />
-            </div>
         </>
     );
 };

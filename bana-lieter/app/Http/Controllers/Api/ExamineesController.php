@@ -10,8 +10,10 @@ use App\Http\Requests\UpdateExamRequest;
 use App\Http\Resources\ExamineeResource;
 use App\Http\Resources\ReportResource;
 use App\Models\Examinee;
+use App\Models\User;
 use App\Queries\ExamineesQuery;
 use App\Services\ReportsService;
+use App\Services\AdminsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -28,10 +30,16 @@ class ExamineesController extends Controller
      */
     protected $reportService;
 
-    public function __construct(ExamineesQuery $exq, ReportsService $reportService)
+    /**
+     * @var AdminsService
+     */
+    protected $adminsService;
+
+    public function __construct(ExamineesQuery $exq, ReportsService $reportService, AdminsService $adminsService)
     {
         $this->examineesQuery = $exq;
         $this->reportService = $reportService;
+        $this->adminsService = $adminsService;
     }
 
     public function index(Request $request)
@@ -62,7 +70,18 @@ class ExamineesController extends Controller
 
     public function create(CreateExamineeRequest $request)
     {
+        if ($this->adminsService->isNumberOfReportsExceeded()){
+            return response()->json([
+                'message' => __('You exceeded number of reports, please contact your admin to request increase reports')
+            ]
+            ,403);
+        }
+        
         $report = $this->reportService->createEmptyReport();
+
+        $admin = User::find($request->admin_id);
+        $admin->update(['used_reports' => DB::raw('used_reports + 1')]); 
+
         $data = $request->all();
         $data['report_id'] = $report->id;
         $examinee = Examinee::create($data);
@@ -92,6 +111,7 @@ class ExamineesController extends Controller
     public function saveExam($id, $type, UpdateExamRequest $request)
     {
         $examinee = Examinee::findOrFail($id);
+        
         $report = $this->reportService->updateReport($examinee, $type, $request);
 
         return response()->json($report);

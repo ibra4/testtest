@@ -49,10 +49,6 @@ const Routes = () => {
     getSettings();
   }, []);
 
-  React.useEffect(() => {
-    console.log("baseName : ", baseName)
-  }, [baseName])
-
   return status === "success" ? (
     <BrowserRouter basename={baseName}>
       <Switch>

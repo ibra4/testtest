@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LatestReportsResource;
 use App\Models\Reports\Report;
+use Illuminate\Support\Facades\DB;
 
 class InfoController  extends Controller
 {
@@ -32,7 +33,22 @@ class InfoController  extends Controller
 
     public function top5Teaser()
     {
-        $reports = Report::limit(5)->orderBy('id', 'DESC')->get();
-        return response()->json(LatestReportsResource::collection($reports));
+        $admins = DB::table('users')
+            ->select(
+                'users.id',
+                'users.name',
+                'users.avatar',
+                'users.number_of_reports',
+                DB::raw("SUM(sub_admins.used_reports) + users.used_reports as used_reports")
+            )
+            ->leftJoin('users as sub_admins', function ($join) {
+                $join->on('sub_admins.admin_id', '=', 'users.id');
+                $join->on('sub_admins.role', '=', DB::raw('"sub_admin"'));
+            })
+            ->where('users.number_of_reports','>',0)
+            ->groupBy('users.id')
+            ->orderBy('users.number_of_reports','DESC')
+            ->get();
+        return response()->json($admins);
     }
 }

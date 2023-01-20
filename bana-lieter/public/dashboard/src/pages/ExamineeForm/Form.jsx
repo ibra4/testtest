@@ -9,11 +9,13 @@ import { CONSTANTS } from 'providers/helpers/constants';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { useToasts } from 'react-toast-notifications';
 
 import * as Yup from 'yup';
 
 function Form({ initialValues, config, onSubmit }) {
     const { t } = useTranslation();
+    const { addToast } = useToasts()
     const validationSchema = Yup.object().shape({
         name: Yup.string().required(t('Name field is required!')),
         birthday: Yup.date().required(),
@@ -36,7 +38,11 @@ function Form({ initialValues, config, onSubmit }) {
                 try {
                     await onSubmit(values);
                 } catch (error) {
-                    setErrors(error.response.data.errors);
+                    if (error.response.status == 400 || error.response.status == 422) {
+                        setErrors(error.response.data.errors);
+                    } else {
+                        addToast(error.response.data.message, { appearance: 'error' });
+                    }
                 }
                 setSubmitting(false);
             }}
