@@ -34,5 +34,9 @@ export const ROUTES = {
     HISTORY: {
         TEASER: 'history/teaser',
         GET: 'history'
+    },
+    TOP5: {
+        TEASER: 'top-5/teaser',
+        GET: 'top-5/teaser' // Not ready
     }
 }

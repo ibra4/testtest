@@ -19,6 +19,7 @@ import { ROUTES } from 'providers/routes';
 import { httpClient } from 'providers/helpers';
 import { useTranslation } from 'react-i18next';
 import HistoryView from 'components/HistoryView';
+import Top5Examiners from 'components/Top5Examiners';
 
 const countriesMapper = { sa, ae, tn, ps, jo };
 
@@ -28,6 +29,7 @@ function Dashboard() {
     const { statistics } = useSelector((state) => state.app.config);
 
     const [historyData, setHistoryData] = useState();
+    const [top5, setTop5] = useState();
 
     const [currentMap, setCurrentMap] = useState(world);
     const [areaName, setAreaName] = useState('');
@@ -41,6 +43,11 @@ function Dashboard() {
     const getHistory = async () => {
         const res = await httpClient.get(ROUTES.HISTORY.TEASER);
         setHistoryData(res.data);
+    };
+
+    const getTop5 = async () => {
+        const res = await httpClient.get(ROUTES.TOP5.TEASER);
+        setTop5(res.data);
     };
 
     const handleBack = () => {
@@ -93,6 +100,7 @@ function Dashboard() {
 
     useEffect(() => {
         getHistory();
+        getTop5();
     }, []);
 
     return (
@@ -131,14 +139,9 @@ function Dashboard() {
                     </WhiteBox>
                 </Col>
             </Row>
-            <Row>
-                <Col md={6}>
-                    <WhiteBox title={t('Examiners')} hr>
-                        {t('Continue')}
-                    </WhiteBox>
-                </Col>
-                <Col md={6}></Col>
-            </Row>
+            <WhiteBox title={t('Top 5 Examiners')} hr>
+                <Top5Examiners />
+            </WhiteBox>
             <WhiteBox title={t('History')} hr>
                 {/* {t('Continue')} */}
                 <HistoryView data={historyData} />
