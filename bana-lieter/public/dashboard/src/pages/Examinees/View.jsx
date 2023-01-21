@@ -39,7 +39,7 @@ const View = ({ data, queryParams, onSearch }) => {
                         onClick={() => push(`examinees/${item.id}/exam`)}
                         variant="primary"
                     />
-                    <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" />
+                    {/* <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" /> */}
                 </div>
             </td>
         </tr>

@@ -2,11 +2,15 @@ import { useState, useEffect } from 'react';
 import qs from 'qs'
 import { useHistory, useLocation } from 'react-router-dom';
 import { httpClient } from 'providers/helpers';
+import { useToasts } from 'react-toast-notifications';
+import { useTranslation } from 'react-i18next';
 
 export const useDataTable = (queryParams, setQueryParams, status, setStatus, route) => {
 
     let { search, pathname } = useLocation();
     let { push } = useHistory();
+    const { t } = useTranslation();
+    const { addToast } = useToasts()
 
     const [data, setData] = useState({})
     const [isLoading, setIsLoading] = useState(true)
@@ -37,6 +41,15 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
         }
     }, [status])
 
+    const handleDelete = async id => {
+        const confirmed = prompt(t("Are you sure you want to delete this admin"))
+        if (confirmed) {
+            const res = await httpClient.post(`${route}/${id}/delete`)
+            addToast(res.data.message, { appearance: res.status == 200 ? "success" : "error" })
+            getData()
+        }
+    }
+
     const getData = async () => {
         setIsLoading(true)
         const res = await httpClient.get(`${route}?${qs.stringify(queryParams)}`)
@@ -45,5 +58,5 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
         setIsLoading(false)
     }
 
-    return { onSearch, data, isLoading, getData }
+    return { onSearch, data, isLoading, getData, handleDelete }
 }

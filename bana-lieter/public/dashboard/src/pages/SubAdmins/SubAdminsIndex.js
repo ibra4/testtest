@@ -19,13 +19,13 @@ function SubAdminsIndex() {
         email: ''
     })
 
-    const { data, onSearch, isLoading } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.SUB_ADMINS.LIST)
+    const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.SUB_ADMINS.LIST)
 
     return (
         <Layout title={t('Examiners')}>
             <Filters onSearch={onSearch} queryParams={queryParams} config={config} />
             {isLoading && <FullLoader />}
-            <View data={data} onSearch={onSearch} queryParams={queryParams} />
+            <View data={data} onSearch={onSearch} queryParams={queryParams} handleDelete={handleDelete} />
         </Layout>
     )
 }

@@ -27,6 +27,7 @@ class AdminsController extends Controller
             DB::raw("SUM(sub_admins.used_reports) + users.used_reports as used_reports")
         )
             ->where([
+                'users.is_deleted' => false,
                 'users.role' => 'admin',
                 ['users.name', 'LIKE', "%$request->name%"],
                 ['users.email', 'LIKE', "%$request->email%"],
@@ -65,5 +66,21 @@ class AdminsController extends Controller
     public function export(Request $request)
     {
         return Excel::download(new AdminsExport($request), 'admins.xlsx');
+    }
+
+    public function delete($id)
+    {
+        if (!request()->user()->hasRole('root')) {
+            return response()->json(
+                ['message' => __('You don\'t have permission to delete this user')],
+                403
+            );
+        }
+
+        $user = User::findOrFail($id);
+
+        $user->update(['is_deleted' => true]);
+
+        return response()->json(['message' => __('Deleted successfully')]);
     }
 }

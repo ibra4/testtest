@@ -22,6 +22,7 @@ class SubAdminsQuery
             ['users.name', 'LIKE', "%$request->name%"],
             ['users.email', 'LIKE', "%$request->email%"],
         ])
+            ->where('users.is_deleted', false)
             ->orderBy('users.created_at', 'DESC')
             ->orderBy('users.updated_at', 'DESC')
             ->leftJoin('users as admin', 'users.admin_id', '=', 'admin.id');

@@ -25,6 +25,7 @@ class InfoController  extends Controller
             'reports.created_at as created_at',
             'reports.updated_at as updated_at',
         ])
+            ->where('admin.is_deleted', false)
             ->leftJoin('examinees as examinee', 'examinee.report_id', '=', 'reports.id')
             ->leftJoin('users as admin', 'examinee.admin_id', '=', 'admin.id');
 
@@ -45,6 +46,7 @@ class InfoController  extends Controller
                 $join->on('sub_admins.admin_id', '=', 'users.id');
                 $join->on('sub_admins.role', '=', DB::raw('"sub_admin"'));
             })
+            ->where('users.is_deleted', false)
             ->where('users.number_of_reports','>',0)
             ->groupBy('users.id')
             ->orderBy('users.number_of_reports','DESC')

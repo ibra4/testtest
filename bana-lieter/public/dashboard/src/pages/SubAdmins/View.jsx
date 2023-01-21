@@ -12,7 +12,7 @@ import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 import WhiteBox from 'components/WhiteBox';
 import { useTranslation } from 'react-i18next';
 
-const View = ({ data, queryParams, onSearch }) => {
+const View = ({ data, queryParams, onSearch, handleDelete }) => {
     const { t } = useTranslation();
     const { push } = useHistory();
 
@@ -31,7 +31,7 @@ const View = ({ data, queryParams, onSearch }) => {
                         onClick={() => push(`/sub-admins/${item.id}/update`)}
                         variant="success"
                     />
-                    <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" classes="ms-3" />
+                    {hasRole('root') && <ActionButton icon={<FaTrash />} onClick={() => handleDelete(item.id)} variant="danger" classes="ms-3" />}
                 </div>
             </td>
         </tr>

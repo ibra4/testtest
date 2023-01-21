@@ -33,6 +33,7 @@ class User extends Authenticatable
         'role',
         'password',
         'expiration_date',
+        'is_deleted'
     ];
 
     /**

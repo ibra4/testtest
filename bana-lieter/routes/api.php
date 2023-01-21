@@ -36,6 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/admins/{id}', [AdminsController::class, 'get']);
         Route::post('/admins/create', [AdminsController::class, 'create']);
         Route::put('/admins/{id}/update', [AdminsController::class, 'update']);
+        Route::post('/admins/{id}/delete', [AdminsController::class, 'delete']);
 
         // Leiter Records
         Route::get('/leiter-records/{id}', [LeiterRecordsController::class, 'get']);
@@ -66,6 +67,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/sub-admins/{id}', [SubAdminsController::class, 'get']);
         Route::post('/sub-admins/create', [SubAdminsController::class, 'create']);
         Route::put('/sub-admins/{id}/update', [SubAdminsController::class, 'update']);
+        Route::post('/sub-admins/{id}/delete', [AdminsController::class, 'delete']);
 
         // Uploads
         Route::post('/admins/upload', [AdminMediaController::class, 'adminsUpload']);

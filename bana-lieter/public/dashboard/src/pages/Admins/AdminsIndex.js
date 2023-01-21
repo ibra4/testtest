@@ -16,13 +16,13 @@ function AdminsIndex() {
         email: ''
     })
 
-    const { data, onSearch, isLoading } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.ADMINS.LIST)
+    const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.ADMINS.LIST)
 
     return (
         <Layout title={t('Admins')}>
             <Filters onSearch={onSearch} queryParams={queryParams} />
             {isLoading && <FullLoader />}
-            <View data={data} onSearch={onSearch} queryParams={queryParams} />
+            <View data={data} onSearch={onSearch} queryParams={queryParams} handleDelete={handleDelete} />
         </Layout>
     )
 }

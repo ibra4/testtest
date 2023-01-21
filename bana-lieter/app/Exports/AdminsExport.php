@@ -25,6 +25,7 @@ class AdminsExport implements FromQuery, WithHeadings
             ['name', 'LIKE', "%$this->name%"],
             ['email', 'LIKE', "%$this->email%"],
         ])
+            ->where('is_deleted', false)
             ->orderBy('created_at', 'DESC')
             ->orderBy('updated_at', 'DESC');
     }
