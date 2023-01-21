@@ -57,7 +57,8 @@ class Examinee extends Model
     public function getNameAttribute($value)
     {
         // return $value . 'ss';
-        return $this->admin_id && request()->user()->id != $this->admin_id ? "********" : $value;
+        $stop = $this->created_by;
+        return $this->created_by && request()->user()->id == $this->created_by ? $value : "********";
     }
 
     public function report()

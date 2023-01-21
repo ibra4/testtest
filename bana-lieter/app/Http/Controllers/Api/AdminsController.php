@@ -10,19 +10,36 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 
 class AdminsController extends Controller
 {
     public function index(Request $request)
     {
-        $admins = User::where([
-            'role' => 'admin',
-            ['name', 'LIKE', "%$request->name%"],
-            ['email', 'LIKE', "%$request->email%"],
-        ])
-            ->orderBy('created_at', 'DESC')
-            ->orderBy('updated_at', 'DESC')
+        $admins = User::select(
+            'users.id',
+            'users.name',
+            'users.avatar',
+            'users.email',
+            'users.number_of_reports',
+            'users.created_at',
+            'users.updated_at',
+            DB::raw("SUM(sub_admins.used_reports) + users.used_reports as used_reports")
+        )
+            ->where([
+                'users.role' => 'admin',
+                ['users.name', 'LIKE', "%$request->name%"],
+                ['users.email', 'LIKE', "%$request->email%"],
+            ])
+            ->leftJoin('users as sub_admins', function ($join) {
+                $join->on('sub_admins.admin_id', '=', 'users.id');
+                $join->on('sub_admins.role', '=', DB::raw('"sub_admin"'));
+            })
+            ->orderBy('users.created_at', 'DESC')
+            ->orderBy('users.updated_at', 'DESC')
+            ->groupBy('users.id')
             ->paginate();
+
         return response()->json($admins);
     }
 

@@ -22,9 +22,9 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>{item.email}</td>
             <td>
                 <span className="text-success">
-                    {parseInt(Math.random() * item.number_of_reports ? item.number_of_reports : 0)}
+                    {item.number_of_reports}
                 </span>{' '}
-                / <b>{item.number_of_reports}</b>
+                / <b>{item.used_reports}</b>
             </td>
             <td>{item.created_at}</td>
             <td>{item.updated_at}</td>
