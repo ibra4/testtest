@@ -7,16 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateExamineeRequest extends FormRequest
 {
-    public function prepareForValidation()
-    {
-        $user = $this->user();
-        if (!$this->user()->hasRole('root')) {
-            /** @var \App\Models\User $user */
-            $this->merge(['admin_id' => $user->id]);
-        }
-        $this->merge(['created_by' => $user->id]);
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -30,7 +20,6 @@ class CreateExamineeRequest extends FormRequest
             'application_date' => 'required|date',
             'gender' => 'required|boolean',
             'country_id' => 'required|exists:countries,id',
-            'admin_id' => 'required|exists:users,id',
             'examiner_notes' => new MaxWordsRule()
         ];
     }

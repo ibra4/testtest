@@ -57,11 +57,6 @@ class User extends Authenticatable
         'created_at' => 'datetime:d/m/Y - H:i:s',
     ];
 
-    public function getRoleAttribute($value)
-    {
-        return $this->id === 1 ? 'root' : $value;
-    }
-
     public function admin()
     {
         return $this->belongsTo(User::class);

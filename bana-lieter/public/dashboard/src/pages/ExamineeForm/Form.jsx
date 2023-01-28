@@ -5,6 +5,7 @@ import TextAreaField from 'components/Fields/TextAreaField';
 import TextField from 'components/Fields/TextField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
+import { sameUserId } from 'providers/helpers';
 import { CONSTANTS } from 'providers/helpers/constants';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
@@ -62,6 +63,7 @@ function Form({ initialValues, config, onSubmit }) {
                                         onBlur={handleBlur}
                                         error={touched.name && errors.name}
                                         className="mb-3"
+                                        disabled={!sameUserId(initialValues.admin_id)}
                                     />
                                 </Col>
                                 <Col md={4}>

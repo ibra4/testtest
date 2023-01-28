@@ -23,7 +23,6 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>{item.age}</td>
             <td>{item.gender}</td>
             <td>{item.adminname}</td>
-            <td>{item.createdbyadminname}</td>
             <td>{item.created_at}</td>
             <td>{item.updated_at}</td>
             <td>{item.application_date}</td>
@@ -72,7 +71,6 @@ const View = ({ data, queryParams, onSearch }) => {
                             <th>{t('Name')}</th>
                             <th>{t('Age')}</th>
                             <th>{t('Gender')}</th>
-                            <th>{t('Admin Name')}</th>
                             <th>{t('Created By')}</th>
                             <th>{t('Created At')}</th>
                             <th>{t('Latest Update')}</th>

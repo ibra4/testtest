@@ -50,7 +50,7 @@ class ExamineesController extends Controller
             'examinees.name',
             'examinees.birthday as age',
             'admin.name as adminname',
-            'admin.admin_id as admin_id',
+            'admin.id as admin_id',
             'examinees.gender',
             'examinees.application_date',
             'creator.name as createdbyadminname',
@@ -70,19 +70,14 @@ class ExamineesController extends Controller
 
     public function create(CreateExamineeRequest $request)
     {
-        if ($this->adminsService->isNumberOfReportsExceeded()){
-            return response()->json([
-                'message' => __('You exceeded number of reports, please contact your admin to request increase reports')
-            ]
-            ,403);
-        }
-        
         $report = $this->reportService->createEmptyReport();
 
-        $admin = User::find($request->admin_id);
+        $admin = $request->user();
         $admin->update(['used_reports' => DB::raw('used_reports + 1')]); 
 
         $data = $request->all();
+        $data['admin_id'] = $admin->id;
+        $data['created_by'] = $admin->id;
         $data['report_id'] = $report->id;
         $examinee = Examinee::create($data);
 

@@ -24,6 +24,7 @@ class ExamineesQuery
             'examinees.name',
             'examinees.birthday as age',
             'admin.name as adminname',
+            'admin.id as admin_id',
             'examinees.gender',
             'creator.name as createdbyadminname',
             'examinees.created_at',

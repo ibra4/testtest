@@ -19,6 +19,11 @@ export const hasAnyRole = (roles) => {
     return user.role == 'root' ? true : roles.includes(user.role)
 }
 
+export const sameUserId = (admin_id) => {
+    const user = store.getState().app.config.user
+    return user.id == admin_id
+}
+
 export const getGender = gender => gender ? "Male" : "Female"
 
 export const generateRandomColor = () => {
