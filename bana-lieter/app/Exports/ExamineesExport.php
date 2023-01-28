@@ -59,14 +59,7 @@ class ExamineesExport implements FromQuery, WithHeadings
             'Energy and Feelings',
             'Regulation',
             'Anxiety',
-            'Sensory Reaction',
-            'sss',
-            'sss',
-            'sss',
-            'sss',
-            'sss',
-            'sss',
-            'sss',
+            'Sensory Reaction'
         ];
     }
 }
