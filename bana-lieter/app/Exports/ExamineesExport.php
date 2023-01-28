@@ -36,12 +36,13 @@ class ExamineesExport implements FromQuery, WithHeadings
             'ID',
             'Name',
             'Age',
-            'Parent Admin',
+            'Admin',
+            'Admin ID',
             'Gender',
-            'Created By',
             'Created At',
             'Updated At',
-            'Application Date'
+            'Application Date',
+            'Report ID'
         ];
     }
 }

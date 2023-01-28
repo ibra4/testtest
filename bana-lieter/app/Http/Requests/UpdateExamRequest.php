@@ -34,7 +34,7 @@ class UpdateExamRequest extends FormRequest
      */
     public function rules()
     {
-        $age = Examinee::findOrFail($this->id)->age;
+        $age = Examinee::findOrFail($this->route('id'))->age;
 
         switch ($this->type) {
             case 'cognitive':

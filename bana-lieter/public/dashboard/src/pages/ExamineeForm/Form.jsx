@@ -63,7 +63,7 @@ function Form({ initialValues, config, onSubmit }) {
                                         onBlur={handleBlur}
                                         error={touched.name && errors.name}
                                         className="mb-3"
-                                        disabled={!sameUserId(initialValues.admin_id)}
+                                        disabled={initialValues.id && !sameUserId(initialValues.admin_id)}
                                     />
                                 </Col>
                                 <Col md={4}>

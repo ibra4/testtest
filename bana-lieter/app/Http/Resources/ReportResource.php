@@ -33,7 +33,7 @@ class ReportResource extends JsonResource
         $reportNarrative->file_ar = route('reports.first', ['id' => $this->examinee->id]);
 
         return [
-            'id' => $this->id,
+            // 'id' => $this->id,
             'examinee' => new ExamineeResource($this->examinee),
             'reports' => [
                 'cognitive' => $reportCognitive,

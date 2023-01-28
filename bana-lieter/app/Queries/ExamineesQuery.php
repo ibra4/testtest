@@ -26,16 +26,17 @@ class ExamineesQuery
             'admin.name as adminname',
             'admin.id as admin_id',
             'examinees.gender',
-            'creator.name as createdbyadminname',
             'examinees.created_at',
             'examinees.updated_at',
-            'examinees.application_date'
+            'examinees.application_date',
+            'report.id',
         )->where([
             ['examinees.name', 'LIKE', "%$request->name%"],
         ])
             ->orderBy('examinees.created_at', 'DESC')
             ->orderBy('examinees.updated_at', 'DESC')
             ->leftJoin('users as admin', 'examinees.admin_id', '=', 'admin.id')
+            ->leftJoin('reports as report', 'report.id', '=', 'examinees.report_id')
             ->leftJoin('users as creator', 'examinees.created_by', '=', 'creator.id');
 
         if ($request->gender) {
