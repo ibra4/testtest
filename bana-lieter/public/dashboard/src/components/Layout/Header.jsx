@@ -15,23 +15,15 @@ function Header({ title }) {
     const user = useSelector(state => state.app.config.user)
     
     return (
-        <div className="header">
+        <div className="header d-flex align-items-center">
             <Container fluid>
                 <Row className="align-items-center">
                     <Col lg={6}>
-                        <HeaderBreadcrumb />
+                        {/* <HeaderBreadcrumb /> */}
                         <div className="title display-6 fw-bold">{title}</div>
                     </Col>
                     <Col lg={6}>
-                        <div className="d-flex align-items-center justify-content-between">
-                            <Form className="flex-1">
-                                <Form.Control
-                                    type="text"
-                                    className="search-input"
-                                    name="search"
-                                    placeholder={t('Search') + '...'}
-                                />
-                            </Form>
+                        <div className="d-flex align-items-center justify-content-end">
                             <Dropdown className="notifications-dropdown mx-2">
                                 <Dropdown.Toggle className="dropdown-toggle" as={'div'}>
                                     <AiOutlineNotification />

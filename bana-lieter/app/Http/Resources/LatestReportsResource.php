@@ -14,12 +14,6 @@ class LatestReportsResource extends JsonResource
      */
     public function toArray($request)
     {
-        if (!$this->examinee) {
-            $stop = $this->id;
-        }
-        
-        $examinee = $this->examinee;
-        $examinee = $this->examinee->examiner;
         return [
             'id' => $this->id,
             'examinee_name' => $this->examinee->name,

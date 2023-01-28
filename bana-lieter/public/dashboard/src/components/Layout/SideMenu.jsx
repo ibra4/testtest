@@ -186,6 +186,10 @@ function SideMenu() {
                     {routes.map(renderRouteLink)}
                     <hr />
                     {routes2.map(renderRouteLink)}
+                    {routes2.length > 0 && <hr />}
+                    <div>
+                        <img src={'/images/lieter3.jpeg'} className="w-100" />
+                    </div>
                 </Menu>
             </Sidebar>
         </div>
