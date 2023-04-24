@@ -57,6 +57,13 @@ class ReportsController extends Controller
             'so' => $lrs->getScaledScore('sequential_order', $reportCognitive->sequential_order, $age),
             'vp' => $lrs->getScaledScore('visual_patterns', $reportCognitive->visual_patterns, $age)
         ];
+        $cognitive_values_percentile = [
+            'fg' => $lrs->getCognitinvePercentile($cognitive_values['fg']),
+            'fc' => $lrs->getCognitinvePercentile($cognitive_values['fc']),
+            'ca' => $lrs->getCognitinvePercentile($cognitive_values['ca']),
+            'so' => $lrs->getCognitinvePercentile($cognitive_values['so']),
+            'vp' => $lrs->getCognitinvePercentile($cognitive_values['vp'])
+        ];
         $sum_of_cognitive = $lrs->getSumOfCognitive($cognitive_values);
         $nonverbal_iq = $lrs->getNonverbalIq($sum_of_cognitive);
         $confidence_interval_cognitive = $lrs->getConfidenceIntervalCognitive($nonverbal_iq);
@@ -184,6 +191,7 @@ class ReportsController extends Controller
             // Cognitive
             'reportCognitive',
             'cognitive_values',
+            'cognitive_values_percentile',
             'sum_of_cognitive',
             'nonverbal_iq',
             'confidence_interval_cognitive',

@@ -84,31 +84,31 @@
                         <td><b>Figure Ground (FG)</b></td>
                         <td>{{ $reportCognitive->figure_ground }}</td>
                         <td>{{ $cognitive_values['fg'] }}</td>
-                        <td class="text-danger">50</td>
+                        <td>{{ $cognitive_values_percentile['fg'] }}</td>
                     </tr>
                     <tr>
                         <td><b>Form Completion (FC)</b></td>
                         <td>{{ $reportCognitive->form_completion }}</td>
                         <td>{{ $cognitive_values['fc'] }}</td>
-                        <td class="text-danger">37</td>
+                        <td>{{ $cognitive_values_percentile['fc'] }}</td>
                     </tr>
                     <tr>
                         <td><b>Classification/Analogies (CA)</b></td>
                         <td>{{ $reportCognitive->classification_analogies }}</td>
                         <td>{{ $cognitive_values['ca'] }}</td>
-                        <td class="text-danger">16</td>
+                        <td>{{ $cognitive_values_percentile['ca'] }}</td>
                     </tr>
                     <tr>
                         <td><b>Sequential Order (SO)</b></td>
                         <td>{{ $reportCognitive->sequential_order }}</td>
                         <td>{{ $cognitive_values['so'] }}</td>
-                        <td class="text-danger">16</td>
+                        <td>{{ $cognitive_values_percentile['so'] }}</td>
                     </tr>
                     <tr>
                         <td><b>Visual Patterns (VP)</b></td>
                         <td>{{ $reportCognitive->visual_patterns }}</td>
                         <td>{{ $cognitive_values['vp'] }}</td>
-                        <td class="text-danger">25</td>
+                        <td>{{ $cognitive_values_percentile['vp'] }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -370,8 +370,8 @@
                 <tbody>
                     <tr>
                         <td>Nonverbal IQ (NVIQ)</td>
-                        <td>{{$sem_growth['nonverbal_iq']['sem']}}</td>
-                        <td>{{$sem_growth['nonverbal_iq']['growth']}}</td>
+                        <td>{{ $sem_growth['nonverbal_iq']['sem'] }}</td>
+                        <td>{{ $sem_growth['nonverbal_iq']['growth'] }}</td>
                     </tr>
                     <tr>
                         <td>Figure Ground (FG)</td>

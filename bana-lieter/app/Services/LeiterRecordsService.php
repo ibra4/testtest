@@ -12,6 +12,7 @@ use App\Models\Helpers\parents\ExaminerRatingRecord;
 use App\Models\Helpers\MemoryAndProcessingSpeedComposite;
 use App\Models\LeiterRecord;
 use App\Models\Helpers\NonverbalIq;
+use App\Models\Helpers\PercentileRanksScaledScore;
 use App\Models\Helpers\ProcessingSpeedComposite;
 use App\Models\Helpers\SemGrowthFigureGround;
 use Illuminate\Support\Facades\DB;
@@ -215,6 +216,17 @@ class LeiterRecordsService
             'sem' => $record ?  $record->sem : "Not found",
             'growth' => $record ? $record->growth : "Not found"
         ];
+    }
+
+    public function getCognitinvePercentile($scaled_score)
+    {
+        $record = PercentileRanksScaledScore::where('rank', $scaled_score)->first();
+
+        if (!$record) {
+            return false;
+        }
+
+        return $record->percentile;
     }
 
     private function getMinMaxScaledScore(int $age, string $type)
