@@ -126,7 +126,7 @@
                     <tr>
                         <td>{{ $sum_of_cognitive }}</td>
                         <td>{{ $nonverbal_iq }}</td>
-                        <td class="text-danger">{{ 80 }}</td>
+                        <td>{{ $nonverbal_iq_percentile }}</td>
                         <td>{{ $confidence_interval_cognitive }}</td>
                     </tr>
                 </tbody>

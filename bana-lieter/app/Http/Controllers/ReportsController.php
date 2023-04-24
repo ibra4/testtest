@@ -27,7 +27,6 @@ class ReportsController extends Controller
     {
         $examinee = Examinee::findOrFail($id);
 
-        $stop = "";
         $age = $examinee->age;
 
         $reportCognitive = $examinee->report->reportCognitive;
@@ -66,6 +65,7 @@ class ReportsController extends Controller
         ];
         $sum_of_cognitive = $lrs->getSumOfCognitive($cognitive_values);
         $nonverbal_iq = $lrs->getNonverbalIq($sum_of_cognitive);
+        $nonverbal_iq_percentile = $lrs->getNonverbalIqPercentile($nonverbal_iq);
         $confidence_interval_cognitive = $lrs->getConfidenceIntervalCognitive($nonverbal_iq);
 
         /**
@@ -176,8 +176,6 @@ class ReportsController extends Controller
 
         $vs = config('leiter')['vs'];
 
-        // dd($nonverbal_iq, $sum_of_nonverbal_memory);
-
         $diffs = [
             'nonverbal_iq_vs_nonverbal_memory' => $nonverbal_iq - $composite_nonverbal_memory,
             'nonverbal_iq_vs_processing_speed' => $nonverbal_iq - $composite_processing_speed,
@@ -194,6 +192,7 @@ class ReportsController extends Controller
             'cognitive_values_percentile',
             'sum_of_cognitive',
             'nonverbal_iq',
+            'nonverbal_iq_percentile',
             'confidence_interval_cognitive',
 
             // Memory

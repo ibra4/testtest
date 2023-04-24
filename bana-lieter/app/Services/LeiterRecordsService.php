@@ -139,6 +139,15 @@ class LeiterRecordsService
         return $nonverbalIq->value;
     }
 
+    public function getNonverbalIqPercentile($value)
+    {
+        $record = PercentileRanksScaledScore::where('standard', $value)->first();
+        if (!$record) {
+            return 'not foundsss';
+        }
+        return $record->percentile;
+    }
+
     public function getConfidenceIntervalCognitive(int $nonverbal_iq)
     {
         $nonverbalIq = ConfidenceInterval::where('nonverbal_iq', $nonverbal_iq)->first();
