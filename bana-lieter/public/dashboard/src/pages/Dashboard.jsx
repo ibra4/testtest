@@ -131,10 +131,9 @@ function Dashboard() {
                             label={'Area'}
                             value={<div className="fw-bold color-main">{lastSelectedAreaName}</div>}
                         />
-                        <LabelValueRow label="Num of Admins" value={countryStatistics.admins} />
+                        <LabelValueRow label="Number of centers" value={countryStatistics.admins} />
                         <LabelValueRow label="Num of Examiners" value={countryStatistics.sub_admins} />
                         <LabelValueRow label={'Num of Total Reports'} value={countryStatistics.total_reports} />
-                        <LabelValueRow label={'Num of Used Reports'} value={countryStatistics.used_reports} />
                         <LabelValueRow label={'Examinees'} value={countryStatistics.examinees} />
                     </WhiteBox>
                 </Col>

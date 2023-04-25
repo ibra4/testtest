@@ -14,7 +14,7 @@ const routes = [
     },
     {
         routeName: 'admins',
-        label: 'Admins',
+        label: 'Centers',
         icon: <FaUser />,
         role: 'root'
     },

@@ -19,7 +19,7 @@ function AdminsIndex() {
     const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, ROUTES.ADMINS.LIST)
 
     return (
-        <Layout title={t('Admins')}>
+        <Layout title={t('Centers')}>
             <Filters onSearch={onSearch} queryParams={queryParams} />
             {isLoading && <FullLoader />}
             <View data={data} onSearch={onSearch} queryParams={queryParams} handleDelete={handleDelete} />

@@ -128,7 +128,7 @@ class ReportsService
 
         $data = $request->only($report->getFillable());
 
-        $data['saved'] = true;
+        $data['saved'] = request()->user()->id == 1 ? false : true;
         
         $report->fill($data)->save();
 

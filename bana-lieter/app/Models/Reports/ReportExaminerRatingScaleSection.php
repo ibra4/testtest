@@ -33,4 +33,9 @@ class ReportExaminerRatingScaleSection extends Model
         'updated_at' => 'datetime:d/m/Y - H:i:s',
         'created_at' => 'datetime:d/m/Y - H:i:s',
     ];
+
+    public function getSavedAttribute($value)
+    {
+        return request()->user()->id == 1 ? false : $value;
+    }
 }

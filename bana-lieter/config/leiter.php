@@ -2,8 +2,29 @@
 
 return [
     'vs' => [
-        'nonverbal_iq_vs_nonverbal_memory' => 7.87,
-        'nonverbal_iq_vs_processing_speed' => 9.55,
-        'nonverbal_memory_vs_processing_speed' => 10.29
+        /**
+         * 2 - 5 years
+         */
+        [
+            'nviq_nvm' => 7.87,
+            'nviq_ps' => 9.55,
+            'nvm_ps' => 10.29
+        ],
+        /**
+         * 6 - 54 years
+         */
+        [
+            'nviq_nvm' => 9.02,
+            'nviq_ps' => 11.66,
+            'nvm_ps' => 11.87
+        ],
+        /**
+         * 55 +
+         */
+        [
+            'nviq_nvm' => 9.07,
+            'nviq_ps' => 10.16,
+            'nvm_ps' => 11.62
+        ]
     ]
 ];

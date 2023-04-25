@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="content" id="pdf">
-        <div class="bar top"></div>
+        {{-- <div class="bar top"></div> --}}
         <header class="row align-items-center">
             <div class="col-6">
                 <img width="200" src="{{ asset('images/logo.png') }}" alt="">
@@ -152,31 +152,31 @@
                         <td>Attention Sustained (AS)</td>
                         <td>{{ $reportAttention->attention_sustained }}</td>
                         <td>{{ $memory_attention_values['as'] }}</td>
-                        <td class="text-danger">50</td>
+                        <td>{{ $memory_attention_values_percentile['as'] }}</td>
                     </tr>
                     <tr>
                         <td>Forward Memory (FM)</td>
                         <td>{{ $reportMemory->forward_memory }}</td>
                         <td>{{ $memory_attention_values['fm'] }}</td>
-                        <td class="text-danger">37</td>
+                        <td>{{ $memory_attention_values_percentile['fm'] }}</td>
                     </tr>
                     <tr>
                         <td>Reverse Memory (RM)</td>
                         <td>{{ $reportMemory->reverse_memory }}</td>
                         <td>{{ $memory_attention_values['rm'] }}</td>
-                        <td class="text-danger">16</td>
+                        <td>{{ $memory_attention_values_percentile['rm'] }}</td>
                     </tr>
                     <tr>
                         <td>Nonverbal Stroop Incongruent Correct (NSic)</td>
                         <td>{{ $reportAttention->nonverbal_stroop_incongruent_correct }}</td>
                         <td>{{ $memory_attention_values['nsic'] }}</td>
-                        <td class="text-danger">16</td>
+                        <td>{{ $memory_attention_values_percentile['nsic'] }}</td>
                     </tr>
                     <tr>
                         <td>Nonverbal Stroop Congruent Correct (NScc)</td>
                         <td>{{ $reportAttention->nonverbal_stroop_congruent_correct }}</td>
                         <td>{{ $memory_attention_values['nscc'] }}</td>
-                        <td class="text-danger">25</td>
+                        <td>{{ $memory_attention_values_percentile['nscc'] }}</td>
                     </tr>
                     <tr>
                         <td class="">Nonverbal Stroop Effect (NSeff)</td>
@@ -202,14 +202,14 @@
                         <td>Nonverbal Memory</td>
                         <td>{{ $sum_of_nonverbal_memory }}</td>
                         <td>{{ $composite_nonverbal_memory }}</td>
-                        <td class="text-danger">{{ 80 }}</td>
+                        <td>{{ $composite_nonverbal_memory_percentile }}</td>
                         <td>{{ $confidence_interval_noverbal_memory }}</td>
                     </tr>
                     <tr>
                         <td>Processing Speed</td>
                         <td>{{ $sum_of_processing_speed }}</td>
                         <td>{{ $composite_processing_speed }}</td>
-                        <td class="text-danger">{{ 80 }}</td>
+                        <td>{{ $composite_processing_speed_percentile }}</td>
                         <td>{{ $confidence_interval_processing_speed }}</td>
                     </tr>
                 </tbody>
@@ -309,7 +309,7 @@
                         <td>Cognitive / Social Composite Score</td>
                         <td>{{ $examiner_section_ad_sum }}</td>
                         <td>{{ $examiner_scores['social']->scaled_score }}</td>
-                        <td class="text-danger">23</td>
+                        <td>{{ $examiner_social_percentile }}</td>
                     </tr>
                     <tr class="bg font-weight-bold">
                         <td class="text-center">Section E-H</td>
@@ -423,7 +423,7 @@
                 </tbody>
             </table>
             <div class="table-header">Examiner Rating Scale Scores</div>
-            <table class="table text-danger">
+            <table class="table">
                 <thead>
                     <th class="text-center">Growth Scale</th>
                     <th>Age Equivalent</th>
@@ -431,11 +431,11 @@
                 <tbody>
                     <tr>
                         <td>Cognitive Growth Scale</td>
-                        <td>3-1</td>
+                        <td>{{ $age_equivalent['cognitive'] }}</td>
                     </tr>
                     <tr>
                         <td>Memory Growth Scale</td>
-                        <td>3-0</td>
+                        <td>{{ $age_equivalent['memory'] }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -451,28 +451,28 @@
                 <tbody>
                     <tr>
                         <td>Nonverbal IQ vs Nonverbal Memory</td>
-                        <td>{{ $diffs['nonverbal_iq_vs_nonverbal_memory'] }}</td>
-                        <td>{{ $vs['nonverbal_iq_vs_nonverbal_memory'] }}</td>
-                        <td class="text-danger">100</td>
-                        <td class="text-danger">Not Significant</td>
+                        <td>{{ $diffs['nviq_nvm'] }}</td>
+                        <td>{{ $vs['nviq_nvm'] }}</td>
+                        <td>{{ $diffs_percentile['nviq_nvm'] }}</td>
+                        <td>Not Significant</td>
                     </tr>
                     <tr>
                         <td>Nonverbal IQ vs Nonverbal Memory</td>
-                        <td>{{ $diffs['nonverbal_iq_vs_processing_speed'] }}</td>
-                        <td>{{ $vs['nonverbal_iq_vs_processing_speed'] }}</td>
-                        <td class="text-danger">87.3</td>
-                        <td class="text-danger">Not Significant</td>
+                        <td>{{ $diffs['nviq_ps'] }}</td>
+                        <td>{{ $vs['nviq_ps'] }}</td>
+                        <td>{{ $diffs_percentile['nviq_ps'] }}</td>
+                        <td>Not Significant</td>
                     </tr>
                     <tr>
                         <td>Nonverbal Memory vs Processing Speed</td>
-                        <td>{{ $diffs['nonverbal_memory_vs_processing_speed'] }}</td>
-                        <td>{{ $vs['nonverbal_memory_vs_processing_speed'] }}</td>
-                        <td class="text-danger">9.39</td>
-                        <td class="text-danger">Not Significant</td>
+                        <td>{{ $diffs['nvm_ps'] }}</td>
+                        <td>{{ $vs['nvm_ps'] }}</td>
+                        <td>{{ $diffs_percentile['nvm_ps'] }}</td>
+                        <td>Not Significant</td>
                     </tr>
                 </tbody>
             </table>
-            <div class="table-header">Scatter Indices</div>
+            {{-- <div class="table-header">Scatter Indices</div>
             <table class="table text-danger">
                 <thead>
                     <th class="text-center">Battery</th>
@@ -491,9 +491,10 @@
                         <td>39.6</td>
                     </tr>
                 </tbody>
-            </table>
+            </table> --}}
         </div>
 
-        {{-- @include('components.pdf_footer') --}}
+        @include('components.pdf_footer')
+        {{-- <div class="bar bottom"></div> --}}
     </main>
 @endsection

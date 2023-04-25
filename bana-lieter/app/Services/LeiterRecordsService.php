@@ -8,12 +8,15 @@ use App\Models\Helpers\AttentionSustainedError;
 use App\Models\Helpers\ConfidenceInterval;
 use App\Models\Helpers\ConfidenceIntervalNonverbalMemory;
 use App\Models\Helpers\ConfidenceIntervalProcessingSpeed;
+use App\Models\Helpers\GrowthScaleAgeEquivalentsCognitiveGrowthScale;
+use App\Models\Helpers\GrowthScaleAgeEquivalentsMemoryGrowthScale;
 use App\Models\Helpers\parents\ExaminerRatingRecord;
 use App\Models\Helpers\MemoryAndProcessingSpeedComposite;
 use App\Models\LeiterRecord;
 use App\Models\Helpers\NonverbalIq;
 use App\Models\Helpers\PercentileRanksScaledScore;
 use App\Models\Helpers\ProcessingSpeedComposite;
+use App\Models\Helpers\ScoreDiffVs;
 use App\Models\Helpers\SemGrowthFigureGround;
 use Illuminate\Support\Facades\DB;
 use stdClass;
@@ -106,21 +109,12 @@ class LeiterRecordsService
         ];
     }
 
-    public function getSumOfCognitive(array $vlaues)
+    public function getSumOfCognitive(array $values)
     {
-        $count = 0;
+        $valuesMock = $values;
+        unset($valuesMock['vp']);
 
-        foreach ($vlaues as $idx => $value) {
-            $zero_detected = $value == 0;
-
-            if (!$zero_detected && $idx == 'vp') {
-                break;
-            }
-
-            $count += $value;
-        }
-
-        return $count;
+        return array_sum(in_array(0, $valuesMock) ? $values : $valuesMock);
     }
 
     public function getSumOfNonverbalMemory(array $values)
@@ -137,15 +131,6 @@ class LeiterRecordsService
     {
         $nonverbalIq = NonverbalIq::where('sum_of_scaled_score', $sum_of_scaled_score)->first();
         return $nonverbalIq->value;
-    }
-
-    public function getNonverbalIqPercentile($value)
-    {
-        $record = PercentileRanksScaledScore::where('standard', $value)->first();
-        if (!$record) {
-            return 'not foundsss';
-        }
-        return $record->percentile;
     }
 
     public function getConfidenceIntervalCognitive(int $nonverbal_iq)
@@ -217,19 +202,23 @@ class LeiterRecordsService
         return $compositeMemory->processing_speed;
     }
 
-    public function getSemGrowth(string $model, int $row_score)
+    public function getSem(string $model, int $row_score)
     {
         $record = $model::where('row_score', $row_score)->first();
 
-        return [
-            'sem' => $record ?  $record->sem : "Not found",
-            'growth' => $record ? $record->growth : "Not found"
-        ];
+        return $record ?  $record->sem : "Not found";
     }
 
-    public function getCognitinvePercentile($scaled_score)
+    public function getGrowth(string $model, int $row_score)
     {
-        $record = PercentileRanksScaledScore::where('rank', $scaled_score)->first();
+        $record = $model::where('row_score', $row_score)->first();
+
+        return $record ? $record->growth : "Not found";
+    }
+
+    public function getPercentileFromRank($rank)
+    {
+        $record = PercentileRanksScaledScore::where('rank', $rank)->first();
 
         if (!$record) {
             return false;
@@ -237,6 +226,66 @@ class LeiterRecordsService
 
         return $record->percentile;
     }
+
+    public function getPercentileFromStandard($value)
+    {
+        $record = PercentileRanksScaledScore::where('standard', $value)->first();
+        if (!$record) {
+            return 'Not found';
+        }
+        return $record->percentile;
+    }
+
+    public function getAgeEquivalentCognitive($value)
+    {
+        $record = GrowthScaleAgeEquivalentsCognitiveGrowthScale::where('growth_score', $value)->first();
+
+        if (!$record) {
+            return "Not found";
+        }
+
+        return "$record->years - $record->months";
+    }
+
+    public function getAgeEquivalentMemory($value)
+    {
+        $record = GrowthScaleAgeEquivalentsMemoryGrowthScale::where('growth_score', $value)->first();
+
+        if (!$record) {
+            return "Not found";
+        }
+
+        return "$record->years - $record->months";
+    }
+
+    public function getCriticalValues($age)
+    {
+        if ($age < 72) {
+            $idx = 0;
+        } elseif ($age >= 72 && $age < 660) {
+            $idx = 1;
+        } else {
+            $idx = 2;
+        }
+
+        return config('leiter')['vs'][$idx];
+    }
+
+    public function getDiffPercentile($diff, $age, $attr)
+    {
+        $records = ScoreDiffVs::where('score_diff', $diff)
+            ->where('min_age', '<=', $age)
+            ->where('max_age', '>=', $age)
+            ->orderBy('value', 'ASC')
+            ->get();
+
+        if (!$records) {
+            return "Not found";
+        }
+
+        return $records->first()->{$attr};
+    }
+
 
     private function getMinMaxScaledScore(int $age, string $type)
     {
