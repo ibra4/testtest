@@ -10,6 +10,7 @@ use App\Repositories\MemoryReportRepository;
 use App\Repositories\NarrativeReportRepository;
 use App\Repositories\ReportRepository;
 use App\Models\Reports\Report;
+use App\Repositories\SupplimentalAttentionReportRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -25,6 +26,11 @@ class ReportsService
      * @var AttentionReportRepository
      */
     protected $attentionReportRepository;
+
+    /**
+     * @var SupplimentalAttentionReportRepository
+     */
+    protected $supplimentalAttentionReportRepository;
 
     /**
      * @var ExaminerReportRepository
@@ -52,7 +58,8 @@ class ReportsService
         ExaminerReportRepository $examinerReportRepository,
         MemoryReportRepository $memoryReportRepository,
         NarrativeReportRepository $narrativeReportRepository,
-        ReportRepository $reportRepository
+        ReportRepository $reportRepository,
+        SupplimentalAttentionReportRepository $supplimentalAttentionReportRepository
     ) {
         $this->cognitiveReportRepository = $cognitiveReportRepository;
         $this->attentionReportRepository = $attentionReportRepository;
@@ -60,6 +67,7 @@ class ReportsService
         $this->memoryReportRepository = $memoryReportRepository;
         $this->narrativeReportRepository = $narrativeReportRepository;
         $this->reportRepository = $reportRepository;
+        $this->supplimentalAttentionReportRepository = $supplimentalAttentionReportRepository;
     }
 
     /**
@@ -73,6 +81,7 @@ class ReportsService
         try {
             $cognitive = $this->cognitiveReportRepository->createEmptyReport();
             $attention = $this->attentionReportRepository->createEmptyReport();
+            $supplementalAttention = $this->supplimentalAttentionReportRepository->createEmptyReport();
             $examiner = $this->examinerReportRepository->createEmptyReport();
             $memory = $this->memoryReportRepository->createEmptyReport();
             $narrative = $this->narrativeReportRepository->createEmptyReport();
@@ -81,6 +90,7 @@ class ReportsService
                 'report_cognitive_subtest_id' => $cognitive->id,
                 'report_memory_battery_id' => $memory->id,
                 'report_attention_id' => $attention->id,
+                'report_supplemental_attention_id' => $supplementalAttention->id,
                 'report_examiner_rating_scale_section_id' => $examiner->id,
                 'report_narrative_id' => $narrative->id,
             ]);
@@ -109,6 +119,8 @@ class ReportsService
                 return $report->reportMemory;
             case 'attention':
                 return $report->reportAttention;
+            case 'supplemental_attention':
+                return $report->reportSupplementalAttention;
             case 'examiner':
                 return $report->reportExaminer;
             case 'narrative':
@@ -129,7 +141,7 @@ class ReportsService
         $data = $request->only($report->getFillable());
 
         $data['saved'] = request()->user()->id == 1 ? false : true;
-        
+
         $report->fill($data)->save();
 
         return $report;

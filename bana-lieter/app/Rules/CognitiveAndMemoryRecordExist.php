@@ -35,9 +35,15 @@ class CognitiveAndMemoryRecordExist implements Rule
      */
     public function passes($attribute, $value)
     {
-        $stop = '';
         try {
-            if ($attribute == 'attention_sustained') {
+            if (in_array($attribute, [
+                'attention_sustained_errors',
+                'attention_divided_correct',
+                'attention_divided_incorrect',
+                'nonverbal_stroop_congruent_incorrect',
+                'nonverbal_stroop_incongruent_incorrect',
+                'attention_sustained'
+            ])) {
                 $attribute = 'attention';
             }
             $this->lrs->getScaledScore($attribute, $value, $this->age, true);

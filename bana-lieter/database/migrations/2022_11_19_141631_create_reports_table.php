@@ -18,6 +18,7 @@ class CreateReportsTable extends Migration
             $table->unsignedBigInteger('report_cognitive_subtest_id')->nullable();
             $table->unsignedBigInteger('report_memory_battery_id')->nullable();
             $table->unsignedBigInteger('report_attention_id')->nullable();
+            $table->unsignedBigInteger('report_supplemental_attention_id')->nullable();
             $table->unsignedBigInteger('report_examiner_rating_scale_section_id')->nullable();
             $table->unsignedBigInteger('report_narrative_id')->nullable();
 
@@ -32,6 +33,10 @@ class CreateReportsTable extends Migration
             $table->foreign('report_attention_id')
                 ->references('id')
                 ->on('report_attentions')
+                ->onDelete('set null');
+            $table->foreign('report_supplemental_attention_id')
+                ->references('id')
+                ->on('report_supplemental_attentions')
                 ->onDelete('set null');
             $table->foreign('report_examiner_rating_scale_section_id')
                 ->references('id')

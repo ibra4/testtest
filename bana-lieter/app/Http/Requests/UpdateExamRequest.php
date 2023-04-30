@@ -56,12 +56,22 @@ class UpdateExamRequest extends FormRequest
                     'nonverbal_stroop_incongruent_correct' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
                     'nonverbal_stroop_congruent_correct' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs)
                 ];
+            case 'supplemental_attention':
+                return [
+                    'attention_sustained_errors' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
+                    'attention_divided_correct' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
+                    'attention_divided_incorrect' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
+                    'nonverbal_stroop_congruent_incorrect' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
+                    'nonverbal_stroop_incongruent_incorrect' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
+                ];
             case 'examiner':
                 return [
                     'attention' => new ExaminerRecordExist($age, $this->lrs, ExaminerRatingAttention::class),
                     'organization_impulse_control' => new ExaminerRecordExist($age, $this->lrs, ExaminerRatingOrganization::class),
                     'energy_and_feelings' => new ExaminerRecordExist($age, $this->lrs, ExaminerRatingEnergy::class)
                 ];
+            default:
+                return [];
         }
     }
 }

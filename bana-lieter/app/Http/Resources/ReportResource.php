@@ -18,17 +18,20 @@ class ReportResource extends JsonResource
         $reportCognitive = $this->reportCognitive;
         $reportMemory = $this->reportMemory;
         $reportAttention = $this->reportAttention;
+        $reportSupplementalAttention = $this->reportSupplementalAttention;
         $reportExaminer = $this->reportExaminer;
         $reportNarrative = $this->reportNarrative;
 
         $reportCognitive->file_en = route('reports.first', ['id' => $this->examinee->id]);
         $reportMemory->file_en = route('reports.first', ['id' => $this->examinee->id]);
         $reportAttention->file_en = route('reports.first', ['id' => $this->examinee->id]);
+        $reportSupplementalAttention->file_en = route('reports.first', ['id' => $this->examinee->id]);
         $reportExaminer->file_en = route('reports.first', ['id' => $this->examinee->id]);
         $reportNarrative->file_en = route('reports.first', ['id' => $this->examinee->id]);
         $reportCognitive->file_ar = route('reports.first', ['id' => $this->examinee->id]);
         $reportMemory->file_ar = route('reports.first', ['id' => $this->examinee->id]);
         $reportAttention->file_ar = route('reports.first', ['id' => $this->examinee->id]);
+        $reportSupplementalAttention->file_ar = route('reports.first', ['id' => $this->examinee->id]);
         $reportExaminer->file_ar = route('reports.first', ['id' => $this->examinee->id]);
         $reportNarrative->file_ar = route('reports.first', ['id' => $this->examinee->id]);
 
@@ -39,6 +42,7 @@ class ReportResource extends JsonResource
                 'cognitive' => $reportCognitive,
                 'memory' => $reportMemory,
                 'attention' => $reportAttention,
+                'supplemental_attention' => $reportSupplementalAttention,
                 'examiner' => $reportExaminer,
                 'narrative' => $reportNarrative,
             ]

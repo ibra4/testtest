@@ -14,6 +14,7 @@ class Report extends Model
         'report_cognitive_subtest_id',
         'report_memory_battery_id',
         'report_attention_id',
+        'report_supplemental_attention_id',
         'report_examiner_rating_scale_section_id',
         'report_narrative_id'
     ];
@@ -46,6 +47,11 @@ class Report extends Model
     public function reportAttention()
     {
         return $this->hasOne(ReportAttention::class, 'id', 'report_attention_id');
+    }
+
+    public function reportSupplementalAttention()
+    {
+        return $this->hasOne(ReportSupplementalAttention::class, 'id', 'report_supplemental_attention_id');
     }
 
     public function reportExaminer()

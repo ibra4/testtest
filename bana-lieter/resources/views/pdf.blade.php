@@ -14,10 +14,7 @@
         <hr>
         <div class="row">
             <div class="col-8">
-                {{-- <h3 class="font-weight-bold text-danger my-4"><i class="fa fa-lock"></i> Secret Report</h3> --}}
                 <h2 class="font-weight-bold mt-2">Confidential Test Results for the Leiter-3</h2>
-                {{-- <hr> --}}
-                {{-- <h4 class="text-secondary">Confidential Test Results for the Leiter-3</h4> --}}
             </div>
             <div class="col-4">
                 <img src="{{ asset('images/lieter3.jpeg') }}" class="w-100" alt="">
@@ -215,7 +212,7 @@
                 </tbody>
             </table>
             <div class="table-header">Supplemental Attention/Memory Scores</div>
-            <table class="table text-danger">
+            <table class="table">
                 <thead>
                     <th class="text-center">Attention Scores</th>
                     <th>Raw Score</th>
@@ -225,19 +222,19 @@
                 <tbody>
                     <tr>
                         <td>Attention Sustained Errors (ASe)</td>
-                        <td>{{ $attentionAnonymous->attention_sustained_error }}</td>
+                        <td>{{ $reportSupplementalAttention->attention_sustained_error }}</td>
                         <td>{{ $attention_anonymous_values['ase']['scaled_score'] }}</td>
                         <td>{{ $attention_anonymous_values['ase']['percentile'] }}</td>
                     </tr>
                     <tr>
                         <td>Attention Divided Correct (ADc)</td>
-                        <td>{{ $attentionAnonymous->attention_devided_correct }}</td>
+                        <td>{{ $reportSupplementalAttention->attention_devided_correct }}</td>
                         <td>{{ $attention_anonymous_values['adc']['scaled_score'] }}</td>
                         <td>{{ $attention_anonymous_values['adc']['percentile'] }}</td>
                     </tr>
                     <tr>
                         <td>Attention Divided Incorrect (ADi)</td>
-                        <td>{{ $attentionAnonymous->attention_devided_incorrect }}</td>
+                        <td>{{ $reportSupplementalAttention->attention_devided_incorrect }}</td>
                         <td>{{ $attention_anonymous_values['adi']['scaled_score'] }}</td>
                         <td>{{ $attention_anonymous_values['adi']['percentile'] }}</td>
                     </tr>
@@ -249,13 +246,13 @@
                     </tr>
                     <tr>
                         <td>Nonverbal Stroop Congruent Incorrect (NSCi)</td>
-                        <td>{{ $attentionAnonymous->nonverbal_stroop_congruent_incorrect }}</td>
+                        <td>{{ $reportSupplementalAttention->nonverbal_stroop_congruent_incorrect }}</td>
                         <td>{{ $attention_anonymous_values['nsci']['scaled_score'] }}</td>
                         <td>{{ $attention_anonymous_values['nsci']['percentile'] }}</td>
                     </tr>
                     <tr>
                         <td>Nonverbal Stroop Incongruent Incorrect (NSii)</td>
-                        <td>{{ $attentionAnonymous->nonverbal_stroop_incongruent_incorrect }}</td>
+                        <td>{{ $reportSupplementalAttention->nonverbal_stroop_incongruent_incorrect }}</td>
                         <td>{{ $attention_anonymous_values['nsii']['scaled_score'] }}</td>
                         <td>{{ $attention_anonymous_values['nsii']['percentile'] }}</td>
                     </tr>
@@ -351,7 +348,7 @@
                         <td>Emotions/Regulations Composite Score</td>
                         <td>{{ $examiner_section_eh_sum }}</td>
                         <td>{{ $examiner_scores['emotions']->scaled_score }}</td>
-                        <td class="text-danger">32</td>
+                        <td>{{ $examiner_social_emotions }}</td>
                     </tr>
                 </tbody>
             </table>

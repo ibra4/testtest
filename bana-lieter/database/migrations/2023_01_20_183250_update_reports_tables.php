@@ -8,6 +8,7 @@ class UpdateReportsTables extends Migration
 {
     const REPORTS_TABLES = [
         'report_attentions',
+        'report_supplemental_attentions',
         'report_cognitive_subtests',
         'report_examiner_rating_scale_sections',
         'report_memory_batteries',

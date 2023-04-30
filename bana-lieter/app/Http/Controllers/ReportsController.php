@@ -32,19 +32,19 @@ class ReportsController extends Controller
         $reportCognitive = $examinee->report->reportCognitive;
         $reportMemory = $examinee->report->reportMemory;
         $reportAttention = $examinee->report->reportAttention;
+        $reportSupplementalAttention = $examinee->report->reportSupplementalAttention;
+
         $reportAttention->nonverbal_stroop_effect =
             abs($reportAttention->nonverbal_stroop_incongruent_correct -
                 $reportAttention->nonverbal_stroop_congruent_correct);
         $reportExaminer = $examinee->report->reportExaminer;
 
-        // @TODO: missing Nonverbal Stroop Effect
-
-        $attentionAnonymous = new stdClass();
-        $attentionAnonymous->attention_sustained_error = 0;
-        $attentionAnonymous->attention_devided_correct = 0;
-        $attentionAnonymous->attention_devided_incorrect = 0;
-        $attentionAnonymous->nonverbal_stroop_congruent_incorrect = 0;
-        $attentionAnonymous->nonverbal_stroop_incongruent_incorrect = 0;
+        $reportSupplementalAttention = new stdClass();
+        $reportSupplementalAttention->attention_sustained_error = 0;
+        $reportSupplementalAttention->attention_devided_correct = 0;
+        $reportSupplementalAttention->attention_devided_incorrect = 0;
+        $reportSupplementalAttention->nonverbal_stroop_congruent_incorrect = 0;
+        $reportSupplementalAttention->nonverbal_stroop_incongruent_incorrect = 0;
 
         /**
          * Cognitive
@@ -108,11 +108,11 @@ class ReportsController extends Controller
         $confidence_interval_processing_speed = $lrs->getConfidenceIntervalProcessingSpeed($composite_processing_speed);
 
         $attention_anonymous_values = [
-            'ase' => $lrs->getAttentionScaledScore('attention_sustained_error', $attentionAnonymous, $age),
-            'adc' => $lrs->getAttentionScaledScore('attention_devided_correct', $attentionAnonymous, $age),
-            'adi' => $lrs->getAttentionScaledScore('attention_devided_incorrect', $attentionAnonymous, $age),
-            'nsci' => $lrs->getAttentionScaledScore('nonverbal_stroop_congruent_incorrect', $attentionAnonymous, $age),
-            'nsii' => $lrs->getAttentionScaledScore('nonverbal_stroop_incongruent_incorrect', $attentionAnonymous, $age)
+            'ase' => $lrs->getAttentionScaledScore('attention_sustained_error', $reportSupplementalAttention, $age),
+            'adc' => $lrs->getAttentionScaledScore('attention_devided_correct', $reportSupplementalAttention, $age),
+            'adi' => $lrs->getAttentionScaledScore('attention_devided_incorrect', $reportSupplementalAttention, $age),
+            'nsci' => $lrs->getAttentionScaledScore('nonverbal_stroop_congruent_incorrect', $reportSupplementalAttention, $age),
+            'nsii' => $lrs->getAttentionScaledScore('nonverbal_stroop_incongruent_incorrect', $reportSupplementalAttention, $age)
         ];
 
         $examiner_section_ad_sum = $reportExaminer->attention +
@@ -154,6 +154,7 @@ class ReportsController extends Controller
         ];
 
         $examiner_social_percentile = $lrs->getPercentileFromStandard($examiner_scores['social']->scaled_score);
+        $examiner_social_emotions = $lrs->getPercentileFromStandard($examiner_scores['emotions']->scaled_score);
 
         $sem_growth = [
             'nonverbal_iq' => [
@@ -283,6 +284,7 @@ class ReportsController extends Controller
             // Memory
             'reportMemory',
             'reportAttention',
+            'reportSupplementalAttention',
             'memory_attention_values',
             'memory_attention_values_percentile',
             'sum_of_nonverbal_memory',
@@ -295,7 +297,7 @@ class ReportsController extends Controller
             'confidence_interval_processing_speed',
 
             // Attention Anonymous
-            'attentionAnonymous',
+            'reportSupplementalAttention',
             'attention_anonymous_values',
 
             // Examiner
@@ -307,6 +309,7 @@ class ReportsController extends Controller
 
             'sem_growth',
             'examiner_social_percentile',
+            'examiner_social_emotions',
             'vs',
             'diffs',
             'diffs_percentile'

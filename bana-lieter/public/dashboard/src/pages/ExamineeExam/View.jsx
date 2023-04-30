@@ -9,12 +9,13 @@ import CognitiveSubtestsForm from './SubForms/CognitiveSubtestsForm';
 import ExaminerRatingScaleSectionForm from './SubForms/ExaminerRatingScaleSectionForm';
 import MemoryBatteryForm from './SubForms/MemoryBatteryForm';
 import NarrativeReportForm from './SubForms/NarrativeReportForm';
+import SupplementalAttentionForm from './SubForms/SupplementalAttentionForm';
 
 function View({ data: { examinee, reports }, onSectionSubmit }) {
     const { t } = useTranslation();
     return (
         <>
-            <WhiteBox title={t("Examinee Data")}>
+            <WhiteBox title={t('Examinee Data')}>
                 <Row>
                     <LabelValueCol label={'Name'} value={examinee.name} md={3} />
                     <LabelValueCol label={'Birthday'} value={examinee.birthday} md={3} />
@@ -29,7 +30,16 @@ function View({ data: { examinee, reports }, onSectionSubmit }) {
             <CognitiveSubtestsForm examinee={examinee} initialValues={reports.cognitive} onSubmit={onSectionSubmit} />
             <MemoryBatteryForm examinee={examinee} initialValues={reports.memory} onSubmit={onSectionSubmit} />
             <AttentionForm examinee={examinee} initialValues={reports.attention} onSubmit={onSectionSubmit} />
-            <ExaminerRatingScaleSectionForm examinee={examinee} initialValues={reports.examiner} onSubmit={onSectionSubmit} />
+            <SupplementalAttentionForm
+                examinee={examinee}
+                initialValues={reports.supplemental_attention}
+                onSubmit={onSectionSubmit}
+            />
+            <ExaminerRatingScaleSectionForm
+                examinee={examinee}
+                initialValues={reports.examiner}
+                onSubmit={onSectionSubmit}
+            />
             <NarrativeReportForm examinee={examinee} initialValues={reports.narrative} onSubmit={onSectionSubmit} />
         </>
     );
