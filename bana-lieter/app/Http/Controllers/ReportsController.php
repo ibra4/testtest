@@ -39,13 +39,6 @@ class ReportsController extends Controller
                 $reportAttention->nonverbal_stroop_congruent_correct);
         $reportExaminer = $examinee->report->reportExaminer;
 
-        $reportSupplementalAttention = new stdClass();
-        $reportSupplementalAttention->attention_sustained_error = 0;
-        $reportSupplementalAttention->attention_devided_correct = 0;
-        $reportSupplementalAttention->attention_devided_incorrect = 0;
-        $reportSupplementalAttention->nonverbal_stroop_congruent_incorrect = 0;
-        $reportSupplementalAttention->nonverbal_stroop_incongruent_incorrect = 0;
-
         /**
          * Cognitive
          */
