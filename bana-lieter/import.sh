@@ -2,9 +2,5 @@ items=("attention_devided_correct" "attention_devided_incorrect" "attention_sust
 
 for item in "${items[@]}"
     do
-        # Run the command for each item
-        echo "Running command for $item"
-        # Replace the following line with your desired command
-        # For example: 
-        # command_to_run "$item"
+        mongoimport --db bana --collection $item --type=json --file resources/tables/output/$item.json --uri mongodb://127.0.0.1:27017 --jsonArray
 done
