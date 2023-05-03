@@ -222,19 +222,19 @@
                 <tbody>
                     <tr>
                         <td>Attention Sustained Errors (ASe)</td>
-                        <td>{{ $reportSupplementalAttention->attention_sustained_error }}</td>
+                        <td>{{ $reportSupplementalAttention->attention_sustained_errors }}</td>
                         <td>{{ $attention_anonymous_values['ase']['scaled_score'] }}</td>
                         <td>{{ $attention_anonymous_values['ase']['percentile'] }}</td>
                     </tr>
                     <tr>
                         <td>Attention Divided Correct (ADc)</td>
-                        <td>{{ $reportSupplementalAttention->attention_devided_correct }}</td>
+                        <td>{{ $reportSupplementalAttention->attention_divided_correct }}</td>
                         <td>{{ $attention_anonymous_values['adc']['scaled_score'] }}</td>
                         <td>{{ $attention_anonymous_values['adc']['percentile'] }}</td>
                     </tr>
                     <tr>
                         <td>Attention Divided Incorrect (ADi)</td>
-                        <td>{{ $reportSupplementalAttention->attention_devided_incorrect }}</td>
+                        <td>{{ $reportSupplementalAttention->attention_divided_incorrect }}</td>
                         <td>{{ $attention_anonymous_values['adi']['scaled_score'] }}</td>
                         <td>{{ $attention_anonymous_values['adi']['percentile'] }}</td>
                     </tr>
