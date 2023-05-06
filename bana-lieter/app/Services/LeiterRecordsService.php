@@ -77,10 +77,10 @@ class LeiterRecordsService
             case 'attention_sustained_error':
                 $model = AttentionSustainedError::class;
                 break;
-            case 'attention_devided_correct':
+            case 'attention_divided_correct':
                 $model = AttentionDevidedCorrect::class;
                 break;
-            case 'attention_devided_incorrect':
+            case 'attention_divided_incorrect':
                 $model = AttentionDevidedIncorrect::class;
                 break;
             case 'nonverbal_stroop_congruent_incorrect':
@@ -102,6 +102,10 @@ class LeiterRecordsService
             ->where('row_score', $report->$field)
             ->get()
             ->first();
+
+        if (!$record) {
+            dd($report, $field);
+        }
 
         return [
             'scaled_score' => $record ? $record->scaled_score : "Not Found",

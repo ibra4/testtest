@@ -101,9 +101,9 @@ class ReportsController extends Controller
         $confidence_interval_processing_speed = $lrs->getConfidenceIntervalProcessingSpeed($composite_processing_speed);
 
         $attention_anonymous_values = [
-            'ase' => $lrs->getAttentionScaledScore('attention_sustained_error', $reportSupplementalAttention, $age),
-            'adc' => $lrs->getAttentionScaledScore('attention_devided_correct', $reportSupplementalAttention, $age),
-            'adi' => $lrs->getAttentionScaledScore('attention_devided_incorrect', $reportSupplementalAttention, $age),
+            'ase' => $lrs->getAttentionScaledScore('attention_sustained_errors', $reportSupplementalAttention, $age),
+            'adc' => $lrs->getAttentionScaledScore('attention_divided_correct', $reportSupplementalAttention, $age),
+            'adi' => $lrs->getAttentionScaledScore('attention_divided_incorrect', $reportSupplementalAttention, $age),
             'nsci' => $lrs->getAttentionScaledScore('nonverbal_stroop_congruent_incorrect', $reportSupplementalAttention, $age),
             'nsii' => $lrs->getAttentionScaledScore('nonverbal_stroop_incongruent_incorrect', $reportSupplementalAttention, $age)
         ];
