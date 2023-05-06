@@ -329,8 +329,8 @@
                     <tr>
                         <td>Anxiety</td>
                         <td>{{ $reportExaminer->anxiety }}</td>
-                        <td class="text-danger">7</td>
-                        <td class="text-danger">15.5</td>
+                        <td class="text-danger">Missing table</td>
+                        <td class="text-danger">Missing table</td>
                     </tr>
                     <tr>
                         <td>Sensory Reaction</td>
