@@ -1,4 +1,5 @@
 import LabelValueCol from 'components/LabelValueCol';
+import ReportsButtons from 'components/Reports/ReportsButtons';
 import WhiteBox from 'components/WhiteBox';
 import { getAdminById, getCountryById, getGender } from 'providers/helpers';
 import React from 'react';
@@ -11,7 +12,7 @@ import MemoryBatteryForm from './SubForms/MemoryBatteryForm';
 import NarrativeReportForm from './SubForms/NarrativeReportForm';
 import SupplementalAttentionForm from './SubForms/SupplementalAttentionForm';
 
-function View({ data: { examinee, reports }, onSectionSubmit }) {
+function View({ data: { examinee, reports, file_en, file_ar }, onSectionSubmit }) {
     const { t } = useTranslation();
     return (
         <>
@@ -40,7 +41,14 @@ function View({ data: { examinee, reports }, onSectionSubmit }) {
                 initialValues={reports.examiner}
                 onSubmit={onSectionSubmit}
             />
-            <NarrativeReportForm examinee={examinee} initialValues={reports.narrative} onSubmit={onSectionSubmit} />
+            {/* <NarrativeReportForm examinee={examinee} initialValues={reports.narrative} onSubmit={onSectionSubmit} /> */}
+            {/* <ReportsButtons data={data} isLoading={isLoading} /> */}
+            <ReportsButtons
+                data={{
+                    file_en,
+                    file_ar
+                }}
+            />
         </>
     );
 }

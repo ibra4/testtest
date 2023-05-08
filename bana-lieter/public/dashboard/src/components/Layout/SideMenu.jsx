@@ -180,16 +180,16 @@ function SideMenu() {
             </a>
             <Sidebar collapsedWidth={'100px'} breakPoint="sm" rtl={isRtl()}>
                 <Menu>
-                    <div className="menu-logo">
+                    <Link to="/" className="menu-logo">
                         <img src={collapsed ? '/images/logo_teaser.png' : '/images/logo.png'} />
-                    </div>
+                    </Link>
                     {routes.map(renderRouteLink)}
                     <hr />
                     {routes2.map(renderRouteLink)}
                     {routes2.length > 0 && <hr />}
-                    <div>
+                    <Link to="/">
                         <img src={'/images/lieter3.jpeg'} className="w-100" />
-                    </div>
+                    </Link>
                 </Menu>
             </Sidebar>
         </div>

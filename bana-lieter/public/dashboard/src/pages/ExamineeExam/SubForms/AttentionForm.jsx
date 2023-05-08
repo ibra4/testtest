@@ -70,7 +70,6 @@ function AttentionForm({ initialValues, onSubmit, examinee }) {
                     </form>
                 )}
             </Formik>
-            <ReportsButtons data={data} isLoading={isLoading} />
         </WhiteBox>
     );
 }
