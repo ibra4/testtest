@@ -9,6 +9,7 @@ import WhiteBox from 'components/WhiteBox';
 import DataTable from 'react-data-table-component';
 import { useTranslation } from 'react-i18next';
 import { getLeiterRecordLabelByType } from 'providers/helpers';
+import ActionLink from 'components/Fields/ActionLink';
 
 const View = ({ data, queryParams, onSearch, handleDelete }) => {
     const { t } = useTranslation();
@@ -46,12 +47,19 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
             selector: (row) => (
                 <>
                     <div className="d-flex">
-                        <ActionButton
+                        <ActionLink
                             icon={<FaEdit />}
-                            onClick={() => push(`/leiter-records/${row._id}/update`)}
+                            label={t('Edit')}
+                            to={`/leiter-records/${row._id}/update`}
                             variant="success"
                         />
-                        <ActionButton icon={<FaTrash />} onClick={() => handleDelete(row._id)} variant="danger" classes="ms-3" />
+                        <ActionButton
+                            icon={<FaTrash />}
+                            onClick={() => handleDelete(row._id)}
+                            label={t('Delete')}
+                            variant="danger"
+                            classes="ms-3"
+                        />
                     </div>
                 </>
             )
@@ -71,12 +79,19 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
             <td>{item.max_age}</td>
             <td>
                 <div className="d-flex">
-                    <ActionButton
+                    <ActionLink
                         icon={<FaEdit />}
-                        onClick={() => push(`/leiter-records/${item._id}/update`)}
+                        label={t('Edit')}
+                        to={`/leiter-records/${item._id}/update`}
                         variant="success"
                     />
-                    <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" classes="ms-3" />
+                    <ActionButton
+                        icon={<FaTrash />}
+                        label={t('Delete')}
+                        onClick={() => {}}
+                        variant="danger"
+                        classes="ms-3"
+                    />
                 </div>
             </td>
         </tr>

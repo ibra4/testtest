@@ -29,12 +29,14 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>
                 <div className="d-flex">
                     <ActionButton
+                        label={t('Edit')}
                         icon={<FaEdit />}
                         onClick={() => push(`examinees/${item.id}/update`)}
                         variant="success"
                     />
                     <ActionButton
                         icon={<TbReportAnalytics />}
+                        label={t('View Report')}
                         onClick={() => push(`examinees/${item.id}/exam`)}
                         variant="primary"
                     />

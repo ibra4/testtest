@@ -28,10 +28,19 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
                 <div className="d-flex">
                     <ActionButton
                         icon={<FaEdit />}
+                        label={t('Edit')}
                         onClick={() => push(`/sub-admins/${item.id}/update`)}
                         variant="success"
                     />
-                    {hasRole('root') && <ActionButton icon={<FaTrash />} onClick={() => handleDelete(item.id)} variant="danger" classes="ms-3" />}
+                    {hasRole('root') && (
+                        <ActionButton
+                            icon={<FaTrash />}
+                            label={t('Delete')}
+                            onClick={() => handleDelete(item.id)}
+                            variant="danger"
+                            classes="ms-3"
+                        />
+                    )}
                 </div>
             </td>
         </tr>
