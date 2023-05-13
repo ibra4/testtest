@@ -91,6 +91,7 @@ class ReportsController extends Controller
         ];
 
         $sum_of_nonverbal_memory = $lrs->getSumOfNonverbalMemory($memory_attention_values);
+        $sum_of_nonverbal_memory_raw = $reportMemory->forward_memory + $reportMemory->reverse_memory;
         $composite_nonverbal_memory = $lrs->getCompositeMemory($sum_of_nonverbal_memory);
         $composite_nonverbal_memory_percentile = $lrs->getPercentileFromStandard($composite_nonverbal_memory);
         $confidence_interval_noverbal_memory = $lrs->getConfidenceIntervalNonverbalMemory($composite_nonverbal_memory);
@@ -213,11 +214,11 @@ class ReportsController extends Controller
             'nonverbal_memory' => [
                 'sem' => $lrs->getSem(
                     SemGrowthNonverbalMemory::class,
-                    $sum_of_nonverbal_memory
+                    $sum_of_nonverbal_memory_raw
                 ),
                 'growth' => $lrs->getGrowth(
                     SemGrowthNonverbalMemory::class,
-                    $sum_of_nonverbal_memory
+                    $sum_of_nonverbal_memory_raw
                 )
             ],
             'forward_memory' => [
