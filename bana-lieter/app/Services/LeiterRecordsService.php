@@ -283,8 +283,8 @@ class LeiterRecordsService
             ->orderBy('value', 'ASC')
             ->get();
 
-        if (!$records) {
-            return "Not found";
+        if ($records->empty()) {
+            return "not found*";
         }
 
         return $records->first()->{$attr};
