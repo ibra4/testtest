@@ -26,6 +26,16 @@ function ReportsButtons({ data }) {
                                         {t('Report (EN)')}
                                     </Button>
                                 </Col>
+                                <Col className="col-auto">
+                                    <Button as={'a'} href={data.file_normal_dist_en} target="_blank" variant="success">
+                                        {t('Normal Distribution Report (EN)')}
+                                    </Button>
+                                </Col>
+                                <Col className="col-auto">
+                                    <Button as={'a'} href={data.file_normal_dist_ar} target="_blank" variant="success">
+                                        {t('Normal Distribution Report (AR)')}
+                                    </Button>
+                                </Col>
                             </Row>
                         </div>
                     ) : (

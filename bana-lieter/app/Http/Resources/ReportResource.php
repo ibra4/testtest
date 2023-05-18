@@ -27,6 +27,8 @@ class ReportResource extends JsonResource
             ],
             'file_en' => route('reports.first', ['id' => $this->examinee->id]),
             'file_ar' => route('reports.first', ['id' => $this->examinee->id]),
+            'file_normal_dist_en' => route('reports.second', ['id' => $this->examinee->id]),
+            'file_normal_dist_ar' => route('reports.second', ['id' => $this->examinee->id])
         ];
     }
 }

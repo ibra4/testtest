@@ -3,7 +3,7 @@
 @section('content')
     <main class="content" id="pdf">
         {{-- <div class="bar top"></div> --}}
-        <header class="row align-items-center">
+        {{-- <header class="row align-items-center">
             <div class="col-6">
                 <img width="200" src="{{ asset('images/logo.png') }}" alt="">
             </div>
@@ -11,7 +11,7 @@
                 <h3 class="font-weight-bold mb-0">Bana center for consultation and research and training</h3>
             </div>
         </header>
-        <hr>
+        <hr> --}}
         <div class="row">
             <div class="col-8">
                 <h2 class="font-weight-bold mt-2">Confidential Test Results for the Leiter-3</h2>
@@ -65,9 +65,9 @@
         </div>
         <hr>
         <div class="section">
-            <h1 class="title">Cognitive</h1>
+            {{-- <h1 class="title">Cognitive</h1> --}}
             <div class="table-header">Cognitive Subtests</div>
-            <table class="table">
+            <table class="table-bordered table">
                 <thead>
                     <tr>
                         <th class="text-center">Subtest</th>
@@ -110,7 +110,7 @@
                 </tbody>
             </table>
             <div class="table-header">Cognitive Composite</div>
-            <table class="table">
+            <table class="table-bordered table">
                 <thead>
                     <tr>
                         <th>Sum of 4 Scaled Scores</th>
@@ -133,9 +133,9 @@
 
 
         <div class="section">
-            <h1 class="title">Attention / Memory</h1>
+            {{-- <h1 class="title">Attention / Memory</h1> --}}
             <div class="table-header">Attention / Memory Subtests</div>
-            <table class="table">
+            <table class="table-bordered table">
                 <thead>
                     <tr>
                         <th class="text-center">Subtest</th>
@@ -184,7 +184,7 @@
                 </tbody>
             </table>
             <div class="table-header">Attention Memory Composites</div>
-            <table class="table">
+            <table class="table-bordered table">
                 <thead>
                     <tr>
                         <th>Composite Domains</th>
@@ -212,7 +212,7 @@
                 </tbody>
             </table>
             <div class="table-header">Supplemental Attention/Memory Scores</div>
-            <table class="table">
+            <table class="table-bordered table">
                 <thead>
                     <th class="text-center">Attention Scores</th>
                     <th>Raw Score</th>
@@ -262,9 +262,9 @@
 
 
         <div class="section">
-            <h1 class="title">Examiner Rating</h1>
+            {{-- <h1 class="title">Examiner Rating</h1> --}}
             <div class="table-header">Examiner Rating Scale Scores</div>
-            <table class="table">
+            <table class="table-bordered table">
                 <tbody>
                     <tr class="bg font-weight-bold">
                         <td class="text-center">Section A-D</td>
@@ -356,9 +356,9 @@
 
 
         <div class="section">
-            <h1 class="title">Growth Profile Scores</h1>
+            {{-- <h1 class="title">Growth Profile Scores</h1> --}}
             <div class="table-header">Growth Profile Scores</div>
-            <table class="table">
+            <table class="table-bordered table">
                 <thead>
                     <th class="text-center">Cognitive Subtests</th>
                     <th>Standard Error of Measurement (SEM)</th>
@@ -420,7 +420,7 @@
                 </tbody>
             </table>
             <div class="table-header">Examiner Rating Scale Scores</div>
-            <table class="table">
+            <table class="table-bordered table">
                 <thead>
                     <th class="text-center">Growth Scale</th>
                     <th>Age Equivalent</th>
@@ -437,7 +437,7 @@
                 </tbody>
             </table>
             <div class="table-header">Cognitive and Attention/Memory Score Differences</div>
-            <table class="table">
+            <table class="table-bordered table">
                 <thead>
                     <th class="text-center">Subtest Group</th>
                     <th>Difference</th>
@@ -470,7 +470,7 @@
                 </tbody>
             </table>
             {{-- <div class="table-header">Scatter Indices</div>
-            <table class="table text-danger">
+            <table class="table-bordered table text-danger">
                 <thead>
                     <th class="text-center">Battery</th>
                     <th>Scatter Value</th>
@@ -493,7 +493,7 @@
 
         <hr>
 
-        @include('components.pdf_footer')
+        {{-- @include('components.pdf_footer') --}}
         {{-- <div class="bar bottom"></div> --}}
     </main>
 @endsection

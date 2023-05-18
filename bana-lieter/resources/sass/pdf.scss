@@ -94,7 +94,7 @@ body {
 
 #table-container {
     position: relative;
-    height: 800px;
+    height: 400px;
 }
 
 #canvas-wrapper {
@@ -114,8 +114,11 @@ body {
                 border: 1px solid blue;
             }
             p {
+                &:first-of-type {
+                    margin-top: 30px;
+                }
                 text-align: right;
-                margin: 15px;
+                margin-bottom: 35px;
                 color: $orange;
                 font-weight: bold;
             }
@@ -125,7 +128,7 @@ body {
 
 .num-item {
     position: absolute;
-    height: 600px;
+    height: 100%;
     border-left: 1px dashed black;
 }
 
@@ -137,14 +140,11 @@ body {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     .inner {
-        content: "";
+        font-weight: bold;
         position: absolute;
-        top: 0;
+        top: 15px;
         left: 50%;
-        height: 100%;
-        background-color: rgba($color: $orange, $alpha: 0.2);
         transform: translateX(-50%);
-        border-radius: 5px;
     }
 }
 
@@ -171,8 +171,8 @@ footer {
     text-align: center;
     font-weight: bold;
     padding: 8px 0;
-    color: white;
-    background: #578bbe;
+    color: black;
+    background: #b3b3b3;
     font-size: 22px;
 }
 
@@ -180,4 +180,8 @@ footer {
     tr.bg, thead tr {
         background-color: rgba(0, 0, 0, 0.05);
     }
+}
+
+.label-item {
+    white-space: nowrap;
 }

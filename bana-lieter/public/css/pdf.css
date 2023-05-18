@@ -90,7 +90,7 @@ body {
 
 #table-container {
   position: relative;
-  height: 800px;
+  height: 400px;
 }
 
 #canvas-wrapper {
@@ -114,14 +114,17 @@ body {
 }
 .big-boss .canvas-table-group-wrapper .canvas-table-group p {
   text-align: right;
-  margin: 15px;
+  margin-bottom: 35px;
   color: #ff7e29;
   font-weight: bold;
+}
+.big-boss .canvas-table-group-wrapper .canvas-table-group p:first-of-type {
+  margin-top: 30px;
 }
 
 .num-item {
   position: absolute;
-  height: 600px;
+  height: 100%;
   border-left: 1px dashed black;
 }
 
@@ -134,14 +137,11 @@ body {
   transform: translate(-50%, -50%);
 }
 .point .inner {
-  content: "";
+  font-weight: bold;
   position: absolute;
-  top: 0;
+  top: 15px;
   left: 50%;
-  height: 100%;
-  background-color: rgba(255, 126, 41, 0.2);
   transform: translateX(-50%);
-  border-radius: 5px;
 }
 
 footer {
@@ -165,11 +165,15 @@ footer i.fa-linkedin {
   text-align: center;
   font-weight: bold;
   padding: 8px 0;
-  color: white;
-  background: #578bbe;
+  color: black;
+  background: #b3b3b3;
   font-size: 22px;
 }
 
 .table tr.bg, .table thead tr {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.label-item {
+  white-space: nowrap;
 }

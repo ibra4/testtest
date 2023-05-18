@@ -12,7 +12,10 @@ import MemoryBatteryForm from './SubForms/MemoryBatteryForm';
 import NarrativeReportForm from './SubForms/NarrativeReportForm';
 import SupplementalAttentionForm from './SubForms/SupplementalAttentionForm';
 
-function View({ data: { examinee, reports, file_en, file_ar }, onSectionSubmit }) {
+function View({
+    data: { examinee, reports, file_en, file_ar, file_normal_dist_en, file_normal_dist_ar },
+    onSectionSubmit
+}) {
     const { t } = useTranslation();
     return (
         <>
@@ -46,7 +49,9 @@ function View({ data: { examinee, reports, file_en, file_ar }, onSectionSubmit }
             <ReportsButtons
                 data={{
                     file_en,
-                    file_ar
+                    file_ar,
+                    file_normal_dist_en,
+                    file_normal_dist_ar
                 }}
             />
         </>

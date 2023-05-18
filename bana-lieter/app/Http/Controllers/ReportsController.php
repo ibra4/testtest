@@ -309,4 +309,50 @@ class ReportsController extends Controller
             'diffs_percentile'
         ));
     }
+
+    public function charts(Request $request, LeiterRecordsService $lrs, $id)
+    {
+        $examinee = Examinee::findOrFail($id);
+
+        $age = $examinee->age;
+
+        $reportMemory = $examinee->report->reportMemory;
+        $reportAttention = $examinee->report->reportAttention;
+
+        $reportAttention->nonverbal_stroop_effect =
+            abs($reportAttention->nonverbal_stroop_incongruent_correct -
+                $reportAttention->nonverbal_stroop_congruent_correct);
+
+        /**
+         * Attention/Memory
+         */
+        $memory_attention_values = [
+            'as' => $lrs->getScaledScore('attention', $reportAttention->attention_sustained, $age),
+            'fm' => $lrs->getScaledScore('forward_memory', $reportMemory->forward_memory, $age),
+            'rm' => $lrs->getScaledScore('reverse_memory', $reportMemory->reverse_memory, $age),
+            'as' => $lrs->getScaledScore('attention', $reportAttention->attention_sustained, $age),
+            'nsic' => $lrs->getScaledScore('nonverbal_stroop_incongruent_correct', $reportAttention->nonverbal_stroop_incongruent_correct, $age),
+            'nscc' => $lrs->getScaledScore('nonverbal_stroop_congruent_correct', $reportAttention->nonverbal_stroop_congruent_correct, $age),
+            'nseff' => "Missing table"
+        ];
+        $sum_of_nonverbal_memory = $lrs->getSumOfNonverbalMemory($memory_attention_values);
+        $sum_of_processing_speed = $lrs->getSumOfProcessingSpeed($memory_attention_values);
+        $composite_nonverbal_memory = $lrs->getCompositeMemory($sum_of_nonverbal_memory);
+        $composite_processing_speed = $lrs->getCompositeProcessingSpeed($sum_of_processing_speed);
+
+        $composite_values = [
+            [
+                'id' => 'composite_nonverbal_memory',
+                'label' => 'Nonverbal Memory',
+                'value' => $composite_nonverbal_memory,
+            ],
+            [
+                'id' => 'composite_processing_speed',
+                'label' => 'Processing Speed',
+                'value' => $composite_processing_speed,
+            ]
+        ];
+
+        return view('pdf_charts')->with(compact('composite_values', 'examinee'));
+    }
 }
