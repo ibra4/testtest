@@ -1,5 +1,6 @@
 <footer class="row">
-    <div class="col-3">
+    <p class="text-muted m-auto">حقوق الملكية محفوظة لمركز بانا © 2023</p>
+    {{-- <div class="col-3">
         <img src="{{ asset('images/logo.png') }}" class="w-100" alt="">
     </div>
     <div class="col-6">
@@ -31,5 +32,5 @@
         <div class="mb-3">
             <i class="fa-brands fa-linkedin"></i> bana_center
         </div>
-    </div>
+    </div> --}}
 </footer>

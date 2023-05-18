@@ -126,6 +126,8 @@
                 </tr>
             </tbody>
         </table>
+        <hr>
+        @include('components.pdf_footer')
 
     </main>
 @endsection

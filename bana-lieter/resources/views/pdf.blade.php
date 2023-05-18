@@ -493,7 +493,7 @@
 
         <hr>
 
-        {{-- @include('components.pdf_footer') --}}
+        @include('components.pdf_footer')
         {{-- <div class="bar bottom"></div> --}}
     </main>
 @endsection
