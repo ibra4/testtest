@@ -2,7 +2,7 @@ function drawGraphs() {
     const orange = "#ff7e29";
 
     const data3 = {
-        labels: [null, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170],
+        labels: [30, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170],
         datasets: [
             {
                 data: [0, 0.2, , , , , , , ,],
