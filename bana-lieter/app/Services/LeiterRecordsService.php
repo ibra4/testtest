@@ -197,13 +197,15 @@ class LeiterRecordsService
     public function getCompositeMemory(int $sum_of_scaled_score)
     {
         $compositeMemory = MemoryAndProcessingSpeedComposite::where('sum_of_scaled_score', $sum_of_scaled_score)->first();
-        return $compositeMemory->composite_score;
+        // Because of error in importing data
+        return $compositeMemory->processing_speed;
     }
 
     public function getCompositeProcessingSpeed(int $sum_of_scaled_score)
     {
         $compositeMemory = MemoryAndProcessingSpeedComposite::where('sum_of_scaled_score', $sum_of_scaled_score)->first();
-        return $compositeMemory->processing_speed;
+        // Because of error in importing data
+        return $compositeMemory->composite_score;
     }
 
     public function getSem(string $model, int $row_score)

@@ -2,47 +2,50 @@ function drawGraphs() {
     const orange = "#ff7e29";
 
     const data3 = {
-        labels: [40, 55, 70, 85, 100, 115, 130, 145, 160],
+        labels: [null, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170],
         datasets: [
             {
-                label: "Very Low",
-                data: [1.2, 1.3, , , , , , ,],
+                data: [0, 0.2, , , , , , , ,],
                 fill: true,
                 backgroundColor: "#cfc4dc",
             },
             {
-                label: "Low",
-                data: [, 1.3, 2, , , , , ,],
+                data: [, 0.2, 0.6, , , , , , , ,],
                 fill: true,
                 backgroundColor: "#bdb0ce",
             },
             {
-                label: "Below Avarage",
-                data: [, , 2, 4, , , , ,],
+                data: [, , 0.6, 1.4, , , , , , ,],
                 fill: true,
                 backgroundColor: "#927ab0",
             },
             {
-                label: "Avarage",
-                data: [, , , 4, 5, 4, , ,],
+                data: [, , , 1.4, 3, , , , , ,],
                 fill: true,
                 backgroundColor: "#cec5da",
             },
             {
-                label: "Above Avarage",
-                data: [, , , , , 4, 2, ,],
+                data: [, , , , 3, 3.4, 3, , , ,],
+                fill: true, //// center
+                backgroundColor: "#927ab0",
+            },
+            {
+                data: [, , , , , , 3, 1.4, , ,],
+                fill: true,
+                backgroundColor: "#cec5da",
+            },
+            {
+                data: [, , , , , , , 1.4, 0.6, ,],
                 fill: true,
                 backgroundColor: "#927ab0",
             },
             {
-                label: "High",
-                data: [, , , , , , 2, 1.3, null],
+                data: [, , , , , , , , 0.6, 0.2,],
                 fill: true,
                 backgroundColor: "#bdb0ce",
             },
             {
-                label: "Very High",
-                data: [, , , , , , , 1.3, 1.2, null],
+                data: [, , , , , , , , , 0.2, 0],
                 fill: true,
                 backgroundColor: "#cfc4dc",
             },
@@ -70,25 +73,18 @@ function drawGraphs() {
                     },
                     {
                         type: "category",
-                        fontStyle: "bold",
+                        // fontStyle: "bold",
                         labels: [
-                            " ",
-                            ["Very", "Low"],
-                            " ",
+                            "Severe Delay",
+                            "Modetate Delay",
+                            "Very Low and Mild Delay",
                             "Low",
-                            " ",
-                            ["Below", "Avarage"],
-                            " ",
-                            " ",
+                            "Below Avarage",
                             "Avarage",
-                            " ",
-                            " ",
-                            ["Above", "Avarage"],
-                            " ",
+                            "Above Avarage",
                             "High",
-                            " ",
-                            ["Very", "High"],
-                            " ",
+                            "Very High/Gifted",
+                            "Extremely High/Gifted",
                         ],
                         ticks: {
                             fontColor: "#9d6ab0",
@@ -105,6 +101,9 @@ function drawGraphs() {
     });
 
     var meta = test.getDatasetMeta(0);
+    console.log('test.getDatasetMeta(0) : ', test.getDatasetMeta(0));
+    console.log('test.getDatasetMeta(1) : ', test.getDatasetMeta(1));
+    console.log('test.getDatasetMeta(2) : ', test.getDatasetMeta(2));
 
     for (let i = 0; i < meta.data.length; i++) {
         const data = meta.data[i]._model;
@@ -115,25 +114,6 @@ function drawGraphs() {
     }
 
     const pointsToDisplay = JSON.parse(document.getElementById('composite_values').getAttribute('value'));
-    console.log('pointsToDisplay : ', pointsToDisplay);
-
-    const pointsToDisplay2 = [
-        {
-            id: "reading",
-            value: 46,
-            // width: 100,
-        },
-        {
-            id: "math",
-            value: 65,
-            // width: 150,
-        },
-        {
-            id: "languages",
-            value: 120,
-            // width: 80,
-        }
-    ];
 
     const items = $(".num-item").toArray();
 
@@ -144,7 +124,6 @@ function drawGraphs() {
     pointsToDisplay.map(function (item) {
         const value = item.value;
         const id = item.id;
-        // const width = item.width;
 
         const lessItem = getAround(value);
         const lessEl = getPointX(lessItem);

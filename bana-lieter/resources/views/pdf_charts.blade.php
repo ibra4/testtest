@@ -2,6 +2,7 @@
 
 @section('content')
     <main class="content" id="pdf">
+        <canvas id="myChart"></canvas>
         <div class="row">
             <div class="col-8">
                 <h2 class="font-weight-bold mt-2">Confidential Test Results for the Leiter-3</h2>
@@ -55,7 +56,7 @@
         </div>
         <hr>
         <div class="section">
-            <h1 class="title">Normal Distribution</h1>
+            <h1 class="title">IQ and Composite</h1>
             <div class="row">
                 <div class="col-2">
                 </div>
@@ -89,40 +90,98 @@
                 </div>
             </div>
         </div>
+        <div class="section">
+            <h1 class="title">Subtest Scores</h1>
+            <div class="row">
+                <div class="col-2">
+                </div>
+                <div class="col-10">
+                    <div id="canvas-wrapper">
+                        <canvas id="chartWithTable2" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="big-boss">
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-10">
+                        <div id="table-container">
+                        </div>
+                    </div>
+                </div>
+                <div id="composite_values" value="{{ json_encode($composite_values) }}"></div>
+                <div class="canvas-table-group-wrapper">
+                    <div class="canvas-table-group">
+                        <div class="row">
+                            <div class="col-2">
+                                @foreach ($composite_values as $compositeValue)
+                                    <p id="{{ $compositeValue['id'] }}" class="label-item">{{ $compositeValue['label'] }}
+                                    </p>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <table class="table">
             <thead>
-                <th>Value</th>
-                <th>Description</th>
+                <th>IQ and Composite Scores</th>
+                <th>Subtest Scores</th>
+                <th>Category</th>
             </thead>
             <tbody>
                 <tr>
-                    <td>40 - 55</td>
-                    <td>Very Low</td>
+                    <td>30 - 39</td>
+                    <td>---</td>
+                    <td>Severe Delay</td>
                 </tr>
                 <tr>
-                    <td>55 - 70</td>
+                    <td>40 - 54</td>
+                    <td>0</td>
+                    <td>Modetate Delay</td>
+                </tr>
+                <tr>
+                    <td>55 - 69</td>
+                    <td>1-3</td>
+                    <td>Very Low and Mild Delay</td>
+                </tr>
+                <tr>
+                    <td>70 - 79</td>
+                    <td>4-5</td>
                     <td>Low</td>
                 </tr>
                 <tr>
-                    <td>70 - 85</td>
+                    <td>80 - 89</td>
+                    <td>6-7</td>
                     <td>Below Avarage</td>
                 </tr>
                 <tr>
-                    <td>85 - 115</td>
+                    <td>90 - 109</td>
+                    <td>8-12</td>
                     <td>Avarage</td>
                 </tr>
                 <tr>
-                    <td>115 - 130</td>
+                    <td>110 - 119</td>
+                    <td>13-14</td>
                     <td>Above Avarage</td>
                 </tr>
                 <tr>
-                    <td>130 - 145</td>
+                    <td>120 - 129</td>
+                    <td>15-16</td>
                     <td>High</td>
                 </tr>
                 <tr>
-                    <td>145 - 160</td>
-                    <td>Very High</td>
+                    <td>130 - 149</td>
+                    <td>17-19</td>
+                    <td>Very High/Gifted</td>
+                </tr>
+                <tr>
+                    <td>150 - 170</td>
+                    <td>20</td>
+                    <td>Extremely High/Gifted</td>
                 </tr>
             </tbody>
         </table>
