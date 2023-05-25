@@ -90,41 +90,6 @@
                 </div>
             </div>
         </div>
-        <div class="section">
-            <h1 class="title">Subtest Scores</h1>
-            <div class="row">
-                <div class="col-2">
-                </div>
-                <div class="col-10">
-                    <div id="canvas-wrapper">
-                        <canvas id="chartWithTable2" width="400" height="200"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="big-boss">
-                <div class="row">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-10">
-                        <div id="table-container">
-                        </div>
-                    </div>
-                </div>
-                <div id="composite_values" value="{{ json_encode($composite_values) }}"></div>
-                <div class="canvas-table-group-wrapper">
-                    <div class="canvas-table-group">
-                        <div class="row">
-                            <div class="col-2">
-                                @foreach ($composite_values as $compositeValue)
-                                    <p id="{{ $compositeValue['id'] }}" class="label-item">{{ $compositeValue['label'] }}
-                                    </p>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <table class="table">
             <thead>
