@@ -1,65 +1,20 @@
-function drawGraphs() {
-    const orange = "#ff7e29";
-
+function drawGraphs(sectionId, labels, datasets, belowLabels) {
     const data3 = {
-        labels: [30, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170],
-        datasets: [
-            {
-                data: [0, 0.2, , , , , , , ,],
-                fill: true,
-                backgroundColor: "#cfc4dc",
-            },
-            {
-                data: [, 0.2, 0.6, , , , , , , ,],
-                fill: true,
-                backgroundColor: "#bdb0ce",
-            },
-            {
-                data: [, , 0.6, 1.4, , , , , , ,],
-                fill: true,
-                backgroundColor: "#927ab0",
-            },
-            {
-                data: [, , , 1.4, 3, , , , , ,],
-                fill: true,
-                backgroundColor: "#cec5da",
-            },
-            {
-                data: [, , , , 3, 3.4, 3, , , ,],
-                fill: true, //// center
-                backgroundColor: "#927ab0",
-            },
-            {
-                data: [, , , , , , 3, 1.4, , ,],
-                fill: true,
-                backgroundColor: "#cec5da",
-            },
-            {
-                data: [, , , , , , , 1.4, 0.6, ,],
-                fill: true,
-                backgroundColor: "#927ab0",
-            },
-            {
-                data: [, , , , , , , , 0.6, 0.2,],
-                fill: true,
-                backgroundColor: "#bdb0ce",
-            },
-            {
-                data: [, , , , , , , , , 0.2, 0],
-                fill: true,
-                backgroundColor: "#cfc4dc",
-            },
-        ],
+        labels: labels,
+        datasets: datasets,
     };
 
     const chartWithTable = document
-        .getElementById("chartWithTable")
+        .querySelector(`#${sectionId} canvas`)
         .getContext("2d");
+
+    const tableContainer = $(`#${sectionId} .table-container`);
+
     const test = new Chart(chartWithTable, {
         type: "line",
         data: data3,
         options: {
-            steppedLine: true,
+            steppedLine: false,
             animation: {
                 duration: 0,
             },
@@ -68,24 +23,14 @@ function drawGraphs() {
                 xAxes: [
                     {
                         gridLines: {
+                            display: false,
                             tickMarkLength: 10,
                         },
                     },
                     {
                         type: "category",
                         // fontStyle: "bold",
-                        labels: [
-                            "Severe Delay",
-                            "Modetate Delay",
-                            "Very Low and Mild Delay",
-                            "Low",
-                            "Below Avarage",
-                            "Avarage",
-                            "Above Avarage",
-                            "High",
-                            "Very High/Gifted",
-                            "Extremely High/Gifted",
-                        ],
+                        labels: belowLabels,
                         ticks: {
                             fontColor: "#9d6ab0",
                         },
@@ -94,78 +39,189 @@ function drawGraphs() {
                 yAxes: [
                     {
                         display: false,
+                        gridLines: {
+                            display: false
+                        }
                     },
                 ],
             },
         },
     });
 
-    var meta = test.getDatasetMeta(0);
-    console.log('test.getDatasetMeta(0) : ', test.getDatasetMeta(0));
-    console.log('test.getDatasetMeta(1) : ', test.getDatasetMeta(1));
-    console.log('test.getDatasetMeta(2) : ', test.getDatasetMeta(2));
-
-    for (let i = 0; i < meta.data.length; i++) {
-        const data = meta.data[i]._model;
+    var xScale = test.scales['x-axis-0'];
+    test.data.labels.forEach(function (label) {
+        var position = xScale.getPixelForValue(label);
         const div = document.createElement("DIV");
-        $(div).css({ left: `${data.x}px` });
-        $(div).attr("value", data3.labels[i]).addClass("num-item");
-        $("#table-container").append(div);
-    }
-
-    const pointsToDisplay = JSON.parse(document.getElementById('composite_values').getAttribute('value'));
-
-    const items = $(".num-item").toArray();
-
-    const h1 = getPointX(0);
-    const h2 = getPointX(1);
-    const moreLessDiff = (h2 - h1) / 15;
-
-    pointsToDisplay.map(function (item) {
-        const value = item.value;
-        const id = item.id;
-
-        const lessItem = getAround(value);
-        const lessEl = getPointX(lessItem);
-
-        const numbersDiff = (value - getValue(lessItem)) * moreLessDiff;
-        const left = lessEl + numbersDiff;
-
-        const bigBoss = $(".big-boss").offset().top;
-        const target = $(`#${id}`).offset().top;
-        const diff = target - bigBoss;
-
-        let point = $(`<div class="point"><div class="inner">${item.value}</div></div>`);
-        point.css({
-            left: `${left}px`,
-            top: `${diff + 15}px`,
-        });
-        // point.find(".inner").css({ width: `${width}px` });
-        $("#table-container").append(point);
+        $(div).css({ left: `${position}px` });
+        $(div).attr("value", label).addClass("num-item");
+        tableContainer.append(div);
     });
 
-    function getAround(val) {
-        for (let i = 0; i < items.length; i++) {
-            const num = getValue(i);
-            const diff = Math.abs(num - val);
-            if (diff <= 15) {
-                return i;
+    const pointsToDisplay = JSON.parse(document.querySelector(`#${sectionId} .composite_values`).getAttribute('value'));
+
+
+    pointsToDisplay.map(function (item) {
+        const itemValue = item.value;
+        const { previousPoint, nextPoint } = getNearestPoints(itemValue)
+        console.log(xScale.getPixelForValue(previousPoint))
+        console.log(xScale.getPixelForValue(nextPoint))
+
+        const pixelsDiff = xScale.getPixelForValue(nextPoint) - xScale.getPixelForValue(previousPoint)
+        const labelsDiff = nextPoint - previousPoint;
+
+
+        const percentage = pixelsDiff / labelsDiff;
+        const realValue = itemValue - previousPoint;
+
+        const topElement = document.getElementById(item.id).offsetTop
+
+        let point = $(`<div class="point"><div class="inner">${itemValue}</div></div>`);
+        point.css({
+            left: `${(realValue * percentage) + xScale.getPixelForValue(previousPoint)}px`,
+            top: `${topElement + 15}px`,
+        });
+        tableContainer.append(point);
+    })
+
+
+
+    function getNearestPoints(point) {
+        let previousPoint = null;
+        let nextPoint = null;
+
+        for (let i = 0; i < test.data.labels.length; i++) {
+            const currentPoint = test.data.labels[i];
+
+            if (currentPoint <= point) {
+                previousPoint = currentPoint;
+            } else if (currentPoint > point) {
+                nextPoint = currentPoint;
+                break; // Stop iteration once the next point is found
             }
         }
-    }
 
-    function getPointX(i) {
-        if (!meta.data[i]) {
-            console.log("i : ", i);
-        }
-        return meta.data[i]._model.x;
-    }
-
-    function getValue(i) {
-        return parseInt($(items[i]).attr("value"));
+        return { previousPoint, nextPoint };
     }
 }
 
+
+
+
+const iqLabels = [30, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170];
+const iqDatasets = [
+    {
+        data: [0, 0.2, , , , , , , ,],
+        fill: true,
+        backgroundColor: "#cfc4dc",
+    },
+    {
+        data: [, 0.2, 0.6, , , , , , , ,],
+        fill: true,
+        backgroundColor: "#bdb0ce",
+    },
+    {
+        data: [, , 0.6, 1.4, , , , , , ,],
+        fill: true,
+        backgroundColor: "#927ab0",
+    },
+    {
+        data: [, , , 1.4, 3, , , , , ,],
+        fill: true,
+        backgroundColor: "#cec5da",
+    },
+    {
+        data: [, , , , 3, 3.4, 3, , , ,],
+        fill: true, //// center
+        backgroundColor: "#927ab0",
+    },
+    {
+        data: [, , , , , , 3, 1.4, , ,],
+        fill: true,
+        backgroundColor: "#cec5da",
+    },
+    {
+        data: [, , , , , , , 1.4, 0.6, ,],
+        fill: true,
+        backgroundColor: "#927ab0",
+    },
+    {
+        data: [, , , , , , , , 0.6, 0.2,],
+        fill: true,
+        backgroundColor: "#bdb0ce",
+    },
+    {
+        data: [, , , , , , , , , 0.2, 0],
+        fill: true,
+        backgroundColor: "#cfc4dc",
+    },
+];
+const iqBelowLabels = [
+    "Severe Delay",
+    "Modetate Delay",
+    "Very Low and Mild Delay",
+    "Low",
+    "Below Avarage",
+    "Avarage",
+    "Above Avarage",
+    "High",
+    "Very High/Gifted",
+    "Extremely High/Gifted",
+];
+
+const figLabels = [0, 1, 4, 6, 8, 13, 15, 17, 19, 20, 21];
+const figDatasets = [
+    {
+        data: [0, 0.2, , , , , , ,],
+        fill: true,
+        backgroundColor: "#cfc4dc",
+    },
+    {
+        data: [, 0.2, 0.6, , , , , , ,],
+        fill: true,
+        backgroundColor: "#927ab0",
+    },
+    {
+        data: [, , 0.6, 1.4, , , , , ,],
+        fill: true,
+        backgroundColor: "#bdb0ce",
+    },
+    ///////////////////////////
+    {
+        data: [, , , 1.4, 1.8, 1.8,1.4 , , ,],
+        fill: true,
+        backgroundColor: "#927ab0",
+    },
+    ///////////////////////////
+    {
+        data: [, , , , , , 1.4, 0.6, ,],
+        fill: true,
+        backgroundColor: "#bdb0ce",
+    },
+    {
+        data: [, , , , , , , 0.6, 0.2,],
+        fill: true,
+        backgroundColor: "#927ab0",
+    },
+    {
+        data: [, , , , , , , , 0.2, 0],
+        fill: true,
+        backgroundColor: "#cfc4dc",
+    },
+];
+const figBelowLabels = [
+    "Modetate Delay",
+    "Very Low and Mild Delay",
+    "Low",
+    "Below Avarage",
+    "Avarage",
+    "Above Avarage",
+    "High",
+    "Very High/Gifted",
+    "Extremely High/Gifted",
+];
+
+
 window.onload = function () {
-    drawGraphs();
+    drawGraphs('iq-section-chart', iqLabels, iqDatasets, iqBelowLabels);
+    drawGraphs('fig-section-chart', figLabels, figDatasets, figBelowLabels);
 };

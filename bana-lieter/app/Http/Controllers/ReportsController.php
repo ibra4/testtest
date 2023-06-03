@@ -341,14 +341,14 @@ class ReportsController extends Controller
         $composite_nonverbal_memory = $lrs->getCompositeMemory($sum_of_nonverbal_memory);
         $composite_processing_speed = $lrs->getCompositeProcessingSpeed($sum_of_processing_speed);
 
-        $cognitive_values = [
+        $cognitive_scaled_scores = [
             'fg' => $lrs->getScaledScore('figure_ground', $reportCognitive->figure_ground, $age),
             'fc' => $lrs->getScaledScore('form_completion', $reportCognitive->form_completion, $age),
             'ca' => $lrs->getScaledScore('classification_analogies', $reportCognitive->classification_analogies, $age),
             'so' => $lrs->getScaledScore('sequential_order', $reportCognitive->sequential_order, $age),
             'vp' => $lrs->getScaledScore('visual_patterns', $reportCognitive->visual_patterns, $age)
         ];
-        $sum_of_cognitive = $lrs->getSumOfCognitive($cognitive_values);
+        $sum_of_cognitive = $lrs->getSumOfCognitive($cognitive_scaled_scores);
         $nonverbal_iq = $lrs->getNonverbalIq($sum_of_cognitive);
 
         $composite_values = [
@@ -369,6 +369,34 @@ class ReportsController extends Controller
             ]
         ];
 
-        return view('pdf_charts')->with(compact('composite_values', 'examinee'));
+        $cognitive_values = [
+            [
+                'id' => 'cognitive_fg',
+                'label' => 'Figure Ground',
+                'value' => $cognitive_scaled_scores['fg']
+            ],
+            [
+                'id' => 'cognitive_fc',
+                'label' => 'Form Completion',
+                'value' => $cognitive_scaled_scores['fc']
+            ],
+            [
+                'id' => 'cognitive_ca',
+                'label' => 'Classification Analogies',
+                'value' => $cognitive_scaled_scores['ca']
+            ],
+            [
+                'id' => 'cognitive_so',
+                'label' => 'Sequential Order',
+                'value' => $cognitive_scaled_scores['so']
+            ],
+            [
+                'id' => 'cognitive_vp',
+                'label' => 'Visual Patterns',
+                'value' => $cognitive_scaled_scores['vp']
+            ]
+        ];
+
+        return view('pdf_charts')->with(compact('composite_values', 'cognitive_values', 'examinee'));
     }
 }

@@ -2,7 +2,6 @@
 
 @section('content')
     <main class="content" id="pdf">
-        <canvas id="myChart"></canvas>
         <div class="row">
             <div class="col-8">
                 <h2 class="font-weight-bold mt-2">Confidential Test Results for the Leiter-3</h2>
@@ -55,14 +54,14 @@
             {{-- </div> --}}
         </div>
         <hr>
-        <div class="section">
+        <div class="section" id="iq-section-chart">
             <h1 class="title">IQ and Composite</h1>
             <div class="row">
                 <div class="col-2">
                 </div>
                 <div class="col-10">
-                    <div id="canvas-wrapper">
-                        <canvas id="chartWithTable" width="400" height="200"></canvas>
+                    <div class="canvas-wrapper">
+                        <canvas width="400" height="200"></canvas>
                     </div>
                 </div>
             </div>
@@ -71,11 +70,11 @@
                     <div class="col-2">
                     </div>
                     <div class="col-10">
-                        <div id="table-container">
+                        <div class="table-container">
                         </div>
                     </div>
                 </div>
-                <div id="composite_values" value="{{ json_encode($composite_values) }}"></div>
+                <div class="composite_values" value="{{ json_encode($composite_values) }}"></div>
                 <div class="canvas-table-group-wrapper">
                     <div class="canvas-table-group">
                         <div class="row">
@@ -90,6 +89,57 @@
                 </div>
             </div>
         </div>
+
+        <hr>
+
+
+
+
+
+
+
+
+        <div class="section" id="fig-section-chart">
+            <h1 class="title">Fig</h1>
+            <div class="row">
+                <div class="col-2">
+                </div>
+                <div class="col-10">
+                    <div class="canvas-wrapper">
+                        <canvas width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="big-boss">
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-10">
+                        <div class="table-container">
+                        </div>
+                    </div>
+                </div>
+                <div class="composite_values" value="{{ json_encode($cognitive_values) }}"></div>
+                <div class="canvas-table-group-wrapper">
+                    <div class="canvas-table-group">
+                        <div class="row">
+                            <div class="col-2">
+                                @foreach ($cognitive_values as $cognitiveValue)
+                                    <p id="{{ $cognitiveValue['id'] }}" class="label-item">{{ $cognitiveValue['label'] }}
+                                    </p>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
 
         <table class="table">
             <thead>
