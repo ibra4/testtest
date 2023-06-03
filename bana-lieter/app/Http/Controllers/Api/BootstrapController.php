@@ -9,16 +9,44 @@ use App\Models\Country;
 use App\Models\Examinee;
 use App\Models\Reports\Report;
 use App\Models\User;
+use App\Repositories\ReportRepository;
 use Illuminate\Http\Request;
 
 class BootstrapController extends Controller
 {
+    /**
+     * @var ReportRepository
+     */
+    protected $reportRepository;
+
+    public function __construct(
+        ReportRepository $reportRepository
+    ) {
+        $this->reportRepository = $reportRepository;
+    }
+
     public function getConfig(Request $request)
     {
+        if ($request->user()->hasRole('root')) {
+            $total_reports = User::where('role', 'admin')->sum('number_of_reports');
+        }
+
+        if ($request->user()->role == 'admin') {
+            $total_reports = $request->user()->number_of_reports;
+        }
+
+        if ($request->user()->role == 'sub_admin') {
+            $total_reports = $request->user()->admin->number_of_reports;
+        }
+
+        $used_reports =  $request->user()->hasRole('root')
+            ? Report::count()
+            : $this->reportRepository->getNumberOfUsedReportsForCenter($request->user());
+
         $data = [
             'statistics' => [
-                'total_reports' => User::where('role', 'admin')->sum('number_of_reports'),
-                'used_reports' => Report::count(),
+                'total_reports' => $total_reports,
+                'used_reports' => $used_reports,
                 'admins' => User::where('role', 'admin')->count(),
                 'sub_admins' => User::where('role', 'sub_admin')->count(),
                 'examinees' => Examinee::count()

@@ -10,6 +10,7 @@ use App\Repositories\MemoryReportRepository;
 use App\Repositories\NarrativeReportRepository;
 use App\Repositories\ReportRepository;
 use App\Models\Reports\Report;
+use App\Models\User;
 use App\Repositories\SupplimentalAttentionReportRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -145,5 +146,11 @@ class ReportsService
         $report->fill($data)->save();
 
         return $report;
+    }
+
+    public function canUserCreateReport(User $user)
+    {
+        return $this->reportRepository->getNumberOfUsedReportsForCenter($user)
+            < $this->reportRepository->getNumberOfTotalReportsForCenter($user);
     }
 }

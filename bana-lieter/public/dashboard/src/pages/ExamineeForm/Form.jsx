@@ -42,7 +42,7 @@ function Form({ initialValues, config, onSubmit }) {
                     if (error.response.status == 400 || error.response.status == 422) {
                         setErrors(error.response.data.errors);
                     } else {
-                        addToast(error.response.data.message, { appearance: 'error' });
+                        addToast(t(`api_errors.${error.response.data.message}`), { appearance: 'error' });
                     }
                 }
                 setSubmitting(false);

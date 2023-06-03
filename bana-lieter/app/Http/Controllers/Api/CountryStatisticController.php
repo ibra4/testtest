@@ -54,4 +54,21 @@ class CountryStatisticController extends Controller
             'examinees' => $examinees
         ]);
     }
+
+    private function getNumberOfSubAdmins(User $user, $field_name, $field_id)
+    {
+        switch ($user->role) {
+            case 'root':
+                return User::where('role', 'sub_admin')
+                    ->where($field_name, $field_id)->count();
+            case 'admin':
+                return User::where('role', 'sub_admin')
+                    ->where('admin_id', $user->id)
+                    ->where($field_name, $field_id)->count();
+            case 'sub_admin':
+                return User::where('role', 'sub_admin')
+                    ->where('admin_id', $user->admin->id)
+                    ->where($field_name, $field_id)->count();
+        }
+    }
 }

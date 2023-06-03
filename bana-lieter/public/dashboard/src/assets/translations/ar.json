@@ -110,5 +110,8 @@
     "View Report": "عرض التقرير",
     "View More": "عرض المزيد",
     "Edit": "تعديل",
-    "Delete": "حذف"
+    "Delete": "حذف",
+    "api_errors": {
+        "number_of_reports_exceeded": "لقد تخطيت عدد التقارير المسموحة, يرجى التواصل مع مدير الموقع"
+    }
 }

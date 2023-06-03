@@ -10,13 +10,13 @@ use App\Http\Requests\UpdateExamRequest;
 use App\Http\Resources\ExamineeResource;
 use App\Http\Resources\ReportResource;
 use App\Models\Examinee;
-use App\Models\User;
 use App\Queries\ExamineesQuery;
 use App\Services\ReportsService;
-use App\Services\AdminsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class ExamineesController extends Controller
 {
@@ -30,16 +30,10 @@ class ExamineesController extends Controller
      */
     protected $reportService;
 
-    /**
-     * @var AdminsService
-     */
-    protected $adminsService;
-
-    public function __construct(ExamineesQuery $exq, ReportsService $reportService, AdminsService $adminsService)
+    public function __construct(ExamineesQuery $exq, ReportsService $reportService)
     {
         $this->examineesQuery = $exq;
         $this->reportService = $reportService;
-        $this->adminsService = $adminsService;
     }
 
     public function index(Request $request)
@@ -70,10 +64,14 @@ class ExamineesController extends Controller
 
     public function create(CreateExamineeRequest $request)
     {
+        if (!$this->reportService->canUserCreateReport($request->user())) {
+            throw new AccessDeniedHttpException('number_of_reports_exceeded');
+        }
+
         $report = $this->reportService->createEmptyReport();
 
         $admin = $request->user();
-        $admin->update(['used_reports' => DB::raw('used_reports + 1')]); 
+        $admin->update(['used_reports' => DB::raw('used_reports + 1')]);
 
         $data = $request->all();
         $data['admin_id'] = $admin->id;
@@ -106,7 +104,7 @@ class ExamineesController extends Controller
     public function saveExam($id, $type, UpdateExamRequest $request)
     {
         $examinee = Examinee::findOrFail($id);
-        
+
         $report = $this->reportService->updateReport($examinee, $type, $request);
 
         return response()->json($report);

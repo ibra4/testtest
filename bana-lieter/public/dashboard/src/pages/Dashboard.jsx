@@ -26,7 +26,10 @@ const countriesMapper = { sa, ae, tn, ps, jo };
 function Dashboard() {
     const { t } = useTranslation();
 
-    const { statistics } = useSelector((state) => state.app.config);
+    const {
+        statistics,
+        user: { role }
+    } = useSelector((state) => state.app.config);
 
     const [historyData, setHistoryData] = useState();
     const [top5, setTop5] = useState();
@@ -138,12 +141,16 @@ function Dashboard() {
                     </WhiteBox>
                 </Col>
             </Row>
-            <WhiteBox title={t('Top 5 Examiners')} hr>
-                <Top5Examiners data={top5} />
-            </WhiteBox>
-            <WhiteBox title={t('History')} hr>
-                <HistoryView data={historyData} />
-            </WhiteBox>
+            {role == 'root' && (
+                <WhiteBox title={t('Top 5 Examiners')} hr>
+                    <Top5Examiners data={top5} />
+                </WhiteBox>
+            )}
+            {role == 'root' && (
+                <WhiteBox title={t('History')} hr>
+                    <HistoryView data={historyData} />
+                </WhiteBox>
+            )}
         </Layout>
     );
 }

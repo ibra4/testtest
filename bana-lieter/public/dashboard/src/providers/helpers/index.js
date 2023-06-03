@@ -6,7 +6,8 @@ export const httpClient = axios.create({
     headers: {
         'X-Requested-With': 'XMLHttpRequest'
     },
-    withCredentials: true
+    withCredentials: true,
+    // params: { lang: 'ar' }
 })
 
 export const hasRole = (role) => {
