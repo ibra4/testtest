@@ -218,6 +218,7 @@ const figBelowLabels = [
     "High",
     "Very High/Gifted",
     "Extremely High/Gifted",
+    " "
 ];
 
 
