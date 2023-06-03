@@ -100,7 +100,7 @@
 
 
         <div class="section" id="fig-section-chart">
-            <h1 class="title">Fig</h1>
+            <h1 class="title">Cognitive</h1>
             <div class="row">
                 <div class="col-2">
                 </div>
