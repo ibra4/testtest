@@ -150,6 +150,9 @@ class ReportsService
 
     public function canUserCreateReport(User $user)
     {
+        if ($user->role == 'root') {
+            return true;
+        }
         return $this->reportRepository->getNumberOfUsedReportsForCenter($user)
             < $this->reportRepository->getNumberOfTotalReportsForCenter($user);
     }
