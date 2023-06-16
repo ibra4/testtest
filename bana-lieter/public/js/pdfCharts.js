@@ -78,7 +78,7 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
         let point = $(`<div class="point"><div class="inner">${itemValue}</div></div>`);
         point.css({
             left: `${(realValue * percentage) + xScale.getPixelForValue(previousPoint)}px`,
-            top: `${topElement + 15}px`,
+            top: `${topElement + 10}px`,
         });
         tableContainer.append(point);
     })

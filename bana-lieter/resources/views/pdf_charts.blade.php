@@ -1,7 +1,7 @@
 @extends('layouts.pdf')
 
 @section('content')
-    <main class="content" id="pdf">
+    <main class="content" id="pdf-charts">
         <div class="row">
             <div class="col-8">
                 <h2 class="font-weight-bold mt-2">Confidential Test Results for the Leiter-3</h2>
@@ -57,9 +57,9 @@
         <div class="section" id="iq-section-chart">
             <h1 class="title">IQ and Composite</h1>
             <div class="row">
-                <div class="col-2">
+                <div class="col-3">
                 </div>
-                <div class="col-10">
+                <div class="col-9">
                     <div class="canvas-wrapper">
                         <canvas width="400" height="200"></canvas>
                     </div>
@@ -67,10 +67,10 @@
             </div>
             <div class="big-boss">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                     </div>
-                    <div class="col-10">
-                        <div class="table-container">
+                    <div class="col-9">
+                        <div class="table-container" style="height: 150px">
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="canvas-table-group-wrapper">
                     <div class="canvas-table-group">
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-3">
                                 @foreach ($composite_values as $compositeValue)
                                     <p id="{{ $compositeValue['id'] }}" class="label-item">{{ $compositeValue['label'] }}
                                     </p>
@@ -102,9 +102,9 @@
         <div class="section" id="fig-section-chart">
             <h1 class="title">Cognitive</h1>
             <div class="row">
-                <div class="col-2">
+                <div class="col-3">
                 </div>
-                <div class="col-10">
+                <div class="col-9">
                     <div class="canvas-wrapper">
                         <canvas width="400" height="200"></canvas>
                     </div>
@@ -112,10 +112,10 @@
             </div>
             <div class="big-boss">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                     </div>
-                    <div class="col-10">
-                        <div class="table-container">
+                    <div class="col-9">
+                        <div class="table-container" style="height: 480px">
                         </div>
                     </div>
                 </div>
@@ -123,10 +123,11 @@
                 <div class="canvas-table-group-wrapper">
                     <div class="canvas-table-group">
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-3">
                                 @foreach ($cognitive_values as $cognitiveValue)
                                     <p id="{{ $cognitiveValue['id'] }}" class="label-item">{{ $cognitiveValue['label'] }}
                                     </p>
+                                    {{-- <hr> --}}
                                 @endforeach
                             </div>
                         </div>
@@ -141,7 +142,7 @@
 
 
 
-        <table class="table">
+        <table class="table mt-3">
             <thead>
                 <th>IQ and Composite Scores</th>
                 <th>Subtest Scores</th>

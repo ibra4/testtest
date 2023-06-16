@@ -105,6 +105,7 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
+  overflow: hidden;
 }
 .big-boss .canvas-table-group-wrapper .canvas-table-group {
   width: 110%;
@@ -112,14 +113,12 @@ body {
 .big-boss .canvas-table-group-wrapper .canvas-table-group.bordered {
   border: 1px solid blue;
 }
-.big-boss .canvas-table-group-wrapper .canvas-table-group p {
-  text-align: right;
-  margin-bottom: 50px;
-  color: #ff7e29;
-  font-weight: bold;
+.big-boss .canvas-table-group-wrapper .canvas-table-group hr {
+  width: 1000px;
+  margin: 0;
 }
-.big-boss .canvas-table-group-wrapper .canvas-table-group p:first-of-type {
-  margin-top: 30px;
+.big-boss .canvas-table-group-wrapper .canvas-table-group p {
+  margin-bottom: 20px;
 }
 
 .num-item {
@@ -170,10 +169,40 @@ footer i.fa-linkedin {
   font-size: 22px;
 }
 
-.table tr.bg, .table thead tr {
+.table tr.bg,
+.table thead tr {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
 .label-item {
   white-space: nowrap;
+}
+
+#pdf-charts.content {
+  padding: 10px;
+}
+#pdf-charts .section {
+  margin: 20px 0;
+}
+#pdf-charts .table td,
+#pdf-charts .table th {
+  padding: 5px;
+}
+
+@media print {
+  body {
+    margin: 10px;
+  }
+}
+.canvas-wrapper {
+  position: relative;
+}
+.canvas-wrapper::after {
+  content: "";
+  top: 0;
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background-color: white;
 }

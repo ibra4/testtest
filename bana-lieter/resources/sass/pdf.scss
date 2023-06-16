@@ -108,19 +108,24 @@ body {
         position: absolute;
         top: 0;
         width: 100%;
+        overflow: hidden;
         .canvas-table-group {
             width: 110%;
             &.bordered {
                 border: 1px solid blue;
             }
+            hr {
+                width: 1000px;
+                margin: 0;
+            }
             p {
-                &:first-of-type {
-                    margin-top: 30px;
-                }
-                text-align: right;
-                margin-bottom: 50px;
-                color: $orange;
-                font-weight: bold;
+                // &:first-of-type {
+                //     margin-top: 30px;
+                // }
+                // text-align: right;
+                margin-bottom: 20px;
+                // color: $orange;
+                // font-weight: bold;
             }
         }
     }
@@ -177,11 +182,46 @@ footer {
 }
 
 .table {
-    tr.bg, thead tr {
+    tr.bg,
+    thead tr {
         background-color: rgba(0, 0, 0, 0.05);
     }
 }
 
 .label-item {
     white-space: nowrap;
+}
+
+#pdf-charts {
+    &.content {
+        padding: 10px;
+    }
+    .section {
+        margin: 20px 0;
+    }
+    .table {
+        td,
+        th {
+            padding: 5px;
+        }
+    }
+}
+
+@media print {
+    body {
+        margin: 10px;
+    }
+}
+
+.canvas-wrapper {
+    position: relative;
+    &::after {
+        content: "";
+        top: 0;
+        position: absolute;
+        right: 0;
+        width: 20px;
+        height: 100%;
+        background-color: white;
+    }
 }

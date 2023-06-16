@@ -75,7 +75,6 @@ class ReportsController extends Controller
             'as' => $lrs->getScaledScore('attention', $reportAttention->attention_sustained, $age),
             'fm' => $lrs->getScaledScore('forward_memory', $reportMemory->forward_memory, $age),
             'rm' => $lrs->getScaledScore('reverse_memory', $reportMemory->reverse_memory, $age),
-            'as' => $lrs->getScaledScore('attention', $reportAttention->attention_sustained, $age),
             'nsic' => $lrs->getScaledScore('nonverbal_stroop_incongruent_correct', $reportAttention->nonverbal_stroop_incongruent_correct, $age),
             'nscc' => $lrs->getScaledScore('nonverbal_stroop_congruent_correct', $reportAttention->nonverbal_stroop_congruent_correct, $age),
             'nseff' => "Missing table"
@@ -331,7 +330,6 @@ class ReportsController extends Controller
             'as' => $lrs->getScaledScore('attention', $reportAttention->attention_sustained, $age),
             'fm' => $lrs->getScaledScore('forward_memory', $reportMemory->forward_memory, $age),
             'rm' => $lrs->getScaledScore('reverse_memory', $reportMemory->reverse_memory, $age),
-            'as' => $lrs->getScaledScore('attention', $reportAttention->attention_sustained, $age),
             'nsic' => $lrs->getScaledScore('nonverbal_stroop_incongruent_correct', $reportAttention->nonverbal_stroop_incongruent_correct, $age),
             'nscc' => $lrs->getScaledScore('nonverbal_stroop_congruent_correct', $reportAttention->nonverbal_stroop_congruent_correct, $age),
             'nseff' => "Missing table"
@@ -368,6 +366,14 @@ class ReportsController extends Controller
                 'value' => $nonverbal_iq,
             ]
         ];
+        $memory_attention_values = [
+            'as' => $lrs->getScaledScore('attention', $reportAttention->attention_sustained, $age),
+            'fm' => $lrs->getScaledScore('forward_memory', $reportMemory->forward_memory, $age),
+            'rm' => $lrs->getScaledScore('reverse_memory', $reportMemory->reverse_memory, $age),
+            'nsic' => $lrs->getScaledScore('nonverbal_stroop_incongruent_correct', $reportAttention->nonverbal_stroop_incongruent_correct, $age),
+            'nscc' => $lrs->getScaledScore('nonverbal_stroop_congruent_correct', $reportAttention->nonverbal_stroop_congruent_correct, $age),
+            'nseff' => "Missing table"
+        ];
 
         $cognitive_values = [
             [
@@ -394,6 +400,31 @@ class ReportsController extends Controller
                 'id' => 'cognitive_vp',
                 'label' => 'Visual Patterns',
                 'value' => $cognitive_scaled_scores['vp']
+            ],
+            [
+                'id' => 'attention_sustained',
+                'label' => 'Attention Sustained',
+                'value' => $memory_attention_values['as']
+            ],
+            [
+                'id' => 'forward_memory',
+                'label' => 'Forward Memory',
+                'value' => $memory_attention_values['fm']
+            ],
+            [
+                'id' => 'reverse_memory',
+                'label' => 'Reverse Memory',
+                'value' => $memory_attention_values['rm']
+            ],
+            [
+                'id' => 'nonverbal_stroop_incongruent_correct',
+                'label' => 'Nonverbal stroop incongruent correct',
+                'value' => $memory_attention_values['nsic']
+            ],
+            [
+                'id' => 'nonverbal_stroop_congruent_correct',
+                'label' => 'Nonverbal stroop congruent correct',
+                'value' => $memory_attention_values['nscc']
             ]
         ];
 
