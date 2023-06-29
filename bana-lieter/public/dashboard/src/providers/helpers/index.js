@@ -2,7 +2,7 @@ import axios from "axios";
 import store from "providers/store";
 
 export const httpClient = axios.create({
-    baseURL: window.location.host.search('local') == -1 ? 'http://5.189.191.78/api' : 'http://bl.local/api',
+    baseURL: window.location.host.search('local') == -1 ? 'https://leiter3.com/api' : 'http://bl.local/api',
     headers: {
         'X-Requested-With': 'XMLHttpRequest'
     },
