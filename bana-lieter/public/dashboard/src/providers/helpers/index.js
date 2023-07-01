@@ -44,7 +44,11 @@ export const renderUserNameShortcut = name => {
         shortcutName = name.slice(0, 2)
     }
 
-    return shortcutName
+    if (shortcutName == '**') {
+        return "**";
+    }
+
+    return shortcutName.split('').join('.')
 }
 
 export const getCountryById = country_id => {
