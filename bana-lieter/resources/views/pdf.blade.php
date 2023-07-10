@@ -12,10 +12,12 @@
             </div>
         </header>
         <hr> --}}
+        <h2 class="font-weight-bold text-center mt-2">Confidential Test Results for the Leiter-3</h2>
         <div class="row">
-            <div class="col-8">
-                <h2 class="font-weight-bold mt-2">Confidential Test Results for the Leiter-3</h2>
+            <div class="col-4">
+                <img src="{{ asset($logo) }}" class="w-100" alt="">
             </div>
+            <div class="col-4"></div>
             <div class="col-4">
                 <img src="{{ asset('images/lieter3.jpeg') }}" class="w-100" alt="">
             </div>
@@ -419,7 +421,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="table-header">Examiner Rating Scale Scores</div>
+            <div class="table-header">Equivalent Age</div>
             <table class="table-bordered table">
                 <thead>
                     <th class="text-center">Growth Scale</th>

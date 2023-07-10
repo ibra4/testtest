@@ -32,6 +32,9 @@
 </head>
 
 <body>
+    <button id="printPageButton" onclick="print()">
+        <i class="fa fa-print"></i>&nbsp;print</button>
+
     @yield('content')
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

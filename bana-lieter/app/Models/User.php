@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'avatar',
         'cv',
+        'logo',
         'phone_number',
         'number_of_reports',
         'used_reports',

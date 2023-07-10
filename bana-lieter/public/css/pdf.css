@@ -48,7 +48,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 .label-value-item .label,
 .label-value-item .value {
@@ -60,7 +60,6 @@ body {
 
 .section {
   margin: 40px 0;
-  page-break-inside: avoid !important;
 }
 .section .title {
   position: relative;
@@ -143,6 +142,11 @@ body {
   transform: translateX(-50%);
 }
 
+.no-break {
+  -moz-column-break-inside: avoid !important;
+       break-inside: avoid !important;
+}
+
 footer {
   page-break-inside: avoid !important;
 }
@@ -189,9 +193,27 @@ footer i.fa-linkedin {
   padding: 5px;
 }
 
+#printPageButton {
+  position: sticky;
+  top: 10px;
+  left: 50%;
+  width: 200px;
+  transform: translateX(-50%);
+  /* background: white; */
+  padding-top: 7px;
+  border-radius: 20px;
+  /* border: none; */
+  z-index: 999;
+  /* border: 1px solid red; */
+  font-weight: bold;
+}
+
 @media print {
   body {
     margin: 10px;
+  }
+  #printPageButton {
+    display: none;
   }
 }
 .canvas-wrapper {
@@ -205,4 +227,9 @@ footer i.fa-linkedin {
   width: 20px;
   height: 100%;
   background-color: white;
+}
+
+.table td,
+.table th {
+  padding: 0.25rem;
 }

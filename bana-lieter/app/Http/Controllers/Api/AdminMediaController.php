@@ -14,6 +14,8 @@ class AdminMediaController extends Controller
             $name = 'avatar';
         } else if ($request->hasFile('cv')) {
             $name = 'cv';
+        } else if ($request->hasFile('logo')) {
+            $name = 'logo';
         } else {
             throw new BadRequestHttpException("File not allowed");
         }

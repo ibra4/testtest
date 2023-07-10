@@ -28,6 +28,14 @@ class ReportsController extends Controller
         $examinee = Examinee::findOrFail($id);
 
         $age = $examinee->age;
+        $examiner = $examinee->examiner;
+
+        // dd($examiner);
+        if ($examiner->hasRole('admin')) {
+            $logo = $examiner->logo;
+        } else {
+            $logo = $examiner->admin->logo;
+        }
 
         $reportCognitive = $examinee->report->reportCognitive;
         $reportMemory = $examinee->report->reportMemory;
@@ -264,6 +272,7 @@ class ReportsController extends Controller
         return view('pdf')->with(compact(
             // Examinee Data
             'examinee',
+            'logo',
 
             // Cognitive
             'reportCognitive',

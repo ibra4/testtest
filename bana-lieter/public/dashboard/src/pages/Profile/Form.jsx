@@ -6,6 +6,7 @@ import TextField from 'components/Fields/TextField';
 import UploadField from 'components/Fields/UploadField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
+import { hasRole } from 'providers/helpers';
 import { CONSTANTS } from 'providers/helpers/constants';
 import { ROUTES } from 'providers/routes';
 import React, { useEffect, useState } from 'react';
@@ -48,7 +49,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col className="col-auto">
                                 <UploadField
                                     name="avatar"
-                                    label='Avatar'
+                                    label="Avatar"
                                     onChange={(value) => setFieldValue('avatar', value)}
                                     value={values.avatar}
                                     onBlur={handleBlur}
@@ -57,10 +58,24 @@ function Form({ initialValues, config, onSubmit }) {
                                     className="mb-3"
                                 />
                             </Col>
+                            {hasRole('root') && (
+                                <Col className="col-auto">
+                                    <UploadField
+                                        name="logo"
+                                        label="Logo"
+                                        onChange={(value) => setFieldValue('logo', value)}
+                                        value={values.logo}
+                                        onBlur={handleBlur}
+                                        error={errors.logo}
+                                        path={ROUTES.ADMINS.UPLOAD}
+                                        className="mb-3"
+                                    />
+                                </Col>
+                            )}
                             <Col className="col-auto">
                                 <UploadField
                                     name="cv"
-                                    label='CV'
+                                    label="CV"
                                     onChange={(value) => setFieldValue('cv', value)}
                                     value={values.cv}
                                     onBlur={handleBlur}
@@ -75,7 +90,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="name"
-                                            label='Name'
+                                            label="Name"
                                             onChange={handleChange}
                                             value={values.name}
                                             onBlur={handleBlur}
@@ -86,7 +101,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="email"
-                                            label='Email'
+                                            label="Email"
                                             onChange={handleChange}
                                             value={values.email}
                                             onBlur={handleBlur}
@@ -98,7 +113,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="phone_number"
-                                            label='Phone Number'
+                                            label="Phone Number"
                                             onChange={handleChange}
                                             value={values.phone_number}
                                             onBlur={handleBlur}
@@ -109,7 +124,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={4}>
                                         <SelectField
                                             name="gender"
-                                            label='Gender'
+                                            label="Gender"
                                             onChange={handleChange}
                                             value={values.gender}
                                             onBlur={handleBlur}
@@ -123,7 +138,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="password"
-                                            label='Password'
+                                            label="Password"
                                             onChange={handleChange}
                                             value={values.password}
                                             onBlur={handleBlur}
@@ -135,7 +150,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="password_confirmation"
-                                            label='Confirm Password'
+                                            label="Confirm Password"
                                             onChange={handleChange}
                                             value={values.password_confirmation}
                                             onBlur={handleBlur}
@@ -152,7 +167,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={4}>
                                     <SelectField
                                         name="admin_id"
-                                        label='Admin'
+                                        label="Admin"
                                         onChange={handleChange}
                                         value={values.admin_id}
                                         onBlur={handleBlur}
@@ -171,7 +186,7 @@ function Form({ initialValues, config, onSubmit }) {
                                         setFieldValue('city_id', '');
                                         setCities(config.countries.find((item) => item.id == value.id).cities);
                                     }}
-                                    label='Country'
+                                    label="Country"
                                     value={values.country_id}
                                     onBlur={handleBlur}
                                     error={errors.country_id}
@@ -182,7 +197,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col md={4}>
                                 <SelectField2
                                     onChange={(value) => setFieldValue('city_id', value.id)}
-                                    label='City'
+                                    label="City"
                                     value={values.city_id}
                                     onBlur={handleBlur}
                                     error={errors.city_id}
@@ -196,7 +211,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <CheckboxField
                                     onChange={(evt) => setFieldValue('is_active', evt.target.checked)}
                                     name="is_active"
-                                    label='Is Active?'
+                                    label="Is Active?"
                                     value={values.is_active}
                                     onBlur={handleBlur}
                                     error={errors.is_active}
