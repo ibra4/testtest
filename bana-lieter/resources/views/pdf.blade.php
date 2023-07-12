@@ -177,12 +177,12 @@
                         <td>{{ $memory_attention_values['nscc'] }}</td>
                         <td>{{ $memory_attention_values_percentile['nscc'] }}</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td class="">Nonverbal Stroop Effect (NSeff)</td>
                         <td>{{ $reportAttention->nonverbal_stroop_effect }}</td>
                         <td class="text-danger">{{ $memory_attention_values['nseff'] }}</td>
                         <td class="text-danger">25</td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
             <div class="table-header">Attention Memory Composites</div>
@@ -331,8 +331,8 @@
                     <tr>
                         <td>Anxiety</td>
                         <td>{{ $reportExaminer->anxiety }}</td>
-                        <td class="text-danger">Missing table</td>
-                        <td class="text-danger">Missing table</td>
+                        <td>{{ $examiner_scores['anxiety']->scaled_score }}</td>
+                        <td>{{ $examiner_scores['anxiety']->percentile }}</td>
                     </tr>
                     <tr>
                         <td>Sensory Reaction</td>
@@ -456,7 +456,7 @@
                         <td>Not Significant</td>
                     </tr>
                     <tr>
-                        <td>Nonverbal IQ vs Nonverbal Memory</td>
+                        <td>Nonverbal IQ vs Processing Speed</td>
                         <td>{{ $diffs['nviq_ps'] }}</td>
                         <td>{{ $vs['nviq_ps'] }}</td>
                         <td>{{ $diffs_percentile['nviq_ps'] }}</td>

@@ -286,7 +286,7 @@ class LeiterRecordsService
             ->get();
 
         if ($records->empty()) {
-            return "not found*";
+            return "Not found";
         }
 
         return $records->first()->{$attr};

@@ -82,6 +82,7 @@
                                 @foreach ($composite_values as $compositeValue)
                                     <p id="{{ $compositeValue['id'] }}" class="label-item">{{ $compositeValue['label'] }}
                                     </p>
+                                    <hr>
                                 @endforeach
                             </div>
                         </div>
@@ -127,7 +128,7 @@
                                 @foreach ($cognitive_values as $cognitiveValue)
                                     <p id="{{ $cognitiveValue['id'] }}" class="label-item">{{ $cognitiveValue['label'] }}
                                     </p>
-                                    {{-- <hr> --}}
+                                    <hr>
                                 @endforeach
                             </div>
                         </div>

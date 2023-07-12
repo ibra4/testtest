@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Examinee;
+use App\Models\Helpers\ExaminerRatingAnxiety;
 use App\Models\Helpers\ExaminerRatingAttention;
 use App\Models\Helpers\ExaminerRatingEmotion;
 use App\Models\Helpers\ExaminerRatingEnergy;
@@ -145,6 +146,11 @@ class ReportsController extends Controller
             'energy' => $lrs->getExaminerScaledScore(
                 ExaminerRatingEnergy::class,
                 $reportExaminer->energy_and_feelings,
+                $age
+            ),
+            'anxiety' => $lrs->getExaminerScaledScore(
+                ExaminerRatingAnxiety::class,
+                $reportExaminer->anxiety,
                 $age
             ),
             'emotions' => $lrs->getExaminerScaledScore(
