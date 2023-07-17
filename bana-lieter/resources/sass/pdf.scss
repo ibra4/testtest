@@ -201,11 +201,14 @@ footer {
     }
     .section {
         margin: 20px 0;
+        .title {
+            margin-bottom: 10px !important;
+        }
     }
     .table {
         td,
         th {
-            padding: 5px;
+            padding: 2px;
         }
     }
 }
@@ -250,4 +253,8 @@ footer {
 .table td,
 .table th {
     padding: 0.25rem;
+}
+
+.no-page-break-after {
+    page-break-after: auto;
 }

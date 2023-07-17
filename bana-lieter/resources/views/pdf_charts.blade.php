@@ -54,7 +54,7 @@
             {{-- </div> --}}
         </div>
         <hr>
-        <div class="section" id="iq-section-chart">
+        <div class="section no-break" id="iq-section-chart">
             <h1 class="title">IQ and Composite</h1>
             <div class="row">
                 <div class="col-3">
@@ -89,9 +89,13 @@
                     </div>
                 </div>
             </div>
+            <div class="mt-3">
+                @foreach ($composite_values as $compositeValue)
+                    <p style="max-width: 80%">{{ $compositeValue['desc'] }}</p>
+                @endforeach
+            </div>
         </div>
 
-        <hr>
 
 
 
@@ -99,8 +103,8 @@
 
 
 
-
-        <div class="section" id="fig-section-chart">
+        <div class="section no-break" id="fig-section-chart">
+            <br>
             <h1 class="title">Cognitive</h1>
             <div class="row">
                 <div class="col-3">

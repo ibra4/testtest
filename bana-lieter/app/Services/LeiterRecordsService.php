@@ -318,4 +318,39 @@ class LeiterRecordsService
             $records->last()->row_score
         ];
     }
+
+    /**
+     * Gets a text paragraph depending on mark
+     *
+     * @param  mixed $mark
+     * @return void
+     */
+    public function getIQCategoryKeyWord(string $type, int $mark)
+    {
+        if ($mark >= 30 && $mark <= 39) {
+            $keyword = __('Severe Delay');
+        } else if ($mark >= 40 && $mark <= 54) {
+            $keyword = __('Modetate Delay');
+        } else if ($mark >= 55 && $mark <= 69) {
+            $keyword = __('Very Low and Mild Delay');
+        } else if ($mark >= 70 && $mark <= 79) {
+            $keyword = __('Low');
+        } else if ($mark >= 80 && $mark <= 89) {
+            $keyword = __('Below Avarage');
+        } else if ($mark >= 90 && $mark <= 109) {
+            $keyword = __('Avarage');
+        } else if ($mark >= 110 && $mark <= 119) {
+            $keyword = __('Above Avarage');
+        } else if ($mark >= 120 && $mark <= 129) {
+            $keyword = __('High');
+        } else if ($mark >= 130 && $mark <= 149) {
+            $keyword = __('Very High/Gifted');
+        } else if ($mark >= 150 && $mark <= 170) {
+            $keyword = __('Extremely High/Gifted');
+        } else {
+            return "";
+        }
+
+        return sprintf(config("leiter.scores_text.$type"), $mark, $keyword);
+    }
 }

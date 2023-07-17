@@ -188,9 +188,12 @@ footer i.fa-linkedin {
 #pdf-charts .section {
   margin: 20px 0;
 }
+#pdf-charts .section .title {
+  margin-bottom: 10px !important;
+}
 #pdf-charts .table td,
 #pdf-charts .table th {
-  padding: 5px;
+  padding: 2px;
 }
 
 #printPageButton {
@@ -232,4 +235,8 @@ footer i.fa-linkedin {
 .table td,
 .table th {
   padding: 0.25rem;
+}
+
+.no-page-break-after {
+  page-break-after: auto;
 }

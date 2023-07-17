@@ -26,5 +26,10 @@ return [
             'nviq_ps' => 10.16,
             'nvm_ps' => 11.62
         ]
+    ],
+    'scores_text' => [
+        'composite_nonverbal_memory' => 'The results indicate that the examinee obtains a composite score of %d in the non-verbal memory tests, which places him in the %s category',
+        'composite_processing_speed' => 'The results indicate that  the examinee obtains a copmstive score of %d in the nonverbal processing speed tests, which places him in the %s category',
+        'nonverbal_iq' => 'The results indicated that the examinee had a standardized non-verbal intelligence score of %d, which puts him in the %s category',
     ]
 ];
