@@ -74,7 +74,8 @@ class ExamineesQuery
         if (!$user->hasRole('root')) {
             if ($user->hasRole('admin')) {
                 $all_admins = User::where('admin_id', $user->id)->get()->pluck('id')->toArray();
-                $query->whereIn('examinees.admin_id', [$user->id] + $all_admins);
+                $all_admins[] = $user->id;
+                $query->whereIn('examinees.admin_id', $all_admins);
             } elseif ($user->hasRole('sub_admin')) {
                 $query->where('examinees.admin_id', $user->id);
             }

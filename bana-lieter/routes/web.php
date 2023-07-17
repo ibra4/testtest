@@ -37,11 +37,12 @@ Route::middleware('auth:sanctum')->group(function () {
 Auth::routes();
 
 Route::get('/', function () {
-    $stop = "";
     return redirect()->route('dashboard', ['langcode' => 'ar']);
 });
 
 Route::get('debug/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('can:root');
 
-Route::get('report/{id}/first', [ReportsController::class, 'index'])->name('reports.first');
-Route::get('report/{id}/second', [ReportsController::class, 'charts'])->name('reports.second');
+Route::group(['middleware' => ['auth', 'report_owner']], function () {
+    Route::get('report/{id}/first', [ReportsController::class, 'index'])->name('reports.first');
+    Route::get('report/{id}/second', [ReportsController::class, 'charts'])->name('reports.second');
+});
