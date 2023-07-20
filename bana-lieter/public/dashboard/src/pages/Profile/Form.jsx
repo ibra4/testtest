@@ -180,6 +180,18 @@ function Form({ initialValues, config, onSubmit }) {
                         )}
                         <Row>
                             <Col md={4}>
+                                <SelectField
+                                    name="locale"
+                                    label="Language"
+                                    onChange={handleChange}
+                                    value={values.locale}
+                                    onBlur={handleBlur}
+                                    error={errors.locale}
+                                    options={CONSTANTS.LOCALES}
+                                    className="mb-3"
+                                />
+                            </Col>
+                            <Col md={4}>
                                 <SelectField2
                                     onChange={(value) => {
                                         setFieldValue('country_id', value.id);

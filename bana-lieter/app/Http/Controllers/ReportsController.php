@@ -366,6 +366,12 @@ class ReportsController extends Controller
 
         $composite_values = [
             [
+                'id' => 'nonverbal_iq',
+                'label' => 'Nonverbal IQ',
+                'value' => $nonverbal_iq,
+                'desc' => $lrs->getIQCategoryKeyWord('nonverbal_iq', $nonverbal_iq)
+            ],
+            [
                 'id' => 'composite_nonverbal_memory',
                 'label' => 'Nonverbal Memory',
                 'value' => $composite_nonverbal_memory,
@@ -376,12 +382,6 @@ class ReportsController extends Controller
                 'label' => 'Processing Speed',
                 'value' => $composite_processing_speed,
                 'desc' => $lrs->getIQCategoryKeyWord('composite_processing_speed', $composite_processing_speed)
-            ],
-            [
-                'id' => 'nonverbal_iq',
-                'label' => 'Nonverbal IQ',
-                'value' => $nonverbal_iq,
-                'desc' => $lrs->getIQCategoryKeyWord('nonverbal_iq', $nonverbal_iq)
             ]
         ];
         $memory_attention_values = [

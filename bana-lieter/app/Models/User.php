@@ -34,6 +34,7 @@ class User extends Authenticatable
         'role',
         'password',
         'expiration_date',
+        'locale',
         'is_deleted'
     ];
 
@@ -66,5 +67,10 @@ class User extends Authenticatable
     public function subAdmins()
     {
         return $this->hasMany(User::class, 'admin_id', 'id');
+    }
+
+    public function getLocaleAttribute($locale)
+    {
+        return $locale ?? 'en';
     }
 }

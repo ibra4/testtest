@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Layout from 'components/Layout'
 import Form from './Form'
-import { httpClient } from 'providers/helpers'
+import { getLangcode, httpClient } from 'providers/helpers'
 import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
 import { useSelector } from 'react-redux'
@@ -43,7 +43,16 @@ function ProfileIndex() {
     const onSubmit = async (data) => {
         const res = await httpClient.post(ROUTES.MY_PROFILE.POST, data)
         if (res.status == 200) {
-            addToast(t('Profile Saved Successfully'), { appearance: 'success' });
+            addToast(t('Updated Successfully'), { appearance: 'success' });
+            const currentLocale = getLangcode();
+            const newLocale = res.data.locale;
+            if (newLocale != currentLocale) {
+                localStorage.setItem('lang', newLocale);
+                let pathname = window.location.pathname;
+                pathname = pathname.replace(currentLocale, newLocale)
+                console.log('pathname : ', pathname);
+                window.location.pathname = pathname;
+            }
             // push('/my-profile')
         } else {
             return res

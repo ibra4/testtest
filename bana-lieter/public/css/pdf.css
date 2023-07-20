@@ -240,3 +240,15 @@ footer i.fa-linkedin {
 .no-page-break-after {
   page-break-after: auto;
 }
+
+html[dir=rtl] body {
+  text-align: right;
+}
+html[dir=rtl] .section .title {
+  padding-left: 0;
+  padding-right: 40px;
+}
+html[dir=rtl] .section .title::before {
+  left: unset;
+  right: 0;
+}

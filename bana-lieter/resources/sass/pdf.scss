@@ -258,3 +258,19 @@ footer {
 .no-page-break-after {
     page-break-after: auto;
 }
+
+html[dir="rtl"] {
+    body {
+        text-align: right;
+    }
+    .section {
+        .title {
+            padding-left: 0;
+            padding-right: 40px;
+            &::before {
+                left: unset;
+                right: 0;
+            }
+        }
+    }
+}

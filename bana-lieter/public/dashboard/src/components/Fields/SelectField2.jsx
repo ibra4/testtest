@@ -17,6 +17,7 @@ function SelectField2({ options, className, label, error, name, onChange, value,
                     isRtl={isRtl()}
                     getOptionLabel={(item) => t(item.label)}
                     onChange={onChange}
+                    placeholder={t('- Select -')}
                     {...rest}
                 />
                 <div className="text-danger">{error && error}</div>

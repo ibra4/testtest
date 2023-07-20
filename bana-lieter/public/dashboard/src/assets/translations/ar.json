@@ -58,6 +58,9 @@
     "- Select -": "- إختيار -",
     "Male": "ذكر",
     "Female": "أنثى",
+    "English": "الانجليزية",
+    "Arabic": "العربية",
+    "Language": "اللغة",
     "Admin Name": "إسم الأدمن",
     "Created By": "أنشئ بواسطة",
     "No Data to show": "لا يوجد بيانات لعرضها",
@@ -112,6 +115,8 @@
     "View More": "عرض المزيد",
     "Edit": "تعديل",
     "Delete": "حذف",
+    "Update My Profile": "تعديل ملفي الشخصي",
+    "Updated Successfully": "تم حفظ التعديلات بنجاح",
     "api_errors": {
         "number_of_reports_exceeded": "لقد تخطيت عدد التقارير المسموحة, يرجى التواصل مع مدير الموقع"
     }
