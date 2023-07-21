@@ -62,8 +62,8 @@ class LeiterRecordsService
                 throw new NotFoundHttpException(__("Score not allowed, $min to $max"));
             } else {
                 $result = new stdClass();
-                $result->scaled_score = "Not found";
-                $result->percentile = "Not found";
+                $result->scaled_score = __("Not found");
+                $result->percentile = __("Not found");
                 return $result;
             }
         }
@@ -108,8 +108,8 @@ class LeiterRecordsService
         }
 
         return [
-            'scaled_score' => $record ? $record->scaled_score : "Not Found",
-            'percentile' => $record ? $record->percentile : "Not Found"
+            'scaled_score' => $record ? $record->scaled_score : __("Not found"),
+            'percentile' => $record ? $record->percentile : __("Not found")
         ];
     }
 
@@ -142,7 +142,7 @@ class LeiterRecordsService
         $nonverbalIq = ConfidenceInterval::where('nonverbal_iq', $nonverbal_iq)->first();
 
         if (!$nonverbalIq) {
-            return "Not found";
+            return __("Not found");
         }
 
         if (!$nonverbalIq->low) {
@@ -161,7 +161,7 @@ class LeiterRecordsService
         $condifenceNonverbalMemory = ConfidenceIntervalNonverbalMemory::where('composite_score', $composite_score)->first();
 
         if (!$condifenceNonverbalMemory) {
-            return "Not found";
+            return __("Not found");
         }
 
         if (!$condifenceNonverbalMemory->low) {
@@ -180,7 +180,7 @@ class LeiterRecordsService
         $condifenceProcessingSpeed = ConfidenceIntervalProcessingSpeed::where('composite_score', $composite_score)->first();
 
         if (!$condifenceProcessingSpeed) {
-            return "not found";
+            return __("Not found");
         }
 
         if (!$condifenceProcessingSpeed->low) {
@@ -212,14 +212,14 @@ class LeiterRecordsService
     {
         $record = $model::where('row_score', $row_score)->first();
 
-        return $record ?  $record->sem : "Not found";
+        return $record ?  $record->sem : __("Not found");
     }
 
     public function getGrowth(string $model, int $row_score)
     {
         $record = $model::where('row_score', $row_score)->first();
 
-        return $record ? $record->growth : "Not found";
+        return $record ? $record->growth : __("Not found");
     }
 
     public function getPercentileFromRank($rank)
@@ -237,7 +237,7 @@ class LeiterRecordsService
     {
         $record = PercentileRanksScaledScore::where('standard', $value)->first();
         if (!$record) {
-            return 'Not found';
+            return __("Not found");
         }
         return $record->percentile;
     }
@@ -247,7 +247,7 @@ class LeiterRecordsService
         $record = GrowthScaleAgeEquivalentsCognitiveGrowthScale::where('growth_score', $value)->first();
 
         if (!$record) {
-            return "Not found";
+            return __("Not found");
         }
 
         return "$record->years - $record->months";
@@ -258,7 +258,7 @@ class LeiterRecordsService
         $record = GrowthScaleAgeEquivalentsMemoryGrowthScale::where('growth_score', $value)->first();
 
         if (!$record) {
-            return "Not found";
+            return __("Not found");
         }
 
         return "$record->years - $record->months";
@@ -286,7 +286,7 @@ class LeiterRecordsService
             ->get();
 
         if ($records->empty()) {
-            return "Not found";
+            return __("Not found");
         }
 
         return $records->first()->{$attr};

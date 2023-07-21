@@ -53,5 +53,19 @@
     "Nonverbal IQ vs Nonverbal Memory": "الذكاء غیراللفظي و الذاكرة غیر اللفظیة",
     "Nonverbal IQ vs Processing Speed": " الذكاء غیر اللفظي و سرعة المعالجة",
     "Nonverbal Memory vs Processing Speed": "الذاكرة غیر اللفظیة و سرعة المعالجة",
-    "Not Significant": "غیر دالة"
+    "Not Significant": "غیر دالة",
+    "Name": "الإسم",
+    "Gender": "الجنس",
+    "Age": "العمر",
+    "Months": "شهر",
+    "Examiner": "الفاحص",
+    "Ethnicity": "العرق",
+    "Other": "غير ذلك",
+    "Location of Testing": "موفع الفحص",
+    "Date of Birth": "تاريخ الميلاد",
+    "Date of Report": "تاريخ التقرير",
+    "Notes": "ملاحظات",
+    "Male": "ذكر",
+    "Female": "انثى",
+    "Not found": "غير موجود"
 }

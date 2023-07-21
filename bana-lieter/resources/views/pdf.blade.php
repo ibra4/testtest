@@ -26,40 +26,40 @@
         <div class="row">
             {{-- <div class="col-8"> --}}
             <div class="label-value-item col-6">
-                <div class="label">Name:</div>
+                <div class="label">{{ __('Name') }}:</div>
                 <div class="value">{{ $examinee->name }}</div>
             </div>
             <div class="label-value-item col-6">
-                <div class="label">Gender:</div>
-                <div class="value">{{ $examinee->gender }}</div>
+                <div class="label">{{ __('Gender') }}:</div>
+                <div class="value">{{ __($examinee->gender) }}</div>
             </div>
             <div class="label-value-item col-6">
-                <div class="label">Age:</div>
-                <div class="value">{{ $examinee->age }} Months</div>
+                <div class="label">{{ __('Age') }}:</div>
+                <div class="value">{{ $examinee->age }} {{ __('Months') }}</div>
             </div>
             <div class="label-value-item col-6">
-                <div class="label">Examiner:</div>
+                <div class="label">{{ __('Examiner') }}:</div>
                 <div class="value">{{ $examinee->examiner->name }}</div>
             </div>
             <div class="label-value-item col-6">
-                <div class="label">Ethnicity:</div>
-                <div class="value">Other</div>
+                <div class="label">{{ __('Ethnicity') }}:</div>
+                <div class="value">{{ __('Other') }}</div>
             </div>
             <div class="label-value-item col-6">
-                <div class="label">Location of Testing:</div>
+                <div class="label">{{ __('Location of Testing') }}:</div>
                 <div class="value">{{ $examinee->location }}</div>
             </div>
             <div class="label-value-item col-6">
-                <div class="label">Date of Birth:</div>
+                <div class="label">{{ __('Date of Birth') }}:</div>
                 <div class="value">{{ $examinee->birthday }}</div>
             </div>
             <div class="label-value-item col-6">
-                <div class="label">Date of Report:</div>
+                <div class="label">{{ __('Date of Report') }}:</div>
                 <div class="value">{{ $examinee->application_date }}</div>
             </div>
             @if ($examinee->examiner_notes)
                 <div class="label-value-item col-6">
-                    <div class="label">Notes:</div>
+                    <div class="label">{{ __('Notes') }}:</div>
                     <div class="value">{{ $examinee->examiner_notes }}</div>
                 </div>
             @endif

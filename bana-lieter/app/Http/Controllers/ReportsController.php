@@ -24,8 +24,9 @@ use stdClass;
 
 class ReportsController extends Controller
 {
-    public function index(Request $request, LeiterRecordsService $lrs, $id)
+    public function index(Request $request, LeiterRecordsService $lrs, $lang, $id)
     {
+        app()->setLocale($lang);
         $examinee = Examinee::findOrFail($id);
 
         $age = $examinee->age;
@@ -324,8 +325,9 @@ class ReportsController extends Controller
         ));
     }
 
-    public function charts(Request $request, LeiterRecordsService $lrs, $id)
+    public function charts(Request $request, LeiterRecordsService $lrs, $lang, $id)
     {
+        app()->setLocale($lang);
         $examinee = Examinee::findOrFail($id);
 
         $age = $examinee->age;

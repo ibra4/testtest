@@ -17,7 +17,7 @@ function ReportsButtons({ data }) {
                             </div> */}
                             <Row className="align-items-center">
                                 <Col className="col-auto">
-                                    <Button as={'a'} href={data.file_en} target="_blank" variant="success">
+                                    <Button as={'a'} href={data.file_ar} target="_blank" variant="success">
                                         {t('Report (AR)')}
                                     </Button>
                                 </Col>

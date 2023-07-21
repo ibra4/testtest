@@ -25,10 +25,10 @@ class ReportResource extends JsonResource
                 'examiner' => $this->reportExaminer,
                 'narrative' => $this->reportNarrative,
             ],
-            'file_en' => route('reports.first', ['id' => $this->examinee->id]),
-            'file_ar' => route('reports.first', ['id' => $this->examinee->id]),
-            'file_normal_dist_en' => route('reports.second', ['id' => $this->examinee->id]),
-            'file_normal_dist_ar' => route('reports.second', ['id' => $this->examinee->id])
+            'file_en' => route('reports.first', ['id' => $this->examinee->id, 'lang' => 'en']),
+            'file_ar' => route('reports.first', ['id' => $this->examinee->id, 'lang' => 'ar']),
+            'file_normal_dist_en' => route('reports.second', ['id' => $this->examinee->id, 'lang' => 'en']),
+            'file_normal_dist_ar' => route('reports.second', ['id' => $this->examinee->id, 'lang' => 'ar'])
         ];
     }
 }

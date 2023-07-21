@@ -43,6 +43,6 @@ Route::get('/', function () {
 Route::get('debug/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('can:root');
 
 Route::group(['middleware' => ['auth', 'report_owner']], function () {
-    Route::get('report/{id}/first', [ReportsController::class, 'index'])->name('reports.first');
-    Route::get('report/{id}/second', [ReportsController::class, 'charts'])->name('reports.second');
+    Route::get('{lang}/report/{id}/first', [ReportsController::class, 'index'])->name('reports.first');
+    Route::get('{lang}/report/{id}/second', [ReportsController::class, 'charts'])->name('reports.second');
 });

@@ -19,7 +19,7 @@
             </div>
             <div class="label-value-item col-6">
                 <div class="label">{{ __('Gender') }}:</div>
-                <div class="value">{{ $examinee->gender }}</div>
+                <div class="value">{{ __($examinee->gender) }}</div>
             </div>
             <div class="label-value-item col-6">
                 <div class="label">{{ __('Age') }}:</div>
