@@ -2,10 +2,12 @@
 
 @section('content')
     <main class="content" id="pdf-charts">
+        <h2 class="font-weight-bold text-center mt-2">{{ __('Confidential Test Results for the Leiter-3') }}</h2>
         <div class="row">
-            <div class="col-8">
-                <h2 class="font-weight-bold mt-2">{{ __('Confidential Test Results for the Leiter-3') }}</h2>
+            <div class="col-4">
+                <img src="{{ asset($logo) }}" class="w-100" alt="">
             </div>
+            <div class="col-4"></div>
             <div class="col-4">
                 <img src="{{ asset('images/lieter3.jpeg') }}" class="w-100" alt="">
             </div>
@@ -28,10 +30,6 @@
             <div class="label-value-item col-6">
                 <div class="label">{{ __('Examiner') }}:</div>
                 <div class="value">{{ $examinee->examiner->name }}</div>
-            </div>
-            <div class="label-value-item col-6">
-                <div class="label">{{ __('Ethnicity') }}:</div>
-                <div class="value">Other</div>
             </div>
             <div class="label-value-item col-6">
                 <div class="label">{{ __('Location of Testing') }}:</div>
@@ -110,7 +108,7 @@
                 <div class="col-3">
                 </div>
                 <div class="col-9">
-                    <div class="canvas-wrapper">
+                    <div class="canvas-wrapper white-bar">
                         <canvas width="400" height="200"></canvas>
                     </div>
                 </div>
@@ -154,56 +152,13 @@
                 <th>{{ __('Category') }}</th>
             </thead>
             <tbody>
-                <tr>
-                    <td>30 - 39</td>
-                    <td>---</td>
-                    <td>{{ __('Severe Delay') }}</td>
-                </tr>
-                <tr>
-                    <td>40 - 54</td>
-                    <td>0</td>
-                    <td>{{ __('Modetate Delay') }}</td>
-                </tr>
-                <tr>
-                    <td>55 - 69</td>
-                    <td>1-3</td>
-                    <td>{{ __('Very Low and Mild Delay') }}</td>
-                </tr>
-                <tr>
-                    <td>70 - 79</td>
-                    <td>4-5</td>
-                    <td>{{ __('Low') }}</td>
-                </tr>
-                <tr>
-                    <td>80 - 89</td>
-                    <td>6-7</td>
-                    <td>{{ __('Below Avarage') }}</td>
-                </tr>
-                <tr>
-                    <td>90 - 109</td>
-                    <td>8-12</td>
-                    <td>{{ __('Avarage') }}</td>
-                </tr>
-                <tr>
-                    <td>110 - 119</td>
-                    <td>13-14</td>
-                    <td>{{ __('Above Avarage') }}</td>
-                </tr>
-                <tr>
-                    <td>120 - 129</td>
-                    <td>15-16</td>
-                    <td>{{ __('High') }}</td>
-                </tr>
-                <tr>
-                    <td>130 - 149</td>
-                    <td>17-19</td>
-                    <td>{{ __('Very High/Gifted') }}</td>
-                </tr>
-                <tr>
-                    <td>150 - 170</td>
-                    <td>20</td>
-                    <td>{{ __('Extremely High/Gifted') }}</td>
-                </tr>
+                @foreach ($iq as $iqRecord)
+                    <tr>
+                        <td>{{ $iqRecord['iq_composite_score'] }}</td>
+                        <td>{{ $iqRecord['subtest_score'] }}</td>
+                        <td>{{ __($iqRecord['label']) }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <hr>

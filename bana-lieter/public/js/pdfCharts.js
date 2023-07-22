@@ -155,7 +155,7 @@ const iqDatasets = [
         backgroundColor: "#cfc4dc",
     },
 ];
-const iqBelowLabels = [
+const iqBelowLabels = document.documentElement.lang == 'en' ? [
     "Severe Delay",
     "Modetate Delay",
     "Very Low and Mild Delay",
@@ -165,7 +165,18 @@ const iqBelowLabels = [
     "Above Avarage",
     "High",
     "Very High/Gifted",
-    "Extremely High/Gifted",
+    "Extremely High/Gifted"
+] : [
+    'تأخير شديد',
+    'تأخير معتدل',
+    'تأخير منخفض جدًا وخفيف',
+    'قليل',
+    "أقل من المتوسط",
+    "متوسط",
+    "فوق المتوسط",
+    "عالي",
+    "مرتفع جدا / موهوب",
+    "مرتفع للغاية / موهوب"
 ];
 
 const figLabels = [0, 1, 4, 6, 8, 13, 15, 17, 19, 20, 21];
@@ -208,7 +219,8 @@ const figDatasets = [
         backgroundColor: "#cfc4dc",
     },
 ];
-const figBelowLabels = [
+
+const figBelowLabels = document.documentElement.lang == 'en' ? [
     "Modetate Delay",
     "Very Low and Mild Delay",
     "Low",
@@ -218,6 +230,17 @@ const figBelowLabels = [
     "High",
     "Very High/Gifted",
     "Extremely High/Gifted",
+    " "
+] : [
+    'تأخير معتدل',
+    'تأخير منخفض جدًا وخفيف',
+    'قليل',
+    "أقل من المتوسط",
+    "متوسط",
+    "فوق المتوسط",
+    "عالي",
+    "مرتفع جدا / موهوب",
+    "مرتفع للغاية / موهوب",
     " "
 ];
 

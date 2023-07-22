@@ -222,7 +222,7 @@ footer i.fa-linkedin {
 .canvas-wrapper {
   position: relative;
 }
-.canvas-wrapper::after {
+.canvas-wrapper.white-bar::after {
   content: "";
   top: 0;
   position: absolute;

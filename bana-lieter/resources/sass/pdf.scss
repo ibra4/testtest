@@ -239,14 +239,16 @@ footer {
 
 .canvas-wrapper {
     position: relative;
-    &::after {
-        content: "";
-        top: 0;
-        position: absolute;
-        right: 0;
-        width: 20px;
-        height: 100%;
-        background-color: white;
+    &.white-bar {
+        &::after {
+            content: "";
+            top: 0;
+            position: absolute;
+            right: 0;
+            width: 20px;
+            height: 100%;
+            background-color: white;
+        }
     }
 }
 

@@ -33,7 +33,7 @@
 
 <body>
     <button id="printPageButton" onclick="print()">
-        <i class="fa fa-print"></i>&nbsp;print</button>
+        <i class="fa fa-print"></i>&nbsp;{{ __('Print') }}</button>
 
     @yield('content')
 

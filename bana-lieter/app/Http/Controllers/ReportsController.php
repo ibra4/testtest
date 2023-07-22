@@ -32,7 +32,6 @@ class ReportsController extends Controller
         $age = $examinee->age;
         $examiner = $examinee->examiner;
 
-        // dd($examiner);
         if ($examiner->hasRole('admin')) {
             $logo = $examiner->logo;
         } else {
@@ -329,6 +328,13 @@ class ReportsController extends Controller
     {
         app()->setLocale($lang);
         $examinee = Examinee::findOrFail($id);
+        $examiner = $examinee->examiner;
+
+        if ($examiner->hasRole('admin')) {
+            $logo = $examiner->logo;
+        } else {
+            $logo = $examiner->admin->logo;
+        }
 
         $age = $examinee->age;
 
@@ -369,19 +375,19 @@ class ReportsController extends Controller
         $composite_values = [
             [
                 'id' => 'nonverbal_iq',
-                'label' => 'Nonverbal IQ',
+                'label' => __('Nonverbal IQ'),
                 'value' => $nonverbal_iq,
                 'desc' => $lrs->getIQCategoryKeyWord('nonverbal_iq', $nonverbal_iq)
             ],
             [
                 'id' => 'composite_nonverbal_memory',
-                'label' => 'Nonverbal Memory',
+                'label' => __('Nonverbal Memory'),
                 'value' => $composite_nonverbal_memory,
                 'desc' => $lrs->getIQCategoryKeyWord('composite_nonverbal_memory', $composite_nonverbal_memory)
             ],
             [
                 'id' => 'composite_processing_speed',
-                'label' => 'Processing Speed',
+                'label' => __('Processing Speed'),
                 'value' => $composite_processing_speed,
                 'desc' => $lrs->getIQCategoryKeyWord('composite_processing_speed', $composite_processing_speed)
             ]
@@ -398,56 +404,58 @@ class ReportsController extends Controller
         $cognitive_values = [
             [
                 'id' => 'cognitive_fg',
-                'label' => 'Figure Ground',
+                'label' => __('Figure Ground'),
                 'value' => $cognitive_scaled_scores['fg']
             ],
             [
                 'id' => 'cognitive_fc',
-                'label' => 'Form Completion',
+                'label' => __('Form Completion'),
                 'value' => $cognitive_scaled_scores['fc']
             ],
             [
                 'id' => 'cognitive_ca',
-                'label' => 'Classification Analogies',
+                'label' => __('Classification Analogies'),
                 'value' => $cognitive_scaled_scores['ca']
             ],
             [
                 'id' => 'cognitive_so',
-                'label' => 'Sequential Order',
+                'label' => __('Sequential Order'),
                 'value' => $cognitive_scaled_scores['so']
             ],
             [
                 'id' => 'cognitive_vp',
-                'label' => 'Visual Patterns',
+                'label' => __('Visual Patterns'),
                 'value' => $cognitive_scaled_scores['vp']
             ],
             [
                 'id' => 'attention_sustained',
-                'label' => 'Attention Sustained',
+                'label' => __('Attention Sustained'),
                 'value' => $memory_attention_values['as']
             ],
             [
                 'id' => 'forward_memory',
-                'label' => 'Forward Memory',
+                'label' => __('Forward Memory'),
                 'value' => $memory_attention_values['fm']
             ],
             [
                 'id' => 'reverse_memory',
-                'label' => 'Reverse Memory',
+                'label' => __('Reverse Memory'),
                 'value' => $memory_attention_values['rm']
             ],
             [
                 'id' => 'nonverbal_stroop_incongruent_correct',
-                'label' => 'Nonverbal stroop incongruent correct',
+                'label' => __('Nonverbal stroop incongruent correct'),
                 'value' => $memory_attention_values['nsic']
             ],
             [
                 'id' => 'nonverbal_stroop_congruent_correct',
-                'label' => 'Nonverbal stroop congruent correct',
+                'label' => __('Nonverbal stroop congruent correct'),
                 'value' => $memory_attention_values['nscc']
             ]
         ];
 
-        return view('pdf_charts')->with(compact('composite_values', 'cognitive_values', 'examinee'));
+        $iq = collect(config("leiter.iq"));
+
+        return view('pdf_charts')->with(compact('composite_values', 'cognitive_values', 'examinee', 'logo', 'iq'));
     }
 }

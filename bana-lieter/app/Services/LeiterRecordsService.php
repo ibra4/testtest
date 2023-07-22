@@ -328,29 +328,34 @@ class LeiterRecordsService
     public function getIQCategoryKeyWord(string $type, int $mark)
     {
         if ($mark >= 30 && $mark <= 39) {
-            $keyword = __('Severe Delay');
+            $minMax = '30 - 39';
         } else if ($mark >= 40 && $mark <= 54) {
-            $keyword = __('Modetate Delay');
+            $minMax = '40 - 54';
         } else if ($mark >= 55 && $mark <= 69) {
-            $keyword = __('Very Low and Mild Delay');
+            $minMax = '55 - 69';
         } else if ($mark >= 70 && $mark <= 79) {
-            $keyword = __('Low');
+            $minMax = '70 - 79';
         } else if ($mark >= 80 && $mark <= 89) {
-            $keyword = __('Below Avarage');
+            $minMax = '80 - 89';
         } else if ($mark >= 90 && $mark <= 109) {
-            $keyword = __('Avarage');
+            $minMax = '90 - 109';
         } else if ($mark >= 110 && $mark <= 119) {
-            $keyword = __('Above Avarage');
+            $minMax = '110 - 119';
         } else if ($mark >= 120 && $mark <= 129) {
-            $keyword = __('High');
+            $minMax = '120 - 129';
         } else if ($mark >= 130 && $mark <= 149) {
-            $keyword = __('Very High/Gifted');
+            $minMax = '130 - 149';
         } else if ($mark >= 150 && $mark <= 170) {
-            $keyword = __('Extremely High/Gifted');
+            $minMax = '150 - 170';
         } else {
             return "";
         }
 
-        return sprintf(config("leiter.scores_text.$type"), $mark, $keyword);
+        $iq = collect(config("leiter.iq"));
+        $targetIq = $iq->filter(function ($item) use ($minMax) {
+            return $item['iq_composite_score'] == $minMax;
+        })->first();
+
+        return sprintf(__(config("leiter.scores_text.$type")), $mark, __($targetIq['label']) ?? __("Not found"));
     }
 }

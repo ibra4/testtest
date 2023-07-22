@@ -42,10 +42,6 @@
                 <div class="value">{{ $examinee->examiner->name }}</div>
             </div>
             <div class="label-value-item col-6">
-                <div class="label">{{ __('Ethnicity') }}:</div>
-                <div class="value">{{ __('Other') }}</div>
-            </div>
-            <div class="label-value-item col-6">
                 <div class="label">{{ __('Location of Testing') }}:</div>
                 <div class="value">{{ $examinee->location }}</div>
             </div>
