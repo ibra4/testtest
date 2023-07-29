@@ -51,7 +51,9 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/sliders/create', [SlidersController::class, 'create']);
         Route::put('/sliders/{id}/update', [SlidersController::class, 'update']);
         Route::post('/sliders/upload', [SlidersController::class, 'upload']);
+    });
 
+    Route::middleware('can:admin_or_sub_admin')->group(function () {
         // Statistics
         Route::get('/country-statistics/{id}', [CountryStatisticController::class, 'index']);
         // History

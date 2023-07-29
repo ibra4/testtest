@@ -45,5 +45,10 @@ class AuthServiceProvider extends ServiceProvider
             if ($user->id === 1) return true;
             return $user->hasAnyRole(['admin', 'sub_admin']);
         });
+
+        Gate::define('admin_or_sub_admin', function (User $user) {
+            if ($user->id === 1) return true;
+            return $user->hasRole('sub_admin') || $user->hasRole('admin');
+        });
     }
 }

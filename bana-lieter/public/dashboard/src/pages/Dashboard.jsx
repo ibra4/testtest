@@ -141,16 +141,12 @@ function Dashboard() {
                     </WhiteBox>
                 </Col>
             </Row>
-            {role == 'root' && (
-                <WhiteBox title={t('Top 5 Examiners')} hr>
-                    <Top5Examiners data={top5} />
-                </WhiteBox>
-            )}
-            {role == 'root' && (
-                <WhiteBox title={t('History')} hr>
-                    <HistoryView data={historyData} />
-                </WhiteBox>
-            )}
+            <WhiteBox title={t('Top 5 Examiners')} hr>
+                <Top5Examiners data={top5} />
+            </WhiteBox>
+            <WhiteBox title={t('History')} hr>
+                <HistoryView data={historyData} />
+            </WhiteBox>
         </Layout>
     );
 }
