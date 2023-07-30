@@ -46,7 +46,7 @@ return [
         [
             'subtest_score' => '1 - 3',
             'iq_composite_score' => '55 - 69',
-            'label' =>  "Very Low and Mild Delay",
+            'label' =>  "Mild Delay",
         ],
         [
             'subtest_score' => '4 - 5',
@@ -76,12 +76,12 @@ return [
         [
             'subtest_score' => '17 - 19',
             'iq_composite_score' => '130 - 149',
-            'label' =>  "Very High/Gifted",
+            'label' =>  "Very High",
         ],
         [
             'subtest_score' => '20',
             'iq_composite_score' => '150 - 170',
-            'label' =>  "Extremely High/Gifted",
+            'label' =>  "Extremely High",
         ],
     ]
 ];

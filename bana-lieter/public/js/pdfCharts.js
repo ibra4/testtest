@@ -158,25 +158,25 @@ const iqDatasets = [
 const iqBelowLabels = document.documentElement.lang == 'en' ? [
     "Severe Delay",
     "Modetate Delay",
-    "Very Low and Mild Delay",
+    "Mild Delay",
     "Low",
     "Below Avarage",
     "Avarage",
     "Above Avarage",
     "High",
-    "Very High/Gifted",
-    "Extremely High/Gifted"
+    "Very High",
+    "Extremely High"
 ] : [
     'تأخر شديد',
     'تأخر متوسط',
-    'تأخر بسيط / ضعيف جدا',
+    'تأخر بسيط',
     'قليل',
     "أقل من المتوسط",
     "ضمن المتوسط",
     "أعلى من المتوسط",
     "عالي",
-    "مرتفع جدا / موهوب",
-    "متفوق جدا / موهوب"
+    "مرتفع جدا",
+    "مرتفع للغاية"
 ];
 
 const figLabels = [0, 1, 4, 6, 8, 13, 15, 17, 19, 20, 21];
@@ -222,14 +222,14 @@ const figDatasets = [
 
 const figBelowLabels = document.documentElement.lang == 'en' ? [
     "Modetate Delay",
-    "Very Low and Mild Delay",
+    "Mild Delay",
     "Low",
     "Below Avarage",
     "Avarage",
     "Above Avarage",
     "High",
-    "Very High/Gifted",
-    "Extremely High/Gifted",
+    "Very High",
+    "Extremely High",
     " "
 ] : [
     'تأخر متوسط',
@@ -239,8 +239,8 @@ const figBelowLabels = document.documentElement.lang == 'en' ? [
     "ضمن المتوسط",
     "أعلى من المتوسط",
     "عالي",
-    "مرتفع جدا / موهوب",
-    "متفوق جدا / موهوب",
+    "مرتفع جدا",
+    "مرتفع للغاية",
     " "
 ];
 
