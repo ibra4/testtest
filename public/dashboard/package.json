@@ -7,8 +7,8 @@
         "start": "kill-port 9001 && kill-port 8001 && webpack-dev-server --env MODE=external",
         "watch": "webpack --config webpack.watch.js --watch --env.NODE_ENV=local",
         "watch-dev": "webpack --config webpack.watch.js --watch --env.NODE_ENV=local.dev",
-        "build": "webpack --mode production --config webpack.watch.js --env.NODE_ENV=prod",
-        "build-dev": "webpack --mode production --config webpack.watch.js --env.NODE_ENV=prod.dev"
+        "build": "webpack --mode production --config webpack.prod.js --env.NODE_ENV=prod",
+        "build-dev": "webpack --mode production --config webpack.prod.js --env.NODE_ENV=prod.dev"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.6.0",
