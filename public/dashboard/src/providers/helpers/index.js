@@ -1,8 +1,9 @@
 import axios from "axios";
 import store from "providers/store";
 
+console.log(process.env)
 export const httpClient = axios.create({
-    baseURL: window.location.host.search('local') == -1 ? 'https://leiter3.com/api' : 'http://bl.local/api',
+    baseURL: process.env.API_URL,
     headers: {
         'X-Requested-With': 'XMLHttpRequest'
     },

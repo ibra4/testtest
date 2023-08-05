@@ -1,12 +1,14 @@
 {
-    "name": "admin_panel",
+    "name": "leiter",
     "version": "1.0.0",
     "description": "",
     "main": "dist/main.js",
     "scripts": {
         "start": "kill-port 9001 && kill-port 8001 && webpack-dev-server --env MODE=external",
-        "watch": "webpack --config webpack.watch.js --watch",
-        "build": "webpack --mode production --config webpack.prod.config.js"
+        "watch": "webpack --config webpack.watch.js --watch --env.NODE_ENV=local",
+        "watch-dev": "webpack --config webpack.watch.js --watch --env.NODE_ENV=local.dev",
+        "build": "webpack --mode production --config webpack.watch.js --env.NODE_ENV=prod",
+        "build-dev": "webpack --mode production --config webpack.watch.js --env.NODE_ENV=prod.dev"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.6.0",
@@ -48,6 +50,7 @@
         "babel-polyfill": "^6.26.0",
         "css-loader": "^3.4.2",
         "del": "^6.0.0",
+        "dotenv": "^16.3.1",
         "eslint": "^7.22.0",
         "eslint-loader": "^4.0.2",
         "eslint-plugin-react": "^7.24.0",
