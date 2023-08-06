@@ -39,7 +39,6 @@ class InfoController  extends Controller
                 'users.id',
                 'users.name',
                 'users.avatar',
-                'users.number_of_reports',
                 DB::raw("SUM(sub_admins.used_reports) + users.used_reports as used_reports")
             )
             ->leftJoin('users as sub_admins', function ($join) {
@@ -49,7 +48,7 @@ class InfoController  extends Controller
             ->where('users.is_deleted', false)
             ->where('users.number_of_reports','>',0)
             ->groupBy('users.id')
-            ->orderBy('users.number_of_reports','DESC')
+            ->orderBy('users.used_reports','DESC')
             ->get();
         return response()->json($admins);
     }
