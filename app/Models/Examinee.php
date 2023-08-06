@@ -43,7 +43,8 @@ class Examinee extends Model
     {
         $value = $this->birthday ?? $value;
         $birthday = new Carbon($value);
-        $diff = $birthday->diff(Carbon::now());
+        $applicationDate = $this->application_date ? new Carbon($this->application_date) : Carbon::now();
+        $diff = $birthday->diff($applicationDate);
         $years = $diff->format("%y");
         $months = $diff->format("%m");
         return $years * 12 + $months;
@@ -56,7 +57,13 @@ class Examinee extends Model
 
     public function getNameAttribute($value)
     {
-        return $this->examiner->id == request()->user()->id ? $value : "*******";
+        $currentUser = request()->user();
+        if ($currentUser->hasRole('admin')) {
+            $allowed = $currentUser->subAdmins ? $currentUser->subAdmins->pluck('id')->toArray() : [];
+        }
+        $allowed[] = $currentUser->id;
+
+        return in_array($this->examiner->id, $allowed) ? $value : "*******";
     }
 
     public function report()

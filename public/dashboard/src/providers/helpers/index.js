@@ -37,6 +37,9 @@ export const generateRandomColor = () => {
 }
 
 export const renderUserNameShortcut = name => {
+    if (!name) {
+        return "";
+    }
     const parts = name.split(' ')
     var shortcutName = ""
     if (parts.length > 1) {

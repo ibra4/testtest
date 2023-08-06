@@ -19,7 +19,6 @@ const HistoryView = ({ data }) => {
 
     const renderRow = (item) => (
         <tr key={item.id}>
-            <td>{item.id}</td>
             <AvatarNameTD item={item.examiner} />
             <td>{item.examinee_name}</td>
             <td>{item.created_at}</td>
@@ -41,7 +40,6 @@ const HistoryView = ({ data }) => {
             <Table striped>
                 <thead>
                     <tr>
-                        <th>{t('ID')}</th>
                         <th>{t('Examiner')}</th>
                         <th>{t('Examinee')}</th>
                         <th>{t('Created At')}</th>
