@@ -4,7 +4,7 @@ import React from 'react';
 function AvatarNameTD({ item }) {
     return (
         <td className="d-flex align-items-center">
-            {item && item.avatar ? (
+            {item && item.name && item.avatar ? (
                 <img src={item.avatar} alt="" className="small-avatar img" />
             ) : (
                 <div className="small-avatar txt" style={{ backgroundColor: generateRandomColor() }}>
