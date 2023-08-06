@@ -18,10 +18,10 @@ class LatestReportsResource extends JsonResource
             'id' => $this->id,
             'examinee_name' => $this->examinee->name,
             'examinee_id' => $this->examinee->id,
-            'examiner' => [
+            'examiner' => $this->examinee->examiner ? [
                 'name' => $this->examinee->examiner->name,
                 'avatar' => $this->examinee->examiner->avatar
-            ],
+            ] : [],
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
             'updated_at' => $this->updated_at->format('Y-m-d H:i:s')
         ];
