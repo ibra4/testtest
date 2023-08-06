@@ -43,7 +43,8 @@ class Examinee extends Model
     {
         $value = $this->birthday ?? $value;
         $birthday = new Carbon($value);
-        $diff = $birthday->diff(Carbon::now());
+        $applicationDate = $this->application_date ? new Carbon($this->application_date) : Carbon::now();
+        $diff = $birthday->diff($applicationDate);
         $years = $diff->format("%y");
         $months = $diff->format("%m");
         return $years * 12 + $months;
