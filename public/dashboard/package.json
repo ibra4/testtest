@@ -1,12 +1,14 @@
 {
-    "name": "admin_panel",
+    "name": "leiter",
     "version": "1.0.0",
     "description": "",
     "main": "dist/main.js",
     "scripts": {
         "start": "kill-port 9001 && kill-port 8001 && webpack-dev-server --env MODE=external",
-        "watch": "webpack --config webpack.watch.js --watch",
-        "build": "webpack --mode production --config webpack.prod.config.js"
+        "watch": "webpack --config webpack.watch.js --watch --env.NODE_ENV=local",
+        "watch-dev": "webpack --config webpack.watch.js --watch --env.NODE_ENV=local.dev",
+        "build": "webpack --mode production --config webpack.prod.js --env.NODE_ENV=prod",
+        "build-dev": "webpack --mode production --config webpack.prod.js --env.NODE_ENV=prod.dev"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.6.0",
@@ -28,17 +30,21 @@
         "react-icons": "^4.6.0",
         "react-loader-spinner": "^4.0.0",
         "react-paginate": "^8.1.3",
+        "react-pro-sidebar": "^1.1.0-alpha.1",
         "react-redux": "^7.2.4",
         "react-router-dom": "^5.1.2",
         "react-select": "^5.5.7",
+        "react-svg-map": "^2.2.0",
         "react-toast-notifications": "^2.5.1",
         "react-transition-group": "^4.4.5",
         "redux": "^4.1.0",
         "sass": "^1.55.0",
+        "styled-components": "^6.0.7",
         "yup": "^0.32.11"
     },
     "devDependencies": {
         "@babel/core": "^7.8.3",
+        "@babel/plugin-proposal-class-properties": "^7.18.6",
         "@babel/preset-env": "^7.8.3",
         "@babel/preset-react": "^7.8.3",
         "@pmmmwh/react-refresh-webpack-plugin": "^0.4.1",
@@ -48,6 +54,7 @@
         "babel-polyfill": "^6.26.0",
         "css-loader": "^3.4.2",
         "del": "^6.0.0",
+        "dotenv": "^16.3.1",
         "eslint": "^7.22.0",
         "eslint-loader": "^4.0.2",
         "eslint-plugin-react": "^7.24.0",
