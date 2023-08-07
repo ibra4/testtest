@@ -47,7 +47,6 @@ class ExamineesController extends Controller
             'admin.name as adminname',
             'admin.id as admin_id',
             'examinees.gender',
-            'examinees.application_date',
             'creator.name as createdbyadminname',
             'examinees.created_at',
             'examinees.updated_at',

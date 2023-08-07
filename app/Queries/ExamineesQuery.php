@@ -28,7 +28,6 @@ class ExamineesQuery
             'examinees.gender',
             'examinees.created_at',
             'examinees.updated_at',
-            'examinees.application_date',
             'rcs.figure_ground',
             'rcs.form_completion',
             'rcs.classification_analogies',

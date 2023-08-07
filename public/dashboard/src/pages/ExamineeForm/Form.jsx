@@ -20,7 +20,6 @@ function Form({ initialValues, config, onSubmit }) {
     const validationSchema = Yup.object().shape({
         name: Yup.string().required(t('Name field is required!')),
         birthday: Yup.date().required(),
-        application_date: Yup.date().required(),
         gender: Yup.number().required(),
         country_id: Yup.number().required()
     });
@@ -74,18 +73,6 @@ function Form({ initialValues, config, onSubmit }) {
                                         value={values.birthday}
                                         onBlur={handleBlur}
                                         error={touched.birthday && errors.birthday}
-                                        type="date"
-                                        className="mb-3"
-                                    />
-                                </Col>
-                                <Col md={4}>
-                                    <TextField
-                                        name="application_date"
-                                        label='Application Date'
-                                        onChange={handleChange}
-                                        value={values.application_date}
-                                        onBlur={handleBlur}
-                                        error={touched.application_date && errors.application_date}
                                         type="date"
                                         className="mb-3"
                                     />

@@ -19,7 +19,6 @@ class Examinee extends Model
     protected $fillable = [
         'name',
         'birthday',
-        'application_date',
         'gender',
         'country_id',
         'city_id',
@@ -43,7 +42,7 @@ class Examinee extends Model
     {
         $value = $this->birthday ?? $value;
         $birthday = new Carbon($value);
-        $applicationDate = $this->application_date ? new Carbon($this->application_date) : Carbon::now();
+        $applicationDate = Carbon::now();
         $diff = $birthday->diff($applicationDate);
         $years = $diff->format("%y");
         $months = $diff->format("%m");

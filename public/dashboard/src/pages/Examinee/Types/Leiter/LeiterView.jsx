@@ -1,3 +1,4 @@
+import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import LabelValueCol from 'components/LabelValueCol';
 import ReportsButtons from 'components/Reports/ReportsButtons';
 import WhiteBox from 'components/WhiteBox';
@@ -19,16 +20,7 @@ function LeiterView({
     return (
         <>
             <WhiteBox title={t('Examinee Data')}>
-                <Row>
-                    <LabelValueCol label={'Name'} value={examinee.name} md={3} />
-                    <LabelValueCol label={'Birthday'} value={examinee.birthday} md={3} />
-                    <LabelValueCol label={'Age'} value={examinee.age} md={3} />
-                    <LabelValueCol label={'Gender'} value={getGender(examinee.gender)} md={3} />
-                    <LabelValueCol label={'Country'} value={getCountryById(examinee.country_id)} md={3} />
-                    <LabelValueCol label={'Application Date'} value={examinee.application_date} md={3} />
-                    <LabelValueCol label={'Center Name'} value={getAdminById(examinee.admin_id)} md={3} />
-                    <LabelValueCol label={'Notes'} value={examinee.examiner_notes} md={12} />
-                </Row>
+                <ExamineeGeneralData examinee={examinee} />
             </WhiteBox>
             <CognitiveSubtestsForm initialValues={reports.cognitive} onSubmit={onSectionSubmit} />
             <MemoryBatteryForm initialValues={reports.memory} onSubmit={onSectionSubmit} />

@@ -49,10 +49,6 @@
                 <div class="label">{{ __('Date of Birth') }}:</div>
                 <div class="value">{{ $examinee->birthday }}</div>
             </div>
-            <div class="label-value-item col-6">
-                <div class="label">{{ __('Date of Report') }}:</div>
-                <div class="value">{{ $examinee->application_date }}</div>
-            </div>
             @if ($examinee->examiner_notes)
                 <div class="label-value-item col-6">
                     <div class="label">{{ __('Notes') }}:</div>

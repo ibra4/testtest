@@ -1,3 +1,4 @@
+import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import ActionButton from 'components/Fields/ActionButton';
 import LabelValueCol from 'components/LabelValueCol';
 import WhiteBox from 'components/WhiteBox';
@@ -16,16 +17,7 @@ function ExamView({ examinee, leiter }) {
     return (
         <>
             <WhiteBox title={t('Examinee Data')}>
-                <Row>
-                    <LabelValueCol label={'Name'} value={examinee && examinee.name} md={3} />
-                    <LabelValueCol label={'Birthday'} value={examinee && examinee.birthday} md={3} />
-                    <LabelValueCol label={'Age'} value={examinee && examinee.age} md={3} />
-                    <LabelValueCol label={'Gender'} value={examinee && getGender(examinee.gender)} md={3} />
-                    <LabelValueCol label={'Country'} value={examinee && getCountryById(examinee.country_id)} md={3} />
-                    <LabelValueCol label={'Application Date'} value={examinee && examinee.application_date} md={3} />
-                    <LabelValueCol label={'Center Name'} value={examinee && getAdminById(examinee.admin_id)} md={3} />
-                    <LabelValueCol label={'Notes'} value={examinee && examinee.examiner_notes} md={12} />
-                </Row>
+                <ExamineeGeneralData examinee={examinee} />
             </WhiteBox>
             <WhiteBox title={t('Leiter Reports')}>
                 <Table className="align-middle">
@@ -44,7 +36,6 @@ function ExamView({ examinee, leiter }) {
                                     <td>{leiterReport.id}</td>
                                     <td className="text-danger">{examinee.age}</td>
                                     <td className="text-danger">Mohannad</td>
-                                    <td className="text-danger">{examinee.application_date}</td>
                                     <td className="text-danger">{examinee.created_at}</td>
                                     <td>
                                         <ActionButton
@@ -93,8 +84,7 @@ function ExamView({ examinee, leiter }) {
                         <th>{t('Created At')}</th>
                         <th>{t('Actions')}</th>
                     </thead>
-                    <tbody>
-                    </tbody>
+                    <tbody></tbody>
                 </Table>
                 <div className="text-center">
                     <Link to={`/reports/mpr/create`} className="btn btn-primary">
@@ -113,8 +103,7 @@ function ExamView({ examinee, leiter }) {
                         <th>{t('Created At')}</th>
                         <th>{t('Actions')}</th>
                     </thead>
-                    <tbody>
-                    </tbody>
+                    <tbody></tbody>
                 </Table>
                 <div className="text-center">
                     <Link to={`/reports/abas/create`} className="btn btn-primary">
