@@ -9,10 +9,9 @@ import AttentionForm from './SubForms/AttentionForm';
 import CognitiveSubtestsForm from './SubForms/CognitiveSubtestsForm';
 import ExaminerRatingScaleSectionForm from './SubForms/ExaminerRatingScaleSectionForm';
 import MemoryBatteryForm from './SubForms/MemoryBatteryForm';
-import NarrativeReportForm from './SubForms/NarrativeReportForm';
 import SupplementalAttentionForm from './SubForms/SupplementalAttentionForm';
 
-function View({
+function LeiterView({
     data: { examinee, reports, file_en, file_ar, file_normal_dist_en, file_normal_dist_ar },
     onSectionSubmit
 }) {
@@ -48,4 +47,4 @@ function View({
     );
 }
 
-export default View;
+export default LeiterView;

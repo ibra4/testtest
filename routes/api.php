@@ -79,12 +79,14 @@ Route::middleware('auth:sanctum')->group(function () {
         // Examinees
         Route::get('/examinees', [ExamineesController::class, 'index']);
         Route::get('/examinees/{id}', [ExamineesController::class, 'get']);
+        /** @deprecated*/
         Route::get('/examinees-exam/{id}', [ExamineesController::class, 'getExam']);
         Route::put('/examinees-exam/{id}/{type}', [ExamineesController::class, 'saveExam']);
         Route::post('/examinees/create', [ExamineesController::class, 'create']);
         Route::put('/examinees/{id}/update', [ExamineesController::class, 'update']);
 
-        Route::get('/examinees/{id}/exams', [ExamineesController::class, 'get'])->name('examinee.exams');
+        // New
+        Route::get('/examinees/{id}/exams', [ExamineesController::class, 'exams'])->name('examinee.exams');
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);

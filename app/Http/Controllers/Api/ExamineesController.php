@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateExamineeRequest;
 use App\Http\Requests\UpdateExamineeRequest;
 use App\Http\Requests\UpdateExamRequest;
+use App\Http\Resources\ExamineeExamsResource;
 use App\Http\Resources\ExamineeResource;
 use App\Http\Resources\ReportResource;
 use App\Models\Examinee;
@@ -60,6 +61,12 @@ class ExamineesController extends Controller
         $examinee = Examinee::findOrFail($id);
 
         return response()->json(new ExamineeResource($examinee));
+    }
+
+    public function exams(Request $request, $id)
+    {
+        $examinee = Examinee::findOrFail($id);
+        return response()->json(new ExamineeExamsResource($examinee));
     }
 
     public function create(CreateExamineeRequest $request)

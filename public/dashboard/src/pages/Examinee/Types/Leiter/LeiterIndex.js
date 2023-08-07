@@ -5,10 +5,9 @@ import { httpClient } from 'providers/helpers'
 import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
 import { useTranslation } from 'react-i18next'
-import Loader from 'react-loader-spinner'
-import ExamView from './ExamView'
+import LeiterView from './LeiterView'
 
-function ExamsIndex() {
+function LeiterIndex() {
 
     const { t } = useTranslation()
     const { id } = useParams()
@@ -17,21 +16,24 @@ function ExamsIndex() {
     const [status, setStatus] = useState("loading")
 
     const getData = async () => {
-        const res = await httpClient.get(`examinees/${id}/exams`)
+        const res = await httpClient.get(`${ROUTES.EXAMINEES.EXAM}/${id}`)
         setData(res.data)
         setStatus("success")
     }
 
     useEffect(() => {
-        getData();
+        getData()
     }, [])
 
+    const onSectionSubmit = async (type, values) => {
+        return await httpClient.put(`${ROUTES.EXAMINEES.EXAM}/${id}/${type}`, values)
+    }
+
     return (
-        <Layout title={t("Examinee exams")}>
-            {status == 'loading' && <FullLoader />}
-            <ExamView examinee={data.examinee} />
+        <Layout title={t("Leiter Exam for examinee #21")}>
+            {status == "success" ? <LeiterView data={data} onSectionSubmit={onSectionSubmit} /> : <FullLoader />}
         </Layout>
     )
 }
 
-export default ExamsIndex
+export default LeiterIndex

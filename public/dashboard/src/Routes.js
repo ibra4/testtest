@@ -19,6 +19,8 @@ import SliderFormIndex from 'pages/Settings/SliderForm/SliderFormIndex';
 import ExamineeExamIndex from 'pages/ExamineeExam/ExamineeExamIndex';
 import ProfileIndex from 'pages/Profile/ProfileIndex';
 import HistoryIndex from 'pages/History/HistoryIndex';
+import ExamsIndex from 'pages/Examinee/Exams/ExamsIndex';
+import LeiterIndex from 'pages/Examinee/Types/Leiter/LeiterIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -71,6 +73,10 @@ const Routes = () => {
         <Route path="/examinees/create" component={ExamineeFormIndex} exact />
         <Route path="/examinees/:id/update" component={ExamineeFormIndex} exact />
         <Route path="/examinees/:id/exam" component={ExamineeExamIndex} exact />
+        <Route path="/examinees/:id/exams" component={ExamsIndex} exact />
+
+        {/* Reposts */}
+        <Route path="/reports/leiter/:id" component={LeiterIndex} exact />
 
         {/* Leiter Records */}
         <Route path="/leiter-records/:type" component={LeiterRecordsIndex} exact />

@@ -123,6 +123,7 @@
     "Nonverbal Stroop Congruent Incorrect (NSCi)": "الاجابات الخاطئة ستروب غير اللفظي - الألوان المتشابهة",
     "Nonverbal Stroop Incongruent Incorrect (NSii)": "الاجابات الخاطئة ستروب غير اللفظي - الألوان غير المتشابهة",
     "Supplemental Attention/Memory Scores": "الدرجات الإضافية - الذاكرة و الإنتباه",
+    "View Exam": "عرض الاختبار",
     "api_errors": {
         "number_of_reports_exceeded": "لقد تخطيت عدد التقارير المسموحة, يرجى التواصل مع مدير الموقع"
     }
