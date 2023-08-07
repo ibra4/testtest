@@ -83,6 +83,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/examinees-exam/{id}/{type}', [ExamineesController::class, 'saveExam']);
         Route::post('/examinees/create', [ExamineesController::class, 'create']);
         Route::put('/examinees/{id}/update', [ExamineesController::class, 'update']);
+
+        Route::get('/examinees/{id}/exams', [ExamineesController::class, 'get'])->name('examinee.exams');
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);
