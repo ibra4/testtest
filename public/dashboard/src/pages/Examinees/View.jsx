@@ -37,7 +37,7 @@ const View = ({ data, queryParams, onSearch }) => {
                     <ActionButton
                         icon={<TbReportAnalytics />}
                         label={t('View Report')}
-                        onClick={() => push(`examinees/${item.id}/exam`)}
+                        onClick={() => push(`examinees/${item.id}/exams`)}
                         variant="primary"
                     />
                     {/* <ActionButton icon={<FaTrash />} onClick={() => {}} variant="danger" /> */}
