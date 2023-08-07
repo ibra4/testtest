@@ -96,4 +96,10 @@ class Examinee extends Model
 
         return $location;
     }
+
+    public function leiterReports()
+    {
+        // return $this->hasMany(LeiterReport::class, 'examinee_id', 'id');
+        return $this->hasOne(Report::class, 'id', 'report_id');
+    }
 }

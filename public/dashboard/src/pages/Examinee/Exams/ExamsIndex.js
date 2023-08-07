@@ -26,10 +26,12 @@ function ExamsIndex() {
         getData();
     }, [])
 
+    console.log('data : ', data);
+    
     return (
         <Layout title={t("Examinee exams")}>
             {status == 'loading' && <FullLoader />}
-            <ExamView examinee={data.examinee} />
+            <ExamView examinee={data.examinee} leiter={data.leiter} />
         </Layout>
     )
 }

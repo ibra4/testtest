@@ -10,7 +10,7 @@ import { TbReportAnalytics } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-function ExamView({ examinee }) {
+function ExamView({ examinee, leiter }) {
     const { t } = useTranslation();
     const { push } = useHistory();
     return (
@@ -38,20 +38,23 @@ function ExamView({ examinee }) {
                         <th>{t('Actions')}</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>12</td>
-                            <td>5 years 2 months</td>
-                            <td>Mohannad</td>
-                            <td>01/07/2023 - 13:22:54</td>
-                            <td>01/07/2023 - 13:22:54</td>
-                            <td>
-                                <ActionButton
-                                    label={t('View Exam')}
-                                    icon={<TbReportAnalytics />}
-                                    onClick={() => push(`/reports/leiter/${90}`)}
-                                />
-                            </td>
-                        </tr>
+                        {leiter &&
+                            leiter.map((leiterReport) => (
+                                <tr>
+                                    <td>{leiterReport.id}</td>
+                                    <td className="text-danger">{examinee.age}</td>
+                                    <td className="text-danger">Mohannad</td>
+                                    <td className="text-danger">{examinee.application_date}</td>
+                                    <td className="text-danger">{examinee.created_at}</td>
+                                    <td>
+                                        <ActionButton
+                                            label={t('View Exam')}
+                                            icon={<TbReportAnalytics />}
+                                            onClick={() => push(`/reports/leiter/${leiterReport.id}`)}
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
                     </tbody>
                 </Table>
                 <div className="text-center">
@@ -71,25 +74,10 @@ function ExamView({ examinee }) {
                         <th>{t('Created At')}</th>
                         <th>{t('Actions')}</th>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>12</td>
-                            <td>5 years 2 months</td>
-                            <td>Mohannad</td>
-                            <td>01/07/2023 - 13:22:54</td>
-                            <td>01/07/2023 - 13:22:54</td>
-                            <td>
-                                <ActionButton
-                                    label={t('View Exam')}
-                                    icon={<TbReportAnalytics />}
-                                    onClick={() => push(`/reports/leiter/${90}`)}
-                                />
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody></tbody>
                 </Table>
                 <div className="text-center">
-                    <Link to={`/reports/${90}/leiter/create`} className="btn btn-primary">
+                    <Link to={`/reports/casd/create`} className="btn btn-primary">
                         <FaPlus />
                         <span className="ms-2">{t('create_new', { name: 'CASD Report' })}</span>
                     </Link>
@@ -106,24 +94,10 @@ function ExamView({ examinee }) {
                         <th>{t('Actions')}</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>12</td>
-                            <td>5 years 2 months</td>
-                            <td>Mohannad</td>
-                            <td>01/07/2023 - 13:22:54</td>
-                            <td>01/07/2023 - 13:22:54</td>
-                            <td>
-                                <ActionButton
-                                    label={t('View Exam')}
-                                    icon={<TbReportAnalytics />}
-                                    onClick={() => push(`/reports/leiter/${90}`)}
-                                />
-                            </td>
-                        </tr>
                     </tbody>
                 </Table>
                 <div className="text-center">
-                    <Link to={`/reports/${90}/leiter/create`} className="btn btn-primary">
+                    <Link to={`/reports/mpr/create`} className="btn btn-primary">
                         <FaPlus />
                         <span className="ms-2">{t('create_new', { name: 'MPR Report' })}</span>
                     </Link>
@@ -140,24 +114,10 @@ function ExamView({ examinee }) {
                         <th>{t('Actions')}</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>12</td>
-                            <td>5 years 2 months</td>
-                            <td>Mohannad</td>
-                            <td>01/07/2023 - 13:22:54</td>
-                            <td>01/07/2023 - 13:22:54</td>
-                            <td>
-                                <ActionButton
-                                    label={t('View Exam')}
-                                    icon={<TbReportAnalytics />}
-                                    onClick={() => push(`/reports/leiter/${90}`)}
-                                />
-                            </td>
-                        </tr>
                     </tbody>
                 </Table>
                 <div className="text-center">
-                    <Link to={`/reports/${90}/leiter/create`} className="btn btn-primary">
+                    <Link to={`/reports/abas/create`} className="btn btn-primary">
                         <FaPlus />
                         <span className="ms-2">{t('create_new', { name: 'ABAS Report' })}</span>
                     </Link>
