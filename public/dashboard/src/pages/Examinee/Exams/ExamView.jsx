@@ -19,7 +19,7 @@ function ExamView({ examinee, leiter }) {
             <WhiteBox title={t('Examinee Data')}>
                 <ExamineeGeneralData examinee={examinee} />
             </WhiteBox>
-            <WhiteBox title={t('Leiter Reports')}>
+            <WhiteBox title={t('Leiter Exams')}>
                 <Table className="align-middle">
                     <thead>
                         <th>ID</th>
@@ -55,7 +55,7 @@ function ExamView({ examinee, leiter }) {
                     </Link>
                 </div>
             </WhiteBox>
-            <WhiteBox title={t('CASD Reports')}>
+            <WhiteBox title={t('CASD Exams')}>
                 <Table className="align-middle">
                     <thead>
                         <th>ID</th>
@@ -74,7 +74,7 @@ function ExamView({ examinee, leiter }) {
                     </Link>
                 </div>
             </WhiteBox>
-            <WhiteBox title={t('MPR Reports')}>
+            <WhiteBox title={t('MPR Exams')}>
                 <Table className="align-middle">
                     <thead>
                         <th>ID</th>
@@ -93,7 +93,7 @@ function ExamView({ examinee, leiter }) {
                     </Link>
                 </div>
             </WhiteBox>
-            <WhiteBox title={t('ABAS Reports')}>
+            <WhiteBox title={t('ABAS Exams')}>
                 <Table className="align-middle">
                     <thead>
                         <th>ID</th>
