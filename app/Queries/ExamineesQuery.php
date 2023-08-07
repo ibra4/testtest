@@ -68,6 +68,9 @@ class ExamineesQuery
             $query->where('examinees.gender', $request->gender);
         }
 
+        if ($request->id) {
+            $query->where('examinees.id', $request->id);
+        }
 
         /** @var \App\Models\User $user */
         $user = $request->user();

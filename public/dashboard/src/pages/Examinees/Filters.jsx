@@ -25,6 +25,17 @@ function Filters({ queryParams, onSearch, config }) {
                         <Row>
                             <Col md={4}>
                                 <TextField
+                                    name="id"
+                                    label="ID"
+                                    onChange={handleChange}
+                                    value={values.id}
+                                    onBlur={handleBlur}
+                                    error={errors.id}
+                                    className="mb-3"
+                                />
+                            </Col>
+                            <Col md={4}>
+                                <TextField
                                     name="name"
                                     label="Name"
                                     onChange={handleChange}
