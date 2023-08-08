@@ -55,7 +55,7 @@ class Examinee extends Model
 
     public function report()
     {
-        return $this->hasMany(LeiterReport::class, 'examinee_id', 'id');
+        return $this->hasOne(LeiterReport::class, 'id', 'report_id');
     }
 
     public function leiterReports()

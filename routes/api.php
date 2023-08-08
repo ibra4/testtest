@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CountryStatisticController;
 use App\Http\Controllers\Api\SubAdminsController;
 use App\Http\Controllers\Api\ExamineesController;
 use App\Http\Controllers\Api\InfoController;
+use App\Http\Controllers\Api\LeiterExamsController;
 use App\Http\Controllers\Api\LeiterRecordsController;
 use App\Http\Controllers\Api\MyProfileController;
 use App\Http\Controllers\Api\SlidersController;
@@ -81,12 +82,17 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/examinees/{id}', [ExamineesController::class, 'get']);
         /** @deprecated*/
         Route::get('/examinees-exam/{id}', [ExamineesController::class, 'getExam']);
+        /** @deprecated*/
         Route::put('/examinees-exam/{id}/{type}', [ExamineesController::class, 'saveExam']);
         Route::post('/examinees/create', [ExamineesController::class, 'create']);
         Route::put('/examinees/{id}/update', [ExamineesController::class, 'update']);
 
         // New
-        Route::get('/examinees/{id}/exams', [ExamineesController::class, 'exams'])->name('examinee.exams');
+        Route::get('/examinees/{id}/exams', [ExamineesController::class, 'actionExams'])->name('examinee.exams');
+
+        // Leiter
+        Route::get('/examinees/leiter/{id}', [LeiterExamsController::class, 'actionGet'])->name('examinee.leiter-exams');
+        Route::put('/examinees/leiter/save/{id}/{type}', [LeiterExamsController::class, 'actionUpdate']);
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);

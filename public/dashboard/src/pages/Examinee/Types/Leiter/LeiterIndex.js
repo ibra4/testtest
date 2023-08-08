@@ -16,7 +16,7 @@ function LeiterIndex() {
     const [status, setStatus] = useState("loading")
 
     const getData = async () => {
-        const res = await httpClient.get(`${ROUTES.EXAMINEES.EXAM}/${id}`)
+        const res = await httpClient.get(`examinees/leiter/${id}`)
         setData(res.data)
         setStatus("success")
     }
@@ -26,7 +26,7 @@ function LeiterIndex() {
     }, [])
 
     const onSectionSubmit = async (type, values) => {
-        return await httpClient.put(`${ROUTES.EXAMINEES.EXAM}/${id}/${type}`, values)
+        return await httpClient.put(`examinees/leiter/save/${id}/${type}`, values)
     }
 
     return (

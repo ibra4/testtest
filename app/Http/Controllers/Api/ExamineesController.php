@@ -9,8 +9,10 @@ use App\Http\Requests\UpdateExamineeRequest;
 use App\Http\Requests\UpdateExamRequest;
 use App\Http\Resources\ExamineeExamsResource;
 use App\Http\Resources\ExamineeResource;
+use App\Http\Resources\LeiterReportResource;
 use App\Http\Resources\ReportResource;
 use App\Models\Examinee;
+use App\Models\Reports\LeiterReport;
 use App\Queries\ExamineesQuery;
 use App\Services\ReportsService;
 use Illuminate\Http\Request;
@@ -60,7 +62,10 @@ class ExamineesController extends Controller
         return response()->json(new ExamineeResource($examinee));
     }
 
-    public function exams(Request $request, $id)
+    /**
+     * @new
+     */
+    public function actionExams($id)
     {
         $examinee = Examinee::findOrFail($id);
         return response()->json(new ExamineeExamsResource($examinee));
@@ -98,6 +103,9 @@ class ExamineesController extends Controller
         return Excel::download(new ExamineesExport($request, $this->examineesQuery), 'examinees.xlsx');
     }
 
+    /**
+     * @deprecated
+     */
     public function getExam($id)
     {
         $examinee = Examinee::findOrFail($id);
@@ -106,9 +114,9 @@ class ExamineesController extends Controller
 
     public function saveExam($id, $type, UpdateExamRequest $request)
     {
-        $examinee = Examinee::findOrFail($id);
+        $report = LeiterReport::findOrFail($id);
 
-        $report = $this->reportService->updateReport($examinee, $type, $request);
+        $report = $this->reportService->updateReport($report, $type, $request);
 
         return response()->json($report);
     }

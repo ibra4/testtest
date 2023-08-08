@@ -18,6 +18,7 @@ use App\Models\Helpers\SemGrowthNonverbalMemory;
 use App\Models\Helpers\SemGrowthReverseMemory;
 use App\Models\Helpers\SemGrowthSequentialOrder;
 use App\Models\Helpers\SemGrowthVisualPatterns;
+use App\Models\Reports\LeiterReport;
 use App\Services\LeiterRecordsService;
 use Illuminate\Http\Request;
 use stdClass;
@@ -27,10 +28,11 @@ class ReportsController extends Controller
     public function index(Request $request, LeiterRecordsService $lrs, $lang, $id)
     {
         app()->setLocale($lang);
-        $examinee = Examinee::findOrFail($id);
+        $report = LeiterReport::findOrFail($id);
 
-        $age = $examinee->age;
-        $examiner = $examinee->examiner;
+        $age = $report->age;
+        $examiner = $report->examiner;
+        $examinee = $report->examinee;
 
         if ($examiner->hasRole('admin')) {
             $logo = $examiner->logo;
@@ -38,15 +40,15 @@ class ReportsController extends Controller
             $logo = $examiner->admin->logo;
         }
 
-        $reportCognitive = $examinee->report->reportCognitive;
-        $reportMemory = $examinee->report->reportMemory;
-        $reportAttention = $examinee->report->reportAttention;
-        $reportSupplementalAttention = $examinee->report->reportSupplementalAttention;
+        $reportCognitive = $report->reportCognitive;
+        $reportMemory = $report->reportMemory;
+        $reportAttention = $report->reportAttention;
+        $reportSupplementalAttention = $report->reportSupplementalAttention;
 
         $reportAttention->nonverbal_stroop_effect =
             abs($reportAttention->nonverbal_stroop_incongruent_correct -
                 $reportAttention->nonverbal_stroop_congruent_correct);
-        $reportExaminer = $examinee->report->reportExaminer;
+        $reportExaminer = $report->reportExaminer;
 
         /**
          * Cognitive
@@ -327,8 +329,11 @@ class ReportsController extends Controller
     public function charts(Request $request, LeiterRecordsService $lrs, $lang, $id)
     {
         app()->setLocale($lang);
-        $examinee = Examinee::findOrFail($id);
-        $examiner = $examinee->examiner;
+        $report = LeiterReport::findOrFail($id);
+
+        $age = $report->age;
+        $examiner = $report->examiner;
+        $examinee = $report->examinee;
 
         if ($examiner->hasRole('admin')) {
             $logo = $examiner->logo;
@@ -336,11 +341,11 @@ class ReportsController extends Controller
             $logo = $examiner->admin->logo;
         }
 
-        $age = $examinee->age;
+        $age = $report->age;
 
-        $reportMemory = $examinee->report->reportMemory;
-        $reportAttention = $examinee->report->reportAttention;
-        $reportCognitive = $examinee->report->reportCognitive;
+        $reportMemory = $report->reportMemory;
+        $reportAttention = $report->reportAttention;
+        $reportCognitive = $report->reportCognitive;
 
         $reportAttention->nonverbal_stroop_effect =
             abs($reportAttention->nonverbal_stroop_incongruent_correct -

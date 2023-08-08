@@ -83,3 +83,10 @@ export const getLeiterRecordLabelByType = (type) => {
     const types = store.getState().app.config.leiter_tables_types
     return types[type]
 }
+
+export const renderAge = age => {
+    if (!age) {
+        return ""
+    }
+    return `${age.years ?? 0} سنوات, ${age.months ?? 0} اشهر`
+}

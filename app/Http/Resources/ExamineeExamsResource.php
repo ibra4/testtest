@@ -28,7 +28,7 @@ class ExamineeExamsResource extends JsonResource
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at
             ],
-            'leiter' => LeiterReportResource::collection($this->leiterReports),
+            'leiter' => LeiterReportTeaserResource::collection($this->leiterReports),
         ];
     }
 }

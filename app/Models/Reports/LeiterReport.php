@@ -15,7 +15,7 @@ class LeiterReport extends Model
     protected $fillable = [
         'examinee_id',
         'application_date',
-        'admin_id',
+        'created_by',
         'report_cognitive_subtest_id',
         'report_memory_battery_id',
         'report_attention_id',
@@ -34,17 +34,28 @@ class LeiterReport extends Model
         'created_at' => 'datetime:d/m/Y - H:i:s',
     ];
 
-    public function getAgeAttribute($value)
+    public function getAgeAttribute()
     {
-        $value = $this->birthday ?? $value;
-        $birthday = new Carbon($value);
+        $birthday = new Carbon($this->examinee->birthday);
         $applicationDate = $this->application_date ? new Carbon($this->application_date) : Carbon::now();
         $diff = $birthday->diff($applicationDate);
         $years = $diff->format("%y");
         $months = $diff->format("%m");
         return $years * 12 + $months;
     }
-    
+
+    public function getFormatedAgeAttribute()
+    {
+        $birthday = new Carbon($this->examinee->birthday);
+        $applicationDate = $this->application_date ? new Carbon($this->application_date) : Carbon::now();
+        $diff = $birthday->diff($applicationDate);
+
+        return [
+            'years' => $diff->format("%y"),
+            'months' => $diff->format("%m"),
+        ];
+    }
+
     public function examinee()
     {
         return $this->belongsTo(Examinee::class, 'examinee_id', 'id');
@@ -52,7 +63,7 @@ class LeiterReport extends Model
 
     public function examiner()
     {
-        return $this->belongsTo(User::class, 'admin_id', 'id');
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
     public function reportCognitive()

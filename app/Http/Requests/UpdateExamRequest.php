@@ -6,6 +6,7 @@ use App\Models\Examinee;
 use App\Models\Helpers\ExaminerRatingAttention;
 use App\Models\Helpers\ExaminerRatingEnergy;
 use App\Models\Helpers\ExaminerRatingOrganization;
+use App\Models\Reports\LeiterReport;
 use App\Rules\AttentionRecordExist;
 use App\Rules\CognitiveAndMemoryRecordExist;
 use App\Rules\ExaminerRecordExist;
@@ -34,7 +35,7 @@ class UpdateExamRequest extends FormRequest
      */
     public function rules()
     {
-        $age = Examinee::findOrFail($this->route('id'))->age;
+        $age = LeiterReport::findOrFail($this->route('id'))->age;
 
         switch ($this->type) {
             case 'cognitive':

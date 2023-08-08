@@ -18,9 +18,23 @@ class LeiterReportResource extends JsonResource
             'id' => $this->id,
             'application_date' => $this->application_date,
             'age' => $this->age,
-            'examiner' => new ExaminerResource($this->examiner),
+            'formated_age' => $this->formated_age,
+            // 'examiner' => new ExaminerResource($this->examiner),
+            'examinee' => new ExamineeResource($this->examinee),
+            'reports' => [
+                'cognitive' => $this->reportCognitive,
+                'memory' => $this->reportMemory,
+                'attention' => $this->reportAttention,
+                'supplemental_attention' => $this->reportSupplementalAttention,
+                'examiner' => $this->reportExaminer,
+                'narrative' => $this->reportNarrative,
+            ],
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'updated_at' => $this->updated_at,
+            'file_en' => route('reports.first', ['id' => $this->examinee->id, 'lang' => 'en']),
+            'file_ar' => route('reports.first', ['id' => $this->examinee->id, 'lang' => 'ar']),
+            'file_normal_dist_en' => route('reports.second', ['id' => $this->examinee->id, 'lang' => 'en']),
+            'file_normal_dist_ar' => route('reports.second', ['id' => $this->examinee->id, 'lang' => 'ar'])
         ];
     }
 }

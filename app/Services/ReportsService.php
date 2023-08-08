@@ -105,14 +105,12 @@ class ReportsService
     }
 
     /**
-     * @param Examinee $examinee
+     * @param Examinee $report
      * @param string $type
      * @return Model
      */
-    public function getSubReportModel(Examinee $examinee, string $type)
+    public function getSubReportModel(LeiterReport $report, string $type)
     {
-        $report = $examinee->report;
-
         switch ($type) {
             case 'cognitive':
                 return $report->reportCognitive;
@@ -130,14 +128,14 @@ class ReportsService
     }
 
     /**
-     * @param Examinee $examinee
+     * @param LeiterReport $report
      * @param string $type
      * @param Request $request
      * @return Model
      */
-    public function updateReport(Examinee $examinee, string $type, Request $request)
+    public function updateReport(LeiterReport $report, string $type, Request $request)
     {
-        $report = $this->getSubReportModel($examinee, $type);
+        $report = $this->getSubReportModel($report, $type);
 
         $data = $request->only($report->getFillable());
 
