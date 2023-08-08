@@ -4,20 +4,20 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LatestReportsResource;
-use App\Models\Reports\Report;
+use App\Models\Reports\LeiterReport;
 use Illuminate\Support\Facades\DB;
 
 class InfoController  extends Controller
 {
     public function historyTeaser()
     {
-        $reports = Report::limit(5)->orderBy('id', 'DESC')->get();
+        $reports = LeiterReport::limit(5)->orderBy('id', 'DESC')->get();
         return response()->json(LatestReportsResource::collection($reports));
     }
 
     public function historyIndex()
     {
-        $reports = Report::select([
+        $reports = LeiterReport::select([
             'reports.id',
             'examinee.name as examinee_name',
             'admin.name as admin_name',

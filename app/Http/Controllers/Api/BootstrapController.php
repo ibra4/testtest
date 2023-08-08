@@ -7,7 +7,7 @@ use App\Http\Resources\CountryResource;
 use App\Http\Resources\UserResource;
 use App\Models\Country;
 use App\Models\Examinee;
-use App\Models\Reports\Report;
+use App\Models\Reports\LeiterReport;
 use App\Models\User;
 use App\Repositories\ReportRepository;
 use Illuminate\Http\Request;
@@ -40,7 +40,7 @@ class BootstrapController extends Controller
         }
 
         $used_reports =  $request->user()->hasRole('root')
-            ? Report::count()
+            ? LeiterReport::count()
             : $this->reportRepository->getNumberOfUsedReportsForCenter($request->user());
 
         $data = [

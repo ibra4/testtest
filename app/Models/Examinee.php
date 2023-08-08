@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Reports\Report;
+use App\Models\Reports\LeiterReport;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,8 +24,7 @@ class Examinee extends Model
         'city_id',
         'admin_id',
         'examiner_notes',
-        'created_by',
-        'report_id'
+        'created_by'
     ];
 
     /**
@@ -37,17 +36,6 @@ class Examinee extends Model
         'updated_at' => 'datetime:d/m/Y - H:i:s',
         'created_at' => 'datetime:d/m/Y - H:i:s',
     ];
-
-    public function getAgeAttribute($value)
-    {
-        $value = $this->birthday ?? $value;
-        $birthday = new Carbon($value);
-        $applicationDate = $this->application_date ? new Carbon($this->application_date) : Carbon::now();
-        $diff = $birthday->diff($applicationDate);
-        $years = $diff->format("%y");
-        $months = $diff->format("%m");
-        return $years * 12 + $months;
-    }
 
     public function getGenderAttribute($value)
     {
@@ -67,7 +55,12 @@ class Examinee extends Model
 
     public function report()
     {
-        return $this->hasOne(Report::class, 'id', 'report_id');
+        return $this->hasMany(LeiterReport::class, 'examinee_id', 'id');
+    }
+
+    public function leiterReports()
+    {
+        return $this->hasMany(LeiterReport::class, 'examinee_id', 'id');
     }
 
     public function examiner()
@@ -94,11 +87,5 @@ class Examinee extends Model
         }
 
         return $location;
-    }
-
-    public function leiterReports()
-    {
-        // return $this->hasMany(LeiterReport::class, 'examinee_id', 'id');
-        return $this->hasOne(Report::class, 'id', 'report_id');
     }
 }

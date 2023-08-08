@@ -34,9 +34,10 @@ function ExamView({ examinee, leiter }) {
                             leiter.map((leiterReport) => (
                                 <tr>
                                     <td>{leiterReport.id}</td>
-                                    <td className="text-danger">{examinee.age}</td>
-                                    <td className="text-danger">Mohannad</td>
-                                    <td className="text-danger">{examinee.created_at}</td>
+                                    <td>{leiterReport.age}</td>
+                                    <td>{leiterReport?.examiner?.name}</td>
+                                    <td>{leiterReport.application_date}</td>
+                                    <td>{examinee.created_at}</td>
                                     <td>
                                         <ActionButton
                                             label={t('View Exam')}

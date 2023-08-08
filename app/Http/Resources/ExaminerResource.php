@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LeiterReportResource extends JsonResource
+class ExaminerResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,8 @@ class LeiterReportResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'application_date' => $this->application_date,
-            'age' => $this->age,
-            'examiner' => new ExaminerResource($this->examiner),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'name' => $this->name,
+            'avatar' => $this->avatar,
         ];
     }
 }

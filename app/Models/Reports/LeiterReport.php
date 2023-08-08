@@ -3,14 +3,19 @@
 namespace App\Models\Reports;
 
 use App\Models\Examinee;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Report extends Model
+class LeiterReport extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'examinee_id',
+        'application_date',
+        'admin_id',
         'report_cognitive_subtest_id',
         'report_memory_battery_id',
         'report_attention_id',
@@ -29,9 +34,25 @@ class Report extends Model
         'created_at' => 'datetime:d/m/Y - H:i:s',
     ];
 
+    public function getAgeAttribute($value)
+    {
+        $value = $this->birthday ?? $value;
+        $birthday = new Carbon($value);
+        $applicationDate = $this->application_date ? new Carbon($this->application_date) : Carbon::now();
+        $diff = $birthday->diff($applicationDate);
+        $years = $diff->format("%y");
+        $months = $diff->format("%m");
+        return $years * 12 + $months;
+    }
+    
     public function examinee()
     {
-        return $this->hasOne(Examinee::class, 'report_id', 'id');
+        return $this->belongsTo(Examinee::class, 'examinee_id', 'id');
+    }
+
+    public function examiner()
+    {
+        return $this->belongsTo(User::class, 'admin_id', 'id');
     }
 
     public function reportCognitive()

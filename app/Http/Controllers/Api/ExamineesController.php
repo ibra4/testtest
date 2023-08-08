@@ -47,10 +47,8 @@ class ExamineesController extends Controller
             'admin.name as adminname',
             'admin.id as admin_id',
             'examinees.gender',
-            'creator.name as createdbyadminname',
             'examinees.created_at',
             'examinees.updated_at',
-            'examinees.report_id',
         );
         return response()->json($query->paginate());
     }
@@ -74,7 +72,7 @@ class ExamineesController extends Controller
             throw new AccessDeniedHttpException('number_of_reports_exceeded');
         }
 
-        $report = $this->reportService->createEmptyReport();
+        // $report = $this->reportService->createEmptyReport();
 
         $admin = $request->user();
         $admin->update(['used_reports' => DB::raw('used_reports + 1')]);
@@ -82,7 +80,6 @@ class ExamineesController extends Controller
         $data = $request->all();
         $data['admin_id'] = $admin->id;
         $data['created_by'] = $admin->id;
-        $data['report_id'] = $report->id;
         $examinee = Examinee::create($data);
 
         return response()->json($examinee);

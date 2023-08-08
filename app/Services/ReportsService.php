@@ -9,7 +9,7 @@ use App\Repositories\ExaminerReportRepository;
 use App\Repositories\MemoryReportRepository;
 use App\Repositories\NarrativeReportRepository;
 use App\Repositories\ReportRepository;
-use App\Models\Reports\Report;
+use App\Models\Reports\LeiterReport;
 use App\Models\User;
 use App\Repositories\SupplimentalAttentionReportRepository;
 use Illuminate\Database\Eloquent\Model;
@@ -74,7 +74,7 @@ class ReportsService
     /**
      * createExamineeReport
      *
-     * @return Report
+     * @return LeiterReport
      */
     public function createEmptyReport()
     {

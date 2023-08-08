@@ -2,22 +2,22 @@
 
 namespace App\Repositories;
 
-use App\Models\Reports\Report;
+use App\Models\Reports\LeiterReport;
 use App\Models\User;
 
 class ReportRepository
 {
     /**
-     * @return Report
+     * @return LeiterReport
      */
     public function createEmptyReport()
     {
-        return Report::create([]);
+        return LeiterReport::create([]);
     }
 
     public function create(array $params)
     {
-        return Report::create($params);
+        return LeiterReport::create($params);
     }
 
     public function getNumberOfUsedReportsForCenter(User $user)
