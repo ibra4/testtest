@@ -104,7 +104,7 @@ class LeiterRecordsService
             ->first();
 
         if (!$record) {
-            dd($report, $field);
+            // dd($report, $field);
         }
 
         return [
