@@ -1,10 +1,8 @@
 import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import ActionButton from 'components/Fields/ActionButton';
-import LabelValueCol from 'components/LabelValueCol';
 import WhiteBox from 'components/WhiteBox';
-import { getAdminById, getCountryById, getGender } from 'providers/helpers';
 import React from 'react';
-import { Row, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaPlus } from 'react-icons/fa';
 import { TbReportAnalytics } from 'react-icons/tb';
