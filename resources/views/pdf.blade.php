@@ -462,21 +462,21 @@
                             <td>{{ $diffs['nviq_nvm'] }}</td>
                             <td>{{ $vs['nviq_nvm'] }}</td>
                             <td>{{ $diffs_percentile['nviq_nvm'] }}</td>
-                            <td>{{ __('Not Significant') }}</td>
+                            <td>{{ $significance['nviq_nvm'] }}</td>
                         </tr>
                         <tr>
                             <td>{{ __('Nonverbal IQ vs Processing Speed') }}</td>
                             <td>{{ $diffs['nviq_ps'] }}</td>
                             <td>{{ $vs['nviq_ps'] }}</td>
                             <td>{{ $diffs_percentile['nviq_ps'] }}</td>
-                            <td>{{ __('Not Significant') }}</td>
+                            <td>{{ $significance['nviq_ps'] }}</td>
                         </tr>
                         <tr>
                             <td>{{ __('Nonverbal Memory vs Processing Speed') }}</td>
                             <td>{{ $diffs['nvm_ps'] }}</td>
                             <td>{{ $vs['nvm_ps'] }}</td>
                             <td>{{ $diffs_percentile['nvm_ps'] }}</td>
-                            <td>{{ __('Not Significant') }}</td>
+                            <td>{{ $significance['nvm_ps'] }}</td>
                         </tr>
                     </tbody>
                 </table>
