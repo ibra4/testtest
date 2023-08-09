@@ -103,14 +103,28 @@ class LeiterRecordsService
             ->get()
             ->first();
 
-        if (!$record) {
-            dd($report, $field);
-        }
-
         return [
             'scaled_score' => $record ? $record->scaled_score : __("Not found"),
             'percentile' => $record ? $record->percentile : __("Not found")
         ];
+    }
+
+    public function validateAttentionScaledScore($rowScore, $model, $age)
+    {
+        $record = $model::select(
+            'scaled_score',
+            'percentile'
+        )
+            ->where('min_age', '<=', $age)
+            ->where('max_age', '>=', $age)
+            ->where('row_score', $rowScore)
+            ->get()
+            ->first();
+
+        if (!$record) {
+            [$min, $max] = $this->getMinMaxAttentionScaledScore($model, $age, $rowScore);
+            throw new NotFoundHttpException(__("Score not allowed, $min to $max"));
+        }
     }
 
     public function getSumOfCognitive(array $values)
@@ -308,6 +322,18 @@ class LeiterRecordsService
     }
 
     private function getMinMaxExaminerScaledScore(int $age, string $model)
+    {
+        $records = $model::where('min_age', '<=', $age)
+            ->where('max_age', '>=', $age)
+            ->get();
+
+        return [
+            $records->first()->row_score,
+            $records->last()->row_score
+        ];
+    }
+
+    public function getMinMaxAttentionScaledScore($model, $age, $rowScore)
     {
         $records = $model::where('min_age', '<=', $age)
             ->where('max_age', '>=', $age)
