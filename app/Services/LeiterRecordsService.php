@@ -299,7 +299,7 @@ class LeiterRecordsService
             ->orderBy('value', 'ASC')
             ->get();
 
-        if ($records->empty()) {
+        if ($records->isEmpty()) {
             return __("Not found");
         }
 
