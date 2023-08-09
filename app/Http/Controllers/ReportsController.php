@@ -270,6 +270,12 @@ class ReportsController extends Controller
             'nvm_ps' => $lrs->getDiffPercentile($diffs['nvm_ps'], $age, 'nvm_ps'),
         ];
 
+        $significance = [
+            'nviq_nvm' => $diffs['nviq_nvm'] > $vs['nviq_nvm'] ? __('Significant') : __('Not Significant'),
+            'nviq_ps' => $diffs['nviq_ps'] > $vs['nviq_ps'] ? __('Significant') : __('Not Significant'),
+            'nvm_ps' => $diffs['nvm_ps'] > $vs['nvm_ps'] ? __('Significant') : __('Not Significant'),
+        ];
+
         $age_equivalent = [
             'cognitive' => $lrs->getAgeEquivalentCognitive($sem_growth['nonverbal_iq']['growth']),
             'memory' => $lrs->getAgeEquivalentMemory($sem_growth['nonverbal_memory']['growth']),
@@ -320,7 +326,8 @@ class ReportsController extends Controller
             'examiner_social_emotions',
             'vs',
             'diffs',
-            'diffs_percentile'
+            'diffs_percentile',
+            'significance'
         ));
     }
 
