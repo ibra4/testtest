@@ -9,7 +9,7 @@
     "Sequential Order": "الاوامر المتسلسلة",
     "Figure Ground": "الشكل و الارضية",
     "Form Completion": "تكملة الشكل",
-    "Visual Patterns": "الانماط البصرية",
+    "Visual Patterns": "الأنماط البصرية - إختياري",
     "Attention": "الانتباه",
     "Forward Memory": "الذاكرة المتقدمة",
     "Reverse Memory": "الذاكرة العكسية",
@@ -95,7 +95,7 @@
     "Examiner rating scale Section E-H": "ملاحظات الفاحص ه-ز",
     "Organization/Impulse Control": "القدره على التنظيم",
     "Activity Level": "مستوى النشاط",
-    "Sociability": "التفاعل الجتماعي",
+    "Sociability": "التفاعل الإجتماعي",
     "Energy and Feelings": "الطاقه والمشاعر",
     "Regulation": "التنظيم وضبط المزاج",
     "Anxiety": "القلق",
@@ -121,7 +121,7 @@
     "Attention Divided Correct (ADc)": "الأجابات الصحيحة الإنتباه المجزء",
     "Attention Divided Incorrect (ADi)": "الإجابات الخاطئة الإنتباه المجزء",
     "Nonverbal Stroop Congruent Incorrect (NSCi)": "الاجابات الخاطئة ستروب غير اللفظي - الألوان المتشابهة",
-    "Nonverbal Stroop Incongruent Incorrect (NSii)": "الاجابات الخاطئة ستروب غير اللفظي - الألوان غير المتشابهة",
+    "Nonverbal Stroop Incongruent Incorrect (NSii)": "الاجابات الخاطئة ستروب غير اللفظي - الألوان المختلفة",
     "Supplemental Attention/Memory Scores": "الدرجات الإضافية - الذاكرة و الإنتباه",
     "api_errors": {
         "number_of_reports_exceeded": "لقد تخطيت عدد التقارير المسموحة, يرجى التواصل مع مدير الموقع"
