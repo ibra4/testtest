@@ -17,6 +17,7 @@ class RemoveSomeColumnsFromExamineesTable extends Migration
             $table->dropForeign('examinees_report_id_foreign');
             $table->dropColumn('report_id');
             $table->dropColumn('application_date');
+            $table->dropColumn('examiner_notes');
         });
     }
 

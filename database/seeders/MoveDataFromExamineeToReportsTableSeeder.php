@@ -26,6 +26,7 @@ class MoveDataFromExamineeToReportsTableSeeder extends Seeder
                     'application_date' => $date,
                     'examinee_id' => $examinee->id,
                     'created_by' => $examinee->created_by,
+                    'examiner_notes' => $examinee->examiner_notes,
                 ]);
                 $this->command->info(sprintf('Report %d, updated successfully', $report->id));
                 DB::commit();
