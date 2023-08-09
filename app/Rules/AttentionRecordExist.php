@@ -15,16 +15,25 @@ class AttentionRecordExist implements Rule
     protected $lrs;
 
     /**
+     * @var int
+     */
+    protected $age;
+
+    /**
+     * @var Model
+     */
+    protected $model;
+
+    /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct($age, $type, LeiterRecordsService $lrs, $model)
+    public function __construct($age, $model, LeiterRecordsService $lrs)
     {
         $this->age = $age;
-        $this->type = $type;
-        $this->lrs = $lrs;
         $this->model = $model;
+        $this->lrs = $lrs;
     }
 
     /**
@@ -37,7 +46,7 @@ class AttentionRecordExist implements Rule
     public function passes($attribute, $value)
     {
         try {
-            $this->lrs->getAttentionScaledScore($attribute, $value, $this->age);
+            $this->lrs->validateAttentionScaledScore($value, $this->model, $this->age);
         } catch (\Throwable $th) {
             $this->message = $th->getMessage();
             return false;

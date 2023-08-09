@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use App\Models\Examinee;
+use App\Models\Helpers\AttentionDevidedCorrect;
+use App\Models\Helpers\AttentionDevidedIncorrect;
+use App\Models\Helpers\AttentionSustainedError;
 use App\Models\Helpers\ExaminerRatingAttention;
 use App\Models\Helpers\ExaminerRatingEnergy;
 use App\Models\Helpers\ExaminerRatingOrganization;
@@ -59,11 +62,11 @@ class UpdateExamRequest extends FormRequest
                 ];
             case 'supplemental_attention':
                 return [
-                    'attention_sustained_errors' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
-                    'attention_divided_correct' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
-                    'attention_divided_incorrect' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
-                    'nonverbal_stroop_congruent_incorrect' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
-                    'nonverbal_stroop_incongruent_incorrect' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
+                    'attention_sustained_errors' => new AttentionRecordExist($age, AttentionSustainedError::class, $this->lrs),
+                    'attention_divided_correct' => new AttentionRecordExist($age, AttentionDevidedCorrect::class, $this->lrs),
+                    'attention_divided_incorrect' => new AttentionRecordExist($age, AttentionDevidedIncorrect::class, $this->lrs),
+                    // 'nonverbal_stroop_congruent_incorrect' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
+                    // 'nonverbal_stroop_incongruent_incorrect' => new CognitiveAndMemoryRecordExist($age, $this->type, $this->lrs),
                 ];
             case 'examiner':
                 return [
