@@ -50,8 +50,8 @@
                 <div class="value">{{ $examinee->birthday }}</div>
             </div>
             @if ($examinee->examiner_notes)
-                <div class="label-value-item col-6">
-                    <div class="label">{{ __('Notes') }}:</div>
+                <div class="col-12">
+                    <div class="font-weight-bold">{{ __('Notes') }}:</div>
                     <div class="value">{{ $examinee->examiner_notes }}</div>
                 </div>
             @endif
