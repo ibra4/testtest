@@ -16,6 +16,7 @@ class LeiterReport extends Model
         'examinee_id',
         'application_date',
         'created_by',
+        'examiner_notes',
         'report_cognitive_subtest_id',
         'report_memory_battery_id',
         'report_attention_id',
