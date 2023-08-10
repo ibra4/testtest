@@ -26,7 +26,7 @@ function LeiterIndex() {
     }, [])
 
     const onSectionSubmit = async (type, values) => {
-        return await httpClient.put(`examinees/leiter/save/${id}/${type}`, values)
+        return await httpClient.put(`examinees/leiter/update/${id}/${type}`, values)
     }
 
     return (

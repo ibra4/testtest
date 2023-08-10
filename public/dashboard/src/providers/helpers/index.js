@@ -90,3 +90,8 @@ export const renderAge = age => {
     }
     return `${age.years ?? 0} سنوات, ${age.months ?? 0} اشهر`
 }
+
+export const getCurrentDateAndTime = () => {
+    const dateTime = new Date();
+    return dateTime.toLocaleString();
+}

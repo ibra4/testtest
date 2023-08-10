@@ -92,7 +92,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // Leiter
         Route::get('/examinees/leiter/{id}', [LeiterExamsController::class, 'actionGet'])->name('examinee.leiter-exams');
-        Route::put('/examinees/leiter/save/{id}/{type}', [LeiterExamsController::class, 'actionUpdate']);
+        Route::put('/examinees/leiter/update/{id}/{type}', [LeiterExamsController::class, 'actionUpdate']);
+        Route::post('/examinees/leiter/create/{id}', [LeiterExamsController::class, 'actionCreate']);
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);

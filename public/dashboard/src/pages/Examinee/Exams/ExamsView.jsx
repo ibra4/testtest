@@ -1,5 +1,6 @@
 import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import ActionButton from 'components/Fields/ActionButton';
+import ReportModal from 'components/ReportModal';
 import WhiteBox from 'components/WhiteBox';
 import React from 'react';
 import { Table } from 'react-bootstrap';
@@ -8,8 +9,9 @@ import { FaPlus } from 'react-icons/fa';
 import { TbReportAnalytics } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import LeiterExamForm from './Forms/LeiterExamForm';
 
-function ExamView({ examinee, leiter }) {
+function ExamsView({ examinee, leiter, onCreateExam }) {
     const { t } = useTranslation();
     const { push } = useHistory();
     return (
@@ -20,17 +22,19 @@ function ExamView({ examinee, leiter }) {
             <WhiteBox title={t('Leiter Exams')}>
                 <Table className="align-middle">
                     <thead>
-                        <th>ID</th>
-                        <th>{t('Age')}</th>
-                        <th>{t('Created By')}</th>
-                        <th>{t('Application Date')}</th>
-                        <th>{t('Created At')}</th>
-                        <th>{t('Actions')}</th>
+                        <tr>
+                            <th>ID</th>
+                            <th>{t('Age')}</th>
+                            <th>{t('Created By')}</th>
+                            <th>{t('Application Date')}</th>
+                            <th>{t('Created At')}</th>
+                            <th>{t('Actions')}</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {leiter &&
                             leiter.map((leiterReport) => (
-                                <tr>
+                                <tr key={leiterReport.id}>
                                     <td>{leiterReport.id}</td>
                                     <td>{leiterReport.age}</td>
                                     <td>{leiterReport?.examiner?.name}</td>
@@ -48,21 +52,20 @@ function ExamView({ examinee, leiter }) {
                     </tbody>
                 </Table>
                 <div className="text-center">
-                    <Link to={`/reports/${90}/leiter/create`} className="btn btn-primary">
-                        <FaPlus />
-                        <span className="ms-2">{t('create_new', { name: 'Leiter Report' })}</span>
-                    </Link>
+                    <LeiterExamForm onSubmit={(values) => onCreateExam(values, 'leiter')} />
                 </div>
             </WhiteBox>
             <WhiteBox title={t('CASD Exams')}>
                 <Table className="align-middle">
                     <thead>
-                        <th>ID</th>
-                        <th>{t('Age')}</th>
-                        <th>{t('Created By')}</th>
-                        <th>{t('Application Date')}</th>
-                        <th>{t('Created At')}</th>
-                        <th>{t('Actions')}</th>
+                        <tr>
+                            <th>ID</th>
+                            <th>{t('Age')}</th>
+                            <th>{t('Created By')}</th>
+                            <th>{t('Application Date')}</th>
+                            <th>{t('Created At')}</th>
+                            <th>{t('Actions')}</th>
+                        </tr>
                     </thead>
                     <tbody></tbody>
                 </Table>
@@ -76,12 +79,14 @@ function ExamView({ examinee, leiter }) {
             <WhiteBox title={t('MPR Exams')}>
                 <Table className="align-middle">
                     <thead>
-                        <th>ID</th>
-                        <th>{t('Age')}</th>
-                        <th>{t('Created By')}</th>
-                        <th>{t('Application Date')}</th>
-                        <th>{t('Created At')}</th>
-                        <th>{t('Actions')}</th>
+                        <tr>
+                            <th>ID</th>
+                            <th>{t('Age')}</th>
+                            <th>{t('Created By')}</th>
+                            <th>{t('Application Date')}</th>
+                            <th>{t('Created At')}</th>
+                            <th>{t('Actions')}</th>
+                        </tr>
                     </thead>
                     <tbody></tbody>
                 </Table>
@@ -95,12 +100,14 @@ function ExamView({ examinee, leiter }) {
             <WhiteBox title={t('ABAS Exams')}>
                 <Table className="align-middle">
                     <thead>
-                        <th>ID</th>
-                        <th>{t('Age')}</th>
-                        <th>{t('Created By')}</th>
-                        <th>{t('Application Date')}</th>
-                        <th>{t('Created At')}</th>
-                        <th>{t('Actions')}</th>
+                        <tr>
+                            <th>ID</th>
+                            <th>{t('Age')}</th>
+                            <th>{t('Created By')}</th>
+                            <th>{t('Application Date')}</th>
+                            <th>{t('Created At')}</th>
+                            <th>{t('Actions')}</th>
+                        </tr>
                     </thead>
                     <tbody></tbody>
                 </Table>
@@ -115,4 +122,4 @@ function ExamView({ examinee, leiter }) {
     );
 }
 
-export default ExamView;
+export default ExamsView;

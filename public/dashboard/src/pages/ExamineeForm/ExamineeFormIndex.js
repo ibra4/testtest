@@ -15,8 +15,7 @@ const defaultUser = {
     gender: '',
     country_id: '',
     city_id: '',
-    admin_id: '',
-    examiner_notes: ''
+    admin_id: ''
 }
 
 function ExamineeFormIndex() {

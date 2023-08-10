@@ -6,7 +6,7 @@ use App\Exports\ExamineesExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateExamineeRequest;
 use App\Http\Requests\UpdateExamineeRequest;
-use App\Http\Requests\UpdateExamRequest;
+use App\Http\Requests\UpdateLeiterExamRequest;
 use App\Http\Resources\ExamineeExamsResource;
 use App\Http\Resources\ExamineeResource;
 use App\Http\Resources\LeiterReportResource;
@@ -73,16 +73,10 @@ class ExamineesController extends Controller
 
     public function create(CreateExamineeRequest $request)
     {
-        if (!$this->reportService->canUserCreateReport($request->user())) {
-            throw new AccessDeniedHttpException('number_of_reports_exceeded');
-        }
-
-        // $report = $this->reportService->createEmptyReport();
-
         $admin = $request->user();
-        $admin->update(['used_reports' => DB::raw('used_reports + 1')]);
 
         $data = $request->all();
+        // @TODO: admin_id must be center name, if sub admin, then must be his admin
         $data['admin_id'] = $admin->id;
         $data['created_by'] = $admin->id;
         $examinee = Examinee::create($data);
@@ -112,7 +106,7 @@ class ExamineesController extends Controller
         return response()->json(new ReportResource($examinee->report));
     }
 
-    public function saveExam($id, $type, UpdateExamRequest $request)
+    public function saveExam($id, $type, UpdateLeiterExamRequest $request)
     {
         $report = LeiterReport::findOrFail($id);
 

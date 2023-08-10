@@ -4,12 +4,16 @@ import Layout from 'components/Layout'
 import { httpClient } from 'providers/helpers'
 import FullLoader from 'components/FullLoader'
 import { useTranslation } from 'react-i18next'
-import ExamView from './ExamView'
+import ExamsView from './ExamsView'
+import { useHistory } from 'react-router-dom'
+import { useToasts } from 'react-toast-notifications'
 
 function ExamsIndex() {
 
     const { t } = useTranslation()
     const { id } = useParams()
+    const { addToast } = useToasts()
+    const { push } = useHistory()
 
     const [data, setData] = useState({})
     const [status, setStatus] = useState("loading")
@@ -24,12 +28,22 @@ function ExamsIndex() {
         getData();
     }, [])
 
-    console.log('data : ', data);
-    
+    const onCreateExam = async (data, examType) => {
+        const res = await httpClient.post(`examinees/${examType}/create/${id}`, data)
+
+        if (res.status == 200) {
+            addToast(t('Leiter Report Saved Successfully'), { appearance: 'success' });
+            push(`/reports/${examType}/${res.data.id}`)
+        } else {
+            addToast(t('Something went wrong'));
+            return res
+        }
+    }
+
     return (
         <Layout title={t("Examinee exams")}>
             {status == 'loading' && <FullLoader />}
-            <ExamView examinee={data.examinee} leiter={data.leiter} />
+            <ExamsView examinee={data.examinee} leiter={data.leiter} onCreateExam={onCreateExam} />
         </Layout>
     )
 }

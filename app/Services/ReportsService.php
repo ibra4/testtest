@@ -72,11 +72,13 @@ class ReportsService
     }
 
     /**
-     * createExamineeReport
-     *
+     * Creates Empty Leiter Exam
+     * 
+     * @param int $examineeId
+     * @param string $applicationDate
      * @return LeiterReport
      */
-    public function createEmptyReport()
+    public function createEmptyReport(int $examineeId, string $applicationDate, string $examinerNotes = '')
     {
         DB::beginTransaction();
         try {
@@ -88,6 +90,10 @@ class ReportsService
             $narrative = $this->narrativeReportRepository->createEmptyReport();
 
             $report = $this->reportRepository->create([
+                'examinee_id' => $examineeId,
+                'application_date' => $applicationDate,
+                'created_by' => auth()->user()->id,
+                'examiner_notes' => $examinerNotes,
                 'report_cognitive_subtest_id' => $cognitive->id,
                 'report_memory_battery_id' => $memory->id,
                 'report_attention_id' => $attention->id,

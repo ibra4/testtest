@@ -16,7 +16,7 @@ use App\Rules\ExaminerRecordExist;
 use App\Services\LeiterRecordsService;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateExamRequest extends FormRequest
+class UpdateLeiterExamRequest extends FormRequest
 {
 
     /**
