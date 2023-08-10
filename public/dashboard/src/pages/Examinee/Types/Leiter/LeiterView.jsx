@@ -21,6 +21,7 @@ function LeiterView({ data, onSectionSubmit }) {
                     <ExamineeGeneralData examinee={data.examinee} />
                     <div className="title">{t('Exam Data')}</div>
                     <Row>
+                        <LabelValueCol label={'ID'} value={data.id} md={3} />
                         <LabelValueCol label={'Application Date'} value={data.application_date} md={3} />
                         <LabelValueCol label={'Age'} value={renderAge(data.formated_age)} md={3} />
                         <LabelValueCol label={'Notes'} value={data.examiner_notes} md={12} />

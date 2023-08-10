@@ -30,7 +30,7 @@ function LeiterIndex() {
     }
 
     return (
-        <Layout title={t("Leiter Exam for examinee #21")}>
+        <Layout title={t("Leiter Exam") + `#${id}`}>
             {status == "success" ? <LeiterView data={data} onSectionSubmit={onSectionSubmit} /> : <FullLoader />}
         </Layout>
     )

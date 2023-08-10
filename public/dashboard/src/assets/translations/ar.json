@@ -126,6 +126,8 @@
     "Supplemental Attention/Memory Scores": "الدرجات الإضافية - الذاكرة و الإنتباه",
     "View Exam": "عرض الاختبار",
     "Close": "إغلاق",
+    "Examinee exams": "إختبارات المفحوصين",
+    "Leiter Exam": "إختبار لايتر",
     "api_errors": {
         "number_of_reports_exceeded": "لقد تخطيت عدد التقارير المسموحة, يرجى التواصل مع مدير الموقع"
     }
