@@ -73,12 +73,17 @@ class ExamineesController extends Controller
 
     public function create(CreateExamineeRequest $request)
     {
-        $admin = $request->user();
+        $user = $request->user();
+
+        if ($user->hasRole('admin')) {
+            $centerId = $user->id;
+        } else {
+            $centerId = $user->admin->id;
+        }
 
         $data = $request->all();
-        // @TODO: admin_id must be center name, if sub admin, then must be his admin
-        $data['admin_id'] = $admin->id;
-        $data['created_by'] = $admin->id;
+        $data['admin_id'] = $centerId;
+        $data['created_by'] = $user->id;
         $examinee = Examinee::create($data);
 
         return response()->json($examinee);

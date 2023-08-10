@@ -1,16 +1,12 @@
 import ExamineeGeneralData from 'components/ExamineeGeneralData';
-import LabelValueCol from 'components/LabelValueCol';
 import ReportsButtons from 'components/Reports/ReportsButtons';
 import WhiteBox from 'components/WhiteBox';
-import { getAdminById, getCountryById, getGender } from 'providers/helpers';
 import React from 'react';
-import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import AttentionForm from './SubForms/AttentionForm';
 import CognitiveSubtestsForm from './SubForms/CognitiveSubtestsForm';
 import ExaminerRatingScaleSectionForm from './SubForms/ExaminerRatingScaleSectionForm';
 import MemoryBatteryForm from './SubForms/MemoryBatteryForm';
-import NarrativeReportForm from './SubForms/NarrativeReportForm';
 import SupplementalAttentionForm from './SubForms/SupplementalAttentionForm';
 
 function View({

@@ -7,7 +7,7 @@ import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
 import { useTranslation } from 'react-i18next'
 
-function ExamineeExamIndex() {
+function LeiterExamIndex() {
 
     const { t } = useTranslation()
     const { id } = useParams()
@@ -36,4 +36,4 @@ function ExamineeExamIndex() {
     )
 }
 
-export default ExamineeExamIndex
+export default LeiterExamIndex

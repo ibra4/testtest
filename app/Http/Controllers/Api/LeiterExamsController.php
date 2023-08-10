@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateLeiterExamRequest;
 use App\Http\Requests\UpdateLeiterExamRequest;
-use App\Http\Resources\LatestReportsResource;
 use App\Http\Resources\LeiterReportResource;
 use App\Models\Reports\LeiterReport;
 use App\Models\User;

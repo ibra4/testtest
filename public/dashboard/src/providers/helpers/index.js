@@ -1,7 +1,6 @@
 import axios from "axios";
 import store from "providers/store";
 
-console.log(process.env)
 export const httpClient = axios.create({
     baseURL: process.env.API_URL,
     headers: {
