@@ -51,12 +51,13 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
             <div className="datatable-header">
                 <Showing data={data} />
                 <div className="d-flex">
-                    <Link to="/admins/create" className="btn btn-primary">
+                    {/* <Link to="/admins/create" className="btn btn-primary">
                         <FaPlus />
                         <span className="ms-2">{t('create_new', { name: t('Admin') })}</span>
-                    </Link>
+                    </Link> */}
                     <a
-                        className="btn btn-success ms-2"
+                        className="btn btn-disabled ms-2"
+                        style={{pointerEvents: 'none'}}
                         target="_blank"
                         href={`/admins/export?${QueryString.stringify(queryParams)}`}
                     >

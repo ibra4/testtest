@@ -20,7 +20,7 @@ function ReportsLeiterIndex() {
     const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/reports/leiter')
 
     return (
-        <Layout title={t('Centers')}>
+        <Layout title={t('Leiter Reports')}>
             <Filters onSearch={onSearch} queryParams={queryParams} />
             {isLoading && <FullLoader />}
             <ReportsLeiterView data={data} onSearch={onSearch} queryParams={queryParams} handleDelete={handleDelete} />
