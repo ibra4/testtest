@@ -14,7 +14,7 @@ function ReportsLeiterIndex() {
         page: 1,
         id: '',
         name: '',
-        admin_id: ''
+        // admin_id: ''
     })
 
     const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/reports/leiter')

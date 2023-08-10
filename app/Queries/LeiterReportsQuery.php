@@ -78,7 +78,7 @@ class LeiterReportsQuery
                 $query->where('leiter_reports.created_by', $user->id);
             }
         } elseif ($request->admin_id) {
-            $query->where('examinees.admin_id', $request->admin_id);
+            // $query->where('examinees.admin_id', $request->admin_id);
         }
 
         return $query;
