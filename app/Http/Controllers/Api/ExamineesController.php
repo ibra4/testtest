@@ -9,7 +9,6 @@ use App\Http\Requests\UpdateExamineeRequest;
 use App\Http\Requests\UpdateLeiterExamRequest;
 use App\Http\Resources\ExamineeExamsResource;
 use App\Http\Resources\ExamineeResource;
-use App\Http\Resources\LeiterReportResource;
 use App\Http\Resources\ReportResource;
 use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
@@ -19,7 +18,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class ExamineesController extends Controller
 {
@@ -52,14 +50,14 @@ class ExamineesController extends Controller
             'examinees.created_at',
             'examinees.updated_at',
         );
-        return response()->json($query->paginate());
+        return $this->sendSuccessReponse($query->paginate());
     }
 
     public function get($id)
     {
         $examinee = Examinee::findOrFail($id);
 
-        return response()->json(new ExamineeResource($examinee));
+        return $this->sendSuccessReponse(new ExamineeResource($examinee));
     }
 
     /**
@@ -67,8 +65,9 @@ class ExamineesController extends Controller
      */
     public function actionExams($id)
     {
+        // @TODO: Handle permission
         $examinee = Examinee::findOrFail($id);
-        return response()->json(new ExamineeExamsResource($examinee));
+        return $this->sendSuccessReponse(new ExamineeExamsResource($examinee));
     }
 
     public function create(CreateExamineeRequest $request)
@@ -86,7 +85,7 @@ class ExamineesController extends Controller
         $data['created_by'] = $user->id;
         $examinee = Examinee::create($data);
 
-        return response()->json($examinee);
+        return $this->sendSuccessReponse($examinee);
     }
 
     public function update(UpdateExamineeRequest $request, $id)
@@ -94,7 +93,7 @@ class ExamineesController extends Controller
         $examinee = Examinee::findOrFail($id);
         $examinee->update($request->all());
 
-        return response()->json($examinee);
+        return $this->sendSuccessReponse($examinee);
     }
 
     public function export(Request $request)
@@ -108,7 +107,7 @@ class ExamineesController extends Controller
     public function getExam($id)
     {
         $examinee = Examinee::findOrFail($id);
-        return response()->json(new ReportResource($examinee->report));
+        return $this->sendSuccessReponse(new ReportResource($examinee->report));
     }
 
     public function saveExam($id, $type, UpdateLeiterExamRequest $request)
@@ -117,6 +116,6 @@ class ExamineesController extends Controller
 
         $report = $this->reportService->updateReport($report, $type, $request);
 
-        return response()->json($report);
+        return $this->sendSuccessReponse($report);
     }
 }

@@ -44,13 +44,17 @@ class Examinee extends Model
 
     public function getNameAttribute($value)
     {
+        return "**";
         $currentUser = request()->user();
+        if ($currentUser->hasRole('root')) {
+            return $value;
+        }
         if ($currentUser->hasRole('admin')) {
-            $allowed = $currentUser->subAdmins ? $currentUser->subAdmins->pluck('id')->toArray() : [];
+            $allowed = $currentUser->subAdmins->pluck('id')->toArray() ?? [];
         }
         $allowed[] = $currentUser->id;
 
-        return in_array($this->examiner->id, $allowed) ? $value : "*******";
+        return in_array($this->center->id, $allowed) ? $value : "*******";
     }
 
     public function report()
@@ -63,7 +67,7 @@ class Examinee extends Model
         return $this->hasMany(LeiterReport::class, 'examinee_id', 'id');
     }
 
-    public function examiner()
+    public function center()
     {
         return $this->belongsTo(User::class, 'admin_id', 'id');
     }

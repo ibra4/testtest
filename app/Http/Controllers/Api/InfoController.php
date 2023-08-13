@@ -12,7 +12,7 @@ class InfoController  extends Controller
     public function historyTeaser()
     {
         $reports = LeiterReport::limit(5)->orderBy('id', 'DESC')->get();
-        return response()->json(LatestReportsResource::collection($reports));
+        return $this->sendSuccessReponse(LatestReportsResource::collection($reports));
     }
 
     public function historyIndex()
@@ -29,7 +29,7 @@ class InfoController  extends Controller
             ->leftJoin('examinees as examinee', 'examinee.report_id', '=', 'reports.id')
             ->leftJoin('users as admin', 'examinee.admin_id', '=', 'admin.id');
 
-        return response()->json($reports->paginate());
+        return $this->sendSuccessReponse($reports->paginate());
     }
 
     public function top5Teaser()
@@ -50,6 +50,6 @@ class InfoController  extends Controller
             ->groupBy('users.id')
             ->orderBy('users.used_reports','DESC')
             ->get();
-        return response()->json($admins);
+        return $this->sendSuccessReponse($admins);
     }
 }

@@ -1,4 +1,4 @@
-import { FaEdit, FaFileExcel, FaPlus, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaEye, FaFileExcel, FaPlus, FaTrash } from 'react-icons/fa';
 import ActionButton from 'components/Fields/ActionButton';
 import React from 'react';
 import { Table } from 'react-bootstrap';
@@ -19,18 +19,17 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
     const renderRow = (item) => (
         <tr key={item.id}>
             <td>{item.id}</td>
-            <td>{item.name}</td>
+            <td>{item.examinee_id}</td>
             <td>{item.examinername}</td>
             <td>{item.centername}</td>
             <td>{item.created_at}</td>
-            <td>{item.updated_at}</td>
             <td>
                 <div className="d-flex">
                     <ActionButton
-                        icon={<FaEdit />}
-                        label={t('Edit')}
-                        onClick={() => push(`admins/${item.id}/update`)}
-                        variant="success"
+                        icon={<FaEye />}
+                        label={t('View Report')}
+                        onClick={() => push(`/reports/leiter/${item.id}`)}
+                        variant="primary"
                     />
                     {hasRole('root') && (
                         <ActionButton
@@ -56,10 +55,9 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
                         <span className="ms-2">{t('create_new', { name: t('Admin') })}</span>
                     </Link> */}
                     <a
-                        className="btn btn-disabled ms-2"
-                        style={{pointerEvents: 'none'}}
+                        className="btn btn-success ms-2"
                         target="_blank"
-                        href={`/admins/export?${QueryString.stringify(queryParams)}`}
+                        href={`/leiter-reports/export?${QueryString.stringify(queryParams)}`}
                     >
                         <FaFileExcel />
                         <span className="ms-2">{t('Export to Excel')}</span>
@@ -70,12 +68,11 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
                 <Table striped>
                     <thead>
                         <tr>
-                            <th>{t('ID')}</th>
-                            <th>{t('Name')}</th>
+                            <th>{t('Report ID')}</th>
+                            <th>{t('Examinee ID')}</th>
                             <th>{t('Examiner')}</th>
                             <th>{t('Admin')}</th>
                             <th>{t('Created At')}</th>
-                            <th>{t('Latest Update')}</th>
                             <th>{t('Actions')}</th>
                         </tr>
                     </thead>

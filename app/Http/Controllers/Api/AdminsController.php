@@ -41,18 +41,18 @@ class AdminsController extends Controller
             ->groupBy('users.id')
             ->paginate();
 
-        return response()->json($admins);
+        return $this->sendSuccessReponse($admins);
     }
 
     public function get($id)
     {
-        return response()->json(new UserResource(User::findOrFail($id)));
+        return $this->sendSuccessReponse(new UserResource(User::findOrFail($id)));
     }
 
     public function create(CreateAdminRequest $request)
     {
         $user = User::create($request->all());
-        return response()->json($user);
+        return $this->sendSuccessReponse($user);
     }
 
     public function update(UpdateAdminRequest $request, $id)
@@ -60,7 +60,7 @@ class AdminsController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
 
-        return response()->json($user);
+        return $this->sendSuccessReponse($user);
     }
 
     public function export(Request $request)
@@ -68,11 +68,11 @@ class AdminsController extends Controller
         return Excel::download(new AdminsExport($request), 'admins.xlsx');
     }
 
-    public function delete($id)
+    public function actionDelete($id)
     {
         if (!request()->user()->hasRole('root')) {
-            return response()->json(
-                ['message' => __('You don\'t have permission to delete this user')],
+            return $this->sendSuccessReponse(
+                ['message' => __("You don't have permission to delete this user")],
                 403
             );
         }
@@ -81,6 +81,6 @@ class AdminsController extends Controller
 
         $user->update(['is_deleted' => true]);
 
-        return response()->json(['message' => __('Deleted successfully')]);
+        return $this->sendSuccessReponse(['message' => __('Deleted successfully')]);
     }
 }

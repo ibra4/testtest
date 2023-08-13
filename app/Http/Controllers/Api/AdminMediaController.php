@@ -19,7 +19,7 @@ class AdminMediaController extends Controller
         } else {
             throw new BadRequestHttpException("File not allowed");
         }
-        
+
         $file = $request->file($name);
 
         //get extension
@@ -31,7 +31,7 @@ class AdminMediaController extends Controller
         //upload to store
         $path = $file->move("admins/$name", $fileName);
 
-        return response()->json([
+        return $this->sendSuccessReponse([
             'path' => "/$path",
             'name' => $fileName
         ]);

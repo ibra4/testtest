@@ -38,7 +38,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/admins/{id}', [AdminsController::class, 'get']);
         Route::post('/admins/create', [AdminsController::class, 'create']);
         Route::put('/admins/{id}/update', [AdminsController::class, 'update']);
-        Route::post('/admins/{id}/delete', [AdminsController::class, 'delete']);
+        Route::post('/admins/{id}/delete', [AdminsController::class, 'actionDelete']);
 
         // Leiter Records
         Route::get('/leiter-records/{id}', [LeiterRecordsController::class, 'get']);
@@ -71,7 +71,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/sub-admins/{id}', [SubAdminsController::class, 'get']);
         Route::post('/sub-admins/create', [SubAdminsController::class, 'create']);
         Route::put('/sub-admins/{id}/update', [SubAdminsController::class, 'update']);
-        Route::post('/sub-admins/{id}/delete', [AdminsController::class, 'delete']);
+        Route::post('/sub-admins/{id}/delete', [AdminsController::class, 'actionDelete']);
 
         // Uploads
         Route::post('/admins/upload', [AdminMediaController::class, 'adminsUpload']);
@@ -96,7 +96,9 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/examinees/leiter/update/{id}/{type}', [LeiterExamsController::class, 'actionUpdate']);
         Route::post('/examinees/leiter/create/{id}', [LeiterExamsController::class, 'actionCreate']);
 
+        // Reports
         Route::get('/reports/leiter', [LeiterReportsController::class, 'actionIndex'])->name('reports.leiter');
+        Route::post('/reports/leiter/{id}/delete', [LeiterReportsController::class, 'actionDelete']);
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);

@@ -111,5 +111,8 @@
     "Anxiety": "القلق",
     "Sensory Reaction": "التفاعل الحسي",
     "Section E-H Composite": "Section E-H Composite",
-    "Emotions/Regulations Composite Score": "مركب المشاعر / التنظيم"
+    "Emotions/Regulations Composite Score": "مركب المشاعر / التنظيم",
+    "You don't have permission to delete this user": "لا يوجد لديك صلاحية لحذف هذا المستخدم",
+    "You don't have permission to delete this report": "لا يوجد لديك صلاحية لحذف هذا التقرير",
+    "You have exceeded the allowed reports number, please contact website administrator": "لقد تخطيت عدد التقارير المسموحة, يرجى التواصل مع مدير الموقع"
 }

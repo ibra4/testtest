@@ -60,12 +60,6 @@ export const getCountryById = country_id => {
     return country ? country.name : "Not set"
 }
 
-export const getAdminById = admin_id => {
-    const admins = store.getState().app.config.admins
-    const admin = admins.find(item => item.id == admin_id)
-    return admin && admin.label
-}
-
 export const getLangcode = () => {
     return window.location.pathname.split('/')[1]
 }

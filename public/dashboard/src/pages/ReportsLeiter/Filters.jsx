@@ -46,7 +46,7 @@ function Filters({ queryParams, onSearch }) {
                                     className="mb-3"
                                 />
                             </Col>
-                            {/* {config.user.role === 'root' && !values.id && (
+                            {config.user.role === 'root' && !values.id && (
                                 <Col md={4}>
                                     <SelectField
                                         name="admin_id"
@@ -59,7 +59,7 @@ function Filters({ queryParams, onSearch }) {
                                         className="mb-3"
                                     />
                                 </Col>
-                            )} */}
+                            )}
                         </Row>
                         <Button disabled={isSubmitting} type="submit">
                             <FaSearch />

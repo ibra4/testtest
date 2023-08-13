@@ -11,7 +11,6 @@ use App\Models\User;
 use App\Queries\SubAdminsQuery;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class SubAdminsController extends Controller
 {
@@ -29,22 +28,24 @@ class SubAdminsController extends Controller
 
     public function index(Request $request)
     {
-        return response()->json($this->subAdminsQuery->get($request)->paginate());
+        return $this->sendSuccessReponse($this->subAdminsQuery->get($request)->paginate());
     }
 
     public function get($id)
     {
         $admin = User::findOrFail($id);
 
-        $this->checkAccessToAdmin($admin, $id);
+        if (!$this->checkAccessToAdmin($admin, $id)) {
+            return $this->sendErrorMessage("You don't have permission to view this admin", 403, 'replace');
+        }
 
-        return response()->json(new UserResource($admin));
+        return $this->sendSuccessReponse(new UserResource($admin));
     }
 
     public function create(CreateSubAdminRequest $request)
     {
         $user = User::create($request->all());
-        return response()->json($user);
+        return $this->sendSuccessReponse($user);
     }
 
     public function update(UpdateSubAdminRequest $request, $id)
@@ -52,7 +53,7 @@ class SubAdminsController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->all());
 
-        return response()->json($user);
+        return $this->sendSuccessReponse($user);
     }
 
     public function export(Request $request)
@@ -66,18 +67,15 @@ class SubAdminsController extends Controller
      * @param  User $admin
      * @param  mixed $id
      * @return bool
-     * @throws AccessDeniedHttpException
      */
     private function checkAccessToAdmin(User $admin, $id)
     {
-        if (request()->user()->hasRole('root') || $id == request()->user()->id) {
+        $currentUser = request()->user();
+
+        if ($currentUser->hasRole('root') || $id == $currentUser->id) {
             return true;
         } else {
-            if (request()->user()->id == $admin->admin_id) {
-                return true;
-            } else {
-                throw new AccessDeniedHttpException("You don't have access to get this user");
-            }
+            return $currentUser->id == $admin->admin_id;
         }
     }
 }

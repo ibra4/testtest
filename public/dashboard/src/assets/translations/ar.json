@@ -129,7 +129,7 @@
     "Examinee exams": "إختبارات المفحوصين",
     "Leiter Exam": "إختبار لايتر",
     "Leiter Reports": "تقارير لايتر",
-    "api_errors": {
-        "number_of_reports_exceeded": "لقد تخطيت عدد التقارير المسموحة, يرجى التواصل مع مدير الموقع"
-    }
+    "Report ID": "ID التقرير",
+    "Examinee ID": "ID المفحوص",
+    "confirm_delete": "هل أنت متأكد من حذف {{id}} ؟"
 }

@@ -1,5 +1,6 @@
 {
     "showing_datatable": "Showing {{from}} to {{to}} items of {{total}} entries",
     "create_new": "Create {{name}}",
-    "update": "Update {{name}}"
+    "update": "Update {{name}}",
+    "confirm_delete": "Are you sure you want to delete this record {{id}} ?"
 }

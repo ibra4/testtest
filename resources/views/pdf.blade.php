@@ -39,7 +39,7 @@
             </div>
             <div class="label-value-item col-6">
                 <div class="label">{{ __('Examiner') }}:</div>
-                <div class="value">{{ $examinee->examiner->name }}</div>
+                <div class="value">{{ $examinee->center->name }}</div>
             </div>
             <div class="label-value-item col-6">
                 <div class="label">{{ __('Location of Testing') }}:</div>

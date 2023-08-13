@@ -46,7 +46,7 @@ class CountryStatisticController extends Controller
         }
 
 
-        return response()->json([
+        return $this->sendSuccessReponse([
             'admins' => $admins,
             'sub_admins' => $sub_admins,
             'total_reports' => $total_reports,

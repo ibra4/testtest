@@ -1,7 +1,6 @@
 import TextAreaField from 'components/Fields/TextAreaField';
 import TextField from 'components/Fields/TextField';
 import { Formik } from 'formik';
-import moment from 'moment';
 import React, { useState } from 'react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -43,7 +42,7 @@ function LeiterExamForm({ onSubmit }) {
                         if (error.response.status == 400 || error.response.status == 422) {
                             setErrors(error.response.data.errors);
                         } else {
-                            addToast(t(`api_errors.${error.response.data.message}`), { appearance: 'error' });
+                            addToast(error.response.data.message, { appearance: 'error' });
                         }
                     }
                     setSubmitting(false);

@@ -12,18 +12,18 @@ class SlidersController extends Controller
 {
     public function index()
     {
-        return response()->json(Slider::all());
+        return $this->sendSuccessReponse(Slider::all());
     }
 
     public function get($id)
     {
-        return response()->json(new SliderResource(Slider::findOrFail($id)));
+        return $this->sendSuccessReponse(new SliderResource(Slider::findOrFail($id)));
     }
 
     public function create(SliderRequest $request)
     {
         $slider = Slider::create($request->all());
-        return response()->json($slider);
+        return $this->sendSuccessReponse($slider);
     }
 
     public function update(SliderRequest $request, $id)
@@ -31,7 +31,7 @@ class SlidersController extends Controller
         $slider = Slider::findOrFail($id);
         $slider->update($request->all());
 
-        return response()->json($slider);
+        return $this->sendSuccessReponse($slider);
     }
 
     public function upload(Request $request)
@@ -47,7 +47,7 @@ class SlidersController extends Controller
         //upload to store
         $path = $file->move("sliders/", $fileName);
 
-        return response()->json([
+        return $this->sendSuccessReponse([
             'path' => "/$path",
             'name' => $fileName
         ]);

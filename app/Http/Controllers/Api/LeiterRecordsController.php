@@ -29,7 +29,7 @@ class LeiterRecordsController extends Controller
     public function getByType(Request $request, $type)
     {
         $query = $this->leiterRecordsQuery->get($request, $type);
-        return response()->json($query->paginate());
+        return $this->sendSuccessReponse($query->paginate());
     }
 
     public function get($id)
@@ -56,14 +56,14 @@ class LeiterRecordsController extends Controller
         $record = LeiterRecord::findOrFail($id);
         $record->update($request->all());
 
-        return response()->json($record);
+        return $this->sendSuccessReponse($record);
     }
 
     public function create(CreateLeiterRecordRequest $request)
     {
         $record = LeiterRecord::create($request->all());
 
-        return response()->json($record);
+        return $this->sendSuccessReponse($record);
     }
 
     public function export(Request $request, $type)
@@ -74,6 +74,6 @@ class LeiterRecordsController extends Controller
     public function delete($id)
     {
         LeiterRecord::findOrFail($id)->delete();
-        return response()->json([]);
+        return $this->sendSuccessReponse([]);
     }
 }

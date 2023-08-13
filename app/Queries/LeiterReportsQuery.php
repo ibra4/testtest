@@ -19,15 +19,10 @@ class LeiterReportsQuery
     {
         $query = LeiterReport::select(
             'leiter_reports.id',
-            'leiter_reports.created_at',
-            'leiter_reports.updated_at',
+            'examinees.id as examinee_id',
             'examiner.name as examinername',
             'center.name as centername',
-            'examiner.id as admin_id',
-            'examinees.id as examinee_id',
-            'examinees.name',
-            'examinees.birthday',
-            'examinees.gender',
+            'leiter_reports.created_at',
             'rcs.figure_ground',
             'rcs.form_completion',
             'rcs.classification_analogies',
@@ -45,12 +40,17 @@ class LeiterReportsQuery
             'rerss.energy_and_feelings',
             'rerss.regulation',
             'rerss.anxiety',
-            'rerss.sensory_reaction'
+            'rerss.sensory_reaction',
+
+            // 'examiner.id as admin_id',
+            // 'examinees.name as examineename',
+            // 'examinees.birthday',
+            // 'examinees.gender',
         )->where([['examinees.name', 'LIKE', "%$request->name%"]])
             ->orderBy('leiter_reports.created_at', 'DESC')
             ->orderBy('leiter_reports.updated_at', 'DESC')
             ->leftJoin('users as examiner', 'leiter_reports.created_by', '=', 'examiner.id')
-            ->leftJoin('examinees as examinees', 'leiter_reports.examinee_id', '=', 'examinees.id')
+            ->leftJoin('examinees', 'leiter_reports.examinee_id', '=', 'examinees.id')
             ->leftJoin('users as center', 'examinees.admin_id', '=', 'center.id')
 
             ->leftJoin('report_cognitive_subtests as rcs', 'leiter_reports.report_cognitive_subtest_id', '=', 'rcs.id')
@@ -67,18 +67,21 @@ class LeiterReportsQuery
             $query->where('leiter_reports.id', $request->id);
         }
 
-        // /** @var \App\Models\User $user */
+        /** @var \App\Models\User $user */
         $user = $request->user();
-        if (!$user->hasRole('root')) {
+
+        if ($user->hasRole('root')) {
+            if ($request->admin_id) {
+                $query->where('center.id', $request->admin_id);
+            }
+        } else {
             if ($user->hasRole('admin')) {
-                $all_admins = User::where('admin_id', $user->id)->get()->pluck('id')->toArray();
+                $all_admins = $user->subAdmins->pluck('id')->toArray();
                 $all_admins[] = $user->id;
                 $query->whereIn('leiter_reports.created_by', $all_admins);
             } elseif ($user->hasRole('sub_admin')) {
                 $query->where('leiter_reports.created_by', $user->id);
             }
-        } elseif ($request->admin_id) {
-            // $query->where('examinees.admin_id', $request->admin_id);
         }
 
         return $query;

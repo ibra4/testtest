@@ -43,7 +43,7 @@ function ExamsIndex() {
     return (
         <Layout title={t("Examinee exams")}>
             {status == 'loading' && <FullLoader />}
-            <ExamsView examinee={data.examinee} leiter={data.leiter} onCreateExam={onCreateExam} />
+            <ExamsView data={data} onCreateExam={onCreateExam} />
         </Layout>
     )
 }

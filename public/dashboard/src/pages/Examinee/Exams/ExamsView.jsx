@@ -1,7 +1,7 @@
 import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import ActionButton from 'components/Fields/ActionButton';
-import ReportModal from 'components/ReportModal';
 import WhiteBox from 'components/WhiteBox';
+import moment from 'moment';
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -11,13 +11,13 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import LeiterExamForm from './Forms/LeiterExamForm';
 
-function ExamsView({ examinee, leiter, onCreateExam }) {
+function ExamsView({ data, onCreateExam }) {
     const { t } = useTranslation();
     const { push } = useHistory();
     return (
         <>
             <WhiteBox title={t('Examinee Data')}>
-                <ExamineeGeneralData examinee={examinee} />
+                <ExamineeGeneralData examinee={data.examinee} examiner={data.examiner} />
             </WhiteBox>
             <WhiteBox title={t('Leiter Exams')}>
                 <Table className="align-middle">
@@ -32,14 +32,14 @@ function ExamsView({ examinee, leiter, onCreateExam }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {leiter &&
-                            leiter.map((leiterReport) => (
+                        {data.leiter &&
+                            data.leiter.map((leiterReport) => (
                                 <tr key={leiterReport.id}>
                                     <td>{leiterReport.id}</td>
                                     <td>{leiterReport.age}</td>
                                     <td>{leiterReport?.examiner?.name}</td>
                                     <td>{leiterReport.application_date}</td>
-                                    <td>{examinee.created_at}</td>
+                                    <td>{moment(data?.examinee?.created_at).format('yyyy-MM-DD')}</td>
                                     <td>
                                         <ActionButton
                                             label={t('View Exam')}

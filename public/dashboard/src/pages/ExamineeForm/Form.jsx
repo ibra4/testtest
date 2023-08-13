@@ -15,7 +15,7 @@ import * as Yup from 'yup';
 
 function Form({ initialValues, config, onSubmit }) {
     const { t } = useTranslation();
-    const { addToast } = useToasts()
+    const { addToast } = useToasts();
     const validationSchema = Yup.object().shape({
         name: Yup.string().required(t('Name field is required!')),
         birthday: Yup.date().required(),
@@ -40,7 +40,7 @@ function Form({ initialValues, config, onSubmit }) {
                     if (error.response.status == 400 || error.response.status == 422) {
                         setErrors(error.response.data.errors);
                     } else {
-                        addToast(t(`api_errors.${error.response.data.message}`), { appearance: 'error' });
+                        addToast(error.response.data.message, { appearance: 'error' });
                     }
                 }
                 setSubmitting(false);
@@ -55,7 +55,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={4}>
                                     <TextField
                                         name="name"
-                                        label='Name'
+                                        label="Name"
                                         onChange={handleChange}
                                         value={values.name}
                                         onBlur={handleBlur}
@@ -67,7 +67,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={4}>
                                     <TextField
                                         name="birthday"
-                                        label='Birthday'
+                                        label="Birthday"
                                         onChange={handleChange}
                                         value={values.birthday}
                                         onBlur={handleBlur}
@@ -79,7 +79,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={4}>
                                     <SelectField
                                         name="gender"
-                                        label='Gender'
+                                        label="Gender"
                                         onChange={handleChange}
                                         value={values.gender}
                                         onBlur={handleBlur}
@@ -95,7 +95,7 @@ function Form({ initialValues, config, onSubmit }) {
                                             setFieldValue('city_id', '');
                                             setCities(config.countries.find((item) => item.id == value.id).cities);
                                         }}
-                                        label='Country'
+                                        label="Country"
                                         name="country_id"
                                         value={values.country_id}
                                         onBlur={handleBlur}
@@ -107,7 +107,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={4}>
                                     <SelectField2
                                         onChange={(value) => setFieldValue('city_id', value.id)}
-                                        label='City'
+                                        label="City"
                                         value={values.city_id}
                                         onBlur={handleBlur}
                                         error={touched.city_id && errors.city_id}
@@ -119,7 +119,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={4}>
                                         <SelectField
                                             name="admin_id"
-                                            label='Admin'
+                                            label="Admin"
                                             onChange={handleChange}
                                             value={values.admin_id}
                                             onBlur={handleBlur}

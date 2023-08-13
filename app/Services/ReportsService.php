@@ -160,4 +160,12 @@ class ReportsService
         return $this->reportRepository->getNumberOfUsedReportsForCenter($user)
             < $this->reportRepository->getNumberOfTotalReportsForCenter($user);
     }
+
+    public function canUserDeleteReport(User $user, LeiterReport $report)
+    {
+        if ($user->hasRole('root')) {
+            return true;
+        }
+        return $user->id == $report->created_by;
+    }
 }

@@ -42,7 +42,7 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
     }, [status])
 
     const handleDelete = async id => {
-        const confirmed = prompt(t("Are you sure you want to delete this admin"))
+        const confirmed = confirm(t("confirm_delete", { id }))
         if (confirmed) {
             const res = await httpClient.post(`${route}/${id}/delete`)
             addToast(res.data.message, { appearance: res.status == 200 ? "success" : "error" })

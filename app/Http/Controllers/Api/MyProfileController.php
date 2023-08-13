@@ -11,7 +11,7 @@ class MyProfileController extends Controller
 {
     public function index()
     {
-        return response()->json(new UserResource(request()->user()));
+        return $this->sendSuccessReponse(new UserResource(request()->user()));
     }
 
     public function update(UpdateMyProfileRequest $request)
@@ -20,6 +20,6 @@ class MyProfileController extends Controller
 
         $user->update($request->all());
 
-        return response()->json($user);
+        return $this->sendSuccessReponse($user);
     }
 }
