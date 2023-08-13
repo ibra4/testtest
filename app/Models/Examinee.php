@@ -44,7 +44,6 @@ class Examinee extends Model
 
     public function getNameAttribute($value)
     {
-        return "**";
         $currentUser = request()->user();
         if ($currentUser->hasRole('root')) {
             return $value;

@@ -8,10 +8,10 @@ function AvatarNameTD({ item }) {
                 <img src={item.avatar} alt="" className="small-avatar img" />
             ) : (
                 <div className="small-avatar txt" style={{ backgroundColor: generateRandomColor() }}>
-                    {renderUserNameShortcut(item.name)}
+                    {item && renderUserNameShortcut(item.name)}
                 </div>
             )}
-            <span className="ms-3">{item.name}</span>
+            <span className="ms-3">{item && item.name}</span>
         </td>
     );
 }

@@ -19,7 +19,7 @@ const HistoryView = ({ data }) => {
 
     const renderRow = (item) => (
         <tr key={item.id}>
-            <AvatarNameTD item={item.examiner} />
+            <AvatarNameTD item={item.center} />
             <td>{item.examinee_name}</td>
             <td>{item.created_at}</td>
             <td>{item.updated_at}</td>
