@@ -26,6 +26,7 @@ class RenameReportsTableToLeiterReportsTable extends Migration
                     ]);
                     DB::commit();
                 } catch (Throwable $th) {
+                    echo $th->getMessage();
                     DB::rollBack();
                 }
             }
