@@ -45,7 +45,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/pdfCharts.js') }}?v=1"></script>
+    <script src="{{ asset('js/pdfCharts.js') }}?v=2"></script>
 </body>
 
 </html>
