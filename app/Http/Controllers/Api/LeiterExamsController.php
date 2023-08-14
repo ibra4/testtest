@@ -81,7 +81,7 @@ class LeiterExamsController  extends Controller
         if ($ageInMonths < 36) {
             return response()->json([
                 'errors' => [
-                    'application_date' => 'Leiter exam must be for 3 years and above'
+                    'application_date' => __('Leiter exam must be for 3 years and above')
                 ]
             ], 422);
         }
