@@ -45,9 +45,6 @@ class Examinee extends Model
     public function getNameAttribute($value)
     {
         $currentUser = request()->user();
-        if ($currentUser->hasRole('root')) {
-            return $value;
-        }
         if ($currentUser->hasRole('admin')) {
             $allowed = $currentUser->subAdmins->pluck('id')->toArray() ?? [];
         }

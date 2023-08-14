@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Reports\ReportInterface;
 use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -49,6 +50,16 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin_or_sub_admin', function (User $user) {
             if ($user->id === 1) return true;
             return $user->hasRole('sub_admin') || $user->hasRole('admin');
+        });
+
+        Gate::define('view-report', function (User $user, ReportInterface $report) {
+            if ($user->id === 1) return true;
+            if ($user->hasRole('admin')) {
+                $admins = $user->subAdmins->pluck('id')->toArray() ?? [];
+                $admins[] = $user->id;
+                return in_array($report->created_by, $admins);
+            }
+            return $report->created_by == $user->id;
         });
     }
 }

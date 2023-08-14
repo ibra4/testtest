@@ -10,6 +10,8 @@ use App\Models\Reports\LeiterReport;
 use App\Models\User;
 use App\Services\ReportsService;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class LeiterExamsController  extends Controller
 {
@@ -26,6 +28,9 @@ class LeiterExamsController  extends Controller
     public function actionGet($id)
     {
         $report = LeiterReport::findOrFail($id);
+        if (!Gate::allows('view-report', $report)) {
+            return $this->sendErrorMessage("You don't have permission to view this report", 403, 'replace');
+        }
         return $this->sendSuccessReponse(new LeiterReportResource($report));
     }
 

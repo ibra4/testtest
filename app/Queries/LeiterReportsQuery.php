@@ -20,6 +20,7 @@ class LeiterReportsQuery
         $query = LeiterReport::select(
             'leiter_reports.id',
             'examinees.id as examinee_id',
+            'examinees.name as examineename',
             'examiner.name as examinername',
             'center.name as centername',
             'leiter_reports.created_at',

@@ -6,19 +6,31 @@ import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
 import { useTranslation } from 'react-i18next'
 import LeiterView from './LeiterView'
+import GeneralError from 'components/GeneralError'
+import { useToasts } from 'react-toast-notifications'
 
 function LeiterIndex() {
 
     const { t } = useTranslation()
     const { id } = useParams()
+    const { addToast } = useToasts()
 
     const [data, setData] = useState({})
     const [status, setStatus] = useState("loading")
+    const [error, setError] = useState(null)
 
     const getData = async () => {
-        const res = await httpClient.get(`examinees/leiter/${id}`)
-        setData(res.data)
-        setStatus("success")
+        try {
+            const res = await httpClient.get(`examinees/leiter/${id}`)
+            setData(res.data)
+            setStatus("success")
+        } catch (error) {
+            setError(error.response.data.message)
+            if (error.response.data?.action == 'toast') {
+                addToast(error.response.data.message, { appearance: 'error' })
+            }
+            setStatus('error');
+        }
     }
 
     useEffect(() => {
@@ -29,9 +41,20 @@ function LeiterIndex() {
         return await httpClient.put(`examinees/leiter/update/${id}/${type}`, values)
     }
 
+    const renderView = () => {
+        switch (status) {
+            case 'loading':
+                return <FullLoader />
+            case 'success':
+                return <LeiterView data={data} onSectionSubmit={onSectionSubmit} />
+            case 'error':
+                return <GeneralError message={error} />
+        }
+    }
+
     return (
         <Layout title={t("Leiter Exam") + `#${id}`}>
-            {status == "success" ? <LeiterView data={data} onSectionSubmit={onSectionSubmit} /> : <FullLoader />}
+            {renderView()}
         </Layout>
     )
 }

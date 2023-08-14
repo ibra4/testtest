@@ -71,10 +71,7 @@ class AdminsController extends Controller
     public function actionDelete($id)
     {
         if (!request()->user()->hasRole('root')) {
-            return $this->sendSuccessReponse(
-                ['message' => __("You don't have permission to delete this user")],
-                403
-            );
+            return $this->sendErrorMessage(__("You don't have permission to delete this user"), 403);
         }
 
         $user = User::findOrFail($id);

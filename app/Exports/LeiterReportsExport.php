@@ -36,6 +36,7 @@ class LeiterReportsExport implements FromQuery, WithHeadings
         return [
             'Report ID',
             'Examinee ID',
+            'Examinee Name',
             'Examiner',
             'Admin',
             'Created At',

@@ -66,6 +66,8 @@ class LeiterReportsController extends Controller
             return $this->sendErrorMessage("Something went wrong, please contact website administrator", 500);
         }
 
-        return $this->sendSuccessReponse([]);
+        return $this->sendSuccessReponse([
+            'message' => __('Deleted Successfully')
+        ]);
     }
 }

@@ -20,6 +20,7 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
         <tr key={item.id}>
             <td>{item.id}</td>
             <td>{item.examinee_id}</td>
+            <td>{item.examineename}</td>
             <td>{item.examinername}</td>
             <td>{item.centername}</td>
             <td>{item.created_at}</td>
@@ -70,6 +71,7 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
                         <tr>
                             <th>{t('Report ID')}</th>
                             <th>{t('Examinee ID')}</th>
+                            <th>{t('Examinee')}</th>
                             <th>{t('Examiner')}</th>
                             <th>{t('Admin')}</th>
                             <th>{t('Created At')}</th>

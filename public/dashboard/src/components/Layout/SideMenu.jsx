@@ -34,14 +34,14 @@ const routes = [
         label: 'Reports',
         routeName: 'leiter-reports',
         icon: <FaTable />,
-        role: 'root',
+        role: ['admin', 'sub_admin'],
         sublinks: [
             {
                 routeName: 'reports/leiter',
                 label: 'Leiter Reports',
                 icon: <FaTable />,
-                role: 'root'
-            },
+                role: ['admin', 'sub_admin']
+            }
         ]
     },
     {
