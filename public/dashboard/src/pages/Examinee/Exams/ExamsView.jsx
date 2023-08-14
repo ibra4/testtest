@@ -19,7 +19,7 @@ function ExamsView({ data, onCreateExam }) {
             <WhiteBox title={t('Examinee Data')}>
                 <ExamineeGeneralData examinee={data.examinee} examiner={data.examiner} />
             </WhiteBox>
-            <WhiteBox title={t('Leiter Exams')}>
+            <WhiteBox title={t('Leiter International Performance Scale - Third Edition')}>
                 <Table className="align-middle">
                     <thead>
                         <tr>

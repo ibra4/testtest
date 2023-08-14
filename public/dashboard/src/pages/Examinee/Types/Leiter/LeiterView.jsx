@@ -18,13 +18,13 @@ function LeiterView({ data, onSectionSubmit }) {
         data.examinee && (
             <>
                 <WhiteBox title={t('Examinee Data')}>
-                    <ExamineeGeneralData examinee={data.examinee} examiner={data.examiner} />
+                    <ExamineeGeneralData examinee={data.examinee} examiner={data.examiner} showNotes={false} />
                     <div className="title">{t('Exam Data')}</div>
                     <Row>
                         <LabelValueCol label={'ID'} value={data.id} md={3} />
                         <LabelValueCol label={'Application Date'} value={data.application_date} md={3} />
                         <LabelValueCol label={'Age'} value={renderAge(data.formated_age)} md={3} />
-                        <LabelValueCol label={'Notes'} value={data.examiner_notes} md={12} />
+                        {data?.examiner_notes && <LabelValueCol label={'Notes'} value={data.examiner_notes} md={12} />}
                     </Row>
                 </WhiteBox>
                 <CognitiveSubtestsForm initialValues={data.reports.cognitive} onSubmit={onSectionSubmit} />

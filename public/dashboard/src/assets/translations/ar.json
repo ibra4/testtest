@@ -131,5 +131,6 @@
     "Leiter Reports": "تقارير لايتر",
     "Report ID": "ID التقرير",
     "Examinee ID": "ID المفحوص",
-    "confirm_delete": "هل أنت متأكد من حذف {{id}} ؟"
+    "confirm_delete": "هل أنت متأكد من حذف {{id}} ؟",
+    "Leiter International Performance Scale - Third Edition": "مقياس لايتر الآدائي العالمي - النسخة الثالثة - الصورة العربية"
 }

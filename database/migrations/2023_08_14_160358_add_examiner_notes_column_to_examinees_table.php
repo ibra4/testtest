@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RemoveSomeColumnsFromExamineesTable extends Migration
+class AddExaminerNotesColumnToExamineesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,7 @@ class RemoveSomeColumnsFromExamineesTable extends Migration
     public function up()
     {
         Schema::table('examinees', function (Blueprint $table) {
-            $table->dropForeign('examinees_report_id_foreign');
-            $table->dropColumn('report_id');
-            $table->dropColumn('application_date');
+            $table->text('examiner_notes')->nullable();
         });
     }
 
@@ -27,6 +25,8 @@ class RemoveSomeColumnsFromExamineesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('examinees', function (Blueprint $table) {
+            $table->dropColumn('examiner_notes');
+        });
     }
 }
