@@ -15,7 +15,7 @@ class AddExtraColumnsToReportsTable extends Migration
     {
         Schema::table('reports', function (Blueprint $table) {
             $table->date('application_date')->default(now());
-            $table->string('examiner_notes')->nullable();
+            $table->text('examiner_notes')->nullable();
             $table->unsignedBigInteger('examinee_id')->default(1);
             $table->unsignedBigInteger('created_by')->default(1);
             $table->foreign('examinee_id')->references('id')->on('examinees')->onDelete('cascade');
