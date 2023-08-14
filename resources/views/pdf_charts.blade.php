@@ -54,7 +54,7 @@
                 <div class="col-3">
                 </div>
                 <div class="col-9">
-                    <div class="canvas-wrapper">
+                    <div class="canvas-wrapper white-bar">
                         <canvas width="400" height="200"></canvas>
                     </div>
                 </div>

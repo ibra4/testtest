@@ -107,7 +107,7 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
 
 
 
-const iqLabels = [30, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170];
+const iqLabels = [30, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170, 171];
 const iqDatasets = [
     {
         data: [0, 0.2, , , , , , , ,],
@@ -165,7 +165,8 @@ const iqBelowLabels = document.documentElement.lang == 'en' ? [
     "Above Avarage",
     "High",
     "Very High",
-    "Extremely High"
+    "Extremely High",
+    " "
 ] : [
     'تأخر شديد',
     'تأخر متوسط',
@@ -176,7 +177,8 @@ const iqBelowLabels = document.documentElement.lang == 'en' ? [
     "أعلى من المتوسط",
     "مرتفع",
     "مرتفع جدا",
-    "مرتفع للغاية"
+    "مرتفع للغاية",
+    " "
 ];
 
 const figLabels = [0, 1, 4, 6, 8, 13, 15, 17, 19, 20, 21];
@@ -198,7 +200,7 @@ const figDatasets = [
     },
     ///////////////////////////
     {
-        data: [, , , 1.4, 1.8, 1.8,1.4 , , ,],
+        data: [, , , 1.4, 1.8, 1.8, 1.4, , ,],
         fill: true,
         backgroundColor: "#927ab0",
     },
