@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateLeiterExamRequest;
 use App\Http\Requests\UpdateLeiterExamRequest;
 use App\Http\Resources\LeiterReportResource;
+use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
 use App\Models\User;
 use App\Services\ReportsService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -63,6 +65,25 @@ class LeiterExamsController  extends Controller
     {
         if (!$this->reportService->canUserCreateReport($request->user())) {
             return $this->sendErrorMessage('You have exceeded the allowed reports number, please contact website administrator', 403);
+        }
+
+        $examinee = Examinee::findOrFail($id);
+        $birthday = new Carbon($examinee->birthday);
+        $applicationDate = new Carbon($request->application_date);
+
+        $diff = $birthday->diff($applicationDate);
+
+        $years = $diff->format("%y");
+        $months = $diff->format("%m");
+
+        $ageInMonths = $years * 12 + $months;
+
+        if ($ageInMonths < 36) {
+            return response()->json([
+                'errors' => [
+                    'application_date' => 'Leiter exam must be for 3 years and above'
+                ]
+            ], 422);
         }
 
         $report = $this->reportService->createEmptyReport($id, $request->application_date, $request->examiner_notes);

@@ -116,5 +116,6 @@
     "You don't have permission to delete this report": "لا يوجد لديك صلاحية لحذف هذا التقرير",
     "You have exceeded the allowed reports number, please contact website administrator": "لقد تخطيت عدد التقارير المسموحة, يرجى التواصل مع مدير الموقع",
     "You don't have permission to view this report": "لا يوجد لديك صلاحية لعرض هذا التقرير",
-    "Deleted Successfully": "تم الحذف بنجاح"
+    "Deleted Successfully": "تم الحذف بنجاح",
+    "Cannot add leiter exam for less than 3 years": "لا يمكن إضافة إختبار لايتر لعمر اقل من 3 سنوات"
 }
