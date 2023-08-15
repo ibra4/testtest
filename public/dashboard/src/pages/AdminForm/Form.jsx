@@ -165,7 +165,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col md={4}>
                                 <TextField
                                     name="number_of_reports"
-                                    label={'Number of reports'}
+                                    label={'Number of leiter reports'}
                                     onChange={handleChange}
                                     value={values.number_of_reports}
                                     onBlur={handleBlur}
