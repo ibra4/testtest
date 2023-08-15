@@ -284,6 +284,7 @@ class ReportsController extends Controller
         ];
 
         return view('pdf')->with(compact(
+            'report',
             // Examinee Data
             'examinee',
             'logo',
@@ -468,6 +469,13 @@ class ReportsController extends Controller
 
         $iq = collect(config("leiter.iq"));
 
-        return view('pdf_charts')->with(compact('composite_values', 'cognitive_values', 'examinee', 'logo', 'iq'));
+        return view('pdf_charts')->with(compact(
+            'report',
+            'composite_values',
+            'cognitive_values',
+            'examinee',
+            'logo',
+            'iq'
+        ));
     }
 }
