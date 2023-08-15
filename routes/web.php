@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\ExamineesController;
 use App\Http\Controllers\Api\LeiterRecordsController;
-use App\Http\Controllers\Api\LeiterReportsController;
+use App\Http\Controllers\Api\LeiterExamsController;
 use App\Http\Controllers\Api\SubAdminsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ReportsController;
@@ -33,7 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/sub-admins/export', [SubAdminsController::class, 'export']);
     Route::get('/examinees/export', [ExamineesController::class, 'export']);
     Route::get('/leiter-records/{type}/export', [LeiterRecordsController::class, 'export']);
-    Route::get('/leiter-reports/export', [LeiterReportsController::class, 'actionExport']);
+    Route::get('/leiter-reports/export', [LeiterExamsController::class, 'actionExport']);
 });
 
 Auth::routes();

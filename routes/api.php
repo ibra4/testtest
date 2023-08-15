@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\ExamineesController;
 use App\Http\Controllers\Api\InfoController;
 use App\Http\Controllers\Api\LeiterExamsController;
 use App\Http\Controllers\Api\LeiterRecordsController;
-use App\Http\Controllers\Api\LeiterReportsController;
+use App\Http\Controllers\Api\LeiterExamsController;
 use App\Http\Controllers\Api\MyProfileController;
 use App\Http\Controllers\Api\SlidersController;
 use Illuminate\Http\Request;
@@ -97,8 +97,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/examinees/leiter/create/{id}', [LeiterExamsController::class, 'actionCreate']);
 
         // Reports
-        Route::get('/reports/leiter', [LeiterReportsController::class, 'actionIndex'])->name('reports.leiter');
-        Route::post('/reports/leiter/{id}/delete', [LeiterReportsController::class, 'actionDelete']);
+        Route::get('/reports/leiter', [LeiterExamsController::class, 'actionIndex'])->name('reports.leiter');
+        Route::post('/reports/leiter/{id}/delete', [LeiterExamsController::class, 'actionDelete']);
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);
