@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import ExamsView from './ExamsView'
 import { useHistory } from 'react-router-dom'
 import { useToasts } from 'react-toast-notifications'
+import GeneralError from 'components/GeneralError'
 
 function ExamsIndex() {
 
@@ -16,12 +17,18 @@ function ExamsIndex() {
     const { push } = useHistory()
 
     const [data, setData] = useState({})
+    const [errorResponse, setErrorResponse] = useState(null)
     const [status, setStatus] = useState("loading")
 
     const getData = async () => {
-        const res = await httpClient.get(`examinees/${id}/exams`)
-        setData(res.data)
-        setStatus("success")
+        try {
+            const res = await httpClient.get(`examinees/${id}/exams`)
+            setData(res.data)
+            setStatus("success")
+        } catch (error) {
+            setErrorResponse(error)
+            setStatus('error');
+        }
     }
 
     useEffect(() => {
@@ -40,10 +47,20 @@ function ExamsIndex() {
         }
     }
 
+    const renderView = () => {
+        switch (status) {
+            case 'loading':
+                return <FullLoader />
+            case 'success':
+                return <ExamsView data={data} onCreateExam={onCreateExam} />
+            case 'error':
+                return <GeneralError errorResponse={errorResponse} />
+        }
+    }
+
     return (
         <Layout title={t("Examinee exams")}>
-            {status == 'loading' && <FullLoader />}
-            <ExamsView data={data} onCreateExam={onCreateExam} />
+            {renderView()}
         </Layout>
     )
 }

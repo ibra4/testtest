@@ -47,10 +47,11 @@ class Examinee extends Model
         $currentUser = request()->user();
         if ($currentUser->hasRole('admin')) {
             $allowed = $currentUser->subAdmins->pluck('id')->toArray() ?? [];
+            $allowed[] = $currentUser->id;
+            return in_array($this->center->id, $allowed) ? $value : "*******";
+        } elseif ($currentUser->hasRole('sub_admin')) {
+            return $this->created_by == $currentUser->id ? $value : "*******";
         }
-        $allowed[] = $currentUser->id;
-
-        return in_array($this->center->id, $allowed) ? $value : "*******";
     }
 
     public function report()

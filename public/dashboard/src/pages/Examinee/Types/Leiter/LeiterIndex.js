@@ -25,10 +25,7 @@ function LeiterIndex() {
             setData(res.data)
             setStatus("success")
         } catch (error) {
-            setError(error.response.data.message)
-            if (error.response.data?.action == 'toast') {
-                addToast(error.response.data.message, { appearance: 'error' })
-            }
+            setError(error)
             setStatus('error');
         }
     }

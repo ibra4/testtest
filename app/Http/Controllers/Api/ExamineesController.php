@@ -16,6 +16,7 @@ use App\Queries\ExamineesQuery;
 use App\Services\ReportsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -49,6 +50,7 @@ class ExamineesController extends Controller
             'examinees.gender',
             'examinees.created_at',
             'examinees.updated_at',
+            'examinees.created_by',
         );
         return $this->sendSuccessReponse($query->paginate());
     }
@@ -65,8 +67,10 @@ class ExamineesController extends Controller
      */
     public function actionExams($id)
     {
-        // @TODO: Handle permission
         $examinee = Examinee::findOrFail($id);
+        if (!Gate::allows('view-examinee', $examinee)) {
+            return $this->sendErrorMessage(__("You don't have permission to view this examinee"), 403, 'replace');
+        }
         return $this->sendSuccessReponse(new ExamineeExamsResource($examinee));
     }
 

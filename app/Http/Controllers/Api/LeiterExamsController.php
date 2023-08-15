@@ -31,7 +31,7 @@ class LeiterExamsController  extends Controller
     {
         $report = LeiterReport::findOrFail($id);
         if (!Gate::allows('view-report', $report)) {
-            return $this->sendErrorMessage("You don't have permission to view this report", 403, 'replace');
+            return $this->sendErrorMessage(__("You don't have permission to view this report"), 403, 'replace');
         }
         return $this->sendSuccessReponse(new LeiterReportResource($report));
     }

@@ -41,3 +41,19 @@ ul.no-style {
         z-index: 1;
     }
 }
+
+.general-error-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 15px;
+    .error-message {
+        font-size: 30px;
+    }
+    .status-code {
+        font-size: 70px;
+        font-weight: bold;
+        text-align: center;
+    }
+}

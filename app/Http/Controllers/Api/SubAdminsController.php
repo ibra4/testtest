@@ -36,7 +36,7 @@ class SubAdminsController extends Controller
         $admin = User::findOrFail($id);
 
         if (!$this->checkAccessToAdmin($admin, $id)) {
-            return $this->sendErrorMessage("You don't have permission to view this admin", 403, 'replace');
+            return $this->sendErrorMessage(__("You don't have permission to view this admin"), 403, 'replace');
         }
 
         return $this->sendSuccessReponse(new UserResource($admin));

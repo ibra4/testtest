@@ -77,7 +77,7 @@ class ExamineesQuery
                 $all_admins[] = $user->id;
                 $query->whereIn('examinees.admin_id', $all_admins);
             } elseif ($user->hasRole('sub_admin')) {
-                $query->where('examinees.admin_id', $user->id);
+                $query->where('examinees.created_by', $user->id);
             }
         } elseif ($request->admin_id) {
             $query->where('examinees.admin_id', $request->admin_id);
