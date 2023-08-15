@@ -1,7 +1,7 @@
 body {
     background-color: $light;
     color: $black;
-    font-family: 'Tajawal', sans-serif;
+    font-family: "Tajawal", sans-serif;
     .search-input {
         height: 50px;
         border-radius: 25px;
@@ -20,7 +20,7 @@ ul.no-style {
 }
 
 .p-25 {
-    padding: 25px
+    padding: 25px;
 }
 
 .section-reports {
@@ -56,4 +56,11 @@ ul.no-style {
         font-weight: bold;
         text-align: center;
     }
+}
+
+.change-lang-button {
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
 }

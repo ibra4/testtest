@@ -133,5 +133,6 @@
     "Examinee ID": "ID المفحوص",
     "confirm_delete": "هل أنت متأكد من حذف {{id}} ؟",
     "Leiter International Performance Scale - Third Edition": "مقياس لايتر الآدائي العالمي - النسخة الثالثة - الصورة العربية",
-    "English Name - Optional": "الإسم بالإنجليزية - إختياري"
+    "English Name - Optional": "الإسم بالإنجليزية - إختياري",
+    "Something went wrong, please contact website administrator": "حدث خطأ غير متوقع, يرجى الإتصال بمدير الموقع"
 }

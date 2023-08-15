@@ -8,3 +8,5 @@ export const CONSTANTS = {
         { id: 'ar', label: 'Arabic' },
     ]
 }
+
+export const generalErrorText = 'Something went wrong, please contact website administrator';

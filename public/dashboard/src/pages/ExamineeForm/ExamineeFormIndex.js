@@ -8,6 +8,7 @@ import FullLoader from 'components/FullLoader'
 import { useSelector } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
 import { useTranslation } from 'react-i18next'
+import { generalErrorText } from 'providers/helpers/constants'
 
 const defaultUser = {
     name: '',
@@ -61,7 +62,7 @@ function ExamineeFormIndex() {
             addToast(t('Examinee Saved Successfully'), { appearance: 'success' });
             push('/examinees')
         } else {
-            addToast(t('Something went wrong'));
+            addToast(t(generalErrorText), {appearance: 'error'});
             return res
         }
     }

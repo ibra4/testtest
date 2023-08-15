@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateMyProfileRequest;
 use App\Http\Resources\UserResource;
-use App\Models\User;
+use Illuminate\Http\Request;
 
 class MyProfileController extends Controller
 {
@@ -16,10 +16,18 @@ class MyProfileController extends Controller
 
     public function update(UpdateMyProfileRequest $request)
     {
-        $user = User::findOrFail($request->user()->id);
+        $user = $request->user();
 
         $user->update($request->all());
 
         return $this->sendSuccessReponse($user);
+    }
+
+    public function actionChangeLangCode(Request $request)
+    {
+        $user = $request->user();
+        $user->update(['locale' => $request->langcode]);
+        app()->setLocale($request->langcode);
+        return $this->sendSuccessReponse();
     }
 }

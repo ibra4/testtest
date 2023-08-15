@@ -8,6 +8,7 @@ import ExamsView from './ExamsView'
 import { useHistory } from 'react-router-dom'
 import { useToasts } from 'react-toast-notifications'
 import GeneralError from 'components/GeneralError'
+import { generalErrorText } from 'providers/helpers/constants'
 
 function ExamsIndex() {
 
@@ -42,7 +43,7 @@ function ExamsIndex() {
             addToast(t('Leiter Report Saved Successfully'), { appearance: 'success' });
             push(`/reports/${examType}/${res.data.id}`)
         } else {
-            addToast(t('Something went wrong'));
+            addToast(t(generalErrorText), {appearance: 'error'});
             return res
         }
     }

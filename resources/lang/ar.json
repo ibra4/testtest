@@ -118,6 +118,7 @@
     "You don't have permission to view this report": "لا يوجد لديك صلاحية لعرض هذا التقرير",
     "You don't have permission to view this examinee": "لا يوجد لديك صلاحية لعرض هذا المفحوص",
     "You don't have permission to view this admin": "لا يوجد لديك صلاحية لعرض هذا المستخدم",
+    "Something went wrong, please contact website administrator": "حدث خطأ غير متوقع, يرجى الإتصال بمدير الموقع",
     "Deleted Successfully": "تم الحذف بنجاح",
     "Leiter exam must be for 3 years and above": "لا يمكن إضافة إختبار لايتر لعمر اقل من 3 سنوات"
 }

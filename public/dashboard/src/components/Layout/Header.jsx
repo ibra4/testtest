@@ -8,12 +8,13 @@ import { CgMoreO } from 'react-icons/cg';
 import { useTranslation } from 'react-i18next';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ChangeLangCode from './ChangeLangCode';
 
 function Header({ title }) {
     const { t } = useTranslation();
 
-    const user = useSelector(state => state.app.config.user)
-    
+    const user = useSelector((state) => state.app.config.user);
+
     return (
         <div className="header d-flex align-items-center mb-4">
             <Container fluid>
@@ -24,6 +25,7 @@ function Header({ title }) {
                     </Col>
                     <Col lg={4}>
                         <div className="d-flex align-items-center justify-content-end">
+                            <ChangeLangCode />
                             <Dropdown className="notifications-dropdown mx-2">
                                 <Dropdown.Toggle className="dropdown-toggle" as={'div'}>
                                     <AiOutlineNotification />

@@ -9,7 +9,6 @@ use App\Http\Controllers\Api\ExamineesController;
 use App\Http\Controllers\Api\InfoController;
 use App\Http\Controllers\Api\LeiterExamsController;
 use App\Http\Controllers\Api\LeiterRecordsController;
-use App\Http\Controllers\Api\LeiterExamsController;
 use App\Http\Controllers\Api\MyProfileController;
 use App\Http\Controllers\Api\SlidersController;
 use Illuminate\Http\Request;
@@ -103,6 +102,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);
     Route::post('/my-profile/update', [MyProfileController::class, 'update']);
+    Route::post('/change-lang', [MyProfileController::class, 'actionChangeLangCode']);
 });
 
 // Sliders

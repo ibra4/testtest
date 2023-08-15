@@ -1,8 +1,7 @@
+import { generalErrorText } from 'providers/helpers/constants';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBan } from 'react-icons/fa';
-
-const generalErrorText = 'Opps!! Something went wrong! Please contact website administrator';
 
 function GeneralError({ errorResponse = null }) {
     const { t } = useTranslation();
