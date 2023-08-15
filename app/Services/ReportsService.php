@@ -78,7 +78,7 @@ class ReportsService
      * @param string $applicationDate
      * @return LeiterReport
      */
-    public function createEmptyReport(int $examineeId, string $applicationDate, string $examinerNotes = '')
+    public function createEmptyReport(int $examineeId, string $applicationDate, string $examinerNotes = null)
     {
         DB::beginTransaction();
         try {
