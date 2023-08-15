@@ -132,5 +132,6 @@
     "Report ID": "ID التقرير",
     "Examinee ID": "ID المفحوص",
     "confirm_delete": "هل أنت متأكد من حذف {{id}} ؟",
-    "Leiter International Performance Scale - Third Edition": "مقياس لايتر الآدائي العالمي - النسخة الثالثة - الصورة العربية"
+    "Leiter International Performance Scale - Third Edition": "مقياس لايتر الآدائي العالمي - النسخة الثالثة - الصورة العربية",
+    "English Name - Optional": "الإسم بالإنجليزية - إختياري"
 }

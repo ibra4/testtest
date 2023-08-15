@@ -67,6 +67,18 @@ function Form({ initialValues, config, onSubmit }) {
                                 </Col>
                                 <Col md={4}>
                                     <TextField
+                                        name="name_en"
+                                        label="English Name - Optional"
+                                        onChange={handleChange}
+                                        value={values.name_en}
+                                        onBlur={handleBlur}
+                                        error={touched.name_en && errors.name_en}
+                                        className="mb-3"
+                                        disabled={initialValues.id && !sameUserId(initialValues.admin_id)}
+                                    />
+                                </Col>
+                                <Col md={4}>
+                                    <TextField
                                         name="birthday"
                                         label="Birthday"
                                         onChange={handleChange}

@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next'
 
 const defaultUser = {
     name: '',
+    name_en: '',
     birthday: '',
     gender: '',
     country_id: '',

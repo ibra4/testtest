@@ -15,14 +15,14 @@ function Header({ title }) {
     const user = useSelector(state => state.app.config.user)
     
     return (
-        <div className="header d-flex align-items-center">
+        <div className="header d-flex align-items-center mb-4">
             <Container fluid>
                 <Row className="align-items-center">
-                    <Col lg={6}>
+                    <Col lg={8}>
                         {/* <HeaderBreadcrumb /> */}
                         <div className="title display-6 fw-bold">{title}</div>
                     </Col>
-                    <Col lg={6}>
+                    <Col lg={4}>
                         <div className="d-flex align-items-center justify-content-end">
                             <Dropdown className="notifications-dropdown mx-2">
                                 <Dropdown.Toggle className="dropdown-toggle" as={'div'}>

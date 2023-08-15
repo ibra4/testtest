@@ -35,6 +35,13 @@ export const generateRandomColor = () => {
     return color
 }
 
+export const getExamineeName = (examinee) => {
+    if (getLangcode() == 'en' && examinee.name_en) {
+        return examinee.name_en;
+    }
+    return examinee.name;
+}
+
 export const renderUserNameShortcut = name => {
     if (!name) {
         return "";

@@ -18,6 +18,7 @@ class Examinee extends Model
      */
     protected $fillable = [
         'name',
+        'name_en',
         'birthday',
         'gender',
         'country_id',
