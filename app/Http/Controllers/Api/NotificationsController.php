@@ -48,12 +48,18 @@ class NotificationsController extends Controller
         $notification = Notification::create($data);
 
         // @TODO: make a service
-        $userIds = [];
         switch ($notification->for) {
             case 'all':
                 $userIds = User::all()->pluck('id')->toArray();
                 break;
+            case 'sub_admins':
+                $userIds = User::where('role', 'sub_admin')->pluck('id')->toArray();
+            case 'centers':
+                $userIds = User::where('role', 'admin')->pluck('id')->toArray();
+            default:
+                $userIds = [];
         }
+
         $usersNotifications = array_map(function ($uid) use ($notification) {
             return [
                 'user_id' => $uid,
