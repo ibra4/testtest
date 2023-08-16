@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\InfoController;
 use App\Http\Controllers\Api\LeiterExamsController;
 use App\Http\Controllers\Api\LeiterRecordsController;
 use App\Http\Controllers\Api\MyProfileController;
+use App\Http\Controllers\Api\NotificationsController;
 use App\Http\Controllers\Api\SlidersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/sliders/create', [SlidersController::class, 'create']);
         Route::put('/sliders/{id}/update', [SlidersController::class, 'update']);
         Route::post('/sliders/upload', [SlidersController::class, 'upload']);
+
+        Route::get('/notifications', [NotificationsController::class, 'actionIndex']);
+        Route::get('/notifications/{id}', [NotificationsController::class, 'actionGet']);
+        Route::post('/notifications/create', [NotificationsController::class, 'actionCreate']);
+        // Route::put('/notifications/{id}/update', [NotificationsController::class, 'actionUpdate']);
+        Route::post('/notifications/{id}/delete', [NotificationsController::class, 'actionDelete']);
     });
 
     Route::middleware('can:admin_or_sub_admin')->group(function () {

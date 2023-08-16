@@ -14,6 +14,7 @@ function Header({ title }) {
     const { t } = useTranslation();
 
     const user = useSelector((state) => state.app.config.user);
+    const notifications = useSelector((state) => state.app.config.notifications);
 
     return (
         <div className="header d-flex align-items-center mb-4">
@@ -29,7 +30,11 @@ function Header({ title }) {
                             <Dropdown className="notifications-dropdown mx-2">
                                 <Dropdown.Toggle className="dropdown-toggle" as={'div'}>
                                     <AiOutlineNotification />
-                                    <div className="notification-number">5</div>
+                                    {notifications.unread_count ? (
+                                        <div className="notification-number">{notifications.unread_count}</div>
+                                    ) : (
+                                        ''
+                                    )}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                     <Dropdown.Item href="#">
@@ -37,26 +42,15 @@ function Header({ title }) {
                                         <span className="ms-2">{t('Notifications')}</span>
                                     </Dropdown.Item>
                                     <Dropdown.Divider />
-                                    <Dropdown.Item href="#" className="unread">
-                                        <BiMessageSquareDetail />
-                                        <span className="ms-2">Text of notification number 1</span>
-                                    </Dropdown.Item>
-                                    <Dropdown.Item href="#" className="unread">
-                                        <BiMessageSquareDetail />
-                                        <span className="ms-2">Text of notification number 2</span>
-                                    </Dropdown.Item>
-                                    <Dropdown.Item href="#" className="unread">
-                                        <BiMessageSquareDetail />
-                                        <span className="ms-2">Text of notification number 3</span>
-                                    </Dropdown.Item>
-                                    <Dropdown.Item href="#">
-                                        <BiMessageSquareDetail />
-                                        <span className="ms-2">Text of notification number 4</span>
-                                    </Dropdown.Item>
-                                    <Dropdown.Item href="#">
-                                        <BiMessageSquareDetail />
-                                        <span className="ms-2">Text of notification number 5</span>
-                                    </Dropdown.Item>
+                                    {notifications.list.map((userNotification) => (
+                                        <Dropdown.Item
+                                            href="#"
+                                            className={userNotification.read_at == null ? 'unread' : ''}
+                                        >
+                                            <BiMessageSquareDetail />
+                                            <span className="ms-2">{userNotification.notification.title}</span>
+                                        </Dropdown.Item>
+                                    ))}
                                     <Dropdown.Divider />
                                     <Dropdown.Item href="#" className="text-primary">
                                         <CgMoreO />

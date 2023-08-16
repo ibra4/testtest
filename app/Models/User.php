@@ -5,12 +5,11 @@ namespace App\Models;
 use App\Models\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, HasRoles, Notifiable;
+    use HasApiTokens, HasFactory, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -72,5 +71,10 @@ class User extends Authenticatable
     public function getLocaleAttribute($locale)
     {
         return $locale ?? 'en';
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(UserNotification::class);
     }
 }

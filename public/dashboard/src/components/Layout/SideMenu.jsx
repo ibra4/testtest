@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaHome, FaUser, FaUsers, FaCog, FaBars, FaTable, FaImage } from 'react-icons/fa';
+import { FaHome, FaUser, FaUsers, FaCog, FaBars, FaTable, FaImage, FaBell } from 'react-icons/fa';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { Link, useLocation } from 'react-router-dom';
 import { hasAnyRole, hasRole, isRtl } from 'providers/helpers';
@@ -131,6 +131,12 @@ const routes2 = [
                 routeName: 'settings/slider',
                 label: 'Login Slider',
                 icon: <FaImage />,
+                role: 'root'
+            },
+            {
+                routeName: 'settings/notifications',
+                label: 'Notifications',
+                icon: <FaBell />,
                 role: 'root'
             }
         ]

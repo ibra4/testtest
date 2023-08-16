@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CountryResource;
+use App\Http\Resources\UserNotificationResource;
 use App\Http\Resources\UserResource;
 use App\Models\Country;
 use App\Models\Examinee;
@@ -54,6 +55,10 @@ class BootstrapController extends Controller
             'user' => new UserResource($request->user()),
             'top_admins' => [],
             'countries' => CountryResource::collection(Country::all()),
+            'notifications' => [
+                'list' => UserNotificationResource::collection($request->user()->notifications()->limit(5)->get()),
+                'unread_count' => $request->user()->notifications()->where('read_at', NULL)->count()
+            ]
         ];
 
         // Fix

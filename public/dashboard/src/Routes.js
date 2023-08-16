@@ -22,6 +22,8 @@ import HistoryIndex from 'pages/History/HistoryIndex';
 import ExamsIndex from 'pages/Examinee/Exams/ExamsIndex';
 import LeiterIndex from 'pages/Examinee/Types/Leiter/LeiterIndex';
 import ReportsLeiterIndex from 'pages/ReportsLeiter/ReportsLeiterIndex';
+import NotificationsIndex from 'pages/Settings/Notifications/NotificationsIndex';
+import NotificationFormIndex from 'pages/Settings/NotificationForm/NotificationFormIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -89,6 +91,11 @@ const Routes = () => {
         <Route path="/settings/slider" component={SlidersIndex} exact />
         <Route path="/settings/slider/create" component={SliderFormIndex} exact />
         <Route path="/settings/slider/:id/update" component={SliderFormIndex} exact />
+
+        {/* Notifications */}
+        <Route path="/settings/notifications" component={NotificationsIndex} exact />
+        <Route path="/settings/notifications/create" component={NotificationFormIndex} exact />
+        {/* <Route path="/settings/notifications/:id/update" component={NotificationFormIndex} exact /> */}
 
         {/* Profile */}
         <Route path="/my-profile" component={ProfileIndex} exact />
