@@ -69,9 +69,9 @@ function Header({ title }) {
                                     <img src={user.avatar} />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item>
-                                        <Link to={'/my-profile'}>{t('My Profile')}</Link>
-                                    </Dropdown.Item>
+                                    <Link className="dropdown-item" to={'/my-profile'}>
+                                        {t('My Profile')}
+                                    </Link>
                                     <Dropdown.Divider />
                                     <Dropdown.Item href="/admin/logout" className="text-danger">
                                         <FaSignOutAlt />
