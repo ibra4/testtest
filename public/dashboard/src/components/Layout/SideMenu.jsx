@@ -43,6 +43,29 @@ const routes = [
                 role: ['admin', 'sub_admin']
             }
         ]
+    }
+];
+
+const routes2 = [
+    {
+        label: 'Settings',
+        routeName: 'settings',
+        icon: <FaCog />,
+        role: 'root',
+        sublinks: [
+            {
+                routeName: 'settings/slider',
+                label: 'Login Slider',
+                icon: <FaImage />,
+                role: 'root'
+            },
+            {
+                routeName: 'settings/notifications',
+                label: 'Notifications',
+                icon: <FaBell />,
+                role: 'root'
+            }
+        ]
     },
     {
         label: 'Leiter Tables',
@@ -114,29 +137,6 @@ const routes = [
                 routeName: 'leiter-records/nonverbal_stroop_effect',
                 label: 'Nonverbal Stroop Effect',
                 icon: <FaTable />,
-                role: 'root'
-            }
-        ]
-    }
-];
-
-const routes2 = [
-    {
-        label: 'Settings',
-        routeName: 'settings',
-        icon: <FaCog />,
-        role: 'root',
-        sublinks: [
-            {
-                routeName: 'settings/slider',
-                label: 'Login Slider',
-                icon: <FaImage />,
-                role: 'root'
-            },
-            {
-                routeName: 'settings/notifications',
-                label: 'Notifications',
-                icon: <FaBell />,
                 role: 'root'
             }
         ]

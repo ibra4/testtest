@@ -8,8 +8,11 @@ import world from 'components/svg-maps/packages/world';
 import sa from 'components/svg-maps/packages/saudi-arabia';
 import ae from 'components/svg-maps/packages/uae';
 import tn from 'components/svg-maps/packages/tunisia';
-import ps from 'components/svg-maps/packages/palestine';
+// import ps from 'components/svg-maps/packages/palestine';
 import jo from 'components/svg-maps/packages/jordan';
+import iq from 'components/svg-maps/packages/iraq';
+import sy from 'components/svg-maps/packages/syria';
+import eg from 'components/svg-maps/packages/egypt';
 import { RadioSVGMap } from 'react-svg-map';
 import 'react-svg-map/lib/index.css';
 import { Button, Col, Row } from 'react-bootstrap';
@@ -21,7 +24,7 @@ import { useTranslation } from 'react-i18next';
 import HistoryView from 'components/HistoryView';
 import Top5Examiners from 'components/Top5Examiners';
 
-const countriesMapper = { sa, ae, tn, ps, jo };
+const countriesMapper = { sa, ae, tn, jo, iq, sy, eg };
 
 function Dashboard() {
     const { t } = useTranslation();
