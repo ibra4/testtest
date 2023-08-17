@@ -10,7 +10,7 @@ import Pagination from 'components/Datatable/Pagination';
 import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 import WhiteBox from 'components/WhiteBox';
 import { useTranslation } from 'react-i18next';
-import { hasRole } from 'providers/helpers';
+import { renderNotificationFor, renderNotificationType } from 'providers/helpers';
 import moment from 'moment';
 
 const View = ({ data, queryParams, onSearch, handleDelete }) => {
@@ -21,8 +21,8 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
         <tr key={item.id}>
             <td>{item.id}</td>
             <td>{item.title}</td>
-            <td>{item.type}</td>
-            <td>{item.for}</td>
+            <td>{t(renderNotificationType(item.type))}</td>
+            <td>{t(renderNotificationFor(item.for))}</td>
             <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
             <td>
                 <div className="d-flex">
@@ -61,8 +61,8 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
                         <tr>
                             <th>{t('ID')}</th>
                             <th>{t('Title')}</th>
-                            <th>{t('Type')}</th>
-                            <th>{t('For')}</th>
+                            <th>{t('Notification Type')}</th>
+                            <th>{t('For Users')}</th>
                             <th>{t('Created At')}</th>
                             <th>{t('Actions')}</th>
                         </tr>

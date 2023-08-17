@@ -47,7 +47,7 @@ function Form({ initialValues, config, onSubmit, edit = false }) {
                             <Col md={4}>
                                 <SelectField
                                     name="for"
-                                    label="For"
+                                    label="For Users"
                                     onChange={handleChange}
                                     value={values.for}
                                     onBlur={handleBlur}
@@ -60,7 +60,7 @@ function Form({ initialValues, config, onSubmit, edit = false }) {
                             <Col md={4}>
                                 <SelectField
                                     name="type"
-                                    label="Type"
+                                    label="Notification Type"
                                     onChange={handleChange}
                                     value={values.type}
                                     onBlur={handleBlur}

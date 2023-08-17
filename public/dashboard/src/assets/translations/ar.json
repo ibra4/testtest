@@ -134,5 +134,9 @@
     "confirm_delete": "هل أنت متأكد من حذف {{id}} ؟",
     "Leiter International Performance Scale - Third Edition": "مقياس لايتر الآدائي العالمي - النسخة الثالثة - الصورة العربية",
     "English Name - Optional": "الإسم بالإنجليزية - إختياري",
+    "For Users": "للمستخدمين",
+    "Notification Type": "نوع الإشعار",
+    "Announcement": "إعلان",
+    "All": "الكل",
     "Something went wrong, please contact website administrator": "حدث خطأ غير متوقع, يرجى الإتصال بمدير الموقع"
 }

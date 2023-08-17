@@ -1,5 +1,6 @@
 import axios from "axios";
 import store from "providers/store";
+import { CONSTANTS } from "./constants";
 
 export const httpClient = axios.create({
     baseURL: process.env.API_URL,
@@ -94,4 +95,13 @@ export const renderAge = age => {
 export const getCurrentDateAndTime = () => {
     const dateTime = new Date();
     return dateTime.toLocaleString();
+}
+
+export const renderNotificationType = (type) => {
+    return CONSTANTS.NOTIFICATION_TYPES.find(item => item.id === type)?.label
+}
+
+export const renderNotificationFor = (forUser) => {
+    return CONSTANTS.NOTIFICATION_FOR.find(item => item.id === forUser)?.label
+
 }

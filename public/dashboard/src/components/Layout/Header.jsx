@@ -44,6 +44,7 @@ function Header({ title }) {
                                     <Dropdown.Divider />
                                     {notifications.list.map((userNotification) => (
                                         <Dropdown.Item
+                                            key={userNotification.id}
                                             href="#"
                                             className={userNotification.read_at == null ? 'unread' : ''}
                                         >
