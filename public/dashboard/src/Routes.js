@@ -95,7 +95,7 @@ const Routes = () => {
         {/* Notifications */}
         <Route path="/settings/notifications" component={NotificationsIndex} exact />
         <Route path="/settings/notifications/create" component={NotificationFormIndex} exact />
-        {/* <Route path="/settings/notifications/:id/update" component={NotificationFormIndex} exact /> */}
+        <Route path="/settings/notifications/:id/update" component={NotificationFormIndex} exact />
 
         {/* Profile */}
         <Route path="/my-profile" component={ProfileIndex} exact />

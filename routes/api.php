@@ -57,7 +57,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/notifications', [NotificationsController::class, 'actionIndex']);
         Route::get('/notifications/{id}', [NotificationsController::class, 'actionGet']);
         Route::post('/notifications/create', [NotificationsController::class, 'actionCreate']);
-        // Route::put('/notifications/{id}/update', [NotificationsController::class, 'actionUpdate']);
+        Route::put('/notifications/{id}/update', [NotificationsController::class, 'actionUpdate']);
         Route::post('/notifications/{id}/delete', [NotificationsController::class, 'actionDelete']);
     });
 

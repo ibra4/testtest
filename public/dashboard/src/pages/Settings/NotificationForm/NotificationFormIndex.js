@@ -18,7 +18,6 @@ const defaultNotification = {
 
 function NotificationFormIndex() {
 
-    console.log('hi');
     const { t } = useTranslation()
     const { id } = useParams()
 
@@ -64,7 +63,7 @@ function NotificationFormIndex() {
 
     return (
         <Layout title={title}>
-            {status == "success" ? <Form initialValues={data} config={config} onSubmit={onSubmit} /> : <FullLoader />}
+            {status == "success" ? <Form edit={!!id} initialValues={data} config={config} onSubmit={onSubmit} /> : <FullLoader />}
         </Layout>
     )
 }

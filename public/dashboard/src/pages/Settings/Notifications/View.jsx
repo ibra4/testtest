@@ -26,12 +26,12 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
             <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
             <td>
                 <div className="d-flex">
-                    {/* <ActionButton
+                    <ActionButton
                         icon={<FaEdit />}
                         label={t('Edit')}
                         onClick={() => push(`/settings/notifications/${item.id}/update`)}
                         variant="success"
-                    /> */}
+                    />
                     <ActionButton
                         icon={<FaTrash />}
                         label={t('Delete')}

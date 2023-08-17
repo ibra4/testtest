@@ -72,25 +72,23 @@ class NotificationsController extends Controller
 
         UserNotification::insert($usersNotifications);
 
-        // handle here create users notifications
-
         return $this->sendSuccessReponse($notification);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NotificationRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function actionUpdate(Request $request, $id)
-    // {
-    //     $notification = Notification::findOrFail($id);
-    //     $notification->update($request->all());
+    public function actionUpdate(NotificationRequest $request, $id)
+    {
+        $notification = Notification::findOrFail($id);
+        $notification->update($request->all());
 
-    //     return $this->sendSuccessReponse($notification);
-    // }
+        return $this->sendSuccessReponse($notification);
+    }
 
     /**
      * Remove the specified resource from storage.

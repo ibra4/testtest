@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 import * as Yup from 'yup';
 
-function Form({ initialValues, config, onSubmit }) {
+function Form({ initialValues, config, onSubmit, edit = false }) {
     const { t } = useTranslation();
     const validationSchema = Yup.object().shape({});
 
@@ -54,6 +54,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     error={errors.for}
                                     className="mb-3"
                                     options={CONSTANTS.NOTIFICATION_FOR}
+                                    disabled={edit}
                                 />
                             </Col>
                             <Col md={4}>
@@ -66,6 +67,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     error={errors.type}
                                     className="mb-3"
                                     options={CONSTANTS.NOTIFICATION_TYPES}
+                                    disabled={edit}
                                 />
                             </Col>
                         </Row>
