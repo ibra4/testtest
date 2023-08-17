@@ -23,7 +23,7 @@ class ReportOwnerMiddleware
 
         $examinee = Examinee::findOrFail($request->route()->parameters['id']);
 
-        if ($request->user()->hasRole('sub_admin') && $request->user()->id != $examinee->admin_id) {
+        if ($request->user()->hasRole('sub_admin') && $request->user()->id != $examinee->created_by) {
             abort(403);
         }
 

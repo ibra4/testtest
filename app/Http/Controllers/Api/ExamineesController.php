@@ -78,11 +78,7 @@ class ExamineesController extends Controller
     {
         $user = $request->user();
 
-        if ($user->hasRole('admin')) {
-            $centerId = $user->id;
-        } else {
-            $centerId = $user->admin->id;
-        }
+        $centerId = $user->hasRole('admin') ? $user->id : $user->admin->id;
 
         $data = $request->all();
         $data['admin_id'] = $centerId;
