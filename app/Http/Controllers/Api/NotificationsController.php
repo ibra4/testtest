@@ -54,8 +54,10 @@ class NotificationsController extends Controller
                 break;
             case 'sub_admins':
                 $userIds = User::where('role', 'sub_admin')->pluck('id')->toArray();
+                break;
             case 'centers':
                 $userIds = User::where('role', 'admin')->pluck('id')->toArray();
+                break;
             default:
                 $userIds = [];
         }
