@@ -35,6 +35,24 @@ class LeiterReport extends Model implements ReportInterface
         'created_at' => 'datetime:d/m/Y - H:i:s',
     ];
 
+    public function getExamineenameAttribute($value)
+    {
+        $currentUser = request()->user();
+        switch ($currentUser->role) {
+            case 'root':
+            case 'sub_admin':
+                $show = $this->examinee->created_by == $currentUser->id;
+                break;
+            case 'admin':
+                $show = $this->examinee->admin_id == $currentUser->id;
+                break;
+            default:
+                $show = false;
+        }
+
+        return $show ? $value : '*******';
+    }
+
     public function getAgeAttribute()
     {
         $birthday = new Carbon($this->examinee->birthday);

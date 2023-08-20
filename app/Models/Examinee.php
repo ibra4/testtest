@@ -46,13 +46,19 @@ class Examinee extends Model
     public function getNameAttribute($value)
     {
         $currentUser = request()->user();
-        if ($currentUser->hasRole('admin')) {
-            $allowed = $currentUser->subAdmins->pluck('id')->toArray() ?? [];
-            $allowed[] = $currentUser->id;
-            return in_array($this->center->id, $allowed) ? $value : "*******";
-        } elseif ($currentUser->hasRole('sub_admin')) {
-            return $this->created_by == $currentUser->id ? $value : "*******";
+        switch ($currentUser->role) {
+            case 'root':
+            case 'sub_admin':
+                $show = $this->created_by == $currentUser->id;
+                break;
+            case 'admin':
+                $show = $this->admin_id == $currentUser->id;
+                break;
+            default:
+                $show = false;
         }
+
+        return $show ? $value : '*******';
     }
 
     public function report()

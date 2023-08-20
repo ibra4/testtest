@@ -42,11 +42,6 @@ class LeiterReportsQuery
             'rerss.regulation',
             'rerss.anxiety',
             'rerss.sensory_reaction',
-
-            // 'examiner.id as admin_id',
-            // 'examinees.name as examineename',
-            // 'examinees.birthday',
-            // 'examinees.gender',
         )->where([['examinees.name', 'LIKE', "%$request->name%"]])
             ->orderBy('leiter_reports.created_at', 'DESC')
             ->orderBy('leiter_reports.updated_at', 'DESC')
