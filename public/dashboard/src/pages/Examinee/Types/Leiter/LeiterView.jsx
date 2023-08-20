@@ -2,7 +2,7 @@ import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import LabelValueCol from 'components/LabelValueCol';
 import ReportsButtons from 'components/Reports/ReportsButtons';
 import WhiteBox from 'components/WhiteBox';
-import { getCountryById, getGender, renderAge } from 'providers/helpers';
+import { renderAge } from 'providers/helpers';
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -23,7 +23,7 @@ function LeiterView({ data, onSectionSubmit }) {
                     <Row>
                         <LabelValueCol label={'ID'} value={data.id} md={3} />
                         <LabelValueCol label={'Application Date'} value={data.application_date} md={3} />
-                        <LabelValueCol label={'Age'} value={renderAge(data.formated_age)} md={3} />
+                        <LabelValueCol label={'Age'} value={data.translated_age} md={3} />
                         {data?.examiner_notes && <LabelValueCol label={'Notes'} value={data.examiner_notes} md={12} />}
                     </Row>
                 </WhiteBox>

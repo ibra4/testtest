@@ -41,7 +41,7 @@
             </div>
             <div class="label-value-item col-6">
                 <div class="label">{{ __('Age') }}:</div>
-                <div class="value">{{ $examinee->age }} {{ __('Months') }}</div>
+                <div class="value">{{ $report->translated_age }}</div>
             </div>
             <div class="label-value-item col-6">
                 <div class="label">{{ __('Examiner') }}:</div>

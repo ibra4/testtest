@@ -89,7 +89,7 @@ export const renderAge = age => {
     if (!age) {
         return ""
     }
-    return `${age.years ?? 0} سنوات, ${age.months ?? 0} اشهر`
+    return `${age.years ?? 0} سنوات, ${age.months ?? 0} شهر`
 }
 
 export const getCurrentDateAndTime = () => {

@@ -63,16 +63,25 @@ class LeiterReport extends Model implements ReportInterface
         return $years * 12 + $months;
     }
 
-    public function getFormatedAgeAttribute()
+    public function getTranslatedAgeAttribute()
     {
         $birthday = new Carbon($this->examinee->birthday);
         $applicationDate = $this->application_date ? new Carbon($this->application_date) : Carbon::now();
         $diff = $birthday->diff($applicationDate);
 
-        return [
-            'years' => $diff->format("%y"),
-            'months' => $diff->format("%m"),
-        ];
+        $years = $diff->format("%y");
+        $months = $diff->format("%m");
+
+        $age = '';
+        if ($years) {
+            $age .= $years . ' ' . __('Years') . ' ';
+        }
+
+        if ($months) {
+            $age .= $months . ' ' . __('Months');
+        }
+
+        return $age;
     }
 
     public function examinee()
