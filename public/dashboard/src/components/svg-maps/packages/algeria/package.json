@@ -1,0 +1,20 @@
+{
+	"name": "@svg-maps/algeria",
+	"version": "1.0.0",
+	"description": "Map of Algeria",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/VictorCazanave/svg-maps/tree/master/packages/algeria"
+	},
+	"keywords": [
+		"svg",
+		"map",
+		"algeria"
+	],
+	"author": "ibra4 <ibra16@itc.hu.edu.jo>",
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "Unlicense"
+}

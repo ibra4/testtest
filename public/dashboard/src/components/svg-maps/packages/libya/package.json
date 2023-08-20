@@ -1,0 +1,20 @@
+{
+	"name": "@svg-maps/.lybia",
+	"version": "1.0.0",
+	"description": "Map of .Lybia",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/VictorCazanave/svg-maps/tree/master/packages/.lybia"
+	},
+	"keywords": [
+		"svg",
+		"map",
+		".lybia"
+	],
+	"author": "ibra4 <ibra16@itc.hu.edu.jo>",
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "Unlicense"
+}

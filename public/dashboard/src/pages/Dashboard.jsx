@@ -13,6 +13,9 @@ import jo from 'components/svg-maps/packages/jordan';
 import iq from 'components/svg-maps/packages/iraq';
 import sy from 'components/svg-maps/packages/syria';
 import eg from 'components/svg-maps/packages/egypt';
+import ly from 'components/svg-maps/packages/libya';
+import lb from 'components/svg-maps/packages/lebanon';
+import dz from 'components/svg-maps/packages/algeria';
 import { RadioSVGMap } from 'react-svg-map';
 import 'react-svg-map/lib/index.css';
 import { Button, Col, Row } from 'react-bootstrap';
@@ -24,7 +27,7 @@ import { useTranslation } from 'react-i18next';
 import HistoryView from 'components/HistoryView';
 import Top5Examiners from 'components/Top5Examiners';
 
-const countriesMapper = { sa, ae, tn, jo, iq, sy, eg };
+const countriesMapper = { sa, ae, tn, jo, iq, sy, eg, ly, lb, dz };
 
 function Dashboard() {
     const { t } = useTranslation();
