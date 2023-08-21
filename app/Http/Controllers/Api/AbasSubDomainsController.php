@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Abas;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AbasSubDomainRequest;
@@ -11,13 +11,18 @@ class AbasSubDomainsController extends Controller
 {
     public function actionIndex()
     {
-        $this->sendSuccessReponse(AbasSubDomain::all());
+        return $this->sendSuccessReponse(AbasSubDomain::all());
     }
 
+    public function actionGet($id)
+    {
+        return $this->sendSuccessReponse(AbasSubDomain::findOrFail($id));
+    }
+    
     public function actionCreate(AbasSubDomainRequest $request)
     {
         $domain = AbasSubDomain::create($request->all());
-        $this->sendSuccessReponse($domain);
+        return $this->sendSuccessReponse($domain);
     }
 
     public function actionUpdate(AbasSubDomainRequest $request, $id)

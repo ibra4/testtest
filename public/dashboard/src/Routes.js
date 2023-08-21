@@ -24,6 +24,8 @@ import LeiterIndex from 'pages/Examinee/Types/Leiter/LeiterIndex';
 import ReportsLeiterIndex from 'pages/ReportsLeiter/ReportsLeiterIndex';
 import NotificationsIndex from 'pages/Settings/Notifications/NotificationsIndex';
 import NotificationFormIndex from 'pages/Settings/NotificationForm/NotificationFormIndex';
+import AbasDomainsIndex from 'pages/Settings/AbasDomains/AbasDomainsIndex';
+import AbasDomainFormIndex from 'pages/Settings/AbasDomainForm/AbasDomainFormIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -96,6 +98,11 @@ const Routes = () => {
         <Route path="/settings/notifications" component={NotificationsIndex} exact />
         <Route path="/settings/notifications/create" component={NotificationFormIndex} exact />
         <Route path="/settings/notifications/:id/update" component={NotificationFormIndex} exact />
+
+        {/* Abas Domains */}
+        <Route path="/settings/abas/domains" component={AbasDomainsIndex} exact />
+        <Route path="/settings/abas/domains/create" component={AbasDomainFormIndex} exact />
+        <Route path="/settings/abas/domains/:id/update" component={AbasDomainFormIndex} exact />
 
         {/* Profile */}
         <Route path="/my-profile" component={ProfileIndex} exact />

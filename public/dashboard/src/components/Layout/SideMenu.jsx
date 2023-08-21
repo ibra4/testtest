@@ -64,7 +64,7 @@ const routes2 = [
                 label: 'Notifications',
                 icon: <FaBell />,
                 role: 'root'
-            }
+            },
         ]
     },
     {
@@ -140,7 +140,21 @@ const routes2 = [
                 role: 'root'
             }
         ]
-    }
+    },
+    {
+        label: 'Abas Settings',
+        routeName: 'settings',
+        icon: <FaCog />,
+        role: 'root',
+        sublinks: [
+            {
+                routeName: 'settings/abas/domains',
+                label: 'Domains',
+                icon: <FaImage />,
+                role: 'root'
+            },
+        ]
+    },
 ];
 
 function SideMenu() {

@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\Abas\AbasDomainsController;
-use App\Http\Controllers\Api\Abas\AbasSubDomainsController;
+use App\Http\Controllers\Api\AbasDomainsController;
+use App\Http\Controllers\Api\AbasSubDomainsController;
 use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\BootstrapController;
 use App\Http\Controllers\Api\AdminMediaController;
@@ -65,11 +65,13 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // Domains
         Route::get('/abas/domains', [AbasDomainsController::class, 'actionIndex']);
+        Route::get('/abas/domains/{id}', [AbasDomainsController::class, 'actionGet']);
         Route::post('/abas/domains/create', [AbasDomainsController::class, 'actionCreate']);
         Route::put('/abas/domains/{id}/update', [AbasDomainsController::class, 'actionUpdate']);
 
         // Sub Domains
         Route::get('/abas/sub-domains', [AbasSubDomainsController::class, 'actionIndex']);
+        Route::get('/abas/sub-domains/{id}', [AbasSubDomainsController::class, 'actionGet']);
         Route::post('/abas/sub-domains/create', [AbasSubDomainsController::class, 'actionCreate']);
         Route::put('/abas/sub-domains/{id}/update', [AbasSubDomainsController::class, 'actionUpdate']);
     });
