@@ -13,6 +13,9 @@ class Controller extends BaseController
 
     protected function sendSuccessReponse($data = [], int $statusCode = 200)
     {
+        if (!$data) {
+            $statusCode = 204;
+        }
         return response()->json($data, $statusCode);
     }
 

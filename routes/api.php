@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\Abas\AbasDomainsController;
+use App\Http\Controllers\Api\Abas\AbasSubDomainsController;
 use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\BootstrapController;
 use App\Http\Controllers\Api\AdminMediaController;
@@ -54,11 +56,22 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/sliders/{id}/update', [SlidersController::class, 'update']);
         Route::post('/sliders/upload', [SlidersController::class, 'upload']);
 
+        // Notifications
         Route::get('/notifications', [NotificationsController::class, 'actionIndex']);
         Route::get('/notifications/{id}', [NotificationsController::class, 'actionGet']);
         Route::post('/notifications/create', [NotificationsController::class, 'actionCreate']);
         Route::put('/notifications/{id}/update', [NotificationsController::class, 'actionUpdate']);
         Route::post('/notifications/{id}/delete', [NotificationsController::class, 'actionDelete']);
+
+        // Domains
+        Route::get('/abas/domains', [AbasDomainsController::class, 'actionIndex']);
+        Route::post('/abas/domains/create', [AbasDomainsController::class, 'actionCreate']);
+        Route::put('/abas/domains/{id}/update', [AbasDomainsController::class, 'actionUpdate']);
+
+        // Sub Domains
+        Route::get('/abas/sub-domains', [AbasSubDomainsController::class, 'actionIndex']);
+        Route::post('/abas/sub-domains/create', [AbasSubDomainsController::class, 'actionCreate']);
+        Route::put('/abas/sub-domains/{id}/update', [AbasSubDomainsController::class, 'actionUpdate']);
     });
 
     Route::middleware('can:admin_or_sub_admin')->group(function () {
