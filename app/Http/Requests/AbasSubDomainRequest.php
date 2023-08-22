@@ -13,12 +13,10 @@ class AbasSubDomainRequest extends FormRequest
      */
     public function rules()
     {
+        $allowed_categories = implode(',', config('enums.abas_sub_domains_categories'));
         return [
             'name' => 'required|string|max:255',
-            // 'abas_domain_id' => 'exists:abas_domains,id',
-            'for' => 'required|string|in:teacher,parent',
-            'min_age' => 'required|numeric|integer|min:0',
-            'max_age' => 'required|numeric|integer|min:0|gt:min_age'
+            'category' => "required|string|in:$allowed_categories",
         ];
     }
 }

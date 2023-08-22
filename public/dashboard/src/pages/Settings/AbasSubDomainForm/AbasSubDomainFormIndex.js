@@ -3,7 +3,6 @@ import { useHistory, useParams } from 'react-router-dom'
 import Layout from 'components/Layout'
 import Form from './Form'
 import { httpClient } from 'providers/helpers'
-import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
 import { useSelector } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
@@ -13,9 +12,7 @@ const defaultDomain = {
     name: '',
     name_en: '',
     abas_domain_id: '',
-    for: '',
-    min_age: '',
-    max_age: ''
+    category: '',
 }
 
 function AbasSubDomainFormIndex() {

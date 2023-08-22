@@ -3,7 +3,6 @@ import SelectField from 'components/Fields/SelectField';
 import TextField from 'components/Fields/TextField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
-import { CONSTANTS } from 'providers/helpers/constants';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
@@ -12,9 +11,7 @@ import * as Yup from 'yup';
 function Form({ initialValues, config, onSubmit }) {
     const validationSchema = Yup.object().shape({
         name: Yup.string().required(),
-        for: Yup.string().required(),
-        min_age: Yup.number().required(),
-        max_age: Yup.number().required().moreThan(Yup.ref('min_age'))
+        category: Yup.string().required()
     });
 
     return (
@@ -69,42 +66,16 @@ function Form({ initialValues, config, onSubmit }) {
                                     className="mb-3"
                                 />
                             </Col>
-                        </Row>
-                        <Row>
                             <Col md={4}>
                                 <SelectField
-                                    name="for"
-                                    label="For"
+                                    name="category"
+                                    label="Category"
                                     onChange={handleChange}
-                                    value={values.for}
+                                    value={values.category}
                                     onBlur={handleBlur}
-                                    error={errors.for}
-                                    options={CONSTANTS.SUB_DOMAIN_FOR}
+                                    error={errors.category}
+                                    options={config.sub_domains_categories}
                                     className="mb-3"
-                                />
-                            </Col>
-                            <Col md={4}>
-                                <TextField
-                                    name="min_age"
-                                    label="Min age"
-                                    onChange={handleChange}
-                                    value={values.min_age}
-                                    onBlur={handleBlur}
-                                    error={touched.min_age && errors.min_age}
-                                    className="mb-3"
-                                    type="number"
-                                />
-                            </Col>
-                            <Col md={4}>
-                                <TextField
-                                    name="max_age"
-                                    label="Max age"
-                                    onChange={handleChange}
-                                    value={values.max_age}
-                                    onBlur={handleBlur}
-                                    error={touched.max_age && errors.max_age}
-                                    className="mb-3"
-                                    type="number"
                                 />
                             </Col>
                         </Row>

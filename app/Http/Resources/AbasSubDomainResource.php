@@ -18,9 +18,7 @@ class AbasSubDomainResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'name_en' => $this->name_en,
-            'for' => $this->for,
-            'min_age' => $this->min_age,
-            'max_age' => $this->max_age,
+            'category_label' => __($this->category),
             'created_at' => $this->created_at,
             'domain_name' => $this->domain->name ?? 'No Dmain',
         ];

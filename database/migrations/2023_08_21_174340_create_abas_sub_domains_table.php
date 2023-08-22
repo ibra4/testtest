@@ -18,9 +18,7 @@ class CreateAbasSubDomainsTable extends Migration
             $table->string('name');
             $table->string('name_en')->nullable();
             $table->unsignedBigInteger('abas_domain_id')->nullable()->default(null);
-            $table->string('for');
-            $table->integer('min_age');
-            $table->integer('max_age');
+            $table->string('category');
             $table->foreign('abas_domain_id')->references('id')->on('abas_domains')->onDelete('cascade');
             $table->timestamps();
         });

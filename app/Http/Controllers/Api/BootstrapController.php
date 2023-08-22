@@ -69,7 +69,18 @@ class BootstrapController extends Controller
         }
         $data['admins'] = User::select('id', 'name AS label')->where('role', 'admin')->get();
         $data['abas_domains'] = AbasDomain::select('id', 'name AS label')->get();
-        $data['abas_sub_domains'] = AbasSubDomain::select('id', DB::raw("CONCAT(`name`, ' ', `for`, ' ', `min_age`, ' to ', `max_age`) AS label"))->get();
+        $data['abas_sub_domains'] = AbasSubDomain::select('id', DB::raw("CONCAT(`name`, ' ', `category`) AS label"))->get();
+
+        $categories = [];
+        foreach (config('enums.abas_sub_domains_categories') as $cat) {
+            $categories[] = [
+                'id' => $cat,
+                'label' => __($cat)
+            ];
+        }
+
+        $data['sub_domains_categories'] = $categories;
+
         $data['leiter_tables_types'] = config('enums.leiter_tables_types');
 
         return $data;

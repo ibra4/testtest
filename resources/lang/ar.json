@@ -167,5 +167,9 @@
     "You don't have permission to view this admin": "لا يوجد لديك صلاحية لعرض هذا المستخدم",
     "Something went wrong, please contact website administrator": "حدث خطأ غير متوقع, يرجى الإتصال بمدير الموقع",
     "Deleted Successfully": "تم الحذف بنجاح",
-    "Leiter exam must be for 3 years and above": "لا يمكن إضافة إختبار لايتر لعمر اقل من 3 سنوات"
+    "Leiter exam must be for 3 years and above": "لا يمكن إضافة إختبار لايتر لعمر اقل من 3 سنوات",
+    "parent_0_71": "الأهل من 0 إلى 5 سنوات 11 شهر",
+    "parent_72_263": "الأهل من 6 سنوات إلى 21 سنة",
+    "teacher_48_71": "المعلم من سنتين إلى 5 سنوات 11 شهر",
+    "teacher_72_263": "المعلم من 6 سنوات إلى 21 سنة"
 }

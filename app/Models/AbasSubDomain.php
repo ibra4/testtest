@@ -9,18 +9,7 @@ class AbasSubDomain extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'name_en', 'abas_domain_id', 'for', 'min_age', 'max_age'];
-
-    // protected $appends = ['detailed_name'];
-
-    public function getDetailedNameAttribute()
-    {
-        $name = $this->name;
-        $for = $this->for;
-        $min_age = $this->min_age;
-        $max_age = $this->max_age;
-        return "$name $for $min_age to $max_age";
-    }
+    protected $fillable = ['name', 'name_en', 'abas_domain_id', 'category'];
 
     public function domain()
     {
