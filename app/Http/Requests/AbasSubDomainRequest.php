@@ -15,7 +15,7 @@ class AbasSubDomainRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'abas_domain_id' => 'required|exists:abas_domains,id',
+            // 'abas_domain_id' => 'exists:abas_domains,id',
             'for' => 'required|string|in:teacher,parent',
             'min_age' => 'required|numeric|integer|min:0',
             'max_age' => 'required|numeric|integer|min:0|gt:min_age'

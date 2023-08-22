@@ -12,7 +12,6 @@ import * as Yup from 'yup';
 function Form({ initialValues, config, onSubmit }) {
     const validationSchema = Yup.object().shape({
         name: Yup.string().required(),
-        abas_domain_id: Yup.number().required(),
         for: Yup.string().required(),
         min_age: Yup.number().required(),
         max_age: Yup.number().required().moreThan(Yup.ref('min_age'))

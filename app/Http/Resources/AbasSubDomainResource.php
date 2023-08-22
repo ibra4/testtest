@@ -22,7 +22,7 @@ class AbasSubDomainResource extends JsonResource
             'min_age' => $this->min_age,
             'max_age' => $this->max_age,
             'created_at' => $this->created_at,
-            'domain_name' => $this->domain->name,
+            'domain_name' => $this->domain->name ?? 'No Dmain',
         ];
     }
 }
