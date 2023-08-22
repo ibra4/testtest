@@ -40,7 +40,8 @@
         "redux": "^4.1.0",
         "sass": "^1.55.0",
         "styled-components": "^6.0.7",
-        "yup": "^0.32.11"
+        "yup": "^0.32.11",
+        "yup-locales": "^1.2.16"
     },
     "devDependencies": {
         "@babel/core": "^7.8.3",

@@ -30,6 +30,8 @@ import AbasSubDomainsIndex from 'pages/Settings/AbasSubDomains/AbasSubDomainsInd
 import AbasSubDomainFormIndex from 'pages/Settings/AbasSubDomainForm/AbasSubDomainFormIndex';
 import AbasQuestionsIndex from 'pages/Settings/AbasQuestions/AbasQuestionsIndex';
 import AbasQuestionFormIndex from 'pages/Settings/AbasQuestionForm/AbasQuestionFormIndex';
+import { ar } from 'yup-locales';
+import { setLocale } from 'yup';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -53,6 +55,10 @@ const Routes = () => {
     }
     const langcode = getLangcode();
     setBaseName(`${langcode}/admin`)
+
+    if (langcode == 'ar') {
+      setLocale(ar);
+    }
   }
 
   React.useEffect(() => {
