@@ -32,6 +32,8 @@
     "Examiner": "فاحص",
     "History": "السجل",
     "Name": "الإسم",
+    "Name En": "الإسم بالإنجليزية",
+    "Title En": "العنوان بالإنجليزية",
     "Email": "البريد الإلكتروني",
     "Search": "البحث",
     "Add new Admin": "إضافة مركز فحص جديد",
@@ -141,5 +143,18 @@
     "Notification": "إشعار",
     "Notifications Center": "مركز الإشعارات",
     "Saved Successfully": "تم الحفظ بنجاح",
-    "Something went wrong, please contact website administrator": "حدث خطأ غير متوقع, يرجى الإتصال بمدير الموقع"
+    "Something went wrong, please contact website administrator": "حدث خطأ غير متوقع, يرجى الإتصال بمدير الموقع",
+    "Domain": "النطاق",
+    "For": "لـ",
+    "Teacher": "معلم",
+    "Parent": "ولي الأمر",
+    "Sub Domain": "النطاق الفرعي",
+    "ABAS Questions": "اسئلة ABAS",
+    "Question": "سؤال",
+    "Abas Settings": "إعدادات ABAS",
+    "Domains": "النطاقات",
+    "Sub Domains": "النطاقات الفرعية",
+    "Questions": "الأسئلة",
+    "ABAS Sub Domains": "ABAS النطاقات الفرعية",
+    "ABAS Domains": "ABAS نطاقات"
 }

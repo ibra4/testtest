@@ -24,6 +24,6 @@ class AbasSubDomain extends Model
 
     public function domain()
     {
-        return $this->hasMany(AbasDomain::class);
+        return $this->belongsTo(AbasDomain::class, 'abas_domain_id', 'id');
     }
 }

@@ -15,6 +15,7 @@ const View = ({ data }) => {
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.name_en}</td>
+            <td>{item.domain_name}</td>
             <td>{item.for}</td>
             <td>{item.min_age}</td>
             <td>{item.max_age}</td>
@@ -46,6 +47,7 @@ const View = ({ data }) => {
                         <th>{t('ID')}</th>
                         <th>{t('Name')}</th>
                         <th>{t('Name En')}</th>
+                        <th>{t('Domain')}</th>
                         <th>{t('For')}</th>
                         <th>{t('Min age')}</th>
                         <th>{t('Max age')}</th>
