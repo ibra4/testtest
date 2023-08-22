@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AbasSubDomainListResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\UserNotificationResource;
 use App\Http\Resources\UserResource;
@@ -69,7 +70,7 @@ class BootstrapController extends Controller
         }
         $data['admins'] = User::select('id', 'name AS label')->where('role', 'admin')->get();
         $data['abas_domains'] = AbasDomain::select('id', 'name AS label')->get();
-        $data['abas_sub_domains'] = AbasSubDomain::select('id', DB::raw("CONCAT(`name`, ' ', `category`) AS label"))->get();
+        $data['abas_sub_domains'] = AbasSubDomainListResource::collection(AbasSubDomain::all());
 
         $categories = [];
         foreach (config('enums.abas_sub_domains_categories') as $cat) {
