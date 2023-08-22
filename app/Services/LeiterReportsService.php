@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class ReportsService
+class LeiterReportsService
 {
     /**
      * @var CognitiveReportRepository
@@ -152,6 +152,7 @@ class ReportsService
         return $report;
     }
 
+    // @TODO: Move it to another service
     public function canUserCreateReport(User $user)
     {
         if ($user->role == 'root') {
@@ -161,6 +162,7 @@ class ReportsService
             < $this->reportRepository->getNumberOfTotalReportsForCenter($user);
     }
 
+    // @TODO: Move it to another service
     public function canUserDeleteReport(User $user, LeiterReport $report)
     {
         if ($user->hasRole('root')) {

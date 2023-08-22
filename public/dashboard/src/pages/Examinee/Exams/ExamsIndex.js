@@ -40,7 +40,7 @@ function ExamsIndex() {
         const res = await httpClient.post(`examinees/${examType}/create/${id}`, data)
 
         if (res.status == 200) {
-            addToast(t('Leiter Report Saved Successfully'), { appearance: 'success' });
+            addToast(t('Saved Successfully'), { appearance: 'success' });
             push(`/reports/${examType}/${res.data.id}`)
         } else {
             addToast(t(generalErrorText), {appearance: 'error'});

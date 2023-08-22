@@ -13,7 +13,7 @@ use App\Http\Resources\ReportResource;
 use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
 use App\Queries\ExamineesQuery;
-use App\Services\ReportsService;
+use App\Services\LeiterReportsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -28,11 +28,11 @@ class ExamineesController extends Controller
     protected $examineesQuery;
 
     /**
-     * @var ReportsService
+     * @var LeiterReportsService
      */
     protected $reportService;
 
-    public function __construct(ExamineesQuery $exq, ReportsService $reportService)
+    public function __construct(ExamineesQuery $exq, LeiterReportsService $reportService)
     {
         $this->examineesQuery = $exq;
         $this->reportService = $reportService;

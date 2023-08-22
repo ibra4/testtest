@@ -52,7 +52,7 @@ function AbasDomainFormIndex() {
             res = await httpClient.post(`abas/domains/create`, data)
         }
         if (res.status == 200) {
-            addToast(t('Domain Saved Successfully'), { appearance: 'success' });
+            addToast(t('Saved Successfully'), { appearance: 'success' });
             push('/settings/abas/domains')
         } else {
             return res

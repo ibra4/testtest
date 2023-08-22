@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AbasDomainsController;
+use App\Http\Controllers\Api\AbasQuestionsController;
 use App\Http\Controllers\Api\AbasSubDomainsController;
 use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\BootstrapController;
@@ -63,17 +64,23 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/notifications/{id}/update', [NotificationsController::class, 'actionUpdate']);
         Route::post('/notifications/{id}/delete', [NotificationsController::class, 'actionDelete']);
 
-        // Domains
+        // Abas Domains
         Route::get('/abas/domains', [AbasDomainsController::class, 'actionIndex']);
         Route::get('/abas/domains/{id}', [AbasDomainsController::class, 'actionGet']);
         Route::post('/abas/domains/create', [AbasDomainsController::class, 'actionCreate']);
         Route::put('/abas/domains/{id}/update', [AbasDomainsController::class, 'actionUpdate']);
 
-        // Sub Domains
+        // Abas Sub Domains
         Route::get('/abas/sub-domains', [AbasSubDomainsController::class, 'actionIndex']);
         Route::get('/abas/sub-domains/{id}', [AbasSubDomainsController::class, 'actionGet']);
         Route::post('/abas/sub-domains/create', [AbasSubDomainsController::class, 'actionCreate']);
         Route::put('/abas/sub-domains/{id}/update', [AbasSubDomainsController::class, 'actionUpdate']);
+
+        // Abas Questions
+        Route::get('/abas/questions', [AbasQuestionsController::class, 'actionIndex']);
+        Route::get('/abas/questions/{id}', [AbasQuestionsController::class, 'actionGet']);
+        Route::post('/abas/questions/create', [AbasQuestionsController::class, 'actionCreate']);
+        Route::put('/abas/questions/{id}/update', [AbasQuestionsController::class, 'actionUpdate']);
     });
 
     Route::middleware('can:admin_or_sub_admin')->group(function () {

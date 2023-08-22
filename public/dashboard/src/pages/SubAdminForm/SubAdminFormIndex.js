@@ -64,7 +64,7 @@ function SubAdminFormIndex() {
             res = await httpClient.post(ROUTES.SUB_ADMINS.CREATE, data)
         }
         if (res.status == 200) {
-            addToast(t('Sub Admin Saved Successfully'), { appearance: 'success' });
+            addToast(t('Saved Successfully'), { appearance: 'success' });
             push('/sub-admins')
         } else {
             return res

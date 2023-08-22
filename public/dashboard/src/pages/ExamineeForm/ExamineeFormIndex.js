@@ -59,7 +59,7 @@ function ExamineeFormIndex() {
             res = await httpClient.post(ROUTES.EXAMINEES.CREATE, data)
         }
         if (res.status == 200) {
-            addToast(t('Examinee Saved Successfully'), { appearance: 'success' });
+            addToast(t('Saved Successfully'), { appearance: 'success' });
             push('/examinees')
         } else {
             addToast(t(generalErrorText), {appearance: 'error'});

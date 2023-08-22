@@ -4,16 +4,15 @@ import TextAreaField from 'components/Fields/TextAreaField';
 import TextField from 'components/Fields/TextField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
-import { CONSTANTS } from 'providers/helpers/constants';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
 
 import * as Yup from 'yup';
 
-function Form({ initialValues, config, onSubmit, edit = false }) {
-    const { t } = useTranslation();
-    const validationSchema = Yup.object().shape({});
+function Form({ initialValues, config, onSubmit }) {
+    const validationSchema = Yup.object().shape({
+        name: Yup.string().required()
+    });
 
     return (
         <Formik
@@ -34,55 +33,39 @@ function Form({ initialValues, config, onSubmit, edit = false }) {
                     <form onSubmit={handleSubmit}>
                         <Row>
                             <Col md={4}>
-                                <TextField
-                                    name="title"
-                                    label="Title"
-                                    onChange={handleChange}
-                                    value={values.title}
-                                    onBlur={handleBlur}
-                                    error={errors.title}
-                                    className="mb-3"
-                                />
-                            </Col>
-                            <Col md={4}>
                                 <SelectField
-                                    name="for"
-                                    label="For Users"
+                                    name="abas_sub_domain_id"
+                                    label="Sub Domain"
                                     onChange={handleChange}
-                                    value={values.for}
+                                    value={values.abas_sub_domain_id}
                                     onBlur={handleBlur}
-                                    error={errors.for}
+                                    error={errors.abas_sub_domain_id}
+                                    options={config.abas_sub_domains}
                                     className="mb-3"
-                                    options={CONSTANTS.NOTIFICATION_FOR}
-                                    disabled={edit}
-                                />
-                            </Col>
-                            <Col md={4}>
-                                <SelectField
-                                    name="type"
-                                    label="Notification Type"
-                                    onChange={handleChange}
-                                    value={values.type}
-                                    onBlur={handleBlur}
-                                    error={errors.type}
-                                    className="mb-3"
-                                    options={CONSTANTS.NOTIFICATION_TYPES}
-                                    disabled={edit}
                                 />
                             </Col>
                         </Row>
                         <Row>
                             <Col md={8}>
                                 <TextAreaField
-                                    name="description"
-                                    label="Description"
+                                    name="name"
+                                    label="Title"
                                     onChange={handleChange}
-                                    value={values.description}
+                                    value={values.name}
                                     onBlur={handleBlur}
-                                    error={errors.description}
+                                    error={touched.name && errors.name}
                                     className="mb-3"
-                                    type="textarea"
-                                    rows={4}
+                                />
+                            </Col>
+                            <Col md={8}>
+                                <TextAreaField
+                                    name="name_en"
+                                    label="Title En"
+                                    onChange={handleChange}
+                                    value={values.name_en}
+                                    onBlur={handleBlur}
+                                    error={errors.name_en}
+                                    className="mb-3"
                                 />
                             </Col>
                         </Row>

@@ -65,7 +65,7 @@ function AdminFormIndex() {
             dispatch(addAdmin({ id: res.data.id, label: res.data.name }))
         }
         if (res.status == 200) {
-            addToast(t('Admin Saved Successfully'), { appearance: 'success' });
+            addToast(t('Saved Successfully'), { appearance: 'success' });
             push('/admins')
         } else {
             return res

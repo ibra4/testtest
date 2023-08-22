@@ -9,19 +9,21 @@ import { useSelector } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
 import { useTranslation } from 'react-i18next'
 
-const defaultNotification = {
-    title: '',
-    description: '',
-    for: 'all',
-    type: 'announcement'
+const defaultDomain = {
+    name: '',
+    name_en: '',
+    abas_domain_id: '',
+    for: '',
+    min_age: '',
+    max_age: ''
 }
 
-function NotificationFormIndex() {
+function AbasSubDomainFormIndex() {
 
     const { t } = useTranslation()
     const { id } = useParams()
 
-    const title = id ? `${t('update', { name: t('Notification') })} #${id}` : t('create_new', { name: t('Notification') })
+    const title = id ? `${t('update', { name: t('Sub Domain') })} #${id}` : t('create_new', { name: t('Sub Domain') })
 
     const { push } = useHistory()
 
@@ -30,7 +32,7 @@ function NotificationFormIndex() {
     const config = useSelector(state => state.app.config)
 
     const getData = async () => {
-        const res = await httpClient.get(`/notifications/${id}`)
+        const res = await httpClient.get(`abas/sub-domains/${id}`)
         setData(res.data)
         setStatus("success")
     }
@@ -41,7 +43,7 @@ function NotificationFormIndex() {
         if (id) {
             getData()
         } else {
-            setData(defaultNotification)
+            setData(defaultDomain)
             setStatus("success")
         }
     }, [])
@@ -49,13 +51,13 @@ function NotificationFormIndex() {
     const onSubmit = async (data) => {
         let res;
         if (id) {
-            res = await httpClient.put(`/notifications/${id}/update`, data)
+            res = await httpClient.put(`abas/sub-domains/${id}/update`, data)
         } else {
-            res = await httpClient.post(`/notifications/create`, data)
+            res = await httpClient.post(`abas/sub-domains/create`, data)
         }
         if (res.status == 200) {
             addToast(t('Saved Successfully'), { appearance: 'success' });
-            push('/settings/notifications')
+            push('/settings/abas/sub-domains')
         } else {
             return res
         }
@@ -63,9 +65,9 @@ function NotificationFormIndex() {
 
     return (
         <Layout title={title}>
-            {status == "success" ? <Form edit={!!id} initialValues={data} config={config} onSubmit={onSubmit} /> : <FullLoader />}
+            {status == "success" ? <Form initialValues={data} config={config} onSubmit={onSubmit} /> : <FullLoader />}
         </Layout>
     )
 }
 
-export default NotificationFormIndex
+export default AbasSubDomainFormIndex

@@ -26,6 +26,10 @@ import NotificationsIndex from 'pages/Settings/Notifications/NotificationsIndex'
 import NotificationFormIndex from 'pages/Settings/NotificationForm/NotificationFormIndex';
 import AbasDomainsIndex from 'pages/Settings/AbasDomains/AbasDomainsIndex';
 import AbasDomainFormIndex from 'pages/Settings/AbasDomainForm/AbasDomainFormIndex';
+import AbasSubDomainsIndex from 'pages/Settings/AbasSubDomains/AbasSubDomainsIndex';
+import AbasSubDomainFormIndex from 'pages/Settings/AbasSubDomainForm/AbasSubDomainFormIndex';
+import AbasQuestionsIndex from 'pages/Settings/AbasQuestions/AbasQuestionsIndex';
+import AbasQuestionFormIndex from 'pages/Settings/AbasQuestionForm/AbasQuestionFormIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -103,6 +107,16 @@ const Routes = () => {
         <Route path="/settings/abas/domains" component={AbasDomainsIndex} exact />
         <Route path="/settings/abas/domains/create" component={AbasDomainFormIndex} exact />
         <Route path="/settings/abas/domains/:id/update" component={AbasDomainFormIndex} exact />
+
+        {/* Abas Sub Domains */}
+        <Route path="/settings/abas/sub-domains" component={AbasSubDomainsIndex} exact />
+        <Route path="/settings/abas/sub-domains/create" component={AbasSubDomainFormIndex} exact />
+        <Route path="/settings/abas/sub-domains/:id/update" component={AbasSubDomainFormIndex} exact />
+
+        {/* Abas Sub Questions */}
+        <Route path="/settings/abas/questions" component={AbasQuestionsIndex} exact />
+        <Route path="/settings/abas/questions/create" component={AbasQuestionFormIndex} exact />
+        <Route path="/settings/abas/questions/:id/update" component={AbasQuestionFormIndex} exact />
 
         {/* Profile */}
         <Route path="/my-profile" component={ProfileIndex} exact />

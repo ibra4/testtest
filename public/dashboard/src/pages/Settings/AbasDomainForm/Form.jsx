@@ -23,7 +23,7 @@ function Form({ initialValues, config, onSubmit }) {
     return (
         <Formik
             enableReinitialize
-            initialValues={{ ...initialValues, password: '', password_confirmation: '' }}
+            initialValues={initialValues}
             onSubmit={async (values, { setErrors, setSubmitting }) => {
                 try {
                     await onSubmit(values);

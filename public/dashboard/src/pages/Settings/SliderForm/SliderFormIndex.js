@@ -53,7 +53,7 @@ function SliderFormIndex() {
             res = await httpClient.post(`${ROUTES.SLIDERS.GET}/create`, data)
         }
         if (res.status == 200) {
-            addToast(t('Slider Saved Successfully'), { appearance: 'success' });
+            addToast(t('Saved Successfully'), { appearance: 'success' });
             push('/settings/slider')
         } else {
             return res

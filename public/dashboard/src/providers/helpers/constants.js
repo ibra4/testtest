@@ -15,6 +15,10 @@ export const CONSTANTS = {
     NOTIFICATION_TYPES: [
         { id: 'announcement', label: 'Announcement' }
     ],
+    SUB_DOMAIN_FOR: [
+        { id: 'teacher', label: 'Teacher' },
+        { id: 'parent', label: 'Parent' }
+    ],
 }
 
 export const generalErrorText = 'Something went wrong, please contact website administrator';

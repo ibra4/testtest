@@ -11,7 +11,7 @@ use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
 use App\Models\User;
 use App\Queries\LeiterReportsQuery;
-use App\Services\ReportsService;
+use App\Services\LeiterReportsService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -27,13 +27,13 @@ class LeiterExamsController  extends Controller
     protected $leiterReportsQuery;
 
     /**
-     * @var ReportsService
+     * @var LeiterReportsService
      */
     protected $reportService;
 
     public function __construct(
         LeiterReportsQuery $leiterReportsQuery,
-        ReportsService $reportService
+        LeiterReportsService $reportService
     ) {
         $this->leiterReportsQuery = $leiterReportsQuery;
         $this->reportService = $reportService;

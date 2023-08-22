@@ -54,7 +54,7 @@ function LeiterRecordFormIndex() {
             res = await httpClient.post(`${ROUTES.LEITER_RECORDS.CREATE}/create`, values)
         }
         if (res.status == 200) {
-            addToast(t('Leiter record Saved Successfully'), { appearance: 'success' });
+            addToast(t('Saved Successfully'), { appearance: 'success' });
             push(`/leiter-records/${data.type}`)
         } else {
             return res

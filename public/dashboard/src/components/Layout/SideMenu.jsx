@@ -153,6 +153,18 @@ const routes2 = [
                 icon: <FaImage />,
                 role: 'root'
             },
+            {
+                routeName: 'settings/abas/sub-domains',
+                label: 'Sub Domains',
+                icon: <FaImage />,
+                role: 'root'
+            },
+            {
+                routeName: 'settings/abas/questions',
+                label: 'Questions',
+                icon: <FaImage />,
+                role: 'root'
+            },
         ]
     },
 ];
