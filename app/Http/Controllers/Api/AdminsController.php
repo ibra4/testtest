@@ -21,10 +21,10 @@ class AdminsController extends Controller
             'users.name',
             'users.avatar',
             'users.email',
-            'users.number_of_reports',
+            'users.number_of_leiter_reports',
             'users.created_at',
             'users.updated_at',
-            DB::raw("SUM(sub_admins.used_reports) + users.used_reports as used_reports")
+            DB::raw("SUM(sub_admins.used_leiter_reports) + users.used_leiter_reports as used_leiter_reports")
         )
             ->where([
                 'users.is_deleted' => false,

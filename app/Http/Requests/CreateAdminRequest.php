@@ -27,7 +27,7 @@ class CreateAdminRequest extends FormRequest implements UserRequestInterface
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'phone_number' => "unique:users|nullable",
-            'number_of_reports' => 'numeric',
+            'number_of_leiter_reports' => 'numeric',
             'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'min:8',
         ];

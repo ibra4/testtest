@@ -39,16 +39,16 @@ class InfoController  extends Controller
                 'users.id',
                 'users.name',
                 'users.avatar',
-                DB::raw("SUM(sub_admins.used_reports) + users.used_reports as used_reports")
+                DB::raw("SUM(sub_admins.used_leiter_reports) + users.used_leiter_reports as used_leiter_reports")
             )
             ->leftJoin('users as sub_admins', function ($join) {
                 $join->on('sub_admins.admin_id', '=', 'users.id');
                 $join->on('sub_admins.role', '=', DB::raw('"sub_admin"'));
             })
             ->where('users.is_deleted', false)
-            ->where('users.number_of_reports','>',0)
+            ->where('users.number_of_leiter_reports','>',0)
             ->groupBy('users.id')
-            ->orderBy('users.used_reports','DESC')
+            ->orderBy('users.used_leiter_reports','DESC')
             ->get();
         return $this->sendSuccessReponse($admins);
     }

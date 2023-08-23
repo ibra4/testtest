@@ -118,7 +118,7 @@ class LeiterExamsController  extends Controller
 
         /** @var User $user */
         $user = auth()->user();
-        $user->update(['used_reports' => DB::raw('used_reports + 1')]);
+        $user->update(['used_leiter_reports' => DB::raw('used_leiter_reports + 1')]);
 
         return $this->sendSuccessReponse($report);
     }

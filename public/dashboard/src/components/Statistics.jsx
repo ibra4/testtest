@@ -26,10 +26,10 @@ function Statistics({ statistics }) {
     return (
         <Row>
             {renderStatisticItem(<TbReportAnalytics />, statistics.total_reports, 'Total Reports', 'bg-primary')}
-            {renderStatisticItem(<TbReport />, statistics.used_reports, 'Used Reports', 'bg-warning')}
+            {renderStatisticItem(<TbReport />, statistics.used_leiter_reports, 'Used Reports', 'bg-warning')}
             {renderStatisticItem(
                 <TbReportMoney />,
-                statistics.total_reports - statistics.used_reports,
+                statistics.total_reports - statistics.used_leiter_reports,
                 'Remaining Reports',
                 'bg-danger'
             )}

@@ -23,15 +23,15 @@ class ReportRepository
     public function getNumberOfUsedReportsForCenter(User $user)
     {
         $admin = $user->role == 'sub_admin' ? $user->admin : $user;
-        $sub_admins_used_reports = $admin->subAdmins->sum('used_reports');
+        $sub_admins_used_leiter_reports = $admin->subAdmins->sum('used_leiter_reports');
 
-        return $sub_admins_used_reports + $admin->used_reports;
+        return $sub_admins_used_leiter_reports + $admin->used_leiter_reports;
     }
 
     public function getNumberOfTotalReportsForCenter(User $user)
     {
         $admin = $user->role == 'sub_admin' ? $user->admin : $user;
 
-        return $admin->number_of_reports;
+        return $admin->number_of_leiter_reports;
     }
 }

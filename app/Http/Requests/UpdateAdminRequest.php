@@ -27,7 +27,7 @@ class UpdateAdminRequest extends FormRequest implements UserRequestInterface
             'name' => 'required|string|max:255',
             'email' => "required|email|unique:users,email,$this->id",
             'phone_number' => "unique:users,phone_number,$this->id|nullable",
-            'number_of_reports' => 'numeric',
+            'number_of_leiter_reports' => 'numeric',
         ];
 
         if ($this->password && $this->password != "") {

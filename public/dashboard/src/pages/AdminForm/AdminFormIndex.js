@@ -17,7 +17,7 @@ const defaultUser = {
     expiration_date: '',
     avatar: '',
     cv: '',
-    number_of_reports: 0,
+    number_of_leiter_reports: 0,
     country_id: '',
     city_id: '',
     is_active: 1

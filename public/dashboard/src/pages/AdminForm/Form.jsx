@@ -19,7 +19,7 @@ function Form({ initialValues, config, onSubmit }) {
     const validationSchema = Yup.object().shape({
         name: Yup.string().required(t('Name field is required!')),
         email: Yup.string().email(t('Invalid email')).required(t('Email field is required!')),
-        number_of_reports: Yup.number().integer().typeError(t('Numebr of reports must be an integer number')).min(0)
+        number_of_leiter_reports: Yup.number().integer().typeError(t('Numebr of reports must be an integer number')).min(0)
     });
 
     const [cities, setCities] = useState([]);
@@ -164,12 +164,12 @@ function Form({ initialValues, config, onSubmit }) {
                         <Row>
                             <Col md={4}>
                                 <TextField
-                                    name="number_of_reports"
+                                    name="number_of_leiter_reports"
                                     label={'Number of leiter reports'}
                                     onChange={handleChange}
-                                    value={values.number_of_reports}
+                                    value={values.number_of_leiter_reports}
                                     onBlur={handleBlur}
-                                    error={errors.number_of_reports}
+                                    error={errors.number_of_leiter_reports}
                                     type="number"
                                     className="mb-3"
                                 />

@@ -33,25 +33,25 @@ class BootstrapController extends Controller
     public function getConfig(Request $request)
     {
         if ($request->user()->hasRole('root')) {
-            $total_reports = User::where('role', 'admin')->sum('number_of_reports');
+            $total_reports = User::where('role', 'admin')->sum('number_of_leiter_reports');
         }
 
         if ($request->user()->role == 'admin') {
-            $total_reports = $request->user()->number_of_reports;
+            $total_reports = $request->user()->number_of_leiter_reports;
         }
 
         if ($request->user()->role == 'sub_admin') {
-            $total_reports = $request->user()->admin->number_of_reports;
+            $total_reports = $request->user()->admin->number_of_leiter_reports;
         }
 
-        $used_reports =  $request->user()->hasRole('root')
+        $used_leiter_reports =  $request->user()->hasRole('root')
             ? LeiterReport::count()
             : $this->reportRepository->getNumberOfUsedReportsForCenter($request->user());
 
         $data = [
             'statistics' => [
                 'total_reports' => $total_reports,
-                'used_reports' => $used_reports,
+                'used_leiter_reports' => $used_leiter_reports,
                 'admins' => User::where('role', 'admin')->count(),
                 'sub_admins' => User::where('role', 'sub_admin')->count(),
                 'examinees' => Examinee::count()

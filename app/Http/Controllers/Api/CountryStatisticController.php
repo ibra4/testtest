@@ -26,7 +26,7 @@ class CountryStatisticController extends Controller
             $sub_admins = User::where('role', 'sub_admin')
                 ->where('country_id', $country->id)->count();
 
-            $total_reports = User::where('country_id', $country->id)->sum('number_of_reports');
+            $total_reports = User::where('country_id', $country->id)->sum('number_of_leiter_reports');
 
             $examinees = Examinee::where('country_id', $country->id)->count();
         }
@@ -40,7 +40,7 @@ class CountryStatisticController extends Controller
             $sub_admins = User::where('role', 'sub_admin')
                 ->where('city_id', $city->id)->count();
 
-            $total_reports = User::where('city_id', $city->id)->sum('number_of_reports');
+            $total_reports = User::where('city_id', $city->id)->sum('number_of_leiter_reports');
 
             $examinees = Examinee::where('city_id', $city->id)->count();
         }
@@ -50,7 +50,7 @@ class CountryStatisticController extends Controller
             'admins' => $admins,
             'sub_admins' => $sub_admins,
             'total_reports' => $total_reports,
-            'used_reports' => $examinees,
+            'used_leiter_reports' => $examinees,
             'examinees' => $examinees
         ]);
     }
