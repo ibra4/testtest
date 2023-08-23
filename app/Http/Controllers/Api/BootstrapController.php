@@ -73,14 +73,14 @@ class BootstrapController extends Controller
         $data['abas_sub_domains'] = AbasSubDomainListResource::collection(AbasSubDomain::all());
 
         $categories = [];
-        foreach (config('enums.abas_sub_domains_categories') as $cat) {
+        foreach (config('enums.abas_abas_sub_domains_categories') as $cat) {
             $categories[] = [
                 'id' => $cat,
                 'label' => __($cat)
             ];
         }
 
-        $data['sub_domains_categories'] = $categories;
+        $data['abas_sub_domains_categories'] = $categories;
 
         $data['leiter_tables_types'] = config('enums.leiter_tables_types');
 

@@ -11,6 +11,13 @@ class AbasQuestion extends Model
 
     protected $fillable = ['abas_sub_domain_id', 'name', 'name_en'];
 
+    protected $appends = ['domain_full_name'];
+
+    public function getDomainFullNameAttribute()
+    {
+        return $this->subDomain->name . ' - ' . $this->subDomain->category;
+    }
+
     public function subDomain()
     {
         return $this->belongsTo(AbasSubDomain::class, 'abas_sub_domain_id', 'id');

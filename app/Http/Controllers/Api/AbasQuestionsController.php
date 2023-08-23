@@ -6,12 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AbasQuestionRequest;
 use App\Http\Resources\AbasQuestionResource;
 use App\Models\AbasQuestion;
+use App\Queries\AbasQuestionsQuery;
+use Illuminate\Http\Request;
 
 class AbasQuestionsController extends Controller
 {
-    public function actionIndex()
+    private $abasQuestionsQuery;
+
+    public function __construct(AbasQuestionsQuery $abasQuestionsQuery)
     {
-        return $this->sendSuccessReponse(AbasQuestionResource::collection(AbasQuestion::all()));
+        $this->abasQuestionsQuery = $abasQuestionsQuery;
+    }
+
+    public function actionIndex(Request $request)
+    {
+        $query = $this->abasQuestionsQuery->get($request);
+        return $this->sendSuccessReponse($query->paginate());
     }
 
     public function actionGet($id)

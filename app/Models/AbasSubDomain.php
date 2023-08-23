@@ -15,4 +15,9 @@ class AbasSubDomain extends Model
     {
         return $this->belongsTo(AbasDomain::class, 'abas_domain_id', 'id');
     }
+
+    public function getCategoryAttribute($value)
+    {
+        return __($value);
+    }
 }

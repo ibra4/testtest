@@ -1,34 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Layout from 'components/Layout'
 import View from './View'
 import FullLoader from 'components/FullLoader'
-import { httpClient } from 'providers/helpers'
 import { useTranslation } from 'react-i18next'
+import { useDataTable } from 'providers/hooks/useDataTable'
+import { useSelector } from 'react-redux'
+import Filters from './Filters'
 
 function AbasQuestionsIndex() {
 
     const { t } = useTranslation()
-    const [data, setData] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    const config = useSelector((state) => state.app.config);
 
-    const getData = async () => {
-        try {
-            const res = await httpClient.get('/abas/questions')
-            setData(res.data)
-            setIsLoading(false)
-        } catch (error) {
-            setIsLoading(false)
-        }
-    }
+    const [status, setStatus] = useState("not-ready")
 
-    useEffect(() => {
-        getData()
-    }, [])
+    const [queryParams, setQueryParams] = useState({
+        page: 1,
+        name: '',
+        name_en: '',
+        abas_sub_domain_id: ''
+    })
+
+    const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/abas/questions')
 
     return (
         <Layout title={t('ABAS Questions')}>
             {isLoading && <FullLoader />}
-            <View data={data} />
+            <Filters onSearch={onSearch} queryParams={queryParams} config={config} />
+            <View data={data} onSearch={onSearch} queryParams={queryParams} />
         </Layout>
     )
 }

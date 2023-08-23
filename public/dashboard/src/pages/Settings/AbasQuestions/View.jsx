@@ -5,8 +5,10 @@ import { Table } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
+import WhiteBox from 'components/WhiteBox';
+import Pagination from 'components/Datatable/Pagination';
 
-const View = ({ data }) => {
+const View = ({ data, onSearch, queryParams }) => {
     const { t } = useTranslation();
     const { push } = useHistory();
 
@@ -15,7 +17,7 @@ const View = ({ data }) => {
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.name_en}</td>
-            <td>{item.sub_domain_name}</td>
+            <td>{item.domain_full_name}</td>
             <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
             <td>
                 <div className="d-flex">
@@ -38,19 +40,22 @@ const View = ({ data }) => {
                     <span className="ms-2">{t('create_new', { name: t('Question') })}</span>
                 </Link>
             </div>
-            <Table striped>
-                <thead>
-                    <tr>
-                        <th>{t('ID')}</th>
-                        <th>{t('Name')}</th>
-                        <th>{t('Name En')}</th>
-                        <th>{t('Sub Domain')}</th>
-                        <th>{t('Created At')}</th>
-                        <th>{t('Actions')}</th>
-                    </tr>
-                </thead>
-                <tbody>{data && data.map(renderRow)}</tbody>
-            </Table>
+            <WhiteBox>
+                <Table striped>
+                    <thead>
+                        <tr>
+                            <th>{t('ID')}</th>
+                            <th>{t('Name')}</th>
+                            <th>{t('Name En')}</th>
+                            <th>{t('Sub Domain')}</th>
+                            <th>{t('Created At')}</th>
+                            <th>{t('Actions')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>{data && data.data && data.data.map(renderRow)}</tbody>
+                </Table>
+            </WhiteBox>
+            <Pagination data={data} onSearch={onSearch} queryParams={queryParams} />
         </>
     );
 };

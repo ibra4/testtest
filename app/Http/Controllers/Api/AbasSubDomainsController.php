@@ -4,14 +4,23 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AbasSubDomainRequest;
-use App\Http\Resources\AbasSubDomainResource;
 use App\Models\AbasSubDomain;
+use App\Queries\AbasSubDomainsQuery;
+use Illuminate\Http\Request;
 
 class AbasSubDomainsController extends Controller
 {
-    public function actionIndex()
+    private $abasSubDomainsQuery;
+    
+    public function __construct(AbasSubDomainsQuery $abasSubDomainsQuery)
     {
-        return $this->sendSuccessReponse(AbasSubDomainResource::collection(AbasSubDomain::all()));
+        $this->abasSubDomainsQuery = $abasSubDomainsQuery;
+    }
+    
+    public function actionIndex(Request $request)
+    {
+        $query = $this->abasSubDomainsQuery->get($request);
+        return $this->sendSuccessReponse($query->paginate());
     }
 
     public function actionGet($id)

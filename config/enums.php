@@ -13,7 +13,7 @@ return [
         'sequential_order' => 'Sequential Order',
         'visual_patterns' => 'Visual Patterns'
     ],
-    'abas_sub_domains_categories' => [
+    'abas_abas_sub_domains_categories' => [
         'parent_0_71',
         'parent_72_263',
         'teacher_48_71',
