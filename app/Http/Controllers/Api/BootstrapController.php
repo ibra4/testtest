@@ -32,21 +32,19 @@ class BootstrapController extends Controller
 
     public function getConfig(Request $request)
     {
-        if ($request->user()->hasRole('root')) {
-            $total_reports = User::where('role', 'admin')->sum('number_of_leiter_reports');
+        $currentUser = $request->user();
+
+        if ($currentUser->hasRole('root')) {
+            $total_reports = $this->generalReportsService->getNumberOfTotalReportsForAllCenters();
         }
 
-        if ($request->user()->role == 'admin') {
-            $total_reports = $request->user()->number_of_leiter_reports;
+        if ($currentUser->role == 'admin' || $currentUser->role == 'sub_admin') {
+            $total_reports = $this->generalReportsService->getNumberOfTotalReportsForCenter($currentUser);
         }
 
-        if ($request->user()->role == 'sub_admin') {
-            $total_reports = $request->user()->admin->number_of_leiter_reports;
-        }
-
-        $used_leiter_reports =  $request->user()->hasRole('root')
+        $used_leiter_reports =  $currentUser->hasRole('root')
             ? LeiterReport::count()
-            : $this->generalReportsService->getNumberOfUsedReportsForCenter($request->user(), ReportTypesEnum::LEITER);
+            : $this->generalReportsService->getNumberOfUsedReportsForCenter($currentUser);
 
         $data = [
             'statistics' => [
@@ -56,17 +54,17 @@ class BootstrapController extends Controller
                 'sub_admins' => User::where('role', 'sub_admin')->count(),
                 'examinees' => Examinee::count()
             ],
-            'user' => new UserResource($request->user()),
+            'user' => new UserResource($currentUser),
             'top_admins' => [],
             'countries' => CountryResource::collection(Country::all()),
             'notifications' => [
-                'list' => UserNotificationResource::collection($request->user()->notifications()->limit(5)->get()),
-                'unread_count' => $request->user()->notifications()->where('read_at', NULL)->count()
+                'list' => UserNotificationResource::collection($currentUser->notifications()->limit(5)->get()),
+                'unread_count' => $currentUser->notifications()->where('read_at', NULL)->count()
             ]
         ];
 
         // Fix
-        if ($request->user()->can('root')) {
+        if ($currentUser->can('root')) {
         }
         $data['admins'] = User::select('id', 'name AS label')->where('role', 'admin')->get();
         $data['abas_domains'] = AbasDomain::select('id', 'name AS label')->get();

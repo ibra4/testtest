@@ -21,9 +21,7 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
             <td>{item.id}</td>
             <AvatarNameTD item={item} />
             <td>{item.email}</td>
-            <td>
-                <span className="text-success">{item.number_of_leiter_reports}</span> / <b>{item.used_leiter_reports}</b>
-            </td>
+            <td>{item.number_of_total_reports}</td>
             <td>{item.created_at}</td>
             <td>{item.updated_at}</td>
             <td>

@@ -17,9 +17,12 @@ import * as Yup from 'yup';
 function Form({ initialValues, config, onSubmit }) {
     const { t } = useTranslation();
     const validationSchema = Yup.object().shape({
-        name: Yup.string().required(t('Name field is required!')),
-        email: Yup.string().email(t('Invalid email')).required(t('Email field is required!')),
-        number_of_leiter_reports: Yup.number().integer().typeError(t('Numebr of reports must be an integer number')).min(0)
+        name: Yup.string().required(),
+        email: Yup.string().email().required(),
+        number_of_leiter_reports: Yup.number().integer().typeError().min(0),
+        number_of_abas_reports: Yup.number().integer().typeError().min(0),
+        number_of_casd_reports: Yup.number().integer().typeError().min(0),
+        number_of_mpr_reports: Yup.number().integer().typeError().min(0)
     });
 
     const [cities, setCities] = useState([]);
@@ -50,7 +53,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col className="col-auto">
                                 <UploadField
                                     name="avatar"
-                                    label='Avatar'
+                                    label="Avatar"
                                     onChange={(value) => setFieldValue('avatar', value)}
                                     value={values.avatar}
                                     onBlur={handleBlur}
@@ -62,7 +65,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col className="col-auto">
                                 <UploadField
                                     name="logo"
-                                    label='Logo'
+                                    label="Logo"
                                     onChange={(value) => setFieldValue('logo', value)}
                                     value={values.logo}
                                     onBlur={handleBlur}
@@ -74,7 +77,7 @@ function Form({ initialValues, config, onSubmit }) {
                             <Col className="col-auto">
                                 <UploadField
                                     name="cv"
-                                    label='CV'
+                                    label="CV"
                                     onChange={(value) => setFieldValue('cv', value)}
                                     value={values.cv}
                                     onBlur={handleBlur}
@@ -89,7 +92,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="name"
-                                            label='Name'
+                                            label="Name"
                                             onChange={handleChange}
                                             value={values.name}
                                             onBlur={handleBlur}
@@ -100,7 +103,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="email"
-                                            label='Email'
+                                            label="Email"
                                             onChange={handleChange}
                                             value={values.email}
                                             onBlur={handleBlur}
@@ -112,7 +115,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="phone_number"
-                                            label='Phone Number'
+                                            label="Phone Number"
                                             onChange={handleChange}
                                             value={values.phone_number}
                                             onBlur={handleBlur}
@@ -123,7 +126,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={4}>
                                         <SelectField
                                             name="gender"
-                                            label='Gender'
+                                            label="Gender"
                                             onChange={handleChange}
                                             value={values.gender}
                                             onBlur={handleBlur}
@@ -137,7 +140,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     <Col md={6}>
                                         <TextField
                                             name="password"
-                                            label='Password'
+                                            label="Password"
                                             onChange={handleChange}
                                             value={values.password}
                                             onBlur={handleBlur}
@@ -162,7 +165,7 @@ function Form({ initialValues, config, onSubmit }) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={4}>
+                            <Col md={3}>
                                 <TextField
                                     name="number_of_leiter_reports"
                                     label={'Number of leiter reports'}
@@ -174,10 +177,46 @@ function Form({ initialValues, config, onSubmit }) {
                                     className="mb-3"
                                 />
                             </Col>
+                            <Col md={3}>
+                                <TextField
+                                    name="number_of_abas_reports"
+                                    label={'Number of ABAS reports'}
+                                    onChange={handleChange}
+                                    value={values.number_of_abas_reports}
+                                    onBlur={handleBlur}
+                                    error={errors.number_of_abas_reports}
+                                    type="number"
+                                    className="mb-3"
+                                />
+                            </Col>
+                            <Col md={3}>
+                                <TextField
+                                    name="number_of_mpr_reports"
+                                    label={'Number of MPR reports'}
+                                    onChange={handleChange}
+                                    value={values.number_of_mpr_reports}
+                                    onBlur={handleBlur}
+                                    error={errors.number_of_mpr_reports}
+                                    type="number"
+                                    className="mb-3"
+                                />
+                            </Col>
+                            <Col md={3}>
+                                <TextField
+                                    name="number_of_casd_reports"
+                                    label={'Number of CASD reports'}
+                                    onChange={handleChange}
+                                    value={values.number_of_casd_reports}
+                                    onBlur={handleBlur}
+                                    error={errors.number_of_casd_reports}
+                                    type="number"
+                                    className="mb-3"
+                                />
+                            </Col>
                             <Col md={4}>
                                 <TextField
                                     name="expiration_date"
-                                    label='Expiration Date'
+                                    label="Expiration Date"
                                     onChange={handleChange}
                                     value={values.expiration_date}
                                     onBlur={handleBlur}
@@ -220,7 +259,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <CheckboxField
                                     onChange={(evt) => setFieldValue('is_active', evt.target.checked)}
                                     name="is_active"
-                                    label='Is Active?'
+                                    label="Is Active?"
                                     value={values.is_active}
                                     onBlur={handleBlur}
                                     error={errors.is_active}

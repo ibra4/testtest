@@ -4,6 +4,7 @@ namespace App\Exports;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -20,7 +21,14 @@ class AdminsExport implements FromQuery, WithHeadings
 
     public function query()
     {
-        return User::select('id', 'name', 'email', 'number_of_leiter_reports', 'created_at', 'updated_at')->where([
+        return User::select(
+            'id',
+            'name',
+            'email',
+            DB::raw('number_of_leiter_reports + number_of_casd_reports + number_of_mpr_reports + number_of_abas_reports as number_of_total_reports'),
+            'created_at',
+            'updated_at'
+        )->where([
             'role' => 'admin',
             ['name', 'LIKE', "%$this->name%"],
             ['email', 'LIKE', "%$this->email%"],

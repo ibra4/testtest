@@ -18,6 +18,9 @@ const defaultUser = {
     avatar: '',
     cv: '',
     number_of_leiter_reports: 0,
+    number_of_abas_reports: 0,
+    number_of_casd_reports: 0,
+    number_of_mpr_reports: 0,
     country_id: '',
     city_id: '',
     is_active: 1

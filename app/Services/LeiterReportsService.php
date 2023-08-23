@@ -166,8 +166,8 @@ class LeiterReportsService
         if ($user->role == 'root') {
             return true;
         }
-        return $this->generalReportsService->getNumberOfUsedReportsForCenter($user, ReportTypesEnum::LEITER)
-            < $this->generalReportsService->getNumberOfTotalReportsForCenter($user, ReportTypesEnum::LEITER);
+        return $this->generalReportsService->getNumberOfUsedReportsForCenterByType($user, ReportTypesEnum::LEITER)
+            < $this->generalReportsService->getNumberOfTotalReportsForCenterByType($user, ReportTypesEnum::LEITER);
     }
 
     // @TODO: Move it to another service
