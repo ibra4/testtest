@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import WhiteBox from 'components/WhiteBox';
 import Pagination from 'components/Datatable/Pagination';
+import Showing from 'components/Datatable/Showing';
 
 const View = ({ data, onSearch, queryParams }) => {
     const { t } = useTranslation();
@@ -35,6 +36,7 @@ const View = ({ data, onSearch, queryParams }) => {
     return (
         <>
             <div className="datatable-header">
+                <Showing data={data} />
                 <Link to="/settings/abas/questions/create" className="btn btn-primary">
                     <FaPlus />
                     <span className="ms-2">{t('create_new', { name: t('Question') })}</span>
