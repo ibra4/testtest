@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\ReportTypesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AbasSubDomainListResource;
 use App\Http\Resources\CountryResource;
@@ -13,21 +14,20 @@ use App\Models\Country;
 use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
 use App\Models\User;
-use App\Repositories\ReportRepository;
+use App\Services\GeneralReportsService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class BootstrapController extends Controller
 {
     /**
-     * @var ReportRepository
+     * @var GeneralReportsService
      */
-    protected $reportRepository;
+    protected $generalReportsService;
 
     public function __construct(
-        ReportRepository $reportRepository
+        GeneralReportsService $generalReportsService
     ) {
-        $this->reportRepository = $reportRepository;
+        $this->generalReportsService = $generalReportsService;
     }
 
     public function getConfig(Request $request)
@@ -46,7 +46,7 @@ class BootstrapController extends Controller
 
         $used_leiter_reports =  $request->user()->hasRole('root')
             ? LeiterReport::count()
-            : $this->reportRepository->getNumberOfUsedReportsForCenter($request->user());
+            : $this->generalReportsService->getNumberOfUsedReportsForCenter($request->user(), ReportTypesEnum::LEITER);
 
         $data = [
             'statistics' => [

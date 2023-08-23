@@ -2,13 +2,14 @@
 
 namespace App\Services;
 
+use App\Enums\ReportTypesEnum;
 use App\Models\Examinee;
 use App\Repositories\AttentionReportRepository;
 use App\Repositories\CognitiveReportRepository;
 use App\Repositories\ExaminerReportRepository;
 use App\Repositories\MemoryReportRepository;
 use App\Repositories\NarrativeReportRepository;
-use App\Repositories\ReportRepository;
+use App\Repositories\LeiterReportRepository;
 use App\Models\Reports\LeiterReport;
 use App\Models\User;
 use App\Repositories\SupplimentalAttentionReportRepository;
@@ -49,7 +50,12 @@ class LeiterReportsService
     protected $narrativeReportRepository;
 
     /**
-     * @var ReportRepository
+     * @var GeneralReportsService
+     */
+    protected $generalReportsService;
+
+    /**
+     * @var LeiterReportRepository
      */
     protected $reportRepository;
 
@@ -59,8 +65,9 @@ class LeiterReportsService
         ExaminerReportRepository $examinerReportRepository,
         MemoryReportRepository $memoryReportRepository,
         NarrativeReportRepository $narrativeReportRepository,
-        ReportRepository $reportRepository,
-        SupplimentalAttentionReportRepository $supplimentalAttentionReportRepository
+        LeiterReportRepository $reportRepository,
+        SupplimentalAttentionReportRepository $supplimentalAttentionReportRepository,
+        GeneralReportsService $generalReportsService
     ) {
         $this->cognitiveReportRepository = $cognitiveReportRepository;
         $this->attentionReportRepository = $attentionReportRepository;
@@ -69,6 +76,7 @@ class LeiterReportsService
         $this->narrativeReportRepository = $narrativeReportRepository;
         $this->reportRepository = $reportRepository;
         $this->supplimentalAttentionReportRepository = $supplimentalAttentionReportRepository;
+        $this->generalReportsService = $generalReportsService;
     }
 
     /**
@@ -158,8 +166,8 @@ class LeiterReportsService
         if ($user->role == 'root') {
             return true;
         }
-        return $this->reportRepository->getNumberOfUsedReportsForCenter($user)
-            < $this->reportRepository->getNumberOfTotalReportsForCenter($user);
+        return $this->generalReportsService->getNumberOfUsedReportsForCenter($user, ReportTypesEnum::LEITER)
+            < $this->generalReportsService->getNumberOfTotalReportsForCenter($user, ReportTypesEnum::LEITER);
     }
 
     // @TODO: Move it to another service
