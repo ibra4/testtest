@@ -72,7 +72,7 @@ export const getLangcode = () => {
     return window.location.pathname.split('/')[1]
 }
 
-export const getDirection = () => {
+const getDirection = () => {
     return getLangcode() == 'ar' ? 'rtl' : 'ltr'
 }
 

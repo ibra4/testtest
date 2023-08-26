@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Layout from 'components/Layout'
-import { ROUTES } from 'providers/routes'
 import View from './View'
 import FullLoader from 'components/FullLoader'
 import { httpClient } from 'providers/helpers'

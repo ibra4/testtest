@@ -12,9 +12,6 @@ function ReportsButtons({ data }) {
                 <div className="d-flex justify-content-between">
                     {data.file_en && data.file_ar ? (
                         <div>
-                            {/* <div className="text-secondary mb-3">
-                                {t('Latest Update')}: {data.updated_at}
-                            </div> */}
                             <Row className="align-items-center">
                                 <Col className="col-auto">
                                     <Button as={'a'} href={data.file_ar} target="_blank" variant="success">

@@ -119,14 +119,12 @@ Route::middleware('auth:sanctum')->group(function () {
         // New
         Route::get('/examinees/{id}/exams', [ExamineesController::class, 'actionExams'])->name('examinee.exams');
 
-        // Leiter
-        Route::get('/examinees/leiter/{id}', [LeiterExamsController::class, 'actionGet'])->name('examinee.leiter-exams');
-        Route::put('/examinees/leiter/update/{id}/{type}', [LeiterExamsController::class, 'actionUpdate']);
-        Route::post('/examinees/leiter/create/{id}', [LeiterExamsController::class, 'actionCreate']);
-
-        // Reports
-        Route::get('/reports/leiter', [LeiterExamsController::class, 'actionIndex'])->name('reports.leiter');
-        Route::post('/reports/leiter/{id}/delete', [LeiterExamsController::class, 'actionDelete']);
+        // Leiter Exams
+        Route::get('/leiter-exams', [LeiterExamsController::class, 'actionIndex'])->name('reports.leiter');
+        Route::get('/leiter-exams/{id}', [LeiterExamsController::class, 'actionGet'])->name('examinee.leiter-exams');
+        Route::put('/leiter-exams/update/{id}/{type}', [LeiterExamsController::class, 'actionUpdate']);
+        Route::post('/leiter-exams/create/{id}', [LeiterExamsController::class, 'actionCreate']);
+        Route::post('/leiter-exams/{id}/delete', [LeiterExamsController::class, 'actionDelete']);
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);

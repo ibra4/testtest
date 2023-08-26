@@ -16,7 +16,6 @@ import LeiterRecordsIndex from 'pages/LeiterRecords/LeiterRecordsIndex';
 import LeiterRecordFormIndex from 'pages/LeiterRecordForm/LeiterRecordFormIndex';
 import SlidersIndex from 'pages/Settings/Sliders/SlidersIndex';
 import SliderFormIndex from 'pages/Settings/SliderForm/SliderFormIndex';
-import LeiterExamIndex from 'pages/LeiterExam/LeiterExamIndex';
 import ProfileIndex from 'pages/Profile/ProfileIndex';
 import HistoryIndex from 'pages/History/HistoryIndex';
 import ExamsIndex from 'pages/Examinee/Exams/ExamsIndex';
@@ -87,12 +86,11 @@ const Routes = () => {
         <Route path="/examinees" component={ExamineesIndex} exact />
         <Route path="/examinees/create" component={ExamineeFormIndex} exact />
         <Route path="/examinees/:id/update" component={ExamineeFormIndex} exact />
-        <Route path="/examinees/:id/exam" component={LeiterExamIndex} exact />
         <Route path="/examinees/:id/exams" component={ExamsIndex} exact />
 
         {/* Reposts */}
-        <Route path="/reports/leiter" component={ReportsLeiterIndex} exact />
-        <Route path="/reports/leiter/:id" component={LeiterIndex} exact />
+        <Route path="/leiter-exams" component={ReportsLeiterIndex} exact />
+        <Route path="/leiter-exams/:id" component={LeiterIndex} exact />
 
         {/* Leiter Records */}
         <Route path="/leiter-records/:type" component={LeiterRecordsIndex} exact />

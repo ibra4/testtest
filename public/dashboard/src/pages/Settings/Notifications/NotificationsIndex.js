@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Layout from 'components/Layout'
-import { ROUTES } from 'providers/routes'
 import Filters from './Filters'
 import { useDataTable } from 'providers/hooks/useDataTable'
 import View from './View'

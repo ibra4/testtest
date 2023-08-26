@@ -12,9 +12,9 @@ function index({ children, title = '' }) {
                 <Col className="outer-page-wrapper p-3">
                     <Header title={title} />
                     <div className="content">{children}</div>
-                    {/* <Footer /> */}
                 </Col>
             </div>
+            <Footer />
         </>
     );
 }

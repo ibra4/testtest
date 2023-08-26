@@ -1,13 +1,12 @@
-import { FaEdit, FaEye, FaFileExcel, FaPlus, FaTrash } from 'react-icons/fa';
+import { FaEye, FaFileExcel, FaTrash } from 'react-icons/fa';
 import ActionButton from 'components/Fields/ActionButton';
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import QueryString from 'qs';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Showing from 'components/Datatable/Showing';
 import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
-import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 import WhiteBox from 'components/WhiteBox';
 import { useTranslation } from 'react-i18next';
 import { hasRole } from 'providers/helpers';
@@ -29,7 +28,7 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
                     <ActionButton
                         icon={<FaEye />}
                         label={t('View Report')}
-                        onClick={() => push(`/reports/leiter/${item.id}`)}
+                        onClick={() => push(`/leiter-exams/${item.id}`)}
                         variant="primary"
                     />
                     {hasRole('root') && (

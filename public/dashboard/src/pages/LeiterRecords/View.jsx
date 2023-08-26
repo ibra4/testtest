@@ -2,7 +2,7 @@ import { FaEdit, FaFileExcel, FaPlus, FaTrash } from 'react-icons/fa';
 import ActionButton from 'components/Fields/ActionButton';
 import React from 'react';
 import QueryString from 'qs';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Showing from 'components/Datatable/Showing';
 import Pagination from 'components/Datatable/Pagination';
 import WhiteBox from 'components/WhiteBox';
@@ -13,7 +13,6 @@ import ActionLink from 'components/Fields/ActionLink';
 
 const View = ({ data, queryParams, onSearch, handleDelete }) => {
     const { t } = useTranslation();
-    const { push } = useHistory();
     const { type } = useParams();
 
     const columns = [

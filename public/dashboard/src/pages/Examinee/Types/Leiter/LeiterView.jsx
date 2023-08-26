@@ -2,7 +2,6 @@ import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import LabelValueCol from 'components/LabelValueCol';
 import ReportsButtons from 'components/Reports/ReportsButtons';
 import WhiteBox from 'components/WhiteBox';
-import { renderAge } from 'providers/helpers';
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';

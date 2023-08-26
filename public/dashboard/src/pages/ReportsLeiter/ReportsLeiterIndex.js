@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Layout from 'components/Layout'
-import { ROUTES } from 'providers/routes'
 import Filters from './Filters'
 import { useDataTable } from 'providers/hooks/useDataTable'
 import FullLoader from 'components/FullLoader'
@@ -17,7 +16,7 @@ function ReportsLeiterIndex() {
         // admin_id: ''
     })
 
-    const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/reports/leiter')
+    const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/leiter-exams')
 
     return (
         <Layout title={t('Leiter International Performance Scale - Third Edition')}>

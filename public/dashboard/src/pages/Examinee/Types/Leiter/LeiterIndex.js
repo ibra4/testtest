@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Layout from 'components/Layout'
 import { httpClient } from 'providers/helpers'
-import { ROUTES } from 'providers/routes'
 import FullLoader from 'components/FullLoader'
 import { useTranslation } from 'react-i18next'
 import LeiterView from './LeiterView'
@@ -21,7 +20,7 @@ function LeiterIndex() {
 
     const getData = async () => {
         try {
-            const res = await httpClient.get(`examinees/leiter/${id}`)
+            const res = await httpClient.get(`leiter-exams/${id}`)
             setData(res.data)
             setStatus("success")
         } catch (error) {
@@ -35,7 +34,7 @@ function LeiterIndex() {
     }, [])
 
     const onSectionSubmit = async (type, values) => {
-        return await httpClient.put(`examinees/leiter/update/${id}/${type}`, values)
+        return await httpClient.put(`leiter-exams/update/${id}/${type}`, values)
     }
 
     const renderView = () => {

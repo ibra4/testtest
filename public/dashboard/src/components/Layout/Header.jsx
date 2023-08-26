@@ -1,12 +1,11 @@
 import { FaSignOutAlt } from 'react-icons/fa';
 import React from 'react';
-import { Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
-import HeaderBreadcrumb from './HeaderBreadcrumb';
-import { AiOutlineNotification, AiOutlineMessage } from 'react-icons/ai';
+import { Col, Container, Dropdown, Row } from 'react-bootstrap';
+import { AiOutlineNotification } from 'react-icons/ai';
 import { BiMessageSquareDetail } from 'react-icons/bi';
 import { CgMoreO } from 'react-icons/cg';
 import { useTranslation } from 'react-i18next';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ChangeLangCode from './ChangeLangCode';
 
@@ -21,7 +20,6 @@ function Header({ title }) {
             <Container fluid>
                 <Row className="align-items-center">
                     <Col lg={8}>
-                        {/* <HeaderBreadcrumb /> */}
                         <div className="title display-6 fw-bold">{title}</div>
                     </Col>
                     <Col lg={4}>
