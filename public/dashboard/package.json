@@ -8,7 +8,8 @@
         "watch": "webpack --config webpack.watch.js --watch --env.NODE_ENV=local",
         "watch-dev": "webpack --config webpack.watch.js --watch --env.NODE_ENV=local.dev",
         "build": "webpack --mode production --config webpack.prod.js --env.NODE_ENV=prod",
-        "build-dev": "webpack --mode production --config webpack.prod.js --env.NODE_ENV=prod.dev"
+        "build-dev": "webpack --mode production --config webpack.prod.js --env.NODE_ENV=prod.dev",
+        "build-local": "webpack --mode production --config webpack.prod.js --env.NODE_ENV=prod.local"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.6.0",
