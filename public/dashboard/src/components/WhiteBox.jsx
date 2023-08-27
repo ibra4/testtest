@@ -1,5 +1,4 @@
 import React from 'react';
-// import classNames from 'classnames';
 import classNames from 'classnames'
 
 function WhiteBox({ children, title, classes, hr = false, ...rest }) {
