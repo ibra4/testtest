@@ -9,15 +9,12 @@ use App\Http\Requests\UpdateExamineeRequest;
 use App\Http\Requests\UpdateLeiterExamRequest;
 use App\Http\Resources\ExamineeExamsResource;
 use App\Http\Resources\ExamineeResource;
-use App\Http\Resources\ReportResource;
 use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
 use App\Queries\ExamineesQuery;
 use App\Services\LeiterReportsService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExamineesController extends Controller
@@ -99,15 +96,6 @@ class ExamineesController extends Controller
     public function export(Request $request)
     {
         return Excel::download(new ExamineesExport($request, $this->examineesQuery), 'examinees.xlsx');
-    }
-
-    /**
-     * @deprecated
-     */
-    public function getExam($id)
-    {
-        $examinee = Examinee::findOrFail($id);
-        return $this->sendSuccessReponse(new ReportResource($examinee->report));
     }
 
     public function saveExam($id, $type, UpdateLeiterExamRequest $request)
