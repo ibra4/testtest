@@ -34,7 +34,7 @@ function ExamsView({ data, onCreateExam }) {
                 <div className="text-center">
                     <Link to={`/reports/casd/create`} className="btn btn-primary">
                         <FaPlus />
-                        <span className="ms-2">{t('create_new', { name: t('CASD Tests') })}</span>
+                        <span className="ms-2">{t('create_new', { name: t('CASD Test') })}</span>
                     </Link>
                 </div>
             </WhiteBox>

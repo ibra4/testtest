@@ -35,7 +35,7 @@ const View = ({ data, queryParams, onSearch }) => {
                     />
                     <ActionButton
                         icon={<TbReportAnalytics />}
-                        label={t('View Report')}
+                        label={t('View Exams')}
                         onClick={() => push(`examinees/${item.id}/exams`)}
                         variant="primary"
                     />

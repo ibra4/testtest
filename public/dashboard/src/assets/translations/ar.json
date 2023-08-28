@@ -118,6 +118,7 @@
     "Notes": "ملاحظات",
     "Report": "التقرير",
     "View Report": "عرض التقرير",
+    "View Exams": "عرض الإختبارات",
     "View More": "عرض المزيد",
     "Edit": "تعديل",
     "Delete": "حذف",
@@ -167,5 +168,6 @@
     "Abas Tests": "إختبارات ABAS",
     "CASD Tests": "إختبارات CASD",
     "MPR Tests": "إختبارات MPR",
-    "MPR Exam": "إختبار MPR"
+    "MPR Exam": "إختبار MPR",
+    "CASD Test": "إختبار CASD"
 }
