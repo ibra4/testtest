@@ -63,6 +63,7 @@ function AbasTableView({ rows, onCreateExam }) {
                         title={t('Create exam for adult')}
                         forWho={'adult'}
                         onSubmit={(values) => onCreateExam(values, 'abas')}
+                        disabled
                     />
                 </div>
             </div>

@@ -17,7 +17,7 @@ const validationSchema = Yup.object().shape({
     application_date: Yup.date().required()
 });
 
-function AbasExamFormModal({ onSubmit, title, forWho }) {
+function AbasExamFormModal({ onSubmit, title, forWho, ...rest }) {
     const [show, setShow] = useState(false);
     const onHide = () => setShow(false);
     const { t } = useTranslation();
@@ -25,7 +25,7 @@ function AbasExamFormModal({ onSubmit, title, forWho }) {
 
     return (
         <>
-            <Button onClick={() => setShow(true)}>
+            <Button onClick={() => setShow(true)} {...rest}>
                 <FaPlus />
                 <span className="ms-2">{title}</span>
             </Button>
