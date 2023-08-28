@@ -109,10 +109,6 @@ Route::middleware('auth:sanctum')->group(function () {
         // Examinees
         Route::get('/examinees', [ExamineesController::class, 'index']);
         Route::get('/examinees/{id}', [ExamineesController::class, 'get']);
-        /** @deprecated*/
-        Route::get('/examinees-exam/{id}', [ExamineesController::class, 'getExam']);
-        /** @deprecated*/
-        Route::put('/examinees-exam/{id}/{type}', [ExamineesController::class, 'saveExam']);
         Route::post('/examinees/create', [ExamineesController::class, 'create']);
         Route::put('/examinees/{id}/update', [ExamineesController::class, 'update']);
 

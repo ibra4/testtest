@@ -13,8 +13,7 @@ export const ROUTES = {
     },
     EXAMINEES: {
         LIST: '/examinees',
-        CREATE: '/examinees/create',
-        EXAM: 'examinees-exam'
+        CREATE: '/examinees/create'
     },
     COUNTRY_STATISTICS: {
         GET: '/country-statistics'
