@@ -41,7 +41,7 @@ function ExamsIndex() {
 
         if (res.status == 200) {
             addToast(t('Saved Successfully'), { appearance: 'success' });
-            push(`/reports/${examType}/${res.data.id}`)
+            push(`/leiter-exams/${res.data.id}`)
         } else {
             addToast(t(generalErrorText), {appearance: 'error'});
             return res
