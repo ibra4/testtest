@@ -37,7 +37,7 @@ function ExamsIndex() {
     }, [])
 
     const onCreateExam = async (data, examType) => {
-        const res = await httpClient.post(`examinees/${examType}/create/${id}`, data)
+        const res = await httpClient.post(`leiter-exams/create/${id}`, data)
 
         if (res.status == 200) {
             addToast(t('Saved Successfully'), { appearance: 'success' });
