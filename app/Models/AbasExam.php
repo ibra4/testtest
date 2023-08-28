@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Reports\ReportInterface;
 use App\Models\Traits\HasAgeAttribute;
 use App\Models\Traits\HasExaminee;
 use App\Models\Traits\HasExaminer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AbasExam extends Model
+class AbasExam extends Model implements ReportInterface
 {
     use HasFactory, HasAgeAttribute, HasExaminee, HasExaminer;
 

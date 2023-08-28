@@ -2,7 +2,6 @@
 
 namespace App\Models\Reports;
 
-use App\Models\interfaces\SubReportInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

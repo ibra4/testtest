@@ -8,7 +8,7 @@ use App\Models\Traits\HasExaminer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LeiterReport extends Model
+class LeiterReport extends Model implements ReportInterface
 {
     use HasFactory, HasAgeAttribute, HasExaminee, HasExaminer;
 
