@@ -88,9 +88,12 @@ const Routes = () => {
         <Route path="/examinees/:id/update" component={ExamineeFormIndex} exact />
         <Route path="/examinees/:id/exams" component={ExamsIndex} exact />
 
-        {/* Reposts */}
+        {/* Leiter Exams */}
         <Route path="/leiter-exams" component={ReportsLeiterIndex} exact />
         <Route path="/leiter-exams/:id" component={LeiterIndex} exact />
+
+        {/* Abas Exams */}
+        {/* <Route path="/abas-exams/:id" component={LeiterIndex} exact /> */}
 
         {/* Leiter Records */}
         <Route path="/leiter-records/:type" component={LeiterRecordsIndex} exact />

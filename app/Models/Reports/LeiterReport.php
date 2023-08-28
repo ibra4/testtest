@@ -2,15 +2,15 @@
 
 namespace App\Models\Reports;
 
-use App\Models\Examinee;
-use App\Models\User;
-use Carbon\Carbon;
+use App\Models\Traits\HasAgeAttribute;
+use App\Models\Traits\HasExaminee;
+use App\Models\Traits\HasExaminer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LeiterReport extends Model implements ReportInterface
+class LeiterReport extends Model
 {
-    use HasFactory;
+    use HasFactory, HasAgeAttribute, HasExaminee, HasExaminer;
 
     protected $fillable = [
         'examinee_id',
@@ -34,65 +34,6 @@ class LeiterReport extends Model implements ReportInterface
         'updated_at' => 'datetime:d/m/Y - H:i:s',
         'created_at' => 'datetime:d/m/Y - H:i:s',
     ];
-
-    public function getExamineenameAttribute($value)
-    {
-        $currentUser = request()->user();
-        switch ($currentUser->role) {
-            case 'root':
-            case 'sub_admin':
-                $show = $this->examinee->created_by == $currentUser->id;
-                break;
-            case 'admin':
-                $show = $this->examinee->admin_id == $currentUser->id;
-                break;
-            default:
-                $show = false;
-        }
-
-        return $show ? $value : '*******';
-    }
-
-    public function getAgeAttribute()
-    {
-        $birthday = new Carbon($this->examinee->birthday);
-        $applicationDate = $this->application_date ? new Carbon($this->application_date) : Carbon::now();
-        $diff = $birthday->diff($applicationDate);
-        $years = $diff->format("%y");
-        $months = $diff->format("%m");
-        return $years * 12 + $months;
-    }
-
-    public function getTranslatedAgeAttribute()
-    {
-        $birthday = new Carbon($this->examinee->birthday);
-        $applicationDate = $this->application_date ? new Carbon($this->application_date) : Carbon::now();
-        $diff = $birthday->diff($applicationDate);
-
-        $years = $diff->format("%y");
-        $months = $diff->format("%m");
-
-        $age = '';
-        if ($years) {
-            $age .= $years . ' ' . __('Years') . ' ';
-        }
-
-        if ($months) {
-            $age .= $months . ' ' . __('Months');
-        }
-
-        return $age;
-    }
-
-    public function examinee()
-    {
-        return $this->belongsTo(Examinee::class, 'examinee_id', 'id');
-    }
-
-    public function examiner()
-    {
-        return $this->belongsTo(User::class, 'created_by', 'id');
-    }
 
     public function reportCognitive()
     {

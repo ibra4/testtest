@@ -160,5 +160,12 @@
     "Questions": "الأسئلة",
     "ABAS Sub Domains": "ABAS النطاقات الفرعية",
     "ABAS Domains": "ABAS نطاقات",
-    "Category": "القئة"
+    "Category": "القئة",
+    "Create exam for examiner": "إضافة إختبار للفاحص",
+    "Create exam for parent": "إضافة إختبار لولي الأمر",
+    "Create exam for adult": "إضافة إختبار للبالغين",
+    "Abas Tests": "إختبارات ABAS",
+    "CASD Tests": "إختبارات CASD",
+    "MPR Tests": "إختبارات MPR",
+    "MPR Exam": "إختبار MPR"
 }

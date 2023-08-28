@@ -30,6 +30,7 @@ class ExamineeExamsResource extends JsonResource
             ],
             'center' => $this->center,
             'leiter' => LeiterReportTeaserResource::collection($this->leiterReports),
+            'abas' => AbasExamTeaserResource::collection($this->abasReports),
         ];
     }
 }

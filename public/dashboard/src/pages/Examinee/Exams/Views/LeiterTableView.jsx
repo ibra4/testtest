@@ -6,7 +6,7 @@ import { Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { TbReportAnalytics } from 'react-icons/tb';
 import { useHistory } from 'react-router-dom';
-import LeiterExamForm from '../Forms/LeiterExamForm';
+import LeiterExamFormModal from '../Forms/LeiterExamFormModal';
 
 function LeiterTableView({ rows, onCreateExam }) {
     const { t } = useTranslation();
@@ -45,7 +45,7 @@ function LeiterTableView({ rows, onCreateExam }) {
                 </tbody>
             </Table>
             <div className="text-center">
-                <LeiterExamForm onSubmit={(values) => onCreateExam(values, 'leiter')} />
+                <LeiterExamFormModal onSubmit={(values) => onCreateExam(values, 'leiter')} />
             </div>
         </WhiteBox>
     );

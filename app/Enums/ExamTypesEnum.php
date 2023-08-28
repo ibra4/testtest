@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-class ReportTypesEnum
+class ExamTypesEnum
 {
     const LEITER = 'leiter';
     const ABAS = 'abas';

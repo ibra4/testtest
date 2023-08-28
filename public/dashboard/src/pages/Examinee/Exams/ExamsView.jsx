@@ -17,7 +17,7 @@ function ExamsView({ data, onCreateExam }) {
             </WhiteBox>
             <LeiterTableView rows={data?.leiter} onCreateExam={onCreateExam} />
             <AbasTableView rows={data?.abas} onCreateExam={onCreateExam} />
-            <WhiteBox title={t('CASD Exams')}>
+            <WhiteBox title={t('CASD Tests')}>
                 <Table className="align-middle">
                     <thead>
                         <tr>
@@ -34,11 +34,11 @@ function ExamsView({ data, onCreateExam }) {
                 <div className="text-center">
                     <Link to={`/reports/casd/create`} className="btn btn-primary">
                         <FaPlus />
-                        <span className="ms-2">{t('create_new', { name: 'CASD Report' })}</span>
+                        <span className="ms-2">{t('create_new', { name: t('CASD Tests') })}</span>
                     </Link>
                 </div>
             </WhiteBox>
-            <WhiteBox title={t('MPR Exams')}>
+            <WhiteBox title={t('MPR Tests')}>
                 <Table className="align-middle">
                     <thead>
                         <tr>
@@ -55,7 +55,7 @@ function ExamsView({ data, onCreateExam }) {
                 <div className="text-center">
                     <Link to={`/reports/mpr/create`} className="btn btn-primary">
                         <FaPlus />
-                        <span className="ms-2">{t('create_new', { name: 'MPR Report' })}</span>
+                        <span className="ms-2">{t('create_new', { name: t('MPR Exam') })}</span>
                     </Link>
                 </div>
             </WhiteBox>

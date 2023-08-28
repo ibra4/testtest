@@ -5,7 +5,7 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { TbReportAnalytics } from 'react-icons/tb';
-import AbasExamForm from '../Forms/AbasExamForm';
+import AbasExamFormModal from '../Forms/AbasExamFormModal';
 import { useHistory } from 'react-router-dom';
 
 function AbasTableView({ rows, onCreateExam }) {
@@ -46,9 +46,24 @@ function AbasTableView({ rows, onCreateExam }) {
                 </tbody>
             </Table>
             <div className="d-flex justify-content-center">
-                <AbasExamForm onSubmit={(values) => onCreateExam(values, 'abas')} />
+                <AbasExamFormModal
+                    title={t('Create exam for examiner')}
+                    forWho={'examiner'}
+                    onSubmit={(values) => onCreateExam(values, 'abas')}
+                />
                 <div className="ms-2">
-                    <AbasExamForm onSubmit={(values) => onCreateExam(values, 'abas')} />
+                    <AbasExamFormModal
+                        title={t('Create exam for parent')}
+                        forWho={'parent'}
+                        onSubmit={(values) => onCreateExam(values, 'abas')}
+                    />
+                </div>
+                <div className="ms-2">
+                    <AbasExamFormModal
+                        title={t('Create exam for adult')}
+                        forWho={'adult'}
+                        onSubmit={(values) => onCreateExam(values, 'abas')}
+                    />
                 </div>
             </div>
         </WhiteBox>

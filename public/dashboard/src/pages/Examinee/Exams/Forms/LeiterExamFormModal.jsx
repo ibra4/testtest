@@ -17,13 +17,13 @@ const validationSchema = Yup.object().shape({
     application_date: Yup.date().required()
 });
 
-function AbasExamForm({ onSubmit }) {
+function LeiterExamFormModal({ onSubmit }) {
     const [show, setShow] = useState(false);
     const onHide = () => setShow(false);
     const { t } = useTranslation();
     const { addToast } = useToasts();
 
-    const title = t('create_new', { name: 'Abas Test' });
+    const title = t('create_new', { name: t('Leiter Exam') });
 
     return (
         <>
@@ -106,4 +106,4 @@ function AbasExamForm({ onSubmit }) {
     );
 }
 
-export default AbasExamForm;
+export default LeiterExamFormModal;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\ReportTypesEnum;
+use App\Enums\ExamTypesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AbasSubDomainListResource;
 use App\Http\Resources\CountryResource;
@@ -14,20 +14,20 @@ use App\Models\Country;
 use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
 use App\Models\User;
-use App\Services\GeneralReportsService;
+use App\Services\GeneralExamsService;
 use Illuminate\Http\Request;
 
 class BootstrapController extends Controller
 {
     /**
-     * @var GeneralReportsService
+     * @var GeneralExamsService
      */
-    protected $generalReportsService;
+    protected $generalExamsService;
 
     public function __construct(
-        GeneralReportsService $generalReportsService
+        GeneralExamsService $generalExamsService
     ) {
-        $this->generalReportsService = $generalReportsService;
+        $this->generalExamsService = $generalExamsService;
     }
 
     public function getConfig(Request $request)
@@ -35,16 +35,16 @@ class BootstrapController extends Controller
         $currentUser = $request->user();
 
         if ($currentUser->hasRole('root')) {
-            $total_reports = $this->generalReportsService->getNumberOfTotalReportsForAllCenters();
+            $total_reports = $this->generalExamsService->getNumberOfTotalReportsForAllCenters();
         }
 
         if ($currentUser->role == 'admin' || $currentUser->role == 'sub_admin') {
-            $total_reports = $this->generalReportsService->getNumberOfTotalReportsForCenter($currentUser);
+            $total_reports = $this->generalExamsService->getNumberOfTotalReportsForCenter($currentUser);
         }
 
         $used_leiter_reports =  $currentUser->hasRole('root')
             ? LeiterReport::count()
-            : $this->generalReportsService->getNumberOfUsedReportsForCenter($currentUser);
+            : $this->generalExamsService->getNumberOfUsedReportsForCenter($currentUser);
 
         $data = [
             'statistics' => [

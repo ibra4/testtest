@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-use App\Enums\ReportTypesEnum;
+use App\Enums\ExamTypesEnum;
+use App\Exceptions\AgeNotAllowedException;
+use App\Exceptions\NumberOfExamsExceededException;
 use App\Models\Examinee;
 use App\Repositories\AttentionReportRepository;
 use App\Repositories\CognitiveReportRepository;
@@ -13,11 +15,15 @@ use App\Repositories\LeiterReportRepository;
 use App\Models\Reports\LeiterReport;
 use App\Models\User;
 use App\Repositories\SupplimentalAttentionReportRepository;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Throwable;
 
-class LeiterReportsService
+class LeiterExamsService
 {
     /**
      * @var CognitiveReportRepository
@@ -50,9 +56,9 @@ class LeiterReportsService
     protected $narrativeReportRepository;
 
     /**
-     * @var GeneralReportsService
+     * @var GeneralExamsService
      */
-    protected $generalReportsService;
+    protected $generalExamsService;
 
     /**
      * @var LeiterReportRepository
@@ -67,7 +73,7 @@ class LeiterReportsService
         NarrativeReportRepository $narrativeReportRepository,
         LeiterReportRepository $reportRepository,
         SupplimentalAttentionReportRepository $supplimentalAttentionReportRepository,
-        GeneralReportsService $generalReportsService
+        GeneralExamsService $generalExamsService
     ) {
         $this->cognitiveReportRepository = $cognitiveReportRepository;
         $this->attentionReportRepository = $attentionReportRepository;
@@ -76,7 +82,7 @@ class LeiterReportsService
         $this->narrativeReportRepository = $narrativeReportRepository;
         $this->reportRepository = $reportRepository;
         $this->supplimentalAttentionReportRepository = $supplimentalAttentionReportRepository;
-        $this->generalReportsService = $generalReportsService;
+        $this->generalExamsService = $generalExamsService;
     }
 
     /**
@@ -84,10 +90,27 @@ class LeiterReportsService
      * 
      * @param int $examineeId
      * @param string $applicationDate
+     * @throws NumberOfExamsExceededException
+     * @throws ModelNotFoundException
      * @return LeiterReport
      */
-    public function createEmptyReport(int $examineeId, string $applicationDate, string $examinerNotes = null)
+    public function createEmptyReport(int $examineeId, Request $request)
     {
+        /** @var User $user */
+        $user = $request->user();
+
+        if (!$this->generalExamsService->canUserCreateExam($user, ExamTypesEnum::LEITER)) {
+            throw new NumberOfExamsExceededException('You have exceeded the allowed reports number, please contact website administrator');
+        }
+
+        $examinee = Examinee::findOrFail($examineeId);
+
+        $ageInMonths = $this->generalExamsService->calculateAgeFromBirthdayAndAppDate($examinee->birthday, $request->application_date);
+
+        if ($ageInMonths < 36) {
+            throw new AgeNotAllowedException(__('Leiter exam must be for 3 years and above'));
+        }
+
         DB::beginTransaction();
         try {
             $cognitive = $this->cognitiveReportRepository->createEmptyReport();
@@ -99,9 +122,9 @@ class LeiterReportsService
 
             $report = $this->reportRepository->create([
                 'examinee_id' => $examineeId,
-                'application_date' => $applicationDate,
-                'created_by' => auth()->user()->id,
-                'examiner_notes' => $examinerNotes,
+                'application_date' => $request->application_date,
+                'created_by' => $user->id,
+                'examiner_notes' => $request->examiner_notes,
                 'report_cognitive_subtest_id' => $cognitive->id,
                 'report_memory_battery_id' => $memory->id,
                 'report_attention_id' => $attention->id,
@@ -111,7 +134,8 @@ class LeiterReportsService
             ]);
 
             DB::commit();
-        } catch (\Throwable $th) {
+            $user->update(['used_leiter_reports' => DB::raw('used_leiter_reports + 1')]);
+        } catch (Throwable $th) {
             DB::rollBack();
             throw $th;
         }
@@ -142,13 +166,15 @@ class LeiterReportsService
     }
 
     /**
-     * @param LeiterReport $report
+     * @param int $reportId
      * @param string $type
      * @param Request $request
      * @return Model
      */
-    public function updateReport(LeiterReport $report, string $type, Request $request)
+    public function updateReport(int $reportId, string $type, Request $request)
     {
+        $report = LeiterReport::findOrFail($reportId);
+
         $report = $this->getSubReportModel($report, $type);
 
         $data = $request->only($report->getFillable());
@@ -160,22 +186,28 @@ class LeiterReportsService
         return $report;
     }
 
-    // @TODO: Move it to another service
-    public function canUserCreateReport(User $user)
+    public function deleteExam(int $examId, Request $request)
     {
-        if ($user->role == 'root') {
-            return true;
-        }
-        return $this->generalReportsService->getNumberOfUsedReportsForCenterByType($user, ReportTypesEnum::LEITER)
-            < $this->generalReportsService->getNumberOfTotalReportsForCenterByType($user, ReportTypesEnum::LEITER);
-    }
+        $user = $request->user();
+        $report = LeiterReport::findOrFail($examId);
 
-    // @TODO: Move it to another service
-    public function canUserDeleteReport(User $user, LeiterReport $report)
-    {
-        if ($user->hasRole('root')) {
-            return true;
+        if (!$this->generalExamsService->canUserDeleteExam($user, $report)) {
+            throw new AccessDeniedHttpException(__("You don't have permission to delete this report"));
         }
-        return $user->id == $report->created_by;
+
+        DB::beginTransaction();
+        try {
+            $report->delete();
+            $report->reportCognitive->delete();
+            $report->reportMemory->delete();
+            $report->reportAttention->delete();
+            $report->reportSupplementalAttention->delete();
+            $report->reportExaminer->delete();
+            $report->reportNarrative->delete();
+            DB::commit();
+        } catch (Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
     }
 }

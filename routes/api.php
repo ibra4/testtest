@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AbasDomainsController;
+use App\Http\Controllers\Api\AbasExamsController;
 use App\Http\Controllers\Api\AbasQuestionsController;
 use App\Http\Controllers\Api\AbasSubDomainsController;
 use App\Http\Controllers\Api\AdminsController;
@@ -113,14 +114,21 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/examinees/{id}/update', [ExamineesController::class, 'update']);
 
         // New
-        Route::get('/examinees/{id}/exams', [ExamineesController::class, 'actionExams'])->name('examinee.exams');
+        Route::get('/examinees/{id}/exams', [ExamineesController::class, 'actionExams']);
 
         // Leiter Exams
-        Route::get('/leiter-exams', [LeiterExamsController::class, 'actionIndex'])->name('reports.leiter');
-        Route::get('/leiter-exams/{id}', [LeiterExamsController::class, 'actionGet'])->name('examinee.leiter-exams');
+        Route::get('/leiter-exams', [LeiterExamsController::class, 'actionIndex']);
+        Route::get('/leiter-exams/{id}', [LeiterExamsController::class, 'actionGet']);
         Route::put('/leiter-exams/update/{id}/{type}', [LeiterExamsController::class, 'actionUpdate']);
         Route::post('/leiter-exams/create/{id}', [LeiterExamsController::class, 'actionCreate']);
         Route::post('/leiter-exams/{id}/delete', [LeiterExamsController::class, 'actionDelete']);
+
+        // Abas Exams
+        Route::get('/abas-exams', [AbasExamsController::class, 'actionIndex']);
+        Route::get('/abas-exams/{id}', [AbasExamsController::class, 'actionGet']);
+        Route::put('/abas-exams/update/{id}/{type}', [AbasExamsController::class, 'actionUpdate']);
+        Route::post('/abas-exams/create/{id}', [AbasExamsController::class, 'actionCreate']);
+        Route::post('/abas-exams/{id}/delete', [AbasExamsController::class, 'actionDelete']);
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);

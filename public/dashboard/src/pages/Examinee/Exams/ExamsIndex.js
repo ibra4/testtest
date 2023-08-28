@@ -37,13 +37,31 @@ function ExamsIndex() {
     }, [])
 
     const onCreateExam = async (data, examType) => {
-        const res = await httpClient.post(`leiter-exams/create/${id}`, data)
+        let examPrefix;
+        switch (examType) {
+            case 'leiter':
+                examPrefix = 'leiter-exams'
+                break;
+            case 'abas':
+                examPrefix = 'abas-exams'
+                break;
+            case 'mpr':
+                examPrefix = 'mpr-exams'
+                break;
+            case 'casd':
+                examPrefix = 'casd-exams'
+                break;
+            default:
+                setStatus('error')
+        }
+
+        const res = await httpClient.post(`${examPrefix}/create/${id}`, data)
 
         if (res.status == 200) {
             addToast(t('Saved Successfully'), { appearance: 'success' });
-            push(`/leiter-exams/${res.data.id}`)
+            push(`/${examPrefix}/${res.data.id}`)
         } else {
-            addToast(t(generalErrorText), {appearance: 'error'});
+            addToast(t(generalErrorText), { appearance: 'error' });
             return res
         }
     }

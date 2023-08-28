@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasAgeAttribute;
+use App\Models\Traits\HasExaminee;
+use App\Models\Traits\HasExaminer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class AbasExam extends Model
 {
-    use HasFactory;
+    use HasFactory, HasAgeAttribute, HasExaminee, HasExaminer;
+
+    protected $fillable = ['examinee_id', 'created_by', 'category', 'application_date', 'examiner_notes'];
 }

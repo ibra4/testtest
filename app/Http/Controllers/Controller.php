@@ -26,4 +26,11 @@ class Controller extends BaseController
             'action' => $action
         ], $statusCode);
     }
+
+    protected function sendValidationError($errors = [])
+    {
+        return response()->json([
+            'errors' => $errors
+        ], 422);
+    }
 }

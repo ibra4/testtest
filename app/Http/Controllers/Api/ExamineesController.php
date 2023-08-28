@@ -12,7 +12,7 @@ use App\Http\Resources\ExamineeResource;
 use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
 use App\Queries\ExamineesQuery;
-use App\Services\LeiterReportsService;
+use App\Services\LeiterExamsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Maatwebsite\Excel\Facades\Excel;
@@ -25,14 +25,14 @@ class ExamineesController extends Controller
     protected $examineesQuery;
 
     /**
-     * @var LeiterReportsService
+     * @var LeiterExamsService
      */
-    protected $reportService;
+    protected $leiterExamsService;
 
-    public function __construct(ExamineesQuery $exq, LeiterReportsService $reportService)
+    public function __construct(ExamineesQuery $exq, LeiterExamsService $leiterExamsService)
     {
         $this->examineesQuery = $exq;
-        $this->reportService = $reportService;
+        $this->leiterExamsService = $leiterExamsService;
     }
 
     public function index(Request $request)
@@ -102,7 +102,7 @@ class ExamineesController extends Controller
     {
         $report = LeiterReport::findOrFail($id);
 
-        $report = $this->reportService->updateReport($report, $type, $request);
+        $report = $this->leiterExamsService->updateReport($report, $type, $request);
 
         return $this->sendSuccessReponse($report);
     }

@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\AgeNotAllowedException;
+use App\Exceptions\NumberOfExamsExceededException;
 use App\Exports\LeiterReportsExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateLeiterExamRequest;
 use App\Http\Requests\UpdateLeiterExamRequest;
 use App\Http\Resources\LeiterReportResource;
-use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
-use App\Models\User;
 use App\Queries\LeiterReportsQuery;
-use App\Services\LeiterReportsService;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
+use App\Services\LeiterExamsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Throwable;
 
 class LeiterExamsController  extends Controller
@@ -27,16 +26,16 @@ class LeiterExamsController  extends Controller
     protected $leiterReportsQuery;
 
     /**
-     * @var LeiterReportsService
+     * @var LeiterExamsService
      */
-    protected $reportService;
+    protected $leiterExamsService;
 
     public function __construct(
         LeiterReportsQuery $leiterReportsQuery,
-        LeiterReportsService $reportService
+        LeiterExamsService $leiterExamsService
     ) {
         $this->leiterReportsQuery = $leiterReportsQuery;
-        $this->reportService = $reportService;
+        $this->leiterExamsService = $leiterExamsService;
     }
 
     /**
@@ -75,11 +74,12 @@ class LeiterExamsController  extends Controller
      */
     public function actionUpdate($id, $type, UpdateLeiterExamRequest $request)
     {
-        $report = LeiterReport::findOrFail($id);
-
-        $report = $this->reportService->updateReport($report, $type, $request);
-
-        return $this->sendSuccessReponse($report);
+        try {
+            $report = $this->leiterExamsService->updateReport($id, $type, $request);
+            return $this->sendSuccessReponse($report);
+        } catch (Throwable $th) {
+            return $this->sendErrorMessage($th->getMessage(), 500);
+        }
     }
 
     /**
@@ -91,36 +91,16 @@ class LeiterExamsController  extends Controller
      */
     public function actionCreate($id, CreateLeiterExamRequest $request)
     {
-        if (!$this->reportService->canUserCreateReport($request->user())) {
-            return $this->sendErrorMessage('You have exceeded the allowed reports number, please contact website administrator', 403);
+        try {
+            $report = $this->leiterExamsService->createEmptyReport($id, $request);
+            return $this->sendSuccessReponse($report);
+        } catch (AgeNotAllowedException $th) {
+            return $this->sendValidationError(['application_date' => $th->getMessage()]);
+        } catch (NumberOfExamsExceededException $th) {
+            return $this->sendErrorMessage($th->getMessage(), 403);
+        } catch (Throwable $th) {
+            return $this->sendErrorMessage($th->getMessage(), 500);
         }
-
-        $examinee = Examinee::findOrFail($id);
-        $birthday = new Carbon($examinee->birthday);
-        $applicationDate = new Carbon($request->application_date);
-
-        $diff = $birthday->diff($applicationDate);
-
-        $years = $diff->format("%y");
-        $months = $diff->format("%m");
-
-        $ageInMonths = $years * 12 + $months;
-
-        if ($ageInMonths < 36) {
-            return response()->json([
-                'errors' => [
-                    'application_date' => __('Leiter exam must be for 3 years and above')
-                ]
-            ], 422);
-        }
-
-        $report = $this->reportService->createEmptyReport($id, $request->application_date, $request->examiner_notes);
-
-        /** @var User $user */
-        $user = auth()->user();
-        $user->update(['used_leiter_reports' => DB::raw('used_leiter_reports + 1')]);
-
-        return $this->sendSuccessReponse($report);
     }
 
     /**
@@ -132,34 +112,22 @@ class LeiterExamsController  extends Controller
      */
     public function actionDelete(Request $request, $id)
     {
-        $report = LeiterReport::findOrFail($id);
-
-        if (!$this->reportService->canUserDeleteReport($request->user(), $report)) {
-            return $this->sendErrorMessage("You don't have permission to delete this report", 403);
-        }
-
-        DB::beginTransaction();
         try {
-            $report->delete();
-            $report->reportCognitive->delete();
-            $report->reportMemory->delete();
-            $report->reportAttention->delete();
-            $report->reportSupplementalAttention->delete();
-            $report->reportExaminer->delete();
-            $report->reportNarrative->delete();
-            DB::commit();
+            $this->leiterExamsService->deleteExam($id, $request);
+            return $this->sendSuccessReponse(['message' => __('Deleted Successfully')]);
+        } catch (AccessDeniedHttpException $th) {
+            return $this->sendErrorMessage($th->getMessage(), 403);
         } catch (Throwable $th) {
-            DB::rollBack();
-            return $this->sendErrorMessage("Something went wrong, please contact website administrator", 500);
+            return $this->sendErrorMessage($th->getMessage(), 500);
         }
-
-        return $this->sendSuccessReponse([
-            'message' => __('Deleted Successfully')
-        ]);
     }
 
     public function actionExport(Request $request)
     {
-        return Excel::download(new LeiterReportsExport($request, $this->leiterReportsQuery), 'leiter_reports.xlsx');
+        try {
+            return Excel::download(new LeiterReportsExport($request, $this->leiterReportsQuery), 'leiter_reports.xlsx');
+        } catch (Throwable $th) {
+            return $this->sendErrorMessage($th->getMessage(), 500);
+        }
     }
 }

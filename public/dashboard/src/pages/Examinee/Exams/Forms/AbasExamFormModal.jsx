@@ -17,13 +17,11 @@ const validationSchema = Yup.object().shape({
     application_date: Yup.date().required()
 });
 
-function LeiterExamForm({ onSubmit }) {
+function AbasExamFormModal({ onSubmit, title, forWho }) {
     const [show, setShow] = useState(false);
     const onHide = () => setShow(false);
     const { t } = useTranslation();
     const { addToast } = useToasts();
-
-    const title = t('create_new', { name: t('Leiter Exam') });
 
     return (
         <>
@@ -33,7 +31,7 @@ function LeiterExamForm({ onSubmit }) {
             </Button>
             <Formik
                 enableReinitialize
-                initialValues={initialValues}
+                initialValues={{ ...initialValues, for: forWho }}
                 validationSchema={validationSchema}
                 onSubmit={async (values, { setErrors, setSubmitting }) => {
                     try {
@@ -106,4 +104,4 @@ function LeiterExamForm({ onSubmit }) {
     );
 }
 
-export default LeiterExamForm;
+export default AbasExamFormModal;

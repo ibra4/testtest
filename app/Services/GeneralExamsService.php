@@ -2,17 +2,19 @@
 
 namespace App\Services;
 
-use App\Enums\ReportTypesEnum;
+use App\Enums\ExamTypesEnum;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Throwable;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
-class GeneralReportsService
+class GeneralExamsService
 {
     public function getNumberOfUsedReportsForCenter(User $user)
     {
         $sum = 0;
-        foreach (ReportTypesEnum::getAllFields() as $reportType) {
+        foreach (ExamTypesEnum::getAllFields() as $reportType) {
             $sum += $this->getNumberOfUsedReportsForCenterByType($user, $reportType);
         }
 
@@ -22,7 +24,7 @@ class GeneralReportsService
     public function getNumberOfTotalReportsForCenter(User $user)
     {
         $sum = 0;
-        foreach (ReportTypesEnum::getAllFields() as $reportType) {
+        foreach (ExamTypesEnum::getAllFields() as $reportType) {
             $sum += $this->getNumberOfTotalReportsForCenterByType($user, $reportType);
         }
 
@@ -63,16 +65,16 @@ class GeneralReportsService
             $admin = $user->role == 'sub_admin' ? $user->admin : $user;
 
             switch ($reportType) {
-                case ReportTypesEnum::LEITER:
+                case ExamTypesEnum::LEITER:
                     $colName = 'used_leiter_reports';
                     break;
-                case ReportTypesEnum::ABAS:
+                case ExamTypesEnum::ABAS:
                     $colName = 'used_abas_reports';
                     break;
-                case ReportTypesEnum::MPR:
+                case ExamTypesEnum::MPR:
                     $colName = 'used_mpr_reports';
                     break;
-                case ReportTypesEnum::CASD:
+                case ExamTypesEnum::CASD:
                     $colName = 'used_casd_reports';
                     break;
             }
@@ -97,16 +99,16 @@ class GeneralReportsService
             $admin = $user->role == 'sub_admin' ? $user->admin : $user;
 
             switch ($reportType) {
-                case ReportTypesEnum::LEITER:
+                case ExamTypesEnum::LEITER:
                     $colName = 'number_of_leiter_reports';
                     break;
-                case ReportTypesEnum::ABAS:
+                case ExamTypesEnum::ABAS:
                     $colName = 'number_of_abas_reports';
                     break;
-                case ReportTypesEnum::MPR:
+                case ExamTypesEnum::MPR:
                     $colName = 'number_of_mpr_reports';
                     break;
-                case ReportTypesEnum::CASD:
+                case ExamTypesEnum::CASD:
                     $colName = 'number_of_casd_reports';
                     break;
             }
@@ -121,5 +123,55 @@ class GeneralReportsService
             ));
             return 0;
         }
+    }
+
+    /**
+     * @param string $birthday
+     * @param string $applicationDate
+     * 
+     * @return int
+     */
+    public function calculateAgeFromBirthdayAndAppDate($birthday, $applicationDate)
+    {
+        $birthday = new Carbon($birthday);
+        $applicationDate = new Carbon($applicationDate);
+
+        $diff = $birthday->diff($applicationDate);
+
+        $years = $diff->format("%y");
+        $months = $diff->format("%m");
+
+        $ageInMonths = $years * 12 + $months;
+
+        return $ageInMonths;
+    }
+
+    /**
+     * @param User $user
+     * @param string $type
+     * 
+     * @return bool
+     */
+    public function canUserCreateExam(User $user, string $type): bool
+    {
+        if ($user->role == 'root') {
+            return true;
+        }
+        return $this->getNumberOfUsedReportsForCenterByType($user, $type)
+            < $this->getNumberOfTotalReportsForCenterByType($user, $type);
+    }
+
+    /**
+     * @param User $user
+     * @param Model $exam
+     * 
+     * @return bool
+     */
+    public function canUserDeleteExam(User $user, Model $exam)
+    {
+        if ($user->hasRole('root')) {
+            return true;
+        }
+        return $user->id == $exam->created_by;
     }
 }
