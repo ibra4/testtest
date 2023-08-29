@@ -17,7 +17,7 @@ function ExamsView({ data, onCreateExam }) {
             </WhiteBox>
             <LeiterTableView rows={data?.leiter} onCreateExam={onCreateExam} />
             <AbasTableView rows={data?.abas} onCreateExam={onCreateExam} />
-            <WhiteBox title={t('CASD Tests')}>
+            <WhiteBox title={t('Checklist for Autism Spectrum Disorder (CASD)')}>
                 <Table className="align-middle">
                     <thead>
                         <tr>
@@ -38,7 +38,7 @@ function ExamsView({ data, onCreateExam }) {
                     </Link>
                 </div>
             </WhiteBox>
-            <WhiteBox title={t('MPR Tests')}>
+            <WhiteBox title={t('Merrill-Palmer-Revised Scales of Development MPR')}>
                 <Table className="align-middle">
                     <thead>
                         <tr>

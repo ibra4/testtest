@@ -111,15 +111,15 @@ class AbasExamsService
     {
         // 263  => 21 years 11 moths
         // 71   => 5 years 11 months
-        // 48   => 2 years
+        // 24   => 2 years
         // 192  => 16 years
         // 1091 => 90 years 11 months
         switch ($forWho) {
             case 'teacher':
-                if ($ageInMonths < 48 || $ageInMonths > 263) {
+                if ($ageInMonths < 24 || $ageInMonths > 263) {
                     throw new AgeNotAllowedException(__("ABAS teacher's exam must be for ages 2 to 21 years"));
-                } elseif ($ageInMonths >= 48 && $ageInMonths <= 71) {
-                    $category = 'teacher_48_71';
+                } elseif ($ageInMonths >= 24 && $ageInMonths <= 71) {
+                    $category = 'teacher_24_71';
                 } elseif ($ageInMonths >= 72) {
                     $category = 'teacher_72_263';
                 }

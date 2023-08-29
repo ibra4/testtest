@@ -18,7 +18,7 @@ function AbasTableView({ rows, onCreateExam }) {
     };
 
     return (
-        <WhiteBox title={t('Abas Tests')}>
+        <WhiteBox title={t('ABAS-3 Adaptive Behavior Assessment System 3rd Edition')}>
             <Table className="align-middle">
                 <thead>
                     <tr>

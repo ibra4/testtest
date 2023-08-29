@@ -165,9 +165,9 @@
     "Create exam for teacher": "إضافة إختبار للمعلم",
     "Create exam for parent": "إضافة إختبار للوالدين",
     "Create exam for adult": "إضافة إختبار للبالغين",
-    "Abas Tests": "إختبارات ABAS",
-    "CASD Tests": "إختبارات CASD",
-    "MPR Tests": "إختبارات MPR",
+    "ABAS-3 Adaptive Behavior Assessment System 3rd Edition": "إختبارات السلوك التكيفي",
+    "Checklist for Autism Spectrum Disorder (CASD)": "قائمة (كازد) لتقدير اضطراب طيف التوحد",
+    "Merrill-Palmer-Revised Scales of Development MPR": "مقاييس ميريل-بالمر النمائي النسخة المعدلة (M-P-R) – الصورة العربية",
     "MPR Exam": "إختبار MPR",
     "CASD Test": "إختبار CASD",
     "Adult": "بالغ"
