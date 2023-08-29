@@ -17,7 +17,13 @@ export const CONSTANTS = {
     ],
     SUB_DOMAIN_FOR: [
         { id: 'teacher', label: 'Teacher' },
-        { id: 'parent', label: 'Parent' }
+        { id: 'parent', label: 'Parent' },
+        { id: 'adult', label: 'Adult' }
+    ],
+    ABAS_EXAM_FOR: [
+        { id: 'teacher', label: 'Teacher' },
+        { id: 'parent', label: 'Parent' },
+        { id: 'adult', label: 'Adult' }
     ],
 }
 

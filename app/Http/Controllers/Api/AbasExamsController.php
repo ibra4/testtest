@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Exceptions\AgeNotAllowedException;
 use App\Exceptions\NumberOfExamsExceededException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateLeiterExamRequest;
-use App\Http\Requests\UpdateLeiterExamRequest;
+use App\Http\Requests\CreateAbasExamRequest;
+use App\Http\Resources\AbasExamFullResource;
 use App\Services\AbasExamsService;
 use Throwable;
 
@@ -26,19 +26,34 @@ class AbasExamsController  extends Controller
     /**
      * @param string $id
      *   Examinee id
-     * @param UpdateLeiterExamRequest $request
+     * @param CreateAbasExamRequest $request
      *   Request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function actionCreate($id, CreateLeiterExamRequest $request)
+    public function actionCreate($id, CreateAbasExamRequest $request)
     {
         try {
-            $report = $this->abasExamsService->createExam($id, $request);
-            return $this->sendSuccessReponse($report);
+            $exam = $this->abasExamsService->createExam($id, $request);
+            return $this->sendSuccessReponse($exam);
         } catch (AgeNotAllowedException $th) {
             return $this->sendValidationError(['application_date' => $th->getMessage()]);
         } catch (NumberOfExamsExceededException $th) {
             return $this->sendErrorMessage($th->getMessage(), 403);
+        } catch (Throwable $th) {
+            return $this->sendErrorMessage($th->getMessage(), 500);
+        }
+    }
+
+    /**
+     * @param string $id
+     *   Examinee id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function actionGet($id)
+    {
+        try {
+            $exam = $this->abasExamsService->getExam($id);
+            return $this->sendSuccessReponse(new AbasExamFullResource($exam));
         } catch (Throwable $th) {
             return $this->sendErrorMessage($th->getMessage(), 500);
         }

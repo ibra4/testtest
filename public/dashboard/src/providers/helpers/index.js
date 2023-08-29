@@ -103,5 +103,8 @@ export const renderNotificationType = (type) => {
 
 export const renderNotificationFor = (forUser) => {
     return CONSTANTS.NOTIFICATION_FOR.find(item => item.id === forUser)?.label
+}
 
+export const renderAbasExamFor = (forUser) => {
+    return CONSTANTS.ABAS_EXAM_FOR.find(item => item.id === forUser)?.label
 }

@@ -8,7 +8,7 @@ use App\Exports\LeiterReportsExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateLeiterExamRequest;
 use App\Http\Requests\UpdateLeiterExamRequest;
-use App\Http\Resources\LeiterReportResource;
+use App\Http\Resources\LeiterExamFullResource;
 use App\Models\Reports\LeiterReport;
 use App\Queries\LeiterReportsQuery;
 use App\Services\LeiterExamsService;
@@ -57,10 +57,10 @@ class LeiterExamsController  extends Controller
     public function actionGet($id)
     {
         $report = LeiterReport::findOrFail($id);
-        if (!Gate::allows('view-report', $report)) {
+        if (!Gate::allows('view-exam', $report)) {
             return $this->sendErrorMessage(__("You don't have permission to view this report"), 403, 'replace');
         }
-        return $this->sendSuccessReponse(new LeiterReportResource($report));
+        return $this->sendSuccessReponse(new LeiterExamFullResource($report));
     }
 
     /**

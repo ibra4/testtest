@@ -16,6 +16,11 @@ class AbasSubDomain extends Model
         return $this->belongsTo(AbasDomain::class, 'abas_domain_id', 'id');
     }
 
+    public function questions()
+    {
+        return $this->hasMany(AbasQuestion::class, 'abas_sub_domain_id', 'id');
+    }
+
     public function getCategoryAttribute($value)
     {
         return __($value);

@@ -5,11 +5,10 @@ namespace App\Services;
 use App\Enums\ExamTypesEnum;
 use App\Exceptions\AgeNotAllowedException;
 use App\Exceptions\NumberOfExamsExceededException;
-use App\Models\AbasExamQuestion;
-use App\Models\AbasQuestion;
-use App\Models\Examinee;
-use App\Models\User;
 use App\Repositories\AbasExamRepository;
+use App\Repositories\AbasExamSubDomainsRepository;
+use App\Repositories\AbasSubDomainsRepository;
+use App\Repositories\ExamineesRepository;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,35 +22,100 @@ class AbasExamsService
     private $abasExamRepository;
 
     /**
+     * @var AbasSubDomainsRepository
+     */
+    private $abasSubDomainsRepository;
+
+    /**
+     * @var AbasExamSubDomainsRepository
+     */
+    private $abasExamSubDomainsRepository;
+
+    /**
      * @var GeneralExamsService
      */
     private $generalExamsService;
 
-    public function __construct(AbasExamRepository $abasExamRepository, GeneralExamsService $generalExamsService)
-    {
+    /**
+     * @var ExamineesRepository
+     */
+    private $examineesRepository;
+
+    public function __construct(
+        AbasExamRepository $abasExamRepository,
+        AbasSubDomainsRepository $abasSubDomainsRepository,
+        AbasExamSubDomainsRepository $abasExamSubDomainsRepository,
+        GeneralExamsService $generalExamsService,
+        ExamineesRepository $examineesRepository
+    ) {
         $this->abasExamRepository = $abasExamRepository;
+        $this->abasSubDomainsRepository = $abasSubDomainsRepository;
+        $this->abasExamSubDomainsRepository = $abasExamSubDomainsRepository;
         $this->generalExamsService = $generalExamsService;
+        $this->examineesRepository = $examineesRepository;
     }
 
     public function createExam(int $examineeId, Request $request)
     {
-        /** @var User $user */
         $user = $request->user();
 
         if (!$this->generalExamsService->canUserCreateExam($user, ExamTypesEnum::ABAS)) {
             throw new NumberOfExamsExceededException('You have exceeded the allowed reports number, please contact website administrator');
         }
 
-        $examinee = Examinee::findOrFail($examineeId);
+        $examinee = $this->examineesRepository->getById($examineeId);
 
         $ageInMonths = $this->generalExamsService->calculateAgeFromBirthdayAndAppDate($examinee->birthday, $request->application_date);
 
+        $category = $this->getCategoryFromAge($request->for, $ageInMonths);
+
+        DB::beginTransaction();
+        try {
+            $abasExam = $this->abasExamRepository->createExam([
+                'examinee_id' => $examineeId,
+                'created_by' => $user->id,
+                'category' => $category,
+                'application_date' => $request->application_date,
+                'examiner_notes' => $request->examiner_notes
+            ]);
+
+            // 1- Get Sub domains for category
+            $subDomains = $this->abasSubDomainsRepository->getSubDomainsByCategory($category);
+
+            // 2- Create Exam Subdomains and Questions
+            $this->abasExamSubDomainsRepository->createExamSubdomainsAndQuestions($abasExam->id, $subDomains);
+
+            DB::commit();
+            return $abasExam;
+        } catch (Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+    }
+
+    /**
+     * @param int $id
+     * @return \App\Models\AbasExam
+     */
+    public function getExam($id)
+    {
+        return $this->abasExamRepository->getExamById($id);
+    }
+
+    /**
+     * @param  mixed $forWho
+     * @param  mixed $ageInMonths
+     * @return string
+     */
+    private function getCategoryFromAge(string $forWho, int $ageInMonths)
+    {
         // 263  => 21 years 11 moths
         // 71   => 5 years 11 months
         // 48   => 2 years
-        $category = '';
-        switch ($request->for) {
-            case 'examiner':
+        // 192  => 16 years
+        // 1091 => 90 years 11 months
+        switch ($forWho) {
+            case 'teacher':
                 if ($ageInMonths < 48 || $ageInMonths > 263) {
                     throw new AgeNotAllowedException(__("ABAS teacher's exam must be for ages 2 to 21 years"));
                 } elseif ($ageInMonths >= 48 && $ageInMonths <= 71) {
@@ -70,39 +134,15 @@ class AbasExamsService
                 }
                 break;
             case 'adult':
+                if ($ageInMonths < 192 || $ageInMonths > 1091) {
+                    throw new AgeNotAllowedException(__("ABAS adult's exam must be for ages 16 to 90 years"));
+                }
+                $category = 'adult_192_1091';
                 break;
             default:
                 throw new Exception('Invalid for value provided');
         }
 
-        DB::beginTransaction();
-        try {
-            $abasExam = $this->abasExamRepository->createExam([
-                'examinee_id' => $examineeId,
-                'created_by' => $user->id,
-                'category' => $category,
-                'application_date' => $request->application_date,
-                'examiner_notes' => $request->examiner_notes
-            ]);
-
-            $questionsQuery = AbasQuestion::select('abas_questions.id');
-            $questionsQuery->leftJoin('abas_sub_domains as asd', 'abas_questions.abas_sub_domain_id', '=', 'asd.id');
-            $questionsQuery->where('asd.category', $category);
-            $questions = $questionsQuery->get();
-
-            foreach ($questions as $question) {
-                AbasExamQuestion::create([
-                    'abas_exam_id' => $abasExam->id,
-                    'abas_question_id' => $question->id,
-                    'result' => 0,
-                    'guess' => false
-                ]);
-            }
-            DB::commit();
-            return $abasExam;
-        } catch (Throwable $th) {
-            DB::rollBack();
-            throw $th;
-        }
+        return $category;
     }
 }

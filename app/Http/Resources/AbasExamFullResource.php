@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AbasExamTeaserResource extends JsonResource
+class AbasExamFullResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,10 +18,10 @@ class AbasExamTeaserResource extends JsonResource
             'id' => $this->id,
             'application_date' => $this->application_date,
             'age' => $this->age,
-            'examiner' => new ExaminerResource($this->examiner),
-            'for' => explode('_', $this->category)[0],
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'translated_age' => $this->translated_age,
+            'examiner' => new ExaminerResource($this->examinee->center),
+            'examiner_notes' => $this->examiner_notes,
+            'examinee' => new ExamineeResource($this->examinee),
         ];
     }
 }

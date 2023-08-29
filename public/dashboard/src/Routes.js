@@ -31,6 +31,7 @@ import AbasQuestionsIndex from 'pages/Settings/AbasQuestions/AbasQuestionsIndex'
 import AbasQuestionFormIndex from 'pages/Settings/AbasQuestionForm/AbasQuestionFormIndex';
 import { ar } from 'yup-locales';
 import { setLocale } from 'yup';
+import AbasIndex from 'pages/Examinee/Types/Abas/AbasIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -93,7 +94,7 @@ const Routes = () => {
         <Route path="/leiter-exams/:id" component={LeiterIndex} exact />
 
         {/* Abas Exams */}
-        {/* <Route path="/abas-exams/:id" component={LeiterIndex} exact /> */}
+        <Route path="/abas-exams/:id" component={AbasIndex} exact />
 
         {/* Leiter Records */}
         <Route path="/leiter-records/:type" component={LeiterRecordsIndex} exact />

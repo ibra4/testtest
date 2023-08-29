@@ -53,7 +53,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRole('sub_admin') || $user->hasRole('admin');
         });
 
-        Gate::define('view-report', function (User $user, ReportInterface $report) {
+        Gate::define('view-exam', function (User $user, ReportInterface $report) {
             if ($user->id === 1) return true;
             if ($user->hasRole('admin')) {
                 $admins = $user->subAdmins->pluck('id')->toArray() ?? [];

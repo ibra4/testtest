@@ -17,7 +17,7 @@ const validationSchema = Yup.object().shape({
     application_date: Yup.date().required()
 });
 
-function AbasExamFormModal({ onSubmit, title, forWho, ...rest }) {
+function AbasExamFormModal({ onSubmit, title, ...rest }) {
     const [show, setShow] = useState(false);
     const onHide = () => setShow(false);
     const { t } = useTranslation();
@@ -31,7 +31,7 @@ function AbasExamFormModal({ onSubmit, title, forWho, ...rest }) {
             </Button>
             <Formik
                 enableReinitialize
-                initialValues={{ ...initialValues, for: forWho }}
+                initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={async (values, { setErrors, setSubmitting }) => {
                     try {

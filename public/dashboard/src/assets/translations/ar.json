@@ -151,7 +151,7 @@
     "Domain": "النطاق",
     "For": "لـ",
     "Teacher": "معلم",
-    "Parent": "ولي الأمر",
+    "Parent": "الوالدين",
     "Sub Domain": "النطاق الفرعي",
     "ABAS Questions": "اسئلة ABAS",
     "Question": "سؤال",
@@ -162,12 +162,13 @@
     "ABAS Sub Domains": "ABAS النطاقات الفرعية",
     "ABAS Domains": "ABAS نطاقات",
     "Category": "القئة",
-    "Create exam for examiner": "إضافة إختبار للفاحص",
-    "Create exam for parent": "إضافة إختبار لولي الأمر",
+    "Create exam for teacher": "إضافة إختبار للمعلم",
+    "Create exam for parent": "إضافة إختبار للوالدين",
     "Create exam for adult": "إضافة إختبار للبالغين",
     "Abas Tests": "إختبارات ABAS",
     "CASD Tests": "إختبارات CASD",
     "MPR Tests": "إختبارات MPR",
     "MPR Exam": "إختبار MPR",
-    "CASD Test": "إختبار CASD"
+    "CASD Test": "إختبار CASD",
+    "Adult": "بالغ"
 }

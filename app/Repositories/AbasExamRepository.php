@@ -10,4 +10,13 @@ class AbasExamRepository
     {
         return AbasExam::create($params);
     }
+    
+    /**
+     * @param int $id
+     * @return AbasExam
+     */
+    public function getExamById(int $id)
+    {
+        return AbasExam::findOrFail($id);
+    }
 }

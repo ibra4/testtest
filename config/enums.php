@@ -14,9 +14,10 @@ return [
         'visual_patterns' => 'Visual Patterns'
     ],
     'abas_abas_sub_domains_categories' => [
-        'parent_0_71',
-        'parent_72_263',
-        'teacher_48_71',
-        'teacher_72_263',
+        'parent_0_71', // 0 -> 5 years
+        'parent_72_263', // 6 -> 21 years
+        'teacher_48_71', // 2 -> 5 years
+        'teacher_72_263', // 6 -> 21 years
+        'adult_192_1091' // 16 -> 90 years
     ]
 ];
