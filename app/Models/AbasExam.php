@@ -14,4 +14,9 @@ class AbasExam extends Model implements ReportInterface
     use HasFactory, HasAgeAttribute, HasExaminee, HasExaminer;
 
     protected $fillable = ['examinee_id', 'created_by', 'category', 'application_date', 'examiner_notes'];
+
+    public function subDomains()
+    {
+        return $this->hasMany(AbasExamSubDomain::class, 'abas_exam_id', 'id');
+    }
 }

@@ -22,6 +22,7 @@ class AbasExamFullResource extends JsonResource
             'examiner' => new ExaminerResource($this->examinee->center),
             'examiner_notes' => $this->examiner_notes,
             'examinee' => new ExamineeResource($this->examinee),
+            'sub_domains' => AbasExamSubDomainResource::collection($this->subDomains)
         ];
     }
 }

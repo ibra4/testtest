@@ -19,6 +19,21 @@ function AbasView({ data, onSubDomainSubmit }) {
                     {data?.examiner_notes && <LabelValueCol label={'Notes'} value={data.examiner_notes} md={12} />}
                 </Row>
             </WhiteBox>
+            <h1 className="text-danger">تجريبي</h1>
+            <WhiteBox>
+                <ol>
+                    {data.sub_domains.map((subDomain) => (
+                        <li key={subDomain.id}>
+                            <h4>{subDomain.title}</h4>
+                            <ol className="mb-4">
+                                {subDomain.questions.map((question) => (
+                                    <li key={question.id}>{question.title}</li>
+                                ))}
+                            </ol>
+                        </li>
+                    ))}
+                </ol>
+            </WhiteBox>
         </>
     );
 }

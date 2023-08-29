@@ -12,7 +12,7 @@ class AbasExamSubDomainsRepository
      * @param Collection $subDomains
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function createExamSubdomainsAndQuestions(int $examId, string $subDomains)
+    public function createExamSubdomainsAndQuestions(int $examId, $subDomains)
     {
         foreach ($subDomains as $subDomain) {
             $examSubDomain = AbasExamSubDomain::create([
@@ -23,7 +23,9 @@ class AbasExamSubDomainsRepository
             foreach ($subDomain->questions as $question) {
                 AbasSubDomainQuestion::create([
                     'abas_exam_sub_domain_id' => $examSubDomain->id,
-                    'abas_question_id' => $question->id
+                    'abas_question_id' => $question->id,
+                    'result' => 0,
+                    'guess' => false
                 ]);
             }
         }
