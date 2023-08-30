@@ -17,6 +17,8 @@ class AbasExamSubDomainResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->subDomain->name,
+            'description' => $this->subDomain->description,
+            'is_saved' => $this->is_saved,
             'questions' => AbasSubDomainQuestionResource::collection($this->questions)
         ];
     }

@@ -250,3 +250,23 @@
     object-fit: cover;
     object-position: center;
 }
+
+.abas-tabs {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    > .abas-tab-item {
+        padding: 10px;
+        color: inherit;
+        background: white;
+        text-decoration: none;
+        margin-bottom: 15px;
+        &.active {
+            color: black;
+            font-weight: bold;
+        }
+        &.saved {
+            color: green;
+        }
+    }
+}

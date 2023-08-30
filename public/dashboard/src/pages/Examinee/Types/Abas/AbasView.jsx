@@ -1,12 +1,30 @@
+import classNames from 'classnames';
 import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import LabelValueCol from 'components/LabelValueCol';
 import WhiteBox from 'components/WhiteBox';
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { FaInfoCircle, FaSave } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import Introduction from './Introduction';
+import SubDomainForm from './SubDomainForm';
 
 function AbasView({ data, onSubDomainSubmit }) {
     const { t } = useTranslation();
+    const { sub_domain_id } = useParams();
+
+    const renderView = () => {
+        switch (sub_domain_id) {
+            case 'introduction':
+                return <Introduction content={data.description} />;
+            default:
+                const subDomain = data.sub_domains.find((item) => item.id == sub_domain_id);
+                return <SubDomainForm subDomain={subDomain} onSubmit={onSubDomainSubmit} />;
+        }
+    };
+
     return (
         <>
             <WhiteBox title={t('Examinee Data')}>
@@ -19,21 +37,34 @@ function AbasView({ data, onSubDomainSubmit }) {
                     {data?.examiner_notes && <LabelValueCol label={'Notes'} value={data.examiner_notes} md={12} />}
                 </Row>
             </WhiteBox>
-            <h1 className="text-danger">تجريبي</h1>
-            <WhiteBox>
-                <ol>
-                    {data.sub_domains.map((subDomain) => (
-                        <li key={subDomain.id}>
-                            <h4>{subDomain.title}</h4>
-                            <ol className="mb-4">
-                                {subDomain.questions.map((question) => (
-                                    <li key={question.id}>{question.title}</li>
-                                ))}
-                            </ol>
-                        </li>
-                    ))}
-                </ol>
-            </WhiteBox>
+            <div className="abas-tabs">
+                <Link
+                    className={classNames([
+                        'abas-tab-item bg-primary text-white me-2',
+                        sub_domain_id == 'introduction' && 'active'
+                    ])}
+                    to={`/abas-exams/${data.id}/introduction`}
+                >
+                    <FaInfoCircle />
+                </Link>
+                {data.sub_domains.map((subDomain) => (
+                    <Link
+                        className={classNames([
+                            'abas-tab-item me-2',
+                            sub_domain_id == subDomain.id && 'active',
+                            subDomain.is_saved && 'saved'
+                        ])}
+                        key={subDomain.id}
+                        to={`/abas-exams/${data.id}/${subDomain.id}`}
+                    >
+                        <span className="icon-wrapper me-2">
+                            <FaSave />
+                        </span>
+                        {subDomain.title}
+                    </Link>
+                ))}
+            </div>
+            <WhiteBox>{renderView()}</WhiteBox>
         </>
     );
 }

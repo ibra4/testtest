@@ -9,7 +9,9 @@ class AbasSubDomain extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'name_en', 'abas_domain_id', 'category'];
+    protected $fillable = ['name', 'name_en', 'abas_domain_id', 'category', 'description', 'description_en'];
+
+    protected $appends = ['translated_category'];
 
     public function domain()
     {
@@ -21,7 +23,7 @@ class AbasSubDomain extends Model
         return $this->hasMany(AbasQuestion::class, 'abas_sub_domain_id', 'id');
     }
 
-    public function getCategoryAttribute($value)
+    public function getTranslatedCategoryAttribute($value)
     {
         return __($value);
     }

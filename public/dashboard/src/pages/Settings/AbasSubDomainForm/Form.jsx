@@ -1,5 +1,6 @@
 import FormButtons from 'components/Fields/FormButtons';
 import SelectField from 'components/Fields/SelectField';
+import TextAreaField from 'components/Fields/TextAreaField';
 import TextField from 'components/Fields/TextField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
@@ -75,6 +76,30 @@ function Form({ initialValues, config, onSubmit }) {
                                     onBlur={handleBlur}
                                     error={errors.category}
                                     options={config.abas_sub_domains_categories}
+                                    className="mb-3"
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={6}>
+                                <TextAreaField
+                                    name="description"
+                                    label="Description"
+                                    onChange={handleChange}
+                                    value={values.description}
+                                    onBlur={handleBlur}
+                                    error={touched.description && errors.description}
+                                    className="mb-3"
+                                />
+                            </Col>
+                            <Col md={6}>
+                                <TextAreaField
+                                    name="description_en"
+                                    label="Description EN"
+                                    onChange={handleChange}
+                                    value={values.description_en}
+                                    onBlur={handleBlur}
+                                    error={touched.description_en && errors.description_en}
                                     className="mb-3"
                                 />
                             </Col>

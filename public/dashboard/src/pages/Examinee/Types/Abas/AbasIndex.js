@@ -11,7 +11,7 @@ import { useToasts } from 'react-toast-notifications'
 function AbasIndex() {
 
     const { t } = useTranslation()
-    const { id } = useParams()
+    const { id, sub_domain_id } = useParams()
     const { addToast } = useToasts()
 
     const [data, setData] = useState({})
@@ -33,8 +33,10 @@ function AbasIndex() {
         getData()
     }, [])
 
-    const onSubDomainSubmit = async (type, values) => {
-        return await httpClient.put(`abas-exams/update/${id}/${type}`, values)
+    const onSubDomainSubmit = async (values) => {
+        console.log('values : ', values);
+        console.log('sub_domain_id : ', sub_domain_id);
+        // return await httpClient.put(`abas-exams/update/${id}/${type}`, values)
     }
 
     const renderView = () => {

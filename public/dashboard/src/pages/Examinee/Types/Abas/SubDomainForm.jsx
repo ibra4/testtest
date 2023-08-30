@@ -1,0 +1,140 @@
+import CheckboxField from 'components/Fields/CheckboxField';
+import { Field, FieldArray, Formik, useFormikContext } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { Button, Table } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+
+function FormObserver() {
+    const { values } = useFormikContext();
+    const [sumOfResults, setSumOfResults] = useState(0);
+    useEffect(() => {
+        let sum = 0;
+        values.questions.map((questionValue) => {
+            sum += questionValue.result;
+        });
+        setSumOfResults(sum);
+    }, [values]);
+
+    return sumOfResults;
+}
+
+function SubDomainForm({ subDomain, onSubmit }) {
+    const { t } = useTranslation();
+    return (
+        <Formik enableReinitialize initialValues={subDomain} onSubmit={onSubmit}>
+            {({ values, errors, touched, handleChange, setFieldValue, handleBlur, handleSubmit, isSubmitting }) => (
+                <form onSubmit={handleSubmit}>
+                    <Table className="align-middle" bordered>
+                        <tbody>
+                            <tr>
+                                <td rowSpan={2}>
+                                    <h3>{subDomain.title}</h3>
+                                    <p>{subDomain.description}</p>
+                                </td>
+                                <td className="text-center">القدرة</td>
+                                <td className="text-center" colSpan={3}>
+                                    التكرار
+                                </td>
+                                <td className="text-center" rowSpan={2}>
+                                    تخمين؟
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>غير قادر</td>
+                                <td>أبداً</td>
+                                <td>أحياناً</td>
+                                <td>دائماً</td>
+                            </tr>
+                            <FieldArray
+                                name="questions"
+                                render={(arrayHelpers) =>
+                                    values.questions.map((questionField, index) => (
+                                        <tr key={index}>
+                                            <td>
+                                                {index + 1}. {questionField.title}
+                                            </td>
+                                            <td className="text-center">
+                                                <label htmlFor={`question-${index}-${0}`} className="w-100">
+                                                    <Field
+                                                        id={`question-${index}-${0}`}
+                                                        type="radio"
+                                                        name={`questions.${index}.result`}
+                                                        value={0}
+                                                        disabled={subDomain.is_saved}
+                                                        onChange={() => setFieldValue(`questions.${index}.result`, 0)}
+                                                    />
+                                                    <span className="ms-2">0</span>
+                                                </label>
+                                            </td>
+                                            <td className="text-center">
+                                                <label htmlFor={`question-${index}-${1}`} className="w-100">
+                                                    <Field
+                                                        id={`question-${index}-${1}`}
+                                                        type="radio"
+                                                        name={`questions.${index}.result`}
+                                                        value={1}
+                                                        disabled={subDomain.is_saved}
+                                                        onChange={() => setFieldValue(`questions.${index}.result`, 1)}
+                                                    />
+                                                    <span className="ms-2">1</span>
+                                                </label>
+                                            </td>
+                                            <td className="text-center">
+                                                <label htmlFor={`question-${index}-${2}`} className="w-100">
+                                                    <Field
+                                                        id={`question-${index}-${2}`}
+                                                        type="radio"
+                                                        name={`questions.${index}.result`}
+                                                        value={2}
+                                                        disabled={subDomain.is_saved}
+                                                        onChange={() => setFieldValue(`questions.${index}.result`, 2)}
+                                                    />
+                                                    <span className="ms-2">2</span>
+                                                </label>
+                                            </td>
+                                            <td className="text-center">
+                                                <label htmlFor={`question-${index}-${3}`} className="w-100">
+                                                    <Field
+                                                        id={`question-${index}-${3}`}
+                                                        type="radio"
+                                                        name={`questions.${index}.result`}
+                                                        value={3}
+                                                        disabled={subDomain.is_saved}
+                                                        onChange={() => setFieldValue(`questions.${index}.result`, 3)}
+                                                    />
+                                                    <span className="ms-2">3</span>
+                                                </label>
+                                            </td>
+                                            <td className="text-center">
+                                                <CheckboxField
+                                                    onChange={(evt) =>
+                                                        setFieldValue(`questions.${index}.guess`, evt.target.checked)
+                                                    }
+                                                    disabled={subDomain.is_saved}
+                                                    name={`questions.${index}.guess`}
+                                                    value={questionField.guess}
+                                                    onBlur={handleBlur}
+                                                    className="mb-3"
+                                                    id={`questions.${index}.guess`}
+                                                />
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            />
+                            <tr>
+                                <td style={{ direction: 'ltr' }}>المجموع</td>
+                                <td colSpan={5}>
+                                    <FormObserver />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                    <Button type="submit">{t('Save')}</Button>
+                </form>
+            )}
+        </Formik>
+    );
+}
+
+export default SubDomainForm;
