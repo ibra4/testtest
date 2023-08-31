@@ -24,4 +24,9 @@ class AbasExamSubDomain extends Model
     {
         return $this->belongsTo(AbasSubDomain::class, 'abas_sub_domain_id', 'id');
     }
+
+    public function exam()
+    {
+        return $this->belongsTo(AbasExam::class, 'abas_exam_id', 'id');
+    }
 }

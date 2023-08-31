@@ -2,13 +2,14 @@ import classNames from 'classnames';
 import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import LabelValueCol from 'components/LabelValueCol';
 import WhiteBox from 'components/WhiteBox';
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaInfoCircle, FaSave } from 'react-icons/fa';
+import { FaInfoCircle, FaSave, FaTable } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import Introduction from './Introduction';
+import AbasIntroduction from './AbasIntroduction';
+import AbasReports from './AbasReports';
 import SubDomainForm from './SubDomainForm';
 
 function AbasView({ data, onSubDomainSubmit }) {
@@ -18,12 +19,16 @@ function AbasView({ data, onSubDomainSubmit }) {
     const renderView = () => {
         switch (sub_domain_id) {
             case 'introduction':
-                return <Introduction content={data.description} />;
+                return <AbasIntroduction content={data.description} />;
+            case 'reports':
+                return <AbasReports />;
             default:
                 const subDomain = data.sub_domains.find((item) => item.id == sub_domain_id);
                 return <SubDomainForm subDomain={subDomain} onSubmit={onSubDomainSubmit} />;
         }
     };
+
+    const atLeastOneSaved = useMemo(() => data.sub_domains.find((item) => item.is_saved), [data]);
 
     return (
         <>
@@ -63,6 +68,21 @@ function AbasView({ data, onSubDomainSubmit }) {
                         {subDomain.title}
                     </Link>
                 ))}
+                {atLeastOneSaved && (
+                    <Link
+                        className={classNames([
+                            'abas-tab-item bg-success text-white',
+                            sub_domain_id == 'reports' && 'active',
+                            'saved'
+                        ])}
+                        to={`/abas-exams/${data.id}/reports`}
+                    >
+                        <span className="icon-wrapper me-2">
+                            <FaTable />
+                        </span>
+                        {t('Extract reports')}
+                    </Link>
+                )}
             </div>
             <WhiteBox>{renderView()}</WhiteBox>
         </>

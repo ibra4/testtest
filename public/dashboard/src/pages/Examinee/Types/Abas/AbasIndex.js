@@ -7,11 +7,12 @@ import { useTranslation } from 'react-i18next'
 import AbasView from './AbasView'
 import GeneralError from 'components/GeneralError'
 import { useToasts } from 'react-toast-notifications'
+import { generalErrorText } from 'providers/helpers/constants'
 
 function AbasIndex() {
 
     const { t } = useTranslation()
-    const { id, sub_domain_id } = useParams()
+    const { id } = useParams()
     const { addToast } = useToasts()
 
     const [data, setData] = useState({})
@@ -34,9 +35,18 @@ function AbasIndex() {
     }, [])
 
     const onSubDomainSubmit = async (values) => {
-        console.log('values : ', values);
-        console.log('sub_domain_id : ', sub_domain_id);
-        // return await httpClient.put(`abas-exams/update/${id}/${type}`, values)
+        try {
+            const confirmed = confirm(t("confirm_save_abas"))
+            if (confirmed) {
+                const res = await httpClient.put(`abas-exams/update/${values.id}`, values)
+                addToast(t('Saved Successfully'), { appearance: 'success' });
+                setData(res.data);
+                window.scrollTo(0, 0)
+            }
+        } catch (error) {
+            console.log
+            addToast(t(generalErrorText), { appearance: 'error' });
+        }
     }
 
     const renderView = () => {

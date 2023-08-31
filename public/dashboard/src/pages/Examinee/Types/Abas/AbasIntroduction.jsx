@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Introduction({ content }) {
+function AbasIntroduction({ content }) {
     return (
         <div className="abas-introduction">
             <div dangerouslySetInnerHTML={{ __html: content }} />
@@ -8,4 +8,4 @@ function Introduction({ content }) {
     );
 }
 
-export default Introduction;
+export default AbasIntroduction;

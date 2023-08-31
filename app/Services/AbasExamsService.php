@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Enums\ExamTypesEnum;
 use App\Exceptions\AgeNotAllowedException;
 use App\Exceptions\NumberOfExamsExceededException;
+use App\Models\AbasExamSubDomain;
 use App\Repositories\AbasExamRepository;
 use App\Repositories\AbasExamSubDomainsRepository;
 use App\Repositories\AbasSubDomainsRepository;
@@ -144,5 +145,25 @@ class AbasExamsService
         }
 
         return $category;
+    }
+
+    /**
+     * updateSubDomain
+     *
+     * @param int $examSubDomainId
+     * @param  mixed $request
+     * @return AbasExamSubDomain
+     */
+    public function updateSubDomain(int $examSubDomainId, Request $request): AbasExamSubDomain
+    {
+        DB::beginTransaction();
+        try {
+            $examSubDomain = $this->abasExamSubDomainsRepository->updateAnswers($examSubDomainId, $request->questions);
+            DB::commit();
+            return $examSubDomain;
+        } catch (Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
     }
 }

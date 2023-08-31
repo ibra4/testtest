@@ -126,7 +126,7 @@ Route::middleware('auth:sanctum')->group(function () {
         // Abas Exams
         Route::get('/abas-exams', [AbasExamsController::class, 'actionIndex']);
         Route::get('/abas-exams/{id}', [AbasExamsController::class, 'actionGet']);
-        Route::put('/abas-exams/update/{id}/{type}', [AbasExamsController::class, 'actionUpdate']);
+        Route::put('/abas-exams/update/{exam_sub_domain_id}', [AbasExamsController::class, 'actionUpdate']);
         Route::post('/abas-exams/create/{id}', [AbasExamsController::class, 'actionCreate']);
         Route::post('/abas-exams/{id}/delete', [AbasExamsController::class, 'actionDelete']);
     });

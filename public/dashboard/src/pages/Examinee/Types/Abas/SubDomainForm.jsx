@@ -1,8 +1,10 @@
+import classNames from 'classnames';
 import CheckboxField from 'components/Fields/CheckboxField';
 import { Field, FieldArray, Formik, useFormikContext } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { FaSave } from 'react-icons/fa';
 
 function FormObserver() {
     const { values } = useFormikContext();
@@ -18,12 +20,24 @@ function FormObserver() {
     return sumOfResults;
 }
 
+function SaveButton({ isSaved, label, classes }) {
+    return (
+        <Button className={classNames('great-save', classes)} type="submit" disabled={isSaved}>
+            <span className="me-2">
+                <FaSave />
+            </span>
+            {label}
+        </Button>
+    );
+}
+
 function SubDomainForm({ subDomain, onSubmit }) {
     const { t } = useTranslation();
     return (
         <Formik enableReinitialize initialValues={subDomain} onSubmit={onSubmit}>
             {({ values, errors, touched, handleChange, setFieldValue, handleBlur, handleSubmit, isSubmitting }) => (
                 <form onSubmit={handleSubmit}>
+                    <SaveButton classes={'mb-2'} isSaved={subDomain.is_saved} label={t('Save')} />
                     <Table className="align-middle" bordered>
                         <tbody>
                             <tr>
@@ -51,7 +65,7 @@ function SubDomainForm({ subDomain, onSubmit }) {
                                     values.questions.map((questionField, index) => (
                                         <tr key={index}>
                                             <td>
-                                                {index + 1}. {questionField.title}
+                                                {questionField.id}. {questionField.title}
                                             </td>
                                             <td className="text-center">
                                                 <label htmlFor={`question-${index}-${0}`} className="w-100">
@@ -130,7 +144,7 @@ function SubDomainForm({ subDomain, onSubmit }) {
                             </tr>
                         </tbody>
                     </Table>
-                    <Button type="submit">{t('Save')}</Button>
+                    <SaveButton isSaved={subDomain.is_saved} label={t('Save')} />
                 </form>
             )}
         </Formik>

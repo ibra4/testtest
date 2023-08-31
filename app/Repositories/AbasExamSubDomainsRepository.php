@@ -30,4 +30,32 @@ class AbasExamSubDomainsRepository
             }
         }
     }
+
+    /**
+     * @param int $id
+     * @return AbasExamSubDomain
+     */
+    public function updateAnswers(int $id, array $questions): AbasExamSubDomain
+    {
+        $questions = array_map(function ($q) {
+            unset($q['title']);
+            return $q;
+        }, $questions);
+
+        /** @var AbasExamSubDomain $examSubDomain */
+        $examSubDomain = AbasExamSubDomain::findOrFail($id);
+
+        // Update questions
+        foreach ($questions as $questionData) {
+            /** @var AbasSubDomainQuestion $question */
+            $question = $examSubDomain->questions()->find($questionData['id']);
+            unset($questionData['id']);
+            $question->update($questionData);
+        }
+
+        // Exam saved
+        $examSubDomain->update(['is_saved' => true]);
+
+        return $examSubDomain;
+    }
 }
