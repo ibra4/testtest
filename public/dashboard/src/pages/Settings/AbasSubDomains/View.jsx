@@ -19,7 +19,7 @@ const View = ({ data, onSearch, queryParams }) => {
             <td>{item.name}</td>
             <td>{item.name_en}</td>
             <td>{item.domainname}</td>
-            <td>{item.category}</td>
+            <td>{item.translated_category}</td>
             <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
             <td>
                 <div className="d-flex">

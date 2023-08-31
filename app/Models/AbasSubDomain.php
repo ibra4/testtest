@@ -23,8 +23,8 @@ class AbasSubDomain extends Model
         return $this->hasMany(AbasQuestion::class, 'abas_sub_domain_id', 'id');
     }
 
-    public function getTranslatedCategoryAttribute($value)
+    public function getTranslatedCategoryAttribute()
     {
-        return __($value);
+        return __($this->category);
     }
 }

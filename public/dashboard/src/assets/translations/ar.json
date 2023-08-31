@@ -92,7 +92,7 @@
     "Birthday": "تاريخ الميلاد",
     "Content": "المحتوى",
     "Examinee Data": "بيانات المفحوص",
-    "Exam Data": "بيانات الفحص",
+    "Exam Data": "بيانات الإختبار",
     "Cognitive Subtests": "البطارية المعرفية",
     "Memory Battery": "بطاريـة الذاكرة",
     "Center Name": "إسم المركز",
@@ -134,6 +134,7 @@
     "Close": "إغلاق",
     "Examinee exams": "إختبارات المفحوصين",
     "Leiter Exam": "إختبار لايتر",
+    "ABAS Exam": "إختبار السلوك التكيفي",
     "Leiter Reports": "تقارير لايتر",
     "Report ID": "ID التقرير",
     "Examinee ID": "ID المفحوص",
@@ -162,7 +163,7 @@
     "Questions": "الأسئلة",
     "ABAS Sub Domains": "ABAS النطاقات الفرعية",
     "ABAS Domains": "ABAS نطاقات",
-    "Category": "القئة",
+    "Category": "الفئة",
     "Create exam for teacher": "إضافة إختبار للمعلم",
     "Create exam for parent": "إضافة إختبار للوالدين",
     "Create exam for adult": "إضافة إختبار للبالغين",
@@ -172,5 +173,6 @@
     "MPR Exam": "إختبار MPR",
     "CASD Test": "إختبار CASD",
     "Adult": "بالغ",
-    "Extract reports": "إستخراج التقارير"
+    "Extract reports": "إستخراج التقارير",
+    "Coming Soon ^_^": "قريباً ^_^"
 }

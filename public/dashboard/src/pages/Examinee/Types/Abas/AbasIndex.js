@@ -61,7 +61,7 @@ function AbasIndex() {
     }
 
     return (
-        <Layout title={t("ABAS Exam") + `#${id}`}>
+        <Layout title={t("ABAS Exam") + ` #${id}`}>
             {renderView()}
         </Layout>
     )
