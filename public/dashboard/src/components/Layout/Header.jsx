@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ChangeLangCode from './ChangeLangCode';
+import WhiteBox from 'components/WhiteBox';
 
 function Header({ title }) {
     const { t } = useTranslation();
@@ -16,11 +17,11 @@ function Header({ title }) {
     const notifications = useSelector((state) => state.app.config.notifications);
 
     return (
-        <div className="header d-flex align-items-center mb-4">
+        <WhiteBox classes="header d-flex align-items-center mb-4">
             <Container fluid>
                 <Row className="align-items-center">
                     <Col lg={8}>
-                        <div className="title display-6 fw-bold">{title}</div>
+                        <div className="title text-black display-6 fw-bold mb-0">{title}</div>
                     </Col>
                     <Col lg={4}>
                         <div className="d-flex align-items-center justify-content-end">
@@ -76,7 +77,7 @@ function Header({ title }) {
                     </Col>
                 </Row>
             </Container>
-        </div>
+        </WhiteBox>
     );
 }
 

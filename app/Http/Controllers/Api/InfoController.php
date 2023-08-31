@@ -18,15 +18,15 @@ class InfoController  extends Controller
     public function historyIndex()
     {
         $reports = LeiterReport::select([
-            'reports.id',
+            'leiter_reports.id',
             'examinee.name as examinee_name',
             'admin.name as admin_name',
             'admin.avatar as admin_avatar',
-            'reports.created_at as created_at',
-            'reports.updated_at as updated_at',
+            'leiter_reports.created_at as created_at',
+            'leiter_reports.updated_at as updated_at',
         ])
             ->where('admin.is_deleted', false)
-            ->leftJoin('examinees as examinee', 'examinee.report_id', '=', 'reports.id')
+            ->leftJoin('examinees as examinee', 'leiter_reports.examinee_id', '=', 'examinee.id')
             ->leftJoin('users as admin', 'examinee.admin_id', '=', 'admin.id');
 
         return $this->sendSuccessReponse($reports->paginate());

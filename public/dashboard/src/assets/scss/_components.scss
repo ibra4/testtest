@@ -1,11 +1,8 @@
 .header {
-    height: 100px;
-    .breadcrumb {
-        margin-bottom: 0;
-    }
-    .dropdown {
-        cursor: pointer;
-    }
+    // height: 100px;
+    // .dropdown {
+    //     cursor: pointer;
+    // }
     .dropdown-toggle {
         img {
             width: 50px;
@@ -75,7 +72,6 @@
 }
 
 .white-box {
-    border-radius: 15px;
     padding: 25px;
     background-color: white;
     margin-bottom: 30px;
