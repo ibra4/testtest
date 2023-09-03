@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Layout from 'components/Layout'
-import { httpClient } from 'providers/helpers'
+import { getAbasExamCreateUrl, getAbasExamViewUrl, httpClient } from 'providers/helpers'
 import FullLoader from 'components/FullLoader'
 import { useTranslation } from 'react-i18next'
 import ExamsView from './ExamsView'
@@ -37,29 +37,11 @@ function ExamsIndex() {
     }, [])
 
     const onCreateExam = async (data, examType) => {
-        let examPrefix;
-        switch (examType) {
-            case 'leiter':
-                examPrefix = 'leiter-exams'
-                break;
-            case 'abas':
-                examPrefix = 'abas-exams'
-                break;
-            case 'mpr':
-                examPrefix = 'mpr-exams'
-                break;
-            case 'casd':
-                examPrefix = 'casd-exams'
-                break;
-            default:
-                setStatus('error')
-        }
-
-        const res = await httpClient.post(`${examPrefix}/create/${id}`, data)
+        const res = await httpClient.post(getAbasExamCreateUrl(examType, id), data)
 
         if (res.status == 200) {
             addToast(t('Saved Successfully'), { appearance: 'success' });
-            push(`/${examPrefix}/${res.data.id}`)
+            push(getAbasExamViewUrl(examType, res.data.id))
         } else {
             addToast(t(generalErrorText), { appearance: 'error' });
             return res

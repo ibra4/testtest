@@ -108,3 +108,34 @@ export const renderNotificationFor = (forUser) => {
 export const renderAbasExamFor = (forUser) => {
     return CONSTANTS.ABAS_EXAM_FOR.find(item => item.id === forUser)?.label
 }
+
+
+export const getAbasExamCreateUrl = (examType, examineeId) => {
+    switch (examType) {
+        case 'leiter':
+            return `leiter-exams/create/${examineeId}`
+        case 'abas':
+            return `abas-exams/create/${examineeId}`
+        case 'mpr':
+            return `mpr-exams/create/${examineeId}`
+        case 'casd':
+            return `casd-exams/create/${examineeId}`
+        default:
+            throw new Error('Wrong examType')
+    }
+}
+
+export const getAbasExamViewUrl = (examType, examId) => {
+    switch (examType) {
+        case 'leiter':
+            return `/leiter-exams/${examId}`
+        case 'abas':
+            return `/abas-exams/${examId}/introduction`
+        case 'mpr':
+            return `/mpr-exams/${examId}`
+        case 'casd':
+            return `/casd-exams/${examId}`
+        default:
+            setStatus('error')
+    }
+}
