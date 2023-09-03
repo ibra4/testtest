@@ -49,8 +49,8 @@ const View = ({ data, onSearch, queryParams }) => {
                         <tr>
                             <th>{t('ID')}</th>
                             <th>{t('Question Number')}</th>
-                            <th>{t('Name')}</th>
-                            <th>{t('Name En')}</th>
+                            <th>{t('Title')}</th>
+                            <th>{t('Title En')}</th>
                             <th>{t('Sub Domain')}</th>
                             <th>{t('Created At')}</th>
                             <th>{t('Actions')}</th>

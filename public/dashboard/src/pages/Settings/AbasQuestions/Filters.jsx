@@ -25,7 +25,7 @@ function Filters({ queryParams, onSearch, config }) {
                             <Col md={4}>
                                 <TextField
                                     name="name"
-                                    label="Name"
+                                    label="Title"
                                     onChange={handleChange}
                                     value={values.name}
                                     onBlur={handleBlur}
@@ -36,7 +36,7 @@ function Filters({ queryParams, onSearch, config }) {
                             <Col md={4}>
                                 <TextField
                                     name="name_en"
-                                    label="Name En"
+                                    label="Title En"
                                     onChange={handleChange}
                                     value={values.name_en}
                                     onBlur={handleBlur}

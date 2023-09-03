@@ -32,7 +32,7 @@ class AbasSubDomainsQuery
             $query->where([['abas_sub_domains.name', 'LIKE', "%$request->name%"]]);
         }
         if ($request->name_en) {
-            $query->where([['abas_sub_domains.name', 'LIKE', "%$request->name_en%"]]);
+            $query->where([['abas_sub_domains.name_en', 'LIKE', "%$request->name_en%"]]);
         }
         if ($request->category) {
             $query->where('abas_sub_domains.category', $request->category);
