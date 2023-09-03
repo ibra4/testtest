@@ -274,7 +274,13 @@
         <div class="section">
             {{-- <h1 class="title">Examiner Rating</h1> --}}
             <div class="no-break">
-                <div class="table-header">{{ __('Examiner Rating Scale Scores') }}</div>
+                <div class="table-header">
+                    {{ __('Examiner Rating Scale Scores') }}
+                    <p class="small mb-0">تعبر نتائج هذا المقياس عن ملاحظات الفاحص أثناء تطبيق الجلسة الاخبارية وما يلاحظه
+                        من إنفعالات تظهر على المفحوص أثناء التطبيق ، و تهدف هذه الملاحظات إلى التحقق من صدق الجلسة
+                        الإختبارية و عدم تأثير العوامل البيئية و الحالة النفسية للمفحوص على نتيجة الإختبار، حيث أنها لا تشير
+                        هذه الدرجات إلى وجود حالة مرضية عن المفحوص . </p>
+                </div>
                 <table class="table-bordered table">
                     <tbody>
                         <tr class="bg font-weight-bold">
@@ -368,7 +374,6 @@
 
 
         <div class="section">
-            {{-- <h1 class="title">Growth Profile Scores</h1> --}}
             <div class="no-break">
                 <div class="table-header">{{ __('Growth Profile Scores') }}</div>
                 <table class="table-bordered table">
