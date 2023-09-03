@@ -33,6 +33,17 @@ function Form({ initialValues, config, onSubmit }) {
                     <form onSubmit={handleSubmit}>
                         <Row>
                             <Col md={4}>
+                                <TextField
+                                    name="question_number"
+                                    label="Question Number"
+                                    onChange={handleChange}
+                                    value={values.question_number}
+                                    onBlur={handleBlur}
+                                    error={errors.question_number}
+                                    className="mb-3"
+                                />
+                            </Col>
+                            <Col md={4}>
                                 <SelectField
                                     name="abas_sub_domain_id"
                                     label="Sub Domain"

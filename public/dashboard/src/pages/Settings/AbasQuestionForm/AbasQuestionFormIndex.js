@@ -11,7 +11,8 @@ import { useTranslation } from 'react-i18next'
 const defaultQuestion = {
     name: '',
     name_en: '',
-    abas_sub_domain_id: ''
+    abas_sub_domain_id: '',
+    question_number: 0
 }
 
 function AbasQuestionFormIndex() {

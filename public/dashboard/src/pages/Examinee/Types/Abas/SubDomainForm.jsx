@@ -65,7 +65,7 @@ function SubDomainForm({ subDomain, onSubmit }) {
                                     values.questions.map((questionField, index) => (
                                         <tr key={index}>
                                             <td>
-                                                {questionField.id}. {questionField.title}
+                                                {questionField.question_number}. {questionField.title}
                                             </td>
                                             <td className="text-center">
                                                 <label htmlFor={`question-${index}-${0}`} className="w-100">

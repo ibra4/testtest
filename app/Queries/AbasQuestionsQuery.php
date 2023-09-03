@@ -22,6 +22,7 @@ class AbasQuestionsQuery
             'abas_questions.name',
             'abas_questions.name_en',
             'abas_questions.abas_sub_domain_id',
+            'abas_questions.question_number',
             'abas_questions.created_at',
         );
 

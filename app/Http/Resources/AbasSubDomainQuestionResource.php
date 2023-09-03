@@ -19,6 +19,7 @@ class AbasSubDomainQuestionResource extends JsonResource
             'result' => $this->result,
             'guess' => $this->guess,
             'title' => $this->question->name,
+            'question_number' => $this->question->question_number,
         ];
     }
 }

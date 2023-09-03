@@ -16,6 +16,7 @@ const View = ({ data, onSearch, queryParams }) => {
     const renderRow = (item) => (
         <tr key={item.id}>
             <td>{item.id}</td>
+            <td>{item.question_number}</td>
             <td>{item.name}</td>
             <td>{item.name_en}</td>
             <td>{item.domain_full_name}</td>
@@ -47,6 +48,7 @@ const View = ({ data, onSearch, queryParams }) => {
                     <thead>
                         <tr>
                             <th>{t('ID')}</th>
+                            <th>{t('Question Number')}</th>
                             <th>{t('Name')}</th>
                             <th>{t('Name En')}</th>
                             <th>{t('Sub Domain')}</th>
