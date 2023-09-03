@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import LabelValueCol from 'components/LabelValueCol';
 import WhiteBox from 'components/WhiteBox';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaInfoCircle, FaSave, FaTable } from 'react-icons/fa';
