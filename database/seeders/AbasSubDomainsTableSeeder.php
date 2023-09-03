@@ -28,6 +28,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_0_71',
                 'created_at' => '2023-08-22 19:01:13',
                 'updated_at' => '2023-08-23 09:30:28',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             1 => 
             array (
@@ -38,6 +40,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_0_71',
                 'created_at' => '2023-08-22 19:01:23',
                 'updated_at' => '2023-08-23 09:30:47',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             2 => 
             array (
@@ -48,6 +52,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_0_71',
                 'created_at' => '2023-08-22 19:01:31',
                 'updated_at' => '2023-08-23 09:31:02',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             3 => 
             array (
@@ -58,6 +64,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_0_71',
                 'created_at' => '2023-08-22 19:01:39',
                 'updated_at' => '2023-08-23 09:31:22',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             4 => 
             array (
@@ -68,6 +76,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_0_71',
                 'created_at' => '2023-08-22 19:01:47',
                 'updated_at' => '2023-08-23 09:31:30',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             5 => 
             array (
@@ -78,6 +88,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_0_71',
                 'created_at' => '2023-08-22 19:01:56',
                 'updated_at' => '2023-08-23 09:31:35',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             6 => 
             array (
@@ -88,6 +100,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_0_71',
                 'created_at' => '2023-08-22 19:02:03',
                 'updated_at' => '2023-08-23 09:31:41',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             7 => 
             array (
@@ -98,6 +112,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_0_71',
                 'created_at' => '2023-08-22 19:02:12',
                 'updated_at' => '2023-08-23 09:31:50',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             8 => 
             array (
@@ -108,6 +124,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_0_71',
                 'created_at' => '2023-08-22 19:02:18',
                 'updated_at' => '2023-08-23 09:31:58',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             9 => 
             array (
@@ -118,6 +136,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_0_71',
                 'created_at' => '2023-08-22 19:02:26',
                 'updated_at' => '2023-08-22 19:02:26',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             10 => 
             array (
@@ -128,6 +148,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_72_263',
                 'created_at' => '2023-08-22 19:02:43',
                 'updated_at' => '2023-08-23 09:32:26',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             11 => 
             array (
@@ -138,6 +160,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_72_263',
                 'created_at' => '2023-08-22 19:02:52',
                 'updated_at' => '2023-08-23 09:32:34',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             12 => 
             array (
@@ -148,6 +172,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_72_263',
                 'created_at' => '2023-08-22 19:03:07',
                 'updated_at' => '2023-08-23 09:32:43',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             13 => 
             array (
@@ -158,6 +184,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_72_263',
                 'created_at' => '2023-08-22 19:03:14',
                 'updated_at' => '2023-08-23 09:32:48',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             14 => 
             array (
@@ -168,6 +196,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_72_263',
                 'created_at' => '2023-08-22 19:03:21',
                 'updated_at' => '2023-08-23 09:32:53',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             15 => 
             array (
@@ -178,6 +208,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_72_263',
                 'created_at' => '2023-08-22 19:03:28',
                 'updated_at' => '2023-08-23 09:32:59',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             16 => 
             array (
@@ -188,6 +220,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_72_263',
                 'created_at' => '2023-08-22 19:03:33',
                 'updated_at' => '2023-08-23 09:33:07',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             17 => 
             array (
@@ -198,6 +232,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_72_263',
                 'created_at' => '2023-08-22 19:03:39',
                 'updated_at' => '2023-08-23 09:33:16',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             18 => 
             array (
@@ -208,6 +244,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_72_263',
                 'created_at' => '2023-08-22 19:03:46',
                 'updated_at' => '2023-08-23 09:33:21',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             19 => 
             array (
@@ -218,6 +256,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'parent_72_263',
                 'created_at' => '2023-08-22 19:03:55',
                 'updated_at' => '2023-08-22 19:03:55',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             20 => 
             array (
@@ -228,6 +268,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_24_71',
                 'created_at' => '2023-08-22 19:04:39',
                 'updated_at' => '2023-08-23 09:39:22',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             21 => 
             array (
@@ -238,6 +280,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_24_71',
                 'created_at' => '2023-08-22 19:05:25',
                 'updated_at' => '2023-08-23 09:39:30',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             22 => 
             array (
@@ -248,6 +292,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_24_71',
                 'created_at' => '2023-08-22 19:05:39',
                 'updated_at' => '2023-08-23 09:39:40',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             23 => 
             array (
@@ -258,6 +304,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_24_71',
                 'created_at' => '2023-08-22 19:05:46',
                 'updated_at' => '2023-08-23 09:39:50',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             24 => 
             array (
@@ -268,6 +316,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_24_71',
                 'created_at' => '2023-08-22 19:05:54',
                 'updated_at' => '2023-08-23 09:39:56',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             25 => 
             array (
@@ -278,6 +328,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_24_71',
                 'created_at' => '2023-08-22 19:06:01',
                 'updated_at' => '2023-08-23 09:40:08',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             26 => 
             array (
@@ -288,6 +340,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_24_71',
                 'created_at' => '2023-08-22 19:06:11',
                 'updated_at' => '2023-08-23 09:40:16',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             27 => 
             array (
@@ -298,6 +352,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_24_71',
                 'created_at' => '2023-08-22 19:06:22',
                 'updated_at' => '2023-08-23 09:40:22',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             28 => 
             array (
@@ -308,6 +364,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_24_71',
                 'created_at' => '2023-08-22 19:06:30',
                 'updated_at' => '2023-08-22 19:06:30',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             29 => 
             array (
@@ -318,6 +376,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_72_263',
                 'created_at' => '2023-08-22 19:06:49',
                 'updated_at' => '2023-08-23 09:41:54',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             30 => 
             array (
@@ -328,6 +388,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_72_263',
                 'created_at' => '2023-08-22 19:06:56',
                 'updated_at' => '2023-08-23 09:42:02',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             31 => 
             array (
@@ -338,6 +400,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_72_263',
                 'created_at' => '2023-08-22 19:07:04',
                 'updated_at' => '2023-08-23 09:43:37',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             32 => 
             array (
@@ -348,6 +412,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_72_263',
                 'created_at' => '2023-08-22 19:07:12',
                 'updated_at' => '2023-08-23 09:43:26',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             33 => 
             array (
@@ -358,6 +424,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_72_263',
                 'created_at' => '2023-08-22 19:07:18',
                 'updated_at' => '2023-08-23 09:42:57',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             34 => 
             array (
@@ -368,6 +436,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_72_263',
                 'created_at' => '2023-08-22 19:07:25',
                 'updated_at' => '2023-08-23 09:42:46',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             35 => 
             array (
@@ -378,6 +448,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_72_263',
                 'created_at' => '2023-08-22 19:07:32',
                 'updated_at' => '2023-08-23 09:42:16',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             36 => 
             array (
@@ -388,6 +460,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_72_263',
                 'created_at' => '2023-08-22 19:07:39',
                 'updated_at' => '2023-08-23 09:42:25',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             37 => 
             array (
@@ -398,6 +472,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_72_263',
                 'created_at' => '2023-08-22 19:07:46',
                 'updated_at' => '2023-08-23 09:41:29',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
             38 => 
             array (
@@ -408,6 +484,8 @@ class AbasSubDomainsTableSeeder extends Seeder
                 'category' => 'teacher_72_263',
                 'created_at' => '2023-08-22 19:07:53',
                 'updated_at' => '2023-08-22 19:07:53',
+                'description' => NULL,
+                'description_en' => NULL,
             ),
         ));
         
