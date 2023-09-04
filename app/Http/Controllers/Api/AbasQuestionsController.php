@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AbasQuestionRequest;
-use App\Http\Resources\AbasQuestionResource;
 use App\Models\AbasQuestion;
 use App\Queries\AbasQuestionsQuery;
 use Illuminate\Http\Request;
