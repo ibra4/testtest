@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
+// @TODO: Maybe you can make it general.
 function ReportsButtons({ data }) {
     const { t } = useTranslation();
     return (

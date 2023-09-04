@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\BootstrapController;
 use App\Http\Controllers\Api\AdminMediaController;
 use App\Http\Controllers\Api\CasdDomainsController;
+use App\Http\Controllers\Api\CasdExamsController;
 use App\Http\Controllers\Api\CasdQuestionsController;
 use App\Http\Controllers\Api\CasdSubDomainsController;
 use App\Http\Controllers\Api\CountryStatisticController;
@@ -149,7 +150,16 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/abas-exams/{id}', [AbasExamsController::class, 'actionGet']);
         Route::put('/abas-exams/update/{exam_sub_domain_id}', [AbasExamsController::class, 'actionUpdate']);
         Route::post('/abas-exams/create/{id}', [AbasExamsController::class, 'actionCreate']);
+        // @TODO: Check this route
         Route::post('/abas-exams/{id}/delete', [AbasExamsController::class, 'actionDelete']);
+
+        // Casd Exams
+        Route::get('/casd-exams', [CasdExamsController::class, 'actionIndex']);
+        Route::get('/casd-exams/{id}', [CasdExamsController::class, 'actionGet']);
+        Route::put('/casd-exams/update/{exam_sub_domain_id}', [CasdExamsController::class, 'actionUpdate']);
+        Route::post('/casd-exams/create/{id}', [CasdExamsController::class, 'actionCreate']);
+        // @TODO: Check this route
+        Route::post('/casd-exams/{id}/delete', [CasdExamsController::class, 'actionDelete']);
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);

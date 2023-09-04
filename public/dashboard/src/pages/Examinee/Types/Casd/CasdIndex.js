@@ -1,50 +1,50 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Layout from 'components/Layout'
-import { getExamCreateUrl, getExamViewUrl, httpClient } from 'providers/helpers'
+import { httpClient } from 'providers/helpers'
 import FullLoader from 'components/FullLoader'
 import { useTranslation } from 'react-i18next'
-import ExamsView from './ExamsView'
-import { useHistory } from 'react-router-dom'
-import { useToasts } from 'react-toast-notifications'
+import CasdView from './CasdView'
 import GeneralError from 'components/GeneralError'
+import { useToasts } from 'react-toast-notifications'
 import { generalErrorText } from 'providers/helpers/constants'
 
-function ExamsIndex() {
+function CasdIndex() {
 
     const { t } = useTranslation()
     const { id } = useParams()
     const { addToast } = useToasts()
-    const { push } = useHistory()
 
     const [data, setData] = useState({})
-    const [errorResponse, setErrorResponse] = useState(null)
     const [status, setStatus] = useState("loading")
+    const [error, setError] = useState(null)
 
     const getData = async () => {
         try {
-            const res = await httpClient.get(`examinees/${id}/exams`)
+            const res = await httpClient.get(`casd-exams/${id}`)
             setData(res.data)
             setStatus("success")
         } catch (error) {
-            setErrorResponse(error)
+            setError(error)
             setStatus('error');
         }
     }
 
     useEffect(() => {
-        getData();
+        getData()
     }, [])
 
-    const onCreateExam = async (data, examType) => {
-        const res = await httpClient.post(getExamCreateUrl(examType, id), data)
-
-        if (res.status == 200) {
-            addToast(t('Saved Successfully'), { appearance: 'success' });
-            push(getExamViewUrl(examType, res.data.id))
-        } else {
+    const onSubDomainSubmit = async (values) => {
+        try {
+            const confirmed = confirm(t("confirm_save_exam"))
+            if (confirmed) {
+                const res = await httpClient.put(`casd-exams/update/${values.id}`, values)
+                addToast(t('Saved Successfully'), { appearance: 'success' });
+                setData(res.data);
+            }
+        } catch (error) {
+            console.log
             addToast(t(generalErrorText), { appearance: 'error' });
-            return res
         }
     }
 
@@ -53,17 +53,17 @@ function ExamsIndex() {
             case 'loading':
                 return <FullLoader />
             case 'success':
-                return <ExamsView data={data} onCreateExam={onCreateExam} />
+                return <CasdView data={data} onSubDomainSubmit={onSubDomainSubmit} />
             case 'error':
-                return <GeneralError errorResponse={errorResponse} />
+                return <GeneralError message={error} />
         }
     }
 
     return (
-        <Layout title={t("Examinee exams")}>
+        <Layout title={t("CASD Exam") + ` #${id}`}>
             {renderView()}
         </Layout>
     )
 }
 
-export default ExamsIndex
+export default CasdIndex

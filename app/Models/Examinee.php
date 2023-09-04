@@ -71,9 +71,14 @@ class Examinee extends Model
         return $this->hasMany(LeiterReport::class, 'examinee_id', 'id');
     }
 
-    public function abasReports()
+    public function abasExams()
     {
         return $this->hasMany(AbasExam::class, 'examinee_id', 'id');
+    }
+
+    public function casdExams()
+    {
+        return $this->hasMany(CasdExam::class, 'examinee_id', 'id');
     }
 
     public function center()

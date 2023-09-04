@@ -141,7 +141,7 @@
     "Report ID": "ID التقرير",
     "Examinee ID": "ID المفحوص",
     "confirm_delete": "هل أنت متأكد من حذف {{id}} ؟",
-    "confirm_save_abas": "هل أنت متأكد من حفظ النتائج؟ إذا تم الحفظ، لن تتمكن من تعديلها في وقت لاحق.",
+    "confirm_save_exam": "هل أنت متأكد من حفظ النتائج؟ إذا تم الحفظ، لن تتمكن من تعديلها في وقت لاحق.",
     "Leiter International Performance Scale - Third Edition": "مقياس لايتر الآدائي العالمي - النسخة الثالثة - الصورة العربية",
     "English Name - Optional": "الإسم بالإنجليزية - إختياري",
     "For Users": "للمستخدمين",
@@ -181,5 +181,6 @@
     "Adult": "بالغ",
     "Extract reports": "إستخراج التقارير",
     "Coming Soon ^_^": "قريباً ^_^",
-    "Question Number": "رقم السؤال"
+    "Question Number": "رقم السؤال",
+    "Checked": "إختيار"
 }

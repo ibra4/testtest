@@ -110,7 +110,7 @@ export const renderAbasExamFor = (forUser) => {
 }
 
 
-export const getAbasExamCreateUrl = (examType, examineeId) => {
+export const getExamCreateUrl = (examType, examineeId) => {
     switch (examType) {
         case 'leiter':
             return `leiter-exams/create/${examineeId}`
@@ -125,7 +125,7 @@ export const getAbasExamCreateUrl = (examType, examineeId) => {
     }
 }
 
-export const getAbasExamViewUrl = (examType, examId) => {
+export const getExamViewUrl = (examType, examId) => {
     switch (examType) {
         case 'leiter':
             return `/leiter-exams/${examId}`

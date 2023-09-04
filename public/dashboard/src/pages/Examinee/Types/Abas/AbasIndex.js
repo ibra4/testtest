@@ -36,7 +36,7 @@ function AbasIndex() {
 
     const onSubDomainSubmit = async (values) => {
         try {
-            const confirmed = confirm(t("confirm_save_abas"))
+            const confirmed = confirm(t("confirm_save_exam"))
             if (confirmed) {
                 const res = await httpClient.put(`abas-exams/update/${values.id}`, values)
                 addToast(t('Saved Successfully'), { appearance: 'success' });

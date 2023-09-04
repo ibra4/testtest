@@ -38,6 +38,7 @@ import CasdSubDomainsIndex from 'pages/Settings/CasdSubDomains/CasdSubDomainsInd
 import CasdSubDomainFormIndex from 'pages/Settings/CasdSubDomainForm/CasdSubDomainFormIndex';
 import CasdQuestionsIndex from 'pages/Settings/CasdQuestions/CasdQuestionsIndex';
 import CasdQuestionFormIndex from 'pages/Settings/CasdQuestionForm/CasdQuestionFormIndex';
+import CasdIndex from 'pages/Examinee/Types/Casd/CasdIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -101,6 +102,7 @@ const Routes = () => {
 
         {/* Abas Exams */}
         <Route path="/abas-exams/:id/:sub_domain_id" component={AbasIndex} exact />
+        <Route path="/casd-exams/:id" component={CasdIndex} exact />
 
         {/* Leiter Records */}
         <Route path="/leiter-records/:type" component={LeiterRecordsIndex} exact />

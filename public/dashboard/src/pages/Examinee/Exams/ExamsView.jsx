@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FaPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import AbasTableView from './Views/AbasTableView';
+import CasdTableView from './Views/CasdTableView';
 import LeiterTableView from './Views/LeiterTableView';
 
 function ExamsView({ data, onCreateExam }) {
@@ -17,27 +18,9 @@ function ExamsView({ data, onCreateExam }) {
             </WhiteBox>
             <LeiterTableView rows={data?.leiter} onCreateExam={onCreateExam} />
             <AbasTableView rows={data?.abas} onCreateExam={onCreateExam} />
-            <WhiteBox title={t('Checklist for Autism Spectrum Disorder (CASD)')}>
-                <Table className="align-middle">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>{t('Age')}</th>
-                            <th>{t('Created By')}</th>
-                            <th>{t('Application Date')}</th>
-                            <th>{t('Created At')}</th>
-                            <th>{t('Actions')}</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </Table>
-                <div className="text-center">
-                    <Link to={`/reports/casd/create`} className="btn btn-primary">
-                        <FaPlus />
-                        <span className="ms-2">{t('create_new', { name: t('CASD Test') })}</span>
-                    </Link>
-                </div>
-            </WhiteBox>
+            <CasdTableView rows={data?.casd} onCreateExam={onCreateExam} />
+
+            {/* Dummy */}
             <WhiteBox title={t('Merrill-Palmer-Revised Scales of Development MPR')}>
                 <Table className="align-middle">
                     <thead>

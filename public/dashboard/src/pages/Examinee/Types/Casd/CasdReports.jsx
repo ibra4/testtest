@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-function AbasReports({ reports }) {
+function CasdReports({ reports }) {
     const { t } = useTranslation();
     return (
         <div className="exam-reports">
@@ -10,4 +10,4 @@ function AbasReports({ reports }) {
     );
 }
 
-export default AbasReports;
+export default CasdReports;
