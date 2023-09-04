@@ -32,8 +32,6 @@ import AbasQuestionFormIndex from 'pages/Settings/AbasQuestionForm/AbasQuestionF
 import { ar } from 'yup-locales';
 import { setLocale } from 'yup';
 import AbasIndex from 'pages/Examinee/Types/Abas/AbasIndex';
-import CasdDomainsIndex from 'pages/Settings/CasdDomains/CasdDomainsIndex';
-import CasdDomainFormIndex from 'pages/Settings/CasdDomainForm/CasdDomainFormIndex';
 import CasdSubDomainsIndex from 'pages/Settings/CasdSubDomains/CasdSubDomainsIndex';
 import CasdSubDomainFormIndex from 'pages/Settings/CasdSubDomainForm/CasdSubDomainFormIndex';
 import CasdQuestionsIndex from 'pages/Settings/CasdQuestions/CasdQuestionsIndex';
@@ -133,11 +131,6 @@ const Routes = () => {
         <Route path="/settings/abas/questions" component={AbasQuestionsIndex} exact />
         <Route path="/settings/abas/questions/create" component={AbasQuestionFormIndex} exact />
         <Route path="/settings/abas/questions/:id/update" component={AbasQuestionFormIndex} exact />
-
-        {/* CASD Domains */}
-        <Route path="/settings/casd/domains" component={CasdDomainsIndex} exact />
-        <Route path="/settings/casd/domains/create" component={CasdDomainFormIndex} exact />
-        <Route path="/settings/casd/domains/:id/update" component={CasdDomainFormIndex} exact />
 
         {/* CASD Sub Domains */}
         <Route path="/settings/casd/sub-domains" component={CasdSubDomainsIndex} exact />

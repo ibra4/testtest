@@ -10,8 +10,7 @@ import { useTranslation } from 'react-i18next'
 
 const defaultDomain = {
     name: '',
-    name_en: '',
-    casd_domain_id: ''
+    name_en: ''
 }
 
 function CasdSubDomainFormIndex() {

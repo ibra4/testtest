@@ -9,13 +9,20 @@ class CasdQuestion extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['casd_sub_domain_id', 'name', 'name_en', 'question_number'];
+    protected $fillable = [
+        'casd_sub_domain_id',
+        'name',
+        'name_en',
+        'description',
+        'description_en',
+        'question_number'
+    ];
 
     protected $appends = ['domain_full_name'];
 
     public function getDomainFullNameAttribute()
     {
-        return $this->subDomain->name;
+        return $this->subDomain->name ?? "";
     }
 
     public function subDomain()

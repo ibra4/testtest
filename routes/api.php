@@ -7,7 +7,6 @@ use App\Http\Controllers\Api\AbasSubDomainsController;
 use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\BootstrapController;
 use App\Http\Controllers\Api\AdminMediaController;
-use App\Http\Controllers\Api\CasdDomainsController;
 use App\Http\Controllers\Api\CasdExamsController;
 use App\Http\Controllers\Api\CasdQuestionsController;
 use App\Http\Controllers\Api\CasdSubDomainsController;
@@ -86,12 +85,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/abas/questions/{id}', [AbasQuestionsController::class, 'actionGet']);
         Route::post('/abas/questions/create', [AbasQuestionsController::class, 'actionCreate']);
         Route::put('/abas/questions/{id}/update', [AbasQuestionsController::class, 'actionUpdate']);
-
-        // CASD Domains
-        Route::get('/casd/domains', [CasdDomainsController::class, 'actionIndex']);
-        Route::get('/casd/domains/{id}', [CasdDomainsController::class, 'actionGet']);
-        Route::post('/casd/domains/create', [CasdDomainsController::class, 'actionCreate']);
-        Route::put('/casd/domains/{id}/update', [CasdDomainsController::class, 'actionUpdate']);
 
         // CASD Sub Domains
         Route::get('/casd/sub-domains', [CasdSubDomainsController::class, 'actionIndex']);

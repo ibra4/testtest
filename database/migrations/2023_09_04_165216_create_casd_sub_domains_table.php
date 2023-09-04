@@ -17,8 +17,6 @@ class CreateCasdSubDomainsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('name_en')->nullable();
-            $table->unsignedBigInteger('casd_domain_id')->nullable()->default(null);
-            $table->foreign('casd_domain_id')->references('id')->on('casd_domains')->onDelete('cascade');
             $table->timestamps();
         });
     }

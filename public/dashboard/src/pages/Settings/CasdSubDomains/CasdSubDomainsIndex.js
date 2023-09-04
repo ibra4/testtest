@@ -17,9 +17,7 @@ function CasdSubDomainsIndex() {
     const [queryParams, setQueryParams] = useState({
         page: 1,
         name: '',
-        name_en: '',
-        category: '',
-        casd_domain_id: ''
+        name_en: ''
     })
 
     const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/casd/sub-domains')

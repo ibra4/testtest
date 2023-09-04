@@ -44,18 +44,6 @@ function Filters({ queryParams, onSearch, config }) {
                                     className="mb-3"
                                 />
                             </Col>
-                            <Col md={4}>
-                                <SelectField
-                                    name="casd_domain_id"
-                                    label="Domain"
-                                    onChange={handleChange}
-                                    value={values.casd_domain_id}
-                                    onBlur={handleBlur}
-                                    error={errors.casd_domain_id}
-                                    className="mb-3"
-                                    options={config.casd_domains}
-                                />
-                            </Col>
                         </Row>
                         <Button disabled={isSubmitting} type="submit">
                             <FaSearch />

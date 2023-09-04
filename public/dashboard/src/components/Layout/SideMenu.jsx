@@ -174,12 +174,6 @@ const routes2 = [
         role: 'root',
         sublinks: [
             {
-                routeName: 'settings/casd/domains',
-                label: 'Domains',
-                icon: <FaImage />,
-                role: 'root'
-            },
-            {
                 routeName: 'settings/casd/sub-domains',
                 label: 'Sub Domains',
                 icon: <FaImage />,

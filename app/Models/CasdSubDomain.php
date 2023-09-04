@@ -9,12 +9,7 @@ class CasdSubDomain extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'name_en', 'casd_domain_id'];
-
-    public function domain()
-    {
-        return $this->belongsTo(CasdDomain::class, 'casd_domain_id', 'id');
-    }
+    protected $fillable = ['name', 'name_en'];
 
     public function questions()
     {

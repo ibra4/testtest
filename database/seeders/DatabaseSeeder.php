@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CitiesSeeder::class);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        $this->call(CasdQuestionsTableSeeder::class);
     }
 }

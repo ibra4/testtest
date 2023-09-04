@@ -1,5 +1,4 @@
 import FormButtons from 'components/Fields/FormButtons';
-import SelectField from 'components/Fields/SelectField';
 import TextField from 'components/Fields/TextField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
@@ -50,18 +49,6 @@ function Form({ initialValues, config, onSubmit }) {
                                     value={values.name_en}
                                     onBlur={handleBlur}
                                     error={errors.name_en}
-                                    className="mb-3"
-                                />
-                            </Col>
-                            <Col md={4}>
-                                <SelectField
-                                    name="casd_domain_id"
-                                    label="Domain"
-                                    onChange={handleChange}
-                                    value={values.casd_domain_id}
-                                    onBlur={handleBlur}
-                                    error={errors.casd_domain_id}
-                                    options={config.casd_domains}
                                     className="mb-3"
                                 />
                             </Col>

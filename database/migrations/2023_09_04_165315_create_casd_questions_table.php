@@ -15,11 +15,13 @@ class CreateCasdQuestionsTable extends Migration
     {
         Schema::create('casd_questions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('casd_sub_domain_id');
+            $table->unsignedBigInteger('casd_sub_domain_id')->nullable()->default(null);
             $table->text('name');
             $table->text('name_en')->nullable();
+            $table->text('description')->nullable();
+            $table->text('description_en')->nullable();
             $table->integer('question_number')->default(1);
-            $table->foreign('casd_sub_domain_id')->references('id')->on('casd_sub_domains')->onDelete('cascade');
+            $table->foreign('casd_sub_domain_id')->references('id')->on('casd_sub_domains')->onDelete('set null');
             $table->timestamps();
         });
     }

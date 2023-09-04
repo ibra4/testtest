@@ -11,7 +11,6 @@ use App\Http\Resources\UserNotificationResource;
 use App\Http\Resources\UserResource;
 use App\Models\AbasDomain;
 use App\Models\AbasSubDomain;
-use App\Models\CasdDomain;
 use App\Models\CasdSubDomain;
 use App\Models\Country;
 use App\Models\Examinee;
@@ -74,7 +73,6 @@ class BootstrapController extends Controller
         $data['abas_domains'] = AbasDomain::select('id', 'name AS label')->get();
         $data['abas_sub_domains'] = AbasSubDomainListResource::collection(AbasSubDomain::all());
 
-        $data['casd_domains'] = CasdDomain::select('id', 'name AS label')->get();
         $data['casd_sub_domains'] = CasdSubDomainListResource::collection(CasdSubDomain::all());
 
         $categories = [];
