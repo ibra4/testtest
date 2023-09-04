@@ -64,7 +64,7 @@ const routes2 = [
                 label: 'Notifications',
                 icon: <FaBell />,
                 role: 'root'
-            },
+            }
         ]
     },
     {
@@ -164,9 +164,35 @@ const routes2 = [
                 label: 'Questions',
                 icon: <FaImage />,
                 role: 'root'
-            },
+            }
         ]
     },
+    {
+        label: 'CASD Settings',
+        routeName: 'casd_settings',
+        icon: <FaCog />,
+        role: 'root',
+        sublinks: [
+            {
+                routeName: 'settings/casd/domains',
+                label: 'Domains',
+                icon: <FaImage />,
+                role: 'root'
+            },
+            {
+                routeName: 'settings/casd/sub-domains',
+                label: 'Sub Domains',
+                icon: <FaImage />,
+                role: 'root'
+            },
+            {
+                routeName: 'settings/casd/questions',
+                label: 'Questions',
+                icon: <FaImage />,
+                role: 'root'
+            }
+        ]
+    }
 ];
 
 function SideMenu() {

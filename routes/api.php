@@ -7,6 +7,9 @@ use App\Http\Controllers\Api\AbasSubDomainsController;
 use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\BootstrapController;
 use App\Http\Controllers\Api\AdminMediaController;
+use App\Http\Controllers\Api\CasdDomainsController;
+use App\Http\Controllers\Api\CasdQuestionsController;
+use App\Http\Controllers\Api\CasdSubDomainsController;
 use App\Http\Controllers\Api\CountryStatisticController;
 use App\Http\Controllers\Api\SubAdminsController;
 use App\Http\Controllers\Api\ExamineesController;
@@ -82,6 +85,24 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/abas/questions/{id}', [AbasQuestionsController::class, 'actionGet']);
         Route::post('/abas/questions/create', [AbasQuestionsController::class, 'actionCreate']);
         Route::put('/abas/questions/{id}/update', [AbasQuestionsController::class, 'actionUpdate']);
+
+        // CASD Domains
+        Route::get('/casd/domains', [CasdDomainsController::class, 'actionIndex']);
+        Route::get('/casd/domains/{id}', [CasdDomainsController::class, 'actionGet']);
+        Route::post('/casd/domains/create', [CasdDomainsController::class, 'actionCreate']);
+        Route::put('/casd/domains/{id}/update', [CasdDomainsController::class, 'actionUpdate']);
+
+        // CASD Sub Domains
+        Route::get('/casd/sub-domains', [CasdSubDomainsController::class, 'actionIndex']);
+        Route::get('/casd/sub-domains/{id}', [CasdSubDomainsController::class, 'actionGet']);
+        Route::post('/casd/sub-domains/create', [CasdSubDomainsController::class, 'actionCreate']);
+        Route::put('/casd/sub-domains/{id}/update', [CasdSubDomainsController::class, 'actionUpdate']);
+
+        // CASD Questions
+        Route::get('/casd/questions', [CasdQuestionsController::class, 'actionIndex']);
+        Route::get('/casd/questions/{id}', [CasdQuestionsController::class, 'actionGet']);
+        Route::post('/casd/questions/create', [CasdQuestionsController::class, 'actionCreate']);
+        Route::put('/casd/questions/{id}/update', [CasdQuestionsController::class, 'actionUpdate']);
     });
 
     Route::middleware('can:admin_or_sub_admin')->group(function () {

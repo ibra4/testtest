@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Enums\ExamTypesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AbasSubDomainListResource;
+use App\Http\Resources\CasdSubDomainListResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\UserNotificationResource;
 use App\Http\Resources\UserResource;
 use App\Models\AbasDomain;
 use App\Models\AbasSubDomain;
+use App\Models\CasdDomain;
+use App\Models\CasdSubDomain;
 use App\Models\Country;
 use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
@@ -67,8 +70,12 @@ class BootstrapController extends Controller
         if ($currentUser->can('root')) {
         }
         $data['admins'] = User::select('id', 'name AS label')->where('role', 'admin')->get();
+
         $data['abas_domains'] = AbasDomain::select('id', 'name AS label')->get();
         $data['abas_sub_domains'] = AbasSubDomainListResource::collection(AbasSubDomain::all());
+
+        $data['casd_domains'] = CasdDomain::select('id', 'name AS label')->get();
+        $data['casd_sub_domains'] = CasdSubDomainListResource::collection(CasdSubDomain::all());
 
         $categories = [];
         foreach (config('enums.abas_abas_sub_domains_categories') as $cat) {
