@@ -80,6 +80,7 @@ class AbasExamsService
                 'examiner_notes' => $request->examiner_notes
             ]);
 
+            // @TODO: Check age of the examinee, some subdomains don't have scaled_score for that age
             // 1- Get Sub domains for category
             $subDomains = $this->abasSubDomainsRepository->getSubDomainsByCategory($category);
 
