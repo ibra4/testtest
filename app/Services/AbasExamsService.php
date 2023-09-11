@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\AbasExamTypesEnum;
 use App\Enums\ExamTypesEnum;
 use App\Exceptions\AgeNotAllowedException;
 use App\Exceptions\NumberOfExamsExceededException;
@@ -118,28 +119,31 @@ class AbasExamsService
         // 1091 => 90 years 11 months
         switch ($forWho) {
             case 'teacher':
-                if ($ageInMonths < 24 || $ageInMonths > 263) {
-                    throw new AgeNotAllowedException(__("ABAS teacher's exam must be for ages 2 to 21 years"));
-                } elseif ($ageInMonths >= 24 && $ageInMonths <= 71) {
-                    $category = 'teacher_24_71';
-                } elseif ($ageInMonths >= 72) {
-                    $category = 'teacher_72_263';
+                if ($ageInMonths < 60 || $ageInMonths > 263) {
+                    throw new AgeNotAllowedException(__("ABAS teacher's exam must be for ages 5 to 21 years"));
                 }
+                $category = AbasExamTypesEnum::TEACHER_5_21;
+                break;
+            case 'teacher_caregiver':
+                if ($ageInMonths < 24 || $ageInMonths > 71) {
+                    throw new AgeNotAllowedException(__("ABAS teacher caregiver exam must be for ages 2 to 5 years"));
+                }
+                $category = AbasExamTypesEnum::TEACHER_CAREGIVER_2_5;
                 break;
             case 'parent':
                 if ($ageInMonths < 0 || $ageInMonths > 263) {
-                    throw new AgeNotAllowedException(__("ABAS teacher's exam must be for ages 2 to 21 years"));
+                    throw new AgeNotAllowedException(__("ABAS parent's exam must be for ages 0 to 21 years"));
                 } elseif ($ageInMonths >= 0 && $ageInMonths <= 71) {
-                    $category = 'parent_0_71';
+                    $category = AbasExamTypesEnum::PARENT_0_5;
                 } elseif ($ageInMonths >= 72) {
-                    $category = 'parent_72_263';
+                    $category = AbasExamTypesEnum::PARENT_6_21;
                 }
                 break;
             case 'adult':
                 if ($ageInMonths < 192 || $ageInMonths > 1091) {
                     throw new AgeNotAllowedException(__("ABAS adult's exam must be for ages 16 to 90 years"));
                 }
-                $category = 'adult_192_1091';
+                $category = AbasExamTypesEnum::ADULT_16_90;
                 break;
             default:
                 throw new Exception('Invalid for value provided');

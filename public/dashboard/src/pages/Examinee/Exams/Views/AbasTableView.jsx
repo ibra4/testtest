@@ -7,14 +7,13 @@ import { useTranslation } from 'react-i18next';
 import { TbReportAnalytics } from 'react-icons/tb';
 import AbasExamFormModal from '../Forms/AbasExamFormModal';
 import { useHistory } from 'react-router-dom';
-import { renderAbasExamFor } from 'providers/helpers';
 
 function AbasTableView({ rows, onCreateExam }) {
     const { t } = useTranslation();
     const { push } = useHistory();
 
     const handleCreateAbasExam = (values, forWho) => {
-        onCreateExam({ ...values, for: forWho }, 'abas');
+        return onCreateExam({ ...values, for: forWho }, 'abas');
     };
 
     return (
@@ -39,7 +38,7 @@ function AbasTableView({ rows, onCreateExam }) {
                                 <td>{abasExam.age}</td>
                                 <td>{abasExam?.examiner?.name}</td>
                                 <td>{abasExam.application_date}</td>
-                                <td>{t(renderAbasExamFor(abasExam.for))}</td>
+                                <td>{abasExam.category}</td>
                                 <td>{moment(abasExam?.created_at).format('yyyy-MM-DD')}</td>
                                 <td>
                                     <ActionButton
@@ -57,6 +56,12 @@ function AbasTableView({ rows, onCreateExam }) {
                     title={t('Create exam for teacher')}
                     onSubmit={(values) => handleCreateAbasExam(values, 'teacher')}
                 />
+                <div className="ms-2">
+                    <AbasExamFormModal
+                        title={t('Create exam for caregiver')}
+                        onSubmit={(values) => handleCreateAbasExam(values, 'teacher_caregiver')}
+                    />
+                </div>
                 <div className="ms-2">
                     <AbasExamFormModal
                         title={t('Create exam for parent')}

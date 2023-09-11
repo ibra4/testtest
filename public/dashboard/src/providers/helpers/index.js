@@ -105,11 +105,6 @@ export const renderNotificationFor = (forUser) => {
     return CONSTANTS.NOTIFICATION_FOR.find(item => item.id === forUser)?.label
 }
 
-export const renderAbasExamFor = (forUser) => {
-    return CONSTANTS.ABAS_EXAM_FOR.find(item => item.id === forUser)?.label
-}
-
-
 export const getExamCreateUrl = (examType, examineeId) => {
     switch (examType) {
         case 'leiter':

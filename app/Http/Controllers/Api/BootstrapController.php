@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\AbasExamTypesEnum;
 use App\Enums\ExamTypesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AbasSubDomainListResource;
@@ -76,7 +77,7 @@ class BootstrapController extends Controller
         $data['casd_sub_domains'] = CasdSubDomainListResource::collection(CasdSubDomain::all());
 
         $categories = [];
-        foreach (config('enums.abas_abas_sub_domains_categories') as $cat) {
+        foreach (AbasExamTypesEnum::getAllFields() as $cat) {
             $categories[] = [
                 'id' => $cat,
                 'label' => __($cat)

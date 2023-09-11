@@ -22,6 +22,7 @@ export const CONSTANTS = {
     ],
     ABAS_EXAM_FOR: [
         { id: 'teacher', label: 'Teacher' },
+        { id: 'teacher_caregiver', label: 'Teacher Caregiver' },
         { id: 'parent', label: 'Parent' },
         { id: 'adult', label: 'Adult' }
     ],

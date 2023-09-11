@@ -19,7 +19,7 @@ class AbasExamTeaserResource extends JsonResource
             'application_date' => $this->application_date,
             'age' => $this->age,
             'examiner' => new ExaminerResource($this->examiner),
-            'for' => explode('_', $this->category)[0],
+            'category' => __($this->category),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

@@ -17,7 +17,7 @@ class CreateAbasExamRequest extends FormRequest
         return [
             'application_date' => 'required|date',
             'examiner_notes' => new MaxWordsRule(),
-            'for' => 'required|string|in:teacher,parent,adult'
+            'for' => 'required|string|in:teacher,teacher_caregiver,parent,adult'
         ];
     }
 }
