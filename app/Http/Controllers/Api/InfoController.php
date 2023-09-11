@@ -49,6 +49,7 @@ class InfoController  extends Controller
             ->where('users.number_of_leiter_reports','>',0)
             ->groupBy('users.id')
             ->orderBy('users.used_leiter_reports','DESC')
+            ->limit(5)
             ->get();
         return $this->sendSuccessReponse($admins);
     }
