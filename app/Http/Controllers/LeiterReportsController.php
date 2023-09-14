@@ -23,7 +23,7 @@ use App\Services\LeiterRecordsService;
 use Illuminate\Http\Request;
 use stdClass;
 
-class ReportsController extends Controller
+class LeiterReportsController extends Controller
 {
     public function index(Request $request, LeiterRecordsService $lrs, $lang, $id)
     {

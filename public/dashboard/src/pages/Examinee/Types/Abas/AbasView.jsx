@@ -21,7 +21,7 @@ function AbasView({ data, onSubDomainSubmit }) {
             case 'introduction':
                 return <AbasIntroduction content={data.description} />;
             case 'reports':
-                return <AbasReports />;
+                return <AbasReports data={data} />;
             default:
                 const subDomain = data.sub_domains.find((item) => item.id == sub_domain_id);
                 return <SubDomainForm subDomain={subDomain} onSubmit={onSubDomainSubmit} />;

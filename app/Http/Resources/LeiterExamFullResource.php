@@ -32,10 +32,10 @@ class LeiterExamFullResource extends JsonResource
             ],
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'file_en' => route('reports.first', ['id' => $this->id, 'lang' => 'en']),
-            'file_ar' => route('reports.first', ['id' => $this->id, 'lang' => 'ar']),
-            'file_normal_dist_en' => route('reports.second', ['id' => $this->id, 'lang' => 'en']),
-            'file_normal_dist_ar' => route('reports.second', ['id' => $this->id, 'lang' => 'ar'])
+            'file_en' => route('leiter_report.first', ['id' => $this->id, 'lang' => 'en']),
+            'file_ar' => route('leiter_report.first', ['id' => $this->id, 'lang' => 'ar']),
+            'file_normal_dist_en' => route('leiter_report.second', ['id' => $this->id, 'lang' => 'en']),
+            'file_normal_dist_ar' => route('leiter_report.second', ['id' => $this->id, 'lang' => 'ar'])
         ];
     }
 }

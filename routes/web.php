@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\AbasReportsController;
 use App\Http\Controllers\Api\AdminsController;
 use App\Http\Controllers\Api\ExamineesController;
 use App\Http\Controllers\Api\LeiterRecordsController;
 use App\Http\Controllers\Api\LeiterExamsController;
 use App\Http\Controllers\Api\SubAdminsController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\LeiterReportsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,10 @@ Route::get('/', function () {
 Route::get('debug/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('can:root');
 
 Route::group(['middleware' => ['auth', 'report_owner']], function () {
-    Route::get('{lang}/report/{id}/first', [ReportsController::class, 'index'])->name('reports.first');
-    Route::get('{lang}/report/{id}/second', [ReportsController::class, 'charts'])->name('reports.second');
+    Route::get('{lang}/leiter-report/{id}/first', [LeiterReportsController::class, 'index'])->name('leiter_report.first');
+    Route::get('{lang}/leiter-report/{id}/second', [LeiterReportsController::class, 'charts'])->name('leiter_report.second');
+});
+
+Route::group(['middleware' => ['auth', 'report_owner']], function () {
+    Route::get('{lang}/abas-report/{id}', [AbasReportsController::class, 'actionIndex'])->name('abas_report.main');
 });
