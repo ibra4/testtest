@@ -9,7 +9,7 @@ class AbasSubDomain extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'name_en', 'abas_domain_id', 'category', 'description', 'description_en'];
+    protected $fillable = ['name', 'name_en', 'abas_domain_id', 'category', 'description', 'description_en', 'code'];
 
     protected $appends = ['translated_category'];
 

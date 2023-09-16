@@ -13,15 +13,16 @@ const initialValues = {
     examiner_notes: ''
 };
 
-const validationSchema = Yup.object().shape({
-    application_date: Yup.date().required()
-});
 
 function AbasExamFormModal({ onSubmit, title, ...rest }) {
     const [show, setShow] = useState(false);
     const onHide = () => setShow(false);
     const { t } = useTranslation();
     const { addToast } = useToasts();
+
+    const validationSchema = Yup.object().shape({
+        application_date: Yup.date().required().label(t('Application Date'))
+    });
 
     return (
         <>

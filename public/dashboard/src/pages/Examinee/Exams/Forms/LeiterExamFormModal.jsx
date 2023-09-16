@@ -13,10 +13,6 @@ const initialValues = {
     examiner_notes: ''
 };
 
-const validationSchema = Yup.object().shape({
-    application_date: Yup.date().required()
-});
-
 function LeiterExamFormModal({ onSubmit }) {
     const [show, setShow] = useState(false);
     const onHide = () => setShow(false);
@@ -24,6 +20,10 @@ function LeiterExamFormModal({ onSubmit }) {
     const { addToast } = useToasts();
 
     const title = t('create_new', { name: t('Leiter Exam') });
+
+    const validationSchema = Yup.object().shape({
+        application_date: Yup.date().required().label(t('Application Date'))
+    });
 
     return (
         <>

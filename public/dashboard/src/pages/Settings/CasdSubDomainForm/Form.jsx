@@ -4,12 +4,15 @@ import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import * as Yup from 'yup';
 
 function Form({ initialValues, config, onSubmit }) {
+    const { t } = useTranslation();
+
     const validationSchema = Yup.object().shape({
-        name: Yup.string().required()
+        name: Yup.string().required().label(t('Name'))
     });
 
     return (

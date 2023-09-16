@@ -18,8 +18,8 @@ import * as Yup from 'yup';
 function Form({ initialValues, config, onSubmit }) {
     const { t } = useTranslation();
     const validationSchema = Yup.object().shape({
-        name: Yup.string().required(t('Name field is required!')),
-        email: Yup.string().email(t('Invalid email')).required(t('Email field is required!'))
+        name: Yup.string().required().label(t('Name')),
+        email: Yup.string().email().required().label(t('Email'))
     });
     const [cities, setCities] = useState([]);
     useEffect(() => {

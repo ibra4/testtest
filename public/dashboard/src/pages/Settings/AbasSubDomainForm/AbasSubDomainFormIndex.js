@@ -11,8 +11,11 @@ import { useTranslation } from 'react-i18next'
 const defaultDomain = {
     name: '',
     name_en: '',
+    description: '',
+    description_en: '',
     abas_domain_id: '',
     category: '',
+    code: '',
 }
 
 function AbasSubDomainFormIndex() {

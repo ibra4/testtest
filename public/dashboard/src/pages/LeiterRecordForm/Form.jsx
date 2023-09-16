@@ -2,26 +2,21 @@ import FormButtons from 'components/Fields/FormButtons';
 import TextField from 'components/Fields/TextField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import * as Yup from 'yup';
 
-const validationSchema = Yup.object().shape({
-    min_age: Yup.number().required(),
-    max_age: Yup.number().required(),
-    scaled_score: Yup.number().required(),
-    value: Yup.number().required()
-});
-
 function Form({ initialValues, config, onSubmit }) {
-    // @TODO: Check if used
-    const [cities, setCities] = useState([]);
-    useEffect(() => {
-        if (initialValues && initialValues.country_id) {
-            setCities(config.countries.find((item) => item.id == initialValues.country_id).cities);
-        }
-    }, [initialValues]);
+    const { t } = useTranslation();
+
+    const validationSchema = Yup.object().shape({
+        min_age: Yup.number().required().label(t('Min age')),
+        max_age: Yup.number().required().label(t('Max age')),
+        scaled_score: Yup.number().required().label(t('Scaled Score')),
+        value: Yup.number().required().label(t('Value'))
+    });
 
     return (
         <Formik
@@ -45,7 +40,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={3}>
                                     <TextField
                                         name="min_age"
-                                        label='Min age'
+                                        label="Min age"
                                         onChange={handleChange}
                                         value={values.min_age}
                                         onBlur={handleBlur}
@@ -57,7 +52,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={3}>
                                     <TextField
                                         name="max_age"
-                                        label='Max age'
+                                        label="Max age"
                                         onChange={handleChange}
                                         value={values.max_age}
                                         onBlur={handleBlur}
@@ -69,7 +64,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={3}>
                                     <TextField
                                         name="value"
-                                        label='Value'
+                                        label="Value"
                                         onChange={handleChange}
                                         value={values.value}
                                         onBlur={handleBlur}
@@ -81,7 +76,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 <Col md={3}>
                                     <TextField
                                         name="scaled_score"
-                                        label='Scaled Score'
+                                        label="Scaled Score"
                                         onChange={handleChange}
                                         value={values.scaled_score}
                                         onBlur={handleBlur}

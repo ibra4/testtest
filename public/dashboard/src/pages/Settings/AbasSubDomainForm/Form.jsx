@@ -6,13 +6,17 @@ import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import * as Yup from 'yup';
 
 function Form({ initialValues, config, onSubmit }) {
+    const { t } = useTranslation();
+
     const validationSchema = Yup.object().shape({
-        name: Yup.string().required(),
-        category: Yup.string().required()
+        name: Yup.string().required().label(t('Name')),
+        category: Yup.string().required().label(t('Category')),
+        code: Yup.string().required().label(t('Code'))
     });
 
     return (
@@ -77,6 +81,18 @@ function Form({ initialValues, config, onSubmit }) {
                                     error={errors.category}
                                     options={config.abas_sub_domains_categories}
                                     className="mb-3"
+                                />
+                            </Col>
+                            <Col md={4}>
+                                <TextField
+                                    name="code"
+                                    label="Code"
+                                    onChange={handleChange}
+                                    value={values.code}
+                                    onBlur={handleBlur}
+                                    error={errors.code}
+                                    className="mb-3"
+                                    helperText="This code for getting scaled score"
                                 />
                             </Col>
                         </Row>

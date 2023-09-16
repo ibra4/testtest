@@ -17,12 +17,12 @@ import * as Yup from 'yup';
 function Form({ initialValues, config, onSubmit }) {
     const { t } = useTranslation();
     const validationSchema = Yup.object().shape({
-        name: Yup.string().required(),
-        email: Yup.string().email().required(),
-        number_of_leiter_reports: Yup.number().integer().typeError().min(0),
-        number_of_abas_reports: Yup.number().integer().typeError().min(0),
-        number_of_casd_reports: Yup.number().integer().typeError().min(0),
-        number_of_mpr_reports: Yup.number().integer().typeError().min(0)
+        name: Yup.string().required().label(t('Name')),
+        email: Yup.string().email().required().label(t('Email')),
+        number_of_leiter_reports: Yup.number().integer().typeError().min(0).label(t('Number of leiter reports')),
+        number_of_abas_reports: Yup.number().integer().typeError().min(0).label(t('Number of ABAS reports')),
+        number_of_casd_reports: Yup.number().integer().typeError().min(0).label(t('Number of MPR reports')),
+        number_of_mpr_reports: Yup.number().integer().typeError().min(0).label(t('Number of CASD reports'))
     });
 
     const [cities, setCities] = useState([]);

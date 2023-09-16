@@ -3,14 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\AbasExam;
+use App\Services\GeneralReportsService;
 use Illuminate\Http\Request;
 
 class AbasReportsController extends Controller
 {
+    private GeneralReportsService $generalReportsService;
+
+    public function __construct(GeneralReportsService $generalReportsService)
+    {
+        $this->generalReportsService = $generalReportsService;
+    }
+
     public function actionIndex(Request $request, $lang, $id)
     {
         app()->setLocale($lang);
-        $abasExam = AbasExam::findOrFail($id);
+        $abasExam = $report = AbasExam::findOrFail($id);
+        $examinee = $abasExam->examinee;
+
+        $logo = $this->generalReportsService->getCenterLogo($abasExam->examiner);
+
         $examSubDomains = $abasExam->subDomains;
         $domains = [];
         foreach ($examSubDomains as $examSubDomain) {
@@ -21,6 +33,6 @@ class AbasReportsController extends Controller
         }
 
         // I want to return view with abas report
-        return view('reports.abas', ['domains' => $domains, 'abasExam' => $abasExam]);
+        return view('reports.abas', compact('domains', 'abasExam', 'logo', 'examinee', 'report'));
     }
 }

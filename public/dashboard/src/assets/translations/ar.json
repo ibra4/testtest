@@ -184,5 +184,7 @@
     "Extract reports": "إستخراج التقارير",
     "Coming Soon ^_^": "قريباً ^_^",
     "Question Number": "رقم السؤال",
-    "Checked": "إختيار"
+    "Checked": "إختيار",
+    "Code": "الكود",
+    "This code for getting scaled score": "هذا الكود يستخدم لحساب الدرجة الموزونة"
 }

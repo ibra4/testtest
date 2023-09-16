@@ -17,6 +17,7 @@ class AbasSubDomainRequest extends FormRequest
         $allowed_categories = implode(',', AbasExamTypesEnum::getAllFields());
         return [
             'name' => 'required|string|max:255',
+            'code' => 'required|string|max:255',
             'category' => "required|string|in:$allowed_categories",
         ];
     }

@@ -2,57 +2,9 @@
 
 @section('content')
     <main class="content" id="pdf-charts">
-        <h2 class="font-weight-bold text-center mt-2">{{ __('Confidential Test Results for the Leiter-3') }}</h2>
-        <div class="row">
-            <div class="col-4">
-                <img src="{{ asset($logo) }}" class="w-100" alt="">
-            </div>
-            <div class="col-4"></div>
-            <div class="col-4">
-                <img src="{{ asset('images/lieter3.jpeg') }}" class="w-100" alt="">
-            </div>
-        </div>
+        @include('components.report_header', ['title' => __('Confidential Test Results for the Leiter-3')])
         <hr>
-        <div class="row">
-            {{-- <div class="col-8"> --}}
-            <div class="label-value-item col-6">
-                <div class="label">{{ __('Name') }}:</div>
-                <div class="value">
-                    @if (app()->getLocale() == 'en' && $examinee->name_en)
-                        {{ $examinee->name_en }}
-                    @else
-                        {{ $examinee->name }}
-                    @endif
-                </div>
-            </div>
-            <div class="label-value-item col-6">
-                <div class="label">{{ __('Gender') }}:</div>
-                <div class="value">{{ __($examinee->gender) }}</div>
-            </div>
-            <div class="label-value-item col-6">
-                <div class="label">{{ __('Age') }}:</div>
-                <div class="value">{{ $report->translated_age }}</div>
-            </div>
-            <div class="label-value-item col-6">
-                <div class="label">{{ __('Examiner') }}:</div>
-                <div class="value">{{ $examinee->center->name }}</div>
-            </div>
-            <div class="label-value-item col-6">
-                <div class="label">{{ __('Location of Testing') }}:</div>
-                <div class="value">{{ $examinee->location }}</div>
-            </div>
-            <div class="label-value-item col-6">
-                <div class="label">{{ __('Date of Birth') }}:</div>
-                <div class="value">{{ $examinee->birthday }}</div>
-            </div>
-            @if ($report->examiner_notes)
-                <div class="col-12">
-                    <div class="font-weight-bold">{{ __('Notes') }}:</div>
-                    <div class="value">{{ $report->examiner_notes }}</div>
-                </div>
-            @endif
-            {{-- </div> --}}
-        </div>
+        @include('components.report_examinee_data')
         <hr>
         <div class="section no-break" id="iq-section-chart">
             <h1 class="title">{{ __('IQ and Composite') }}</h1>

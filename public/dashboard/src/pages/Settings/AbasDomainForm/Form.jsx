@@ -11,7 +11,7 @@ import * as Yup from 'yup';
 function Form({ initialValues, config, onSubmit }) {
     const { t } = useTranslation();
     const validationSchema = Yup.object().shape({
-        name: Yup.string().required(t('Image field is required!'))
+        name: Yup.string().required().label(t('Name'))
     });
     const [cities, setCities] = useState([]);
     useEffect(() => {

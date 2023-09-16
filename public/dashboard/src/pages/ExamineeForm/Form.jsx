@@ -18,10 +18,10 @@ function Form({ initialValues, config, onSubmit }) {
     const { t } = useTranslation();
     const { addToast } = useToasts();
     const validationSchema = Yup.object().shape({
-        name: Yup.string().required(t('Name field is required!')),
-        birthday: Yup.date().required(),
-        gender: Yup.number().required(),
-        country_id: Yup.number().required()
+        name: Yup.string().required().label(t('Name')),
+        birthday: Yup.date().required().label(t('Birthday')),
+        gender: Yup.number().required().label(t('Gender')),
+        country_id: Yup.number().required().label(t('Country'))
     });
     const [cities, setCities] = useState([]);
     useEffect(() => {
