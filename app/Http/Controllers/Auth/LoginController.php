@@ -99,6 +99,7 @@ class LoginController extends Controller
             $user = User::where('email', $request->email)->first();
             $this->checkIfActive($user);
             $this->checkExpiration($user);
+            $this->checkIfDeleted($user);
         }
 
         if ($this->attemptLogin($request)) {
@@ -156,6 +157,13 @@ class LoginController extends Controller
     {
         if ($user->is_active == 0) {
             throw ValidationException::withMessages([$this->username() => __('User account is not active.')]);
+        }
+    }
+
+    private function checkIfDeleted(User $user)
+    {
+        if ($user->is_deleted == 1) {
+            throw ValidationException::withMessages([$this->username() => __('User account is deleted.')]);
         }
     }
 }
