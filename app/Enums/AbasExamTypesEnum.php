@@ -20,4 +20,21 @@ class AbasExamTypesEnum
             self::ADULT_16_90
         ];
     }
+
+    public static function getForWho($category)
+    {
+        switch ($category) {
+            case self::PARENT_0_5:
+            case self::PARENT_6_21:
+                return 'parent';
+            case self::TEACHER_CAREGIVER_2_5:
+                return 'teacher_caregiver';
+            case self::TEACHER_5_21:
+                return 'teacher';
+            case self::ADULT_16_90:
+                return 'adult';
+            default:
+                return null;
+        }
+    }
 }

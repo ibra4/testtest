@@ -7,15 +7,16 @@ function AbasReports({ data }) {
     console.log('data: ', data);
     return (
         <div className="exam-reports">
-            <h2 className="text-danger">{t('Coming Soon ^_^')}</h2>
+            <h2 className="mb-4">{t('ABAS Reports')}</h2>
+            <hr />
             <Row>
                 <Col className="col-auto">
-                    <Button as={'a'} href={data.file_ar} target="_blank" variant="success">
+                    <Button as={'a'} href={data.file_ar} target="_blank" variant="primary">
                         {t('Report (AR)')}
                     </Button>
                 </Col>
                 <Col className="col-auto">
-                    <Button as={'a'} href={data.file_en} disabled target="_blank" variant="success">
+                    <Button as={'a'} href={data.file_en} disabled target="_blank" variant="primary">
                         {t('Report (EN)')}
                     </Button>
                 </Col>

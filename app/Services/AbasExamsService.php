@@ -6,6 +6,7 @@ use App\Enums\AbasExamTypesEnum;
 use App\Enums\ExamTypesEnum;
 use App\Exceptions\AgeNotAllowedException;
 use App\Exceptions\NumberOfExamsExceededException;
+use App\Models\AbasExam;
 use App\Models\AbasExamSubDomain;
 use App\Repositories\AbasExamRepository;
 use App\Repositories\AbasExamSubDomainsRepository;
@@ -43,18 +44,25 @@ class AbasExamsService
      */
     private $examineesRepository;
 
+    /**
+     * @var AbasRecordsService
+     */
+    private $abasRecordsService;
+
     public function __construct(
         AbasExamRepository $abasExamRepository,
         AbasSubDomainsRepository $abasSubDomainsRepository,
         AbasExamSubDomainsRepository $abasExamSubDomainsRepository,
         GeneralExamsService $generalExamsService,
-        ExamineesRepository $examineesRepository
+        ExamineesRepository $examineesRepository,
+        AbasRecordsService $abasRecordsService
     ) {
         $this->abasExamRepository = $abasExamRepository;
         $this->abasSubDomainsRepository = $abasSubDomainsRepository;
         $this->abasExamSubDomainsRepository = $abasExamSubDomainsRepository;
         $this->generalExamsService = $generalExamsService;
         $this->examineesRepository = $examineesRepository;
+        $this->abasRecordsService = $abasRecordsService;
     }
 
     public function createExam(int $examineeId, Request $request)
@@ -170,5 +178,22 @@ class AbasExamsService
             DB::rollBack();
             throw $th;
         }
+    }
+
+    /**
+     * Get exam results
+     * 
+     * @param int $id
+     */
+    public function getExamResults(int $id)
+    {
+        $abasExam = $this->abasExamRepository->getExamById($id);
+
+        $results =  $this->abasExamRepository->getExamResults($id);
+
+        return $results->map(function ($item) use ($abasExam) {
+            $item->scaled_score = $this->abasRecordsService->getScaledScore($item->result, $abasExam->age, $abasExam->category, $item->code);
+            return $item;
+        });
     }
 }

@@ -20,36 +20,36 @@
                         <td colspan="4">الدرجة الموزونة</td>
                         <td>المكافئ العمري</td>
                     </tr>
-                    @foreach ($abasExam->subDomains as $examSubDomain)
+                    @foreach ($examResults as $examResult)
                         <tr>
-                            <td>{{ $examSubDomain->subDomain->name }}</td>
-                            <td>{{ $examSubDomain->questions->sum('result') }}</td>
-                            <td>{{ $examSubDomain->questions->sum('result') }} موزونة</td>
+                            <td>{{ $examResult->name }}</td>
+                            <td>{{ $examResult->result }}</td>
+                            <td>{{ $examResult->scaled_score }}</td>
                             @foreach ($domains as $domain)
-                                @if ($domain->id == $examSubDomain->subDomain->abas_domain_id)
-                                    <td>{{ $examSubDomain->questions->sum('result') }} موزونة</td>
+                                @if ($domain['id'] == $examResult->domain_id)
+                                    <td>{{ $examResult->scaled_score }}</td>
                                 @else
                                     <td class="bg-secondary"></td>
                                 @endif
                             @endforeach
-                            <td>عمر مكافئ</td>
+                            <td class="text-danger">2:0-2:2</td>
                         </tr>
                     @endforeach
                     <tr>
                         <td colspan="2">مجموع الدرجات الموزونة</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        {{-- <td></td> --}}
+                        <td>{{ $totalScaledScore }}</td>
+                        @foreach ($domains as $domain)
+                            <td>{{ array_sum($sums[$domain['id']]) }}</td>
+                        @endforeach
+                        <td></td>
                     </tr>
                     <tr>
                         <td colspan="2">ملاحظة: المهارات الحركية مدرج في (د.م.ع) ولكن ليس في المجالات التكيفية</td>
                         <td>الدرجة المركبة العامة (د.م.ع)</td>
-                        <td>المجال المفاهيمي</td>
-                        <td>المجال الاجتماعي</td>
-                        <td>المجال العملي</td>
-                        {{-- <td></td> --}}
+                        @foreach ($domains as $domain)
+                            <td>{{ $domain['name'] }}</td>
+                        @endforeach
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
