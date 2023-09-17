@@ -52,7 +52,7 @@ class AbasReportsController extends Controller
             if ($result->domain_id) {
                 $sums[$result->domain_id][] = $result->scaled_score;
             }
-            $totalScaledScore += $result->scaled_score;
+            $totalScaledScore += $result->scaled_score ?? 0;
         }
 
 
