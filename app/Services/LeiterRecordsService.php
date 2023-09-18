@@ -264,7 +264,7 @@ class LeiterRecordsService
             return __("Not found");
         }
 
-        return "$record->years - $record->months";
+        return $this->getTranslatedAge($record->years, $record->months);
     }
 
     public function getAgeEquivalentMemory($value)
@@ -275,7 +275,21 @@ class LeiterRecordsService
             return __("Not found");
         }
 
-        return "$record->years - $record->months";
+        return $this->getTranslatedAge($record->years, $record->months);
+    }
+
+    private function getTranslatedAge($years = null, $months = null)
+    {
+        $age = '';
+        if ($years) {
+            $age .= $years . ' ' . __('Years') . ' ';
+        }
+
+        if ($months) {
+            $age .= $months . ' ' . __('Months');
+        }
+
+        return $age;
     }
 
     public function getCriticalValues($age)

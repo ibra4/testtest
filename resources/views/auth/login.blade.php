@@ -8,7 +8,7 @@
                     <div>
                         <div class="d-flex justify-content-between">
                             <img src="{{ asset('images/logo.png') }}" alt="" class="mb-5">
-                            <img src="{{ asset('images/lieter3.jpeg') }}" alt="" class="mb-5">
+                            <img src="{{ asset('images/lieter3.png') }}" alt="" class="mb-5">
                         </div>
                         <h1 class="login-title">Login</h1>
                         @include('auth.login_form')

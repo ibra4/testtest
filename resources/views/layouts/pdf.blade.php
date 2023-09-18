@@ -28,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
     <!-- App Style -->
-    <link rel="stylesheet" href="{{ asset('css/pdf.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pdf.css') }}?v={{time()}}">
 </head>
 
 <body>

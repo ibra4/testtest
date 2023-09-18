@@ -22,7 +22,7 @@
                 <h4 class="text-secondary">Alan S. Kaufman, PhD, & Nadeen L. Kaufman, EdD</h4>
             </div>
             <div class="col-4">
-                <img src="{{ asset('images/lieter3.jpeg') }}" class="w-100" alt="">
+                <img src="{{ asset('images/lieter3.png') }}" class="w-100" alt="">
             </div>
         </div>
         <hr>

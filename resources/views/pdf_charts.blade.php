@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="content" id="pdf-charts">
-        @include('components.report_header', ['title' => __('Confidential Test Results for the Leiter-3')])
+        @include('components.report_header', ['title' => __('Confidential Test Results for the Leiter-3'), 'type' => 'leiter'])
         <hr>
         @include('components.report_examinee_data')
         <hr>

@@ -178,7 +178,7 @@ const iqBelowLabels = document.documentElement.lang == 'en' ? [
     "مرتفع",
     "مرتفع جدا",
     "مرتفع للغاية",
-    " "
+    " ",
 ];
 
 const figLabels = [0, 1, 4, 6, 8, 13, 15, 17, 19, 20, 21];
@@ -235,7 +235,7 @@ const figBelowLabels = document.documentElement.lang == 'en' ? [
     " "
 ] : [
     'تأخر متوسط',
-    'تأخر بسيط / ضعيف جدا',
+    'تأخر بسيط',
     'ضعف',
     "أقل من المتوسط",
     "ضمن المتوسط",

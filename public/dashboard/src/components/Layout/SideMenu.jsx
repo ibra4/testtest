@@ -254,7 +254,7 @@ function SideMenu() {
                     {routes2.map(renderRouteLink)}
                     {routes2.length > 0 && <hr />}
                     <Link to="/">
-                        <img src={'/images/lieter3.jpeg'} className="w-100" />
+                        <img src={'/images/lieter3.png'} className="w-100" />
                     </Link>
                 </Menu>
             </Sidebar>

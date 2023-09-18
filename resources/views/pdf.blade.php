@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="content" id="pdf">
-        @include('components.report_header', ['title' => __('Confidential Test Results for the Leiter-3')])
+        @include('components.report_header', ['title' => __('Confidential Test Results for the Leiter-3'), 'type' => 'leiter'])
         <hr>
         @include('components.report_examinee_data')
         <hr>
@@ -221,7 +221,7 @@
                     <p class="small mb-0">تعبر نتائج هذا المقياس عن ملاحظات الفاحص أثناء تطبيق الجلسة الاخبارية وما يلاحظه
                         من إنفعالات تظهر على المفحوص أثناء التطبيق ، و تهدف هذه الملاحظات إلى التحقق من صدق الجلسة
                         الإختبارية و عدم تأثير العوامل البيئية و الحالة النفسية للمفحوص على نتيجة الإختبار، حيث أنها لا تشير
-                        هذه الدرجات إلى وجود حالة مرضية عن المفحوص . </p>
+                        هذه الدرجات إلى وجود حالة مرضية عند المفحوص . </p>
                 </div>
                 <table class="table-bordered table">
                     <tbody>

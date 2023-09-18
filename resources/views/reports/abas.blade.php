@@ -2,7 +2,10 @@
 
 @section('content')
     <main class="content">
-        @include('components.report_header', ['title' => __('ABAS')])
+        @include('components.report_header', [
+            'title' => __('إختبارات السلوك التكيفي'),
+            'subTitle' => 'نموذج' . ' ' . __($report->category),
+        ])
         <hr>
         @include('components.report_examinee_data')
         <hr>
