@@ -3,6 +3,7 @@
 /public/storage
 /public/admins
 /public/sliders
+/public/tinycme
 /storage/*.key
 /vendor
 .env

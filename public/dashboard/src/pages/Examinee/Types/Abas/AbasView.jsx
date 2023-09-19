@@ -19,7 +19,7 @@ function AbasView({ data, onSubDomainSubmit }) {
     const renderView = () => {
         switch (sub_domain_id) {
             case 'introduction':
-                return <AbasIntroduction content={data.description} />;
+                return <AbasIntroduction content={data.introduction} />;
             case 'reports':
                 return <AbasReports data={data} />;
             default:

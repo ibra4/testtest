@@ -18,13 +18,13 @@
             integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
     @endif
 
-    <title>Document</title>
+    <title>{{ setting('site_name', 'Bana Exams System') }}</title>
 </head>
 
 <body>
     <div id="root"></div>
 
-    <script src="{{ asset('dashboard/dist/main.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('dashboard/dist/main.js') }}?v={{ time() }}"></script>
 </body>
 
 </html>

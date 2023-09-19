@@ -37,6 +37,7 @@ import CasdSubDomainFormIndex from 'pages/Settings/CasdSubDomainForm/CasdSubDoma
 import CasdQuestionsIndex from 'pages/Settings/CasdQuestions/CasdQuestionsIndex';
 import CasdQuestionFormIndex from 'pages/Settings/CasdQuestionForm/CasdQuestionFormIndex';
 import CasdIndex from 'pages/Examinee/Types/Casd/CasdIndex';
+import GeneralSettingsIndex from 'pages/Settings/GeneralSettings/GeneralSettingsIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -141,6 +142,9 @@ const Routes = () => {
         <Route path="/settings/casd/questions" component={CasdQuestionsIndex} exact />
         <Route path="/settings/casd/questions/create" component={CasdQuestionFormIndex} exact />
         <Route path="/settings/casd/questions/:id/update" component={CasdQuestionFormIndex} exact />
+
+        {/** General Settings */}
+        <Route path="/settings" component={GeneralSettingsIndex} exact />
 
         {/* Profile */}
         <Route path="/my-profile" component={ProfileIndex} exact />

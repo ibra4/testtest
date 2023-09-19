@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\LeiterExamsController;
 use App\Http\Controllers\Api\LeiterRecordsController;
 use App\Http\Controllers\Api\MyProfileController;
 use App\Http\Controllers\Api\NotificationsController;
+use App\Http\Controllers\Api\SettingsController;
 use App\Http\Controllers\Api\SlidersController;
 use App\Http\Controllers\Api\TinyCMEController;
 use Illuminate\Http\Request;
@@ -101,6 +102,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // Upload to tinyCME
         Route::post('/tinycme/upload', [TinyCMEController::class, 'actionUpload']);
+
+        // Update Setting
+        Route::get('/settings', [SettingsController::class, 'actionIndex']);
+        Route::put('/settings/update', [SettingsController::class, 'actionUpdate']);
     });
 
     Route::middleware('can:admin_or_sub_admin')->group(function () {
