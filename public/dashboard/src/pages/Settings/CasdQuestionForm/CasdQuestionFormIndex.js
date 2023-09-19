@@ -12,7 +12,9 @@ const defaultQuestion = {
     name: '',
     name_en: '',
     casd_sub_domain_id: '',
-    question_number: 0
+    question_number: 0,
+    description: '',
+    description_en: ''
 }
 
 function CasdQuestionFormIndex() {

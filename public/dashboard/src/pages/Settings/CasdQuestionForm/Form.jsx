@@ -2,6 +2,7 @@ import FormButtons from 'components/Fields/FormButtons';
 import SelectField from 'components/Fields/SelectField';
 import TextAreaField from 'components/Fields/TextAreaField';
 import TextField from 'components/Fields/TextField';
+import TinyEditorField from 'components/Fields/TinyEditorField';
 import WhiteBox from 'components/WhiteBox';
 import { Formik } from 'formik';
 import React from 'react';
@@ -60,7 +61,7 @@ function Form({ initialValues, config, onSubmit }) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={8}>
+                            <Col md={6}>
                                 <TextAreaField
                                     name="name"
                                     label="Title"
@@ -71,7 +72,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     className="mb-3"
                                 />
                             </Col>
-                            <Col md={8}>
+                            <Col md={6}>
                                 <TextAreaField
                                     name="name_en"
                                     label="Title En"
@@ -79,6 +80,30 @@ function Form({ initialValues, config, onSubmit }) {
                                     value={values.name_en}
                                     onBlur={handleBlur}
                                     error={errors.name_en}
+                                    className="mb-3"
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={6}>
+                                <TinyEditorField
+                                    name="description"
+                                    label="Description"
+                                    onChange={value => setFieldValue('description', value)}
+                                    value={values.description}
+                                    onBlur={handleBlur}
+                                    error={errors.description}
+                                    className="mb-3"
+                                />
+                            </Col>
+                            <Col md={6}>
+                                <TinyEditorField
+                                    name="description_en"
+                                    label="Description EN"
+                                    onChange={value => setFieldValue('description_en', value)}
+                                    value={values.description_en}
+                                    onBlur={handleBlur}
+                                    error={errors.description_en}
                                     className="mb-3"
                                 />
                             </Col>

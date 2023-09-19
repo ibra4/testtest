@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\LeiterRecordsController;
 use App\Http\Controllers\Api\MyProfileController;
 use App\Http\Controllers\Api\NotificationsController;
 use App\Http\Controllers\Api\SlidersController;
+use App\Http\Controllers\Api\TinyCMEController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -97,6 +98,9 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/casd/questions/{id}', [CasdQuestionsController::class, 'actionGet']);
         Route::post('/casd/questions/create', [CasdQuestionsController::class, 'actionCreate']);
         Route::put('/casd/questions/{id}/update', [CasdQuestionsController::class, 'actionUpdate']);
+
+        // Upload to tinyCME
+        Route::post('/tinycme/upload', [TinyCMEController::class, 'actionUpload']);
     });
 
     Route::middleware('can:admin_or_sub_admin')->group(function () {

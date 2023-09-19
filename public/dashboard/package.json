@@ -5,6 +5,7 @@
     "main": "dist/main.js",
     "scripts": {
         "start": "kill-port 9001 && kill-port 8001 && webpack-dev-server --env MODE=external",
+        "postinstall": "node ./postinstall.js",
         "watch": "webpack --config webpack.watch.js --watch --env.NODE_ENV=local",
         "watch-dev": "webpack --config webpack.watch.js --watch --env.NODE_ENV=local.dev",
         "build": "webpack --mode production --config webpack.prod.js --env.NODE_ENV=prod",
@@ -14,10 +15,12 @@
     "dependencies": {
         "@reduxjs/toolkit": "^1.6.0",
         "@svg-maps/cli": "^1.0.0-beta.5",
+        "@tinymce/tinymce-react": "^4.3.0",
         "axios": "^0.21.1",
         "bootstrap": "^5.2.2",
         "classnames": "^2.3.2",
         "formik": "^2.2.9",
+        "fs-extra": "^11.1.1",
         "history": "^4.10.1",
         "i18next": "^20.3.2",
         "moment": "^2.29.4",
@@ -38,6 +41,7 @@
         "react-toast-notifications": "^2.5.1",
         "redux": "^4.1.0",
         "sass": "^1.55.0",
+        "tinymce": "^6.7.0",
         "yup": "^0.32.11",
         "yup-locales": "^1.2.16"
     },

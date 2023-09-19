@@ -3,7 +3,7 @@ import store from "providers/store";
 import { CONSTANTS } from "./constants";
 
 export const httpClient = axios.create({
-    baseURL: process.env.API_URL,
+    baseURL: `${process.env.API_URL}/api`,
     headers: {
         'X-Requested-With': 'XMLHttpRequest'
     },
