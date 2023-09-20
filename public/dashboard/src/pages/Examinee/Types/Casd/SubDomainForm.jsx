@@ -65,11 +65,11 @@ function SubDomainForm({ exam, onSubmit }) {
                                                         dangerouslySetInnerHTML={{ __html: questionField.description }}
                                                     />
                                                 </Col>
+                                                <hr />
                                             </Row>
                                         ))
                                     }
                                 />
-                                <hr />
                             </div>
                         ))}
                         <Button type="submit" disabled={!!exam.is_saved}>
