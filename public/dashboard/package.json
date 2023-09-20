@@ -41,6 +41,7 @@
         "react-toast-notifications": "^2.5.1",
         "redux": "^4.1.0",
         "sass": "^1.55.0",
+        "styled-components": "^6.0.8",
         "tinymce": "^6.7.0",
         "yup": "^0.32.11",
         "yup-locales": "^1.2.16"
