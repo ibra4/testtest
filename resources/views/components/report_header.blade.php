@@ -2,7 +2,7 @@
 @isset($subTitle)
     <h3 class="text-center">{{ $subTitle }}</h3>
 @endisset
-<div class="row">
+<div class="row align-items-center">
     <div class="col-4">
         <img src="{{ asset($logo) }}" class="w-100" alt="">
     </div>
