@@ -12,7 +12,7 @@ class CasdExam extends Model
 {
     use HasFactory, HasAgeAttribute, HasExaminee, HasExaminer;
 
-    protected $fillable = ['examinee_id', 'created_by', 'application_date', 'examiner_notes'];
+    protected $fillable = ['examinee_id', 'created_by', 'application_date', 'examiner_notes', 'is_saved'];
 
     public function subDomains()
     {

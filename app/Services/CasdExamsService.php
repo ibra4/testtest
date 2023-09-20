@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enums\ExamTypesEnum;
 use App\Exceptions\NumberOfExamsExceededException;
+use App\Models\CasdExam;
 use App\Models\CasdExamSubDomain;
 use App\Repositories\CasdExamSubDomainsRepository;
 use App\Repositories\CasdExamRepository;
@@ -89,17 +90,18 @@ class CasdExamsService
     /**
      * updateSubDomain
      *
-     * @param int $examSubDomainId
+     * @param int $examId
      * @param  mixed $request
      * @return CasdExamSubDomain
      */
-    public function updateSubDomain(int $examSubDomainId, Request $request): CasdExamSubDomain
+    public function updateExamAnswers(int $examId, Request $request): CasdExam
     {
         DB::beginTransaction();
         try {
-            $examSubDomain = $this->casdExamSubDomainsRepository->updateAnswers($examSubDomainId, $request->questions);
+            $this->casdExamSubDomainsRepository->updateAnswers($request->questions);
+            $exam = $this->casdExamRepository->setExamSaved($examId);
             DB::commit();
-            return $examSubDomain;
+            return $exam;
         } catch (Throwable $th) {
             DB::rollBack();
             throw $th;

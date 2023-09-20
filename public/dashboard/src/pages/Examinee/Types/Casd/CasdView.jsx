@@ -1,16 +1,14 @@
 import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import LabelValueCol from 'components/LabelValueCol';
 import WhiteBox from 'components/WhiteBox';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import CasdReports from './CasdReports';
 import SubDomainForm from './SubDomainForm';
 
-function CasdView({ data, onSubDomainSubmit }) {
+function CasdView({ data, onExamSubmit }) {
     const { t } = useTranslation();
-
-    const atLeastOneSaved = useMemo(() => data.sub_domains.find((item) => item.is_saved), [data]);
 
     return (
         <>
@@ -24,16 +22,10 @@ function CasdView({ data, onSubDomainSubmit }) {
                     {data?.examiner_notes && <LabelValueCol label={'Notes'} value={data.examiner_notes} md={12} />}
                 </Row>
             </WhiteBox>
-            {data.sub_domains.map((subDomain) => (
-                <WhiteBox key={subDomain.id} title={subDomain.title}>
-                    <SubDomainForm subDomain={subDomain} onSubmit={onSubDomainSubmit} />
-                </WhiteBox>
-            ))}
-            {atLeastOneSaved && (
-                <WhiteBox title={t('Reports')}>
-                    <CasdReports />
-                </WhiteBox>
-            )}
+            <SubDomainForm exam={data} onSubmit={onExamSubmit} />
+            <WhiteBox title={t('Reports')}>
+                <CasdReports />
+            </WhiteBox>
         </>
     );
 }

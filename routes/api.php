@@ -158,7 +158,7 @@ Route::middleware('auth:sanctum')->group(function () {
         // Casd Exams
         Route::get('/casd-exams', [CasdExamsController::class, 'actionIndex']);
         Route::get('/casd-exams/{id}', [CasdExamsController::class, 'actionGet']);
-        Route::put('/casd-exams/update/{exam_sub_domain_id}', [CasdExamsController::class, 'actionUpdate']);
+        Route::put('/casd-exams/update/{id}', [CasdExamsController::class, 'actionUpdate']);
         Route::post('/casd-exams/create/{id}', [CasdExamsController::class, 'actionCreate']);
         // @TODO: Check this route
         Route::post('/casd-exams/{id}/delete', [CasdExamsController::class, 'actionDelete']);

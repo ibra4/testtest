@@ -11,8 +11,7 @@ class CasdExamSubDomain extends Model
 
     protected $fillable = [
         'casd_exam_id',
-        'casd_sub_domain_id',
-        'is_saved'
+        'casd_sub_domain_id'
     ];
 
     public function questions()

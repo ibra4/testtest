@@ -34,11 +34,11 @@ function CasdIndex() {
         getData()
     }, [])
 
-    const onSubDomainSubmit = async (values) => {
+    const onExamSubmit = async (values) => {
         try {
             const confirmed = confirm(t("confirm_save_exam"))
             if (confirmed) {
-                const res = await httpClient.put(`casd-exams/update/${values.id}`, values)
+                const res = await httpClient.put(`casd-exams/update/${id}`, values)
                 addToast(t('Saved Successfully'), { appearance: 'success' });
                 setData(res.data);
             }
@@ -53,7 +53,7 @@ function CasdIndex() {
             case 'loading':
                 return <FullLoader />
             case 'success':
-                return <CasdView data={data} onSubDomainSubmit={onSubDomainSubmit} />
+                return <CasdView data={data} onExamSubmit={onExamSubmit} />
             case 'error':
                 return <GeneralError message={error} />
         }

@@ -59,17 +59,17 @@ class CasdExamsController  extends Controller
     }
 
     /**
-     * @param string $exam_sub_domain_id
-     *   CasdExamSubDomain id
+     * @param string $id
+     *   CasdExam id
      * @param UpdateCasdExamRequest $request
      *   Request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function actionUpdate($exam_sub_domain_id, UpdateCasdExamRequest $request)
+    public function actionUpdate($id, UpdateCasdExamRequest $request)
     {
         try {
-            $examSubDomain = $this->casdExamsService->updateSubDomain($exam_sub_domain_id, $request);
-            return $this->sendSuccessReponse(new CasdExamFullResource($examSubDomain->exam));
+            $exam = $this->casdExamsService->updateExamAnswers($id, $request);
+            return $this->sendSuccessReponse(new CasdExamFullResource($exam));
         } catch (Throwable $th) {
             return $this->sendErrorMessage($th->getMessage(), 500);
         }

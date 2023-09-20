@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\CasdExam;
 use App\Models\CasdExamSubDomain;
 use App\Models\CasdSubDomainQuestion;
 
@@ -30,30 +31,16 @@ class CasdExamSubDomainsRepository
     }
 
     /**
-     * @param int $id
-     * @return CasdExamSubDomain
+     * @param array $questions
+     * @return void
      */
-    public function updateAnswers(int $id, array $questions): CasdExamSubDomain
+    public function updateAnswers(array $questions): void
     {
-        $questions = array_map(function ($q) {
-            unset($q['title']);
-            return $q;
-        }, $questions);
-
-        /** @var CasdExamSubDomain $examSubDomain */
-        $examSubDomain = CasdExamSubDomain::findOrFail($id);
-
-        // Update questions
         foreach ($questions as $questionData) {
             /** @var CasdSubDomainQuestion $question */
-            $question = $examSubDomain->questions()->find($questionData['id']);
-            unset($questionData['id']);
-            $question->update($questionData);
+            $question = CasdSubDomainQuestion::findOrFail($questionData['id']);
+            $question->checked = $questionData['checked'];
+            $question->save();
         }
-
-        // Exam saved
-        $examSubDomain->update(['is_saved' => true]);
-
-        return $examSubDomain;
     }
 }

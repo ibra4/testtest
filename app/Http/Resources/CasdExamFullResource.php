@@ -22,6 +22,7 @@ class CasdExamFullResource extends JsonResource
             'examiner' => new ExaminerResource($this->examinee->center),
             'examiner_notes' => $this->examiner_notes,
             'examinee' => new ExamineeResource($this->examinee),
+            'is_saved' => $this->is_saved,
             'sub_domains' => CasdExamSubDomainResource::collection($this->subDomains)
         ];
     }

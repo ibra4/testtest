@@ -18,7 +18,6 @@ class CasdExamSubDomainResource extends JsonResource
             'id' => $this->id,
             'title' => $this->subDomain->name,
             'description' => $this->subDomain->description,
-            'is_saved' => $this->is_saved,
             'questions' => CasdSubDomainQuestionResource::collection($this->questions)
         ];
     }
