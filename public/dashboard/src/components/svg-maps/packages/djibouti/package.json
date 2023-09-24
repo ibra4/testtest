@@ -1,0 +1,20 @@
+{
+	"name": "@svg-maps/djibouti",
+	"version": "1.0.0",
+	"description": "Map of Djibouti",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/VictorCazanave/svg-maps/tree/master/packages/djibouti"
+	},
+	"keywords": [
+		"svg",
+		"map",
+		"djibouti"
+	],
+	"author": "ibra4 <ibra16@itc.hu.edu.jo>",
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "Unlicense"
+}

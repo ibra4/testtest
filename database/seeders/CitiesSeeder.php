@@ -14,7 +14,22 @@ class CitiesSeeder extends Seeder
         'palestine' => 'ps',
         'saudi-arabia' => 'sa',
         'tunisia' => 'tn',
-        'uae' => 'ae'
+        'uae' => 'ae',
+        'algeria' => 'dz',
+        'bahrain' => 'bh',
+        'egypt' => 'eg',
+        'iraq' => 'iq',
+        'kwait' => 'kw',
+        'lebanon' => 'lb',
+        'libya' => 'ly',
+        'morocco' => 'ma',
+        'oman' => 'om',
+        'qatar' => 'qa',
+        'syria' => 'sy',
+        'yemen' => 'ye',
+        'somalia' => 'so',
+        'sudan' => 'sd',
+        'djibouti' => 'dj'
     ];
 
     /**
@@ -34,7 +49,7 @@ class CitiesSeeder extends Seeder
             $jsoncontent = json_decode($filelString, true);
             foreach ($jsoncontent['locations'] as $city) {
                 try {
-                    City::create([
+                    City::firstOrCreate([
                         'code' => $city['id'],
                         'name' => $city['name'],
                         'country_id' => $this->getCountnryId($cf)

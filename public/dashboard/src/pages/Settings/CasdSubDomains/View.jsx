@@ -18,7 +18,6 @@ const View = ({ data, onSearch, queryParams }) => {
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.name_en}</td>
-            <td>{item.domainname}</td>
             <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
             <td>
                 <div className="d-flex">
@@ -49,7 +48,6 @@ const View = ({ data, onSearch, queryParams }) => {
                             <th>{t('ID')}</th>
                             <th>{t('Name')}</th>
                             <th>{t('Name En')}</th>
-                            <th>{t('Domain')}</th>
                             <th>{t('Created At')}</th>
                             <th>{t('Actions')}</th>
                         </tr>

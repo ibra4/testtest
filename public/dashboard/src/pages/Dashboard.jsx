@@ -16,6 +16,15 @@ import eg from 'components/svg-maps/packages/egypt';
 import ly from 'components/svg-maps/packages/libya';
 import lb from 'components/svg-maps/packages/lebanon';
 import dz from 'components/svg-maps/packages/algeria';
+import kw from 'components/svg-maps/packages/kwait';
+import qa from 'components/svg-maps/packages/qatar';
+import om from 'components/svg-maps/packages/oman';
+import ye from 'components/svg-maps/packages/yemen';
+import bh from 'components/svg-maps/packages/bahrain';
+import ma from 'components/svg-maps/packages/morocco';
+import so from 'components/svg-maps/packages/somalia';
+import dj from 'components/svg-maps/packages/djibouti';
+import sd from 'components/svg-maps/packages/sudan';
 import { RadioSVGMap } from 'react-svg-map';
 import 'react-svg-map/lib/index.css';
 import { Button, Col, Row } from 'react-bootstrap';
@@ -27,7 +36,7 @@ import { useTranslation } from 'react-i18next';
 import HistoryView from 'components/HistoryView';
 import Top5Examiners from 'components/Top5Examiners';
 
-const countriesMapper = { sa, ae, tn, jo, iq, sy, eg, ly, lb, dz };
+const countriesMapper = { sa, ae, tn, jo, iq, sy, eg, ly, lb, dz, kw, qa, om, ye, bh, ma, so, dj, sd };
 
 function Dashboard() {
     const { t } = useTranslation();
