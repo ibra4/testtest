@@ -132,7 +132,7 @@ function Dashboard() {
                                 <FaChevronLeft />
                                 <span className="ms-2">{t('Back')}</span>
                             </Button>
-                            <h3 className="text-center">{onDiv ? areaName : lastSelectedAreaName}</h3>
+                            <h3 className="text-center">{t(onDiv ? areaName : lastSelectedAreaName)}</h3>
                             <div></div>
                         </div>
                         <RadioSVGMap
