@@ -16,14 +16,15 @@ class CountriesSeeder extends Seeder
      */
     public function run()
     {
-        $indexJs = Storage::disk('dashboard')->get('world/index.js');
-        $filelString = str_replace('export default ', '', $indexJs);
-        $jsoncontent = json_decode($filelString, true);
-        foreach ($jsoncontent['locations'] as $city) {
-            Country::create([
-                'code' => $city['id'],
-                'name' => $city['name'],
-            ]);
+        foreach (ArabianCountriesEnum::COUNTRIES_ARRAY as $country) {
+            try {
+                Country::firstOrCreate([
+                    'code' => $country['id'],
+                    'name' => $country['name']
+                ]);
+            } catch (\Throwable $th) {
+                throw $th;
+            }
         }
     }
 }

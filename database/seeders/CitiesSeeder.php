@@ -9,29 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class CitiesSeeder extends Seeder
 {
-    const COUNTRIES_DIRECTORIES = [
-        'jordan' => 'jo',
-        'palestine' => 'ps',
-        'saudi-arabia' => 'sa',
-        'tunisia' => 'tn',
-        'uae' => 'ae',
-        'algeria' => 'dz',
-        'bahrain' => 'bh',
-        'egypt' => 'eg',
-        'iraq' => 'iq',
-        'kwait' => 'kw',
-        'lebanon' => 'lb',
-        'libya' => 'ly',
-        'morocco' => 'ma',
-        'oman' => 'om',
-        'qatar' => 'qa',
-        'syria' => 'sy',
-        'yemen' => 'ye',
-        'somalia' => 'so',
-        'sudan' => 'sd',
-        'djibouti' => 'dj'
-    ];
-
     /**
      * Run the database seeds.
      *
@@ -69,7 +46,7 @@ class CitiesSeeder extends Seeder
      */
     private function getCountnryId($cf)
     {
-        $country = Country::where('code', self::COUNTRIES_DIRECTORIES[$cf])->firstOrFail();
+        $country = Country::where('code', ArabianCountriesEnum::COUNTRIES_DIRECTORIES[$cf])->firstOrFail();
         return $country->id;
     }
 }
