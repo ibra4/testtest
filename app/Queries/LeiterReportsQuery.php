@@ -42,7 +42,8 @@ class LeiterReportsQuery
             'rerss.regulation',
             'rerss.anxiety',
             'rerss.sensory_reaction',
-        )->where([['examinees.name', 'LIKE', "%$request->name%"]])
+        )
+            // ->where([['examinees.name', 'LIKE', "%$request->name%"]])
             ->orderBy('leiter_reports.created_at', 'DESC')
             ->orderBy('leiter_reports.updated_at', 'DESC')
             ->leftJoin('users as examiner', 'leiter_reports.created_by', '=', 'examiner.id')

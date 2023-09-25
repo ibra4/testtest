@@ -41,6 +41,12 @@ const routes = [
                 label: 'Leiter Reports',
                 icon: <FaTable />,
                 role: ['admin', 'sub_admin']
+            },
+            {
+                routeName: 'abas-exams',
+                label: 'ABAS Reports',
+                icon: <FaTable />,
+                role: ['admin', 'sub_admin']
             }
         ]
     }

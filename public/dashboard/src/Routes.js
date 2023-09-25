@@ -38,6 +38,7 @@ import CasdQuestionsIndex from 'pages/Settings/CasdQuestions/CasdQuestionsIndex'
 import CasdQuestionFormIndex from 'pages/Settings/CasdQuestionForm/CasdQuestionFormIndex';
 import CasdIndex from 'pages/Examinee/Types/Casd/CasdIndex';
 import GeneralSettingsIndex from 'pages/Settings/GeneralSettings/GeneralSettingsIndex';
+import ReportsAbasIndex from 'pages/ReportsAbas/ReportsAbasIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -98,6 +99,10 @@ const Routes = () => {
         {/* Leiter Exams */}
         <Route path="/leiter-exams" component={ReportsLeiterIndex} exact />
         <Route path="/leiter-exams/:id" component={LeiterIndex} exact />
+
+        {/* Abas Exams */}
+        <Route path="/abas-exams" component={ReportsAbasIndex} exact />
+        {/* <Route path="/abas-exams/:id" component={LeiterIndex} exact /> */}
 
         {/* Abas Exams */}
         <Route path="/abas-exams/:id/:sub_domain_id" component={AbasIndex} exact />

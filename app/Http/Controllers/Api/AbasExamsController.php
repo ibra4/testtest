@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateAbasExamRequest;
 use App\Http\Requests\UpdateAbasExamRequest;
 use App\Http\Resources\AbasExamFullResource;
+use App\Queries\AbasExamsQuery;
 use App\Services\AbasExamsService;
+use Illuminate\Http\Request;
 use Throwable;
 
 class AbasExamsController  extends Controller
@@ -18,10 +20,28 @@ class AbasExamsController  extends Controller
      */
     protected $abasExamsService;
 
+    /**
+     * @var AbasExamsQuery
+     */
+    protected $abasExamsQuery;
+
     public function __construct(
-        AbasExamsService $abasExamsService
+        AbasExamsService $abasExamsService,
+        AbasExamsQuery $abasExamsQuery
     ) {
         $this->abasExamsService = $abasExamsService;
+        $this->abasExamsQuery = $abasExamsQuery;
+    }
+
+    /**
+     * @param Request $request
+     *   Request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function actionIndex(Request $request)
+    {
+        $query = $this->abasExamsQuery->get($request);
+        return $this->sendSuccessReponse($query->paginate());
     }
 
     /**
