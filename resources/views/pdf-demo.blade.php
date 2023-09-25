@@ -5,7 +5,7 @@
         <div class="bar top"></div>
         <header class="row align-items-center">
             <div class="col-6">
-                <img width="200" src="{{ asset('images/logo.png') }}" alt="">
+                <img width="200" src="{{ setting('bana_logo') }}" alt="">
             </div>
             <div class="col-6">
                 <h3 class="font-weight-bold mb-0">Bana center for consultation and research and training</h3>
@@ -22,7 +22,7 @@
                 <h4 class="text-secondary">Alan S. Kaufman, PhD, & Nadeen L. Kaufman, EdD</h4>
             </div>
             <div class="col-4">
-                <img src="{{ asset('images/lieter3.png') }}" class="w-100" alt="">
+                <img src="{{ setting('leiter_logo') }}" class="w-100" alt="">
             </div>
         </div>
         <hr>
@@ -261,7 +261,7 @@
         <hr>
         <footer class="row">
             <div class="col-3">
-                <img src="{{ asset('images/logo.png') }}" class="w-100" alt="">
+                <img src="{{ setting('bana_logo') }}" class="w-100" alt="">
             </div>
             <div class="col-6">
                 <div class="row">

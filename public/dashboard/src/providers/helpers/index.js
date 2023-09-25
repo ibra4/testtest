@@ -26,6 +26,12 @@ export const sameUserId = (admin_id) => {
     return user.id == admin_id
 }
 
+export const getSettingValue = (key) => {
+    const settings = store.getState().app.config.settings
+    const setting = settings.find(item => item.key == key)
+    return setting?.value ?? ""
+}
+
 export const getGender = gender => gender ? "Male" : "Female"
 
 export const generateRandomColor = () => {

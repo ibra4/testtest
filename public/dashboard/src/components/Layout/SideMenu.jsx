@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaHome, FaUser, FaUsers, FaCog, FaBars, FaTable, FaImage, FaBell, FaCogs } from 'react-icons/fa';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { Link, useLocation } from 'react-router-dom';
-import { hasAnyRole, hasRole, isRtl } from 'providers/helpers';
+import { getSettingValue, hasAnyRole, hasRole, isRtl } from 'providers/helpers';
 import { useTranslation } from 'react-i18next';
 
 const routes = [
@@ -76,7 +76,7 @@ const routes2 = [
                 label: 'General Settings',
                 icon: <FaCogs />,
                 role: 'root'
-            },
+            }
         ]
     },
     {
@@ -259,14 +259,14 @@ function SideMenu() {
             <Sidebar collapsedWidth={'100px'} breakPoint="sm" rtl={isRtl()} collapsed={collapsed}>
                 <Menu>
                     <Link to="/" className="menu-logo">
-                        <img src={collapsed ? '/images/logo_teaser.png' : '/images/logo.png'} />
+                        <img src={getSettingValue(collapsed ? 'bana_logo_teaser' : 'bana_logo')} />
                     </Link>
                     {routes.map(renderRouteLink)}
                     <hr />
                     {routes2.map(renderRouteLink)}
                     {routes2.length > 0 && <hr />}
                     <Link to="/">
-                        <img src={'/images/lieter3.png'} className="w-100" />
+                        <img src={getSettingValue('leiter_logo')} className="w-100" />
                     </Link>
                 </Menu>
             </Sidebar>

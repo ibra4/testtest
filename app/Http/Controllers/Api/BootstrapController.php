@@ -16,6 +16,7 @@ use App\Models\CasdSubDomain;
 use App\Models\Country;
 use App\Models\Examinee;
 use App\Models\Reports\LeiterReport;
+use App\Models\Setting;
 use App\Models\User;
 use App\Services\GeneralExamsService;
 use Illuminate\Http\Request;
@@ -63,7 +64,8 @@ class BootstrapController extends Controller
             'notifications' => [
                 'list' => UserNotificationResource::collection($currentUser->notifications()->limit(5)->get()),
                 'unread_count' => $currentUser->notifications()->where('read_at', NULL)->count()
-            ]
+            ],
+            'settings' => Setting::all()
         ];
 
         // Fix

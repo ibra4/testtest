@@ -1,7 +1,7 @@
 <footer class="row">
     <p class="text-muted m-auto">حقوق الملكية محفوظة لمركز بانا © 2023</p>
     {{-- <div class="col-3">
-        <img src="{{ asset('images/logo.png') }}" class="w-100" alt="">
+        <img src="{{ setting('bana_logo') }}" class="w-100" alt="">
     </div>
     <div class="col-6">
         <div class="row">

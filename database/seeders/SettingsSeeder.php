@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Setting;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SettingsSeeder extends Seeder
 {
@@ -14,12 +15,14 @@ class SettingsSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('settings')->delete();
+        
         Setting::firstOrCreate([
             'key' => 'site_name',
             'value' => 'Bana Exams System',
             'label' => 'Site Name',
             'type' => 'textfield',
-            'col' => 8
+            'col' => 12
         ]);
 
         Setting::firstOrCreate([
@@ -27,7 +30,15 @@ class SettingsSeeder extends Seeder
             'value' => '/images/logo.png',
             'label' => 'Bana Center Logo',
             'type' => 'uploadfield',
-            'col' => 6
+            'col' => 3
+        ]);
+
+        Setting::firstOrCreate([
+            'key' => 'bana_logo_teaser',
+            'value' => '/images/logo_teaser.png',
+            'label' => 'Bana Center Logo (Collapsed)',
+            'type' => 'uploadfield',
+            'col' => 3
         ]);
 
         Setting::firstOrCreate([
@@ -35,7 +46,15 @@ class SettingsSeeder extends Seeder
             'value' => '/images/lieter3.png',
             'label' => 'Leiter Logo',
             'type' => 'uploadfield',
-            'col' => 6
+            'col' => 3
+        ]);
+
+        Setting::firstOrCreate([
+            'key' => 'abas_logo',
+            'value' => '',
+            'label' => 'ABAS Logo',
+            'type' => 'uploadfield',
+            'col' => 3
         ]);
 
         Setting::firstOrCreate([

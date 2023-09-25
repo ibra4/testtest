@@ -11,11 +11,11 @@
         @isset($type)
             @switch($type)
                 @case('leiter')
-                    <img src="{{ asset('images/lieter3.png') }}" class="w-100" alt="">
+                    <img src="{{ setting('leiter_logo') }}" class="w-100" alt="">
                 @break
 
                 @case('abas')
-                    <img src="{{ asset('images/lieter3.png') }}" class="w-100" alt="">
+                    <img src="{{ asset('abas_logo') }}" class="w-100" alt="">
                 @break
             @endswitch
         @endisset
