@@ -27,4 +27,25 @@ class AbasRecordsService
 
         return $abasScaledScore->scaled_score ?? 'Not found';
     }
+
+    /**
+     * Check if age is allowed for the given category
+     * 
+     * @param int $age
+     * @param string $category
+     * @param string $subDomainCode
+     * @return bool
+     */
+    public function isAgeAllowed(int $age, string $category, string $subDomainCode): bool
+    {
+        $forWho = AbasExamTypesEnum::getForWho($category);
+        $abasScaledScore = AbasScaledScore::select('scaled_score')
+            ->where('for', strtolower($forWho))
+            ->where('sub_domain', strtolower($subDomainCode))
+            ->where('min_age', '<=', $age)
+            ->where('max_age', '>=', $age)
+            ->get()->first();
+
+        return $abasScaledScore !== null;
+    }
 }
