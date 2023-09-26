@@ -18,11 +18,11 @@ class AbasRecordsService
     {
         $forWho = AbasExamTypesEnum::getForWho($category);
         $abasScaledScore = AbasScaledScore::select('scaled_score')
-            ->where('for', $forWho)
+            ->where('for', strtolower($forWho))
             ->where('raw_score', $rawScore)
             ->where('min_age', '<=', $age)
             ->where('max_age', '>=', $age)
-            ->where('sub_domain', $subDomainCode)
+            ->where('sub_domain', strtolower($subDomainCode))
             ->get()->first();
 
         return $abasScaledScore->scaled_score ?? 'Not found';

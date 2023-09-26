@@ -14,6 +14,7 @@ use App\Repositories\AbasSubDomainsRepository;
 use App\Repositories\ExamineesRepository;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
@@ -185,15 +186,54 @@ class AbasExamsService
      * 
      * @param int $id
      */
-    public function getExamResults(int $id)
+    public function getSubDomainsScaledScores(int $id): Collection
     {
         $abasExam = $this->abasExamRepository->getExamById($id);
 
-        $results =  $this->abasExamRepository->getExamResults($id);
+        $results =  $this->abasExamRepository->getSubDomainsScaledScores($id);
 
         return $results->map(function ($item) use ($abasExam) {
             $item->scaled_score = $this->abasRecordsService->getScaledScore($item->result, $abasExam->age, $abasExam->category, $item->code);
             return $item;
+        });
+    }
+
+    /**
+     * Get exam results
+     * 
+     * @param Collection $examScaledScores
+     */
+    public function extrctDomainsFromExamScaledScores(Collection $examScaledScores): Collection
+    {
+        return $examScaledScores
+            ->filter(function ($result) {
+                return $result->domain_id;
+            })
+            ->groupBy('domain_id')
+            ->map(function ($groupedItems) {
+                $domain = $groupedItems->first();
+
+                $sum = $groupedItems->sum(function ($item) {
+                    return is_numeric($item->scaled_score) ? $item->scaled_score : 0;
+                });
+
+                return [
+                    'id' => $domain->domain_id,
+                    'name' => $domain->domain_name,
+                    'sum' => $sum,
+                ];
+            });
+    }
+
+    /**
+     * Get exam results
+     * 
+     * @param Collection $examScaledScores
+     */
+    public function getTotalScaledScore(Collection $examScaledScores): int
+    {
+        return $examScaledScores->sum(function ($item) {
+            return is_numeric($item->scaled_score) ? $item->scaled_score : 0;
         });
     }
 }

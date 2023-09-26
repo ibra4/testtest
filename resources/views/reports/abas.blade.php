@@ -23,7 +23,7 @@
                         <td colspan="4">الدرجة الموزونة</td>
                         <td>المكافئ العمري</td>
                     </tr>
-                    @foreach ($examResults as $examResult)
+                    @foreach ($examScaledScores as $examResult)
                         <tr>
                             <td>{{ $examResult->name }}</td>
                             <td>{{ $examResult->result }}</td>
@@ -42,7 +42,7 @@
                         <td colspan="2">مجموع الدرجات الموزونة</td>
                         <td>{{ $totalScaledScore }}</td>
                         @foreach ($domains as $domain)
-                            <td>{{ array_sum($sums[$domain['id']]) }}</td>
+                            <td>{{ $domain['sum'] }}</td>
                         @endforeach
                         <td></td>
                     </tr>

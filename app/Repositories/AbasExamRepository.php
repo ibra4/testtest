@@ -29,7 +29,7 @@ class AbasExamRepository
      * @param int $id
      * @return \Illuminate\Support\Collection
      */
-    public function getExamResults(int $examId)
+    public function getSubDomainsScaledScores(int $examId)
     {
         $questions = DB::table('abas_sub_domain_questions');
         $questions->select(

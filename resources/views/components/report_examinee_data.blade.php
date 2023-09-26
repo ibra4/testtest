@@ -14,10 +14,6 @@
         <div class="value">{{ __($examinee->gender) }}</div>
     </div>
     <div class="label-value-item col-6">
-        <div class="label">{{ __('Age') }}:</div>
-        <div class="value">{{ $report->translated_age }}</div>
-    </div>
-    <div class="label-value-item col-6">
         <div class="label">{{ __('Examiner') }}:</div>
         <div class="value">{{ $examinee->center->name }}</div>
     </div>
@@ -25,9 +21,19 @@
         <div class="label">{{ __('Location of Testing') }}:</div>
         <div class="value">{{ $examinee->location }}</div>
     </div>
+</div>
+<div class="row">
+    <div class="label-value-item col-6">
+        <div class="label">{{ __('Application Date') }}:</div>
+        <div class="value">{{ $report->application_date }}</div>
+    </div>
     <div class="label-value-item col-6">
         <div class="label">{{ __('Date of Birth') }}:</div>
         <div class="value">{{ $examinee->birthday }}</div>
+    </div>
+    <div class="label-value-item col-6">
+        <div class="label">{{ __('Age') }}:</div>
+        <div class="value">{{ $report->translated_age }}</div>
     </div>
     @if ($report->examiner_notes)
         <div class="col-12">

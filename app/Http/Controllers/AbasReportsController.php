@@ -7,8 +7,6 @@ use App\Services\AbasExamsService;
 use App\Services\AbasRecordsService;
 use App\Services\GeneralReportsService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\Console\Question\Question;
 
 class AbasReportsController extends Controller
 {
@@ -34,28 +32,14 @@ class AbasReportsController extends Controller
         app()->setLocale($lang);
         $abasExam = $report = AbasExam::findOrFail($id);
         $examinee = $abasExam->examinee;
-
         $logo = $this->generalReportsService->getCenterLogo($abasExam->examiner);
 
-        $examResults = $this->abasExamsService->getExamResults($abasExam->id);
+        $examScaledScores = $this->abasExamsService->getSubDomainsScaledScores($abasExam->id);
 
-        $domains = [];
-        $sums = [];
-        $totalScaledScore = 0;
-        foreach ($examResults as $result) {
-            if ($result->domain_id) {
-                $domains[$result->domain_id] = [
-                    'id' => $result->domain_id,
-                    'name' => $result->domain_name,
-                ];
-            }
-            if ($result->domain_id) {
-                $sums[$result->domain_id][] = $result->scaled_score;
-            }
-            $totalScaledScore += is_numeric($result->scaled_score) ? $result->scaled_score : 0;
-        }
+        $domains = $this->abasExamsService->extrctDomainsFromExamScaledScores($examScaledScores);
 
+        $totalScaledScore = $this->abasExamsService->getTotalScaledScore($examScaledScores);
 
-        return view('reports.abas', compact('examResults', 'sums', 'domains', 'totalScaledScore', 'abasExam', 'logo', 'examinee', 'report'));
+        return view('reports.abas', compact('examScaledScores', 'domains', 'totalScaledScore', 'abasExam', 'logo', 'examinee', 'report'));
     }
 }
