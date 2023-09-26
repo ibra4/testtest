@@ -23,5 +23,8 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $this->call(CasdQuestionsTableSeeder::class);
         $this->call(CasdSubDomainsTableSeeder::class);
+        $this->call(AbasDomainsTableSeeder::class);
+        $this->call(AbasSubDomainsTableSeeder::class);
+        $this->call(AbasQuestionsTableSeeder::class);
     }
 }
