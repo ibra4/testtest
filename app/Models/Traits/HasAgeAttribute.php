@@ -24,14 +24,19 @@ trait HasAgeAttribute
 
         $years = $diff->format("%y");
         $months = $diff->format("%m");
+        $days = $diff->format("%d");
 
         $age = '';
         if ($years) {
-            $age .= $years . ' ' . __('Years') . ' ';
+            $age .= $years . ' ' . __('Years');
         }
 
         if ($months) {
-            $age .= $months . ' ' . __('Months');
+            $age .= ', ' . $months . ' ' . __('Months');
+        }
+
+        if ($days) {
+            $age .= ', ' . $days . ' ' . __('Days');
         }
 
         return $age;
