@@ -104,83 +104,6 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
     }
 }
 
-
-
-
-const iqLabels = [30, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170, 171];
-const iqDatasets = [
-    {
-        data: [0, 0.2, , , , , , , ,],
-        fill: true,
-        backgroundColor: "#cfc4dc",
-    },
-    {
-        data: [, 0.2, 0.6, , , , , , , ,],
-        fill: true,
-        backgroundColor: "#bdb0ce",
-    },
-    {
-        data: [, , 0.6, 1.4, , , , , , ,],
-        fill: true,
-        backgroundColor: "#927ab0",
-    },
-    {
-        data: [, , , 1.4, 3, , , , , ,],
-        fill: true,
-        backgroundColor: "#cec5da",
-    },
-    {
-        data: [, , , , 3, 3.4, 3, , , ,],
-        fill: true, //// center
-        backgroundColor: "#927ab0",
-    },
-    {
-        data: [, , , , , , 3, 1.4, , ,],
-        fill: true,
-        backgroundColor: "#cec5da",
-    },
-    {
-        data: [, , , , , , , 1.4, 0.6, ,],
-        fill: true,
-        backgroundColor: "#927ab0",
-    },
-    {
-        data: [, , , , , , , , 0.6, 0.2,],
-        fill: true,
-        backgroundColor: "#bdb0ce",
-    },
-    {
-        data: [, , , , , , , , , 0.2, 0],
-        fill: true,
-        backgroundColor: "#cfc4dc",
-    },
-];
-const iqBelowLabels = document.documentElement.lang == 'en' ? [
-    "Severe Delay",
-    "Modetate Delay",
-    "Mild Delay",
-    "Low",
-    "Below Avarage",
-    "Avarage",
-    "Above Avarage",
-    "High",
-    "Very High",
-    "Extremely High",
-    " "
-] : [
-    'تأخر شديد',
-    'تأخر متوسط',
-    'تأخر بسيط',
-    'ضعف',
-    "أقل من المتوسط",
-    "ضمن المتوسط",
-    "أعلى من المتوسط",
-    "مرتفع",
-    "مرتفع جدا",
-    "مرتفع للغاية",
-    " ",
-];
-
 const figLabels = [0, 1, 4, 6, 8, 13, 15, 17, 19, 20, 21];
 const figDatasets = [
     {
@@ -222,7 +145,7 @@ const figDatasets = [
     },
 ];
 
-const figBelowLabels = document.documentElement.lang == 'en' ? [
+const figBelowLabels = [
     "Modetate Delay",
     "Mild Delay",
     "Low",
@@ -233,21 +156,9 @@ const figBelowLabels = document.documentElement.lang == 'en' ? [
     "Very High",
     "Extremely High",
     " "
-] : [
-    'تأخر متوسط',
-    'تأخر بسيط',
-    'ضعف',
-    "أقل من المتوسط",
-    "ضمن المتوسط",
-    "أعلى من المتوسط",
-    "مرتفع",
-    "مرتفع جدا",
-    "مرتفع للغاية",
-    " "
 ];
 
 
 window.onload = function () {
-    drawGraphs('iq-section-chart', iqLabels, iqDatasets, iqBelowLabels);
     drawGraphs('fig-section-chart', figLabels, figDatasets, figBelowLabels);
 };

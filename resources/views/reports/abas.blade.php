@@ -10,19 +10,44 @@
         @include('components.report_examinee_data')
         <hr>
         <div class="section">
+
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th colspan="4">بيانات الإدخال</th>
+                    </tr>
+                    <tr>
+                        <td>مجال المهارات التكيفية</td>
+                        <td>صافى المجموع</td>
+                        <td>عدد العناصر التي تم تخطيها</td>
+                        <td>عدد العناصر التي تم تخمينها</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($subDomainsCounters as $item)
+                        <tr>
+                            <td>{{ $item->subdomain_name }}</td>
+                            <td>{{ $item->sum_of_result }}</td>
+                            <td>{{ $item->number_of_zeros }}</td>
+                            <td>{{ $item->number_of_guesses }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
             <table class="table table-bordered text-center">
                 <thead>
                     <tr>
                         <th colspan="7">النتيجة الأولية للتحويلات المحسوبة</th>
                     </tr>
-                </thead>
-                <tbody>
                     <tr>
-                        <td>النتيجة الأولية للتحويلات المحسوبة</td>
-                        <td>الدرجة الخام</td>
+                        <td>مجال المهارات التكيفية</td>
+                        <td>صافي المجموع</td>
                         <td colspan="4">الدرجة الموزونة</td>
                         <td>المكافئ العمري</td>
                     </tr>
+                </thead>
+                <tbody>
                     @foreach ($examScaledScores as $examResult)
                         <tr>
                             <td>{{ $examResult->name }}</td>
@@ -56,7 +81,41 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th colspan="5">مجموع الدرجات المقاسة للمركب التكيفي العام (GAC) وتحويلات درجات المجال التكيفي
+                        </th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>مجموع الدرجات المقاسة</td>
+                        <td>النتيجة القياسية</td>
+                        <td>الرتبة المئوية</td>
+                        <td>فاصل الثقة: 95٪</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>المركب التكيفي العام (GAC)</td>
+                        <td>{{ $totalScaledScore }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    @foreach ($domains as $domain)
+                        <tr>
+                            <td>{{ $domain['name'] }}</td>
+                            <td>{{ $domain['sum'] }}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
         <hr>
+        <canvas id="iqChart" width="400" height="200"></canvas>
     </main>
 @endsection

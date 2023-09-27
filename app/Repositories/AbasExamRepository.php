@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\AbasExam;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class AbasExamRepository
@@ -43,6 +44,31 @@ class AbasExamRepository
         $questions->leftJoin('abas_exam_sub_domains', 'abas_sub_domain_questions.abas_exam_sub_domain_id', '=', 'abas_exam_sub_domains.id');
         $questions->leftJoin('abas_sub_domains', 'abas_exam_sub_domains.abas_sub_domain_id', '=', 'abas_sub_domains.id');
         $questions->leftJoin('abas_domains', 'abas_sub_domains.abas_domain_id', '=', 'abas_domains.id');
+        $questions->where('abas_exam_sub_domains.abas_exam_id', '=', $examId);
+        $questions->groupBy('abas_sub_domain_questions.abas_exam_sub_domain_id');
+
+        return $questions->get();
+    }
+
+    /**
+     * Gets exam subdomains results
+     * 
+     * @param int $examId
+     * @return Collection
+     */
+    public function getExamSubdomainsResults(int $examId): Collection
+    {
+        $questions = DB::table('abas_sub_domain_questions');
+        $questions->select(
+            'abas_sub_domains.id as subdomain_id',
+            'abas_sub_domains.name as subdomain_name',
+            DB::raw('SUM(IF(abas_sub_domain_questions.guess = 1, 1, 0)) as number_of_guesses'),
+            DB::raw('SUM(abas_sub_domain_questions.result) as sum_of_result'),
+            DB::raw('SUM(IF(abas_sub_domain_questions.result = 0, 1, 0)) as number_of_zeros'),
+        );
+
+        $questions->leftJoin('abas_exam_sub_domains', 'abas_sub_domain_questions.abas_exam_sub_domain_id', '=', 'abas_exam_sub_domains.id');
+        $questions->leftJoin('abas_sub_domains', 'abas_exam_sub_domains.abas_sub_domain_id', '=', 'abas_sub_domains.id');
         $questions->where('abas_exam_sub_domains.abas_exam_id', '=', $examId);
         $questions->groupBy('abas_sub_domain_questions.abas_exam_sub_domain_id');
 

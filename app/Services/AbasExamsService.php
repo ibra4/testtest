@@ -162,7 +162,7 @@ class AbasExamsService
     }
 
     /**
-     * updateSubDomain
+     * Update exam subdomain answers
      *
      * @param int $examSubDomainId
      * @param  mixed $request
@@ -235,5 +235,16 @@ class AbasExamsService
         return $examScaledScores->sum(function ($item) {
             return is_numeric($item->scaled_score) ? $item->scaled_score : 0;
         });
+    }
+
+    /**
+     * Gets exam subdomains results
+     * 
+     * @param int $examId
+     * @return Collection
+     */
+    public function getExamSubdomainsResults(int $examId): Collection
+    {
+        return $this->abasExamRepository->getExamSubdomainsResults($examId);
     }
 }
