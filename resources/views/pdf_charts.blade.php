@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="big-boss">
+            <div class="big-boss canvas-wrapper white-bar">
                 <div class="row">
                     <div class="col-3">
                     </div>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <div class="big-boss">
+            <div class="big-boss canvas-wrapper white-bar">
                 <div class="row">
                     <div class="col-3">
                     </div>

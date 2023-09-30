@@ -117,13 +117,14 @@ body {
   margin: 0;
 }
 .big-boss .canvas-table-group-wrapper .canvas-table-group p {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .num-item {
   position: absolute;
   height: 100%;
-  border-left: 1px dashed black;
+  border-left: 1px solid #d3d3d3;
 }
 
 .point {
@@ -137,8 +138,8 @@ body {
 .point .inner {
   font-weight: bold;
   position: absolute;
-  top: 15px;
-  left: 50%;
+  top: -50%;
+  left: 25px;
   transform: translateX(-50%);
 }
 
@@ -251,4 +252,7 @@ html[dir=rtl] .section .title {
 html[dir=rtl] .section .title::before {
   left: unset;
   right: 0;
+}
+html[dir=rtl] .big-boss.white-bar:after {
+  display: none;
 }

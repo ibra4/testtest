@@ -14,25 +14,23 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
         type: "line",
         data: data3,
         options: {
-            steppedLine: false,
-            animation: {
-                duration: 0,
-            },
             legend: false,
             scales: {
                 xAxes: [
                     {
                         gridLines: {
-                            display: false,
                             tickMarkLength: 10,
                         },
                     },
                     {
                         type: "category",
-                        // fontStyle: "bold",
                         labels: belowLabels,
                         ticks: {
                             fontColor: "#9d6ab0",
+                        },
+                        gridLines: {
+                            display: false,
+                            tickMarkLength: 0,
                         },
                     },
                 ],
@@ -78,7 +76,7 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
         let point = $(`<div class="point"><div class="inner">${itemValue}</div></div>`);
         point.css({
             left: `${(realValue * percentage) + xScale.getPixelForValue(previousPoint)}px`,
-            top: `${topElement + 10}px`,
+            top: `${topElement + 15}px`,
         });
         tableContainer.append(point);
     })
@@ -107,42 +105,9 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
 const figLabels = [0, 1, 4, 6, 8, 13, 15, 17, 19, 20, 21];
 const figDatasets = [
     {
-        data: [0, 0.2, , , , , , ,],
-        fill: true,
-        backgroundColor: "#cfc4dc",
-    },
-    {
-        data: [, 0.2, 0.6, , , , , , ,],
-        fill: true,
-        backgroundColor: "#927ab0",
-    },
-    {
-        data: [, , 0.6, 1.4, , , , , ,],
-        fill: true,
-        backgroundColor: "#bdb0ce",
-    },
-    ///////////////////////////
-    {
-        data: [, , , 1.4, 1.8, 1.8, 1.4, , ,],
-        fill: true,
-        backgroundColor: "#927ab0",
-    },
-    ///////////////////////////
-    {
-        data: [, , , , , , 1.4, 0.6, ,],
-        fill: true,
-        backgroundColor: "#bdb0ce",
-    },
-    {
-        data: [, , , , , , , 0.6, 0.2,],
-        fill: true,
-        backgroundColor: "#927ab0",
-    },
-    {
-        data: [, , , , , , , , 0.2, 0],
-        fill: true,
-        backgroundColor: "#cfc4dc",
-    },
+        data: [0, 0.05, 0.2, 0.6, 1.4, 1.7, 1.4, 0.6, 0.2, 0.05, 0],
+        fill: false
+    }
 ];
 
 const figBelowLabels = [
@@ -157,8 +122,41 @@ const figBelowLabels = [
     "Extremely High",
     " "
 ];
+const iqLabels = [30, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170, 171];
+const iqDatasets = [
+    {
+        data: [0, 0.2, 0.6, 1.4, 3, 3.4, 3, 1.4, 0.6, 0.2, 0],
+        fill: false
+    }
+];
+const iqBelowLabels = document.documentElement.lang == 'en' ? [
+    "Severe Delay",
+    "Modetate Delay",
+    "Mild Delay",
+    "Low",
+    "Below Avarage",
+    "Avarage",
+    "Above Avarage",
+    "High",
+    "Very High",
+    "Extremely High",
+    " "
+] : [
+    'تأخر شديد',
+    'تأخر متوسط',
+    'تأخر بسيط',
+    'ضعف',
+    "أقل من المتوسط",
+    "ضمن المتوسط",
+    "أعلى من المتوسط",
+    "مرتفع",
+    "مرتفع جدا",
+    "مرتفع للغاية",
+    " ",
+];
 
 
 window.onload = function () {
     drawGraphs('fig-section-chart', figLabels, figDatasets, figBelowLabels);
+    drawGraphs('iq-section-chart', iqLabels, iqDatasets, iqBelowLabels);
 };
