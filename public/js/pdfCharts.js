@@ -27,6 +27,11 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
                         labels: belowLabels,
                         ticks: {
                             fontColor: "#9d6ab0",
+                            callback: function (value, index, values) {
+                                // You can use <br> or \n for line breaks
+                                return value.split(' '); // Split the label using \n
+                            },
+    
                         },
                         gridLines: {
                             display: false,
