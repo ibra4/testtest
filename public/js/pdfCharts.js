@@ -105,7 +105,7 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
 const figLabels = [0, 1, 4, 6, 8, 13, 15, 17, 19, 20, 21];
 const figDatasets = [
     {
-        data: [0, 0.05, 0.2, 0.6, 1.4, 1.7, 1.4, 0.6, 0.2, 0.05, 0],
+        data: [0, 0.05, 0.2, 0.6, 1.4, 1.7, 1.4, 0.6, 0.2, 0, 0],
         fill: false
     }
 ];
