@@ -110,7 +110,7 @@ const figDatasets = [
     }
 ];
 
-const figBelowLabels = [
+const figBelowLabels = document.documentElement.lang == 'en' ? [
     "Modetate Delay",
     "Mild Delay",
     "Low",
@@ -121,6 +121,17 @@ const figBelowLabels = [
     "Very High",
     "Extremely High",
     " "
+]: [
+    'تأخر متوسط',
+    'تأخر بسيط',
+    'ضعف',
+    "أقل من المتوسط",
+    "ضمن المتوسط",
+    "أعلى من المتوسط",
+    "مرتفع",
+    "مرتفع جدا",
+    "مرتفع للغاية",
+    " ",
 ];
 const iqLabels = [30, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170, 171];
 const iqDatasets = [
