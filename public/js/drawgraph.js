@@ -1,18 +1,18 @@
 function drawGraphs(sectionId, labels, datasets, belowLabels) {
-    const data3 = {
+    const data = {
         labels: labels,
         datasets: datasets,
     };
 
-    const chartWithTable = document
+    const canvas = document
         .querySelector(`#${sectionId} canvas`)
         .getContext("2d");
 
     const tableContainer = $(`#${sectionId} .table-container`);
 
-    const test = new Chart(chartWithTable, {
+    const chart = new Chart(canvas, {
         type: "line",
-        data: data3,
+        data,
         options: {
             legend: false,
             scales: {
@@ -28,10 +28,9 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
                         ticks: {
                             fontColor: "#9d6ab0",
                             callback: function (value, index, values) {
-                                // You can use <br> or \n for line breaks
-                                return value.split(' '); // Split the label using \n
+                                return value.split(' ');
                             },
-    
+
                         },
                         gridLines: {
                             display: false,
@@ -51,8 +50,8 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
         },
     });
 
-    var xScale = test.scales['x-axis-0'];
-    test.data.labels.forEach(function (label) {
+    var xScale = chart.scales['x-axis-0'];
+    chart.data.labels.forEach(function (label) {
         var position = xScale.getPixelForValue(label);
         const div = document.createElement("DIV");
         $(div).css({ left: `${position}px` });
@@ -62,12 +61,9 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
 
     const pointsToDisplay = JSON.parse(document.querySelector(`#${sectionId} .composite_values`).getAttribute('value'));
 
-
     pointsToDisplay.map(function (item) {
         const itemValue = item.value;
         const { previousPoint, nextPoint } = getNearestPoints(itemValue)
-        console.log(xScale.getPixelForValue(previousPoint))
-        console.log(xScale.getPixelForValue(nextPoint))
 
         const pixelsDiff = xScale.getPixelForValue(nextPoint) - xScale.getPixelForValue(previousPoint)
         const labelsDiff = nextPoint - previousPoint;
@@ -86,14 +82,12 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
         tableContainer.append(point);
     })
 
-
-
     function getNearestPoints(point) {
         let previousPoint = null;
         let nextPoint = null;
 
-        for (let i = 0; i < test.data.labels.length; i++) {
-            const currentPoint = test.data.labels[i];
+        for (let i = 0; i < chart.data.labels.length; i++) {
+            const currentPoint = chart.data.labels[i];
 
             if (currentPoint <= point) {
                 previousPoint = currentPoint;
@@ -106,73 +100,3 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
         return { previousPoint, nextPoint };
     }
 }
-
-const figLabels = [0, 1, 4, 6, 8, 13, 15, 17, 19, 20, 21];
-const figDatasets = [
-    {
-        data: [0, 0.05, 0.2, 0.6, 1.4, 1.7, 1.4, 0.6, 0.2, 0, 0],
-        fill: false
-    }
-];
-
-const figBelowLabels = document.documentElement.lang == 'en' ? [
-    "Modetate Delay",
-    "Mild Delay",
-    "Low",
-    "Below Avarage",
-    "Avarage",
-    "Above Avarage",
-    "High",
-    "Very High",
-    "Extremely High",
-    " "
-]: [
-    'تأخر متوسط',
-    'تأخر بسيط',
-    'ضعف',
-    "أقل من المتوسط",
-    "ضمن المتوسط",
-    "أعلى من المتوسط",
-    "مرتفع",
-    "مرتفع جدا",
-    "مرتفع للغاية",
-    " ",
-];
-const iqLabels = [30, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170, 171];
-const iqDatasets = [
-    {
-        data: [0, 0.2, 0.6, 1.4, 3, 3.4, 3, 1.4, 0.6, 0.2, 0],
-        fill: false
-    }
-];
-const iqBelowLabels = document.documentElement.lang == 'en' ? [
-    "Severe Delay",
-    "Modetate Delay",
-    "Mild Delay",
-    "Low",
-    "Below Avarage",
-    "Avarage",
-    "Above Avarage",
-    "High",
-    "Very High",
-    "Extremely High",
-    " "
-] : [
-    'تأخر شديد',
-    'تأخر متوسط',
-    'تأخر بسيط',
-    'ضعف',
-    "أقل من المتوسط",
-    "ضمن المتوسط",
-    "أعلى من المتوسط",
-    "مرتفع",
-    "مرتفع جدا",
-    "مرتفع للغاية",
-    " ",
-];
-
-
-window.onload = function () {
-    drawGraphs('fig-section-chart', figLabels, figDatasets, figBelowLabels);
-    drawGraphs('iq-section-chart', iqLabels, iqDatasets, iqBelowLabels);
-};

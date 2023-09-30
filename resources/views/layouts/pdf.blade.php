@@ -28,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
     <!-- App Style -->
-    <link rel="stylesheet" href="{{ asset('css/pdf.css') }}?v={{time()}}">
+    <link rel="stylesheet" href="{{ asset('css/pdf.css') }}?v={{ time() }}">
 </head>
 
 <body>
@@ -45,7 +45,8 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/pdfCharts.js') }}?v=2"></script>
+    <script src="{{ asset('js/drawgraph.js') }}?v=3"></script>
+    @yield('js')
 </body>
 
 </html>
