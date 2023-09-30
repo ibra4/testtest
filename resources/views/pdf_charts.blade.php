@@ -142,6 +142,7 @@
             "High",
             "Very High",
             "Extremely High",
+            " ",
             " "
         ] : [
             'تأخر متوسط',
@@ -154,6 +155,7 @@
             "مرتفع جدا",
             "مرتفع للغاية",
             " ",
+            " "
         ];
 
         // iq-section-chart Chart Data
@@ -173,6 +175,7 @@
             "High",
             "Very High",
             "Extremely High",
+            " ",
             " "
         ] : [
             'تأخر شديد',
@@ -186,6 +189,7 @@
             "مرتفع جدا",
             "مرتفع للغاية",
             " ",
+            " "
         ];
         window.onload = function() {
             drawGraphs('fig-section-chart', figLabels, figDatasets, figBelowLabels);

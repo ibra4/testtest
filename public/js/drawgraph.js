@@ -10,9 +10,18 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
 
     const tableContainer = $(`#${sectionId} .table-container`);
 
+    const xScalePadding = {
+        id: "x-scale-padding",
+        beforeDatasetsDraw(chart) {
+            chart.scales['x-axis-1'].left = 50;
+
+        }
+    }
+
     const chart = new Chart(canvas, {
         type: "line",
         data,
+        plugins: [xScalePadding],
         options: {
             legend: false,
             scales: {
@@ -30,7 +39,10 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
                             callback: function (value, index, values) {
                                 return value.split(' ');
                             },
-
+                            // maxRotation: 90, // Rotate labels by 90 degrees
+                            // minRotation: 90, // Rotate labels by 90 degrees
+                            padding: 10,
+                            fontFamily: 'Tajawal, sans-serif',
                         },
                         gridLines: {
                             display: false,
