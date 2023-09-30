@@ -12,9 +12,9 @@
         <div class="section no-break" id="iq-section-chart">
             <h1 class="title">{{ __('IQ and Composite') }}</h1>
             <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                 </div>
-                <div class="col-9">
+                <div class="col-8">
                     <div class="canvas-wrapper white-bar">
                         <canvas width="400" height="200"></canvas>
                     </div>
@@ -22,9 +22,9 @@
             </div>
             <div class="big-boss canvas-wrapper white-bar">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-4">
                     </div>
-                    <div class="col-9">
+                    <div class="col-8">
                         <div class="table-container" style="height: 150px">
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                 <div class="canvas-table-group-wrapper">
                     <div class="canvas-table-group">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-4">
                                 @foreach ($composite_values as $compositeValue)
                                     <p id="{{ $compositeValue['id'] }}" class="label-item">{{ $compositeValue['label'] }}
                                     </p>
@@ -62,9 +62,9 @@
             <br>
             <h1 class="title">{{ __('Cognitive') }}</h1>
             <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                 </div>
-                <div class="col-9">
+                <div class="col-8">
                     <div class="canvas-wrapper white-bar">
                         <canvas width="400" height="200"></canvas>
                     </div>
@@ -72,9 +72,9 @@
             </div>
             <div class="big-boss canvas-wrapper white-bar">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-4">
                     </div>
-                    <div class="col-9">
+                    <div class="col-8">
                         <div class="table-container" style="height: 480px">
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                 <div class="canvas-table-group-wrapper">
                     <div class="canvas-table-group">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-4">
                                 @foreach ($cognitive_values as $cognitiveValue)
                                     <p id="{{ $cognitiveValue['id'] }}" class="label-item">{{ $cognitiveValue['label'] }}
                                     </p>
