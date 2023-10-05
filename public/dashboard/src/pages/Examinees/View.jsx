@@ -8,7 +8,6 @@ import { Link, useHistory } from 'react-router-dom';
 import Showing from 'components/Datatable/Showing';
 import NoData from 'components/Datatable/NoData';
 import Pagination from 'components/Datatable/Pagination';
-import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 import WhiteBox from 'components/WhiteBox';
 import { useTranslation } from 'react-i18next';
 
@@ -19,7 +18,7 @@ const View = ({ data, queryParams, onSearch }) => {
     const renderRow = (item) => (
         <tr key={item.id}>
             <td>{item.id}</td>
-            <AvatarNameTD item={item} />
+            <td>{item.name}</td>
             <td>{item.age}</td>
             <td>{item.gender}</td>
             <td>{item.adminname}</td>
