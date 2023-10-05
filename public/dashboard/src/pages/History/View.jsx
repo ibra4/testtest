@@ -25,7 +25,7 @@ const View = ({ data, queryParams, onSearch }) => {
             <td>{item.updated_at}</td>
             <td>
                 <ActionButton
-                    label={t('View Report')}
+                    label={t('View Exam')}
                     icon={<TbReportAnalytics />}
                     onClick={() => push(`examinees/${item.id}/exam`)}
                 />

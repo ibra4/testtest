@@ -26,7 +26,7 @@ const HistoryView = ({ data }) => {
             {role == 'root' && (
                 <td>
                     <ActionButton
-                        label={t('View Report')}
+                        label={t('View Exam')}
                         icon={<TbReportAnalytics />}
                         onClick={() => push(`examinees/${item.id}/exam`)}
                     />

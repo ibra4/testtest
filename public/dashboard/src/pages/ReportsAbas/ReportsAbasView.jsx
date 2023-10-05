@@ -28,7 +28,7 @@ const ReportsAbasView = ({ data, queryParams, onSearch, handleDelete }) => {
                 <div className="d-flex">
                     <ActionButton
                         icon={<FaEye />}
-                        label={t('View Report')}
+                        label={t('View Exam')}
                         onClick={() => push(`/exams/abas/${item.id}/introduction`)}
                         variant="primary"
                     />
@@ -69,7 +69,7 @@ const ReportsAbasView = ({ data, queryParams, onSearch, handleDelete }) => {
                 <Table striped>
                     <thead>
                         <tr>
-                            <th>{t('Report ID')}</th>
+                            <th>{t('Exam ID')}</th>
                             <th>{t('Examinee ID')}</th>
                             <th>{t('Examinee')}</th>
                             <th>{t('Examiner')}</th>

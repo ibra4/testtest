@@ -19,7 +19,7 @@ function ReportsAbasIndex() {
     const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/exams/abas')
 
     return (
-        <Layout title={t('ABAS Reports')}>
+        <Layout title={t('ABAS Exams')}>
             <Filters onSearch={onSearch} queryParams={queryParams} />
             {isLoading && <FullLoader />}
             <ReportsAbasView data={data} onSearch={onSearch} queryParams={queryParams} handleDelete={handleDelete} />
