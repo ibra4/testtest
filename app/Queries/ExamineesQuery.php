@@ -46,7 +46,7 @@ class ExamineesQuery
             // 'rerss.regulation',
             // 'rerss.anxiety',
             // 'rerss.sensory_reaction'
-        )->where([['examinees.name', 'LIKE', "%$request->name%"]])
+        )
             ->orderBy('examinees.created_at', 'DESC')
             ->orderBy('examinees.updated_at', 'DESC')
             ->leftJoin('users as admin', 'examinees.admin_id', '=', 'admin.id');
@@ -61,6 +61,13 @@ class ExamineesQuery
 
         // ->leftJoin('users as creator', 'examinees.created_by', '=', 'creator.id');
 
+        /** @var \App\Models\User $user */
+        $user = $request->user();
+
+        if ($user->hasRole('root')) {
+            $query->where([['examinees.name', 'LIKE', "%$request->name%"]]);
+        }
+
         if ($request->gender) {
             $query->where('examinees.gender', $request->gender);
         }
@@ -69,8 +76,6 @@ class ExamineesQuery
             $query->where('examinees.id', $request->id);
         }
 
-        /** @var \App\Models\User $user */
-        $user = $request->user();
         if (!$user->hasRole('root')) {
             if ($user->hasRole('admin')) {
                 $all_admins = User::where('admin_id', $user->id)->get()->pluck('id')->toArray();
