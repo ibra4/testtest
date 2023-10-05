@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Enums\AbasExamTypesEnum;
-use App\Enums\ExamTypesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AbasSubDomainListResource;
 use App\Http\Resources\CasdSubDomainListResource;

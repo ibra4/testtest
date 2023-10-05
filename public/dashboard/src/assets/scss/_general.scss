@@ -69,3 +69,10 @@ path#bh {
     transform: scale(13.5);
     transform-origin: 87% 38%;
 }
+
+a {
+    &.no-style {
+        text-decoration: none;
+        color: inherit;
+    }
+}

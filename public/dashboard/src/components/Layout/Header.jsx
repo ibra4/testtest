@@ -66,6 +66,12 @@ function Header({ title }) {
                                     <Link className="dropdown-item" to={'/my-profile'}>
                                         {t('My Profile')}
                                     </Link>
+                                    {user.is_impersonating && (
+                                        <a className="dropdown-item text-danger" href="/impersonate/leave">
+                                            {t('Leave Impersonation')}
+                                            <FaSignOutAlt className="ms-2" />
+                                        </a>
+                                    )}
                                     <Dropdown.Divider />
                                     <Dropdown.Item href="/admin/logout" className="text-danger">
                                         <FaSignOutAlt />

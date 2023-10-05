@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Lab404\Impersonate\Impersonate;
 
 class UserResource extends JsonResource
 {
@@ -38,6 +39,7 @@ class UserResource extends JsonResource
             'gender' => $this->gender,
             'locale' => $this->locale,
             'expiration_date' => $this->expiration_date,
+            'is_impersonating' => Impersonate::isImpersonating()
         ];
     }
 }

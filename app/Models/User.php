@@ -83,4 +83,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserNotification::class);
     }
+
+    /**
+     * @return bool
+     */
+    public function canImpersonate(): bool
+    {
+        return $this->hasRole('root');
+    }
+
+    /**
+     * @return bool
+     */
+    public function canBeImpersonated()
+    {
+        return !$this->hasRole('root');
+    }
 }

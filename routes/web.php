@@ -43,7 +43,11 @@ Route::get('/', function () {
     return redirect()->route('dashboard', ['langcode' => 'ar']);
 });
 
-Route::get('debug/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('can:root');
+Route::middleware('can:root')->group(function () {
+    Route::get('debug/logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+});
+
+Route::impersonate();
 
 Route::group(['middleware' => ['auth', 'report_owner']], function () {
     Route::get('{lang}/leiter-report/{id}/first', [LeiterReportsController::class, 'index'])->name('leiter_report.first');

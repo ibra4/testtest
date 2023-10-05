@@ -1,4 +1,4 @@
-import { FaEdit, FaFileExcel, FaPlus, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaFileExcel, FaPlus, FaTrash, FaUser } from 'react-icons/fa';
 import ActionButton from 'components/Fields/ActionButton';
 import React from 'react';
 import { Table } from 'react-bootstrap';
@@ -11,6 +11,7 @@ import Pagination from 'components/Datatable/Pagination';
 import AvatarNameTD from 'components/Datatable/AvatarNameTD';
 import WhiteBox from 'components/WhiteBox';
 import { useTranslation } from 'react-i18next';
+import BlankLink from 'components/BlankLink';
 
 const View = ({ data, queryParams, onSearch, handleDelete }) => {
     const { t } = useTranslation();
@@ -38,6 +39,14 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
                             label={t('Delete')}
                             onClick={() => handleDelete(item.id)}
                             variant="danger"
+                            classes="ms-3"
+                        />
+                    )}
+                    {hasRole('root') && (
+                        <BlankLink
+                            icon={<FaUser />}
+                            label={t('Impersonate')}
+                            link={`/impersonate/take/${item.id}`}
                             classes="ms-3"
                         />
                     )}
