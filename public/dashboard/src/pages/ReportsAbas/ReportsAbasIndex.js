@@ -16,7 +16,7 @@ function ReportsAbasIndex() {
         // admin_id: ''
     })
 
-    const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/abas-exams')
+    const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/exams/abas')
 
     return (
         <Layout title={t('ABAS Reports')}>

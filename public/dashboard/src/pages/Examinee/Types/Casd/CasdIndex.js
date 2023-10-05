@@ -21,7 +21,7 @@ function CasdIndex() {
 
     const getData = async () => {
         try {
-            const res = await httpClient.get(`casd-exams/${id}`)
+            const res = await httpClient.get(`/exams/casd/${id}`)
             setData(res.data)
             setStatus("success")
         } catch (error) {
@@ -38,7 +38,7 @@ function CasdIndex() {
         try {
             const confirmed = confirm(t("confirm_save_exam"))
             if (confirmed) {
-                const res = await httpClient.put(`casd-exams/update/${id}`, values)
+                const res = await httpClient.put(`/exams/casd/update/${id}`, values)
                 addToast(t('Saved Successfully'), { appearance: 'success' });
                 setData(res.data);
             }

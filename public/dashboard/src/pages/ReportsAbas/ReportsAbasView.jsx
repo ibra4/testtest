@@ -29,7 +29,7 @@ const ReportsAbasView = ({ data, queryParams, onSearch, handleDelete }) => {
                     <ActionButton
                         icon={<FaEye />}
                         label={t('View Report')}
-                        onClick={() => push(`/abas-exams/${item.id}/introduction`)}
+                        onClick={() => push(`/exams/abas/${item.id}/introduction`)}
                         variant="primary"
                     />
                     {hasRole('root') && (
@@ -58,7 +58,7 @@ const ReportsAbasView = ({ data, queryParams, onSearch, handleDelete }) => {
                     <a
                         className="btn btn-success ms-2"
                         target="_blank"
-                        href={`/abas-exams/export?${QueryString.stringify(queryParams)}`}
+                        href={`/exams/abas/export?${QueryString.stringify(queryParams)}`}
                     >
                         <FaFileExcel />
                         <span className="ms-2">{t('Export to Excel')}</span>

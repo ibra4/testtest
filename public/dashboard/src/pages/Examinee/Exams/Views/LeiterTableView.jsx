@@ -37,7 +37,7 @@ function LeiterTableView({ rows, onCreateExam }) {
                                     <ActionButton
                                         label={t('View Exam')}
                                         icon={<TbReportAnalytics />}
-                                        onClick={() => push(`/leiter-exams/${leiterExam.id}`)}
+                                        onClick={() => push(`/exams/leiter/${leiterExam.id}`)}
                                     />
                                 </td>
                             </tr>

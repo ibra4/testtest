@@ -48,7 +48,7 @@ function AbasView({ data, onSubDomainSubmit }) {
                         'abas-tab-item bg-primary text-white me-2',
                         sub_domain_id == 'introduction' && 'active'
                     ])}
-                    to={`/abas-exams/${data.id}/introduction`}
+                    to={`/exams/abas/${data.id}/introduction`}
                 >
                     <FaInfoCircle />
                 </Link>
@@ -60,7 +60,7 @@ function AbasView({ data, onSubDomainSubmit }) {
                             subDomain.is_saved && 'saved'
                         ])}
                         key={subDomain.id}
-                        to={`/abas-exams/${data.id}/${subDomain.id}`}
+                        to={`/exams/abas/${data.id}/${subDomain.id}`}
                     >
                         <span className="icon-wrapper me-2">
                             <FaSave />
@@ -75,7 +75,7 @@ function AbasView({ data, onSubDomainSubmit }) {
                             sub_domain_id == 'reports' && 'active',
                             'saved'
                         ])}
-                        to={`/abas-exams/${data.id}/reports`}
+                        to={`/exams/abas/${data.id}/reports`}
                     >
                         <span className="icon-wrapper me-2">
                             <FaTable />

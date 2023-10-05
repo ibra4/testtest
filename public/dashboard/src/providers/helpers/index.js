@@ -114,13 +114,13 @@ export const renderNotificationFor = (forUser) => {
 export const getExamCreateUrl = (examType, examineeId) => {
     switch (examType) {
         case 'leiter':
-            return `leiter-exams/create/${examineeId}`
+            return `exams/leiter/create/${examineeId}`
         case 'abas':
-            return `abas-exams/create/${examineeId}`
+            return `exams/abas/create/${examineeId}`
         case 'mpr':
             return `mpr-exams/create/${examineeId}`
         case 'casd':
-            return `casd-exams/create/${examineeId}`
+            return `/exams/casd/create/${examineeId}`
         default:
             throw new Error('Wrong examType')
     }
@@ -129,13 +129,13 @@ export const getExamCreateUrl = (examType, examineeId) => {
 export const getExamViewUrl = (examType, examId) => {
     switch (examType) {
         case 'leiter':
-            return `/leiter-exams/${examId}`
+            return `/exams/leiter/${examId}`
         case 'abas':
-            return `/abas-exams/${examId}/introduction`
+            return `/exams/abas/${examId}/introduction`
         case 'mpr':
             return `/mpr-exams/${examId}`
         case 'casd':
-            return `/casd-exams/${examId}`
+            return `//exams/casd/${examId}`
         default:
             setStatus('error')
     }

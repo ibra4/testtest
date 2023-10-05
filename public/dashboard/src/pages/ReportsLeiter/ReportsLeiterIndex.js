@@ -16,7 +16,7 @@ function ReportsLeiterIndex() {
         // admin_id: ''
     })
 
-    const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/leiter-exams')
+    const { data, onSearch, isLoading, handleDelete } = useDataTable(queryParams, setQueryParams, status, setStatus, '/exams/leiter')
 
     return (
         <Layout title={t('Leiter International Performance Scale - Third Edition')}>

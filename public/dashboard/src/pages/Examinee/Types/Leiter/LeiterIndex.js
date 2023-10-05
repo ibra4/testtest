@@ -20,7 +20,7 @@ function LeiterIndex() {
 
     const getData = async () => {
         try {
-            const res = await httpClient.get(`leiter-exams/${id}`)
+            const res = await httpClient.get(`exams/leiter/${id}`)
             setData(res.data)
             setStatus("success")
         } catch (error) {
@@ -34,7 +34,7 @@ function LeiterIndex() {
     }, [])
 
     const onSectionSubmit = async (type, values) => {
-        return await httpClient.put(`leiter-exams/update/${id}/${type}`, values)
+        return await httpClient.put(`exams/leiter/update/${id}/${type}`, values)
     }
 
     const renderView = () => {

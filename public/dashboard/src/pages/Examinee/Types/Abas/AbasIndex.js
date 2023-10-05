@@ -21,7 +21,7 @@ function AbasIndex() {
 
     const getData = async () => {
         try {
-            const res = await httpClient.get(`abas-exams/${id}`)
+            const res = await httpClient.get(`exams/abas/${id}`)
             setData(res.data)
             setStatus("success")
         } catch (error) {
@@ -38,7 +38,7 @@ function AbasIndex() {
         try {
             const confirmed = confirm(t("confirm_save_exam"))
             if (confirmed) {
-                const res = await httpClient.put(`abas-exams/update/${values.id}`, values)
+                const res = await httpClient.put(`exams/abas/update/${values.id}`, values)
                 addToast(t('Saved Successfully'), { appearance: 'success' });
                 setData(res.data);
                 window.scrollTo(0, 0)

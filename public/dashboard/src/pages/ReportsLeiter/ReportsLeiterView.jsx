@@ -28,7 +28,7 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
                     <ActionButton
                         icon={<FaEye />}
                         label={t('View Report')}
-                        onClick={() => push(`/leiter-exams/${item.id}`)}
+                        onClick={() => push(`/exams/leiter/${item.id}`)}
                         variant="primary"
                     />
                     {hasRole('root') && (

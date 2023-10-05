@@ -37,7 +37,7 @@ function CasdTableView({ rows, onCreateExam }) {
                                     <ActionButton
                                         label={t('View Exam')}
                                         icon={<TbReportAnalytics />}
-                                        onClick={() => push(`/casd-exams/${casdExam.id}`)}
+                                        onClick={() => push(`//exams/casd/${casdExam.id}`)}
                                     />
                                 </td>
                             </tr>

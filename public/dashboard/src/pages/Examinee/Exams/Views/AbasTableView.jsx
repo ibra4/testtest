@@ -44,7 +44,7 @@ function AbasTableView({ rows, onCreateExam }) {
                                     <ActionButton
                                         label={t('View Exam')}
                                         icon={<TbReportAnalytics />}
-                                        onClick={() => push(`/abas-exams/${abasExam.id}/introduction`)}
+                                        onClick={() => push(`/exams/abas/${abasExam.id}/introduction`)}
                                     />
                                 </td>
                             </tr>

@@ -141,27 +141,27 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/examinees/{id}/exams', [ExamineesController::class, 'actionExams']);
 
         // Leiter Exams
-        Route::get('/leiter-exams', [LeiterExamsController::class, 'actionIndex']);
-        Route::get('/leiter-exams/{id}', [LeiterExamsController::class, 'actionGet']);
-        Route::put('/leiter-exams/update/{id}/{type}', [LeiterExamsController::class, 'actionUpdate']);
-        Route::post('/leiter-exams/create/{id}', [LeiterExamsController::class, 'actionCreate']);
-        Route::post('/leiter-exams/{id}/delete', [LeiterExamsController::class, 'actionDelete']);
+        Route::get('/exams/leiter', [LeiterExamsController::class, 'actionIndex']);
+        Route::get('/exams/leiter/{id}', [LeiterExamsController::class, 'actionGet']);
+        Route::put('/exams/leiter/update/{id}/{type}', [LeiterExamsController::class, 'actionUpdate']);
+        Route::post('/exams/leiter/create/{id}', [LeiterExamsController::class, 'actionCreate']);
+        Route::post('/exams/leiter/{id}/delete', [LeiterExamsController::class, 'actionDelete']);
 
         // Abas Exams
-        Route::get('/abas-exams', [AbasExamsController::class, 'actionIndex']);
-        Route::get('/abas-exams/{id}', [AbasExamsController::class, 'actionGet']);
-        Route::put('/abas-exams/update/{exam_sub_domain_id}', [AbasExamsController::class, 'actionUpdate']);
-        Route::post('/abas-exams/create/{id}', [AbasExamsController::class, 'actionCreate']);
+        Route::get('/exams/abas', [AbasExamsController::class, 'actionIndex']);
+        Route::get('/exams/abas/{id}', [AbasExamsController::class, 'actionGet']);
+        Route::put('/exams/abas/update/{exam_sub_domain_id}', [AbasExamsController::class, 'actionUpdate']);
+        Route::post('/exams/abas/create/{id}', [AbasExamsController::class, 'actionCreate']);
         // @TODO: Check this route
-        Route::post('/abas-exams/{id}/delete', [AbasExamsController::class, 'actionDelete']);
+        Route::post('/exams/abas/{id}/delete', [AbasExamsController::class, 'actionDelete']);
 
         // Casd Exams
-        Route::get('/casd-exams', [CasdExamsController::class, 'actionIndex']);
-        Route::get('/casd-exams/{id}', [CasdExamsController::class, 'actionGet']);
-        Route::put('/casd-exams/update/{id}', [CasdExamsController::class, 'actionUpdate']);
-        Route::post('/casd-exams/create/{id}', [CasdExamsController::class, 'actionCreate']);
+        Route::get('//exams/casd', [CasdExamsController::class, 'actionIndex']);
+        Route::get('//exams/casd/{id}', [CasdExamsController::class, 'actionGet']);
+        Route::put('//exams/casd/update/{id}', [CasdExamsController::class, 'actionUpdate']);
+        Route::post('//exams/casd/create/{id}', [CasdExamsController::class, 'actionCreate']);
         // @TODO: Check this route
-        Route::post('/casd-exams/{id}/delete', [CasdExamsController::class, 'actionDelete']);
+        Route::post('//exams/casd/{id}/delete', [CasdExamsController::class, 'actionDelete']);
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);

@@ -37,13 +37,13 @@ const routes = [
         role: ['admin', 'sub_admin'],
         sublinks: [
             {
-                routeName: 'leiter-exams',
+                routeName: 'exams/leiter',
                 label: 'Leiter Reports',
                 icon: <FaTable />,
                 role: ['admin', 'sub_admin']
             },
             {
-                routeName: 'abas-exams',
+                routeName: 'exams/abas',
                 label: 'ABAS Reports',
                 icon: <FaTable />,
                 role: ['admin', 'sub_admin']

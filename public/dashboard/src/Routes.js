@@ -97,16 +97,16 @@ const Routes = () => {
         <Route path="/examinees/:id/exams" component={ExamsIndex} exact />
 
         {/* Leiter Exams */}
-        <Route path="/leiter-exams" component={ReportsLeiterIndex} exact />
-        <Route path="/leiter-exams/:id" component={LeiterIndex} exact />
+        <Route path="/exams/leiter" component={ReportsLeiterIndex} exact />
+        <Route path="/exams/leiter/:id" component={LeiterIndex} exact />
 
         {/* Abas Exams */}
-        <Route path="/abas-exams" component={ReportsAbasIndex} exact />
-        {/* <Route path="/abas-exams/:id" component={LeiterIndex} exact /> */}
+        <Route path="/exams/abas" component={ReportsAbasIndex} exact />
+        {/* <Route path="/exams/abas/:id" component={LeiterIndex} exact /> */}
 
         {/* Abas Exams */}
-        <Route path="/abas-exams/:id/:sub_domain_id" component={AbasIndex} exact />
-        <Route path="/casd-exams/:id" component={CasdIndex} exact />
+        <Route path="/exams/abas/:id/:sub_domain_id" component={AbasIndex} exact />
+        <Route path="//exams/casd/:id" component={CasdIndex} exact />
 
         {/* Leiter Records */}
         <Route path="/leiter-records/:type" component={LeiterRecordsIndex} exact />
