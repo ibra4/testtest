@@ -4,9 +4,9 @@ import Filters from './Filters'
 import { useDataTable } from 'providers/hooks/useDataTable'
 import FullLoader from 'components/FullLoader'
 import { useTranslation } from 'react-i18next'
-import ReportsLeiterView from './ReportsLeiterView'
+import View from './View'
 
-function ReportsLeiterIndex() {
+function ExamsLeiterIndex() {
     const { t } = useTranslation();
     const [status, setStatus] = useState("not-ready")
     const [queryParams, setQueryParams] = useState({
@@ -22,9 +22,9 @@ function ReportsLeiterIndex() {
         <Layout title={t('Leiter International Performance Scale - Third Edition')}>
             <Filters onSearch={onSearch} queryParams={queryParams} />
             {isLoading && <FullLoader />}
-            <ReportsLeiterView data={data} onSearch={onSearch} queryParams={queryParams} handleDelete={handleDelete} />
+            <View data={data} onSearch={onSearch} queryParams={queryParams} handleDelete={handleDelete} />
         </Layout>
     )
 }
 
-export default ReportsLeiterIndex
+export default ExamsLeiterIndex

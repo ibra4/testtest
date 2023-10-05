@@ -20,7 +20,7 @@ import ProfileIndex from 'pages/Profile/ProfileIndex';
 import HistoryIndex from 'pages/History/HistoryIndex';
 import ExamsIndex from 'pages/Examinee/Exams/ExamsIndex';
 import LeiterIndex from 'pages/Examinee/Types/Leiter/LeiterIndex';
-import ReportsLeiterIndex from 'pages/ReportsLeiter/ReportsLeiterIndex';
+import ExamsLeiterIndex from 'pages/ExamsLeiter/ExamsLeiterIndex';
 import NotificationsIndex from 'pages/Settings/Notifications/NotificationsIndex';
 import NotificationFormIndex from 'pages/Settings/NotificationForm/NotificationFormIndex';
 import AbasDomainsIndex from 'pages/Settings/AbasDomains/AbasDomainsIndex';
@@ -38,7 +38,8 @@ import CasdQuestionsIndex from 'pages/Settings/CasdQuestions/CasdQuestionsIndex'
 import CasdQuestionFormIndex from 'pages/Settings/CasdQuestionForm/CasdQuestionFormIndex';
 import CasdIndex from 'pages/Examinee/Types/Casd/CasdIndex';
 import GeneralSettingsIndex from 'pages/Settings/GeneralSettings/GeneralSettingsIndex';
-import ReportsAbasIndex from 'pages/ReportsAbas/ReportsAbasIndex';
+import ExamsAbasIndex from 'pages/ExamsAbas/ExamsAbasIndex';
+import ExamsCasdIndex from 'pages/ExamsCasd/ExamsCasdIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -97,15 +98,15 @@ const Routes = () => {
         <Route path="/examinees/:id/exams" component={ExamsIndex} exact />
 
         {/* Leiter Exams */}
-        <Route path="/exams/leiter" component={ReportsLeiterIndex} exact />
+        <Route path="/exams/leiter" component={ExamsLeiterIndex} exact />
         <Route path="/exams/leiter/:id" component={LeiterIndex} exact />
 
         {/* Abas Exams */}
-        <Route path="/exams/abas" component={ReportsAbasIndex} exact />
-        {/* <Route path="/exams/abas/:id" component={LeiterIndex} exact /> */}
-
-        {/* Abas Exams */}
+        <Route path="/exams/abas" component={ExamsAbasIndex} exact />
         <Route path="/exams/abas/:id/:sub_domain_id" component={AbasIndex} exact />
+
+        {/* CASD Exams */}
+        <Route path="/exams/casd" component={ExamsCasdIndex} exact />
         <Route path="/exams/casd/:id" component={CasdIndex} exact />
 
         {/* Leiter Records */}

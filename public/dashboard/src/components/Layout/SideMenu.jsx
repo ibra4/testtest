@@ -46,6 +46,12 @@ const routes = [
                 label: 'ABAS Exams',
                 icon: <FaTable />,
                 role: ['admin', 'sub_admin']
+            },
+            {
+                routeName: 'exams/casd',
+                label: 'Casd Exams',
+                icon: <FaTable />,
+                role: ['admin', 'sub_admin']
             }
         ]
     }

@@ -10,8 +10,9 @@ import Pagination from 'components/Datatable/Pagination';
 import WhiteBox from 'components/WhiteBox';
 import { useTranslation } from 'react-i18next';
 import { hasRole } from 'providers/helpers';
+import moment from 'moment';
 
-const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
+const View = ({ data, queryParams, onSearch, handleDelete }) => {
     const { t } = useTranslation();
     const { push } = useHistory();
 
@@ -22,13 +23,13 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
             <td>{item.examineename}</td>
             <td>{item.examinername}</td>
             <td>{item.centername}</td>
-            <td>{item.created_at}</td>
+            <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
             <td>
                 <div className="d-flex">
                     <ActionButton
                         icon={<FaEye />}
                         label={t('View Exam')}
-                        onClick={() => push(`/exams/leiter/${item.id}`)}
+                        onClick={() => push(`/exams/casd/${item.id}`)}
                         variant="primary"
                     />
                     {hasRole('root') && (
@@ -54,14 +55,14 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
                         <FaPlus />
                         <span className="ms-2">{t('create_new', { name: t('Admin') })}</span>
                     </Link> */}
-                    <a
+                    {/* <a
                         className="btn btn-success ms-2"
                         target="_blank"
-                        href={`/leiter-reports/export?${QueryString.stringify(queryParams)}`}
+                        href={`/exams/casd/export?${QueryString.stringify(queryParams)}`}
                     >
                         <FaFileExcel />
                         <span className="ms-2">{t('Export to Excel')}</span>
-                    </a>
+                    </a> */}
                 </div>
             </div>
             <WhiteBox>
@@ -86,4 +87,4 @@ const ReportsLeiterView = ({ data, queryParams, onSearch, handleDelete }) => {
     );
 };
 
-export default ReportsLeiterView;
+export default View;

@@ -10,9 +10,8 @@ import Pagination from 'components/Datatable/Pagination';
 import WhiteBox from 'components/WhiteBox';
 import { useTranslation } from 'react-i18next';
 import { hasRole } from 'providers/helpers';
-import moment from 'moment';
 
-const ReportsAbasView = ({ data, queryParams, onSearch, handleDelete }) => {
+const View = ({ data, queryParams, onSearch, handleDelete }) => {
     const { t } = useTranslation();
     const { push } = useHistory();
 
@@ -23,13 +22,13 @@ const ReportsAbasView = ({ data, queryParams, onSearch, handleDelete }) => {
             <td>{item.examineename}</td>
             <td>{item.examinername}</td>
             <td>{item.centername}</td>
-            <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
+            <td>{item.created_at}</td>
             <td>
                 <div className="d-flex">
                     <ActionButton
                         icon={<FaEye />}
                         label={t('View Exam')}
-                        onClick={() => push(`/exams/abas/${item.id}/introduction`)}
+                        onClick={() => push(`/exams/leiter/${item.id}`)}
                         variant="primary"
                     />
                     {hasRole('root') && (
@@ -58,7 +57,7 @@ const ReportsAbasView = ({ data, queryParams, onSearch, handleDelete }) => {
                     <a
                         className="btn btn-success ms-2"
                         target="_blank"
-                        href={`/exams/abas/export?${QueryString.stringify(queryParams)}`}
+                        href={`/leiter-reports/export?${QueryString.stringify(queryParams)}`}
                     >
                         <FaFileExcel />
                         <span className="ms-2">{t('Export to Excel')}</span>
@@ -87,4 +86,4 @@ const ReportsAbasView = ({ data, queryParams, onSearch, handleDelete }) => {
     );
 };
 
-export default ReportsAbasView;
+export default View;

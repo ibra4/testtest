@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCasdExamRequest;
 use App\Http\Requests\UpdateCasdExamRequest;
 use App\Http\Resources\CasdExamFullResource;
+use App\Queries\CasdExamsQuery;
 use App\Services\CasdExamsService;
+use Illuminate\Http\Request;
 use Throwable;
 
 class CasdExamsController  extends Controller
@@ -18,10 +20,28 @@ class CasdExamsController  extends Controller
      */
     protected $casdExamsService;
 
+    /**
+     * @var CasdExamsQuery
+     */
+    protected $casdExamsQuery;
+
     public function __construct(
-        CasdExamsService $casdExamsService
+        CasdExamsService $casdExamsService,
+        CasdExamsQuery $casdExamsQuery
     ) {
         $this->casdExamsService = $casdExamsService;
+        $this->casdExamsQuery = $casdExamsQuery;
+    }
+
+    /**
+     * @param Request $request
+     *   Request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function actionIndex(Request $request)
+    {
+        $query = $this->casdExamsQuery->get($request);
+        return $this->sendSuccessReponse($query->paginate());
     }
 
     /**
