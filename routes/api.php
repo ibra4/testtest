@@ -156,12 +156,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/exams/abas/{id}/delete', [AbasExamsController::class, 'actionDelete']);
 
         // Casd Exams
-        Route::get('//exams/casd', [CasdExamsController::class, 'actionIndex']);
-        Route::get('//exams/casd/{id}', [CasdExamsController::class, 'actionGet']);
-        Route::put('//exams/casd/update/{id}', [CasdExamsController::class, 'actionUpdate']);
-        Route::post('//exams/casd/create/{id}', [CasdExamsController::class, 'actionCreate']);
+        Route::get('/exams/casd', [CasdExamsController::class, 'actionIndex']);
+        Route::get('/exams/casd/{id}', [CasdExamsController::class, 'actionGet']);
+        Route::put('/exams/casd/update/{id}', [CasdExamsController::class, 'actionUpdate']);
+        Route::post('/exams/casd/create/{id}', [CasdExamsController::class, 'actionCreate']);
         // @TODO: Check this route
-        Route::post('//exams/casd/{id}/delete', [CasdExamsController::class, 'actionDelete']);
+        Route::post('/exams/casd/{id}/delete', [CasdExamsController::class, 'actionDelete']);
     });
 
     Route::get('/my-profile/data', [MyProfileController::class, 'index']);

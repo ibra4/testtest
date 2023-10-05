@@ -106,7 +106,7 @@ const Routes = () => {
 
         {/* Abas Exams */}
         <Route path="/exams/abas/:id/:sub_domain_id" component={AbasIndex} exact />
-        <Route path="//exams/casd/:id" component={CasdIndex} exact />
+        <Route path="/exams/casd/:id" component={CasdIndex} exact />
 
         {/* Leiter Records */}
         <Route path="/leiter-records/:type" component={LeiterRecordsIndex} exact />

@@ -135,7 +135,7 @@ export const getExamViewUrl = (examType, examId) => {
         case 'mpr':
             return `/mpr-exams/${examId}`
         case 'casd':
-            return `//exams/casd/${examId}`
+            return `/exams/casd/${examId}`
         default:
             setStatus('error')
     }
