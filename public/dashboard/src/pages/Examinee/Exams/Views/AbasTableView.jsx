@@ -58,7 +58,7 @@ function AbasTableView({ rows, onCreateExam }) {
                 />
                 <div className="ms-2">
                     <AbasExamFormModal
-                        title={t('Create exam for caregiver')}
+                        title={t('Create exam for tracher / caregiver')}
                         onSubmit={(values) => handleCreateAbasExam(values, 'teacher_caregiver')}
                     />
                 </div>
@@ -66,6 +66,12 @@ function AbasTableView({ rows, onCreateExam }) {
                     <AbasExamFormModal
                         title={t('Create exam for parent')}
                         onSubmit={(values) => handleCreateAbasExam(values, 'parent')}
+                    />
+                </div>
+                <div className="ms-2">
+                    <AbasExamFormModal
+                        title={t('Create exam for parent / caregiver')}
+                        onSubmit={(values) => handleCreateAbasExam(values, 'parent_caregiver')}
                     />
                 </div>
                 <div className="ms-2">

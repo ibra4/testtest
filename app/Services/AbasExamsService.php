@@ -140,13 +140,16 @@ class AbasExamsService
                 $category = AbasExamTypesEnum::TEACHER_CAREGIVER_2_5;
                 break;
             case 'parent':
-                if ($ageInMonths < 0 || $ageInMonths > 263) {
-                    throw new AgeNotAllowedException(__("ABAS parent's exam must be for ages 0 to 21 years"));
-                } elseif ($ageInMonths >= 0 && $ageInMonths <= 71) {
-                    $category = AbasExamTypesEnum::PARENT_0_5;
-                } elseif ($ageInMonths >= 72) {
-                    $category = AbasExamTypesEnum::PARENT_6_21;
+                if ($ageInMonths < 60 || $ageInMonths > 263) {
+                    throw new AgeNotAllowedException(__("ABAS parent exam must be for ages 5 to 21 years"));
                 }
+                $category = AbasExamTypesEnum::PARENT_5_21;
+                break;
+            case 'parent_caregiver':
+                if ($ageInMonths < 0 || $ageInMonths > 71) {
+                    throw new AgeNotAllowedException(__("ABAS parent caregiver exam must be for ages 0 to 5 years"));
+                }
+                $category = AbasExamTypesEnum::PARENT_CAREGIVER_0_5;
                 break;
             case 'adult':
                 if ($ageInMonths < 192 || $ageInMonths > 1091) {
