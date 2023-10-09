@@ -7,3 +7,9 @@ parent_72_263 -> parent_60_263
 php artisan db:seed --class AbasDomainsTableSeeder
 php artisan db:seed --class AbasSubDomainsTableSeeder
 php artisan db:seed --class AbasQuestionsTableSeeder
+
+use bana
+db.abas_scaled_scores.deleteMany({min_age: {$gte: 72}, for: 'parent'})
+db.abas_scaled_scores.updateMany({for: 'parent'}, {$set: {for: 'parent_caregiver'}})
+
+mongoexport --db bana --collection abas_scaled_scores --type=csv --fields scaled_score,raw_score,min_age,max_age,sub_domain,for --out resources/tables/abas/abas_scaled_scores.csv --uri mongodb://localhost:27017

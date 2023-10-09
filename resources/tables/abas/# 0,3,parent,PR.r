@@ -15,14 +15,10 @@ mongoimport --db bana --collection abas_composite --type=csv --file resources/ta
 # 54,59,parent_caregiver,PR
 # 60,71,parent_caregiver,PR
 
-# ,60,71,parent,PR
-# ,72,83,parent,PR
-# ,84,95,parent,PR
-# ,96,107,parent,PR
-# ,108,119,parent,PR
-# ,120,131,parent,PR
-# ,132,143,parent,PR
-# ,144,155,parent,PR
-# ,156,179,parent,PR
-# ,180,203,parent,PR
-# ,204,263,parent,PR
+# ,24,29,teacher_caregiver,GAC
+# ,30,35,teacher_caregiver,GAC
+# ,36,41,teacher_caregiver,GAC
+# ,42,47,teacher_caregiver,GAC
+# ,48,53,teacher_caregiver,GAC
+# ,54,59,teacher_caregiver,GAC
+# ,60,71,teacher_caregiver,GAC
