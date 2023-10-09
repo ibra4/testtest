@@ -15,11 +15,11 @@ class CreateAbasExamRequest extends FormRequest
      */
     public function rules()
     {
-        $allowedFor = AbasExamTypesEnum::getAllFields();
+        $allowed_categories = implode(',', AbasExamTypesEnum::getAllFields());
         return [
             'application_date' => 'required|date',
             'examiner_notes' => new MaxWordsRule(),
-            'for' => "required|string|in:$allowedFor"
+            'for' => "required|string|in:$allowed_categories"
         ];
     }
 }
