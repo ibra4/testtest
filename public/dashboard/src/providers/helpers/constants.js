@@ -14,18 +14,7 @@ export const CONSTANTS = {
     ],
     NOTIFICATION_TYPES: [
         { id: 'announcement', label: 'Announcement' }
-    ],
-    SUB_DOMAIN_FOR: [
-        { id: 'teacher', label: 'Teacher' },
-        { id: 'parent', label: 'Parent' },
-        { id: 'adult', label: 'Adult' }
-    ],
-    ABAS_EXAM_FOR: [
-        { id: 'teacher', label: 'Teacher' },
-        { id: 'teacher_caregiver', label: 'Teacher Caregiver' },
-        { id: 'parent', label: 'Parent' },
-        { id: 'adult', label: 'Adult' }
-    ],
+    ]
 }
 
 export const generalErrorText = 'Something went wrong, please contact website administrator';

@@ -1,8 +1,8 @@
-teacher_24_71 -> teacher_caregiver_24_71
-teacher_72_263 -> teacher_60_263
+teacher_24_71 -> teacher_caregiver
+teacher_72_263 -> teacher
 
-parent_0_71 -> parent_caregiver_0_71
-parent_72_263 -> parent_60_263
+parent_0_71 -> parent_caregiver
+parent_72_263 -> parent
 
 php artisan db:seed --class AbasDomainsTableSeeder
 php artisan db:seed --class AbasSubDomainsTableSeeder

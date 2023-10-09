@@ -78,21 +78,20 @@ class AbasExamsService
 
         $ageInMonths = $this->generalExamsService->calculateAgeFromBirthdayAndAppDate($examinee->birthday, $request->application_date);
 
-        $category = $this->getCategoryFromAge($request->for, $ageInMonths);
+        $this->validateCategoryAge($request->for, $ageInMonths);
 
         DB::beginTransaction();
         try {
             $abasExam = $this->abasExamRepository->createExam([
                 'examinee_id' => $examineeId,
                 'created_by' => $user->id,
-                'category' => $category,
+                'category' => $request->for,
                 'application_date' => $request->application_date,
                 'examiner_notes' => $request->examiner_notes
             ]);
 
-            // @TODO: Check age of the examinee, some subdomains don't have scaled_score for that age
             // 1- Get Sub domains for category
-            $subDomains = $this->abasSubDomainsRepository->getSubDomainsByCategory($category, $ageInMonths);
+            $subDomains = $this->abasSubDomainsRepository->getSubDomainsByCategory($request->for, $ageInMonths);
 
             // 2- Create Exam Subdomains and Questions
             $this->abasExamSubDomainsRepository->createExamSubdomainsAndQuestions($abasExam->id, $subDomains);
@@ -117,51 +116,41 @@ class AbasExamsService
     /**
      * @param  mixed $forWho
      * @param  mixed $ageInMonths
-     * @return string
+     * @throws AgeNotAllowedException
+     * @return void
      */
-    private function getCategoryFromAge(string $forWho, int $ageInMonths)
+    private function validateCategoryAge(string $forWho, int $ageInMonths)
     {
-        // 263  => 21 years 11 moths
-        // 71   => 5 years 11 months
-        // 24   => 2 years
-        // 192  => 16 years
-        // 1091 => 90 years 11 months
         switch ($forWho) {
-            case 'teacher':
+            case AbasExamTypesEnum::TEACHER:
                 if ($ageInMonths < 60 || $ageInMonths > 263) {
                     throw new AgeNotAllowedException(__("ABAS teacher's exam must be for ages 5 to 21 years"));
                 }
-                $category = AbasExamTypesEnum::TEACHER_5_21;
                 break;
-            case 'teacher_caregiver':
+            case AbasExamTypesEnum::TEACHER_CAREGIVER:
                 if ($ageInMonths < 24 || $ageInMonths > 71) {
                     throw new AgeNotAllowedException(__("ABAS teacher caregiver exam must be for ages 2 to 5 years"));
                 }
-                $category = AbasExamTypesEnum::TEACHER_CAREGIVER_2_5;
                 break;
-            case 'parent':
+            case AbasExamTypesEnum::PARENT:
                 if ($ageInMonths < 60 || $ageInMonths > 263) {
                     throw new AgeNotAllowedException(__("ABAS parent exam must be for ages 5 to 21 years"));
                 }
-                $category = AbasExamTypesEnum::PARENT_5_21;
                 break;
-            case 'parent_caregiver':
+            case AbasExamTypesEnum::PARENT_CAREGIVER:
                 if ($ageInMonths < 0 || $ageInMonths > 71) {
                     throw new AgeNotAllowedException(__("ABAS parent caregiver exam must be for ages 0 to 5 years"));
                 }
-                $category = AbasExamTypesEnum::PARENT_CAREGIVER_0_5;
                 break;
-            case 'adult':
+            case AbasExamTypesEnum::ADULT_BY_SELF:
+            case AbasExamTypesEnum::ADULT_BY_OTHERS:
                 if ($ageInMonths < 192 || $ageInMonths > 1091) {
                     throw new AgeNotAllowedException(__("ABAS adult's exam must be for ages 16 to 90 years"));
                 }
-                $category = AbasExamTypesEnum::ADULT_16_90;
                 break;
             default:
                 throw new Exception('Invalid for value provided');
         }
-
-        return $category;
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Enums\AbasExamTypesEnum;
 use App\Models\AbasScaledScore;
 
 class AbasRecordsService
@@ -14,9 +13,8 @@ class AbasRecordsService
     /**
      * Ex: $category = 'parent_0_5'
      */
-    public function getScaledScore(int $rawScore, $age,  $category, $subDomainCode)
+    public function getScaledScore(int $rawScore, $age, $forWho, $subDomainCode)
     {
-        $forWho = AbasExamTypesEnum::getForWho($category);
         $abasScaledScore = AbasScaledScore::select('scaled_score')
             ->where('for', strtolower($forWho))
             ->where('raw_score', $rawScore)
@@ -36,9 +34,8 @@ class AbasRecordsService
      * @param string $subDomainCode
      * @return bool
      */
-    public function isAgeAllowed(int $age, string $category, string $subDomainCode): bool
+    public function isAgeAllowed(int $age, string $forWho, string $subDomainCode): bool
     {
-        $forWho = AbasExamTypesEnum::getForWho($category);
         $abasScaledScore = AbasScaledScore::select('scaled_score')
             ->where('for', strtolower($forWho))
             ->where('sub_domain', strtolower($subDomainCode))

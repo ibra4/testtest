@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\AbasExamTypesEnum;
 use App\Rules\MaxWordsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,10 +15,11 @@ class CreateAbasExamRequest extends FormRequest
      */
     public function rules()
     {
+        $allowedFor = AbasExamTypesEnum::getAllFields();
         return [
             'application_date' => 'required|date',
             'examiner_notes' => new MaxWordsRule(),
-            'for' => 'required|string|in:teacher,teacher_caregiver,parent,adult'
+            'for' => "required|string|in:$allowedFor"
         ];
     }
 }

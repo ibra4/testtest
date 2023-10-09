@@ -76,8 +76,15 @@ function AbasTableView({ rows, onCreateExam }) {
                 </div>
                 <div className="ms-2">
                     <AbasExamFormModal
-                        title={t('Create exam for adult')}
-                        onSubmit={(values) => handleCreateAbasExam(values, 'adult')}
+                        title={t('Create exam for adult - by self')}
+                        onSubmit={(values) => handleCreateAbasExam(values, 'adult_by_self')}
+                        disabled
+                    />
+                </div>
+                <div className="ms-2">
+                    <AbasExamFormModal
+                        title={t('Create exam for adult - by others')}
+                        onSubmit={(values) => handleCreateAbasExam(values, 'adult_by_others')}
                         disabled
                     />
                 </div>
