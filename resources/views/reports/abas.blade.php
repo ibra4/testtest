@@ -96,19 +96,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>المركب التكيفي العام (GAC)</td>
-                        <td>{{ $totalScaledScore }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
                     @foreach ($domains as $domain)
                         <tr>
                             <td>{{ $domain['name'] }}</td>
                             <td>{{ $domain['sum'] }}</td>
-                            <td>{{ $domain['compiste']['std_score'] }}</td>
-                            <td>{{ $domain['compiste']['per_rank'] }}</td>
+                            <td>{{ $domain['composite']['std_score'] }}</td>
+                            <td>{{ $domain['composite']['per_rank'] }}</td>
                             <td></td>
                         </tr>
                     @endforeach

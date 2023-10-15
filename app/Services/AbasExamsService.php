@@ -198,7 +198,7 @@ class AbasExamsService
      */
     public function extrctDomainsFromExamScaledScores(int $age, string $category, Collection $examScaledScores): Collection
     {
-        return $examScaledScores
+        $mainDomains = $examScaledScores
             ->filter(function ($result) {
                 return $result->domain_id;
             })
@@ -214,9 +214,22 @@ class AbasExamsService
                     'id' => $subDomain->domain_id,
                     'name' => $subDomain->domain_name,
                     'sum' => $sum,
-                    'compiste' => $this->abasRecordsService->getCompisteAndPercentile($sum, $age, $category, $subDomain->domain_code)
+                    'composite' => $this->abasRecordsService->getCompositeAndPercentile($sum, $age, $category, $subDomain->domain_code)
                 ];
             });
+
+        $additionalDomains = config("abas.additional_domains.$category", []);
+        foreach ($additionalDomains as $additionalDomain) {
+            $additionalDomainSum = $this->getAdditionalDomainSum($additionalDomain['sum_of'], $examScaledScores);
+            $mainDomains->prepend([
+                'id' => $additionalDomain['code'],
+                'name' => $additionalDomain['name'],
+                'sum' => $additionalDomainSum,
+                'composite' => $this->abasRecordsService->getCompositeAndPercentile($additionalDomainSum, $age, $category, $additionalDomain['code'])
+            ]);
+        }
+
+        return $mainDomains;
     }
 
     /**
@@ -240,5 +253,21 @@ class AbasExamsService
     public function getExamSubdomainsResults(int $examId): Collection
     {
         return $this->abasExamRepository->getExamSubdomainsResults($examId);
+    }
+
+    /**
+     * Get additional domain sum
+     * 
+     * @param array $subDomains
+     * @param Collection $examScaledScores
+     * @return int
+     */
+    private function getAdditionalDomainSum(array $subDomains, Collection $examScaledScores): int
+    {
+        return $examScaledScores->filter(function ($item) use ($subDomains) {
+            return in_array($item->code, $subDomains);
+        })->sum(function ($item) {
+            return is_numeric($item->scaled_score) ? $item->scaled_score : 0;
+        });
     }
 }

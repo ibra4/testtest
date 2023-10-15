@@ -48,7 +48,7 @@ class AbasRecordsService
     }
 
     /**
-     * Get compiste score and percentile for the given raw score
+     * Get composite score and percentile for the given raw score
      * 
      * @param int $rawScore
      * @param int $age
@@ -56,7 +56,7 @@ class AbasRecordsService
      * @param string $subDomainCode
      * @return array
      */
-    public function getCompisteAndPercentile(int $rawScore, int $age, string $forWho, string $subDomainCode): array
+    public function getCompositeAndPercentile(int $rawScore, int $age, string $forWho, string $subDomainCode): array
     {
         $abasComposite = AbasComposite::select('std_score', 'per_rank')
             ->where('for', strtolower($forWho))
