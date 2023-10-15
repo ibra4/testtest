@@ -18,6 +18,7 @@ const View = ({ data, onSearch, queryParams }) => {
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.name_en}</td>
+            <td>{item.code}</td>
             <td>{item.domainname}</td>
             <td>{item.translated_category}</td>
             <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
@@ -50,6 +51,7 @@ const View = ({ data, onSearch, queryParams }) => {
                             <th>{t('ID')}</th>
                             <th>{t('Name')}</th>
                             <th>{t('Name En')}</th>
+                            <th>{t('Code')}</th>
                             <th>{t('Domain')}</th>
                             <th>{t('Category')}</th>
                             <th>{t('Created At')}</th>

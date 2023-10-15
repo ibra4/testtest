@@ -38,7 +38,7 @@ function Form({ initialValues, config, onSubmit }) {
                 <WhiteBox>
                     <form onSubmit={handleSubmit}>
                         <Row>
-                            <Col md={6}>
+                            <Col md={4}>
                                 <TextField
                                     name="name"
                                     label="Name"
@@ -49,7 +49,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     className="mb-3"
                                 />
                             </Col>
-                            <Col md={6}>
+                            <Col md={4}>
                                 <TextField
                                     name="name_en"
                                     label="Name En"
@@ -58,6 +58,18 @@ function Form({ initialValues, config, onSubmit }) {
                                     onBlur={handleBlur}
                                     error={errors.name_en}
                                     className="mb-3"
+                                />
+                            </Col>
+                            <Col md={4}>
+                                <TextField
+                                    name="code"
+                                    label="Code"
+                                    onChange={handleChange}
+                                    value={values.code}
+                                    onBlur={handleBlur}
+                                    error={errors.code}
+                                    className="mb-3"
+                                    helperText="This code for getting scaled score (Capital Letters)"
                                 />
                             </Col>
                         </Row>

@@ -60,7 +60,7 @@
                                     <td class="bg-secondary"></td>
                                 @endif
                             @endforeach
-                            <td class="text-danger">2:0-2:2</td>
+                            <td>{{ $examResult->age_equ }}</td>
                         </tr>
                     @endforeach
                     <tr>
@@ -107,8 +107,8 @@
                         <tr>
                             <td>{{ $domain['name'] }}</td>
                             <td>{{ $domain['sum'] }}</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $domain['compiste']['std_score'] }}</td>
+                            <td>{{ $domain['compiste']['per_rank'] }}</td>
                             <td></td>
                         </tr>
                     @endforeach

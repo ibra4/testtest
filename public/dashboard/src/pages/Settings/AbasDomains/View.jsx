@@ -15,6 +15,7 @@ const View = ({ data }) => {
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.name_en}</td>
+            <td>{item.code}</td>
             <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
             <td>
                 <div className="d-flex">
@@ -43,6 +44,7 @@ const View = ({ data }) => {
                         <th>{t('ID')}</th>
                         <th>{t('Name')}</th>
                         <th>{t('Name En')}</th>
+                        <th>{t('Code')}</th>
                         <th>{t('Created At')}</th>
                         <th>{t('Actions')}</th>
                     </tr>

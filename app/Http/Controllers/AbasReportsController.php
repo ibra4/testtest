@@ -30,7 +30,7 @@ class AbasReportsController extends Controller
 
         $examScaledScores = $this->abasExamsService->getSubDomainsScaledScores($abasExam->id);
 
-        $domains = $this->abasExamsService->extrctDomainsFromExamScaledScores($examScaledScores);
+        $domains = $this->abasExamsService->extrctDomainsFromExamScaledScores($abasExam->age, $abasExam->category, $examScaledScores);
 
         $totalScaledScore = $this->abasExamsService->getTotalScaledScore($examScaledScores);
 

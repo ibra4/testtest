@@ -38,6 +38,7 @@ class AbasExamRepository
             'abas_sub_domains.code',
             'abas_domains.name as domain_name',
             'abas_domains.id as domain_id',
+            'abas_domains.code as domain_code',
             DB::raw('COUNT(abas_sub_domain_questions.id) as total_questions'),
             DB::raw('SUM(abas_sub_domain_questions.result) as result'),
         );

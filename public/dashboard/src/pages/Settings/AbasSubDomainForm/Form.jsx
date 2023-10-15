@@ -92,7 +92,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     onBlur={handleBlur}
                                     error={errors.code}
                                     className="mb-3"
-                                    helperText="This code for getting scaled score"
+                                    helperText="This code for getting scaled score (Small Letters)"
                                 />
                             </Col>
                         </Row>

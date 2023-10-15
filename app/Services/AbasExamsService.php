@@ -186,6 +186,7 @@ class AbasExamsService
 
         return $results->map(function ($item) use ($abasExam) {
             $item->scaled_score = $this->abasRecordsService->getScaledScore($item->result, $abasExam->age, $abasExam->category, $item->code);
+            $item->age_equ = $this->abasRecordsService->getEquivalentAge($item->result, $abasExam->category, $item->code);
             return $item;
         });
     }
@@ -195,24 +196,25 @@ class AbasExamsService
      * 
      * @param Collection $examScaledScores
      */
-    public function extrctDomainsFromExamScaledScores(Collection $examScaledScores): Collection
+    public function extrctDomainsFromExamScaledScores(int $age, string $category, Collection $examScaledScores): Collection
     {
         return $examScaledScores
             ->filter(function ($result) {
                 return $result->domain_id;
             })
             ->groupBy('domain_id')
-            ->map(function ($groupedItems) {
-                $domain = $groupedItems->first();
+            ->map(function ($groupedItems) use ($age, $category) {
+                $subDomain = $groupedItems->first();
 
                 $sum = $groupedItems->sum(function ($item) {
                     return is_numeric($item->scaled_score) ? $item->scaled_score : 0;
                 });
 
                 return [
-                    'id' => $domain->domain_id,
-                    'name' => $domain->domain_name,
+                    'id' => $subDomain->domain_id,
+                    'name' => $subDomain->domain_name,
                     'sum' => $sum,
+                    'compiste' => $this->abasRecordsService->getCompisteAndPercentile($sum, $age, $category, $subDomain->domain_code)
                 ];
             });
     }

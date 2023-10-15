@@ -23,6 +23,7 @@ class AbasSubDomainsQuery
             'abas_sub_domains.name_en',
             'abas_sub_domains.category',
             'abas_domains.name as domainname',
+            'abas_sub_domains.code as code',
             'abas_sub_domains.created_at',
         );
 

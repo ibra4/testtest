@@ -10,7 +10,8 @@ import { useTranslation } from 'react-i18next'
 
 const defaultDomain = {
     name: '',
-    name_en: ''
+    name_en: '',
+    code: ''
 }
 
 function AbasDomainFormIndex() {
