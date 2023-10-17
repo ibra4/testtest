@@ -38,12 +38,12 @@
             <table class="table table-bordered text-center">
                 <thead>
                     <tr>
-                        <th colspan="7">النتيجة الأولية للتحويلات المحسوبة</th>
+                        <th colspan="{{ count($domains) + 3 }}">النتيجة الأولية للتحويلات المحسوبة</th>
                     </tr>
                     <tr>
                         <td>مجال المهارات التكيفية</td>
                         <td>صافي المجموع</td>
-                        <td colspan="4">الدرجة الموزونة</td>
+                        <td colspan="{{ count($domains) }}">الدرجة الموزونة</td>
                         <td>المكافئ العمري</td>
                     </tr>
                 </thead>
@@ -53,10 +53,10 @@
                             <td>{{ $examResult->name }}</td>
                             <td>{{ $examResult->result }}</td>
                             <td>{{ $examResult->scaled_score }}</td>
-                            @foreach ($domains as $domain)
+                            @foreach ($domains as $i => $domain)
                                 @if ($domain['id'] == $examResult->domain_id)
                                     <td>{{ $examResult->scaled_score }}</td>
-                                @else
+                                @elseif ($i != 0)
                                     <td class="bg-secondary"></td>
                                 @endif
                             @endforeach
@@ -65,7 +65,7 @@
                     @endforeach
                     <tr>
                         <td colspan="2">مجموع الدرجات الموزونة</td>
-                        <td>{{ $totalScaledScore }}</td>
+                        {{-- <td>{{ $totalScaledScore }}</td> --}}
                         @foreach ($domains as $domain)
                             <td>{{ $domain['sum'] }}</td>
                         @endforeach
@@ -73,7 +73,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">ملاحظة: المهارات الحركية مدرج في (د.م.ع) ولكن ليس في المجالات التكيفية</td>
-                        <td>الدرجة المركبة العامة (د.م.ع)</td>
+                        {{-- <td>الدرجة المركبة العامة (د.م.ع)</td> --}}
                         @foreach ($domains as $domain)
                             <td>{{ $domain['name'] }}</td>
                         @endforeach
@@ -102,7 +102,7 @@
                             <td>{{ $domain['sum'] }}</td>
                             <td>{{ $domain['composite']['std_score'] }}</td>
                             <td>{{ $domain['composite']['per_rank'] }}</td>
-                            <td></td>
+                            <td>{{ $domain['confidence'] }}</td>
                         </tr>
                     @endforeach
                 </tbody>

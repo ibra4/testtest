@@ -210,22 +210,46 @@ class AbasExamsService
                     return is_numeric($item->scaled_score) ? $item->scaled_score : 0;
                 });
 
+                $composite = $this->abasRecordsService->getCompositeAndPercentile($sum, $age, $category, $subDomain->domain_code);
                 return [
                     'id' => $subDomain->domain_id,
                     'name' => $subDomain->domain_name,
                     'sum' => $sum,
-                    'composite' => $this->abasRecordsService->getCompositeAndPercentile($sum, $age, $category, $subDomain->domain_code)
+                    'composite' => $composite,
+                    'confidence' => $this->abasRecordsService->getConfidence(
+                        $composite['std_score'],
+                        $age,
+                        $category,
+                        $subDomain->domain_code,
+                        $sum
+                    )
                 ];
             });
 
         $additionalDomains = config("abas.additional_domains.$category", []);
         foreach ($additionalDomains as $additionalDomain) {
-            $additionalDomainSum = $this->getAdditionalDomainSum($additionalDomain['sum_of'], $examScaledScores);
+            $additionalDomainSum = $this->getAdditionalDomainSum(
+                $additionalDomain['sum_of'],
+                $examScaledScores
+            );
+            $composite = $this->abasRecordsService->getCompositeAndPercentile(
+                $additionalDomainSum,
+                $age,
+                $category,
+                $additionalDomain['code']
+            );
             $mainDomains->prepend([
                 'id' => $additionalDomain['code'],
                 'name' => $additionalDomain['name'],
                 'sum' => $additionalDomainSum,
-                'composite' => $this->abasRecordsService->getCompositeAndPercentile($additionalDomainSum, $age, $category, $additionalDomain['code'])
+                'composite' => $composite,
+                'confidence' => $this->abasRecordsService->getConfidence(
+                    $composite['std_score'],
+                    $age,
+                    $category,
+                    $additionalDomain['code'],
+                    $additionalDomainSum
+                )
             ]);
         }
 

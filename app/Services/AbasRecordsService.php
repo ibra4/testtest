@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\AbasAgeEqu;
 use App\Models\AbasComposite;
 use App\Models\AbasScaledScore;
+use App\Models\AbasConfidenceInterval;
 
 class AbasRecordsService
 {
@@ -96,5 +97,28 @@ class AbasRecordsService
             ->get()->first();
 
         return $abasScaledScore !== null;
+    }
+
+    /**
+     * Get confidence for the given age, category and sub domain
+     *
+     * @param int $score
+     * @param int $age
+     * @param string $for
+     * @param string $type
+     */
+    public function getConfidence(int $score, int $age, string $for, string $type): string
+    {
+        $abasConfidence = AbasConfidenceInterval::select('confidence')
+            ->where('age', $age)
+            ->where('for', $for)
+            ->where('type', $type)
+            ->get()->first();
+
+        if ($abasConfidence->confidence) {
+            return sprintf('%d-%d', $score - $abasConfidence->confidence, $score + $abasConfidence->confidence);
+        }
+
+        return "Not found";
     }
 }
