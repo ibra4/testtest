@@ -26,6 +26,8 @@ class AbasExamFullResource extends JsonResource
             'sub_domains' => AbasExamSubDomainResource::collection($this->subDomains),
             'file_en' => route('abas_report.main', ['id' => $this->id, 'lang' => 'en']),
             'file_ar' => route('abas_report.main', ['id' => $this->id, 'lang' => 'ar']),
+            'file_charts_en' => route('abas_report.main2', ['id' => $this->id, 'lang' => 'en']),
+            'file_charts_ar' => route('abas_report.main2', ['id' => $this->id, 'lang' => 'ar']),
         ];
     }
 }

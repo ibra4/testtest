@@ -20,6 +20,16 @@ function AbasReports({ data }) {
                         {t('Report (EN)')}
                     </Button>
                 </Col>
+                <Col className="col-auto">
+                    <Button as={'a'} href={data.file_charts_ar} target="_blank" variant="primary">
+                        {t('Charts Report (AR)')}
+                    </Button>
+                </Col>
+                <Col className="col-auto">
+                    <Button as={'a'} href={data.file_charts_en} disabled target="_blank" variant="primary">
+                        {t('Charts Report (EN)')}
+                    </Button>
+                </Col>
             </Row>
         </div>
     );
