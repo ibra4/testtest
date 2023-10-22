@@ -115,7 +115,7 @@ class AbasRecordsService
             ->where('type', $type)
             ->get()->first();
 
-        if ($abasConfidence->confidence) {
+        if ($abasConfidence) {
             return sprintf('%d-%d', $score - $abasConfidence->confidence, $score + $abasConfidence->confidence);
         }
 
