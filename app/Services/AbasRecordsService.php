@@ -107,7 +107,7 @@ class AbasRecordsService
      * @param string $for
      * @param string $type
      */
-    public function getConfidence(int $score, int $age, string $for, string $type): string
+    public function getConfidence($score, int $age, string $for, string $type): string
     {
         $abasConfidence = AbasConfidenceInterval::select('confidence')
             ->where('age', $age)
