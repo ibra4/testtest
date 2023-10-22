@@ -38,4 +38,41 @@ class AbasReportsController extends Controller
 
         return view('reports.abas', compact('examScaledScores', 'domains', 'totalScaledScore', 'subDomainsCounters', 'abasExam', 'logo', 'examinee', 'report'));
     }
+
+    public function actionIndexV2(Request $request, $lang, $id)
+    {
+        app()->setLocale($lang);
+        $abasExam = $report = AbasExam::findOrFail($id);
+        $examinee = $abasExam->examinee;
+        $logo = $this->generalReportsService->getCenterLogo($abasExam->examiner);
+        $iq = collect(config("leiter.iq"));
+        $examScaledScores = $this->abasExamsService->getSubDomainsScaledScores($abasExam->id);
+        $sub_domains_composite = $examScaledScores->map(function ($subDomainScore) {
+            return [
+                'id' => $subDomainScore->abas_sub_domain_id,
+                'label' => $subDomainScore->name,
+                'value' => $subDomainScore->scaled_score
+            ];
+        })->values()->toArray();
+        $withDomains = [];
+        foreach ($examScaledScores as $subDomainScore) {
+            $withDomains[$subDomainScore->domain_name][] = [
+                'id' => $subDomainScore->abas_sub_domain_id,
+                'label' => $subDomainScore->name,
+                'value' => $subDomainScore->scaled_score
+            ];
+        }
+
+        $domains = $this->abasExamsService->extrctDomainsFromExamScaledScores($abasExam->age, $abasExam->category, $examScaledScores);
+
+        return view('reports.abasv2', compact(
+            'report',
+            'abasExam',
+            'examinee',
+            'logo',
+            'iq',
+            'sub_domains_composite',
+            'withDomains'
+        ));
+    }
 }

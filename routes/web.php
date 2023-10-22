@@ -56,4 +56,5 @@ Route::group(['middleware' => ['auth', 'report_owner']], function () {
 
 Route::group(['middleware' => ['auth', 'report_owner']], function () {
     Route::get('{lang}/abas-report/{id}', [AbasReportsController::class, 'actionIndex'])->name('abas_report.main');
+    Route::get('{lang}/abas-report-v2/{id}', [AbasReportsController::class, 'actionIndexV2'])->name('abas_report.main');
 });

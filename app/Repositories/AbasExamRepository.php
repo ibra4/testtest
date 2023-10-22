@@ -36,6 +36,7 @@ class AbasExamRepository
         $questions->select(
             'abas_sub_domains.name',
             'abas_sub_domains.code',
+            'abas_sub_domains.id AS abas_sub_domain_id',
             'abas_domains.name as domain_name',
             'abas_domains.id as domain_id',
             'abas_domains.code as domain_code',

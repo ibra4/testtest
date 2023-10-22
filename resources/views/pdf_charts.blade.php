@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-4">
                                 @foreach ($composite_values as $compositeValue)
-                                    <p id="{{ $compositeValue['id'] }}" class="label-item">{{ $compositeValue['label'] }}
+                                    <p id="iq_composite-{{ $compositeValue['id'] }}" class="label-item">{{ $compositeValue['label'] }}
                                     </p>
                                     <hr>
                                 @endforeach
@@ -85,7 +85,7 @@
                         <div class="row">
                             <div class="col-4">
                                 @foreach ($cognitive_values as $cognitiveValue)
-                                    <p id="{{ $cognitiveValue['id'] }}" class="label-item">{{ $cognitiveValue['label'] }}
+                                    <p id="fig_composite-{{ $cognitiveValue['id'] }}" class="label-item">{{ $cognitiveValue['label'] }}
                                     </p>
                                     <hr>
                                 @endforeach
@@ -132,31 +132,54 @@
             data: [0, 0.05, 0.2, 0.6, 1.4, 1.7, 1.4, 0.6, 0.2, 0, 0],
             fill: false
         }];
-        const figBelowLabels = document.documentElement.lang == 'en' ? [
-            "Modetate Delay",
-            "Mild Delay",
-            "Low",
-            "Below Avarage",
-            "Avarage",
-            "Above Avarage",
-            "High",
-            "Very High",
-            "Extremely High",
-            " ",
-            " "
-        ] : [
-            'تأخر متوسط',
-            'تأخر بسيط',
-            'ضعف',
-            "أقل من المتوسط",
-            "ضمن المتوسط",
-            "أعلى من المتوسط",
-            "مرتفع",
-            "مرتفع جدا",
-            "مرتفع للغاية",
-            " ",
-            " "
-        ];
+        const figXAxes = [{
+                gridLines: {
+                    tickMarkLength: 10,
+                },
+            },
+            {
+                type: "category",
+                labels: document.documentElement.lang == 'en' ? [
+                    "Modetate Delay",
+                    "Mild Delay",
+                    "Low",
+                    "Below Avarage",
+                    "Avarage",
+                    "Above Avarage",
+                    "High",
+                    "Very High",
+                    "Extremely High",
+                    " ",
+                    " "
+                ] : [
+                    'تأخر متوسط',
+                    'تأخر بسيط',
+                    'ضعف',
+                    "أقل من المتوسط",
+                    "ضمن المتوسط",
+                    "أعلى من المتوسط",
+                    "مرتفع",
+                    "مرتفع جدا",
+                    "مرتفع للغاية",
+                    " ",
+                    " "
+                ],
+                ticks: {
+                    fontColor: "#9d6ab0",
+                    callback: function(value, index, values) {
+                        return value.split(' ');
+                    },
+                    // maxRotation: 90, // Rotate labels by 90 degrees
+                    // minRotation: 90, // Rotate labels by 90 degrees
+                    padding: 10,
+                    fontFamily: 'Tajawal, sans-serif',
+                },
+                gridLines: {
+                    display: false,
+                    tickMarkLength: 0,
+                },
+            },
+        ]
 
         // iq-section-chart Chart Data
         const iqLabels = [30, 40, 55, 70, 80, 90, 110, 120, 130, 150, 170, 171];
@@ -164,36 +187,60 @@
             data: [0, 0.2, 0.6, 1.4, 3, 3.4, 3, 1.4, 0.6, 0.2, 0],
             fill: false
         }];
-        const iqBelowLabels = document.documentElement.lang == 'en' ? [
-            "Severe Delay",
-            "Modetate Delay",
-            "Mild Delay",
-            "Low",
-            "Below Avarage",
-            "Avarage",
-            "Above Avarage",
-            "High",
-            "Very High",
-            "Extremely High",
-            " ",
-            " "
-        ] : [
-            'تأخر شديد',
-            'تأخر متوسط',
-            'تأخر بسيط',
-            'ضعف',
-            "أقل من المتوسط",
-            "ضمن المتوسط",
-            "أعلى من المتوسط",
-            "مرتفع",
-            "مرتفع جدا",
-            "مرتفع للغاية",
-            " ",
-            " "
-        ];
+        const iqXAxes = [{
+                gridLines: {
+                    tickMarkLength: 10,
+                },
+            },
+            {
+                type: "category",
+                labels: document.documentElement.lang == 'en' ? [
+                    "Severe Delay",
+                    "Modetate Delay",
+                    "Mild Delay",
+                    "Low",
+                    "Below Avarage",
+                    "Avarage",
+                    "Above Avarage",
+                    "High",
+                    "Very High",
+                    "Extremely High",
+                    " ",
+                    " "
+                ] : [
+                    'تأخر شديد',
+                    'تأخر متوسط',
+                    'تأخر بسيط',
+                    'ضعف',
+                    "أقل من المتوسط",
+                    "ضمن المتوسط",
+                    "أعلى من المتوسط",
+                    "مرتفع",
+                    "مرتفع جدا",
+                    "مرتفع للغاية",
+                    " ",
+                    " "
+                ],
+                ticks: {
+                    fontColor: "#9d6ab0",
+                    callback: function(value, index, values) {
+                        return value.split(' ');
+                    },
+                    // maxRotation: 90, // Rotate labels by 90 degrees
+                    // minRotation: 90, // Rotate labels by 90 degrees
+                    padding: 10,
+                    fontFamily: 'Tajawal, sans-serif',
+                },
+                gridLines: {
+                    display: false,
+                    tickMarkLength: 0,
+                },
+            },
+        ]
+
         window.onload = function() {
-            drawGraphs('fig-section-chart', figLabels, figDatasets, figBelowLabels);
-            drawGraphs('iq-section-chart', iqLabels, iqDatasets, iqBelowLabels);
+            drawGraphs('fig-section-chart', figLabels, figDatasets, figXAxes, 'fig_composite');
+            drawGraphs('iq-section-chart', iqLabels, iqDatasets, iqXAxes, 'iq_composite');
         };
     </script>
 @endsection

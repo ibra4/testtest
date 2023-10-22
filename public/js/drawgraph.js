@@ -1,4 +1,5 @@
-function drawGraphs(sectionId, labels, datasets, belowLabels) {
+// Remvamp this fucking logic, look at abas report
+function drawGraphs(sectionId, labels, datasets, xAxes, compositePrefix) {
     const data = {
         labels: labels,
         datasets: datasets,
@@ -10,46 +11,13 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
 
     const tableContainer = $(`#${sectionId} .table-container`);
 
-    const xScalePadding = {
-        id: "x-scale-padding",
-        beforeDatasetsDraw(chart) {
-            chart.scales['x-axis-1'].left = 50;
-
-        }
-    }
-
     const chart = new Chart(canvas, {
         type: "line",
         data,
-        plugins: [xScalePadding],
         options: {
             legend: false,
             scales: {
-                xAxes: [
-                    {
-                        gridLines: {
-                            tickMarkLength: 10,
-                        },
-                    },
-                    {
-                        type: "category",
-                        labels: belowLabels,
-                        ticks: {
-                            fontColor: "#9d6ab0",
-                            callback: function (value, index, values) {
-                                return value.split(' ');
-                            },
-                            // maxRotation: 90, // Rotate labels by 90 degrees
-                            // minRotation: 90, // Rotate labels by 90 degrees
-                            padding: 10,
-                            fontFamily: 'Tajawal, sans-serif',
-                        },
-                        gridLines: {
-                            display: false,
-                            tickMarkLength: 0,
-                        },
-                    },
-                ],
+                xAxes,
                 yAxes: [
                     {
                         display: false,
@@ -84,7 +52,7 @@ function drawGraphs(sectionId, labels, datasets, belowLabels) {
         const percentage = pixelsDiff / labelsDiff;
         const realValue = itemValue - previousPoint;
 
-        const topElement = document.getElementById(item.id).offsetTop
+        const topElement = document.getElementById(`${compositePrefix}-${item.id}`).offsetTop
 
         let point = $(`<div class="point"><div class="inner">${itemValue}</div></div>`);
         point.css({

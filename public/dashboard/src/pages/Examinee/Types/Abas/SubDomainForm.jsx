@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import CheckboxField from 'components/Fields/CheckboxField';
 import { Field, FieldArray, Formik, useFormikContext } from 'formik';
-import React, { useEffect, useState } from 'react';
+import { hasRole } from 'providers/helpers';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaSave } from 'react-icons/fa';
@@ -32,12 +33,14 @@ function SaveButton({ isSaved, label, classes }) {
 }
 
 function SubDomainForm({ subDomain, onSubmit }) {
+    const canEdit = useMemo(() => subDomain.is_saved && !hasRole('root'), []);
+
     const { t } = useTranslation();
     return (
         <Formik enableReinitialize initialValues={subDomain} onSubmit={onSubmit}>
             {({ values, errors, touched, handleChange, setFieldValue, handleBlur, handleSubmit, isSubmitting }) => (
                 <form onSubmit={handleSubmit}>
-                    <SaveButton classes={'mb-2'} isSaved={subDomain.is_saved} label={t('Save')} />
+                    <SaveButton classes={'mb-2'} isSaved={canEdit} label={t('Save')} />
                     <Table className="align-middle" bordered>
                         <tbody>
                             <tr>
@@ -74,7 +77,7 @@ function SubDomainForm({ subDomain, onSubmit }) {
                                                         type="radio"
                                                         name={`questions.${index}.result`}
                                                         value={0}
-                                                        disabled={subDomain.is_saved}
+                                                        disabled={canEdit}
                                                         onChange={() => setFieldValue(`questions.${index}.result`, 0)}
                                                     />
                                                     <span className="ms-2">0</span>
@@ -87,7 +90,7 @@ function SubDomainForm({ subDomain, onSubmit }) {
                                                         type="radio"
                                                         name={`questions.${index}.result`}
                                                         value={1}
-                                                        disabled={subDomain.is_saved}
+                                                        disabled={canEdit}
                                                         onChange={() => setFieldValue(`questions.${index}.result`, 1)}
                                                     />
                                                     <span className="ms-2">1</span>
@@ -100,7 +103,7 @@ function SubDomainForm({ subDomain, onSubmit }) {
                                                         type="radio"
                                                         name={`questions.${index}.result`}
                                                         value={2}
-                                                        disabled={subDomain.is_saved}
+                                                        disabled={canEdit}
                                                         onChange={() => setFieldValue(`questions.${index}.result`, 2)}
                                                     />
                                                     <span className="ms-2">2</span>
@@ -113,7 +116,7 @@ function SubDomainForm({ subDomain, onSubmit }) {
                                                         type="radio"
                                                         name={`questions.${index}.result`}
                                                         value={3}
-                                                        disabled={subDomain.is_saved}
+                                                        disabled={canEdit}
                                                         onChange={() => setFieldValue(`questions.${index}.result`, 3)}
                                                     />
                                                     <span className="ms-2">3</span>
@@ -124,7 +127,7 @@ function SubDomainForm({ subDomain, onSubmit }) {
                                                     onChange={(evt) =>
                                                         setFieldValue(`questions.${index}.guess`, evt.target.checked)
                                                     }
-                                                    disabled={subDomain.is_saved}
+                                                    disabled={canEdit}
                                                     name={`questions.${index}.guess`}
                                                     value={questionField.guess}
                                                     onBlur={handleBlur}
@@ -144,7 +147,7 @@ function SubDomainForm({ subDomain, onSubmit }) {
                             </tr>
                         </tbody>
                     </Table>
-                    <SaveButton isSaved={subDomain.is_saved} label={t('Save')} />
+                    <SaveButton isSaved={canEdit} label={t('Save')} />
                 </form>
             )}
         </Formik>
