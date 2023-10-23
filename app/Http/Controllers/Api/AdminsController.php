@@ -58,6 +58,11 @@ class AdminsController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update($request->all());
+        if ($request->is_active === false) {
+            foreach ($user->subAdmins as $subAdmin) {
+                $subAdmin->update(['is_active' => false]);
+            }
+        }
 
         return $this->sendSuccessReponse($user);
     }
