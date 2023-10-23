@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\Reports\LeiterReport;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,7 +24,11 @@ class Examinee extends Model
         'city_id',
         'admin_id',
         'examiner_notes',
-        'created_by'
+        'created_by',
+        'information_source',
+        'school',
+        'grade',
+        'referral_source'
     ];
 
     /**

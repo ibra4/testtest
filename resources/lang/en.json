@@ -5,5 +5,17 @@
     "teacher": "Teacher",
     "adult_by_self": "Adult - Self",
     "adult_by_others": "Adult - Others",
-    "Location of Testing": "Location"
+    "Location of Testing": "Location",
+    "school": "School",
+    "psychology_specialist": "Psychology Specialist",
+    "psychologist": "Psychologist",
+    "caregiver": "Caregiver",
+    "center": "Special Education Center",
+    "speech_psychologist": "Speech Psychologist",
+    "special_education_specialist": "Special Education Specialist",
+    "psychiatric_clinic": "Psychiatric Clinic",
+    "hospital": "Hospital",
+    "examinee_himself": "Examinee Himself",
+    "father": "Father",
+    "mother": "Mother"
 }

@@ -68,14 +68,12 @@
 
         <table class="table mt-3">
             <thead>
-                <th>{{ __('IQ and Composite Scores') }}</th>
                 <th>{{ __('Subtest Scores') }}</th>
                 <th>{{ __('Category') }}</th>
             </thead>
             <tbody>
                 @foreach ($iq as $iqRecord)
                     <tr>
-                        <td>{{ $iqRecord['iq_composite_score'] }}</td>
                         <td>{{ $iqRecord['subtest_score'] }}</td>
                         <td>{{ __($iqRecord['label']) }}</td>
                     </tr>

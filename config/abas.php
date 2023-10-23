@@ -46,5 +46,31 @@ return [
                 'sum_of' => [],
             ]
         ]
+    ],
+    'iq' => [
+        [
+            'subtest_score' => '<= 3',
+            'label' =>  "Extreemly Low",
+        ],
+        [
+            'subtest_score' => '4 - 5',
+            'label' =>  "Low",
+        ],
+        [
+            'subtest_score' => '6 - 7',
+            'label' =>  "Below Avarage",
+        ],
+        [
+            'subtest_score' => '8 - 12',
+            'label' =>  "Avarage",
+        ],
+        [
+            'subtest_score' => '13 - 14',
+            'label' =>  "Above Avarage",
+        ],
+        [
+            'subtest_score' => '>= 15',
+            'label' =>  "High",
+        ]
     ]
 ];

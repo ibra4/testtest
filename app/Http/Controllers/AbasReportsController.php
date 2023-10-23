@@ -45,7 +45,7 @@ class AbasReportsController extends Controller
         $abasExam = $report = AbasExam::findOrFail($id);
         $examinee = $abasExam->examinee;
         $logo = $this->generalReportsService->getCenterLogo($abasExam->examiner);
-        $iq = collect(config("leiter.iq"));
+        $iq = collect(config("abas.iq"));
         $examScaledScores = $this->abasExamsService->getSubDomainsScaledScores($abasExam->id);
         $sub_domains_composite = $examScaledScores->map(function ($subDomainScore) {
             return [

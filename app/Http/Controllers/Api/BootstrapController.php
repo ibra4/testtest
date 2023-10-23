@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Enums\AbasExamTypesEnum;
+use App\Enums\ExamineeInformationSourceEnum;
+use App\Enums\ExamineeReferralSourceEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AbasSubDomainListResource;
 use App\Http\Resources\CasdSubDomainListResource;
@@ -77,15 +79,24 @@ class BootstrapController extends Controller
 
         $data['casd_sub_domains'] = CasdSubDomainListResource::collection(CasdSubDomain::all());
 
-        $categories = [];
         foreach (AbasExamTypesEnum::getAllFields() as $cat) {
-            $categories[] = [
+            $data['abas_sub_domains_categories'][] = [
                 'id' => $cat,
                 'label' => __($cat)
             ];
         }
-
-        $data['abas_sub_domains_categories'] = $categories;
+        foreach (ExamineeReferralSourceEnum::getAllFields() as $ref) {
+            $data['referral_sources'][] = [
+                'id' => $ref,
+                'label' => __($ref)
+            ];
+        }
+        foreach (ExamineeInformationSourceEnum::getAllFields() as $info) {
+            $data['information_sources'][] = [
+                'id' => $info,
+                'label' => __($info)
+            ];
+        }
 
         $data['leiter_tables_types'] = config('enums.leiter_tables_types');
 

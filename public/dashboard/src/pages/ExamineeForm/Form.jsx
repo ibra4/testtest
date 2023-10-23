@@ -10,6 +10,7 @@ import { CONSTANTS } from 'providers/helpers/constants';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { useToasts } from 'react-toast-notifications';
 
 import * as Yup from 'yup';
@@ -24,6 +25,8 @@ function Form({ initialValues, config, onSubmit }) {
         country_id: Yup.number().required().label(t('Country'))
     });
     const [cities, setCities] = useState([]);
+    const { referral_sources, information_sources } = useSelector((state) => state.app.config);
+
     useEffect(() => {
         if (initialValues && initialValues.country_id) {
             setCities(config.countries.find((item) => item.id == initialValues.country_id).cities);
@@ -142,6 +145,50 @@ function Form({ initialValues, config, onSubmit }) {
                                         />
                                     </Col>
                                 )}
+                                <Col md={4}>
+                                    <SelectField2
+                                        onChange={(value) => setFieldValue('referral_source', value.id)}
+                                        label={'Referral Source'}
+                                        value={values.referral_source}
+                                        onBlur={handleBlur}
+                                        error={errors.referral_source}
+                                        options={referral_sources}
+                                        className="mb-3"
+                                    />
+                                </Col>
+                                <Col md={4}>
+                                    <SelectField2
+                                        onChange={(value) => setFieldValue('information_source', value.id)}
+                                        label={'Information Source'}
+                                        value={values.information_source}
+                                        onBlur={handleBlur}
+                                        error={errors.information_source}
+                                        options={information_sources}
+                                        className="mb-3"
+                                    />
+                                </Col>
+                                <Col md={4}>
+                                    <TextField
+                                        name="school"
+                                        label="School - Workplace"
+                                        onChange={handleChange}
+                                        value={values.school}
+                                        onBlur={handleBlur}
+                                        error={touched.school && errors.school}
+                                        className="mb-3"
+                                    />
+                                </Col>
+                                <Col md={4}>
+                                    <TextField
+                                        name="grade"
+                                        label="Grade"
+                                        onChange={handleChange}
+                                        value={values.grade}
+                                        onBlur={handleBlur}
+                                        error={touched.grade && errors.grade}
+                                        className="mb-3"
+                                    />
+                                </Col>
                             </Row>
                             <Row>
                                 <Col md={6}>

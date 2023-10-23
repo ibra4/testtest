@@ -116,6 +116,7 @@
     "Female": "انثى",
     "Not found": "غير موجود",
     "Confidential Test Results for the Leiter-3": "تقرير لايتر الآداء العالمي - تقرير سري",
+    "Extreemly Low": "منخفض للغاية",
     "Severe Delay": "تأخر شديد",
     "Modetate Delay": "تأخر متوسط",
     "Mild Delay": "تأخر بسيط",
@@ -181,5 +182,17 @@
     "adult_by_self": "البالغين - ذاتي",
     "adult_by_others": "البالغين - غير ذاتي",
     "Sample": "نموذج",
-    "Application Date": "تاريخ التطبيق"
+    "Application Date": "تاريخ التطبيق",
+    "school": "المدرسة",
+    "psychology_specialist": "أخصائي نفسي",
+    "psychologist": "طبيب نفسي",
+    "caregiver": "مقدم الرعاية",
+    "center": "مركز تربية خاصة",
+    "speech_psychologist": "أخصائي نطق",
+    "special_education_specialist": "أخصائي تربية خاصة",
+    "psychiatric_clinic": "عيادة نفسية",
+    "hospital": "مستشفى",
+    "examinee_himself": "المفحوص نفسه",
+    "father": "الأب",
+    "mother": "الأم"
 }

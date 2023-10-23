@@ -255,6 +255,12 @@ html[dir=rtl] .section .title::before {
 html[dir=rtl] .big-boss.white-bar:after {
   display: none;
 }
+html[dir=rtl] .composite-title {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
 
 .composite-parent {
   border-left: 1px solid #9d6ab0;
@@ -265,8 +271,8 @@ html[dir=rtl] .big-boss.white-bar:after {
   color: white;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 .composite-parent p {
   margin-left: 10px;

@@ -18,7 +18,11 @@ const defaultUser = {
     country_id: '',
     city_id: '',
     admin_id: '',
-    examiner_notes: ''
+    examiner_notes: '',
+    information_source: '',
+    referral_source: '',
+    school: '',
+    grade: ''
 }
 
 function ExamineeFormIndex() {

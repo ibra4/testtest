@@ -17,7 +17,9 @@ class CreateExamineeRequest extends FormRequest
             'name' => 'required|string|max:255',
             'birthday' => 'required|date|before:-3 years',
             'gender' => 'required|boolean',
-            'country_id' => 'required|exists:countries,id'
+            'country_id' => 'required|exists:countries,id',
+            'information_source' => 'nullable|in:' . implode(',', \App\Enums\ExamineeInformationSourceEnum::getAllFields()),
+            'referral_source' => 'nullable|in:' . implode(',', \App\Enums\ExamineeReferralSourceEnum::getAllFields())
         ];
     }
 }
