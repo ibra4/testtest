@@ -146,7 +146,7 @@
     "Leiter Reports": "تقارير لايتر",
     "Report ID": "ID التقرير",
     "Exam ID": "ID الإختبار",
-    "Examinee ID": "ID المفحوص",
+    "Examinee ID": "رقم ملف المفحوص",
     "confirm_delete": "هل أنت متأكد من حذف {{id}} ؟",
     "confirm_save_exam": "هل أنت متأكد من حفظ النتائج؟ إذا تم الحفظ، لن تتمكن من تعديلها في وقت لاحق.",
     "Leiter International Performance Scale - Third Edition": "مقياس لايتر الآدائي العالمي - النسخة الثالثة - الصورة العربية",
