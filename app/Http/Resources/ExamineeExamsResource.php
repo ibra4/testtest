@@ -26,7 +26,11 @@ class ExamineeExamsResource extends JsonResource
                 'gender' => $this->getRawOriginal('gender'),
                 'examiner_notes' => $this->examiner_notes,
                 'created_at' => $this->created_at,
-                'updated_at' => $this->updated_at
+                'updated_at' => $this->updated_at,
+                'information_source' => __($this->information_source),
+                'referral_source' => __($this->referral_source),
+                'school' => $this->school,
+                'grade' => $this->grade
             ],
             'center' => $this->center,
             'leiter' => LeiterReportTeaserResource::collection($this->leiterReports),

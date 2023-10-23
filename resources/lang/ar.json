@@ -194,5 +194,9 @@
     "hospital": "مستشفى",
     "examinee_himself": "المفحوص نفسه",
     "father": "الأب",
-    "mother": "الأم"
+    "mother": "الأم",
+    "Referral Source": "مصدر الإحالة",
+    "Information Source": "مصدر المعلومات",
+    "School - Workplace": "المدرسة - مكان العمل",
+    "Grade": "الصف"
 }

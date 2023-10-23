@@ -27,8 +27,8 @@ class ExamineeResource extends JsonResource
             'examiner_notes' => $this->examiner_notes,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'referral_source' => $this->referral_source,
-            'information_source' => $this->information_source,
+            'referral_source' => __($this->referral_source),
+            'information_source' => __($this->information_source),
             'school' => $this->school,
             'grade' => $this->grade
         ];
