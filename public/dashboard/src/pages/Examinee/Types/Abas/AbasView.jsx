@@ -39,6 +39,7 @@ function AbasView({ data, onSubDomainSubmit }) {
                     <LabelValueCol label={'ID'} value={data.id} md={3} />
                     <LabelValueCol label={'Application Date'} value={data.application_date} md={3} />
                     <LabelValueCol label={'Age'} value={data.translated_age} md={3} />
+                    <LabelValueCol label={'Category'} value={data.category} md={3} />
                     {data?.examiner_notes && <LabelValueCol label={'Notes'} value={data.examiner_notes} md={12} />}
                 </Row>
             </WhiteBox>

@@ -51,37 +51,37 @@ function AbasTableView({ rows, onCreateExam }) {
                         ))}
                 </tbody>
             </Table>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center flex-wrap">
                 <AbasExamFormModal
                     title={t('Create exam for teacher')}
                     onSubmit={(values) => handleCreateAbasExam(values, 'teacher')}
                 />
-                <div className="ms-2">
+                <div className="ms-2 mb-3">
                     <AbasExamFormModal
                         title={t('Create exam for tracher / caregiver')}
                         onSubmit={(values) => handleCreateAbasExam(values, 'teacher_caregiver')}
                     />
                 </div>
-                <div className="ms-2">
+                <div className="ms-2 mb-3">
                     <AbasExamFormModal
                         title={t('Create exam for parent')}
                         onSubmit={(values) => handleCreateAbasExam(values, 'parent')}
                     />
                 </div>
-                <div className="ms-2">
+                <div className="ms-2 mb-3">
                     <AbasExamFormModal
                         title={t('Create exam for parent / caregiver')}
                         onSubmit={(values) => handleCreateAbasExam(values, 'parent_caregiver')}
                     />
                 </div>
-                <div className="ms-2">
+                <div className="ms-2 mb-3">
                     <AbasExamFormModal
                         title={t('Create exam for adult - by self')}
                         onSubmit={(values) => handleCreateAbasExam(values, 'adult_by_self')}
                         disabled
                     />
                 </div>
-                <div className="ms-2">
+                <div className="ms-2 mb-3">
                     <AbasExamFormModal
                         title={t('Create exam for adult - by others')}
                         onSubmit={(values) => handleCreateAbasExam(values, 'adult_by_others')}

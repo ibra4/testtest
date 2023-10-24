@@ -18,6 +18,7 @@ class AbasExamFullResource extends JsonResource
             'id' => $this->id,
             'introduction' => setting('abas_introduction'),
             'application_date' => $this->application_date,
+            'category' => __($this->category),
             'age' => $this->age,
             'translated_age' => $this->translated_age,
             'examiner' => new ExaminerResource($this->examinee->center),

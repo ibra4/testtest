@@ -1,3 +1,6 @@
+use bana
+db.abas_scaled_scores.updateMany({max_age: 252}, {$set: {max_age: 263}})
+
 # scripts
 mongoimport --db bana --collection abas_composite --type=csv --file resources/tables/abas/composite_parent_0_5_11.csv --uri mongodb://127.0.0.1:27017 --headerline
 

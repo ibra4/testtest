@@ -60,12 +60,15 @@
                                     <td class="bg-secondary"></td>
                                 @endif
                             @endforeach
-                            <td>{{ $examResult->age_equ }}</td>
+                            @if ($examResult->code == 'wk')
+                                <td class="bg-secondary"></td>
+                            @else
+                                <td>{{ $examResult->age_equ }}</td>
+                            @endif
                         </tr>
                     @endforeach
                     <tr>
                         <td colspan="2">مجموع الدرجات الموزونة</td>
-                        {{-- <td>{{ $totalScaledScore }}</td> --}}
                         @foreach ($domains as $domain)
                             <td>{{ $domain['sum'] }}</td>
                         @endforeach
@@ -73,7 +76,6 @@
                     </tr>
                     <tr>
                         <td colspan="2">ملاحظة: المهارات الحركية مدرج في (د.م.ع) ولكن ليس في المجالات التكيفية</td>
-                        {{-- <td>الدرجة المركبة العامة (د.م.ع)</td> --}}
                         @foreach ($domains as $domain)
                             <td>{{ $domain['name'] }}</td>
                         @endforeach
