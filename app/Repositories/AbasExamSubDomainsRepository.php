@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\AbasExamSubDomain;
 use App\Models\AbasSubDomainQuestion;
-use Symfony\Component\Console\Question\Question;
 
 class AbasExamSubDomainsRepository
 {

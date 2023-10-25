@@ -20,7 +20,7 @@ class AbasSubDomain extends Model
 
     public function questions()
     {
-        return $this->hasMany(AbasQuestion::class, 'abas_sub_domain_id', 'id');
+        return $this->hasMany(AbasQuestion::class, 'abas_sub_domain_id', 'id')->orderBy('question_number', 'ASC');
     }
 
     public function getTranslatedCategoryAttribute()
