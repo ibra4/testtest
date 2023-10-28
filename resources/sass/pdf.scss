@@ -193,6 +193,8 @@ footer {
 
 .label-item {
     white-space: nowrap;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
 }
 
 #pdf-charts {
