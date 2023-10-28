@@ -29,7 +29,7 @@
                     <div class="col-4">
                     </div>
                     <div class="col-8">
-                        <div class="table-container" style="height: 200px">
+                        <div class="table-container" style="height: 250px">
                         </div>
                     </div>
                 </div>
@@ -40,9 +40,9 @@
                         <div class="row">
                             <div class="col-4">
                                 @foreach ($domains_composite as $domain)
-                                    <div class="composite-parent">
+                                    <div class="composite-parent border-0">
                                         <div class="composite-domain">
-                                            <p id="abas_domain-{{ $domain['id'] }}" class="label-item">
+                                            <p id="abas_domain-{{ $domain['id'] }}" class="label-item composite-title mx-0">
                                                 {{ $domain['label'] }}
                                             </p>
                                             <hr>
