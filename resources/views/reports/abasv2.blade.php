@@ -254,13 +254,21 @@
             data: [0, 0.05, 0.2, 0.6, 1.4, 1.7, 1.4, 0.6, 0.2, 0, 0],
             fill: false
         }];
-        const domainsXaxis = [{
+        const domainsXaxis = [
+            {
+                ticks: {
+                    fontColor: "#9d6ab0",
+                    callback: function(value, index, values) {
+                        return value < 70 ? "" : value;
+                    },
+                    // maxRotation: 90, // Rotate labels by 90 degrees
+                    // minRotation: 90, // Rotate labels by 90 degrees
+                    padding: 10,
+                    fontFamily: 'Tajawal, sans-serif',
+                },
                 gridLines: {
                     tickMarkLength: 10,
                 },
-            },
-            {
-                display: false,
             },
             {
                 type: "category",
