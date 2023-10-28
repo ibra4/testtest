@@ -64,6 +64,13 @@ class AbasReportsController extends Controller
         }
 
         $domains = $this->abasExamsService->extrctDomainsFromExamScaledScores($abasExam->age, $abasExam->category, $examScaledScores);
+        $domains_composite = $domains->map(function ($item) {
+            return [
+                'id' => $item['domain_code'] ?? 'GAC',
+                'label' => $item['name'],
+                'value' => $item['composite']['std_score']
+            ];
+        });
 
         return view('reports.abasv2', compact(
             'report',
@@ -72,7 +79,8 @@ class AbasReportsController extends Controller
             'logo',
             'iq',
             'sub_domains_composite',
-            'withDomains'
+            'withDomains',
+            'domains_composite'
         ));
     }
 }

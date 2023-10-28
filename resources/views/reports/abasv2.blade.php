@@ -12,7 +12,52 @@
 
 
 
-        <div class="section no-break" id="abas-section-chart">
+        <div class="section no-break" id="abas-domains-chart">
+            <br>
+            <h1 class="title">{{ __('GAC and adaptive skill area scaled scores') }}</h1>
+            <div class="row">
+                <div class="col-4">
+                </div>
+                <div class="col-8">
+                    <div class="canvas-wrapper white-bar">
+                        <canvas width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="big-boss canvas-wrapper white-bar">
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-8">
+                        <div class="table-container" style="height: 200px">
+                        </div>
+                    </div>
+                </div>
+                <div class="composite_values" value="{{ json_encode($domains_composite) }}"></div>
+                <div class="canvas-table-group-wrapper h-100">
+                    <div class="canvas-table-group">
+                        {{-- <hr class="purple-line"> --}}
+                        <div class="row">
+                            <div class="col-4">
+                                @foreach ($domains_composite as $domain)
+                                    <div class="composite-parent">
+                                        <div class="composite-domain">
+                                            <p id="abas_domain-{{ $domain['id'] }}" class="label-item">
+                                                {{ $domain['label'] }}
+                                            </p>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section no-break" id="abas-subdomains-chart">
             <br>
             <h1 class="title">{{ __('الملف الشخصي للنتيجة') }}</h1>
             <div class="row">
@@ -66,6 +111,10 @@
 
 
 
+
+
+
+
         <table class="table mt-3">
             <thead>
                 <th>{{ __('Subtest Scores') }}</th>
@@ -88,7 +137,7 @@
 
 @section('js')
     <script>
-        function drawGraphs(sectionId, labels, datasets, xAxes, compositePrefix) {
+        function drawGraphs2(sectionId, labels, datasets, xAxes, compositePrefix) {
             const data = {
                 labels: labels,
                 datasets: datasets,
@@ -135,7 +184,6 @@
                 const itemValue = item.value;
                 const xaxis3 = chart.scales['x-axis-3'];
                 const topElement = document.getElementById(`${compositePrefix}-${item.id}`).offsetTop
-                console.log(document.getElementById(`${compositePrefix}-${item.id}`))
 
                 let point = $(`<div class="point"><div class="inner">${itemValue}</div></div>`);
                 point.css({
@@ -146,14 +194,13 @@
             })
         }
 
-        // abas-section-chart Chart Data
-        const figLabels = [, , 70, 80, 90, 100, 110, 120, , , , ];
-        const figDatasets = [{
+        const subDomainsLabels = [, , 70, 80, 90, 100, 110, 120, , , , ];
+        const subDomainsDatasets = [{
             data: [0, 0.05, 0.2, 0.6, 1.4, 1.7, 1.4, 0.6, 0.2, 0, 0],
             fill: false
         }];
 
-        const xAxis = [{
+        const subdomainsXaxis = [{
                 gridLines: {
                     tickMarkLength: 10,
                 },
@@ -202,9 +249,57 @@
                 },
             }
         ]
+        const domainsLabels = [40, 50, 70, 80, 90, 100, 110, 120, , , , ];
+        const domainsDatasets = [{
+            data: [0, 0.05, 0.2, 0.6, 1.4, 1.7, 1.4, 0.6, 0.2, 0, 0],
+            fill: false
+        }];
+        const domainsXaxis = [{
+                gridLines: {
+                    tickMarkLength: 10,
+                },
+            },
+            {
+                display: false,
+            },
+            {
+                type: "category",
+                labels: document.documentElement.lang == 'en' ? [,
+                    "Extreemly Low", ,
+                    "Low",
+                    "Below Avarage", ,
+                    "Avarage", ,
+                    "Above Avarage", ,
+                    "High", ,
+                ] : [,
+                    "تأخر شديد", ,
+                    "تأخر بسيط",
+                    "أقل من المتوسط", ,
+                    "متوسط", ,
+                    "أعلى من المتوسط", ,
+                    "مرتفع", , ,
+                ],
+                ticks: {
+                    fontColor: "#9d6ab0",
+                    callback: function(value, index, values) {
+                        return value.split(' ');
+                    },
+                    // maxRotation: 90, // Rotate labels by 90 degrees
+                    // minRotation: 90, // Rotate labels by 90 degrees
+                    padding: 10,
+                    fontFamily: 'Tajawal, sans-serif',
+                },
+                gridLines: {
+                    display: false,
+                    tickMarkLength: 0,
+                },
+            }
+        ]
 
         window.onload = function() {
-            drawGraphs('abas-section-chart', figLabels, figDatasets, xAxis, 'abas_sub_domain');
+            drawGraphs2('abas-subdomains-chart', subDomainsLabels, subDomainsDatasets, subdomainsXaxis,
+                'abas_sub_domain');
+            drawGraphs('abas-domains-chart', domainsLabels, domainsDatasets, domainsXaxis, 'abas_domain');
         };
     </script>
 @endsection

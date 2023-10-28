@@ -216,6 +216,7 @@ class AbasExamsService
                     'name' => $subDomain->domain_name,
                     'sum' => $sum,
                     'composite' => $composite,
+                    'domain_code' => $subDomain->domain_code,
                     'confidence' => $this->abasRecordsService->getConfidence(
                         $composite['std_score'],
                         $age,
