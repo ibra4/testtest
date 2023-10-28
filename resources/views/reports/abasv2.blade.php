@@ -249,7 +249,7 @@
                 },
             }
         ]
-        const domainsLabels = [40, 50, 70, 80, 90, 100, 110, 120, , , , ];
+        const domainsLabels = [40, 50, 70, 80, 90, 100, 110, 120, 130, 140, , ];
         const domainsDatasets = [{
             data: [0, 0.05, 0.2, 0.6, 1.4, 1.7, 1.4, 0.6, 0.2, 0, 0],
             fill: false
@@ -259,7 +259,7 @@
                 ticks: {
                     fontColor: "#9d6ab0",
                     callback: function(value, index, values) {
-                        return value < 70 ? "" : value;
+                        return (value < 70 || value > 120) ? "" : value;
                     },
                     // maxRotation: 90, // Rotate labels by 90 degrees
                     // minRotation: 90, // Rotate labels by 90 degrees
