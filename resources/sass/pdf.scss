@@ -302,6 +302,8 @@ html[dir="rtl"] {
         padding-bottom: 5px;
         border-top-right-radius: 25px;
         border-bottom-right-radius: 25px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
     p {
         margin-left: 10px;
