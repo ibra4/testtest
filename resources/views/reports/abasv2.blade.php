@@ -7,7 +7,7 @@
             'type' => 'abas',
         ])
         <hr>
-        @include('components.report_examinee_data')
+        @include('components.report_examinee_data', ['type' => 'abas'])
         <hr>
 
 

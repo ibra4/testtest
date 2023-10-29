@@ -1,8 +1,8 @@
 {
-    "parent_caregiver": "Parent - Caregiver",
-    "parent": "Parent",
-    "teacher_caregiver": "Teacher - Caregiver",
-    "teacher": "Teacher",
+    "parent_caregiver": "Parent (2 - 5) years",
+    "parent": "Parent (5 - 21) years",
+    "teacher_caregiver": "Teacher / Caregiver (2 - 5) years",
+    "teacher": "Teacher (5 - 21) years",
     "adult_by_self": "Adult - Self",
     "adult_by_others": "Adult - Others",
     "Location of Testing": "Location",

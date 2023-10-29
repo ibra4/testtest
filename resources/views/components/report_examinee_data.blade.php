@@ -59,6 +59,12 @@
             <div class="value">{{ $examinee->grade }}</div>
         </div>
     @endif
+    @if (isset($type) && $type == 'abas')
+        <div class="label-value-item col-6">
+            <div class="label">{{ __('Sample') }}:</div>
+            <div class="value">{{ __($abasExam->category) }}</div>
+        </div>
+    @endif
     @if ($report->examiner_notes)
         <div class="col-12">
             <div class="font-weight-bold">{{ __('Notes') }}:</div>

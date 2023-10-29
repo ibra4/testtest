@@ -16,7 +16,7 @@ class AbasSubDomainListResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'label' => $this->name . ' - ' . __($this->category)
+            'label' => sprintf('%s - %s', __($this->category), $this->name),
         ];
     }
 }

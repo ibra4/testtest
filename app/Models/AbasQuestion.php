@@ -15,7 +15,7 @@ class AbasQuestion extends Model
 
     public function getDomainFullNameAttribute()
     {
-        return $this->subDomain->name . ' - ' . __($this->subDomain->category);
+        return sprintf('%s - %s', __($this->subDomain->category), $this->subDomain->name);
     }
 
     public function subDomain()

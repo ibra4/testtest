@@ -221,8 +221,7 @@ class AbasExamsService
                         $composite['std_score'],
                         $age,
                         $category,
-                        $subDomain->domain_code,
-                        $sum
+                        $subDomain->domain_code
                     )
                 ];
             });
@@ -244,12 +243,12 @@ class AbasExamsService
                 'name' => $additionalDomain['name'],
                 'sum' => $additionalDomainSum,
                 'composite' => $composite,
+                'domain_code' => $additionalDomain['code'],
                 'confidence' => $this->abasRecordsService->getConfidence(
                     $composite['std_score'],
                     $age,
                     $category,
-                    $additionalDomain['code'],
-                    $additionalDomainSum
+                    $additionalDomain['code']
                 )
             ]);
         }

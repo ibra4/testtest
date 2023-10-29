@@ -6,6 +6,7 @@ use App\Models\AbasAgeEqu;
 use App\Models\AbasComposite;
 use App\Models\AbasScaledScore;
 use App\Models\AbasConfidenceInterval;
+use Illuminate\Support\Facades\Log;
 
 class AbasRecordsService
 {
@@ -109,6 +110,11 @@ class AbasRecordsService
      */
     public function getConfidence($score, int $age, string $for, string $type): string
     {
+        if (!is_numeric($score)) {
+            Log::error(sprintf('Value not found [Confidence Interval], score: %s, age: %s, for: %s, type: %s', $score, $age, $for, $type));
+            return "Not found";
+        }
+
         $abasConfidence = AbasConfidenceInterval::select('confidence')
             ->where('age', $age)
             ->where('for', $for)
