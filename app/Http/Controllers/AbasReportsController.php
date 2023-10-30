@@ -32,11 +32,9 @@ class AbasReportsController extends Controller
 
         $domains = $this->abasExamsService->extrctDomainsFromExamScaledScores($abasExam->age, $abasExam->category, $examScaledScores);
 
-        $totalScaledScore = $this->abasExamsService->getTotalScaledScore($examScaledScores);
-
         $subDomainsCounters = $this->abasExamsService->getExamSubdomainsResults($abasExam->id);
 
-        return view('reports.abas', compact('examScaledScores', 'domains', 'totalScaledScore', 'subDomainsCounters', 'abasExam', 'logo', 'examinee', 'report'));
+        return view('reports.abas', compact('examScaledScores', 'domains', 'subDomainsCounters', 'abasExam', 'logo', 'examinee', 'report'));
     }
 
     public function actionIndexV2(Request $request, $lang, $id)

@@ -257,18 +257,6 @@ class AbasExamsService
     }
 
     /**
-     * Get exam results
-     * 
-     * @param Collection $examScaledScores
-     */
-    public function getTotalScaledScore(Collection $examScaledScores): int
-    {
-        return $examScaledScores->sum(function ($item) {
-            return is_numeric($item->scaled_score) ? $item->scaled_score : 0;
-        });
-    }
-
-    /**
      * Gets exam subdomains results
      * 
      * @param int $examId
