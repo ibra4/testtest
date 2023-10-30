@@ -34,6 +34,7 @@ export const getSettingValue = (key) => {
 
 export const getGender = gender => gender ? "Male" : "Female"
 
+// Make it from backend
 export const generateRandomColor = () => {
     var color = '#';
     for (var i = 0; i < 6; i++) {
