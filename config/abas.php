@@ -8,7 +8,7 @@ return [
             [
                 'code' => 'GAC',
                 'name' => 'المركب التكيفي العام (GAC)',
-                'sum_of' => ['com', 'cu', 'fa', 'sl', 'hs', 'ls', 'sc', 'sd', 'soc', 'wk'],
+                'sum_of' => ['com', 'cu', 'fa', 'sl', 'hs', 'ls', 'sc', 'sd', 'soc'],
             ]
         ],
         AbasExamTypesEnum::TEACHER_CAREGIVER => [
@@ -22,7 +22,7 @@ return [
             [
                 'code' => 'GAC',
                 'name' => 'المركب التكيفي العام (GAC)',
-                'sum_of' => ['com', 'cu', 'fa', 'hl', 'ls', 'ls', 'sc', 'sd', 'soc', 'wk'],
+                'sum_of' => ['com', 'cu', 'fa', 'hl', 'ls', 'ls', 'sc', 'sd', 'soc'],
             ]
         ],
         AbasExamTypesEnum::PARENT_CAREGIVER => [
