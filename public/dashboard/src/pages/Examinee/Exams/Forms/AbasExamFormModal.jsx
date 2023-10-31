@@ -1,3 +1,4 @@
+import SelectField from 'components/Fields/SelectField';
 import TextAreaField from 'components/Fields/TextAreaField';
 import TextField from 'components/Fields/TextField';
 import { Formik } from 'formik';
@@ -5,14 +6,15 @@ import React, { useState } from 'react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaPlus, FaSave } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 import { useToasts } from 'react-toast-notifications';
 import * as Yup from 'yup';
 
 const initialValues = {
     application_date: '',
-    examiner_notes: ''
+    examiner_notes: '',
+    for: ''
 };
-
 
 function AbasExamFormModal({ onSubmit, title, ...rest }) {
     const [show, setShow] = useState(false);
@@ -23,6 +25,7 @@ function AbasExamFormModal({ onSubmit, title, ...rest }) {
     const validationSchema = Yup.object().shape({
         application_date: Yup.date().required().label(t('Application Date'))
     });
+    const config = useSelector((state) => state.app);
 
     return (
         <>
@@ -61,7 +64,19 @@ function AbasExamFormModal({ onSubmit, title, ...rest }) {
                             </Modal.Header>
                             <Modal.Body>
                                 <Row>
-                                    <Col md={4}>
+                                    <Col md={8}>
+                                        <SelectField
+                                            name="for"
+                                            label={'Sample'}
+                                            onChange={handleChange}
+                                            value={values.for}
+                                            onBlur={handleBlur}
+                                            error={errors.for}
+                                            options={config.config.abas_sub_domains_categories}
+                                            className="mb-3"
+                                        />
+                                    </Col>
+                                    <Col md={8}>
                                         <TextField
                                             name="application_date"
                                             label="Application Date"
@@ -75,7 +90,7 @@ function AbasExamFormModal({ onSubmit, title, ...rest }) {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={6}>
+                                    <Col md={8}>
                                         <TextAreaField
                                             name="examiner_notes"
                                             label="Examiner Notes"

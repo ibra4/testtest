@@ -40,6 +40,7 @@ import CasdIndex from 'pages/Examinee/Types/Casd/CasdIndex';
 import GeneralSettingsIndex from 'pages/Settings/GeneralSettings/GeneralSettingsIndex';
 import ExamsAbasIndex from 'pages/ExamsAbas/ExamsAbasIndex';
 import ExamsCasdIndex from 'pages/ExamsCasd/ExamsCasdIndex';
+import AbasQuestionsReportIndex from 'pages/Examinee/Types/AbasQuestionsReport/AbasQuestionsReportIndex';
 
 const Routes = () => {
   const [status, setStatus] = useState("loading");
@@ -103,6 +104,7 @@ const Routes = () => {
 
         {/* Abas Exams */}
         <Route path="/exams/abas" component={ExamsAbasIndex} exact />
+        <Route path="/exams/abas/report-questions/:id" component={AbasQuestionsReportIndex} exact />
         <Route path="/exams/abas/:id/:sub_domain_id" component={AbasIndex} exact />
 
         {/* CASD Exams */}

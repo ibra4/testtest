@@ -268,6 +268,29 @@ class AbasExamsService
     }
 
     /**
+     * @param AbasExam $abasExam
+     * @return array
+     */
+    public function getExamQuestions(AbasExam $abasExam): array
+    {
+        $categorizedQuestions = [];
+        foreach ($abasExam->subDomains as $abasExamSubDomain) {
+            $categorizedQuestions[$abasExamSubDomain->subDomain->id]['sub_domain'] = $abasExamSubDomain->subDomain;
+            foreach ($abasExamSubDomain->questions as $abasSubDomainQuestion) {
+                $categorizedQuestions[$abasExamSubDomain->subDomain->id]['questions'][] = [
+                    'sub_domain_question_id' => $abasSubDomainQuestion->id,
+                    'question_id' => $abasSubDomainQuestion->question->id,
+                    'question_number' => $abasSubDomainQuestion->question->question_number,
+                    'name' => $abasSubDomainQuestion->question->name,
+                    'name_en' => $abasSubDomainQuestion->question->name_en
+                ];
+            }
+        }
+
+        return $categorizedQuestions;
+    }
+
+    /**
      * Get additional domain sum
      * 
      * @param array $subDomains

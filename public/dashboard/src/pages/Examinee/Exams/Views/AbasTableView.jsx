@@ -12,8 +12,8 @@ function AbasTableView({ rows, onCreateExam }) {
     const { t } = useTranslation();
     const { push } = useHistory();
 
-    const handleCreateAbasExam = (values, forWho) => {
-        return onCreateExam({ ...values, for: forWho }, 'abas');
+    const handleCreateAbasExam = (values) => {
+        return onCreateExam(values, 'abas');
     };
 
     return (
@@ -42,6 +42,13 @@ function AbasTableView({ rows, onCreateExam }) {
                                 <td>{moment(abasExam?.created_at).format('yyyy-MM-DD')}</td>
                                 <td>
                                     <ActionButton
+                                        label={t('Questions Report')}
+                                        icon={<TbReportAnalytics />}
+                                        onClick={() => push(`/exams/abas/report-questions/${abasExam.id}`)}
+                                    />
+                                </td>
+                                <td>
+                                    <ActionButton
                                         label={t('View Exam')}
                                         icon={<TbReportAnalytics />}
                                         onClick={() => push(`/exams/abas/${abasExam.id}/introduction`)}
@@ -52,42 +59,7 @@ function AbasTableView({ rows, onCreateExam }) {
                 </tbody>
             </Table>
             <div className="d-flex justify-content-center flex-wrap">
-                <AbasExamFormModal
-                    title={t('Create exam for teacher')}
-                    onSubmit={(values) => handleCreateAbasExam(values, 'teacher')}
-                />
-                <div className="ms-2 mb-3">
-                    <AbasExamFormModal
-                        title={t('Create exam for tracher / caregiver')}
-                        onSubmit={(values) => handleCreateAbasExam(values, 'teacher_caregiver')}
-                    />
-                </div>
-                <div className="ms-2 mb-3">
-                    <AbasExamFormModal
-                        title={t('Create exam for parent')}
-                        onSubmit={(values) => handleCreateAbasExam(values, 'parent')}
-                    />
-                </div>
-                <div className="ms-2 mb-3">
-                    <AbasExamFormModal
-                        title={t('Create exam for parent / caregiver')}
-                        onSubmit={(values) => handleCreateAbasExam(values, 'parent_caregiver')}
-                    />
-                </div>
-                <div className="ms-2 mb-3">
-                    <AbasExamFormModal
-                        title={t('Create exam for adult - by self')}
-                        onSubmit={(values) => handleCreateAbasExam(values, 'adult_by_self')}
-                        disabled
-                    />
-                </div>
-                <div className="ms-2 mb-3">
-                    <AbasExamFormModal
-                        title={t('Create exam for adult - by others')}
-                        onSubmit={(values) => handleCreateAbasExam(values, 'adult_by_others')}
-                        disabled
-                    />
-                </div>
+                <AbasExamFormModal title={t('create_new', { name: t('ABAS Exam') })} onSubmit={handleCreateAbasExam} />
             </div>
         </WhiteBox>
     );
