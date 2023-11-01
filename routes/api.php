@@ -156,6 +156,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/exams/abas/{id}/delete', [AbasExamsController::class, 'actionDelete']);
         // Abas Report Questions
         Route::get('/exams/abas/report-questions/{id}', [AbasExamsController::class, 'actionGetExamQuestions']);
+        Route::put('/exams/abas/report-questions/{id}', [AbasExamsController::class, 'actionUpdateExamQuestions']);
 
         // Casd Exams
         Route::get('/exams/casd', [CasdExamsController::class, 'actionIndex']);

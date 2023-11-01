@@ -13,7 +13,8 @@ class AbasSubDomainQuestion extends Model
         'abas_exam_sub_domain_id',
         'abas_question_id',
         'result',
-        'guess'
+        'guess',
+        'show_in_report'
     ];
 
     public function question()

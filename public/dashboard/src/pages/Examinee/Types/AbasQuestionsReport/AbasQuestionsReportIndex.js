@@ -32,12 +32,21 @@ function AbasQuestionsReportIndex() {
         getData();
     }, [])
 
+    const handleUpdate = async data => {
+        try {
+            const res = await httpClient.put(`/exams/abas/report-questions/${id}`, data);
+            addToast(t('Saved Successfully'), { appearance: 'success' });
+        } catch (error) {
+            addToast(t('Error'), { appearance: 'error' });
+        }
+    }
+
     const renderView = () => {
         switch (status) {
             case 'loading':
                 return <FullLoader />
             case 'success':
-                return <AbasQuestionsReportView data={data} />
+                return <AbasQuestionsReportView data={data} handleUpdate={handleUpdate} />
             case 'error':
                 return <GeneralError message={error} />
         }

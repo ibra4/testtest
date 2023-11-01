@@ -271,3 +271,27 @@
 .great-save {
     width: 200px;
 }
+
+.question-report-question-item {
+    margin-bottom: 1rem;
+    background-color: #ededed;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.questions-report-subdomains-filter {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    h6 {
+        color: white;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem 1rem;
+        background-color: #9d9d9d;
+        border-radius: 5px;
+        cursor: pointer;
+        &.selected {
+            background-color: green;
+        }
+    }
+}

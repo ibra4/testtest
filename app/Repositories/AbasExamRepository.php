@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\AbasExam;
+use App\Models\AbasSubDomainQuestion;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -75,5 +76,23 @@ class AbasExamRepository
         $questions->groupBy('abas_sub_domain_questions.abas_exam_sub_domain_id');
 
         return $questions->get();
+    }
+
+    public function updateExamQuestions(AbasExam $exam, array $params)
+    {
+        foreach ($params as $paramItem) {
+            $checked = [];
+            $not_checked = [];
+
+            foreach ($paramItem['questions'] as $question) {
+                if ($question['show_in_report']) {
+                    $checked[] = $question['id'];
+                } else {
+                    $not_checked[] = $question['id'];
+                }
+            }
+            AbasSubDomainQuestion::whereIn('id', $checked)->update(['show_in_report' => true]);
+            AbasSubDomainQuestion::whereIn('id', $not_checked)->update(['show_in_report' => false]);
+        }
     }
 }

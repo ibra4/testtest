@@ -113,4 +113,25 @@ class AbasExamsController  extends Controller
             'examiner' => new ExaminerResource($abasExam->examinee->center),
         ]);
     }
+
+    /**
+     * @param string $examId
+     *   AbasExam id
+     * @param Request $request
+     *   Request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function actionUpdateExamQuestions($examId, Request $request)
+    {
+        try {
+            $abasExam = $this->abasExamsService->updateExamQuestions($examId, $request);
+            return $this->sendSuccessReponse([
+                'exam_questions' => $this->abasExamsService->getExamQuestions($abasExam),
+                'examinee' => new ExamineeResource($abasExam->examinee),
+                'examiner' => new ExaminerResource($abasExam->examinee->center),
+            ]);
+        } catch (Throwable $th) {
+            return $this->sendErrorMessage($th->getMessage(), 500);
+        }
+    }
 }

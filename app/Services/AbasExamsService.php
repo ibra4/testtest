@@ -275,14 +275,19 @@ class AbasExamsService
     {
         $categorizedQuestions = [];
         foreach ($abasExam->subDomains as $abasExamSubDomain) {
-            $categorizedQuestions[$abasExamSubDomain->subDomain->id]['sub_domain'] = $abasExamSubDomain->subDomain;
+            $categorizedQuestions[$abasExamSubDomain->id]['sub_domain'] = array_merge(
+                $abasExamSubDomain->subDomain->toArray(),
+                ['id' => $abasExamSubDomain->id]
+            );
             foreach ($abasExamSubDomain->questions as $abasSubDomainQuestion) {
-                $categorizedQuestions[$abasExamSubDomain->subDomain->id]['questions'][] = [
-                    'sub_domain_question_id' => $abasSubDomainQuestion->id,
+                $categorizedQuestions[$abasExamSubDomain->id]['questions'][] = [
+                    'id' => $abasSubDomainQuestion->id,
                     'question_id' => $abasSubDomainQuestion->question->id,
                     'question_number' => $abasSubDomainQuestion->question->question_number,
                     'name' => $abasSubDomainQuestion->question->name,
-                    'name_en' => $abasSubDomainQuestion->question->name_en
+                    'name_en' => $abasSubDomainQuestion->question->name_en,
+                    'result' => $abasSubDomainQuestion->result,
+                    'show_in_report' => $abasSubDomainQuestion->show_in_report,
                 ];
             }
         }
@@ -304,5 +309,27 @@ class AbasExamsService
         })->sum(function ($item) {
             return is_numeric($item->scaled_score) ? $item->scaled_score : 0;
         });
+    }
+
+    /**
+     * Update exam questions
+     * 
+     * @param int $examId
+     *   AbasExam id
+     * @param Request $request
+     * @return AbasExam
+     */
+    public function updateExamQuestions(int $examId, Request $request): AbasExam
+    {
+        $abasExam = $this->getExam($examId);
+        DB::beginTransaction();
+        try {
+            $this->abasExamRepository->updateExamQuestions($abasExam, $request->all());
+            DB::commit();
+            return $abasExam;
+        } catch (Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
     }
 }
