@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import AbasQuestionsReports from './AbasQuestionsReports';
 
 function AbasQuestionsReportView({ data, handleUpdate }) {
     const { t } = useTranslation();
@@ -85,8 +86,16 @@ function AbasQuestionsReportView({ data, handleUpdate }) {
                 <ExamineeGeneralData examinee={data.examinee} examiner={data.examiner} />
             </WhiteBox>
             <WhiteBox title={t('Questions')}>
+                <h3>{t('Reports')}</h3>
+                <div className="mb-4">
+                    {data.is_saved_questions ? (
+                        <AbasQuestionsReports data={data} />
+                    ) : (
+                        <div className="text-secondary">{t('No reports to show')}</div>
+                    )}
+                </div>
                 <h3>{t('Filters')}</h3>
-                <div className="questions-report-subdomains-filter">
+                <div className="questions-report-subdomains-filter mb-3">
                     {subDomains.map((subDomain) => (
                         <h6
                             onClick={(e) => handleExamSubDomainCheck(e.target.checked, subDomain.id)}

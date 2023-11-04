@@ -78,6 +78,13 @@ class AbasExamRepository
         return $questions->get();
     }
 
+    /**
+     * Updates show_in_report for abas_sub_domain_questions
+     * 
+     * @param int $examId
+     * @param array $params
+     * @return void
+     */
     public function updateExamQuestions(AbasExam $exam, array $params)
     {
         foreach ($params as $paramItem) {
@@ -94,5 +101,6 @@ class AbasExamRepository
             AbasSubDomainQuestion::whereIn('id', $checked)->update(['show_in_report' => true]);
             AbasSubDomainQuestion::whereIn('id', $not_checked)->update(['show_in_report' => false]);
         }
+        $exam->update(['is_saved_questions' => true]);
     }
 }

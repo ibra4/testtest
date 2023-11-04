@@ -288,6 +288,7 @@ class AbasExamsService
                     'name_en' => $abasSubDomainQuestion->question->name_en,
                     'result' => $abasSubDomainQuestion->result,
                     'show_in_report' => $abasSubDomainQuestion->show_in_report,
+                    'guess' => $abasSubDomainQuestion->guess
                 ];
             }
         }

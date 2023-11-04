@@ -81,4 +81,26 @@ class AbasReportsController extends Controller
             'domains_composite'
         ));
     }
+
+    public function actionIndexV3(Request $request, $lang, $id)
+    {
+        app()->setLocale($lang);
+        $abasExam = $report = AbasExam::findOrFail($id);
+        $examinee = $abasExam->examinee;
+        $logo = $this->generalReportsService->getCenterLogo($abasExam->examiner);
+
+        $examQuestionsResults = $this->abasExamsService->getExamQuestions($abasExam);
+        
+        return view('reports.abasv3', compact(
+            'report',
+            'abasExam',
+            'examinee',
+            'logo',
+            'examQuestionsResults'
+            // 'iq',
+            // 'sub_domains_composite',
+            // 'withDomains',
+            // 'domains_composite'
+        ));
+    }
 }

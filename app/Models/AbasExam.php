@@ -13,7 +13,11 @@ class AbasExam extends Model implements ReportInterface
 {
     use HasFactory, HasAgeAttribute, HasExaminee, HasExaminer;
 
-    protected $fillable = ['examinee_id', 'created_by', 'category', 'application_date', 'examiner_notes'];
+    protected $fillable = ['examinee_id', 'created_by', 'category', 'application_date', 'examiner_notes', 'is_saved_questions'];
+
+    protected $casts = [
+        'is_saved_questions' => 'bool',
+    ];
 
     public function subDomains()
     {

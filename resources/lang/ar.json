@@ -198,5 +198,11 @@
     "Referral Source": "مصدر الإحالة",
     "Information Source": "مصدر المعلومات",
     "School - Workplace": "المدرسة - مكان العمل",
-    "Grade": "الصف"
+    "Grade": "الصف",
+    "Number": "الرقم",
+    "Result": "النتيجة",
+    "Guess": "تخمين",
+    "Question": "السؤال",
+    "Yes": "نعم",
+    "No": "لا"
 }
