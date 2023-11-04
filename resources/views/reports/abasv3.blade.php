@@ -11,7 +11,7 @@
         <hr>
 
         @foreach ($examQuestionsResults as $examQuestionsResult)
-            <div class="section no-break mb-4">
+            <div class="section mb-4">
                 <h1 class="title">{{ $examQuestionsResult['sub_domain'][$lang == 'ar' ? 'name' : 'name_en'] }}</h1>
                 <table class="table">
                     <thead>
