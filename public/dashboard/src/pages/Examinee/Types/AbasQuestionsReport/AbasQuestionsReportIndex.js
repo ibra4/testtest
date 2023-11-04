@@ -35,6 +35,7 @@ function AbasQuestionsReportIndex() {
     const handleUpdate = async data => {
         try {
             const res = await httpClient.put(`/exams/abas/report-questions/${id}`, data);
+            setData(res.data)
             addToast(t('Saved Successfully'), { appearance: 'success' });
         } catch (error) {
             addToast(t('Error'), { appearance: 'error' });
