@@ -12,7 +12,7 @@
 
         @foreach ($examQuestionsResults as $examQuestionsResult)
             <div class="section no-break mb-4">
-                <h1 class="title">{{ $examQuestionsResult['sub_domain']['name'] }}</h1>
+                <h1 class="title">{{ $examQuestionsResult['sub_domain'][$lang == 'ar' ? 'name' : 'name_en'] }}</h1>
                 <table class="table">
                     <thead>
                         <tr>
@@ -28,7 +28,7 @@
                                 <td>{{ $question['question_number'] }}</td>
                                 <td class="text-success font-weight-bold">{{ $question['result'] }}</td>
                                 <td>{{ $question['guess'] ? __('Yes') : __('No') }}</td>
-                                <td>{{ $question['name'] }}</td>
+                                <td>{{ $question[$lang == 'ar' ? 'name' : 'name_en'] }}</td>
                             </tr>
                         @endforeach
                     </tbody>

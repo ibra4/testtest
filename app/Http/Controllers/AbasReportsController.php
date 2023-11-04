@@ -92,6 +92,7 @@ class AbasReportsController extends Controller
         $examQuestionsResults = $this->abasExamsService->getExamQuestions($abasExam);
         
         return view('reports.abasv3', compact(
+            'lang',
             'report',
             'abasExam',
             'examinee',
