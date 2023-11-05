@@ -293,7 +293,7 @@ class AbasExamsService
                 $categorizedQuestions[$abasExamSubDomain->id]['questions'][] = [
                     'id' => $abasSubDomainQuestion->id,
                     'question_id' => $abasSubDomainQuestion->question->id,
-                    'question_number' => $abasSubDomainQuestion->question->question_number,
+                    'question_number' => $abasSubDomainQuestion->question_number,
                     'name' => $abasSubDomainQuestion->question->name,
                     'name_en' => $abasSubDomainQuestion->question->name_en,
                     'result' => $abasSubDomainQuestion->result,

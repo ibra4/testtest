@@ -23,6 +23,7 @@ class AbasExamSubDomainsRepository
                 AbasSubDomainQuestion::create([
                     'abas_exam_sub_domain_id' => $examSubDomain->id,
                     'abas_question_id' => $question->id,
+                    'question_number' => $question->question_number,
                     'result' => 0,
                     'guess' => false
                 ]);

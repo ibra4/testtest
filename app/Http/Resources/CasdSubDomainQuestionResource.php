@@ -19,7 +19,7 @@ class CasdSubDomainQuestionResource extends JsonResource
             'checked' => $this->checked,
             'title' => $this->question->name,
             'description' => $this->question->description,
-            'question_number' => $this->question->question_number,
+            'question_number' => $this->question_number,
         ];
     }
 }

@@ -17,7 +17,7 @@ class AbasExamSubDomain extends Model
 
     public function questions()
     {
-        return $this->hasMany(AbasSubDomainQuestion::class, 'abas_exam_sub_domain_id', 'id');
+        return $this->hasMany(AbasSubDomainQuestion::class, 'abas_exam_sub_domain_id', 'id')->orderBy('question_number', 'ASC');
     }
 
     public function subDomain()

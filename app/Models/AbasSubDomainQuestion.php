@@ -14,6 +14,7 @@ class AbasSubDomainQuestion extends Model
         'abas_question_id',
         'result',
         'guess',
+        'question_number',
         'show_in_report'
     ];
 
