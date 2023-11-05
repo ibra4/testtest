@@ -89,7 +89,7 @@ class AbasReportsController extends Controller
         $examinee = $abasExam->examinee;
         $logo = $this->generalReportsService->getCenterLogo($abasExam->examiner);
 
-        $examQuestionsResults = $this->abasExamsService->getExamQuestions($abasExam);
+        $examQuestionsResults = $this->abasExamsService->getExamQuestions($abasExam, true);
         
         return view('reports.abasv3', compact(
             'lang',

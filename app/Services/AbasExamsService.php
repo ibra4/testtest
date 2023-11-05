@@ -269,17 +269,27 @@ class AbasExamsService
 
     /**
      * @param AbasExam $abasExam
+     * @param bool $onlyShown
      * @return array
      */
-    public function getExamQuestions(AbasExam $abasExam): array
+    public function getExamQuestions(AbasExam $abasExam, bool $onlyShown = false): array
     {
         $categorizedQuestions = [];
         foreach ($abasExam->subDomains as $abasExamSubDomain) {
+            $questions = $abasExamSubDomain->questions;
+            if ($onlyShown) {
+                $questions = $questions->filter(function ($question) {
+                    return $question->show_in_report;
+                });
+            }
+            if ($questions->isEmpty()) {
+                continue;
+            }
             $categorizedQuestions[$abasExamSubDomain->id]['sub_domain'] = array_merge(
                 $abasExamSubDomain->subDomain->toArray(),
                 ['id' => $abasExamSubDomain->id]
             );
-            foreach ($abasExamSubDomain->questions as $abasSubDomainQuestion) {
+            foreach ($questions as $abasSubDomainQuestion) {
                 $categorizedQuestions[$abasExamSubDomain->id]['questions'][] = [
                     'id' => $abasSubDomainQuestion->id,
                     'question_id' => $abasSubDomainQuestion->question->id,

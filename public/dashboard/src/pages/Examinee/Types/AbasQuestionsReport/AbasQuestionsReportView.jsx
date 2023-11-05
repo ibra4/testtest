@@ -98,7 +98,7 @@ function AbasQuestionsReportView({ data, handleUpdate }) {
                 <div className="questions-report-subdomains-filter mb-3">
                     {subDomains.map((subDomain) => (
                         <h6
-                            onClick={(e) => handleExamSubDomainCheck(e.target.checked, subDomain.id)}
+                            onClick={(e) => handleExamSubDomainCheck(!isAllQuestionsChecked(subDomain.id), subDomain.id)}
                             key={subDomain.id}
                             className={`me-2${isAllQuestionsChecked(subDomain.id) ? ' selected' : ''}`}
                         >
