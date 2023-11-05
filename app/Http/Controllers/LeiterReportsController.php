@@ -19,29 +19,18 @@ use App\Models\Helpers\SemGrowthReverseMemory;
 use App\Models\Helpers\SemGrowthSequentialOrder;
 use App\Models\Helpers\SemGrowthVisualPatterns;
 use App\Models\Reports\LeiterReport;
-use App\Services\GeneralReportsService;
 use App\Services\LeiterRecordsService;
 use Illuminate\Http\Request;
 use stdClass;
 
 class LeiterReportsController extends Controller
 {
-    private GeneralReportsService $generalReportsService;
-
-    public function __construct(GeneralReportsService $generalReportsService)
-    {
-        $this->generalReportsService = $generalReportsService;
-    }
-
     public function index(Request $request, LeiterRecordsService $lrs, $lang, $id)
     {
         app()->setLocale($lang);
         $report = LeiterReport::findOrFail($id);
-
         $age = $report->age;
-        $examinee = $report->examinee;
-
-        $logo = $this->generalReportsService->getCenterLogo($report->examiner);
+        $logo = $report->examinee->center->logo ?? null;
 
         $reportCognitive = $report->reportCognitive;
         $reportMemory = $report->reportMemory;
@@ -341,18 +330,8 @@ class LeiterReportsController extends Controller
     {
         app()->setLocale($lang);
         $report = LeiterReport::findOrFail($id);
-
         $age = $report->age;
-        $examiner = $report->examiner;
-        $examinee = $report->examinee;
-
-        if ($examiner->hasRole('admin')) {
-            $logo = $examiner->logo;
-        } else {
-            $logo = $examiner->admin->logo;
-        }
-
-        $age = $report->age;
+        $logo = $report->examinee->center->logo ?? null;
 
         $reportMemory = $report->reportMemory;
         $reportAttention = $report->reportAttention;

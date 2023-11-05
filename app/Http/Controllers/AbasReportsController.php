@@ -4,20 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\AbasExam;
 use App\Services\AbasExamsService;
-use App\Services\GeneralReportsService;
 use Illuminate\Http\Request;
 
 class AbasReportsController extends Controller
 {
-    private GeneralReportsService $generalReportsService;
-
     private AbasExamsService $abasExamsService;
 
     public function __construct(
-        GeneralReportsService $generalReportsService,
         AbasExamsService $abasExamsService
     ) {
-        $this->generalReportsService = $generalReportsService;
         $this->abasExamsService = $abasExamsService;
     }
 
@@ -26,7 +21,7 @@ class AbasReportsController extends Controller
         app()->setLocale($lang);
         $abasExam = $report = AbasExam::findOrFail($id);
         $examinee = $abasExam->examinee;
-        $logo = $this->generalReportsService->getCenterLogo($abasExam->examiner);
+        $logo = $abasExam->examinee->center->logo ?? null;
 
         $examScaledScores = $this->abasExamsService->getSubDomainsScaledScores($abasExam->id);
 
@@ -42,7 +37,7 @@ class AbasReportsController extends Controller
         app()->setLocale($lang);
         $abasExam = $report = AbasExam::findOrFail($id);
         $examinee = $abasExam->examinee;
-        $logo = $this->generalReportsService->getCenterLogo($abasExam->examiner);
+        $logo = $abasExam->examinee->center->logo ?? null;
         $iq = collect(config("abas.iq"));
         $examScaledScores = $this->abasExamsService->getSubDomainsScaledScores($abasExam->id);
         $sub_domains_composite = $examScaledScores->map(function ($subDomainScore) {
@@ -87,10 +82,10 @@ class AbasReportsController extends Controller
         app()->setLocale($lang);
         $abasExam = $report = AbasExam::findOrFail($id);
         $examinee = $abasExam->examinee;
-        $logo = $this->generalReportsService->getCenterLogo($abasExam->examiner);
+        $logo = $abasExam->examinee->center->logo ?? null;
 
         $examQuestionsResults = $this->abasExamsService->getExamQuestions($abasExam, true);
-        
+
         return view('reports.abasv3', compact(
             'lang',
             'report',

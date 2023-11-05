@@ -19,7 +19,8 @@ class LeiterExamFullResource extends JsonResource
             'application_date' => $this->application_date,
             'age' => $this->age,
             'translated_age' => $this->translated_age,
-            'examiner' => new ExaminerResource($this->examinee->center),
+            'center' => new ExaminerResource($this->examinee->center),
+            'examiner' => new ExaminerResource($this->examiner),
             'examiner_notes' => $this->examiner_notes,
             'examinee' => new ExamineeResource($this->examinee),
             'reports' => [

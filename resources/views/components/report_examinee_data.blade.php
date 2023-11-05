@@ -15,14 +15,16 @@
     </div>
     <div class="label-value-item col-6">
         <div class="label">{{ __('Examiner') }}:</div>
+        <div class="value">{{ $examinee->examiner->name }}</div>
+    </div>
+    <div class="label-value-item col-6">
+        <div class="label">{{ __('Center Name') }}:</div>
         <div class="value">{{ $examinee->center->name }}</div>
     </div>
     <div class="label-value-item col-6">
         <div class="label">{{ __('Location of Testing') }}:</div>
         <div class="value">{{ $examinee->location }}</div>
     </div>
-</div>
-<div class="row">
     <div class="label-value-item col-6">
         <div class="label">{{ __('Application Date') }}:</div>
         <div class="value">{{ $report->application_date }}</div>

@@ -110,7 +110,7 @@ class AbasExamsController  extends Controller
         return $this->sendSuccessReponse([
             'exam_questions' => $this->abasExamsService->getExamQuestions($abasExam),
             'examinee' => new ExamineeResource($abasExam->examinee),
-            'examiner' => new ExaminerResource($abasExam->examinee->center),
+            'center' => new ExaminerResource($abasExam->examinee->center),
             'is_saved_questions' => $abasExam->is_saved_questions,
             'file_ar' => route('abas_report.main3', ['lang' => 'ar', 'id' => $abasExam->id]),
             'file_en' => route('abas_report.main3', ['lang' => 'en', 'id' => $abasExam->id])
@@ -131,7 +131,8 @@ class AbasExamsController  extends Controller
             return $this->sendSuccessReponse([
                 'exam_questions' => $this->abasExamsService->getExamQuestions($abasExam),
                 'examinee' => new ExamineeResource($abasExam->examinee),
-                'examiner' => new ExaminerResource($abasExam->examinee->center),
+                'center' => new ExaminerResource($abasExam->examinee->center),
+                'examiner' => new ExaminerResource($abasExam->examiner),
                 'is_saved_questions' => $abasExam->is_saved_questions,
                 'file_ar' => route('abas_report.main3', ['lang' => 'ar', 'id' => $abasExam->id]),
                 'file_en' => route('abas_report.main3', ['lang' => 'en', 'id' => $abasExam->id])

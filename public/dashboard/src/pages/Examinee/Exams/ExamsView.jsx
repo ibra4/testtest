@@ -14,7 +14,7 @@ function ExamsView({ data, onCreateExam }) {
     return (
         <>
             <WhiteBox title={t('Examinee Data')}>
-                <ExamineeGeneralData examinee={data.examinee} examiner={data.center} />
+                <ExamineeGeneralData examinee={data.examinee} center={data.center} examiner={data.examiner} />
             </WhiteBox>
             <LeiterTableView rows={data?.leiter} onCreateExam={onCreateExam} />
             <AbasTableView rows={data?.abas} onCreateExam={onCreateExam} />

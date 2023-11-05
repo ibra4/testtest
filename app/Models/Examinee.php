@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Models\Reports\LeiterReport;
+use App\Models\Traits\HasExaminer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Examinee extends Model
 {
-    use HasFactory;
+    use HasFactory, HasExaminer;
 
     /**
      * The attributes that are mass assignable.

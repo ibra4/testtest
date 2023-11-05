@@ -83,7 +83,7 @@ function AbasQuestionsReportView({ data, handleUpdate }) {
     return (
         <>
             <WhiteBox title={t('Examinee Data')}>
-                <ExamineeGeneralData examinee={data.examinee} examiner={data.examiner} />
+                <ExamineeGeneralData examinee={data.examinee} center={data.center} examiner={data.examiner} />
             </WhiteBox>
             <WhiteBox title={t('Questions')}>
                 <h3>{t('Reports')}</h3>
@@ -98,7 +98,9 @@ function AbasQuestionsReportView({ data, handleUpdate }) {
                 <div className="questions-report-subdomains-filter mb-3">
                     {subDomains.map((subDomain) => (
                         <h6
-                            onClick={(e) => handleExamSubDomainCheck(!isAllQuestionsChecked(subDomain.id), subDomain.id)}
+                            onClick={(e) =>
+                                handleExamSubDomainCheck(!isAllQuestionsChecked(subDomain.id), subDomain.id)
+                            }
                             key={subDomain.id}
                             className={`me-2${isAllQuestionsChecked(subDomain.id) ? ' selected' : ''}`}
                         >

@@ -17,7 +17,12 @@ function LeiterView({ data, onSectionSubmit }) {
         data.examinee && (
             <>
                 <WhiteBox title={t('Examinee Data')}>
-                    <ExamineeGeneralData examinee={data.examinee} examiner={data.examiner} showNotes={false} />
+                    <ExamineeGeneralData
+                        showNotes={false}
+                        examinee={data.examinee}
+                        center={data.center}
+                        examiner={data.examiner}
+                    />
                     <div className="title">{t('Exam Data')}</div>
                     <Row>
                         <LabelValueCol label={'ID'} value={data.id} md={3} />
