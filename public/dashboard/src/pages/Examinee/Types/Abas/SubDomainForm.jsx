@@ -6,6 +6,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaSave } from 'react-icons/fa';
+import AbasResultFieldCell from './AbasResultFieldCell';
 
 function FormObserver() {
     const { values } = useFormikContext();
@@ -70,71 +71,45 @@ function SubDomainForm({ subDomain, onSubmit }) {
                                             <td>
                                                 {questionField.question_number}. {questionField.title}
                                             </td>
-                                            <td className="text-center">
-                                                <label htmlFor={`question-${index}-${0}`} className="w-100">
-                                                    <Field
-                                                        id={`question-${index}-${0}`}
-                                                        type="radio"
-                                                        name={`questions.${index}.result`}
-                                                        value={0}
-                                                        disabled={canEdit}
-                                                        onChange={() => setFieldValue(`questions.${index}.result`, 0)}
-                                                    />
-                                                    <span className="ms-2">0</span>
-                                                </label>
-                                            </td>
-                                            <td className="text-center">
-                                                <label htmlFor={`question-${index}-${1}`} className="w-100">
-                                                    <Field
-                                                        id={`question-${index}-${1}`}
-                                                        type="radio"
-                                                        name={`questions.${index}.result`}
-                                                        value={1}
-                                                        disabled={canEdit}
-                                                        onChange={() => setFieldValue(`questions.${index}.result`, 1)}
-                                                    />
-                                                    <span className="ms-2">1</span>
-                                                </label>
-                                            </td>
-                                            <td className="text-center">
-                                                <label htmlFor={`question-${index}-${2}`} className="w-100">
-                                                    <Field
-                                                        id={`question-${index}-${2}`}
-                                                        type="radio"
-                                                        name={`questions.${index}.result`}
-                                                        value={2}
-                                                        disabled={canEdit}
-                                                        onChange={() => setFieldValue(`questions.${index}.result`, 2)}
-                                                    />
-                                                    <span className="ms-2">2</span>
-                                                </label>
-                                            </td>
-                                            <td className="text-center">
-                                                <label htmlFor={`question-${index}-${3}`} className="w-100">
-                                                    <Field
-                                                        id={`question-${index}-${3}`}
-                                                        type="radio"
-                                                        name={`questions.${index}.result`}
-                                                        value={3}
-                                                        disabled={canEdit}
-                                                        onChange={() => setFieldValue(`questions.${index}.result`, 3)}
-                                                    />
-                                                    <span className="ms-2">3</span>
-                                                </label>
-                                            </td>
-                                            <td className="text-center">
-                                                <CheckboxField
-                                                    onChange={(evt) =>
-                                                        setFieldValue(`questions.${index}.guess`, evt.target.checked)
-                                                    }
-                                                    disabled={canEdit}
-                                                    name={`questions.${index}.guess`}
-                                                    value={questionField.guess}
-                                                    onBlur={handleBlur}
-                                                    className="mb-3"
-                                                    id={`questions.${index}.guess`}
-                                                />
-                                            </td>
+                                            <AbasResultFieldCell
+                                                index={index}
+                                                value={0}
+                                                setFieldValue={setFieldValue}
+                                                canEdit={canEdit}
+                                                checked={questionField.result === 0}
+                                            />
+                                            <AbasResultFieldCell
+                                                index={index}
+                                                value={1}
+                                                setFieldValue={setFieldValue}
+                                                canEdit={canEdit}
+                                                checked={questionField.result === 1}
+                                            />
+                                            <AbasResultFieldCell
+                                                index={index}
+                                                value={2}
+                                                setFieldValue={setFieldValue}
+                                                canEdit={canEdit}
+                                                checked={questionField.result === 2}
+                                            />
+                                            <AbasResultFieldCell
+                                                index={index}
+                                                value={3}
+                                                setFieldValue={setFieldValue}
+                                                canEdit={canEdit}
+                                                checked={questionField.result === 3}
+                                            />
+                                            <CheckboxField
+                                                onChange={(evt) =>
+                                                    setFieldValue(`questions.${index}.guess`, evt.target.checked)
+                                                }
+                                                disabled={canEdit}
+                                                name={`questions.${index}.guess`}
+                                                value={questionField.guess}
+                                                onBlur={handleBlur}
+                                                className="mb-3"
+                                                id={`questions.${index}.guess`}
+                                            />
                                         </tr>
                                     ))
                                 }
