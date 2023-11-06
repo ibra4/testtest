@@ -7,14 +7,24 @@ function AbasQuestionsReports({ data }) {
 
     return (
         <Row>
-            <Col className="col-auto">
-                <Button as={'a'} href={data.file_ar} target="_blank" variant="primary">
-                    {t('Report (AR)')}
+            <Col className="col-auto mb-3">
+                <Button as={'a'} href={data.file_goals_ar} target="_blank" variant="primary">
+                    {t('Goals Report (AR)')}
                 </Button>
             </Col>
-            <Col className="col-auto">
-                <Button as={'a'} href={data.file_en} target="_blank" variant="primary">
-                    {t('Report (EN)')}
+            <Col className="col-auto mb-3">
+                <Button as={'a'} href={data.file_goals_en} target="_blank" variant="primary">
+                    {t('Goals Report (EN)')}
+                </Button>
+            </Col>
+            <Col className="col-auto mb-3">
+                <Button as={'a'} href={data.file_goals_desc_ar} target="_blank" variant="primary">
+                    {t('Goals Description Report (AR)')}
+                </Button>
+            </Col>
+            <Col className="col-auto mb-3">
+                <Button as={'a'} href={data.file_goals_desc_en} target="_blank" variant="primary">
+                    {t('Goals Description Report (EN)')}
                 </Button>
             </Col>
         </Row>

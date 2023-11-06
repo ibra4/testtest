@@ -9,7 +9,7 @@ class AbasQuestion extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['abas_sub_domain_id', 'name', 'name_en', 'question_number'];
+    protected $fillable = ['abas_sub_domain_id', 'name', 'name_en', 'description', 'description_en', 'question_number'];
 
     protected $appends = ['domain_full_name'];
 

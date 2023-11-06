@@ -60,7 +60,7 @@ function Form({ initialValues, config, onSubmit }) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={8}>
+                            <Col md={6}>
                                 <TextAreaField
                                     name="name"
                                     label="Title"
@@ -71,7 +71,7 @@ function Form({ initialValues, config, onSubmit }) {
                                     className="mb-3"
                                 />
                             </Col>
-                            <Col md={8}>
+                            <Col md={6}>
                                 <TextAreaField
                                     name="name_en"
                                     label="Title En"
@@ -79,6 +79,30 @@ function Form({ initialValues, config, onSubmit }) {
                                     value={values.name_en}
                                     onBlur={handleBlur}
                                     error={errors.name_en}
+                                    className="mb-3"
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={6}>
+                                <TextAreaField
+                                    name="description"
+                                    label="Description"
+                                    onChange={handleChange}
+                                    value={values.description}
+                                    onBlur={handleBlur}
+                                    error={touched.description && errors.description}
+                                    className="mb-3"
+                                />
+                            </Col>
+                            <Col md={6}>
+                                <TextAreaField
+                                    name="description_en"
+                                    label="Description EN"
+                                    onChange={handleChange}
+                                    value={values.description_en}
+                                    onBlur={handleBlur}
+                                    error={touched.description_en && errors.description_en}
                                     className="mb-3"
                                 />
                             </Col>

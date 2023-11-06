@@ -112,8 +112,10 @@ class AbasExamsController  extends Controller
             'examinee' => new ExamineeResource($abasExam->examinee),
             'center' => new ExaminerResource($abasExam->examinee->center),
             'is_saved_questions' => $abasExam->is_saved_questions,
-            'file_ar' => route('abas_report.main3', ['lang' => 'ar', 'id' => $abasExam->id]),
-            'file_en' => route('abas_report.main3', ['lang' => 'en', 'id' => $abasExam->id])
+            'file_goals_ar' => route('abas_report.main3', ['lang' => 'ar', 'id' => $abasExam->id]),
+            'file_goals_en' => route('abas_report.main3', ['lang' => 'en', 'id' => $abasExam->id]),
+            'file_goals_desc_ar' => route('abas_report.main4', ['lang' => 'ar', 'id' => $abasExam->id]),
+            'file_goals_desc_en' => route('abas_report.main4', ['lang' => 'en', 'id' => $abasExam->id])
         ]);
     }
 

@@ -205,5 +205,7 @@
     "Question": "السؤال",
     "Yes": "نعم",
     "No": "لا",
-    "Center Name": "مركز الفحص"
+    "Center Name": "مركز الفحص",
+    "Description": "الوصف",
+    "Goal Explaination": "شرح الهدف"
 }

@@ -77,6 +77,14 @@ class AbasReportsController extends Controller
         ));
     }
 
+    /**
+     * @param Request $request
+     *   Request
+     * @param string $lang
+     * @param int $id
+     * 
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function actionIndexV3(Request $request, $lang, $id)
     {
         app()->setLocale($lang);
@@ -93,10 +101,33 @@ class AbasReportsController extends Controller
             'examinee',
             'logo',
             'examQuestionsResults'
-            // 'iq',
-            // 'sub_domains_composite',
-            // 'withDomains',
-            // 'domains_composite'
+        ));
+    }
+
+    /**
+     * @param Request $request
+     *   Request
+     * @param string $lang
+     * @param int $id
+     * 
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function actionIndexV4(Request $request, $lang, $id)
+    {
+        app()->setLocale($lang);
+        $abasExam = $report = AbasExam::findOrFail($id);
+        $examinee = $abasExam->examinee;
+        $logo = $abasExam->examinee->center->logo ?? null;
+
+        $examQuestionsResults = $this->abasExamsService->getExamQuestions($abasExam, true);
+
+        return view('reports.abasv4', compact(
+            'lang',
+            'report',
+            'abasExam',
+            'examinee',
+            'logo',
+            'examQuestionsResults'
         ));
     }
 }

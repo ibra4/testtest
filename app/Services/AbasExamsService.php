@@ -296,6 +296,8 @@ class AbasExamsService
                     'question_number' => $abasSubDomainQuestion->question_number,
                     'name' => $abasSubDomainQuestion->question->name,
                     'name_en' => $abasSubDomainQuestion->question->name_en,
+                    'description' => $abasSubDomainQuestion->question->description,
+                    'description_en' => $abasSubDomainQuestion->question->description_en,
                     'result' => $abasSubDomainQuestion->result,
                     'show_in_report' => $abasSubDomainQuestion->show_in_report,
                     'guess' => $abasSubDomainQuestion->guess
