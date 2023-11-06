@@ -1,4 +1,5 @@
 import ExamineeGeneralData from 'components/ExamineeGeneralData';
+import NoReports from 'components/Reports/NoReports';
 import WhiteBox from 'components/WhiteBox';
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
@@ -88,11 +89,7 @@ function AbasQuestionsReportView({ data, handleUpdate }) {
             <WhiteBox title={t('Questions')}>
                 <h3>{t('Reports')}</h3>
                 <div className="mb-4">
-                    {data.is_saved_questions ? (
-                        <AbasQuestionsReports data={data} />
-                    ) : (
-                        <div className="text-secondary">{t('No reports to show')}</div>
-                    )}
+                    {data.is_saved_questions ? <AbasQuestionsReports data={data} /> : <NoReports />}
                 </div>
                 <h3>{t('Filters')}</h3>
                 <div className="questions-report-subdomains-filter mb-3">

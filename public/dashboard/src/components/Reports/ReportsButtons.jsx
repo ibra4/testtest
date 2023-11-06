@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Row, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import NoReports from './NoReports';
 
 // @TODO: Maybe you can make it general.
 function ReportsButtons({ data }) {
@@ -38,7 +39,7 @@ function ReportsButtons({ data }) {
                         </div>
                     ) : (
                         <div>
-                            <div className="text-danger">{t('No reports to show')}</div>
+                            <NoReports />
                             <div className="text-secondary">{t('Click save to generate reports')}</div>
                         </div>
                     )}

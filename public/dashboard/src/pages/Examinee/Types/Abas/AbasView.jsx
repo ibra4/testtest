@@ -1,15 +1,16 @@
 import classNames from 'classnames';
 import ExamineeGeneralData from 'components/ExamineeGeneralData';
 import LabelValueCol from 'components/LabelValueCol';
+import NoReports from 'components/Reports/NoReports';
 import WhiteBox from 'components/WhiteBox';
 import React, { useMemo } from 'react';
 import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaInfoCircle, FaSave, FaTable } from 'react-icons/fa';
+import { FaInfoCircle, FaSave } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import AbasIntroduction from './AbasIntroduction';
-import AbasReports from './AbasReports';
+import AbasReportsButtons from './AbasReportsButtons';
 import SubDomainForm from './SubDomainForm';
 
 function AbasView({ data, onSubDomainSubmit }) {
@@ -20,8 +21,6 @@ function AbasView({ data, onSubDomainSubmit }) {
         switch (sub_domain_id) {
             case 'introduction':
                 return <AbasIntroduction content={data.introduction} />;
-            case 'reports':
-                return <AbasReports data={data} />;
             default:
                 const subDomain = data.sub_domains.find((item) => item.id == sub_domain_id);
                 return <SubDomainForm subDomain={subDomain} onSubmit={onSubDomainSubmit} />;
@@ -74,23 +73,13 @@ function AbasView({ data, onSubDomainSubmit }) {
                         {subDomain.title}
                     </Link>
                 ))}
-                {atLeastOneSaved && (
-                    <Link
-                        className={classNames([
-                            'abas-tab-item bg-success text-white',
-                            sub_domain_id == 'reports' && 'active',
-                            'saved'
-                        ])}
-                        to={`/exams/abas/${data.id}/reports`}
-                    >
-                        <span className="icon-wrapper me-2">
-                            <FaTable />
-                        </span>
-                        {t('Extract reports')}
-                    </Link>
-                )}
             </div>
-            <WhiteBox>{renderView()}</WhiteBox>
+            <WhiteBox>
+                <h3 className="mb-4">{t('Reports')}</h3>
+                <hr />
+                {atLeastOneSaved ? <AbasReportsButtons data={data} /> : <NoReports />}
+                {renderView()}
+            </WhiteBox>
         </>
     );
 }
