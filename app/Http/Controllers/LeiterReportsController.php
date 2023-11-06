@@ -29,6 +29,7 @@ class LeiterReportsController extends Controller
     {
         app()->setLocale($lang);
         $report = LeiterReport::findOrFail($id);
+        $examinee = $report->examinee;
         $age = $report->age;
         $logo = $report->examinee->center->logo ?? null;
 
@@ -330,6 +331,7 @@ class LeiterReportsController extends Controller
     {
         app()->setLocale($lang);
         $report = LeiterReport::findOrFail($id);
+        $examinee = $report->examinee;
         $age = $report->age;
         $logo = $report->examinee->center->logo ?? null;
 
