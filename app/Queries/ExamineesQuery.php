@@ -76,6 +76,13 @@ class ExamineesQuery
             $query->where('examinees.id', $request->id);
         }
 
+        if ($request->name) {
+            $query->where([['examinees.name', 'LIKE', "%$request->name%"]]);
+        }
+        if ($request->name_en) {
+            $query->where([['examinees.name_en', 'LIKE', "%$request->name_en%"]]);
+        }
+
         if (!$user->hasRole('root')) {
             if ($user->hasRole('admin')) {
                 $all_admins = User::where('admin_id', $user->id)->get()->pluck('id')->toArray();
