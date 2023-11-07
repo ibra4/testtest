@@ -35,12 +35,14 @@
                                             class="text-success font-weight-bold">{{ $question['guess'] ? __('Yes') : __('No') }}</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div>{{ __('Goal Explaination') }} : </div>
-                                        {{ $question['description'] }}
-                                    </td>
-                                </tr>
+                                @if ($question['description'])
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="font-weight-bold">{{ __('Goal Explaination') }} : </div>
+                                            {!! nl2br($question[$lang === 'ar' ? 'description' : 'description_en']) !!}
+                                        </td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                     @endforeach
