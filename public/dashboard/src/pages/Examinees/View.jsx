@@ -69,7 +69,8 @@ const View = ({ data, queryParams, onSearch }) => {
                         <tr>
                             <th>{t('ID')}</th>
                             <th>{t('Name')}</th>
-                            <th>{t('Age')}</th>
+                            {/** @TODO: Check later age -> same as birthday */}
+                            <th>{t('Birthday')}</th>
                             <th>{t('Gender')}</th>
                             <th>{t('Created By')}</th>
                             <th>{t('Created At')}</th>

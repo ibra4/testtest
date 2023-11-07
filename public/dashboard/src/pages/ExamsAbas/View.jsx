@@ -22,6 +22,7 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
             <td>{item.examinee_id}</td>
             <td>{item.examineename}</td>
             <td>{item.examinername}</td>
+            <td>{item.sample}</td>
             <td>{item.centername}</td>
             <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
             <td>
@@ -32,7 +33,13 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
                         onClick={() => push(`/exams/abas/${item.id}/introduction`)}
                         variant="primary"
                     />
-                    {hasRole('root') && (
+                    <ActionButton
+                        icon={<FaEye />}
+                        label={t('Questions Report')}
+                        onClick={() => push(`/exams/abas/report-questions/${item.id}`)}
+                        variant="primary"
+                    />
+                    {/* {hasRole('root') && (
                         <ActionButton
                             icon={<FaTrash />}
                             label={t('Delete')}
@@ -40,7 +47,7 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
                             variant="danger"
                             classes="ms-3"
                         />
-                    )}
+                    )} */}
                 </div>
             </td>
         </tr>
@@ -73,6 +80,7 @@ const View = ({ data, queryParams, onSearch, handleDelete }) => {
                             <th>{t('Examinee ID')}</th>
                             <th>{t('Examinee')}</th>
                             <th>{t('Examiner')}</th>
+                            <th>{t('Sample')}</th>
                             <th>{t('Admin')}</th>
                             <th>{t('Created At')}</th>
                             <th>{t('Actions')}</th>

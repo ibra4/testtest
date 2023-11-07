@@ -19,8 +19,21 @@ class AbasExam extends Model implements ReportInterface
         'is_saved_questions' => 'bool',
     ];
 
+    protected $appends = ['sample'];
+
     public function subDomains()
     {
         return $this->hasMany(AbasExamSubDomain::class, 'abas_exam_id', 'id');
+    }
+
+    /**
+     * Get the sample attribute.
+     *
+     * @param string value
+     * @return string
+     */
+    public function getSampleAttribute($vlaue)
+    {
+        return __($this->category);
     }
 }

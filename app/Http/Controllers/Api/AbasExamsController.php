@@ -137,7 +137,9 @@ class AbasExamsController  extends Controller
                 'examiner' => new ExaminerResource($abasExam->examiner),
                 'is_saved_questions' => $abasExam->is_saved_questions,
                 'file_ar' => route('abas_report.main3', ['lang' => 'ar', 'id' => $abasExam->id]),
-                'file_en' => route('abas_report.main3', ['lang' => 'en', 'id' => $abasExam->id])
+                'file_en' => route('abas_report.main3', ['lang' => 'en', 'id' => $abasExam->id]),
+                'file_goals_desc_ar' => route('abas_report.main4', ['lang' => 'ar', 'id' => $abasExam->id]),
+                'file_goals_desc_en' => route('abas_report.main4', ['lang' => 'en', 'id' => $abasExam->id])
             ]);
         } catch (Throwable $th) {
             return $this->sendErrorMessage($th->getMessage(), 500);

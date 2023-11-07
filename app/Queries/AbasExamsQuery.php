@@ -22,6 +22,7 @@ class AbasExamsQuery
             'examinees.name as examineename',
             'examiner.name as examinername',
             'center.name as centername',
+            'abas_exams.category',
             'abas_exams.created_at'
         )
             // ->where([['examinees.name', 'LIKE', "%$request->name%"]])
