@@ -15,11 +15,15 @@
                 <h1 class="title">{{ $examQuestionsResult['sub_domain'][$lang == 'ar' ? 'name' : 'name_en'] }}</h1>
                 <div class="mb-5">
                     @foreach ($examQuestionsResult['questions'] as $question)
+                        @php
+                            $questionTitle = $question[$lang == 'ar' ? 'name' : 'name_en'];
+                            $description = $question[$lang == 'ar' ? 'description' : 'description_en'];
+                        @endphp
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th colspan="2">
-                                        <div>{{ $question['question_number'] }}. {{ $question['name'] }}</div>
+                                        <div>{{ $question['question_number'] }}. {{ $questionTitle }}</div>
                                     </th>
                                 </tr>
                             </thead>
@@ -35,11 +39,11 @@
                                             class="text-success font-weight-bold">{{ $question['guess'] ? __('Yes') : __('No') }}</span>
                                     </td>
                                 </tr>
-                                @if ($question['description'])
+                                @if ($description)
                                     <tr>
                                         <td colspan="2">
                                             <div class="font-weight-bold">{{ __('Goal Explaination') }} : </div>
-                                            {!! nl2br($question[$lang === 'ar' ? 'description' : 'description_en']) !!}
+                                            {!! nl2br($description) !!}
                                         </td>
                                     </tr>
                                 @endif
