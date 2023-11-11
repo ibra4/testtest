@@ -58,5 +58,11 @@ export const useDataTable = (queryParams, setQueryParams, status, setStatus, rou
         setIsLoading(false)
     }
 
-    return { onSearch, data, isLoading, getData, handleDelete }
+    const updateCallback = (values) => {
+        setData({ ...data, data: data?.data.map(item => item.id == values.id ? values : item) })
+    }
+
+    const createCallback = getData
+
+    return { onSearch, data, isLoading, getData, handleDelete, updateCallback, createCallback }
 }

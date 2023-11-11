@@ -1,17 +1,17 @@
 import { FaEdit, FaPlus } from 'react-icons/fa';
-import ActionButton from 'components/Fields/ActionButton';
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import WhiteBox from 'components/WhiteBox';
-import Pagination from 'components/Datatable/Pagination';
 import Showing from 'components/Datatable/Showing';
+import FormModal from 'components/Forms/FormModal';
+import AbasQuestionForm from 'components/Forms/AbasQuestionForm';
+import { DEFAULT_VALUES } from 'providers/helpers/defaultValues';
+import Pagination from 'components/Datatable/Pagination';
 
-const View = ({ data, onSearch, queryParams }) => {
+const View = ({ data, onSearch, queryParams, updateCallback, createCallback }) => {
     const { t } = useTranslation();
-    const { push } = useHistory();
 
     const renderRow = (item) => (
         <tr key={item.id}>
@@ -23,11 +23,14 @@ const View = ({ data, onSearch, queryParams }) => {
             <td>{moment(item.created_at).format('yyyy-MM-DD')}</td>
             <td>
                 <div className="d-flex">
-                    <ActionButton
-                        label={t('Edit')}
+                    <FormModal
+                        apiPrefix={'/abas/questions'}
+                        defaultValue={item}
+                        Form={AbasQuestionForm}
+                        updateCallback={updateCallback}
                         icon={<FaEdit />}
-                        onClick={() => push(`/settings/abas/questions/${item.id}/update`)}
                         variant="success"
+                        buttonLabel={t('Edit')}
                     />
                 </div>
             </td>
@@ -38,10 +41,15 @@ const View = ({ data, onSearch, queryParams }) => {
         <>
             <div className="datatable-header">
                 <Showing data={data} />
-                <Link to="/settings/abas/questions/create" className="btn btn-primary">
-                    <FaPlus />
-                    <span className="ms-2">{t('create_new', { name: t('Question') })}</span>
-                </Link>
+                <FormModal
+                    apiPrefix={'/abas/questions'}
+                    defaultValue={DEFAULT_VALUES.ABAS_QUESTION}
+                    Form={AbasQuestionForm}
+                    createCallback={createCallback}
+                    icon={<FaEdit />}
+                    variant="primary"
+                    buttonLabel={t('create', { name: t('Question') })}
+                />
             </div>
             <WhiteBox>
                 <Table striped>

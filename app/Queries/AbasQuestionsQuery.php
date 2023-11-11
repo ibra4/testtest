@@ -21,6 +21,8 @@ class AbasQuestionsQuery
             'abas_questions.id',
             'abas_questions.name',
             'abas_questions.name_en',
+            'abas_questions.description',
+            'abas_questions.description_en',
             'abas_questions.abas_sub_domain_id',
             'abas_questions.question_number',
             'abas_questions.created_at',
@@ -28,6 +30,8 @@ class AbasQuestionsQuery
 
         $query->leftJoin('abas_sub_domains', 'abas_questions.abas_sub_domain_id', '=', 'abas_sub_domains.id');
 
+        $query->orderBy('abas_questions.abas_sub_domain_id', 'asc');
+        $query->orderBy('abas_questions.question_number', 'asc');
         if ($request->name) {
             $query->where([['abas_questions.name', 'LIKE', "%$request->name%"]]);
         }

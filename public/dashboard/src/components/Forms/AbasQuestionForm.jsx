@@ -1,4 +1,3 @@
-import FormButtons from 'components/Fields/FormButtons';
 import SelectField from 'components/Fields/SelectField';
 import TextAreaField from 'components/Fields/TextAreaField';
 import TextField from 'components/Fields/TextField';
@@ -9,8 +8,9 @@ import { Col, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import * as Yup from 'yup';
+import FormModalButtons from './FormModalButtons';
 
-function Form({ initialValues, config, onSubmit }) {
+function AbasQuestionForm({ initialValues, config, onSubmit, onHide }) {
     const { t } = useTranslation();
 
     const validationSchema = Yup.object().shape({
@@ -25,6 +25,7 @@ function Form({ initialValues, config, onSubmit }) {
                 try {
                     await onSubmit(values);
                 } catch (error) {
+                    console.log('error : ', error);
                     setErrors(error.response.data.errors);
                 }
                 setSubmitting(false);
@@ -107,7 +108,7 @@ function Form({ initialValues, config, onSubmit }) {
                                 />
                             </Col>
                         </Row>
-                        <FormButtons />
+                        <FormModalButtons onHide={onHide} />
                     </form>
                 </WhiteBox>
             )}
@@ -115,4 +116,4 @@ function Form({ initialValues, config, onSubmit }) {
     );
 }
 
-export default Form;
+export default AbasQuestionForm;
