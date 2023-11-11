@@ -24,16 +24,23 @@ function AbasQuestionForm({ initialValues, config, onSubmit, onHide }) {
             onSubmit={async (values, { setErrors, setSubmitting }) => {
                 try {
                     await onSubmit(values);
+                    setSubmitting(false);
                 } catch (error) {
                     console.log('error : ', error);
                     setErrors(error.response.data.errors);
+                    setSubmitting(false);
                 }
-                setSubmitting(false);
             }}
             validationSchema={validationSchema}
         >
             {({ values, errors, touched, handleChange, setFieldValue, handleBlur, handleSubmit, isSubmitting }) => (
-                <WhiteBox>
+                <WhiteBox shadow={false} classes="my-3">
+                    <h3>
+                        {values.id
+                            ? t('update', { name: t('Question') }) + ` #${values.id}`
+                            : t('create_new', { name: t('Question') })}
+                    </h3>
+                    <hr />
                     <form onSubmit={handleSubmit}>
                         <Row>
                             <Col md={4}>
@@ -108,7 +115,7 @@ function AbasQuestionForm({ initialValues, config, onSubmit, onHide }) {
                                 />
                             </Col>
                         </Row>
-                        <FormModalButtons onHide={onHide} />
+                        <FormModalButtons onHide={onHide} isSubmitting={isSubmitting} />
                     </form>
                 </WhiteBox>
             )}
