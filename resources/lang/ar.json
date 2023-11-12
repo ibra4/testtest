@@ -207,5 +207,7 @@
     "No": "لا",
     "Center Name": "مركز الفحص",
     "Description": "الوصف",
-    "Goal Explaination": "شرح الهدف"
+    "Goal Explaination": "شرح الهدف",
+    "Skills that apply to examinee": "المهارات التي تنطبق على المفحوص",
+    "Skills that don't apply to examinee": "المهارات التي لا تنطبق على المفحوص"
 }

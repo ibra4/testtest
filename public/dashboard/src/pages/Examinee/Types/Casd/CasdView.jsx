@@ -4,7 +4,7 @@ import WhiteBox from 'components/WhiteBox';
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import CasdReports from './CasdReports';
+import CasdReportsButtons from './CasdReportsButtons';
 import SubDomainForm from './SubDomainForm';
 
 function CasdView({ data, onExamSubmit }) {
@@ -27,9 +27,9 @@ function CasdView({ data, onExamSubmit }) {
                     {data?.examiner_notes && <LabelValueCol label={'Notes'} value={data.examiner_notes} md={12} />}
                 </Row>
             </WhiteBox>
-            <SubDomainForm exam={data} onSubmit={onExamSubmit} />
-            <WhiteBox title={t('Reports')}>
-                <CasdReports />
+            <WhiteBox>
+                <CasdReportsButtons data={data} />
+                <SubDomainForm exam={data} onSubmit={onExamSubmit} />
             </WhiteBox>
         </>
     );

@@ -24,7 +24,9 @@ class CasdExamFullResource extends JsonResource
             'examiner_notes' => $this->examiner_notes,
             'examinee' => new ExamineeResource($this->examinee),
             'is_saved' => $this->is_saved,
-            'sub_domains' => CasdExamSubDomainResource::collection($this->subDomains)
+            'sub_domains' => CasdExamSubDomainResource::collection($this->subDomains),
+            'file_en' => route('casd_report.main', ['id' => $this->id, 'lang' => 'en']),
+            'file_ar' => route('casd_report.main', ['id' => $this->id, 'lang' => 'ar']),
         ];
     }
 }

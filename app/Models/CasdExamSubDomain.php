@@ -5,6 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property integer $casd_exam_id
+ * @property integer $casd_sub_domain_id
+ * @property CasdSubDomainQuestion[] $questions
+ * @property CasdSubDomain $subDomain
+ * @property CasdExam $exam
+ */
 class CasdExamSubDomain extends Model
 {
     use HasFactory;

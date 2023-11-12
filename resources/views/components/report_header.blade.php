@@ -17,6 +17,10 @@
                 @case('abas')
                     <img src="{{ asset('abas_logo') }}" class="w-100" alt="">
                 @break
+
+                @case('casd')
+                    <img src="{{ asset('casd_logo') }}" class="w-100" alt="">
+                @break
             @endswitch
         @endisset
     </div>

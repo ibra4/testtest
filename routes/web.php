@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbasReportsController;
 use App\Http\Controllers\Api\AdminsController;
+use App\Http\Controllers\CasdReportsController;
 use App\Http\Controllers\Api\ExamineesController;
 use App\Http\Controllers\Api\LeiterRecordsController;
 use App\Http\Controllers\Api\LeiterExamsController;
@@ -50,17 +51,18 @@ Route::middleware('can:root')->group(function () {
 Route::impersonate();
 
 Route::group(['middleware' => ['auth', 'report_owner']], function () {
+    // Leiter tables report
     Route::get('{lang}/leiter-report/{id}/first', [LeiterReportsController::class, 'index'])->name('leiter_report.first');
+    // Leiter charts report
     Route::get('{lang}/leiter-report/{id}/second', [LeiterReportsController::class, 'charts'])->name('leiter_report.second');
-});
-
-Route::group(['middleware' => ['auth', 'report_owner']], function () {
-    // Tables report
+    // ABAS tables report
     Route::get('{lang}/abas-report/{id}', [AbasReportsController::class, 'actionIndex'])->name('abas_report.main');
-    // Charts report
+    // ABAS charts report
     Route::get('{lang}/abas-report-v2/{id}', [AbasReportsController::class, 'actionIndexV2'])->name('abas_report.main2');
-    // Goals report
+    // ABAS Goals report
     Route::get('{lang}/abas-report-v3/{id}', [AbasReportsController::class, 'actionIndexV3'])->name('abas_report.main3');
-    // Goals description report
+    // ABAS Goals description report
     Route::get('{lang}/abas-report-v4/{id}', [AbasReportsController::class, 'actionIndexV4'])->name('abas_report.main4');
+    // CASD tables report
+    Route::get('{lang}/casd-report/{id}', [CasdReportsController::class, 'actionIndex'])->name('casd_report.main');
 });
