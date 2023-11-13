@@ -105,6 +105,9 @@ function AbasQuestionsReportView({ data, handleUpdate }) {
                         </h6>
                     ))}
                 </div>
+                <Button variant="primary" className="mb-4" onClick={() => handleUpdate(subDomains)}>
+                    {t('Save')}
+                </Button>
                 <Row>
                     {subDomains.map((examSubDomain) => (
                         <Col key={examSubDomain.id} className="mb-5" md={6}>
