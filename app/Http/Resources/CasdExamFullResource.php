@@ -27,6 +27,8 @@ class CasdExamFullResource extends JsonResource
             'sub_domains' => CasdExamSubDomainResource::collection($this->subDomains),
             'file_en' => route('casd_report.main', ['id' => $this->id, 'lang' => 'en']),
             'file_ar' => route('casd_report.main', ['id' => $this->id, 'lang' => 'ar']),
+            'file_charts_en' => route('casd_report.main2', ['id' => $this->id, 'lang' => 'en']),
+            'file_charts_ar' => route('casd_report.main2', ['id' => $this->id, 'lang' => 'ar']),
         ];
     }
 }

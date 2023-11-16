@@ -8,6 +8,9 @@
         <hr>
         <div class="section">
             <h3 class="mb-4">{{ __('Skills that apply to examinee') }}</h3>
+            <p>
+                بعد تطبيق قائمة (كازد) لتقدير اضطراب طيف التوحدتحصل المفحوص درجة ({{ $count }})
+            </p>
             <hr>
             <ol>
                 @foreach ($appliedSubDomains as $idx => $appliedSubDomain)

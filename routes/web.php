@@ -65,4 +65,5 @@ Route::group(['middleware' => ['auth', 'report_owner']], function () {
     Route::get('{lang}/abas-report-v4/{id}', [AbasReportsController::class, 'actionIndexV4'])->name('abas_report.main4');
     // CASD tables report
     Route::get('{lang}/casd-report/{id}', [CasdReportsController::class, 'actionIndex'])->name('casd_report.main');
+    Route::get('{lang}/casd-report-v2/{id}', [CasdReportsController::class, 'actionIndex2'])->name('casd_report.main2');
 });

@@ -34,8 +34,10 @@ class CasdReportsController extends Controller
 
         $appliedSubDomains = [];
         $notAppliedSubDomains = [];
+        $count = 0;
         foreach ($casdExam->subDomains as $subDomain) {
             $checkedQuestions = $subDomain->questions()->where('checked', true)->get();
+            $count += $checkedQuestions->count();
             $notCheckedQuestions = $subDomain->questions()->where('checked', false)->get();
             if (!$checkedQuestions->isEmpty()) {
                 $appliedSubDomains[] = [
@@ -51,7 +53,31 @@ class CasdReportsController extends Controller
             }
         }
         
-        return view('reports.casd', compact('casdExam', 'report', 'examinee', 'logo', 'appliedSubDomains', 'notAppliedSubDomains'));
+        return view('reports.casd', compact('casdExam', 'report', 'examinee', 'logo', 'appliedSubDomains', 'notAppliedSubDomains', 'count'));
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @param string $lang
+     * @param string $id
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function actionIndex2(Request $request, $lang, $id)
+    {
+        app()->setLocale($lang);
+        $casdExam = $report = $this->casdExamsService->getExam($id);
+        $examinee = $casdExam->examinee;
+        $logo = $casdExam->examinee->center->logo ?? null;
+
+        $count = 0;
+        $notCount = 0;
+        foreach ($casdExam->subDomains as $subDomain) {
+            $count += $subDomain->questions()->where('checked', true)->count();
+            $notCount += $subDomain->questions()->where('checked', false)->count();
+        }
+
+        return view('reports.casd2', compact('casdExam', 'report', 'examinee', 'logo', 'count', 'notCount'));
+    }
 }
