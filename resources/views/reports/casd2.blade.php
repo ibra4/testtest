@@ -11,10 +11,6 @@
             <p>
                 بعد تطبيق قائمة (كازد) لتقدير اضطراب طيف التوحدتحصل المفحوص درجة ({{ $count }})
             </p>
-        </div>
-        <hr>
-        <div class="section">
-            <h3 class="mb-4">{{ __('Results') }}</h3>
             <canvas id="casdChart1"></canvas>
         </div>
     </main>
@@ -46,6 +42,18 @@
                     data: data2, // Set y values equal to x values
                     borderColor: 'rgb(54, 162, 235)',
                     fill: false,
+                }, {
+                    // Fake line to show 30 in yAxis
+                    label: '',
+                    borderColor: 'rgba(0, 0, 0, 0)',
+                    backgroundColor: 'rgba(0, 0, 0, 0)',
+                    borderColor: 'rgb(0, 0, 0, 0)',
+                    data: xAxis,
+                    fill: false,
+                    pointRadius: 0,
+                    legend: {
+                        display: false
+                    },
                 }]
             }
         });
