@@ -35,12 +35,12 @@
                 datasets: [{
                     label: 'المهارات التي تنطبق',
                     data: data1, // Set y values equal to x values
-                    borderColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(54, 162, 235)',
                     fill: false,
                 }, {
                     label: 'المهارات التي لا تنطبق',
                     data: data2, // Set y values equal to x values
-                    borderColor: 'rgb(54, 162, 235)',
+                    borderColor: 'rgb(255, 99, 132)',
                     fill: false,
                 }, {
                     // Fake line to show 30 in yAxis
