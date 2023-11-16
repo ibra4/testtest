@@ -13,6 +13,20 @@
             </p>
             <canvas id="casdChart1"></canvas>
         </div>
+        <table class="table mt-3">
+            <thead>
+                <th>{{ __('Symptom Score') }}</th>
+                <th>{{ __('Description') }}</th>
+            </thead>
+            <tbody>
+                @foreach ($symptom as $symptomRecord)
+                    <tr>
+                        <td>{{ $symptomRecord['symptom'] }}</td>
+                        <td>{{ __($symptomRecord['label']) }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </main>
 @endsection
 

@@ -78,6 +78,8 @@ class CasdReportsController extends Controller
             $notCount += $subDomain->questions()->where('checked', false)->count();
         }
 
-        return view('reports.casd2', compact('casdExam', 'report', 'examinee', 'logo', 'count', 'notCount'));
+        $symptom = collect(config('casd.symptom'));
+        
+        return view('reports.casd2', compact('casdExam', 'report', 'examinee', 'logo', 'count', 'notCount', 'symptom'));
     }
 }
