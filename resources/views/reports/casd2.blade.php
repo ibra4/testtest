@@ -21,10 +21,10 @@
         const casdChart1 = document.getElementById('casdChart1').getContext('2d');
         const xAxis = Array.from(Array(31).keys());
         let yAxis = [];
-        const data1 = Array.from(Array(31).keys()).map(value => {
+        const data1 = xAxis.map(value => {
             return value <= {{ $count }} ? value : {{ $count }};
         });
-        const data2 = Array.from(Array(31).keys()).map(value => {
+        const data2 = xAxis.map(value => {
             return value <= {{ $notCount }} ? value : {{ $notCount }};
         });
 
