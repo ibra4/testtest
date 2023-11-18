@@ -23,7 +23,6 @@
         <div class="section">
             <h3 class="mb-4">{{ __('Results') }} 2</h3>
             <canvas id="casdChart2"></canvas>
-            <canvas id="casdChart3"></canvas>
         </div>
         {{-- <div class="section">
             <h3 class="mb-4">{{ __('Results') }} 3</h3>
@@ -97,75 +96,6 @@
         const subDomainsResults = @json($subDomainsResults);
         new Chart(document.getElementById('casdChart2').getContext('2d'), {
             type: 'bar',
-            data: {
-                // SubDomains Names
-                labels: subDomainsResults.domains_names,
-                datasets: [{
-                        label: "النتيجة",
-                        backgroundColor: '#9d6ab0',
-                        borderWidth: 1,
-                        // SubDomains Real Values
-                        data: subDomainsResults.real_results,
-                        xAxisID: "bar-x-axis1",
-                        yAxisID: "bar-y-axis1"
-                    },
-                    {
-                        label: "القيمة العظمى",
-                        backgroundColor: '#cccccc',
-                        borderWidth: 1,
-                        // SubDomains Max Values - Real Values
-                        data: subDomainsResults.remaining_results,
-                        xAxisID: "bar-x-axis1",
-                        yAxisID: "bar-y-axis1"
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        stacked: true,
-                        id: "bar-x-axis1",
-                        barThickness: 30,
-                    }, {
-                        display: false,
-                        stacked: true,
-                        id: "bar-x-axis2",
-                        barThickness: 70,
-                        // these are needed because the bar controller defaults set only the first x axis properties
-                        type: 'category',
-                        categoryPercentage: 0.8,
-                        barPercentage: 0.9,
-                        gridLines: {
-                            offsetGridLines: true
-                        },
-                        offset: true
-                    }],
-                    yAxes: [{
-                            id: "bar-y-axis1",
-                            stacked: true,
-                            ticks: {
-                                beginAtZero: true,
-                                autoSkip: false,
-                            }
-                        },
-                        {
-                            id: "bar-y-axis2",
-                            stacked: false,
-                            ticks: {
-                                beginAtZero: true,
-                                display: false
-                            },
-                            gridLines: {
-                                display: false
-                            }
-                        }
-                    ]
-
-                }
-            }
-        });
-        new Chart(document.getElementById('casdChart3').getContext('2d'), {
-            type: 'line',
             data: {
                 // SubDomains Names
                 labels: subDomainsResults.domains_names,
