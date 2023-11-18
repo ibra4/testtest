@@ -73,13 +73,19 @@ class CasdReportsController extends Controller
 
         $count = 0;
         $notCount = 0;
+        $subDomainsResults = [];
         foreach ($casdExam->subDomains as $subDomain) {
-            $count += $subDomain->questions()->where('checked', true)->count();
-            $notCount += $subDomain->questions()->where('checked', false)->count();
+            $checkedQuestionsCount = $subDomain->questions()->where('checked', true)->count();
+            $allQuuestionsCount = $subDomain->questions->count();
+            $subDomainsResults['domains_names'][] = $subDomain->subDomain->{$lang == 'ar' ? 'name' : 'name_en'};
+            $subDomainsResults['remaining_results'][] = $allQuuestionsCount - $checkedQuestionsCount;
+            $subDomainsResults['real_results'][] = $checkedQuestionsCount;
+            $count += $checkedQuestionsCount;
+            $notCount += ($allQuuestionsCount - $checkedQuestionsCount);
         }
 
         $symptom = collect(config('casd.symptom'));
         
-        return view('reports.casd2', compact('casdExam', 'report', 'examinee', 'logo', 'count', 'notCount', 'symptom'));
+        return view('reports.casd2', compact('casdExam', 'report', 'examinee', 'logo', 'count', 'notCount', 'subDomainsResults', 'symptom'));
     }
 }
