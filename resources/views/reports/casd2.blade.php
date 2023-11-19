@@ -22,7 +22,8 @@
         </div>
         <div class="section">
             <h3 class="mb-4">{{ __('Results') }} 2</h3>
-            <canvas id="casdChart2"></canvas>
+            <canvas height="200px" id="casdChart2"></canvas>
+            <canvas height="50px" id="myChart"></canvas>
         </div>
         {{-- <div class="section">
             <h3 class="mb-4">{{ __('Results') }} 3</h3>
@@ -43,7 +44,7 @@
             <tbody>
                 @foreach ($symptom as $symptomRecord)
                     <tr>
-                        <td>{{ $symptomRecord['symptom'] }}</td>
+                        <td>{{ __($symptomRecord['symptom']) }}</td>
                         <td>{{ __($symptomRecord['label']) }}</td>
                     </tr>
                 @endforeach
@@ -145,6 +146,8 @@
                             ticks: {
                                 beginAtZero: true,
                                 autoSkip: false,
+                                max: 15,
+                                stepSize: 1
                             }
                         },
                         {
@@ -160,6 +163,50 @@
                         }
                     ]
 
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        new Chart(document.getElementById('myChart').getContext('2d'), {
+            type: 'horizontalBar',
+            data: {
+                labels: ["{{ __('Results') }}"],
+                datasets: [{
+                    label: '',
+                    data: [{{ $count }}],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 30,
+                            stepSize: 1
+                        }
+                    }]
                 }
             }
         });

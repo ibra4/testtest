@@ -210,5 +210,10 @@
     "Goal Explaination": "شرح الهدف",
     "Skills that apply to examinee": "المهارات التي تنطبق على المفحوص",
     "Skills that don't apply to examinee": "المهارات التي لا تنطبق على المفحوص",
-    "Results": "النتائج"
+    "Results": "النتائج",
+    "7 or below": "7 أو أقل",
+    "Symptom Score": "درجة الأعراض",
+    "Normal Range": "المدى الطبيعي",
+    "Borderline Range (8 or higher is at risk and needs futher evaluation)": "المدى الحدودي (8 أو أعلى يعتبر معرض للخطر ويحتاج لتقييم إضافي)",
+    "Autism Range": "المدى التوحدي"
 }
