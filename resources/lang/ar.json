@@ -214,6 +214,8 @@
     "7 or below": "7 أو أقل",
     "Symptom Score": "درجة الأعراض",
     "Normal Range": "المدى الطبيعي",
+    "Borderline Range": "المدى الحدودي",
     "Borderline Range (8 or higher is at risk and needs futher evaluation)": "المدى الحدودي (8 أو أعلى يعتبر معرض للخطر ويحتاج لتقييم إضافي)",
-    "Autism Range": "المدى التوحدي"
+    "Autism Range": "المدى التوحدي",
+    "at risk and needs futher evaluation": "معرض للخطر ويحتاج لتقييم إضافي"
 }

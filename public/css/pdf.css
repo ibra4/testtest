@@ -321,3 +321,24 @@ html[dir=rtl] .composite-title {
   top: -7px;
   left: 0;
 }
+
+#casd-chart3-wrapper {
+  position: relative;
+}
+#casd-chart3-wrapper .value-point {
+  position: absolute;
+  content: "*";
+  width: 15px;
+  height: 15px;
+  background-color: #9d6ab0;
+  border: 2px solid white;
+  border-radius: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#casd-chart3-wrapper .value-point .count {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}

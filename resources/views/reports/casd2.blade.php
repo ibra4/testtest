@@ -12,6 +12,12 @@
                 بعد تطبيق قائمة (كازد) لتقدير اضطراب طيف التوحدتحصل المفحوص درجة ({{ $count }})
             </p>
             <canvas id="casdChart1"></canvas>
+            <div id="casd-chart3-wrapper">
+                <canvas height="60px" id="myChart"></canvas>
+                <div class="value-point">
+                    <div class="count">{{ $count }}</div>
+                </div>
+            </div>
             {{-- <div class="casd-bar">
                     <div class="casd-num-item"></div>
                     @foreach (range(0, 30) as $num)
@@ -23,7 +29,6 @@
         <div class="section">
             <h3 class="mb-4">{{ __('Results') }} 2</h3>
             <canvas height="200px" id="casdChart2"></canvas>
-            <canvas height="50px" id="myChart"></canvas>
         </div>
         {{-- <div class="section">
             <h3 class="mb-4">{{ __('Results') }} 3</h3>
@@ -91,6 +96,18 @@
                         display: false
                     },
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            min: 0,
+                            max: 30,
+                            stepSize: 5,
+                        }
+                    }]
+                }
             }
         });
 
@@ -187,28 +204,58 @@
 
 
 
-
-        new Chart(document.getElementById('myChart').getContext('2d'), {
+        const casdChart3 = new Chart(document.getElementById('myChart').getContext('2d'), {
             type: 'horizontalBar',
             data: {
-                labels: ["{{ __('Results') }}"],
+                labels: ["   "],
                 datasets: [{
-                    label: '',
-                    data: [{{ $count }}],
-                    borderWidth: 1
-                }]
+                        label: "{{ __('Normal Range') }}",
+                        data: [8],
+                        borderWidth: 1,
+                        backgroundColor: '#27AE60'
+                    },
+                    {
+                        label: "{{ __('at risk and needs futher evaluation') }}",
+                        data: [11],
+                        borderWidth: 1,
+                        backgroundColor: '#eeeeee', // Transparent color for the empty space
+                    },
+                    {
+                        label: "{{ __('Borderline Range') }}",
+                        data: [15], // Adjust the data for the orange segment
+                        borderWidth: 1,
+                        backgroundColor: '#F1C40F',
+                    },
+                    {
+                        label: "{{ __('Autism Range') }}",
+                        data: [30], // Adjust the data for the red segment
+                        borderWidth: 1,
+                        backgroundColor: '#E74C3C',
+                    }
+                ]
             },
             options: {
                 scales: {
                     xAxes: [{
                         ticks: {
                             beginAtZero: true,
+                            min: 0,
                             max: 30,
-                            stepSize: 1
+                            stepSize: 1,
+                            mirror: true
                         }
-                    }]
+                    }],
+                    yAxes: [{
+                        stacked: true,
+                        mirror: true
+                    }],
                 }
             }
         });
+
+        var xScale = casdChart3.scales['x-axis-0'];
+        var position = xScale.getPixelForValue({{ $count }});
+        const pointSelector = $('#casd-chart3-wrapper .value-point');
+        pointSelector.css('left', `${position}px`);
     </script>
 @endsection
